@@ -1,0 +1,2757 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CityCount {
+  address: Int!
+}
+
+type City {
+  id: ID!
+  name: String!
+  address: [Address!]
+  _count: CityCount!
+}
+
+type DistrictCount {
+  address: Int!
+}
+
+type District {
+  id: ID!
+  name: String!
+  address: [Address!]
+  _count: DistrictCount!
+}
+
+type PostalCodeCount {
+  address: Int!
+}
+
+type PostalCode {
+  id: ID!
+  code: Int!
+  address: [Address!]
+  _count: PostalCodeCount!
+}
+
+type ProgramCategoryCount {
+  programs: Int!
+}
+
+type ProgramCategory {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  programs: [Program!]
+  _count: ProgramCategoryCount!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ProgramCount {
+  Images: Int!
+  participant: Int!
+}
+
+type Program {
+  id: ID!
+  name: String!
+  startDate: DateTime!
+  dueDate: DateTime
+  description: String!
+  createdById: String!
+  categoryId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Images: [Images!]
+  createdBy: User!
+  participant: [User!]
+  category: ProgramCategory!
+  _count: ProgramCount!
+}
+
+type RewardCount {
+  images: Int!
+  claimers: Int!
+}
+
+type Reward {
+  id: ID!
+  name: String!
+  pointCost: Float!
+  description: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  images: [Images!]
+  claimers: [User!]
+  _count: RewardCount!
+}
+
+type Item {
+  id: ID!
+  name: String!
+  description: String!
+  price: Float!
+  qty: Int!
+  userRole: UserRole!
+  orderId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  order: Order!
+}
+
+enum UserRole {
+  MEMBER
+  ADMIN
+  SUPERUSER
+  STUDENT
+}
+
+type Shipping {
+  id: ID!
+  logisticName: String!
+  deliveryDate: DateTime
+  shippingStatus: ShippingStatus!
+  addressId: Int!
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  orderId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  address: Address!
+  order: Order!
+}
+
+enum ShippingStatus {
+  PROCESSING
+  DELIVERING
+  DELIVERED
+}
+
+type OrderCount {
+  items: Int!
+  payments: Int!
+}
+
+type Order {
+  id: ID!
+  status: TransactionStatus!
+  orderById: String!
+  shippingId: Int
+  isFullPaid: Boolean!
+  cost: Float!
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  orderBy: User!
+  items: [Item!]
+  shipping: Shipping
+  payments: [Payment!]
+  _count: OrderCount!
+}
+
+enum TransactionStatus {
+  PROCESSING
+  PENDING
+  FAILED
+  CANCELLED
+  COMPLETED
+}
+
+type PaymentConfirmation {
+  id: ID!
+  ProofUrl: String!
+  paymentId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  payment: Payment!
+}
+
+type Payment {
+  id: ID!
+  adminFee: Float!
+  totalPayment: Float!
+  orderId: Int!
+  transactionId: Int!
+  createdAt: DateTime!
+  order: Order!
+  transaction: Transaction!
+  confirmation: PaymentConfirmation
+}
+
+type Transaction {
+  id: ID!
+  amount: Float!
+  status: TransactionStatus!
+  transactionType: TransactionType!
+  transactionCategory: TransactionCategory!
+  currentBalance: Float!
+  userId: String!
+  accountId: Int!
+  createdAt: DateTime!
+  User: User!
+  account: Account!
+  payment: Payment
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+}
+
+enum TransactionCategory {
+  INVESTMENT
+  INVESTMENT_RETURN
+  COMISSION_BONUS
+  WITHDRAWAL
+  MEMBER_REGISTRATION
+  STUDENT_REGISTRATION
+}
+
+type Bank {
+  id: ID!
+  name: String!
+  logoUrl: String!
+  accountNumber: Int!
+  accountId: Int!
+  account: Account!
+}
+
+type AccountCount {
+  transactions: Int!
+}
+
+type Account {
+  id: ID!
+  accountNumber: Int
+  name: String!
+  balance: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userId: String!
+  accountCategory: AccountCategory!
+  user: User!
+  transactions: [Transaction!]
+  project: Project
+  bankAccount: Bank
+  _count: AccountCount!
+}
+
+enum AccountCategory {
+  EQUITY
+  PROJECT
+  COMISSION
+  CASH
+  PLATFORM
+  BANK
+}
+
+type ProjectCount {
+  images: Int!
+  investors: Int!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  description: String!
+  projectCategory: ProjectCategory!
+  startDate: DateTime!
+  endDate: DateTime!
+  returnRate: Float!
+  goalAmount: Int!
+  currentAmount: Float!
+  minimumInvestment: Int!
+  maxInvestor: Int!
+  accountId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  images: [Images!]
+  investors: [User!]
+  account: Account!
+  _count: ProjectCount!
+}
+
+enum ProjectCategory {
+  PROPERTY
+  BUSSINESS
+}
+
+type Images {
+  id: ID!
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+  hotelImageId: Int
+  programImageId: Int
+  rewardImageId: Int
+  projectImageId: Int
+  createdAt: DateTime!
+  hotelImage: Hotel
+  programImage: Program
+  rewardImage: Reward
+  projectImage: Project
+}
+
+enum FileType {
+  MP4
+  JPG
+  PNG
+  PDF
+}
+
+type CheckIn {
+  id: ID!
+  userId: String!
+  hotelId: Int!
+  checkInAt: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User!
+  hotel: Hotel!
+}
+
+type HotelCount {
+  images: Int!
+  checkIns: Int!
+}
+
+type Hotel {
+  id: ID!
+  name: String!
+  addressId: Int!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  createdById: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  address: Address!
+  images: [Images!]
+  checkIns: [CheckIn!]
+  createdBy: User!
+  _count: HotelCount!
+}
+
+type SchoolCount {
+  students: Int!
+}
+
+type School {
+  id: ID!
+  name: String!
+  addressId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  address: Address!
+  students: [User!]
+  _count: SchoolCount!
+}
+
+type Address {
+  id: ID!
+  name: String!
+  cityId: Int!
+  districtId: Int!
+  postalCodeId: Int!
+  city: City!
+  district: District!
+  postalCode: PostalCode!
+  user: User
+  hotel: Hotel
+  school: School
+  Shipping: Shipping
+}
+
+type PointTransaction {
+  id: ID!
+  amount: Float!
+  pointType: PointType!
+  transactionType: TransactionType!
+  currentBalance: Float!
+  userId: String!
+  createdAt: DateTime!
+  User: User!
+}
+
+enum PointType {
+  REFERRING
+  REDEEMING
+}
+
+type Session {
+  id: ID!
+  token: String!
+  expiresAt: DateTime!
+  createdAt: DateTime!
+  userId: String!
+  device: String!
+  ipAddress: Float!
+  user: User!
+}
+
+type UserNotification {
+  id: ID!
+  title: String!
+  subtitle: String!
+  content: String!
+  createdAt: DateTime!
+  category: UserNotificationCategory!
+  isRead: Boolean!
+  isCleared: Boolean!
+  userId: String!
+  deepLink: String
+  fcmToken: String
+  user: User!
+}
+
+enum UserNotificationCategory {
+  BILLING_ALERT
+  ANNOUNCEMENT
+  CHAT_MESSAGE
+}
+
+type File {
+  id: ID!
+  fileType: FileType!
+  filesize: Float!
+  name: String!
+  description: String!
+  url: String!
+  createdById: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User!
+}
+
+type UserCount {
+  referredUsers: Int!
+  checkIns: Int!
+  accounts: Int!
+  transactions: Int!
+  PointTransactions: Int!
+  orders: Int!
+  sessions: Int!
+  hotelsCreated: Int!
+  programsParticipation: Int!
+  projectsInvestment: Int!
+  claimedRewards: Int!
+  userNotifications: Int!
+  programsCreated: Int!
+  filesCreated: Int!
+}
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String
+  email: String!
+  addressId: Int!
+  userRole: UserRole!
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  whatsappVerifiedAt: DateTime
+  referredById: String
+  status: UserStatus!
+  schoolId: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  theme: Theme!
+  address: Address!
+  referredBy: User
+  referredUsers: [User!]
+  checkIns: [CheckIn!]
+  school: School
+  accounts: [Account!]
+  transactions: [Transaction!]
+  PointTransactions: [PointTransaction!]
+  orders: [Order!]
+  sessions: [Session!]
+  hotelsCreated: [Hotel!]
+  programsParticipation: [Program!]
+  projectsInvestment: [Project!]
+  claimedRewards: [Reward!]
+  userNotifications: [UserNotification!]
+  programsCreated: [Program!]
+  filesCreated: [File!]
+  _count: UserCount!
+}
+
+enum UserType {
+  PARENT
+  SCHOOL_HEAD
+  STUDENT
+}
+
+enum UserStatus {
+  ACTIVE
+  PENDING
+  INACTIVE
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
+type Query {
+  user(id: Int!): User!
+}
+
+type Mutation {
+  createUser(createOneUserArgs: UserCreateInput!): User
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+}
+
+input UserCreateInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole!
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+}
+
+input AddressCreateNestedOneWithoutUserInput {
+  create: AddressCreateWithoutUserInput
+  connectOrCreate: AddressCreateOrConnectWithoutUserInput
+  connect: AddressWhereUniqueInput
+}
+
+input AddressCreateWithoutUserInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  hotel: HotelCreateNestedOneWithoutAddressInput
+  school: SchoolCreateNestedOneWithoutAddressInput
+  Shipping: ShippingCreateNestedOneWithoutAddressInput
+}
+
+input CityCreateNestedOneWithoutAddressInput {
+  create: CityCreateWithoutAddressInput
+  connectOrCreate: CityCreateOrConnectWithoutAddressInput
+  connect: CityWhereUniqueInput
+}
+
+input CityCreateWithoutAddressInput {
+  name: String!
+}
+
+input CityCreateOrConnectWithoutAddressInput {
+  where: CityWhereUniqueInput!
+  create: CityCreateWithoutAddressInput!
+}
+
+input CityWhereUniqueInput {
+  id: Int
+  AND: [CityWhereInput!]
+  OR: [CityWhereInput!]
+  NOT: [CityWhereInput!]
+  name: StringFilter
+  address: AddressListRelationFilter
+}
+
+input CityWhereInput {
+  AND: [CityWhereInput!]
+  OR: [CityWhereInput!]
+  NOT: [CityWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  address: AddressListRelationFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input AddressListRelationFilter {
+  every: AddressWhereInput
+  some: AddressWhereInput
+  none: AddressWhereInput
+}
+
+input AddressWhereInput {
+  AND: [AddressWhereInput!]
+  OR: [AddressWhereInput!]
+  NOT: [AddressWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  cityId: IntFilter
+  districtId: IntFilter
+  postalCodeId: IntFilter
+  city: CityRelationFilter
+  district: DistrictRelationFilter
+  postalCode: PostalCodeRelationFilter
+  user: UserNullableRelationFilter
+  hotel: HotelNullableRelationFilter
+  school: SchoolNullableRelationFilter
+  Shipping: ShippingNullableRelationFilter
+}
+
+input CityRelationFilter {
+  is: CityWhereInput
+  isNot: CityWhereInput
+}
+
+input DistrictRelationFilter {
+  is: DistrictWhereInput
+  isNot: DistrictWhereInput
+}
+
+input DistrictWhereInput {
+  AND: [DistrictWhereInput!]
+  OR: [DistrictWhereInput!]
+  NOT: [DistrictWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  address: AddressListRelationFilter
+}
+
+input PostalCodeRelationFilter {
+  is: PostalCodeWhereInput
+  isNot: PostalCodeWhereInput
+}
+
+input PostalCodeWhereInput {
+  AND: [PostalCodeWhereInput!]
+  OR: [PostalCodeWhereInput!]
+  NOT: [PostalCodeWhereInput!]
+  id: IntFilter
+  code: IntFilter
+  address: AddressListRelationFilter
+}
+
+input UserNullableRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  firstName: StringFilter
+  lastName: StringNullableFilter
+  email: StringFilter
+  userRole: EnumUserRoleFilter
+  userType: EnumUserTypeFilter
+  avatarUrl: StringNullableFilter
+  whatsappNumber: StringFilter
+  password: StringFilter
+  theme: EnumThemeFilter
+  address: AddressRelationFilter
+  referredBy: UserNullableRelationFilter
+  school: SchoolNullableRelationFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input EnumUserRoleFilter {
+  equals: UserRole
+  in: [UserRole!]
+  notIn: [UserRole!]
+  not: NestedEnumUserRoleFilter
+}
+
+input NestedEnumUserRoleFilter {
+  equals: UserRole
+  in: [UserRole!]
+  notIn: [UserRole!]
+  not: NestedEnumUserRoleFilter
+}
+
+input EnumUserTypeFilter {
+  equals: UserType
+  in: [UserType!]
+  notIn: [UserType!]
+  not: NestedEnumUserTypeFilter
+}
+
+input NestedEnumUserTypeFilter {
+  equals: UserType
+  in: [UserType!]
+  notIn: [UserType!]
+  not: NestedEnumUserTypeFilter
+}
+
+input EnumThemeFilter {
+  equals: Theme
+  in: [Theme!]
+  notIn: [Theme!]
+  not: NestedEnumThemeFilter
+}
+
+input NestedEnumThemeFilter {
+  equals: Theme
+  in: [Theme!]
+  notIn: [Theme!]
+  not: NestedEnumThemeFilter
+}
+
+input AddressRelationFilter {
+  is: AddressWhereInput
+  isNot: AddressWhereInput
+}
+
+input SchoolNullableRelationFilter {
+  is: SchoolWhereInput
+  isNot: SchoolWhereInput
+}
+
+input SchoolWhereInput {
+  AND: [SchoolWhereInput!]
+  OR: [SchoolWhereInput!]
+  NOT: [SchoolWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  addressId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  students: UserListRelationFilter
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  some: UserWhereInput
+  none: UserWhereInput
+}
+
+input HotelNullableRelationFilter {
+  is: HotelWhereInput
+  isNot: HotelWhereInput
+}
+
+input HotelWhereInput {
+  AND: [HotelWhereInput!]
+  OR: [HotelWhereInput!]
+  NOT: [HotelWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  addressId: IntFilter
+  description: StringFilter
+  rating: FloatFilter
+  startDate: DateTimeFilter
+  quota: IntFilter
+  createdById: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  images: ImagesListRelationFilter
+  checkIns: CheckInListRelationFilter
+  createdBy: UserRelationFilter
+}
+
+input FloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input NestedFloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input ImagesListRelationFilter {
+  every: ImagesWhereInput
+  some: ImagesWhereInput
+  none: ImagesWhereInput
+}
+
+input ImagesWhereInput {
+  AND: [ImagesWhereInput!]
+  OR: [ImagesWhereInput!]
+  NOT: [ImagesWhereInput!]
+  id: IntFilter
+  fileType: EnumFileTypeFilter
+  filesize: FloatFilter
+  url: StringFilter
+  hotelImageId: IntNullableFilter
+  programImageId: IntNullableFilter
+  rewardImageId: IntNullableFilter
+  projectImageId: IntNullableFilter
+  createdAt: DateTimeFilter
+  hotelImage: HotelNullableRelationFilter
+  programImage: ProgramNullableRelationFilter
+  rewardImage: RewardNullableRelationFilter
+  projectImage: ProjectNullableRelationFilter
+}
+
+input EnumFileTypeFilter {
+  equals: FileType
+  in: [FileType!]
+  notIn: [FileType!]
+  not: NestedEnumFileTypeFilter
+}
+
+input NestedEnumFileTypeFilter {
+  equals: FileType
+  in: [FileType!]
+  notIn: [FileType!]
+  not: NestedEnumFileTypeFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input ProgramNullableRelationFilter {
+  is: ProgramWhereInput
+  isNot: ProgramWhereInput
+}
+
+input ProgramWhereInput {
+  AND: [ProgramWhereInput!]
+  OR: [ProgramWhereInput!]
+  NOT: [ProgramWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  startDate: DateTimeFilter
+  dueDate: DateTimeNullableFilter
+  description: StringFilter
+  createdById: StringFilter
+  categoryId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  Images: ImagesListRelationFilter
+  createdBy: UserRelationFilter
+  participant: UserListRelationFilter
+  category: ProgramCategoryRelationFilter
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeNullableFilter
+}
+
+input NestedDateTimeNullableFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeNullableFilter
+}
+
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+input ProgramCategoryRelationFilter {
+  is: ProgramCategoryWhereInput
+  isNot: ProgramCategoryWhereInput
+}
+
+input ProgramCategoryWhereInput {
+  AND: [ProgramCategoryWhereInput!]
+  OR: [ProgramCategoryWhereInput!]
+  NOT: [ProgramCategoryWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  programs: ProgramListRelationFilter
+}
+
+input ProgramListRelationFilter {
+  every: ProgramWhereInput
+  some: ProgramWhereInput
+  none: ProgramWhereInput
+}
+
+input RewardNullableRelationFilter {
+  is: RewardWhereInput
+  isNot: RewardWhereInput
+}
+
+input RewardWhereInput {
+  AND: [RewardWhereInput!]
+  OR: [RewardWhereInput!]
+  NOT: [RewardWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  pointCost: FloatFilter
+  description: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  images: ImagesListRelationFilter
+  claimers: UserListRelationFilter
+}
+
+input ProjectNullableRelationFilter {
+  is: ProjectWhereInput
+  isNot: ProjectWhereInput
+}
+
+input ProjectWhereInput {
+  AND: [ProjectWhereInput!]
+  OR: [ProjectWhereInput!]
+  NOT: [ProjectWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  description: StringFilter
+  projectCategory: EnumProjectCategoryFilter
+  startDate: DateTimeFilter
+  endDate: DateTimeFilter
+  returnRate: FloatFilter
+  goalAmount: IntFilter
+  currentAmount: FloatFilter
+  minimumInvestment: IntFilter
+  maxInvestor: IntFilter
+  accountId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  images: ImagesListRelationFilter
+  investors: UserListRelationFilter
+  account: AccountRelationFilter
+}
+
+input EnumProjectCategoryFilter {
+  equals: ProjectCategory
+  in: [ProjectCategory!]
+  notIn: [ProjectCategory!]
+  not: NestedEnumProjectCategoryFilter
+}
+
+input NestedEnumProjectCategoryFilter {
+  equals: ProjectCategory
+  in: [ProjectCategory!]
+  notIn: [ProjectCategory!]
+  not: NestedEnumProjectCategoryFilter
+}
+
+input AccountRelationFilter {
+  is: AccountWhereInput
+  isNot: AccountWhereInput
+}
+
+input AccountWhereInput {
+  AND: [AccountWhereInput!]
+  OR: [AccountWhereInput!]
+  NOT: [AccountWhereInput!]
+  id: IntFilter
+  accountNumber: IntNullableFilter
+  name: StringFilter
+  balance: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userId: StringFilter
+  accountCategory: EnumAccountCategoryFilter
+  user: UserRelationFilter
+  transactions: TransactionListRelationFilter
+  project: ProjectNullableRelationFilter
+  bankAccount: BankNullableRelationFilter
+}
+
+input EnumAccountCategoryFilter {
+  equals: AccountCategory
+  in: [AccountCategory!]
+  notIn: [AccountCategory!]
+  not: NestedEnumAccountCategoryFilter
+}
+
+input NestedEnumAccountCategoryFilter {
+  equals: AccountCategory
+  in: [AccountCategory!]
+  notIn: [AccountCategory!]
+  not: NestedEnumAccountCategoryFilter
+}
+
+input TransactionListRelationFilter {
+  every: TransactionWhereInput
+  some: TransactionWhereInput
+  none: TransactionWhereInput
+}
+
+input TransactionWhereInput {
+  AND: [TransactionWhereInput!]
+  OR: [TransactionWhereInput!]
+  NOT: [TransactionWhereInput!]
+  id: IntFilter
+  amount: FloatFilter
+  status: EnumTransactionStatusFilter
+  transactionType: EnumTransactionTypeFilter
+  transactionCategory: EnumTransactionCategoryFilter
+  currentBalance: FloatFilter
+  userId: StringFilter
+  accountId: IntFilter
+  createdAt: DateTimeFilter
+  User: UserRelationFilter
+  account: AccountRelationFilter
+  payment: PaymentNullableRelationFilter
+}
+
+input EnumTransactionStatusFilter {
+  equals: TransactionStatus
+  in: [TransactionStatus!]
+  notIn: [TransactionStatus!]
+  not: NestedEnumTransactionStatusFilter
+}
+
+input NestedEnumTransactionStatusFilter {
+  equals: TransactionStatus
+  in: [TransactionStatus!]
+  notIn: [TransactionStatus!]
+  not: NestedEnumTransactionStatusFilter
+}
+
+input EnumTransactionTypeFilter {
+  equals: TransactionType
+  in: [TransactionType!]
+  notIn: [TransactionType!]
+  not: NestedEnumTransactionTypeFilter
+}
+
+input NestedEnumTransactionTypeFilter {
+  equals: TransactionType
+  in: [TransactionType!]
+  notIn: [TransactionType!]
+  not: NestedEnumTransactionTypeFilter
+}
+
+input EnumTransactionCategoryFilter {
+  equals: TransactionCategory
+  in: [TransactionCategory!]
+  notIn: [TransactionCategory!]
+  not: NestedEnumTransactionCategoryFilter
+}
+
+input NestedEnumTransactionCategoryFilter {
+  equals: TransactionCategory
+  in: [TransactionCategory!]
+  notIn: [TransactionCategory!]
+  not: NestedEnumTransactionCategoryFilter
+}
+
+input PaymentNullableRelationFilter {
+  is: PaymentWhereInput
+  isNot: PaymentWhereInput
+}
+
+input PaymentWhereInput {
+  AND: [PaymentWhereInput!]
+  OR: [PaymentWhereInput!]
+  NOT: [PaymentWhereInput!]
+  id: IntFilter
+  adminFee: FloatFilter
+  totalPayment: FloatFilter
+  orderId: IntFilter
+  transactionId: IntFilter
+  createdAt: DateTimeFilter
+  order: OrderRelationFilter
+  transaction: TransactionRelationFilter
+  confirmation: PaymentConfirmationNullableRelationFilter
+}
+
+input OrderRelationFilter {
+  is: OrderWhereInput
+  isNot: OrderWhereInput
+}
+
+input OrderWhereInput {
+  AND: [OrderWhereInput!]
+  OR: [OrderWhereInput!]
+  NOT: [OrderWhereInput!]
+  id: IntFilter
+  status: EnumTransactionStatusFilter
+  orderById: StringFilter
+  shippingId: IntNullableFilter
+  isFullPaid: BoolFilter
+  cost: FloatFilter
+  platformFee: FloatFilter
+  total: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  orderBy: UserRelationFilter
+  items: ItemListRelationFilter
+  shipping: ShippingNullableRelationFilter
+  payments: PaymentListRelationFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input ItemListRelationFilter {
+  every: ItemWhereInput
+  some: ItemWhereInput
+  none: ItemWhereInput
+}
+
+input ItemWhereInput {
+  AND: [ItemWhereInput!]
+  OR: [ItemWhereInput!]
+  NOT: [ItemWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  description: StringFilter
+  price: FloatFilter
+  qty: IntFilter
+  userRole: EnumUserRoleFilter
+  orderId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+}
+
+input ShippingNullableRelationFilter {
+  is: ShippingWhereInput
+  isNot: ShippingWhereInput
+}
+
+input ShippingWhereInput {
+  AND: [ShippingWhereInput!]
+  OR: [ShippingWhereInput!]
+  NOT: [ShippingWhereInput!]
+  id: IntFilter
+  logisticName: StringFilter
+  deliveryDate: DateTimeNullableFilter
+  shippingStatus: EnumShippingStatusFilter
+  addressId: IntFilter
+  courier: StringNullableFilter
+  estimatedTime: StringNullableFilter
+  trackingNo: StringNullableFilter
+  orderId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  order: OrderRelationFilter
+}
+
+input EnumShippingStatusFilter {
+  equals: ShippingStatus
+  in: [ShippingStatus!]
+  notIn: [ShippingStatus!]
+  not: NestedEnumShippingStatusFilter
+}
+
+input NestedEnumShippingStatusFilter {
+  equals: ShippingStatus
+  in: [ShippingStatus!]
+  notIn: [ShippingStatus!]
+  not: NestedEnumShippingStatusFilter
+}
+
+input PaymentListRelationFilter {
+  every: PaymentWhereInput
+  some: PaymentWhereInput
+  none: PaymentWhereInput
+}
+
+input TransactionRelationFilter {
+  is: TransactionWhereInput
+  isNot: TransactionWhereInput
+}
+
+input PaymentConfirmationNullableRelationFilter {
+  is: PaymentConfirmationWhereInput
+  isNot: PaymentConfirmationWhereInput
+}
+
+input PaymentConfirmationWhereInput {
+  AND: [PaymentConfirmationWhereInput!]
+  OR: [PaymentConfirmationWhereInput!]
+  NOT: [PaymentConfirmationWhereInput!]
+  id: IntFilter
+  ProofUrl: StringFilter
+  paymentId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  payment: PaymentRelationFilter
+}
+
+input PaymentRelationFilter {
+  is: PaymentWhereInput
+  isNot: PaymentWhereInput
+}
+
+input BankNullableRelationFilter {
+  is: BankWhereInput
+  isNot: BankWhereInput
+}
+
+input BankWhereInput {
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  logoUrl: StringFilter
+  accountNumber: IntFilter
+  accountId: IntFilter
+  account: AccountRelationFilter
+}
+
+input CheckInListRelationFilter {
+  every: CheckInWhereInput
+  some: CheckInWhereInput
+  none: CheckInWhereInput
+}
+
+input CheckInWhereInput {
+  AND: [CheckInWhereInput!]
+  OR: [CheckInWhereInput!]
+  NOT: [CheckInWhereInput!]
+  id: IntFilter
+  userId: StringFilter
+  hotelId: IntFilter
+  checkInAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  hotel: HotelRelationFilter
+}
+
+input HotelRelationFilter {
+  is: HotelWhereInput
+  isNot: HotelWhereInput
+}
+
+input DistrictCreateNestedOneWithoutAddressInput {
+  create: DistrictCreateWithoutAddressInput
+  connectOrCreate: DistrictCreateOrConnectWithoutAddressInput
+  connect: DistrictWhereUniqueInput
+}
+
+input DistrictCreateWithoutAddressInput {
+  name: String!
+}
+
+input DistrictCreateOrConnectWithoutAddressInput {
+  where: DistrictWhereUniqueInput!
+  create: DistrictCreateWithoutAddressInput!
+}
+
+input DistrictWhereUniqueInput {
+  id: Int
+  AND: [DistrictWhereInput!]
+  OR: [DistrictWhereInput!]
+  NOT: [DistrictWhereInput!]
+  name: StringFilter
+  address: AddressListRelationFilter
+}
+
+input PostalCodeCreateNestedOneWithoutAddressInput {
+  create: PostalCodeCreateWithoutAddressInput
+  connectOrCreate: PostalCodeCreateOrConnectWithoutAddressInput
+  connect: PostalCodeWhereUniqueInput
+}
+
+input PostalCodeCreateWithoutAddressInput {
+  code: Int!
+}
+
+input PostalCodeCreateOrConnectWithoutAddressInput {
+  where: PostalCodeWhereUniqueInput!
+  create: PostalCodeCreateWithoutAddressInput!
+}
+
+input PostalCodeWhereUniqueInput {
+  id: Int
+  code: Int
+  AND: [PostalCodeWhereInput!]
+  OR: [PostalCodeWhereInput!]
+  NOT: [PostalCodeWhereInput!]
+  address: AddressListRelationFilter
+}
+
+input HotelCreateNestedOneWithoutAddressInput {
+  create: HotelCreateWithoutAddressInput
+  connectOrCreate: HotelCreateOrConnectWithoutAddressInput
+  connect: HotelWhereUniqueInput
+}
+
+input HotelCreateWithoutAddressInput {
+  name: String!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  images: ImagesCreateNestedManyWithoutHotelImageInput
+  checkIns: CheckInCreateNestedManyWithoutHotelInput
+  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input ImagesCreateNestedManyWithoutHotelImageInput {
+  create: [ImagesCreateWithoutHotelImageInput!]
+  connectOrCreate: [ImagesCreateOrConnectWithoutHotelImageInput!]
+  createMany: ImagesCreateManyHotelImageInputEnvelope
+  connect: [ImagesWhereUniqueInput!]
+}
+
+input ImagesCreateWithoutHotelImageInput {
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+  createdAt: DateTime
+  programImage: ProgramCreateNestedOneWithoutImagesInput
+  rewardImage: RewardCreateNestedOneWithoutImagesInput
+  projectImage: ProjectCreateNestedOneWithoutImagesInput
+}
+
+input ProgramCreateNestedOneWithoutImagesInput {
+  create: ProgramCreateWithoutImagesInput
+  connectOrCreate: ProgramCreateOrConnectWithoutImagesInput
+  connect: ProgramWhereUniqueInput
+}
+
+input ProgramCreateWithoutImagesInput {
+  name: String!
+  startDate: DateTime!
+  dueDate: DateTime
+  description: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: UserCreateNestedOneWithoutProgramsCreatedInput!
+  participant: UserCreateNestedManyWithoutProgramsParticipationInput
+  category: ProgramCategoryCreateNestedOneWithoutProgramsInput!
+}
+
+input UserCreateNestedOneWithoutProgramsCreatedInput {
+  create: UserCreateWithoutProgramsCreatedInput
+  connectOrCreate: UserCreateOrConnectWithoutProgramsCreatedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutProgramsCreatedInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateNestedOneWithoutReferredUsersInput {
+  create: UserCreateWithoutReferredUsersInput
+  connectOrCreate: UserCreateOrConnectWithoutReferredUsersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutReferredUsersInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input SchoolCreateNestedOneWithoutStudentsInput {
+  create: SchoolCreateWithoutStudentsInput
+  connectOrCreate: SchoolCreateOrConnectWithoutStudentsInput
+  connect: SchoolWhereUniqueInput
+}
+
+input SchoolCreateWithoutStudentsInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  address: AddressCreateNestedOneWithoutSchoolInput!
+}
+
+input AddressCreateNestedOneWithoutSchoolInput {
+  create: AddressCreateWithoutSchoolInput
+  connectOrCreate: AddressCreateOrConnectWithoutSchoolInput
+  connect: AddressWhereUniqueInput
+}
+
+input AddressCreateWithoutSchoolInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  user: UserCreateNestedOneWithoutAddressInput
+  hotel: HotelCreateNestedOneWithoutAddressInput
+  Shipping: ShippingCreateNestedOneWithoutAddressInput
+}
+
+input UserCreateNestedOneWithoutAddressInput {
+  create: UserCreateWithoutAddressInput
+  connectOrCreate: UserCreateOrConnectWithoutAddressInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutAddressInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutAddressInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutAddressInput!
+}
+
+input UserWhereUniqueInput {
+  email: String
+  whatsappNumber: String
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  firstName: StringFilter
+  lastName: StringNullableFilter
+  userRole: EnumUserRoleFilter
+  userType: EnumUserTypeFilter
+  avatarUrl: StringNullableFilter
+  password: StringFilter
+  theme: EnumThemeFilter
+  address: AddressRelationFilter
+  referredBy: UserNullableRelationFilter
+  school: SchoolNullableRelationFilter
+}
+
+input ShippingCreateNestedOneWithoutAddressInput {
+  create: ShippingCreateWithoutAddressInput
+  connectOrCreate: ShippingCreateOrConnectWithoutAddressInput
+  connect: ShippingWhereUniqueInput
+}
+
+input ShippingCreateWithoutAddressInput {
+  logisticName: String!
+  deliveryDate: DateTime
+  shippingStatus: ShippingStatus!
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  order: OrderCreateNestedOneWithoutShippingInput!
+}
+
+input OrderCreateNestedOneWithoutShippingInput {
+  create: OrderCreateWithoutShippingInput
+  connectOrCreate: OrderCreateOrConnectWithoutShippingInput
+  connect: OrderWhereUniqueInput
+}
+
+input OrderCreateWithoutShippingInput {
+  status: TransactionStatus!
+  shippingId: Int
+  isFullPaid: Boolean!
+  cost: Float!
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  orderBy: UserCreateNestedOneWithoutOrdersInput!
+  items: ItemCreateNestedManyWithoutOrderInput
+  payments: PaymentCreateNestedManyWithoutOrderInput
+}
+
+input UserCreateNestedOneWithoutOrdersInput {
+  create: UserCreateWithoutOrdersInput
+  connectOrCreate: UserCreateOrConnectWithoutOrdersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutOrdersInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutOrdersInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutOrdersInput!
+}
+
+input ItemCreateNestedManyWithoutOrderInput {
+  create: [ItemCreateWithoutOrderInput!]
+  connectOrCreate: [ItemCreateOrConnectWithoutOrderInput!]
+  createMany: ItemCreateManyOrderInputEnvelope
+  connect: [ItemWhereUniqueInput!]
+}
+
+input ItemCreateWithoutOrderInput {
+  name: String!
+  description: String!
+  price: Float!
+  qty: Int!
+  userRole: UserRole!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ItemCreateOrConnectWithoutOrderInput {
+  where: ItemWhereUniqueInput!
+  create: ItemCreateWithoutOrderInput!
+}
+
+input ItemWhereUniqueInput {
+  id: Int
+  AND: [ItemWhereInput!]
+  OR: [ItemWhereInput!]
+  NOT: [ItemWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  price: FloatFilter
+  qty: IntFilter
+  userRole: EnumUserRoleFilter
+  orderId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+}
+
+input ItemCreateManyOrderInputEnvelope {
+  data: [ItemCreateManyOrderInput!]!
+  skipDuplicates: Boolean
+}
+
+input ItemCreateManyOrderInput {
+  id: Int
+  name: String!
+  description: String!
+  price: Float!
+  qty: Int!
+  userRole: UserRole!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input PaymentCreateNestedManyWithoutOrderInput {
+  create: [PaymentCreateWithoutOrderInput!]
+  connectOrCreate: [PaymentCreateOrConnectWithoutOrderInput!]
+  createMany: PaymentCreateManyOrderInputEnvelope
+  connect: [PaymentWhereUniqueInput!]
+}
+
+input PaymentCreateWithoutOrderInput {
+  adminFee: Float!
+  totalPayment: Float!
+  createdAt: DateTime
+  transaction: TransactionCreateNestedOneWithoutPaymentInput!
+  confirmation: PaymentConfirmationCreateNestedOneWithoutPaymentInput
+}
+
+input TransactionCreateNestedOneWithoutPaymentInput {
+  create: TransactionCreateWithoutPaymentInput
+  connectOrCreate: TransactionCreateOrConnectWithoutPaymentInput
+  connect: TransactionWhereUniqueInput
+}
+
+input TransactionCreateWithoutPaymentInput {
+  amount: Float!
+  status: TransactionStatus!
+  transactionType: TransactionType!
+  transactionCategory: TransactionCategory!
+  currentBalance: Float!
+  createdAt: DateTime
+  User: UserCreateNestedOneWithoutTransactionsInput!
+  account: AccountCreateNestedOneWithoutTransactionsInput!
+}
+
+input UserCreateNestedOneWithoutTransactionsInput {
+  create: UserCreateWithoutTransactionsInput
+  connectOrCreate: UserCreateOrConnectWithoutTransactionsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutTransactionsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutTransactionsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutTransactionsInput!
+}
+
+input AccountCreateNestedOneWithoutTransactionsInput {
+  create: AccountCreateWithoutTransactionsInput
+  connectOrCreate: AccountCreateOrConnectWithoutTransactionsInput
+  connect: AccountWhereUniqueInput
+}
+
+input AccountCreateWithoutTransactionsInput {
+  accountNumber: Int
+  name: String!
+  balance: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  accountCategory: AccountCategory!
+  user: UserCreateNestedOneWithoutAccountsInput!
+  project: ProjectCreateNestedOneWithoutAccountInput
+  bankAccount: BankCreateNestedOneWithoutAccountInput
+}
+
+input UserCreateNestedOneWithoutAccountsInput {
+  create: UserCreateWithoutAccountsInput
+  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutAccountsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutAccountsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutAccountsInput!
+}
+
+input ProjectCreateNestedOneWithoutAccountInput {
+  create: ProjectCreateWithoutAccountInput
+  connectOrCreate: ProjectCreateOrConnectWithoutAccountInput
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectCreateWithoutAccountInput {
+  name: String!
+  description: String!
+  projectCategory: ProjectCategory!
+  startDate: DateTime!
+  endDate: DateTime!
+  returnRate: Float!
+  goalAmount: Int!
+  currentAmount: Float!
+  minimumInvestment: Int!
+  maxInvestor: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  images: ImagesCreateNestedManyWithoutProjectImageInput
+  investors: UserCreateNestedManyWithoutProjectsInvestmentInput
+}
+
+input ImagesCreateNestedManyWithoutProjectImageInput {
+  create: [ImagesCreateWithoutProjectImageInput!]
+  connectOrCreate: [ImagesCreateOrConnectWithoutProjectImageInput!]
+  createMany: ImagesCreateManyProjectImageInputEnvelope
+  connect: [ImagesWhereUniqueInput!]
+}
+
+input ImagesCreateWithoutProjectImageInput {
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+  createdAt: DateTime
+  hotelImage: HotelCreateNestedOneWithoutImagesInput
+  programImage: ProgramCreateNestedOneWithoutImagesInput
+  rewardImage: RewardCreateNestedOneWithoutImagesInput
+}
+
+input HotelCreateNestedOneWithoutImagesInput {
+  create: HotelCreateWithoutImagesInput
+  connectOrCreate: HotelCreateOrConnectWithoutImagesInput
+  connect: HotelWhereUniqueInput
+}
+
+input HotelCreateWithoutImagesInput {
+  name: String!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  address: AddressCreateNestedOneWithoutHotelInput!
+  checkIns: CheckInCreateNestedManyWithoutHotelInput
+  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input AddressCreateNestedOneWithoutHotelInput {
+  create: AddressCreateWithoutHotelInput
+  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
+  connect: AddressWhereUniqueInput
+}
+
+input AddressCreateWithoutHotelInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  user: UserCreateNestedOneWithoutAddressInput
+  school: SchoolCreateNestedOneWithoutAddressInput
+  Shipping: ShippingCreateNestedOneWithoutAddressInput
+}
+
+input SchoolCreateNestedOneWithoutAddressInput {
+  create: SchoolCreateWithoutAddressInput
+  connectOrCreate: SchoolCreateOrConnectWithoutAddressInput
+  connect: SchoolWhereUniqueInput
+}
+
+input SchoolCreateWithoutAddressInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  students: UserCreateNestedManyWithoutSchoolInput
+}
+
+input UserCreateNestedManyWithoutSchoolInput {
+  create: [UserCreateWithoutSchoolInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
+  createMany: UserCreateManySchoolInputEnvelope
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutSchoolInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+}
+
+input UserCreateOrConnectWithoutSchoolInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutSchoolInput!
+}
+
+input UserCreateManySchoolInputEnvelope {
+  data: [UserCreateManySchoolInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserCreateManySchoolInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+}
+
+input SchoolCreateOrConnectWithoutAddressInput {
+  where: SchoolWhereUniqueInput!
+  create: SchoolCreateWithoutAddressInput!
+}
+
+input SchoolWhereUniqueInput {
+  id: Int
+  addressId: Int
+  AND: [SchoolWhereInput!]
+  OR: [SchoolWhereInput!]
+  NOT: [SchoolWhereInput!]
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  students: UserListRelationFilter
+}
+
+input AddressCreateOrConnectWithoutHotelInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutHotelInput!
+}
+
+input AddressWhereUniqueInput {
+  id: Int
+  AND: [AddressWhereInput!]
+  OR: [AddressWhereInput!]
+  NOT: [AddressWhereInput!]
+  name: StringFilter
+  cityId: IntFilter
+  districtId: IntFilter
+  postalCodeId: IntFilter
+  city: CityRelationFilter
+  district: DistrictRelationFilter
+  postalCode: PostalCodeRelationFilter
+  user: UserNullableRelationFilter
+  hotel: HotelNullableRelationFilter
+  school: SchoolNullableRelationFilter
+  Shipping: ShippingNullableRelationFilter
+}
+
+input CheckInCreateNestedManyWithoutHotelInput {
+  create: [CheckInCreateWithoutHotelInput!]
+  connectOrCreate: [CheckInCreateOrConnectWithoutHotelInput!]
+  createMany: CheckInCreateManyHotelInputEnvelope
+  connect: [CheckInWhereUniqueInput!]
+}
+
+input CheckInCreateWithoutHotelInput {
+  checkInAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutCheckInsInput!
+}
+
+input UserCreateNestedOneWithoutCheckInsInput {
+  create: UserCreateWithoutCheckInsInput
+  connectOrCreate: UserCreateOrConnectWithoutCheckInsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutCheckInsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutCheckInsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutCheckInsInput!
+}
+
+input CheckInCreateOrConnectWithoutHotelInput {
+  where: CheckInWhereUniqueInput!
+  create: CheckInCreateWithoutHotelInput!
+}
+
+input CheckInWhereUniqueInput {
+  id: Int
+  AND: [CheckInWhereInput!]
+  OR: [CheckInWhereInput!]
+  NOT: [CheckInWhereInput!]
+  userId: StringFilter
+  hotelId: IntFilter
+  checkInAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  hotel: HotelRelationFilter
+}
+
+input CheckInCreateManyHotelInputEnvelope {
+  data: [CheckInCreateManyHotelInput!]!
+  skipDuplicates: Boolean
+}
+
+input CheckInCreateManyHotelInput {
+  id: Int
+  userId: String!
+  checkInAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserCreateNestedOneWithoutHotelsCreatedInput {
+  create: UserCreateWithoutHotelsCreatedInput
+  connectOrCreate: UserCreateOrConnectWithoutHotelsCreatedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutHotelsCreatedInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutHotelsCreatedInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutHotelsCreatedInput!
+}
+
+input HotelCreateOrConnectWithoutImagesInput {
+  where: HotelWhereUniqueInput!
+  create: HotelCreateWithoutImagesInput!
+}
+
+input HotelWhereUniqueInput {
+  id: Int
+  addressId: Int
+  AND: [HotelWhereInput!]
+  OR: [HotelWhereInput!]
+  NOT: [HotelWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  rating: FloatFilter
+  startDate: DateTimeFilter
+  quota: IntFilter
+  createdById: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  images: ImagesListRelationFilter
+  checkIns: CheckInListRelationFilter
+  createdBy: UserRelationFilter
+}
+
+input RewardCreateNestedOneWithoutImagesInput {
+  create: RewardCreateWithoutImagesInput
+  connectOrCreate: RewardCreateOrConnectWithoutImagesInput
+  connect: RewardWhereUniqueInput
+}
+
+input RewardCreateWithoutImagesInput {
+  name: String!
+  pointCost: Float!
+  description: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  claimers: UserCreateNestedManyWithoutClaimedRewardsInput
+}
+
+input UserCreateNestedManyWithoutClaimedRewardsInput {
+  create: [UserCreateWithoutClaimedRewardsInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutClaimedRewardsInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutClaimedRewardsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutClaimedRewardsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutClaimedRewardsInput!
+}
+
+input RewardCreateOrConnectWithoutImagesInput {
+  where: RewardWhereUniqueInput!
+  create: RewardCreateWithoutImagesInput!
+}
+
+input RewardWhereUniqueInput {
+  id: Int
+  AND: [RewardWhereInput!]
+  OR: [RewardWhereInput!]
+  NOT: [RewardWhereInput!]
+  name: StringFilter
+  pointCost: FloatFilter
+  description: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  images: ImagesListRelationFilter
+  claimers: UserListRelationFilter
+}
+
+input ImagesCreateOrConnectWithoutProjectImageInput {
+  where: ImagesWhereUniqueInput!
+  create: ImagesCreateWithoutProjectImageInput!
+}
+
+input ImagesWhereUniqueInput {
+  id: Int
+  AND: [ImagesWhereInput!]
+  OR: [ImagesWhereInput!]
+  NOT: [ImagesWhereInput!]
+  fileType: EnumFileTypeFilter
+  filesize: FloatFilter
+  url: StringFilter
+  hotelImageId: IntNullableFilter
+  programImageId: IntNullableFilter
+  rewardImageId: IntNullableFilter
+  projectImageId: IntNullableFilter
+  createdAt: DateTimeFilter
+  hotelImage: HotelNullableRelationFilter
+  programImage: ProgramNullableRelationFilter
+  rewardImage: RewardNullableRelationFilter
+  projectImage: ProjectNullableRelationFilter
+}
+
+input ImagesCreateManyProjectImageInputEnvelope {
+  data: [ImagesCreateManyProjectImageInput!]!
+  skipDuplicates: Boolean
+}
+
+input ImagesCreateManyProjectImageInput {
+  id: Int
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+  hotelImageId: Int
+  programImageId: Int
+  rewardImageId: Int
+  createdAt: DateTime
+}
+
+input UserCreateNestedManyWithoutProjectsInvestmentInput {
+  create: [UserCreateWithoutProjectsInvestmentInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutProjectsInvestmentInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutProjectsInvestmentInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutProjectsInvestmentInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutProjectsInvestmentInput!
+}
+
+input ProjectCreateOrConnectWithoutAccountInput {
+  where: ProjectWhereUniqueInput!
+  create: ProjectCreateWithoutAccountInput!
+}
+
+input ProjectWhereUniqueInput {
+  id: Int
+  accountId: Int
+  AND: [ProjectWhereInput!]
+  OR: [ProjectWhereInput!]
+  NOT: [ProjectWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  projectCategory: EnumProjectCategoryFilter
+  startDate: DateTimeFilter
+  endDate: DateTimeFilter
+  returnRate: FloatFilter
+  goalAmount: IntFilter
+  currentAmount: FloatFilter
+  minimumInvestment: IntFilter
+  maxInvestor: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  images: ImagesListRelationFilter
+  investors: UserListRelationFilter
+  account: AccountRelationFilter
+}
+
+input BankCreateNestedOneWithoutAccountInput {
+  create: BankCreateWithoutAccountInput
+  connectOrCreate: BankCreateOrConnectWithoutAccountInput
+  connect: BankWhereUniqueInput
+}
+
+input BankCreateWithoutAccountInput {
+  name: String!
+  logoUrl: String!
+  accountNumber: Int!
+}
+
+input BankCreateOrConnectWithoutAccountInput {
+  where: BankWhereUniqueInput!
+  create: BankCreateWithoutAccountInput!
+}
+
+input BankWhereUniqueInput {
+  id: Int
+  accountId: Int
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  name: StringFilter
+  logoUrl: StringFilter
+  accountNumber: IntFilter
+  account: AccountRelationFilter
+}
+
+input AccountCreateOrConnectWithoutTransactionsInput {
+  where: AccountWhereUniqueInput!
+  create: AccountCreateWithoutTransactionsInput!
+}
+
+input AccountWhereUniqueInput {
+  id: Int
+  AND: [AccountWhereInput!]
+  OR: [AccountWhereInput!]
+  NOT: [AccountWhereInput!]
+  accountNumber: IntNullableFilter
+  name: StringFilter
+  balance: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userId: StringFilter
+  accountCategory: EnumAccountCategoryFilter
+  user: UserRelationFilter
+  transactions: TransactionListRelationFilter
+  project: ProjectNullableRelationFilter
+  bankAccount: BankNullableRelationFilter
+}
+
+input TransactionCreateOrConnectWithoutPaymentInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutPaymentInput!
+}
+
+input TransactionWhereUniqueInput {
+  id: Int
+  userId: String
+  accountId: Int
+  AND: [TransactionWhereInput!]
+  OR: [TransactionWhereInput!]
+  NOT: [TransactionWhereInput!]
+  amount: FloatFilter
+  status: EnumTransactionStatusFilter
+  transactionType: EnumTransactionTypeFilter
+  transactionCategory: EnumTransactionCategoryFilter
+  currentBalance: FloatFilter
+  createdAt: DateTimeFilter
+  User: UserRelationFilter
+  account: AccountRelationFilter
+  payment: PaymentNullableRelationFilter
+}
+
+input PaymentConfirmationCreateNestedOneWithoutPaymentInput {
+  create: PaymentConfirmationCreateWithoutPaymentInput
+  connectOrCreate: PaymentConfirmationCreateOrConnectWithoutPaymentInput
+  connect: PaymentConfirmationWhereUniqueInput
+}
+
+input PaymentConfirmationCreateWithoutPaymentInput {
+  ProofUrl: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input PaymentConfirmationCreateOrConnectWithoutPaymentInput {
+  where: PaymentConfirmationWhereUniqueInput!
+  create: PaymentConfirmationCreateWithoutPaymentInput!
+}
+
+input PaymentConfirmationWhereUniqueInput {
+  id: Int
+  paymentId: Int
+  AND: [PaymentConfirmationWhereInput!]
+  OR: [PaymentConfirmationWhereInput!]
+  NOT: [PaymentConfirmationWhereInput!]
+  ProofUrl: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  payment: PaymentRelationFilter
+}
+
+input PaymentCreateOrConnectWithoutOrderInput {
+  where: PaymentWhereUniqueInput!
+  create: PaymentCreateWithoutOrderInput!
+}
+
+input PaymentWhereUniqueInput {
+  id: Int
+  transactionId: Int
+  AND: [PaymentWhereInput!]
+  OR: [PaymentWhereInput!]
+  NOT: [PaymentWhereInput!]
+  adminFee: FloatFilter
+  totalPayment: FloatFilter
+  orderId: IntFilter
+  createdAt: DateTimeFilter
+  order: OrderRelationFilter
+  transaction: TransactionRelationFilter
+  confirmation: PaymentConfirmationNullableRelationFilter
+}
+
+input PaymentCreateManyOrderInputEnvelope {
+  data: [PaymentCreateManyOrderInput!]!
+  skipDuplicates: Boolean
+}
+
+input PaymentCreateManyOrderInput {
+  id: Int
+  adminFee: Float!
+  totalPayment: Float!
+  transactionId: Int!
+  createdAt: DateTime
+}
+
+input OrderCreateOrConnectWithoutShippingInput {
+  where: OrderWhereUniqueInput!
+  create: OrderCreateWithoutShippingInput!
+}
+
+input OrderWhereUniqueInput {
+  id: Int
+  orderById: String
+  AND: [OrderWhereInput!]
+  OR: [OrderWhereInput!]
+  NOT: [OrderWhereInput!]
+  status: EnumTransactionStatusFilter
+  shippingId: IntNullableFilter
+  isFullPaid: BoolFilter
+  cost: FloatFilter
+  platformFee: FloatFilter
+  total: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  orderBy: UserRelationFilter
+  items: ItemListRelationFilter
+  shipping: ShippingNullableRelationFilter
+  payments: PaymentListRelationFilter
+}
+
+input ShippingCreateOrConnectWithoutAddressInput {
+  where: ShippingWhereUniqueInput!
+  create: ShippingCreateWithoutAddressInput!
+}
+
+input ShippingWhereUniqueInput {
+  id: Int
+  addressId: Int
+  orderId: Int
+  AND: [ShippingWhereInput!]
+  OR: [ShippingWhereInput!]
+  NOT: [ShippingWhereInput!]
+  logisticName: StringFilter
+  deliveryDate: DateTimeNullableFilter
+  shippingStatus: EnumShippingStatusFilter
+  courier: StringNullableFilter
+  estimatedTime: StringNullableFilter
+  trackingNo: StringNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  order: OrderRelationFilter
+}
+
+input AddressCreateOrConnectWithoutSchoolInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutSchoolInput!
+}
+
+input SchoolCreateOrConnectWithoutStudentsInput {
+  where: SchoolWhereUniqueInput!
+  create: SchoolCreateWithoutStudentsInput!
+}
+
+input UserCreateOrConnectWithoutReferredUsersInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutReferredUsersInput!
+}
+
+input UserCreateOrConnectWithoutProgramsCreatedInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutProgramsCreatedInput!
+}
+
+input UserCreateNestedManyWithoutProgramsParticipationInput {
+  create: [UserCreateWithoutProgramsParticipationInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutProgramsParticipationInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutProgramsParticipationInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutProgramsParticipationInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutProgramsParticipationInput!
+}
+
+input ProgramCategoryCreateNestedOneWithoutProgramsInput {
+  create: ProgramCategoryCreateWithoutProgramsInput
+  connectOrCreate: ProgramCategoryCreateOrConnectWithoutProgramsInput
+  connect: ProgramCategoryWhereUniqueInput
+}
+
+input ProgramCategoryCreateWithoutProgramsInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ProgramCategoryCreateOrConnectWithoutProgramsInput {
+  where: ProgramCategoryWhereUniqueInput!
+  create: ProgramCategoryCreateWithoutProgramsInput!
+}
+
+input ProgramCategoryWhereUniqueInput {
+  id: Int
+  AND: [ProgramCategoryWhereInput!]
+  OR: [ProgramCategoryWhereInput!]
+  NOT: [ProgramCategoryWhereInput!]
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  programs: ProgramListRelationFilter
+}
+
+input ProgramCreateOrConnectWithoutImagesInput {
+  where: ProgramWhereUniqueInput!
+  create: ProgramCreateWithoutImagesInput!
+}
+
+input ProgramWhereUniqueInput {
+  id: Int
+  createdById: String
+  AND: [ProgramWhereInput!]
+  OR: [ProgramWhereInput!]
+  NOT: [ProgramWhereInput!]
+  name: StringFilter
+  startDate: DateTimeFilter
+  dueDate: DateTimeNullableFilter
+  description: StringFilter
+  categoryId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  Images: ImagesListRelationFilter
+  createdBy: UserRelationFilter
+  participant: UserListRelationFilter
+  category: ProgramCategoryRelationFilter
+}
+
+input ProjectCreateNestedOneWithoutImagesInput {
+  create: ProjectCreateWithoutImagesInput
+  connectOrCreate: ProjectCreateOrConnectWithoutImagesInput
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectCreateWithoutImagesInput {
+  name: String!
+  description: String!
+  projectCategory: ProjectCategory!
+  startDate: DateTime!
+  endDate: DateTime!
+  returnRate: Float!
+  goalAmount: Int!
+  currentAmount: Float!
+  minimumInvestment: Int!
+  maxInvestor: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  investors: UserCreateNestedManyWithoutProjectsInvestmentInput
+  account: AccountCreateNestedOneWithoutProjectInput!
+}
+
+input AccountCreateNestedOneWithoutProjectInput {
+  create: AccountCreateWithoutProjectInput
+  connectOrCreate: AccountCreateOrConnectWithoutProjectInput
+  connect: AccountWhereUniqueInput
+}
+
+input AccountCreateWithoutProjectInput {
+  accountNumber: Int
+  name: String!
+  balance: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  accountCategory: AccountCategory!
+  user: UserCreateNestedOneWithoutAccountsInput!
+  transactions: TransactionCreateNestedManyWithoutAccountInput
+  bankAccount: BankCreateNestedOneWithoutAccountInput
+}
+
+input TransactionCreateNestedManyWithoutAccountInput {
+  create: [TransactionCreateWithoutAccountInput!]
+  connectOrCreate: [TransactionCreateOrConnectWithoutAccountInput!]
+  createMany: TransactionCreateManyAccountInputEnvelope
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateWithoutAccountInput {
+  amount: Float!
+  status: TransactionStatus!
+  transactionType: TransactionType!
+  transactionCategory: TransactionCategory!
+  currentBalance: Float!
+  createdAt: DateTime
+  User: UserCreateNestedOneWithoutTransactionsInput!
+  payment: PaymentCreateNestedOneWithoutTransactionInput
+}
+
+input PaymentCreateNestedOneWithoutTransactionInput {
+  create: PaymentCreateWithoutTransactionInput
+  connectOrCreate: PaymentCreateOrConnectWithoutTransactionInput
+  connect: PaymentWhereUniqueInput
+}
+
+input PaymentCreateWithoutTransactionInput {
+  adminFee: Float!
+  totalPayment: Float!
+  createdAt: DateTime
+  order: OrderCreateNestedOneWithoutPaymentsInput!
+  confirmation: PaymentConfirmationCreateNestedOneWithoutPaymentInput
+}
+
+input OrderCreateNestedOneWithoutPaymentsInput {
+  create: OrderCreateWithoutPaymentsInput
+  connectOrCreate: OrderCreateOrConnectWithoutPaymentsInput
+  connect: OrderWhereUniqueInput
+}
+
+input OrderCreateWithoutPaymentsInput {
+  status: TransactionStatus!
+  shippingId: Int
+  isFullPaid: Boolean!
+  cost: Float!
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  orderBy: UserCreateNestedOneWithoutOrdersInput!
+  items: ItemCreateNestedManyWithoutOrderInput
+  shipping: ShippingCreateNestedOneWithoutOrderInput
+}
+
+input ShippingCreateNestedOneWithoutOrderInput {
+  create: ShippingCreateWithoutOrderInput
+  connectOrCreate: ShippingCreateOrConnectWithoutOrderInput
+  connect: ShippingWhereUniqueInput
+}
+
+input ShippingCreateWithoutOrderInput {
+  logisticName: String!
+  deliveryDate: DateTime
+  shippingStatus: ShippingStatus!
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  address: AddressCreateNestedOneWithoutShippingInput!
+}
+
+input AddressCreateNestedOneWithoutShippingInput {
+  create: AddressCreateWithoutShippingInput
+  connectOrCreate: AddressCreateOrConnectWithoutShippingInput
+  connect: AddressWhereUniqueInput
+}
+
+input AddressCreateWithoutShippingInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  user: UserCreateNestedOneWithoutAddressInput
+  hotel: HotelCreateNestedOneWithoutAddressInput
+  school: SchoolCreateNestedOneWithoutAddressInput
+}
+
+input AddressCreateOrConnectWithoutShippingInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutShippingInput!
+}
+
+input ShippingCreateOrConnectWithoutOrderInput {
+  where: ShippingWhereUniqueInput!
+  create: ShippingCreateWithoutOrderInput!
+}
+
+input OrderCreateOrConnectWithoutPaymentsInput {
+  where: OrderWhereUniqueInput!
+  create: OrderCreateWithoutPaymentsInput!
+}
+
+input PaymentCreateOrConnectWithoutTransactionInput {
+  where: PaymentWhereUniqueInput!
+  create: PaymentCreateWithoutTransactionInput!
+}
+
+input TransactionCreateOrConnectWithoutAccountInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutAccountInput!
+}
+
+input TransactionCreateManyAccountInputEnvelope {
+  data: [TransactionCreateManyAccountInput!]!
+  skipDuplicates: Boolean
+}
+
+input TransactionCreateManyAccountInput {
+  id: Int
+  amount: Float!
+  status: TransactionStatus!
+  transactionType: TransactionType!
+  transactionCategory: TransactionCategory!
+  currentBalance: Float!
+  userId: String!
+  createdAt: DateTime
+}
+
+input AccountCreateOrConnectWithoutProjectInput {
+  where: AccountWhereUniqueInput!
+  create: AccountCreateWithoutProjectInput!
+}
+
+input ProjectCreateOrConnectWithoutImagesInput {
+  where: ProjectWhereUniqueInput!
+  create: ProjectCreateWithoutImagesInput!
+}
+
+input ImagesCreateOrConnectWithoutHotelImageInput {
+  where: ImagesWhereUniqueInput!
+  create: ImagesCreateWithoutHotelImageInput!
+}
+
+input ImagesCreateManyHotelImageInputEnvelope {
+  data: [ImagesCreateManyHotelImageInput!]!
+  skipDuplicates: Boolean
+}
+
+input ImagesCreateManyHotelImageInput {
+  id: Int
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+  programImageId: Int
+  rewardImageId: Int
+  projectImageId: Int
+  createdAt: DateTime
+}
+
+input HotelCreateOrConnectWithoutAddressInput {
+  where: HotelWhereUniqueInput!
+  create: HotelCreateWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutUserInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutUserInput!
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  email: String
+  userRole: UserRole
+  userType: UserType
+  avatarUrl: String
+  whatsappNumber: String
+  password: String
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  id: Int!
+}

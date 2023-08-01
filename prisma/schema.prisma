@@ -1,0 +1,623 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator nestgraphql {
+  provider               = "node node_modules/prisma-nestjs-graphql"
+  output                 = "../src/@generated/prisma-nestjs-graphql"
+  fields_Validator_from  = "class-validator"
+  fields_Validator_input = true
+}
+
+enum UserRole {
+  MEMBER
+  ADMIN
+  SUPERUSER
+  STUDENT
+}
+
+enum UserType {
+  PARENT
+  SCHOOL_HEAD
+  STUDENT
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
+//Make CRUD Available
+model City {
+  id      Int       @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.IsNotEmpty()
+  name    String
+  address Address[] @relation("CityAddress")
+}
+
+//Make CRUD Available
+model District {
+  id      Int       @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.IsNotEmpty()
+  name    String
+  address Address[] @relation("DistrictAddress")
+}
+
+//Make CRUD Available
+model PostalCode {
+  id      Int       @id @default(autoincrement())
+  /// @Validator.MinLength(3)
+  /// @Validator.IsPostalCode('ID')
+  code    Int       @unique
+  address Address[] @relation("PostalCodeAddress")
+}
+
+//Make CRUD Available
+model Address {
+  id           Int        @id @default(autoincrement())
+  /// @Validator.MinLength(5)
+  /// @Validator.IsNotEmpty()
+  name         String
+  /// @Validator.IsNotEmpty()
+  city         City       @relation("CityAddress", fields: [cityId], references: [id])
+  cityId       Int
+  /// @Validator.IsNotEmpty()
+  district     District   @relation("DistrictAddress", fields: [districtId], references: [id])
+  districtId   Int
+  /// @Validator.IsNotEmpty()
+  postalCode   PostalCode @relation("PostalCodeAddress", fields: [postalCodeId], references: [id])
+  postalCodeId Int
+  user         User?
+  hotel        Hotel?
+  school       School?
+  Shipping     Shipping?
+}
+
+//Make CRUD Available
+model School {
+  id        Int      @id @default(autoincrement())
+  /// @Validator.MinLength(5)
+  /// @Validator.IsAlphanumeric()
+  name      String
+  address   Address  @relation(fields: [addressId], references: [id])
+  addressId Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  students  User[]   @relation("StudentSchool")
+}
+
+//Make CRU Available, implement soft delete
+model User {
+  /// @HideField({ output: false, input: true })
+  id                    String             @id @default(uuid())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlpha()
+  /// @Validator.IsNotEmpty()
+  firstName             String
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlpha()
+  /// @Validator.IsNotEmpty()
+  lastName              String?
+  /// @Validator.IsEmail()
+  email                 String             @unique
+  /// @Validator.IsNotEmpty()
+  address               Address            @relation(fields: [addressId], references: [id])
+  /// @HideField({ output: false, input: true })   
+  addressId             Int                @unique
+  userRole              UserRole           @default(MEMBER)
+  userType              UserType
+  /// @Validator.IsUrl({ require_protocol: true })
+  avatarUrl             String?
+  /// @Validator.IsNotEmpty()
+  whatsappNumber        String             @unique
+  /// @HideField({ output: false, input: true })   
+  whatsappVerifiedAt    DateTime?
+  /// @Validator.MinLength(6)
+  /// @Validator.MaxLength(15)
+  /// @Validator.IsAlphanumeric()
+  /// @HideField({ output: true, input: false })
+  password              String
+  referredBy            User?              @relation("UserReferral", fields: [referredById], references: [id])
+  /// @HideField({ output: false, input: true })   
+  referredById          String?
+  /// @HideField({ output: false, input: true })   
+  referredUsers         User[]             @relation("UserReferral")
+  /// @HideField({ output: false, input: true })   
+  status                UserStatus         @default(PENDING)
+  /// @HideField({ output: false, input: true })   
+  checkIns              CheckIn[]
+  school                School?            @relation("StudentSchool", fields: [schoolId], references: [id])
+  /// @HideField({ output: false, input: true })   
+  schoolId              Int?
+  /// @HideField({ output: false, input: true })   
+  accounts              Account[]
+  /// @HideField({ output: false, input: true })   
+  transactions          Transaction[]
+  /// @HideField({ output: false, input: true })   
+  PointTransactions     PointTransaction[]
+  /// @HideField({ output: false, input: true })
+  createdAt             DateTime           @default(now())
+  /// @HideField({ output: false, input: true })   
+  updatedAt             DateTime           @updatedAt
+  /// @HideField({ output: false, input: true })   
+  deletedAt             DateTime?
+  /// @HideField({ output: false, input: true })   
+  orders                Order[]
+  /// @HideField({ output: false, input: true })   
+  sessions              Session[]
+  /// @HideField({ output: false, input: true })   
+  hotelsCreated         Hotel[]
+  /// @HideField({ output: false, input: true })   
+  programsParticipation Program[]          @relation("participant")
+  /// @HideField({ output: false, input: true })   
+  projectsInvestment    Project[]          @relation("project Investment")
+  /// @HideField({ output: false, input: true })   
+  claimedRewards        Reward[]           @relation("reward claimer")
+  /// @HideField({ output: false, input: true })   
+  userNotifications     UserNotification[]
+  /// @HideField({ output: false, input: true })   
+  programsCreated       Program[]
+  /// @HideField({ output: false, input: true })   
+  filesCreated          File[]
+  theme                 Theme              @default(LIGHT)
+}
+
+enum UserStatus {
+  ACTIVE
+  PENDING
+  INACTIVE
+}
+
+//Member dapat memiliki akun bernama member account, investment account, comission account dan cash account
+//superuser memiliki akun bernama platform account dan juga cash account
+//Make CRUD Available
+model Account {
+  id            Int           @id @default(autoincrement())
+  accountNumber Int?
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlpha()
+  name          String
+  balance       Float         @default(0)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  user          User          @relation(fields: [userId], references: [id])
+  userId        String
+  accountCategory AccountCategory
+  transactions  Transaction[]
+  project       Project?
+  bankAccount   Bank?
+}
+
+enum AccountCategory {
+  EQUITY
+  PROJECT
+  COMISSION
+  CASH
+  PLATFORM
+  BANK
+}
+
+//Make Read only without update, delete
+model Transaction {
+  id                  Int                 @id @default(autoincrement())
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  amount              Float
+  status              TransactionStatus
+  transactionType     TransactionType
+  transactionCategory TransactionCategory
+  currentBalance      Float
+  User                User                @relation(fields: [userId], references: [id])
+  userId              String              @unique
+  account             Account             @relation(fields: [accountId], references: [id])
+  accountId           Int                 @unique
+  payment             Payment?
+  createdAt           DateTime            @default(now())
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+}
+
+enum TransactionCategory {
+  INVESTMENT
+  INVESTMENT_RETURN
+  COMISSION_BONUS
+  WITHDRAWAL
+  MEMBER_REGISTRATION
+  STUDENT_REGISTRATION
+}
+
+//Make Read only without update, delete
+model PointTransaction {
+  id              Int             @id @default(autoincrement())
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  amount          Float
+  pointType       PointType
+  transactionType TransactionType
+  currentBalance  Float           @default(0)
+  User            User            @relation(fields: [userId], references: [id])
+  userId          String
+  createdAt       DateTime        @default(now())
+}
+
+enum PointType {
+  REFERRING
+  REDEEMING
+}
+
+enum TransactionStatus {
+  PROCESSING
+  PENDING
+  FAILED
+  CANCELLED
+  COMPLETED
+}
+
+//Make Read only without update, delete
+model Session {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  device    String
+  ipAddress Float
+}
+
+//Make CRU Available, implement soft delete
+model UserNotification {
+  id        Int                      @id @default(autoincrement())
+  /// @Validator.IsNotEmpty()
+  title     String
+  subtitle  String
+  /// @Validator.IsNotEmpty()
+  content   String
+  createdAt DateTime                 @default(now())
+  category  UserNotificationCategory
+  isRead    Boolean                  @default(false)
+  isCleared Boolean                  @default(false)
+  user      User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  deepLink  String?
+  fcmToken  String?
+}
+
+enum UserNotificationCategory {
+  BILLING_ALERT
+  ANNOUNCEMENT
+  CHAT_MESSAGE
+}
+
+//Make CRUD Available
+model Bank {
+  id            Int     @id @default(autoincrement())
+  /// @Validator.MinLength(1)
+  /// @Validator.MaxLength(10)
+  /// @Validator.IsAlphanumeric()
+  /// @Validator.IsNotEmpty()
+  name          String
+  /// @Validator.IsUrl({ require_protocol: true })
+  /// @Validator.IsNotEmpty()
+  logoUrl       String
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  accountNumber Int
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlpha()
+  account       Account @relation(fields: [accountId], references: [id])
+  accountId     Int     @unique
+}
+
+//Make CRUD Available
+model Hotel {
+  id          Int      @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlphanumeric()
+  name        String
+  address     Address  @relation(fields: [addressId], references: [id])
+  addressId   Int      @unique
+  /// @Validator.MinLength(10)
+  /// @Validator.IsNotEmpty()
+  description String
+  /// @Validator.IsNotEmpty()
+  images      Images[]
+  /// @Validator.IsNumber()
+  /// @Validator.IsNotEmpty() 
+  rating      Float
+  /// @Validator.IsDate()
+  /// @Validator.IsNotEmpty()
+  startDate   DateTime
+  /// @Validator.IsNumber()
+  /// @Validator.IsNotEmpty() 
+  quota       Int
+  checkIns CheckIn[]
+  /// @Validator.IsNotEmpty()
+  createdBy User @relation(fields: [createdById], references: [id])
+  createdById String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Make CRUD Available
+model CheckIn {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  hotel     Hotel    @relation(fields: [hotelId], references: [id])
+  userId    String
+  hotelId   Int
+  checkInAt DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Make CRU Available, cannot be deleted
+model Order {
+  id          Int               @id @default(autoincrement())
+  status      TransactionStatus
+  orderBy     User              @relation(fields: [orderById], references: [id])
+  orderById   String            @unique
+  items       Item[]
+  shipping    Shipping?
+  shippingId  Int?
+  payments    Payment[]
+  isFullPaid  Boolean
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  cost        Float
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  platformFee Float
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  total       Float
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+//Make CRUD Available
+//Setiap user role memiliki pilihan item sesuai user rolenya
+model Item {
+  id          Int      @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(30)
+  name        String
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(30)
+  description String
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  price       Float
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  qty         Int
+  userRole    UserRole
+  order       Order    @relation(fields: [orderId], references: [id])
+  orderId     Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+//Make CRUD Available
+model Shipping {
+  id             Int            @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlphanumeric()
+  logisticName   String
+  deliveryDate   DateTime?
+  shippingStatus ShippingStatus
+  address        Address        @relation(fields: [addressId], references: [id])
+  addressId      Int            @unique
+  courier        String?
+  estimatedTime  String?
+  trackingNo     String?
+  order          Order          @relation(fields: [orderId], references: [id])
+  orderId        Int            @unique
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+enum ShippingStatus {
+  PROCESSING
+  DELIVERING
+  DELIVERED
+}
+
+//Make CRU Available, cannot be deleted
+model Payment {
+  id            Int                  @id @default(autoincrement())
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  adminFee      Float
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  totalPayment  Float
+  order         Order                @relation(fields: [orderId], references: [id])
+  orderId       Int
+  transaction   Transaction          @relation(fields: [transactionId], references: [id])
+  transactionId Int                  @unique
+  confirmation  PaymentConfirmation?
+  createdAt     DateTime             @default(now())
+}
+
+//Make CRUD Available
+model PaymentConfirmation {
+  id        Int      @id @default(autoincrement())
+  /// @Validator.IsUrl({ require_protocol: true })
+  ProofUrl  String
+  payment   Payment  @relation(fields: [paymentId], references: [id])
+  paymentId Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Make CRUD Available
+model Program {
+  id          Int             @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlphanumeric()
+  /// @Validator.IsNotEmpty()
+  name        String
+  startDate   DateTime
+  dueDate     DateTime?
+  /// @Validator.IsNotEmpty()
+  description String
+  Images      Images[]
+  createdBy   User            @relation(fields: [createdById], references: [id])
+  createdById String          @unique
+  participant User[]          @relation("participant")
+  category    ProgramCategory @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+//Make CRUD Available
+model ProgramCategory {
+  id        Int       @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsAlphanumeric()
+  name      String
+  programs  Program[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+//Make CRUD Available
+model Reward {
+  id          Int      @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsAlphanumeric()
+  name        String
+  /// @Validator.IsNumber() 
+  pointCost   Float
+  /// @Validator.MinLength(10)
+  /// @Validator.IsNotEmpty()
+  description String
+  images      Images[]
+  claimers    User[]   @relation("reward claimer")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+//Make CRUD Available
+model File {
+  id          Int      @id @default(autoincrement())
+  fileType    FileType
+  filesize    Float
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsNotEmpty()
+  name        String
+  /// @Validator.MinLength(10)
+  /// @Validator.IsNotEmpty()
+  description String
+  /// @Validator.IsUrl({ require_protocol: true })
+  url         String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdById String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum FileType {
+  MP4
+  JPG
+  PNG
+  PDF
+}
+
+model Images {
+  id             Int      @id @default(autoincrement())
+  fileType       FileType
+  filesize       Float
+  url            String
+  hotelImage     Hotel?   @relation(fields: [hotelImageId], references: [id])
+  hotelImageId   Int?
+  programImage   Program? @relation(fields: [programImageId], references: [id])
+  programImageId Int?
+  rewardImage    Reward?  @relation(fields: [rewardImageId], references: [id])
+  rewardImageId  Int?
+  projectImage   Project? @relation(fields: [projectImageId], references: [id])
+  projectImageId Int?
+  createdAt      DateTime @default(now())
+}
+
+//Make CRUD Available
+model Faq {
+  id          Int      @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsNotEmpty()
+  name        String
+  /// @Validator.MinLength(10)
+  /// @Validator.IsNotEmpty()
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+//Make CRU Available, cannot be deleted
+model Project {
+  id                Int             @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsNotEmpty()
+  name              String
+  description       String
+  images            Images[]
+  /// @Validator.MinLength(10)
+  /// @Validator.IsNotEmpty()
+  projectCategory   ProjectCategory
+  startDate         DateTime
+  endDate           DateTime
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  returnRate        Float
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  goalAmount        Int
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  currentAmount     Float
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  minimumInvestment Int
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  maxInvestor       Int
+  investors         User[]          @relation("project Investment")
+  account           Account         @relation(fields: [accountId], references: [id])
+  accountId         Int             @unique
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+enum ProjectCategory {
+  PROPERTY
+  BUSSINESS
+}

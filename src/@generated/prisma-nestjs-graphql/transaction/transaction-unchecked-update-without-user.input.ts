@@ -1,0 +1,40 @@
+import { Field } from '@nestjs/graphql';
+import { InputType } from '@nestjs/graphql';
+import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
+import { FloatFieldUpdateOperationsInput } from '../prisma/float-field-update-operations.input';
+import { EnumTransactionStatusFieldUpdateOperationsInput } from '../prisma/enum-transaction-status-field-update-operations.input';
+import { EnumTransactionTypeFieldUpdateOperationsInput } from '../prisma/enum-transaction-type-field-update-operations.input';
+import { EnumTransactionCategoryFieldUpdateOperationsInput } from '../prisma/enum-transaction-category-field-update-operations.input';
+import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
+import { PaymentUncheckedUpdateOneWithoutTransactionNestedInput } from '../payment/payment-unchecked-update-one-without-transaction-nested.input';
+
+@InputType()
+export class TransactionUncheckedUpdateWithoutUserInput {
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    id?: IntFieldUpdateOperationsInput;
+
+    @Field(() => FloatFieldUpdateOperationsInput, {nullable:true})
+    amount?: FloatFieldUpdateOperationsInput;
+
+    @Field(() => EnumTransactionStatusFieldUpdateOperationsInput, {nullable:true})
+    status?: EnumTransactionStatusFieldUpdateOperationsInput;
+
+    @Field(() => EnumTransactionTypeFieldUpdateOperationsInput, {nullable:true})
+    transactionType?: EnumTransactionTypeFieldUpdateOperationsInput;
+
+    @Field(() => EnumTransactionCategoryFieldUpdateOperationsInput, {nullable:true})
+    transactionCategory?: EnumTransactionCategoryFieldUpdateOperationsInput;
+
+    @Field(() => FloatFieldUpdateOperationsInput, {nullable:true})
+    currentBalance?: FloatFieldUpdateOperationsInput;
+
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    accountId?: IntFieldUpdateOperationsInput;
+
+    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
+    createdAt?: DateTimeFieldUpdateOperationsInput;
+
+    @Field(() => PaymentUncheckedUpdateOneWithoutTransactionNestedInput, {nullable:true})
+    payment?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput;
+}
