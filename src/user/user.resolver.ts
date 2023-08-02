@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { UserCreateArgs } from './dto/user-create-one.args';
-import { FindManyUserArgs } from './dto/user-find-many.args';
+import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/@generated';
@@ -17,14 +17,14 @@ export class UserResolver {
   async userCreate(
     @Args('userCreateArgs') userCreateArgs: UserCreateArgs,
   ): Promise<User | void> {
-    return await this.userService.create(userCreateArgs);
+    return await this.userService.createOne(userCreateArgs);
   }
 
   @Query(() => [User], {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  userFindMany(@Args('userFindManyArgs') userFindManyArgs: FindManyUserArgs) {
+  userFindMany(@Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs) {
     return this.userService.findMany(userFindManyArgs);
   }
 

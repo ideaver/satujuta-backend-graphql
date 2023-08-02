@@ -76,22 +76,30 @@ model PostalCode {
 
 //Make CRUD Available
 model Address {
+  /// @HideField({ match: 'AddressCreate*Input' })
   id           Int        @id @default(autoincrement())
   /// @Validator.MinLength(5)
   /// @Validator.IsNotEmpty()
   name         String
   /// @Validator.IsNotEmpty()
   city         City       @relation("CityAddress", fields: [cityId], references: [id])
+  /// @HideField({ match: 'AddressCreate*Input' })
   cityId       Int
   /// @Validator.IsNotEmpty()
   district     District   @relation("DistrictAddress", fields: [districtId], references: [id])
+  /// @HideField({ match: 'AddressCreate*Input' })
   districtId   Int
   /// @Validator.IsNotEmpty()
   postalCode   PostalCode @relation("PostalCodeAddress", fields: [postalCodeId], references: [id])
+  /// @HideField({ match: 'AddressCreate*Input' })
   postalCodeId Int
+  /// @HideField({ match: 'AddressCreate*Input' })
   user         User?
+  /// @HideField({ match: 'AddressCreate*Input' })
   hotel        Hotel?
+  /// @HideField({ match: 'AddressCreate*Input' })
   school       School?
+  /// @HideField({ match: 'AddressCreate*Input' })
   Shipping     Shipping?
 }
 
@@ -144,7 +152,7 @@ model User {
   referredBy            User?              @relation("UserReferral", fields: [referredById], references: [id])
   /// @HideField({ output: false, input: true })   
   referredById          String?
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })    
   referredUsers         User[]             @relation("UserReferral")
   /// @HideField({ output: false, input: true })   
   status                UserStatus         @default(PENDING)
@@ -159,11 +167,11 @@ model User {
   transactions          Transaction[]
   /// @HideField({ output: false, input: true })   
   PointTransactions     PointTransaction[]
-  /// @HideField({ output: false, input: true })
+  /// @HideField({ match: 'UserCreate*Input' })
   createdAt             DateTime           @default(now())
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })  
   updatedAt             DateTime           @updatedAt
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })  
   deletedAt             DateTime?
   /// @HideField({ output: false, input: true })   
   orders                Order[]
@@ -340,12 +348,14 @@ model Bank {
 
 //Make CRUD Available
 model Hotel {
+  /// @HideField({ match: 'HotelCreate*Input' }) 
   id          Int       @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlphanumeric()
   name        String
   address     Address   @relation(fields: [addressId], references: [id])
+  /// @HideField({ match: 'HotelCreate*Input' })
   addressId   Int       @unique
   /// @Validator.MinLength(10)
   /// @Validator.IsNotEmpty()
@@ -361,11 +371,15 @@ model Hotel {
   /// @Validator.IsNumber()
   /// @Validator.IsNotEmpty() 
   quota       Int
+  /// @HideField({ match: 'HotelCreate*Input' })
   checkIns    CheckIn[]
   /// @Validator.IsNotEmpty()
   createdBy   User      @relation(fields: [createdById], references: [id])
+  /// @HideField({ match: 'HotelCreate*Input' })
   createdById String
+  /// @HideField({ match: 'HotelCreate*Input' })
   createdAt   DateTime  @default(now())
+  /// @HideField({ match: 'HotelCreate*Input' })
   updatedAt   DateTime  @updatedAt
 }
 
@@ -564,18 +578,31 @@ enum FileType {
 }
 
 model Images {
+  /// @HideField({ match: 'ImagesCreate*Input' })
   id             Int      @id @default(autoincrement())
-  fileType       FileType
-  filesize       Float
+  fileType       FileType //TODO: add validator hanya boleh JPG
+  /// @Validator.IsNumber() 
+  filesize       Float //TODO: add keterangan hanya boleh KB dan maximal 1MB
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsUrl({ require_protocol: true })
   url            String
+  /// @HideField({ match: 'ImagesCreate*Input' })
   hotelImage     Hotel?   @relation(fields: [hotelImageId], references: [id])
+  /// @HideField({ match: 'ImagesCreate*Input' })
   hotelImageId   Int?
+  /// @HideField({ match: 'ImagesCreate*Input' })
   programImage   Program? @relation(fields: [programImageId], references: [id])
+  /// @HideField({ match: 'ImagesCreate*Input' })
   programImageId Int?
+  /// @HideField({ match: 'ImagesCreate*Input' })
   rewardImage    Reward?  @relation(fields: [rewardImageId], references: [id])
+  /// @HideField({ match: 'ImagesCreate*Input' })
   rewardImageId  Int?
+  /// @HideField({ match: 'ImagesCreate*Input' })
   projectImage   Project? @relation(fields: [projectImageId], references: [id])
+  /// @HideField({ match: 'ImagesCreate*Input' })
   projectImageId Int?
+  /// @HideField({ match: 'ImagesCreate*Input' })
   createdAt      DateTime @default(now())
 }
 

@@ -11,7 +11,7 @@ import {
 } from 'src/@generated';
 
 @InputType()
-export class FindManyUserArgs {
+export class UserFindManyArgs {
   @Field(() => UserSelect, { nullable: true })
   select?: UserSelect | null;
 

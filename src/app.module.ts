@@ -6,6 +6,7 @@ import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UserModule } from './user/user.module';
+import { HotelModule } from './hotel/hotel.module';
 
 
 @Module({
@@ -17,6 +18,7 @@ import { UserModule } from './user/user.module';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     UserModule,
+    HotelModule,
   ],
   controllers: [],
   providers: [PrismaService],
