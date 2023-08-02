@@ -1654,7 +1654,9 @@ type Query {
   """Deskripsinya ada disini loh"""
   userFindOne(userFindUniqueArgs: UserFindUniqueArgs!): User
   hotelFindMany(hotelFindManyArgs: HotelFindManyArgs!): [Hotel!]
-  hotel(id: Int!): Hotel!
+
+  """Default prisma query include nested address & checkIns"""
+  hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
 }
 
 input UserFindManyArgs {
@@ -1727,6 +1729,7 @@ input UserWhereInput {
   address: AddressRelationFilter
   referredBy: UserNullableRelationFilter
   referredUsers: UserListRelationFilter
+  checkIns: CheckInListRelationFilter
   school: SchoolNullableRelationFilter
 }
 
@@ -2524,6 +2527,7 @@ input UserOrderByWithRelationInput {
   address: AddressOrderByWithRelationInput
   referredBy: UserOrderByWithRelationInput
   referredUsers: UserOrderByRelationAggregateInput
+  checkIns: CheckInOrderByRelationAggregateInput
   school: SchoolOrderByWithRelationInput
 }
 
@@ -2679,6 +2683,7 @@ input UserWhereUniqueInput {
   address: AddressRelationFilter
   referredBy: UserNullableRelationFilter
   referredUsers: UserListRelationFilter
+  checkIns: CheckInListRelationFilter
   school: SchoolNullableRelationFilter
 }
 
@@ -2771,6 +2776,12 @@ enum HotelScalarFieldEnum {
   updatedAt
 }
 
+input HotelFindUniqueArgs {
+  select: HotelSelect
+  include: HotelSelect
+  where: HotelWhereUniqueInput!
+}
+
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreate(userCreateArgs: UserCreateArgs!): User
@@ -2804,6 +2815,7 @@ input UserCreateInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -2933,6 +2945,126 @@ input UserCreateWithoutReferredUsersInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input CheckInCreateNestedManyWithoutUserInput {
+  create: [CheckInCreateWithoutUserInput!]
+  connectOrCreate: [CheckInCreateOrConnectWithoutUserInput!]
+  createMany: CheckInCreateManyUserInputEnvelope
+  connect: [CheckInWhereUniqueInput!]
+}
+
+input CheckInCreateWithoutUserInput {
+  checkInAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  hotel: HotelCreateNestedOneWithoutCheckInsInput!
+}
+
+input HotelCreateNestedOneWithoutCheckInsInput {
+  create: HotelCreateWithoutCheckInsInput
+  connectOrCreate: HotelCreateOrConnectWithoutCheckInsInput
+  connect: HotelWhereUniqueInput
+}
+
+input HotelCreateWithoutCheckInsInput {
+  name: String!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  address: AddressCreateNestedOneWithoutHotelInput!
+  images: ImagesCreateNestedManyWithoutHotelImageInput
+  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input AddressCreateNestedOneWithoutHotelInput {
+  create: AddressCreateWithoutHotelInput
+  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
+  connect: AddressWhereUniqueInput
+}
+
+input AddressCreateWithoutHotelInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutHotelInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutHotelInput!
+}
+
+input ImagesCreateNestedManyWithoutHotelImageInput {
+  create: [ImagesCreateWithoutHotelImageInput!]
+  connectOrCreate: [ImagesCreateOrConnectWithoutHotelImageInput!]
+  createMany: ImagesCreateManyHotelImageInputEnvelope
+  connect: [ImagesWhereUniqueInput!]
+}
+
+input ImagesCreateWithoutHotelImageInput {
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+}
+
+input ImagesCreateOrConnectWithoutHotelImageInput {
+  where: ImagesWhereUniqueInput!
+  create: ImagesCreateWithoutHotelImageInput!
+}
+
+input ImagesWhereUniqueInput {
+  id: Int
+  AND: [ImagesWhereInput!]
+  OR: [ImagesWhereInput!]
+  NOT: [ImagesWhereInput!]
+  fileType: EnumFileTypeFilter
+  filesize: FloatFilter
+  url: StringFilter
+  hotelImageId: IntNullableFilter
+  programImageId: IntNullableFilter
+  rewardImageId: IntNullableFilter
+  projectImageId: IntNullableFilter
+  createdAt: DateTimeFilter
+  hotelImage: HotelNullableRelationFilter
+  programImage: ProgramNullableRelationFilter
+  rewardImage: RewardNullableRelationFilter
+  projectImage: ProjectNullableRelationFilter
+}
+
+input ImagesCreateManyHotelImageInputEnvelope {
+  data: [ImagesCreateManyHotelImageInput!]!
+  skipDuplicates: Boolean
+}
+
+input ImagesCreateManyHotelImageInput {
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+}
+
+input UserCreateNestedOneWithoutHotelsCreatedInput {
+  create: UserCreateWithoutHotelsCreatedInput
+  connectOrCreate: UserCreateOrConnectWithoutHotelsCreatedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutHotelsCreatedInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -2985,6 +3117,48 @@ input SchoolWhereUniqueInput {
   students: UserListRelationFilter
 }
 
+input UserCreateOrConnectWithoutHotelsCreatedInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutHotelsCreatedInput!
+}
+
+input HotelCreateOrConnectWithoutCheckInsInput {
+  where: HotelWhereUniqueInput!
+  create: HotelCreateWithoutCheckInsInput!
+}
+
+input CheckInCreateOrConnectWithoutUserInput {
+  where: CheckInWhereUniqueInput!
+  create: CheckInCreateWithoutUserInput!
+}
+
+input CheckInWhereUniqueInput {
+  id: Int
+  AND: [CheckInWhereInput!]
+  OR: [CheckInWhereInput!]
+  NOT: [CheckInWhereInput!]
+  userId: StringFilter
+  hotelId: IntFilter
+  checkInAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  hotel: HotelRelationFilter
+}
+
+input CheckInCreateManyUserInputEnvelope {
+  data: [CheckInCreateManyUserInput!]!
+  skipDuplicates: Boolean
+}
+
+input CheckInCreateManyUserInput {
+  id: Int
+  hotelId: Int!
+  checkInAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
 input UserCreateOrConnectWithoutReferredUsersInput {
   where: UserWhereUniqueInput!
   create: UserCreateWithoutReferredUsersInput!
@@ -3014,6 +3188,7 @@ input UserUpdateInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -3166,80 +3341,6 @@ input HotelCreateWithoutAddressInput {
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
 }
 
-input ImagesCreateNestedManyWithoutHotelImageInput {
-  create: [ImagesCreateWithoutHotelImageInput!]
-  connectOrCreate: [ImagesCreateOrConnectWithoutHotelImageInput!]
-  createMany: ImagesCreateManyHotelImageInputEnvelope
-  connect: [ImagesWhereUniqueInput!]
-}
-
-input ImagesCreateWithoutHotelImageInput {
-  fileType: FileType!
-  filesize: Float!
-  url: String!
-}
-
-input ImagesCreateOrConnectWithoutHotelImageInput {
-  where: ImagesWhereUniqueInput!
-  create: ImagesCreateWithoutHotelImageInput!
-}
-
-input ImagesWhereUniqueInput {
-  id: Int
-  AND: [ImagesWhereInput!]
-  OR: [ImagesWhereInput!]
-  NOT: [ImagesWhereInput!]
-  fileType: EnumFileTypeFilter
-  filesize: FloatFilter
-  url: StringFilter
-  hotelImageId: IntNullableFilter
-  programImageId: IntNullableFilter
-  rewardImageId: IntNullableFilter
-  projectImageId: IntNullableFilter
-  createdAt: DateTimeFilter
-  hotelImage: HotelNullableRelationFilter
-  programImage: ProgramNullableRelationFilter
-  rewardImage: RewardNullableRelationFilter
-  projectImage: ProjectNullableRelationFilter
-}
-
-input ImagesCreateManyHotelImageInputEnvelope {
-  data: [ImagesCreateManyHotelImageInput!]!
-  skipDuplicates: Boolean
-}
-
-input ImagesCreateManyHotelImageInput {
-  fileType: FileType!
-  filesize: Float!
-  url: String!
-}
-
-input UserCreateNestedOneWithoutHotelsCreatedInput {
-  create: UserCreateWithoutHotelsCreatedInput
-  connectOrCreate: UserCreateOrConnectWithoutHotelsCreatedInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutHotelsCreatedInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-}
-
-input UserCreateOrConnectWithoutHotelsCreatedInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutHotelsCreatedInput!
-}
-
 input HotelCreateOrConnectWithoutAddressInput {
   where: HotelWhereUniqueInput!
   create: HotelCreateWithoutAddressInput!
@@ -3346,6 +3447,7 @@ input UserCreateWithoutProgramsCreatedInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -3372,6 +3474,7 @@ input UserCreateWithoutProgramsParticipationInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -3481,6 +3584,7 @@ input UserUpdateWithoutProgramsCreatedInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -3516,6 +3620,201 @@ input UserUpdateWithoutReferredUsersInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+}
+
+input CheckInUpdateManyWithoutUserNestedInput {
+  create: [CheckInCreateWithoutUserInput!]
+  connectOrCreate: [CheckInCreateOrConnectWithoutUserInput!]
+  upsert: [CheckInUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: CheckInCreateManyUserInputEnvelope
+  set: [CheckInWhereUniqueInput!]
+  disconnect: [CheckInWhereUniqueInput!]
+  delete: [CheckInWhereUniqueInput!]
+  connect: [CheckInWhereUniqueInput!]
+  update: [CheckInUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [CheckInUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [CheckInScalarWhereInput!]
+}
+
+input CheckInUpsertWithWhereUniqueWithoutUserInput {
+  where: CheckInWhereUniqueInput!
+  update: CheckInUpdateWithoutUserInput!
+  create: CheckInCreateWithoutUserInput!
+}
+
+input CheckInUpdateWithoutUserInput {
+  checkInAt: DateTimeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  hotel: HotelUpdateOneRequiredWithoutCheckInsNestedInput
+}
+
+input HotelUpdateOneRequiredWithoutCheckInsNestedInput {
+  create: HotelCreateWithoutCheckInsInput
+  connectOrCreate: HotelCreateOrConnectWithoutCheckInsInput
+  upsert: HotelUpsertWithoutCheckInsInput
+  connect: HotelWhereUniqueInput
+  update: HotelUpdateToOneWithWhereWithoutCheckInsInput
+}
+
+input HotelUpsertWithoutCheckInsInput {
+  update: HotelUpdateWithoutCheckInsInput!
+  create: HotelCreateWithoutCheckInsInput!
+  where: HotelWhereInput
+}
+
+input HotelUpdateWithoutCheckInsInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: FloatFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  quota: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutHotelNestedInput
+  images: ImagesUpdateManyWithoutHotelImageNestedInput
+  createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
+}
+
+input AddressUpdateOneRequiredWithoutHotelNestedInput {
+  create: AddressCreateWithoutHotelInput
+  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
+  upsert: AddressUpsertWithoutHotelInput
+  connect: AddressWhereUniqueInput
+  update: AddressUpdateToOneWithWhereWithoutHotelInput
+}
+
+input AddressUpsertWithoutHotelInput {
+  update: AddressUpdateWithoutHotelInput!
+  create: AddressCreateWithoutHotelInput!
+  where: AddressWhereInput
+}
+
+input AddressUpdateWithoutHotelInput {
+  name: StringFieldUpdateOperationsInput
+  city: CityUpdateOneRequiredWithoutAddressNestedInput
+  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
+  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input UserUpdateOneWithoutAddressNestedInput {
+  create: UserCreateWithoutAddressInput
+  connectOrCreate: UserCreateOrConnectWithoutAddressInput
+  upsert: UserUpsertWithoutAddressInput
+  disconnect: UserWhereInput
+  delete: UserWhereInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutAddressInput
+}
+
+input UserCreateWithoutAddressInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutAddressInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutAddressInput!
+}
+
+input UserUpsertWithoutAddressInput {
+  update: UserUpdateWithoutAddressInput!
+  create: UserCreateWithoutAddressInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutAddressInput {
+  id: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+}
+
+input UserUpdateManyWithoutReferredByNestedInput {
+  create: [UserCreateWithoutReferredByInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutReferredByInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutReferredByInput!]
+  createMany: UserCreateManyReferredByInputEnvelope
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutReferredByInput!]
+  updateMany: [UserUpdateManyWithWhereWithoutReferredByInput!]
+  deleteMany: [UserScalarWhereInput!]
+}
+
+input UserCreateWithoutReferredByInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  checkIns: CheckInCreateNestedManyWithoutUserInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutReferredByInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutReferredByInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutReferredByInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutReferredByInput!
+  create: UserCreateWithoutReferredByInput!
+}
+
+input UserUpdateWithoutReferredByInput {
+  id: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -3564,185 +3863,6 @@ input AddressUpdateWithoutSchoolInput {
   user: UserUpdateOneWithoutAddressNestedInput
   hotel: HotelUpdateOneWithoutAddressNestedInput
   Shipping: ShippingUpdateOneWithoutAddressNestedInput
-}
-
-input UserUpdateOneWithoutAddressNestedInput {
-  create: UserCreateWithoutAddressInput
-  connectOrCreate: UserCreateOrConnectWithoutAddressInput
-  upsert: UserUpsertWithoutAddressInput
-  disconnect: UserWhereInput
-  delete: UserWhereInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutAddressInput
-}
-
-input UserCreateWithoutAddressInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-}
-
-input UserCreateOrConnectWithoutAddressInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutAddressInput!
-}
-
-input UserUpsertWithoutAddressInput {
-  update: UserUpdateWithoutAddressInput!
-  create: UserCreateWithoutAddressInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutAddressInput {
-  id: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-}
-
-input UserUpdateManyWithoutReferredByNestedInput {
-  create: [UserCreateWithoutReferredByInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutReferredByInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutReferredByInput!]
-  createMany: UserCreateManyReferredByInputEnvelope
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutReferredByInput!]
-  updateMany: [UserUpdateManyWithWhereWithoutReferredByInput!]
-  deleteMany: [UserScalarWhereInput!]
-}
-
-input UserCreateWithoutReferredByInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  school: SchoolCreateNestedOneWithoutStudentsInput
-}
-
-input UserCreateOrConnectWithoutReferredByInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutReferredByInput!
-}
-
-input UserUpsertWithWhereUniqueWithoutReferredByInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutReferredByInput!
-  create: UserCreateWithoutReferredByInput!
-}
-
-input UserUpdateWithoutReferredByInput {
-  id: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-}
-
-input UserCreateManyReferredByInputEnvelope {
-  data: [UserCreateManyReferredByInput!]!
-  skipDuplicates: Boolean
-}
-
-input UserCreateManyReferredByInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-}
-
-input UserUpdateWithWhereUniqueWithoutReferredByInput {
-  where: UserWhereUniqueInput!
-  data: UserUpdateWithoutReferredByInput!
-}
-
-input UserUpdateManyWithWhereWithoutReferredByInput {
-  where: UserScalarWhereInput!
-  data: UserUpdateManyMutationInput!
-}
-
-input UserScalarWhereInput {
-  AND: [UserScalarWhereInput!]
-  OR: [UserScalarWhereInput!]
-  NOT: [UserScalarWhereInput!]
-  id: StringFilter
-  firstName: StringFilter
-  lastName: StringNullableFilter
-  email: StringFilter
-  userRole: EnumUserRoleFilter
-  userType: EnumUserTypeFilter
-  avatarUrl: StringNullableFilter
-  whatsappNumber: StringFilter
-  password: StringFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  deletedAt: DateTimeNullableFilter
-  theme: EnumThemeFilter
-}
-
-input UserUpdateManyMutationInput {
-  id: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-}
-
-input UserUpdateToOneWithWhereWithoutAddressInput {
-  where: UserWhereInput
-  data: UserUpdateWithoutAddressInput!
 }
 
 input ShippingUpdateOneWithoutAddressNestedInput {
@@ -3805,6 +3925,7 @@ input UserCreateWithoutOrdersInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -3917,6 +4038,7 @@ input UserCreateWithoutTransactionsInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -3961,6 +4083,7 @@ input UserCreateWithoutAccountsInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -4039,6 +4162,7 @@ input UserCreateWithoutProjectsInvestmentInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -4358,6 +4482,7 @@ input UserUpdateWithoutOrdersInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -4523,6 +4648,7 @@ input UserUpdateWithoutTransactionsInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -4592,6 +4718,7 @@ input UserUpdateWithoutAccountsInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -4687,24 +4814,6 @@ input HotelCreateWithoutImagesInput {
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
 }
 
-input AddressCreateNestedOneWithoutHotelInput {
-  create: AddressCreateWithoutHotelInput
-  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
-  connect: AddressWhereUniqueInput
-}
-
-input AddressCreateWithoutHotelInput {
-  name: String!
-  city: CityCreateNestedOneWithoutAddressInput!
-  district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
-}
-
-input AddressCreateOrConnectWithoutHotelInput {
-  where: AddressWhereUniqueInput!
-  create: AddressCreateWithoutHotelInput!
-}
-
 input HotelCreateOrConnectWithoutImagesInput {
   where: HotelWhereUniqueInput!
   create: HotelCreateWithoutImagesInput!
@@ -4727,167 +4836,6 @@ input HotelUpdateWithoutImagesInput {
   address: AddressUpdateOneRequiredWithoutHotelNestedInput
   checkIns: CheckInUpdateManyWithoutHotelNestedInput
   createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
-}
-
-input AddressUpdateOneRequiredWithoutHotelNestedInput {
-  create: AddressCreateWithoutHotelInput
-  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
-  upsert: AddressUpsertWithoutHotelInput
-  connect: AddressWhereUniqueInput
-  update: AddressUpdateToOneWithWhereWithoutHotelInput
-}
-
-input AddressUpsertWithoutHotelInput {
-  update: AddressUpdateWithoutHotelInput!
-  create: AddressCreateWithoutHotelInput!
-  where: AddressWhereInput
-}
-
-input AddressUpdateWithoutHotelInput {
-  name: StringFieldUpdateOperationsInput
-  city: CityUpdateOneRequiredWithoutAddressNestedInput
-  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
-  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
-  user: UserUpdateOneWithoutAddressNestedInput
-  school: SchoolUpdateOneWithoutAddressNestedInput
-  Shipping: ShippingUpdateOneWithoutAddressNestedInput
-}
-
-input SchoolUpdateOneWithoutAddressNestedInput {
-  create: SchoolCreateWithoutAddressInput
-  connectOrCreate: SchoolCreateOrConnectWithoutAddressInput
-  upsert: SchoolUpsertWithoutAddressInput
-  disconnect: SchoolWhereInput
-  delete: SchoolWhereInput
-  connect: SchoolWhereUniqueInput
-  update: SchoolUpdateToOneWithWhereWithoutAddressInput
-}
-
-input SchoolCreateWithoutAddressInput {
-  name: String!
-  createdAt: DateTime
-  updatedAt: DateTime
-  students: UserCreateNestedManyWithoutSchoolInput
-}
-
-input UserCreateNestedManyWithoutSchoolInput {
-  create: [UserCreateWithoutSchoolInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
-  createMany: UserCreateManySchoolInputEnvelope
-  connect: [UserWhereUniqueInput!]
-}
-
-input UserCreateWithoutSchoolInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-}
-
-input UserCreateOrConnectWithoutSchoolInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutSchoolInput!
-}
-
-input UserCreateManySchoolInputEnvelope {
-  data: [UserCreateManySchoolInput!]!
-  skipDuplicates: Boolean
-}
-
-input UserCreateManySchoolInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-}
-
-input SchoolCreateOrConnectWithoutAddressInput {
-  where: SchoolWhereUniqueInput!
-  create: SchoolCreateWithoutAddressInput!
-}
-
-input SchoolUpsertWithoutAddressInput {
-  update: SchoolUpdateWithoutAddressInput!
-  create: SchoolCreateWithoutAddressInput!
-  where: SchoolWhereInput
-}
-
-input SchoolUpdateWithoutAddressInput {
-  name: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  students: UserUpdateManyWithoutSchoolNestedInput
-}
-
-input UserUpdateManyWithoutSchoolNestedInput {
-  create: [UserCreateWithoutSchoolInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutSchoolInput!]
-  createMany: UserCreateManySchoolInputEnvelope
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutSchoolInput!]
-  updateMany: [UserUpdateManyWithWhereWithoutSchoolInput!]
-  deleteMany: [UserScalarWhereInput!]
-}
-
-input UserUpsertWithWhereUniqueWithoutSchoolInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutSchoolInput!
-  create: UserCreateWithoutSchoolInput!
-}
-
-input UserUpdateWithoutSchoolInput {
-  id: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-}
-
-input UserUpdateWithWhereUniqueWithoutSchoolInput {
-  where: UserWhereUniqueInput!
-  data: UserUpdateWithoutSchoolInput!
-}
-
-input UserUpdateManyWithWhereWithoutSchoolInput {
-  where: UserScalarWhereInput!
-  data: UserUpdateManyMutationInput!
-}
-
-input SchoolUpdateToOneWithWhereWithoutAddressInput {
-  where: SchoolWhereInput
-  data: SchoolUpdateWithoutAddressInput!
-}
-
-input AddressUpdateToOneWithWhereWithoutHotelInput {
-  where: AddressWhereInput
-  data: AddressUpdateWithoutHotelInput!
 }
 
 input CheckInUpdateManyWithoutHotelNestedInput {
@@ -4940,20 +4888,6 @@ input UserCreateOrConnectWithoutCheckInsInput {
 input CheckInCreateOrConnectWithoutHotelInput {
   where: CheckInWhereUniqueInput!
   create: CheckInCreateWithoutHotelInput!
-}
-
-input CheckInWhereUniqueInput {
-  id: Int
-  AND: [CheckInWhereInput!]
-  OR: [CheckInWhereInput!]
-  NOT: [CheckInWhereInput!]
-  userId: StringFilter
-  hotelId: IntFilter
-  checkInAt: DateTimeFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  user: UserRelationFilter
-  hotel: HotelRelationFilter
 }
 
 input CheckInUpsertWithWhereUniqueWithoutHotelInput {
@@ -5080,6 +5014,7 @@ input UserUpdateWithoutHotelsCreatedInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -5130,6 +5065,7 @@ input UserCreateWithoutClaimedRewardsInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
   school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
@@ -5208,6 +5144,7 @@ input UserUpdateWithoutClaimedRewardsInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -5219,6 +5156,41 @@ input UserUpdateWithWhereUniqueWithoutClaimedRewardsInput {
 input UserUpdateManyWithWhereWithoutClaimedRewardsInput {
   where: UserScalarWhereInput!
   data: UserUpdateManyMutationInput!
+}
+
+input UserScalarWhereInput {
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
+  id: StringFilter
+  firstName: StringFilter
+  lastName: StringNullableFilter
+  email: StringFilter
+  userRole: EnumUserRoleFilter
+  userType: EnumUserTypeFilter
+  avatarUrl: StringNullableFilter
+  whatsappNumber: StringFilter
+  password: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
+  theme: EnumThemeFilter
+}
+
+input UserUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
 }
 
 input RewardUpdateToOneWithWhereWithoutImagesInput {
@@ -5294,6 +5266,7 @@ input UserUpdateWithoutProjectsInvestmentInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 
@@ -5424,6 +5397,192 @@ input SchoolUpdateToOneWithWhereWithoutStudentsInput {
   data: SchoolUpdateWithoutStudentsInput!
 }
 
+input UserCreateManyReferredByInputEnvelope {
+  data: [UserCreateManyReferredByInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserCreateManyReferredByInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+}
+
+input UserUpdateWithWhereUniqueWithoutReferredByInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutReferredByInput!
+}
+
+input UserUpdateManyWithWhereWithoutReferredByInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyMutationInput!
+}
+
+input UserUpdateToOneWithWhereWithoutAddressInput {
+  where: UserWhereInput
+  data: UserUpdateWithoutAddressInput!
+}
+
+input SchoolUpdateOneWithoutAddressNestedInput {
+  create: SchoolCreateWithoutAddressInput
+  connectOrCreate: SchoolCreateOrConnectWithoutAddressInput
+  upsert: SchoolUpsertWithoutAddressInput
+  disconnect: SchoolWhereInput
+  delete: SchoolWhereInput
+  connect: SchoolWhereUniqueInput
+  update: SchoolUpdateToOneWithWhereWithoutAddressInput
+}
+
+input SchoolCreateWithoutAddressInput {
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  students: UserCreateNestedManyWithoutSchoolInput
+}
+
+input UserCreateNestedManyWithoutSchoolInput {
+  create: [UserCreateWithoutSchoolInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
+  createMany: UserCreateManySchoolInputEnvelope
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateWithoutSchoolInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  checkIns: CheckInCreateNestedManyWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutSchoolInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutSchoolInput!
+}
+
+input UserCreateManySchoolInputEnvelope {
+  data: [UserCreateManySchoolInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserCreateManySchoolInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+}
+
+input SchoolCreateOrConnectWithoutAddressInput {
+  where: SchoolWhereUniqueInput!
+  create: SchoolCreateWithoutAddressInput!
+}
+
+input SchoolUpsertWithoutAddressInput {
+  update: SchoolUpdateWithoutAddressInput!
+  create: SchoolCreateWithoutAddressInput!
+  where: SchoolWhereInput
+}
+
+input SchoolUpdateWithoutAddressInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  students: UserUpdateManyWithoutSchoolNestedInput
+}
+
+input UserUpdateManyWithoutSchoolNestedInput {
+  create: [UserCreateWithoutSchoolInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutSchoolInput!]
+  createMany: UserCreateManySchoolInputEnvelope
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutSchoolInput!]
+  updateMany: [UserUpdateManyWithWhereWithoutSchoolInput!]
+  deleteMany: [UserScalarWhereInput!]
+}
+
+input UserUpsertWithWhereUniqueWithoutSchoolInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutSchoolInput!
+  create: UserCreateWithoutSchoolInput!
+}
+
+input UserUpdateWithoutSchoolInput {
+  id: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+}
+
+input UserUpdateWithWhereUniqueWithoutSchoolInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutSchoolInput!
+}
+
+input UserUpdateManyWithWhereWithoutSchoolInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyMutationInput!
+}
+
+input SchoolUpdateToOneWithWhereWithoutAddressInput {
+  where: SchoolWhereInput
+  data: SchoolUpdateWithoutAddressInput!
+}
+
+input AddressUpdateToOneWithWhereWithoutHotelInput {
+  where: AddressWhereInput
+  data: AddressUpdateWithoutHotelInput!
+}
+
+input HotelUpdateToOneWithWhereWithoutCheckInsInput {
+  where: HotelWhereInput
+  data: HotelUpdateWithoutCheckInsInput!
+}
+
+input CheckInUpdateWithWhereUniqueWithoutUserInput {
+  where: CheckInWhereUniqueInput!
+  data: CheckInUpdateWithoutUserInput!
+}
+
+input CheckInUpdateManyWithWhereWithoutUserInput {
+  where: CheckInScalarWhereInput!
+  data: CheckInUpdateManyMutationInput!
+}
+
 input UserUpdateToOneWithWhereWithoutReferredUsersInput {
   where: UserWhereInput
   data: UserUpdateWithoutReferredUsersInput!
@@ -5470,6 +5629,7 @@ input UserUpdateWithoutProgramsParticipationInput {
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   referredBy: UserUpdateOneWithoutReferredUsersNestedInput
   referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
 }
 

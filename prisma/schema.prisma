@@ -156,7 +156,6 @@ model User {
   referredUsers         User[]             @relation("UserReferral")
   /// @HideField({ output: false, input: true })   
   status                UserStatus         @default(PENDING)
-  /// @HideField({ output: false, input: true })   
   checkIns              CheckIn[]
   school                School?            @relation("StudentSchool", fields: [schoolId], references: [id])
   /// @HideField({ output: false, input: true })   

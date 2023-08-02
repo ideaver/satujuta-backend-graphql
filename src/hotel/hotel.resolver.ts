@@ -3,6 +3,7 @@ import { HotelService } from './hotel.service';
 import { HotelCreateArgs } from './dto/hotel-create-one.args';
 import { HotelFindManyArgs } from './dto/hotel-find-many.args';
 import { Hotel } from 'src/@generated';
+import { HotelFindUniqueArgs } from './dto/hotel-find-one.args';
 
 @Resolver(() => Hotel)
 export class HotelResolver {
@@ -20,9 +21,15 @@ export class HotelResolver {
     return this.hotelService.findMany(hotelFindManyArgs);
   }
 
-  @Query(() => Hotel, { name: 'hotel' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.hotelService.findOne(id);
+  @Query(() => Hotel, {
+    nullable: true,
+    description: 'Default prisma query include nested address & checkIns',
+  })
+  hotelFindOne(
+    @Args('hotelFindUniqueArgs')
+    hotelFindUniqueArgs: HotelFindUniqueArgs,
+  ) {
+    return this.hotelService.findOne(hotelFindUniqueArgs);
   }
 
   // @Mutation(() => Hotel)

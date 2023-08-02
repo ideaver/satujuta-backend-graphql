@@ -3,6 +3,8 @@ import { PrismaService } from 'prisma/prisma.service';
 import { HotelCreateArgs } from './dto/hotel-create-one.args';
 import { GraphQLError } from 'graphql';
 import { HotelFindManyArgs } from './dto/hotel-find-many.args';
+import { HotelFindUniqueArgs } from './dto/hotel-find-one.args';
+import { HotelUpdateOneArgs } from './dto/hotel-update-one.args';
 
 @Injectable()
 export class HotelService {
@@ -29,13 +31,20 @@ export class HotelService {
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} hotel`;
+  findOne(hotelFindUniqueArgs: HotelFindUniqueArgs) {
+    return this.prisma.hotel.findUnique({
+      ...hotelFindUniqueArgs,
+      include: {
+        ...hotelFindUniqueArgs.include,
+        address: { include: { city: true, district: true, postalCode: true } },
+        checkIns: { include: { user: true } },
+      },
+    });
   }
 
-  // update(id: number, updateHotelInput: UpdateHotelInput) {
-  //   return `This action updates a #${id} hotel`;
-  // }
+  update(hotelUpdateOneArgs: HotelUpdateOneArgs) {
+    return this.prisma.hotel.update(hotelUpdateOneArgs);
+  }
 
   remove(id: number) {
     return `This action removes a #${id} hotel`;
