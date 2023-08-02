@@ -2,7 +2,7 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Type } from 'class-transformer';
 import { UserSelect } from '../model/user-select.input';
-import { UserWhereUniqueInput } from 'src/@generated/prisma-nestjs-graphql';
+import { UserWhereUniqueInput } from 'src/@generated';
 
 @InputType()
 export class UserFindUniqueArgs {

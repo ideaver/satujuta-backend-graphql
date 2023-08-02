@@ -4,11 +4,11 @@ import { Prisma } from '@prisma/client';
 import { Int } from '@nestjs/graphql';
 import { UserSelect } from '../model/user-select.input';
 import {
-  UserOrderByWithRelationInput,
-  UserScalarFieldEnum,
   UserWhereInput,
+  UserOrderByWithRelationInput,
   UserWhereUniqueInput,
-} from 'src/@generated/prisma-nestjs-graphql';
+  UserScalarFieldEnum,
+} from 'src/@generated';
 
 @InputType()
 export class FindManyUserArgs {

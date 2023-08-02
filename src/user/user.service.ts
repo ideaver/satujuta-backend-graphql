@@ -4,7 +4,7 @@ import { PrismaService } from 'prisma/prisma.service';
 import { FindManyUserArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { User } from 'src/@generated/prisma-nestjs-graphql';
+import { User } from 'src/@generated';
 
 @Injectable()
 export class UserService {

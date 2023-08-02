@@ -2,7 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { UserSelect } from '../model/user-select.input';
-import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql';
+import { UserCreateInput } from 'src/@generated';
 
 // @InputType()
 // export class UserCreateInput {

@@ -3,10 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { Prisma } from '@prisma/client';
 import { UserSelect } from '../model/user-select.input';
-import {
-  UserUpdateInput,
-  UserWhereUniqueInput,
-} from 'src/@generated/prisma-nestjs-graphql';
+import { UserUpdateInput, UserWhereUniqueInput } from 'src/@generated';
 
 @InputType()
 export class UserUpdateOneArgs {

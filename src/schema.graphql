@@ -2,50 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CityCount {
-  address: Int!
+type AccountAvgAggregate {
+  id: Float
+  accountNumber: Float
+  balance: Float
 }
 
-type City {
-  id: ID!
-  name: String!
-  address: [Address!]
-  _count: CityCount!
+type AccountCountAggregate {
+  id: Int!
+  accountNumber: Int!
+  name: Int!
+  balance: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  userId: Int!
+  accountCategory: Int!
+  _all: Int!
 }
 
-type DistrictCount {
-  address: Int!
+type AccountCount {
+  transactions: Int!
 }
 
-type District {
-  id: ID!
-  name: String!
-  address: [Address!]
-  _count: DistrictCount!
-}
-
-type PostalCodeCount {
-  address: Int!
-}
-
-type PostalCode {
-  id: ID!
-  code: Int!
-  address: [Address!]
-  _count: PostalCodeCount!
-}
-
-type ProgramCategoryCount {
-  programs: Int!
-}
-
-type ProgramCategory {
-  id: ID!
-  name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  programs: [Program!]
-  _count: ProgramCategoryCount!
+type AccountMaxAggregate {
+  id: Int
+  accountNumber: Int
+  name: String
+  balance: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: String
+  accountCategory: AccountCategory
 }
 
 """
@@ -53,47 +40,575 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type ProgramCount {
-  Images: Int!
-  participant: Int!
+enum AccountCategory {
+  EQUITY
+  PROJECT
+  COMISSION
+  CASH
+  PLATFORM
+  BANK
 }
 
-type Program {
-  id: ID!
+type AccountMinAggregate {
+  id: Int
+  accountNumber: Int
+  name: String
+  balance: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  userId: String
+  accountCategory: AccountCategory
+}
+
+type AccountSumAggregate {
+  id: Int
+  accountNumber: Int
+  balance: Float
+}
+
+type Account {
+  id: Int!
+  accountNumber: Int
   name: String!
-  startDate: DateTime!
-  dueDate: DateTime
+  balance: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userId: String!
+  accountCategory: AccountCategory!
+  user: User!
+  transactions: [Transaction!]
+  project: Project
+  bankAccount: Bank
+  _count: AccountCount!
+}
+
+type AddressAvgAggregate {
+  id: Float
+  cityId: Float
+  districtId: Float
+  postalCodeId: Float
+}
+
+type AddressCountAggregate {
+  id: Int!
+  name: Int!
+  cityId: Int!
+  districtId: Int!
+  postalCodeId: Int!
+  _all: Int!
+}
+
+type AddressMaxAggregate {
+  id: Int
+  name: String
+  cityId: Int
+  districtId: Int
+  postalCodeId: Int
+}
+
+type AddressMinAggregate {
+  id: Int
+  name: String
+  cityId: Int
+  districtId: Int
+  postalCodeId: Int
+}
+
+type AddressSumAggregate {
+  id: Int
+  cityId: Int
+  districtId: Int
+  postalCodeId: Int
+}
+
+type Address {
+  id: Int!
+  name: String!
+  cityId: Int!
+  districtId: Int!
+  postalCodeId: Int!
+  city: City!
+  district: District!
+  postalCode: PostalCode!
+  user: User
+  hotel: Hotel
+  school: School
+  Shipping: Shipping
+}
+
+type BankAvgAggregate {
+  id: Float
+  accountNumber: Float
+  accountId: Float
+}
+
+type BankCountAggregate {
+  id: Int!
+  name: Int!
+  logoUrl: Int!
+  accountNumber: Int!
+  accountId: Int!
+  _all: Int!
+}
+
+type BankMaxAggregate {
+  id: Int
+  name: String
+  logoUrl: String
+  accountNumber: Int
+  accountId: Int
+}
+
+type BankMinAggregate {
+  id: Int
+  name: String
+  logoUrl: String
+  accountNumber: Int
+  accountId: Int
+}
+
+type BankSumAggregate {
+  id: Int
+  accountNumber: Int
+  accountId: Int
+}
+
+type Bank {
+  id: Int!
+  name: String!
+  logoUrl: String!
+  accountNumber: Int!
+  accountId: Int!
+  account: Account!
+}
+
+type CheckInAvgAggregate {
+  id: Float
+  hotelId: Float
+}
+
+type CheckInCountAggregate {
+  id: Int!
+  userId: Int!
+  hotelId: Int!
+  checkInAt: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type CheckInMaxAggregate {
+  id: Int
+  userId: String
+  hotelId: Int
+  checkInAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type CheckInMinAggregate {
+  id: Int
+  userId: String
+  hotelId: Int
+  checkInAt: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type CheckInSumAggregate {
+  id: Int
+  hotelId: Int
+}
+
+type CheckIn {
+  id: Int!
+  userId: String!
+  hotelId: Int!
+  checkInAt: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User!
+  hotel: Hotel!
+}
+
+type CityAvgAggregate {
+  id: Float
+}
+
+type CityCountAggregate {
+  id: Int!
+  name: Int!
+  _all: Int!
+}
+
+type CityCount {
+  address: Int!
+}
+
+type CityMaxAggregate {
+  id: Int
+  name: String
+}
+
+type CityMinAggregate {
+  id: Int
+  name: String
+}
+
+type CitySumAggregate {
+  id: Int
+}
+
+type City {
+  id: Int!
+  name: String!
+  address: [Address!]
+  _count: CityCount!
+}
+
+type DistrictAvgAggregate {
+  id: Float
+}
+
+type DistrictCountAggregate {
+  id: Int!
+  name: Int!
+  _all: Int!
+}
+
+type DistrictCount {
+  address: Int!
+}
+
+type DistrictMaxAggregate {
+  id: Int
+  name: String
+}
+
+type DistrictMinAggregate {
+  id: Int
+  name: String
+}
+
+type DistrictSumAggregate {
+  id: Int
+}
+
+type District {
+  id: Int!
+  name: String!
+  address: [Address!]
+  _count: DistrictCount!
+}
+
+type FaqAvgAggregate {
+  id: Float
+}
+
+type FaqCountAggregate {
+  id: Int!
+  name: Int!
+  description: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type FaqMaxAggregate {
+  id: Int
+  name: String
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FaqMinAggregate {
+  id: Int
+  name: String
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FaqSumAggregate {
+  id: Int
+}
+
+type FileAvgAggregate {
+  id: Float
+  filesize: Float
+}
+
+type FileCountAggregate {
+  id: Int!
+  fileType: Int!
+  filesize: Int!
+  name: Int!
+  description: Int!
+  url: Int!
+  createdById: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type FileMaxAggregate {
+  id: Int
+  fileType: FileType
+  filesize: Float
+  name: String
+  description: String
+  url: String
+  createdById: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum FileType {
+  MP4
+  JPG
+  PNG
+  PDF
+}
+
+type FileMinAggregate {
+  id: Int
+  fileType: FileType
+  filesize: Float
+  name: String
+  description: String
+  url: String
+  createdById: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type FileSumAggregate {
+  id: Int
+  filesize: Float
+}
+
+type File {
+  id: Int!
+  fileType: FileType!
+  filesize: Float!
+  name: String!
   description: String!
+  url: String!
   createdById: String!
-  categoryId: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
-  Images: [Images!]
   createdBy: User!
-  participant: [User!]
-  category: ProgramCategory!
-  _count: ProgramCount!
 }
 
-type RewardCount {
+type HotelAvgAggregate {
+  id: Float
+  addressId: Float
+  rating: Float
+  quota: Float
+}
+
+type HotelCountAggregate {
+  id: Int!
+  name: Int!
+  addressId: Int!
+  description: Int!
+  rating: Int!
+  startDate: Int!
+  quota: Int!
+  createdById: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type HotelCount {
   images: Int!
-  claimers: Int!
+  checkIns: Int!
 }
 
-type Reward {
-  id: ID!
+type HotelMaxAggregate {
+  id: Int
+  name: String
+  addressId: Int
+  description: String
+  rating: Float
+  startDate: DateTime
+  quota: Int
+  createdById: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type HotelMinAggregate {
+  id: Int
+  name: String
+  addressId: Int
+  description: String
+  rating: Float
+  startDate: DateTime
+  quota: Int
+  createdById: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type HotelSumAggregate {
+  id: Int
+  addressId: Int
+  rating: Float
+  quota: Int
+}
+
+type Hotel {
+  id: Int!
   name: String!
-  pointCost: Float!
+  addressId: Int!
   description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  createdById: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  address: Address!
   images: [Images!]
-  claimers: [User!]
-  _count: RewardCount!
+  checkIns: [CheckIn!]
+  createdBy: User!
+  _count: HotelCount!
+}
+
+type ImagesAvgAggregate {
+  id: Float
+  filesize: Float
+  hotelImageId: Float
+  programImageId: Float
+  rewardImageId: Float
+  projectImageId: Float
+}
+
+type ImagesCountAggregate {
+  id: Int!
+  fileType: Int!
+  filesize: Int!
+  url: Int!
+  hotelImageId: Int!
+  programImageId: Int!
+  rewardImageId: Int!
+  projectImageId: Int!
+  createdAt: Int!
+  _all: Int!
+}
+
+type ImagesMaxAggregate {
+  id: Int
+  fileType: FileType
+  filesize: Float
+  url: String
+  hotelImageId: Int
+  programImageId: Int
+  rewardImageId: Int
+  projectImageId: Int
+  createdAt: DateTime
+}
+
+type ImagesMinAggregate {
+  id: Int
+  fileType: FileType
+  filesize: Float
+  url: String
+  hotelImageId: Int
+  programImageId: Int
+  rewardImageId: Int
+  projectImageId: Int
+  createdAt: DateTime
+}
+
+type ImagesSumAggregate {
+  id: Int
+  filesize: Float
+  hotelImageId: Int
+  programImageId: Int
+  rewardImageId: Int
+  projectImageId: Int
+}
+
+type Images {
+  id: Int!
+  fileType: FileType!
+  filesize: Float!
+  url: String!
+  hotelImageId: Int
+  programImageId: Int
+  rewardImageId: Int
+  projectImageId: Int
+  createdAt: DateTime!
+  hotelImage: Hotel
+  programImage: Program
+  rewardImage: Reward
+  projectImage: Project
+}
+
+type ItemAvgAggregate {
+  id: Float
+  price: Float
+  qty: Float
+  orderId: Float
+}
+
+type ItemCountAggregate {
+  id: Int!
+  name: Int!
+  description: Int!
+  price: Int!
+  qty: Int!
+  userRole: Int!
+  orderId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type ItemMaxAggregate {
+  id: Int
+  name: String
+  description: String
+  price: Float
+  qty: Int
+  userRole: UserRole
+  orderId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum UserRole {
+  MEMBER
+  ADMIN
+  SUPERUSER
+  STUDENT
+}
+
+type ItemMinAggregate {
+  id: Int
+  name: String
+  description: String
+  price: Float
+  qty: Int
+  userRole: UserRole
+  orderId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ItemSumAggregate {
+  id: Int
+  price: Float
+  qty: Int
+  orderId: Int
 }
 
 type Item {
-  id: ID!
+  id: Int!
   name: String!
   description: String!
   price: Float!
@@ -105,33 +620,26 @@ type Item {
   order: Order!
 }
 
-enum UserRole {
-  MEMBER
-  ADMIN
-  SUPERUSER
-  STUDENT
+type OrderAvgAggregate {
+  id: Float
+  shippingId: Float
+  cost: Float
+  platformFee: Float
+  total: Float
 }
 
-type Shipping {
-  id: ID!
-  logisticName: String!
-  deliveryDate: DateTime
-  shippingStatus: ShippingStatus!
-  addressId: Int!
-  courier: String
-  estimatedTime: String
-  trackingNo: String
-  orderId: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  address: Address!
-  order: Order!
-}
-
-enum ShippingStatus {
-  PROCESSING
-  DELIVERING
-  DELIVERED
+type OrderCountAggregate {
+  id: Int!
+  status: Int!
+  orderById: Int!
+  shippingId: Int!
+  isFullPaid: Int!
+  cost: Int!
+  platformFee: Int!
+  total: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
 }
 
 type OrderCount {
@@ -139,8 +647,50 @@ type OrderCount {
   payments: Int!
 }
 
+type OrderMaxAggregate {
+  id: Int
+  status: TransactionStatus
+  orderById: String
+  shippingId: Int
+  isFullPaid: Boolean
+  cost: Float
+  platformFee: Float
+  total: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum TransactionStatus {
+  PROCESSING
+  PENDING
+  FAILED
+  CANCELLED
+  COMPLETED
+}
+
+type OrderMinAggregate {
+  id: Int
+  status: TransactionStatus
+  orderById: String
+  shippingId: Int
+  isFullPaid: Boolean
+  cost: Float
+  platformFee: Float
+  total: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type OrderSumAggregate {
+  id: Int
+  shippingId: Int
+  cost: Float
+  platformFee: Float
+  total: Float
+}
+
 type Order {
-  id: ID!
+  id: Int!
   status: TransactionStatus!
   orderById: String!
   shippingId: Int
@@ -157,25 +707,52 @@ type Order {
   _count: OrderCount!
 }
 
-enum TransactionStatus {
-  PROCESSING
-  PENDING
-  FAILED
-  CANCELLED
-  COMPLETED
+type PaymentAvgAggregate {
+  id: Float
+  adminFee: Float
+  totalPayment: Float
+  orderId: Float
+  transactionId: Float
 }
 
-type PaymentConfirmation {
-  id: ID!
-  ProofUrl: String!
-  paymentId: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  payment: Payment!
+type PaymentCountAggregate {
+  id: Int!
+  adminFee: Int!
+  totalPayment: Int!
+  orderId: Int!
+  transactionId: Int!
+  createdAt: Int!
+  _all: Int!
+}
+
+type PaymentMaxAggregate {
+  id: Int
+  adminFee: Float
+  totalPayment: Float
+  orderId: Int
+  transactionId: Int
+  createdAt: DateTime
+}
+
+type PaymentMinAggregate {
+  id: Int
+  adminFee: Float
+  totalPayment: Float
+  orderId: Int
+  transactionId: Int
+  createdAt: DateTime
+}
+
+type PaymentSumAggregate {
+  id: Int
+  adminFee: Float
+  totalPayment: Float
+  orderId: Int
+  transactionId: Int
 }
 
 type Payment {
-  id: ID!
+  id: Int!
   adminFee: Float!
   totalPayment: Float!
   orderId: Int!
@@ -186,19 +763,80 @@ type Payment {
   confirmation: PaymentConfirmation
 }
 
-type Transaction {
-  id: ID!
-  amount: Float!
-  status: TransactionStatus!
-  transactionType: TransactionType!
-  transactionCategory: TransactionCategory!
-  currentBalance: Float!
-  userId: String!
-  accountId: Int!
+type PaymentConfirmationAvgAggregate {
+  id: Float
+  paymentId: Float
+}
+
+type PaymentConfirmationCountAggregate {
+  id: Int!
+  ProofUrl: Int!
+  paymentId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type PaymentConfirmationMaxAggregate {
+  id: Int
+  ProofUrl: String
+  paymentId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type PaymentConfirmationMinAggregate {
+  id: Int
+  ProofUrl: String
+  paymentId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type PaymentConfirmationSumAggregate {
+  id: Int
+  paymentId: Int
+}
+
+type PaymentConfirmation {
+  id: Int!
+  ProofUrl: String!
+  paymentId: Int!
   createdAt: DateTime!
-  User: User!
-  account: Account!
-  payment: Payment
+  updatedAt: DateTime!
+  payment: Payment!
+}
+
+type PointTransactionAvgAggregate {
+  id: Float
+  amount: Float
+  currentBalance: Float
+}
+
+type PointTransactionCountAggregate {
+  id: Int!
+  amount: Int!
+  pointType: Int!
+  transactionType: Int!
+  currentBalance: Int!
+  userId: Int!
+  createdAt: Int!
+  _all: Int!
+}
+
+type PointTransactionMaxAggregate {
+  id: Int
+  amount: Float
+  pointType: PointType
+  transactionType: TransactionType
+  currentBalance: Float
+  userId: String
+  createdAt: DateTime
+}
+
+enum PointType {
+  REFERRING
+  REDEEMING
 }
 
 enum TransactionType {
@@ -206,51 +844,208 @@ enum TransactionType {
   CREDIT
 }
 
-enum TransactionCategory {
-  INVESTMENT
-  INVESTMENT_RETURN
-  COMISSION_BONUS
-  WITHDRAWAL
-  MEMBER_REGISTRATION
-  STUDENT_REGISTRATION
+type PointTransactionMinAggregate {
+  id: Int
+  amount: Float
+  pointType: PointType
+  transactionType: TransactionType
+  currentBalance: Float
+  userId: String
+  createdAt: DateTime
 }
 
-type Bank {
-  id: ID!
+type PointTransactionSumAggregate {
+  id: Int
+  amount: Float
+  currentBalance: Float
+}
+
+type PointTransaction {
+  id: Int!
+  amount: Float!
+  pointType: PointType!
+  transactionType: TransactionType!
+  currentBalance: Float!
+  userId: String!
+  createdAt: DateTime!
+  User: User!
+}
+
+type PostalCodeAvgAggregate {
+  id: Float
+  code: Float
+}
+
+type PostalCodeCountAggregate {
+  id: Int!
+  code: Int!
+  _all: Int!
+}
+
+type PostalCodeCount {
+  address: Int!
+}
+
+type PostalCodeMaxAggregate {
+  id: Int
+  code: Int
+}
+
+type PostalCodeMinAggregate {
+  id: Int
+  code: Int
+}
+
+type PostalCodeSumAggregate {
+  id: Int
+  code: Int
+}
+
+type PostalCode {
+  id: Int!
+  code: Int!
+  address: [Address!]
+  _count: PostalCodeCount!
+}
+
+type ProgramAvgAggregate {
+  id: Float
+  categoryId: Float
+}
+
+type ProgramCountAggregate {
+  id: Int!
+  name: Int!
+  startDate: Int!
+  dueDate: Int!
+  description: Int!
+  createdById: Int!
+  categoryId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type ProgramCount {
+  Images: Int!
+  participant: Int!
+}
+
+type ProgramMaxAggregate {
+  id: Int
+  name: String
+  startDate: DateTime
+  dueDate: DateTime
+  description: String
+  createdById: String
+  categoryId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ProgramMinAggregate {
+  id: Int
+  name: String
+  startDate: DateTime
+  dueDate: DateTime
+  description: String
+  createdById: String
+  categoryId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ProgramSumAggregate {
+  id: Int
+  categoryId: Int
+}
+
+type Program {
+  id: Int!
   name: String!
-  logoUrl: String!
-  accountNumber: Int!
-  accountId: Int!
-  account: Account!
-}
-
-type AccountCount {
-  transactions: Int!
-}
-
-type Account {
-  id: ID!
-  accountNumber: Int
-  name: String!
-  balance: Float!
+  startDate: DateTime!
+  dueDate: DateTime
+  description: String!
+  createdById: String!
+  categoryId: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
-  userId: String!
-  accountCategory: AccountCategory!
-  user: User!
-  transactions: [Transaction!]
-  project: Project
-  bankAccount: Bank
-  _count: AccountCount!
+  Images: [Images!]
+  createdBy: User!
+  participant: [User!]
+  category: ProgramCategory!
+  _count: ProgramCount!
 }
 
-enum AccountCategory {
-  EQUITY
-  PROJECT
-  COMISSION
-  CASH
-  PLATFORM
-  BANK
+type ProgramCategoryAvgAggregate {
+  id: Float
+}
+
+type ProgramCategoryCountAggregate {
+  id: Int!
+  name: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type ProgramCategoryCount {
+  programs: Int!
+}
+
+type ProgramCategoryMaxAggregate {
+  id: Int
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ProgramCategoryMinAggregate {
+  id: Int
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ProgramCategorySumAggregate {
+  id: Int
+}
+
+type ProgramCategory {
+  id: Int!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  programs: [Program!]
+  _count: ProgramCategoryCount!
+}
+
+type ProjectAvgAggregate {
+  id: Float
+  returnRate: Float
+  goalAmount: Float
+  currentAmount: Float
+  minimumInvestment: Float
+  maxInvestor: Float
+  accountId: Float
+}
+
+type ProjectCountAggregate {
+  id: Int!
+  name: Int!
+  description: Int!
+  projectCategory: Int!
+  startDate: Int!
+  endDate: Int!
+  returnRate: Int!
+  goalAmount: Int!
+  currentAmount: Int!
+  minimumInvestment: Int!
+  maxInvestor: Int!
+  accountId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
 }
 
 type ProjectCount {
@@ -258,8 +1053,57 @@ type ProjectCount {
   investors: Int!
 }
 
+type ProjectMaxAggregate {
+  id: Int
+  name: String
+  description: String
+  projectCategory: ProjectCategory
+  startDate: DateTime
+  endDate: DateTime
+  returnRate: Float
+  goalAmount: Int
+  currentAmount: Float
+  minimumInvestment: Int
+  maxInvestor: Int
+  accountId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum ProjectCategory {
+  PROPERTY
+  BUSSINESS
+}
+
+type ProjectMinAggregate {
+  id: Int
+  name: String
+  description: String
+  projectCategory: ProjectCategory
+  startDate: DateTime
+  endDate: DateTime
+  returnRate: Float
+  goalAmount: Int
+  currentAmount: Float
+  minimumInvestment: Int
+  maxInvestor: Int
+  accountId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ProjectSumAggregate {
+  id: Int
+  returnRate: Float
+  goalAmount: Int
+  currentAmount: Float
+  minimumInvestment: Int
+  maxInvestor: Int
+  accountId: Int
+}
+
 type Project {
-  id: ID!
+  id: Int!
   name: String!
   description: String!
   projectCategory: ProjectCategory!
@@ -279,74 +1123,102 @@ type Project {
   _count: ProjectCount!
 }
 
-enum ProjectCategory {
-  PROPERTY
-  BUSSINESS
+type RewardAvgAggregate {
+  id: Float
+  pointCost: Float
 }
 
-type Images {
-  id: ID!
-  fileType: FileType!
-  filesize: Float!
-  url: String!
-  hotelImageId: Int
-  programImageId: Int
-  rewardImageId: Int
-  projectImageId: Int
-  createdAt: DateTime!
-  hotelImage: Hotel
-  programImage: Program
-  rewardImage: Reward
-  projectImage: Project
+type RewardCountAggregate {
+  id: Int!
+  name: Int!
+  pointCost: Int!
+  description: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
 }
 
-enum FileType {
-  MP4
-  JPG
-  PNG
-  PDF
-}
-
-type CheckIn {
-  id: ID!
-  userId: String!
-  hotelId: Int!
-  checkInAt: DateTime!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  user: User!
-  hotel: Hotel!
-}
-
-type HotelCount {
+type RewardCount {
   images: Int!
-  checkIns: Int!
+  claimers: Int!
 }
 
-type Hotel {
-  id: ID!
+type RewardMaxAggregate {
+  id: Int
+  name: String
+  pointCost: Float
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type RewardMinAggregate {
+  id: Int
+  name: String
+  pointCost: Float
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type RewardSumAggregate {
+  id: Int
+  pointCost: Float
+}
+
+type Reward {
+  id: Int!
   name: String!
-  addressId: Int!
+  pointCost: Float!
   description: String!
-  rating: Float!
-  startDate: DateTime!
-  quota: Int!
-  createdById: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  address: Address!
   images: [Images!]
-  checkIns: [CheckIn!]
-  createdBy: User!
-  _count: HotelCount!
+  claimers: [User!]
+  _count: RewardCount!
+}
+
+type SchoolAvgAggregate {
+  id: Float
+  addressId: Float
+}
+
+type SchoolCountAggregate {
+  id: Int!
+  name: Int!
+  addressId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
 }
 
 type SchoolCount {
   students: Int!
 }
 
+type SchoolMaxAggregate {
+  id: Int
+  name: String
+  addressId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SchoolMinAggregate {
+  id: Int
+  name: String
+  addressId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SchoolSumAggregate {
+  id: Int
+  addressId: Int
+}
+
 type School {
-  id: ID!
+  id: Int!
   name: String!
   addressId: Int!
   createdAt: DateTime!
@@ -356,39 +1228,49 @@ type School {
   _count: SchoolCount!
 }
 
-type Address {
-  id: ID!
-  name: String!
-  cityId: Int!
-  districtId: Int!
-  postalCodeId: Int!
-  city: City!
-  district: District!
-  postalCode: PostalCode!
-  user: User
-  hotel: Hotel
-  school: School
-  Shipping: Shipping
+type SessionAvgAggregate {
+  id: Float
+  ipAddress: Float
 }
 
-type PointTransaction {
-  id: ID!
-  amount: Float!
-  pointType: PointType!
-  transactionType: TransactionType!
-  currentBalance: Float!
-  userId: String!
-  createdAt: DateTime!
-  User: User!
+type SessionCountAggregate {
+  id: Int!
+  token: Int!
+  expiresAt: Int!
+  createdAt: Int!
+  userId: Int!
+  device: Int!
+  ipAddress: Int!
+  _all: Int!
 }
 
-enum PointType {
-  REFERRING
-  REDEEMING
+type SessionMaxAggregate {
+  id: Int
+  token: String
+  expiresAt: DateTime
+  createdAt: DateTime
+  userId: String
+  device: String
+  ipAddress: Float
+}
+
+type SessionMinAggregate {
+  id: Int
+  token: String
+  expiresAt: DateTime
+  createdAt: DateTime
+  userId: String
+  device: String
+  ipAddress: Float
+}
+
+type SessionSumAggregate {
+  id: Int
+  ipAddress: Float
 }
 
 type Session {
-  id: ID!
+  id: Int!
   token: String!
   expiresAt: DateTime!
   createdAt: DateTime!
@@ -398,38 +1280,182 @@ type Session {
   user: User!
 }
 
-type UserNotification {
-  id: ID!
-  title: String!
-  subtitle: String!
-  content: String!
-  createdAt: DateTime!
-  category: UserNotificationCategory!
-  isRead: Boolean!
-  isCleared: Boolean!
-  userId: String!
-  deepLink: String
-  fcmToken: String
-  user: User!
+type ShippingAvgAggregate {
+  id: Float
+  addressId: Float
+  orderId: Float
 }
 
-enum UserNotificationCategory {
-  BILLING_ALERT
-  ANNOUNCEMENT
-  CHAT_MESSAGE
+type ShippingCountAggregate {
+  id: Int!
+  logisticName: Int!
+  deliveryDate: Int!
+  shippingStatus: Int!
+  addressId: Int!
+  courier: Int!
+  estimatedTime: Int!
+  trackingNo: Int!
+  orderId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
 }
 
-type File {
-  id: ID!
-  fileType: FileType!
-  filesize: Float!
-  name: String!
-  description: String!
-  url: String!
-  createdById: String!
+type ShippingMaxAggregate {
+  id: Int
+  logisticName: String
+  deliveryDate: DateTime
+  shippingStatus: ShippingStatus
+  addressId: Int
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  orderId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum ShippingStatus {
+  PROCESSING
+  DELIVERING
+  DELIVERED
+}
+
+type ShippingMinAggregate {
+  id: Int
+  logisticName: String
+  deliveryDate: DateTime
+  shippingStatus: ShippingStatus
+  addressId: Int
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  orderId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ShippingSumAggregate {
+  id: Int
+  addressId: Int
+  orderId: Int
+}
+
+type Shipping {
+  id: Int!
+  logisticName: String!
+  deliveryDate: DateTime
+  shippingStatus: ShippingStatus!
+  addressId: Int!
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  orderId: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
-  createdBy: User!
+  address: Address!
+  order: Order!
+}
+
+type TransactionAvgAggregate {
+  id: Float
+  amount: Float
+  currentBalance: Float
+  accountId: Float
+}
+
+type TransactionCountAggregate {
+  id: Int!
+  amount: Int!
+  status: Int!
+  transactionType: Int!
+  transactionCategory: Int!
+  currentBalance: Int!
+  userId: Int!
+  accountId: Int!
+  createdAt: Int!
+  _all: Int!
+}
+
+type TransactionMaxAggregate {
+  id: Int
+  amount: Float
+  status: TransactionStatus
+  transactionType: TransactionType
+  transactionCategory: TransactionCategory
+  currentBalance: Float
+  userId: String
+  accountId: Int
+  createdAt: DateTime
+}
+
+enum TransactionCategory {
+  INVESTMENT
+  INVESTMENT_RETURN
+  COMISSION_BONUS
+  WITHDRAWAL
+  MEMBER_REGISTRATION
+  STUDENT_REGISTRATION
+}
+
+type TransactionMinAggregate {
+  id: Int
+  amount: Float
+  status: TransactionStatus
+  transactionType: TransactionType
+  transactionCategory: TransactionCategory
+  currentBalance: Float
+  userId: String
+  accountId: Int
+  createdAt: DateTime
+}
+
+type TransactionSumAggregate {
+  id: Int
+  amount: Float
+  currentBalance: Float
+  accountId: Int
+}
+
+type Transaction {
+  id: Int!
+  amount: Float!
+  status: TransactionStatus!
+  transactionType: TransactionType!
+  transactionCategory: TransactionCategory!
+  currentBalance: Float!
+  userId: String!
+  accountId: Int!
+  createdAt: DateTime!
+  User: User!
+  account: Account!
+  payment: Payment
+}
+
+type UserAvgAggregate {
+  addressId: Float
+  schoolId: Float
+}
+
+type UserCountAggregate {
+  id: Int!
+  firstName: Int!
+  lastName: Int!
+  email: Int!
+  addressId: Int!
+  userRole: Int!
+  userType: Int!
+  avatarUrl: Int!
+  whatsappNumber: Int!
+  whatsappVerifiedAt: Int!
+  referredById: Int!
+  status: Int!
+  schoolId: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  deletedAt: Int!
+  theme: Int!
+  _all: Int!
 }
 
 type UserCount {
@@ -449,8 +1475,70 @@ type UserCount {
   filesCreated: Int!
 }
 
+type UserMaxAggregate {
+  id: String
+  firstName: String
+  lastName: String
+  email: String
+  addressId: Int
+  userRole: UserRole
+  userType: UserType
+  avatarUrl: String
+  whatsappNumber: String
+  whatsappVerifiedAt: DateTime
+  referredById: String
+  status: UserStatus
+  schoolId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  theme: Theme
+}
+
+enum UserType {
+  PARENT
+  SCHOOL_HEAD
+  STUDENT
+}
+
+enum UserStatus {
+  ACTIVE
+  PENDING
+  INACTIVE
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
+type UserMinAggregate {
+  id: String
+  firstName: String
+  lastName: String
+  email: String
+  addressId: Int
+  userRole: UserRole
+  userType: UserType
+  avatarUrl: String
+  whatsappNumber: String
+  whatsappVerifiedAt: DateTime
+  referredById: String
+  status: UserStatus
+  schoolId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  theme: Theme
+}
+
+type UserSumAggregate {
+  addressId: Int
+  schoolId: Int
+}
+
 type User {
-  id: ID!
+  id: String!
   firstName: String!
   lastName: String
   email: String!
@@ -487,21 +1575,76 @@ type User {
   _count: UserCount!
 }
 
-enum UserType {
-  PARENT
-  SCHOOL_HEAD
-  STUDENT
+type UserNotificationAvgAggregate {
+  id: Float
 }
 
-enum UserStatus {
-  ACTIVE
-  PENDING
-  INACTIVE
+type UserNotificationCountAggregate {
+  id: Int!
+  title: Int!
+  subtitle: Int!
+  content: Int!
+  createdAt: Int!
+  category: Int!
+  isRead: Int!
+  isCleared: Int!
+  userId: Int!
+  deepLink: Int!
+  fcmToken: Int!
+  _all: Int!
 }
 
-enum Theme {
-  LIGHT
-  DARK
+type UserNotificationMaxAggregate {
+  id: Int
+  title: String
+  subtitle: String
+  content: String
+  createdAt: DateTime
+  category: UserNotificationCategory
+  isRead: Boolean
+  isCleared: Boolean
+  userId: String
+  deepLink: String
+  fcmToken: String
+}
+
+enum UserNotificationCategory {
+  BILLING_ALERT
+  ANNOUNCEMENT
+  CHAT_MESSAGE
+}
+
+type UserNotificationMinAggregate {
+  id: Int
+  title: String
+  subtitle: String
+  content: String
+  createdAt: DateTime
+  category: UserNotificationCategory
+  isRead: Boolean
+  isCleared: Boolean
+  userId: String
+  deepLink: String
+  fcmToken: String
+}
+
+type UserNotificationSumAggregate {
+  id: Int
+}
+
+type UserNotification {
+  id: Int!
+  title: String!
+  subtitle: String!
+  content: String!
+  createdAt: DateTime!
+  category: UserNotificationCategory!
+  isRead: Boolean!
+  isCleared: Boolean!
+  userId: String!
+  deepLink: String
+  fcmToken: String
+  user: User!
 }
 
 type Query {
@@ -566,6 +1709,7 @@ input UserWhereInput {
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
+  id: StringFilter
   firstName: StringFilter
   lastName: StringNullableFilter
   email: StringFilter
@@ -1358,6 +2502,7 @@ input SchoolWhereInput {
 }
 
 input UserOrderByWithRelationInput {
+  id: SortOrder
   firstName: SortOrder
   lastName: SortOrderInput
   email: SortOrder
@@ -1505,6 +2650,7 @@ input PaymentOrderByRelationAggregateInput {
 }
 
 input UserWhereUniqueInput {
+  id: String
   email: String
   whatsappNumber: String
   AND: [UserWhereInput!]
@@ -1572,7 +2718,7 @@ input UserCreateInput {
   firstName: String!
   lastName: String
   email: String!
-  userRole: UserRole!
+  userRole: UserRole
   userType: UserType!
   avatarUrl: String
   whatsappNumber: String!
@@ -1580,6 +2726,7 @@ input UserCreateInput {
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
 }
 
 input AddressCreateNestedOneWithoutUserInput {
@@ -2990,6 +4137,7 @@ input UserUpdateOneArgs {
 }
 
 input UserUpdateInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3247,6 +4395,7 @@ input UserUpsertWithoutProgramsCreatedInput {
 }
 
 input UserUpdateWithoutProgramsCreatedInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3278,6 +4427,7 @@ input UserUpsertWithoutReferredUsersInput {
 }
 
 input UserUpdateWithoutReferredUsersInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3356,6 +4506,7 @@ input UserUpsertWithoutAddressInput {
 }
 
 input UserUpdateWithoutAddressInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3465,6 +4616,7 @@ input UserUpsertWithoutOrdersInput {
 }
 
 input UserUpdateWithoutOrdersInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3625,6 +4777,7 @@ input UserUpsertWithoutTransactionsInput {
 }
 
 input UserUpdateWithoutTransactionsInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3689,6 +4842,7 @@ input UserUpsertWithoutAccountsInput {
 }
 
 input UserUpdateWithoutAccountsInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3872,6 +5026,7 @@ input UserUpsertWithWhereUniqueWithoutSchoolInput {
 }
 
 input UserUpdateWithoutSchoolInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3899,6 +5054,7 @@ input UserScalarWhereInput {
   AND: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
   NOT: [UserScalarWhereInput!]
+  id: StringFilter
   firstName: StringFilter
   lastName: StringNullableFilter
   email: StringFilter
@@ -3911,6 +5067,7 @@ input UserScalarWhereInput {
 }
 
 input UserUpdateManyMutationInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3974,6 +5131,7 @@ input UserUpsertWithoutCheckInsInput {
 }
 
 input UserUpdateWithoutCheckInsInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4036,6 +5194,7 @@ input UserUpsertWithoutHotelsCreatedInput {
 }
 
 input UserUpdateWithoutHotelsCreatedInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4105,6 +5264,7 @@ input UserUpsertWithWhereUniqueWithoutClaimedRewardsInput {
 }
 
 input UserUpdateWithoutClaimedRewardsInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4186,6 +5346,7 @@ input UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput {
 }
 
 input UserUpdateWithoutProjectsInvestmentInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4357,6 +5518,7 @@ input UserUpsertWithWhereUniqueWithoutProgramsParticipationInput {
 }
 
 input UserUpdateWithoutProgramsParticipationInput {
+  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
