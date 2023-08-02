@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { UserCreateInput } from './dto/user-create.input';
-import { UpdateUserInput } from './dto/update-user.input';
+import { UserCreateArgs } from './dto/user-create-one.args';
 import { PrismaService } from 'prisma/prisma.service';
-import { Prisma } from '@prisma/client';
-import { AccountCategory } from 'src/@generated/prisma-nestjs-graphql/prisma/account-category.enum';
-import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
+import { FindManyUserArgs } from './dto/user-find-many.args';
+import { UserFindUniqueArgs } from './dto/user-find-one.args';
+import { UserUpdateOneArgs } from './dto/user-update-one.args';
+import { User } from 'src/@generated/prisma-nestjs-graphql';
 
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  async create(userCreateInput: UserCreateInput): Promise<User | void> {
+  async create(userCreateArgs: UserCreateArgs): Promise<User | void> {
     //     await  this.prisma.city.create({data:{name:"Jakarta"}}).then((city) => {console.log('city created ' + city)});
     // await this.prisma.district.create({data:{name:"Jakarta Selatan"}}).then((district) => {console.log('district created ' + district)});
     // await this.prisma.postalCode.create({data:{code:456547}}).then((postalCode) => {console.log('postalCode created ' + postalCode)});
@@ -28,28 +28,36 @@ export class UserService {
     //     },
     //   },
     // }).then((bank) => {console.log('bank created ' + bank)});
-    console.log('user userCreateInput ' + JSON.stringify(userCreateInput));
+
+    return await this.prisma.user.create({ ...userCreateArgs }).then((user) => {
+      console.log('user created ' + JSON.stringify(user));
+      return user;
+    });
+  }
+
+  async findMany(userFindManyArgs: FindManyUserArgs) {
+    return this.prisma.user.findMany(userFindManyArgs).then((users) => {
+      return users;
+    });
+  }
+
+  async findOne(userFindUniqueArgs: UserFindUniqueArgs) {
+    return await this.prisma.user.findUnique(userFindUniqueArgs);
+  }
+
+  update(userUpdateOneArgs: UserUpdateOneArgs) {
+    return this.prisma.user.update(userUpdateOneArgs);
+  }
+
+  async remove(userId: string) {
     return await this.prisma.user
-      .create({ data: userCreateInput, include: { address: true } })
+      .update({
+        where: { id: userId },
+        data: { deletedAt: new Date() },
+        select: { id: true, firstName: true, deletedAt: true },
+      })
       .then((user) => {
-        console.log('user created ' + JSON.stringify(user));
         return user;
       });
-  }
-
-  findAll() {
-    return `This action returns all user`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserInput: UpdateUserInput) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
   }
 }

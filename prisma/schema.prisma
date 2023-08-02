@@ -10,11 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// generator nestgraphql {
+//   provider               = "node node_modules/prisma-nestjs-graphql"
+//   output                 = "../src/@generated/prisma-nestjs-graphql"
+//   fields_Validator_from  = "class-validator"
+//   fields_Validator_input = true
+// }
+
 generator nestgraphql {
-  provider               = "node node_modules/prisma-nestjs-graphql"
-  output                 = "../src/@generated/prisma-nestjs-graphql"
-  fields_Validator_from  = "class-validator"
-  fields_Validator_input = true
+  provider                              = "node node_modules/prisma-nestjs-graphql"
+  output                                = "../src/@generated/prisma-nestjs-graphql"
+  fields_Validator_from                 = "class-validator"
+  fields_Validator_input                = true
+  requireSingleFieldsInWhereUniqueInput = true
+  emitSingle                            = true
+  emitCompiled                          = true
+  purgeOutput                           = true
+  noTypeId                              = true
 }
 
 enum UserRole {
@@ -98,7 +110,7 @@ model School {
 
 //Make CRU Available, implement soft delete
 model User {
-  /// @HideField({ output: false, input: true })
+  /// @HideField({ match: 'UserCreate*Input' })
   id                    String             @id @default(uuid())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
@@ -184,21 +196,21 @@ enum UserStatus {
 //superuser memiliki akun bernama platform account dan juga cash account
 //Make CRUD Available
 model Account {
-  id            Int           @id @default(autoincrement())
-  accountNumber Int?
+  id              Int             @id @default(autoincrement())
+  accountNumber   Int?
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()
-  name          String
-  balance       Float         @default(0)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  user          User          @relation(fields: [userId], references: [id])
-  userId        String
+  name            String
+  balance         Float           @default(0)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  user            User            @relation(fields: [userId], references: [id])
+  userId          String
   accountCategory AccountCategory
-  transactions  Transaction[]
-  project       Project?
-  bankAccount   Bank?
+  transactions    Transaction[]
+  project         Project?
+  bankAccount     Bank?
 }
 
 enum AccountCategory {
@@ -328,13 +340,13 @@ model Bank {
 
 //Make CRUD Available
 model Hotel {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlphanumeric()
   name        String
-  address     Address  @relation(fields: [addressId], references: [id])
-  addressId   Int      @unique
+  address     Address   @relation(fields: [addressId], references: [id])
+  addressId   Int       @unique
   /// @Validator.MinLength(10)
   /// @Validator.IsNotEmpty()
   description String
@@ -349,12 +361,12 @@ model Hotel {
   /// @Validator.IsNumber()
   /// @Validator.IsNotEmpty() 
   quota       Int
-  checkIns CheckIn[]
+  checkIns    CheckIn[]
   /// @Validator.IsNotEmpty()
-  createdBy User @relation(fields: [createdById], references: [id])
+  createdBy   User      @relation(fields: [createdById], references: [id])
   createdById String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 //Make CRUD Available
