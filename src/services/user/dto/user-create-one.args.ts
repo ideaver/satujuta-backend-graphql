@@ -15,4 +15,6 @@ export class UserCreateArgs {
   @Field(() => UserCreateInput, { nullable: false })
   @Type(() => UserCreateInput)
   data!: UserCreateInput;
+  //TODO: terapkan Case sensitive @Transform(({name}) => name.toUpperCase())
+  //maybe use field middleware
 }

@@ -5,8 +5,11 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { UserModule } from './user/user.module';
-import { HotelModule } from './hotel/hotel.module';
+import { AuthModule } from './services/auth/auth.module';
+import { UserModule } from './services/user/user.module';
+import { HotelModule } from './services/hotel/hotel.module';
+import { CityModule } from './services/city/city.module';
+import { DistrictModule } from './services/district/district';
 
 @Module({
   imports: [
@@ -18,6 +21,9 @@ import { HotelModule } from './hotel/hotel.module';
     }),
     UserModule,
     HotelModule,
+    AuthModule,
+    CityModule,
+    DistrictModule,
   ],
   controllers: [],
   providers: [PrismaService],

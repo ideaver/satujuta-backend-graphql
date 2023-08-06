@@ -14,6 +14,7 @@ import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { PrismaSelect } from '@paljs/plugins';
 import { User } from 'src/model/user.model';
+import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -37,7 +38,7 @@ export class UserResolver {
     @Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs,
     @Info() info: any,
   ) {
-    const select = new PrismaSelect(info).dataModel;
+    const select = new PrismaSelect(info).value;
     console.log('select ' + JSON.stringify(select));
     return this.userService.findMany(userFindManyArgs);
   }

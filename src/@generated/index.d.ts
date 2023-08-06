@@ -24,6 +24,7 @@ export declare enum UserScalarFieldEnum {
     whatsappNumber = "whatsappNumber",
     whatsappVerifiedAt = "whatsappVerifiedAt",
     password = "password",
+    referralCode = "referralCode",
     referredById = "referredById",
     status = "status",
     schoolId = "schoolId",
@@ -14909,12 +14910,12 @@ export declare class DeleteManyUserArgs {
     where?: InstanceType<typeof UserWhereInput>;
 }
 export declare class DeleteOneUserArgs {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class FindFirstUserOrThrowArgs {
     where?: InstanceType<typeof UserWhereInput>;
     orderBy?: Array<UserOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof UserScalarFieldEnum>;
@@ -14922,7 +14923,7 @@ export declare class FindFirstUserOrThrowArgs {
 export declare class FindFirstUserArgs {
     where?: InstanceType<typeof UserWhereInput>;
     orderBy?: Array<UserOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof UserScalarFieldEnum>;
@@ -14930,16 +14931,16 @@ export declare class FindFirstUserArgs {
 export declare class FindManyUserArgs {
     where?: InstanceType<typeof UserWhereInput>;
     orderBy?: Array<UserOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof UserScalarFieldEnum>;
 }
 export declare class FindUniqueUserOrThrowArgs {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class FindUniqueUserArgs {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UpdateManyUserArgs {
     data: InstanceType<typeof UserUpdateManyMutationInput>;
@@ -14947,17 +14948,17 @@ export declare class UpdateManyUserArgs {
 }
 export declare class UpdateOneUserArgs {
     data: InstanceType<typeof UserUpdateInput>;
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UpsertOneUserArgs {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateInput>;
     update: InstanceType<typeof UserUpdateInput>;
 }
 export declare class UserAggregateArgs {
     where?: InstanceType<typeof UserWhereInput>;
     orderBy?: Array<UserOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    cursor?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof UserCountAggregateInput>;
@@ -14990,6 +14991,7 @@ export declare class UserCountAggregateInput {
     whatsappNumber?: true;
     whatsappVerifiedAt?: true;
     password?: true;
+    referralCode?: true;
     referredById?: true;
     status?: true;
     schoolId?: true;
@@ -15011,6 +15013,7 @@ export declare class UserCountAggregate {
     whatsappNumber: number;
     whatsappVerifiedAt: number;
     password: number;
+    referralCode: number;
     referredById: number;
     status: number;
     schoolId: number;
@@ -15032,6 +15035,7 @@ export declare class UserCountOrderByAggregateInput {
     whatsappNumber?: keyof typeof SortOrder;
     whatsappVerifiedAt?: keyof typeof SortOrder;
     password?: keyof typeof SortOrder;
+    referralCode?: keyof typeof SortOrder;
     referredById?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
     schoolId?: keyof typeof SortOrder;
@@ -15072,6 +15076,7 @@ export declare class UserCreateManyReferredByInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
     createdAt?: Date | string;
@@ -15095,6 +15100,7 @@ export declare class UserCreateManySchoolInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
@@ -15114,6 +15120,7 @@ export declare class UserCreateManyInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -15125,156 +15132,156 @@ export declare class UserCreateManyInput {
 export declare class UserCreateNestedManyWithoutClaimedRewardsInput {
     create?: Array<UserCreateWithoutClaimedRewardsInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutClaimedRewardsInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserCreateNestedManyWithoutProgramsParticipationInput {
     create?: Array<UserCreateWithoutProgramsParticipationInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProgramsParticipationInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserCreateNestedManyWithoutProjectsInvestmentInput {
     create?: Array<UserCreateWithoutProjectsInvestmentInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserCreateNestedManyWithoutReferredByInput {
     create?: Array<UserCreateWithoutReferredByInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutReferredByInput>;
     createMany?: InstanceType<typeof UserCreateManyReferredByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserCreateNestedManyWithoutSchoolInput {
     create?: Array<UserCreateWithoutSchoolInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutSchoolInput>;
     createMany?: InstanceType<typeof UserCreateManySchoolInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserCreateNestedOneWithoutAccountsInput {
     create?: InstanceType<typeof UserCreateWithoutAccountsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutAccountsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutAddressInput {
     create?: InstanceType<typeof UserCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutCheckInsInput {
     create?: InstanceType<typeof UserCreateWithoutCheckInsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutCheckInsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutFilesCreatedInput {
     create?: InstanceType<typeof UserCreateWithoutFilesCreatedInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutFilesCreatedInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutHotelsCreatedInput {
     create?: InstanceType<typeof UserCreateWithoutHotelsCreatedInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutHotelsCreatedInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutOrdersInput {
     create?: InstanceType<typeof UserCreateWithoutOrdersInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutOrdersInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutPointTransactionsInput {
     create?: InstanceType<typeof UserCreateWithoutPointTransactionsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutPointTransactionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutProgramsCreatedInput {
     create?: InstanceType<typeof UserCreateWithoutProgramsCreatedInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutProgramsCreatedInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutReferredUsersInput {
     create?: InstanceType<typeof UserCreateWithoutReferredUsersInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutReferredUsersInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutSessionsInput {
     create?: InstanceType<typeof UserCreateWithoutSessionsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutSessionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutTransactionsInput {
     create?: InstanceType<typeof UserCreateWithoutTransactionsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutTransactionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateNestedOneWithoutUserNotificationsInput {
     create?: InstanceType<typeof UserCreateWithoutUserNotificationsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutUserNotificationsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserCreateOrConnectWithoutAccountsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutAccountsInput>;
 }
 export declare class UserCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutAddressInput>;
 }
 export declare class UserCreateOrConnectWithoutCheckInsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutCheckInsInput>;
 }
 export declare class UserCreateOrConnectWithoutClaimedRewardsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutClaimedRewardsInput>;
 }
 export declare class UserCreateOrConnectWithoutFilesCreatedInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutFilesCreatedInput>;
 }
 export declare class UserCreateOrConnectWithoutHotelsCreatedInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutHotelsCreatedInput>;
 }
 export declare class UserCreateOrConnectWithoutOrdersInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutOrdersInput>;
 }
 export declare class UserCreateOrConnectWithoutPointTransactionsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutPointTransactionsInput>;
 }
 export declare class UserCreateOrConnectWithoutProgramsCreatedInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutProgramsCreatedInput>;
 }
 export declare class UserCreateOrConnectWithoutProgramsParticipationInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutProgramsParticipationInput>;
 }
 export declare class UserCreateOrConnectWithoutProjectsInvestmentInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutProjectsInvestmentInput>;
 }
 export declare class UserCreateOrConnectWithoutReferredByInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutReferredByInput>;
 }
 export declare class UserCreateOrConnectWithoutReferredUsersInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutReferredUsersInput>;
 }
 export declare class UserCreateOrConnectWithoutSchoolInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutSchoolInput>;
 }
 export declare class UserCreateOrConnectWithoutSessionsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutSessionsInput>;
 }
 export declare class UserCreateOrConnectWithoutTransactionsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutTransactionsInput>;
 }
 export declare class UserCreateOrConnectWithoutUserNotificationsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutUserNotificationsInput>;
 }
 export declare class UserCreateWithoutAccountsInput {
@@ -15288,6 +15295,7 @@ export declare class UserCreateWithoutAccountsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15321,6 +15329,7 @@ export declare class UserCreateWithoutAddressInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15354,6 +15363,7 @@ export declare class UserCreateWithoutCheckInsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15387,6 +15397,7 @@ export declare class UserCreateWithoutClaimedRewardsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15420,6 +15431,7 @@ export declare class UserCreateWithoutFilesCreatedInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15453,6 +15465,7 @@ export declare class UserCreateWithoutHotelsCreatedInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15486,6 +15499,7 @@ export declare class UserCreateWithoutOrdersInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15519,6 +15533,7 @@ export declare class UserCreateWithoutPointTransactionsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15552,6 +15567,7 @@ export declare class UserCreateWithoutProgramsCreatedInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15585,6 +15601,7 @@ export declare class UserCreateWithoutProgramsParticipationInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15618,6 +15635,7 @@ export declare class UserCreateWithoutProjectsInvestmentInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15651,6 +15669,7 @@ export declare class UserCreateWithoutReferredByInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15684,6 +15703,7 @@ export declare class UserCreateWithoutReferredUsersInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15717,6 +15737,7 @@ export declare class UserCreateWithoutSchoolInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15750,6 +15771,7 @@ export declare class UserCreateWithoutSessionsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15783,6 +15805,7 @@ export declare class UserCreateWithoutTransactionsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15816,6 +15839,7 @@ export declare class UserCreateWithoutUserNotificationsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15849,6 +15873,7 @@ export declare class UserCreateInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -15897,6 +15922,7 @@ export declare class UserGroupBy {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status: keyof typeof UserStatus;
     schoolId?: number;
@@ -15927,6 +15953,7 @@ export declare class UserMaxAggregateInput {
     whatsappNumber?: true;
     whatsappVerifiedAt?: true;
     password?: true;
+    referralCode?: true;
     referredById?: true;
     status?: true;
     schoolId?: true;
@@ -15947,6 +15974,7 @@ export declare class UserMaxAggregate {
     whatsappNumber?: string;
     whatsappVerifiedAt?: Date | string;
     password?: string;
+    referralCode?: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -15967,6 +15995,7 @@ export declare class UserMaxOrderByAggregateInput {
     whatsappNumber?: keyof typeof SortOrder;
     whatsappVerifiedAt?: keyof typeof SortOrder;
     password?: keyof typeof SortOrder;
+    referralCode?: keyof typeof SortOrder;
     referredById?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
     schoolId?: keyof typeof SortOrder;
@@ -15987,6 +16016,7 @@ export declare class UserMinAggregateInput {
     whatsappNumber?: true;
     whatsappVerifiedAt?: true;
     password?: true;
+    referralCode?: true;
     referredById?: true;
     status?: true;
     schoolId?: true;
@@ -16007,6 +16037,7 @@ export declare class UserMinAggregate {
     whatsappNumber?: string;
     whatsappVerifiedAt?: Date | string;
     password?: string;
+    referralCode?: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16027,6 +16058,7 @@ export declare class UserMinOrderByAggregateInput {
     whatsappNumber?: keyof typeof SortOrder;
     whatsappVerifiedAt?: keyof typeof SortOrder;
     password?: keyof typeof SortOrder;
+    referralCode?: keyof typeof SortOrder;
     referredById?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
     schoolId?: keyof typeof SortOrder;
@@ -16054,6 +16086,7 @@ export declare class UserOrderByWithAggregationInput {
     whatsappNumber?: keyof typeof SortOrder;
     whatsappVerifiedAt?: InstanceType<typeof SortOrderInput>;
     password?: keyof typeof SortOrder;
+    referralCode?: keyof typeof SortOrder;
     referredById?: InstanceType<typeof SortOrderInput>;
     status?: keyof typeof SortOrder;
     schoolId?: InstanceType<typeof SortOrderInput>;
@@ -16079,6 +16112,7 @@ export declare class UserOrderByWithRelationInput {
     whatsappNumber?: keyof typeof SortOrder;
     whatsappVerifiedAt?: InstanceType<typeof SortOrderInput>;
     password?: keyof typeof SortOrder;
+    referralCode?: keyof typeof SortOrder;
     referredById?: InstanceType<typeof SortOrderInput>;
     status?: keyof typeof SortOrder;
     schoolId?: InstanceType<typeof SortOrderInput>;
@@ -16123,6 +16157,7 @@ export declare class UserScalarWhereWithAggregatesInput {
     whatsappNumber?: InstanceType<typeof StringWithAggregatesFilter>;
     whatsappVerifiedAt?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
     password?: InstanceType<typeof StringWithAggregatesFilter>;
+    referralCode?: InstanceType<typeof StringWithAggregatesFilter>;
     referredById?: InstanceType<typeof StringNullableWithAggregatesFilter>;
     status?: InstanceType<typeof EnumUserStatusWithAggregatesFilter>;
     schoolId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
@@ -16146,6 +16181,7 @@ export declare class UserScalarWhereInput {
     whatsappNumber?: InstanceType<typeof StringFilter>;
     whatsappVerifiedAt?: InstanceType<typeof DateTimeNullableFilter>;
     password?: InstanceType<typeof StringFilter>;
+    referralCode?: InstanceType<typeof StringFilter>;
     referredById?: InstanceType<typeof StringNullableFilter>;
     status?: InstanceType<typeof EnumUserStatusFilter>;
     schoolId?: InstanceType<typeof IntNullableFilter>;
@@ -16169,34 +16205,34 @@ export declare class UserSumOrderByAggregateInput {
 export declare class UserUncheckedCreateNestedManyWithoutClaimedRewardsInput {
     create?: Array<UserCreateWithoutClaimedRewardsInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutClaimedRewardsInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserUncheckedCreateNestedManyWithoutProgramsParticipationInput {
     create?: Array<UserCreateWithoutProgramsParticipationInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProgramsParticipationInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserUncheckedCreateNestedManyWithoutProjectsInvestmentInput {
     create?: Array<UserCreateWithoutProjectsInvestmentInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserUncheckedCreateNestedManyWithoutReferredByInput {
     create?: Array<UserCreateWithoutReferredByInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutReferredByInput>;
     createMany?: InstanceType<typeof UserCreateManyReferredByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserUncheckedCreateNestedManyWithoutSchoolInput {
     create?: Array<UserCreateWithoutSchoolInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutSchoolInput>;
     createMany?: InstanceType<typeof UserCreateManySchoolInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserUncheckedCreateNestedOneWithoutAddressInput {
     create?: InstanceType<typeof UserCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
 }
 export declare class UserUncheckedCreateWithoutAccountsInput {
     id?: string;
@@ -16210,6 +16246,7 @@ export declare class UserUncheckedCreateWithoutAccountsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16242,6 +16279,7 @@ export declare class UserUncheckedCreateWithoutAddressInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16276,6 +16314,7 @@ export declare class UserUncheckedCreateWithoutCheckInsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16309,6 +16348,7 @@ export declare class UserUncheckedCreateWithoutClaimedRewardsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16342,6 +16382,7 @@ export declare class UserUncheckedCreateWithoutFilesCreatedInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16375,6 +16416,7 @@ export declare class UserUncheckedCreateWithoutHotelsCreatedInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16408,6 +16450,7 @@ export declare class UserUncheckedCreateWithoutOrdersInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16441,6 +16484,7 @@ export declare class UserUncheckedCreateWithoutPointTransactionsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16474,6 +16518,7 @@ export declare class UserUncheckedCreateWithoutProgramsCreatedInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16507,6 +16552,7 @@ export declare class UserUncheckedCreateWithoutProgramsParticipationInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16540,6 +16586,7 @@ export declare class UserUncheckedCreateWithoutProjectsInvestmentInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16573,6 +16620,7 @@ export declare class UserUncheckedCreateWithoutReferredByInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
     createdAt?: Date | string;
@@ -16606,6 +16654,7 @@ export declare class UserUncheckedCreateWithoutReferredUsersInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16639,6 +16688,7 @@ export declare class UserUncheckedCreateWithoutSchoolInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     createdAt?: Date | string;
@@ -16672,6 +16722,7 @@ export declare class UserUncheckedCreateWithoutSessionsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16705,6 +16756,7 @@ export declare class UserUncheckedCreateWithoutTransactionsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16738,6 +16790,7 @@ export declare class UserUncheckedCreateWithoutUserNotificationsInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16771,6 +16824,7 @@ export declare class UserUncheckedCreateInput {
     whatsappNumber: string;
     whatsappVerifiedAt?: Date | string;
     password: string;
+    referralCode: string;
     referredById?: string;
     status?: keyof typeof UserStatus;
     schoolId?: number;
@@ -16797,10 +16851,10 @@ export declare class UserUncheckedUpdateManyWithoutClaimedRewardsNestedInput {
     create?: Array<UserCreateWithoutClaimedRewardsInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutClaimedRewardsInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutClaimedRewardsInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutClaimedRewardsInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutClaimedRewardsInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -16817,6 +16871,7 @@ export declare class UserUncheckedUpdateManyWithoutClaimedRewardsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -16829,10 +16884,10 @@ export declare class UserUncheckedUpdateManyWithoutProgramsParticipationNestedIn
     create?: Array<UserCreateWithoutProgramsParticipationInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProgramsParticipationInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutProgramsParticipationInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutProgramsParticipationInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutProgramsParticipationInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -16849,6 +16904,7 @@ export declare class UserUncheckedUpdateManyWithoutProgramsParticipationInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -16861,10 +16917,10 @@ export declare class UserUncheckedUpdateManyWithoutProjectsInvestmentNestedInput
     create?: Array<UserCreateWithoutProjectsInvestmentInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutProjectsInvestmentInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -16881,6 +16937,7 @@ export declare class UserUncheckedUpdateManyWithoutProjectsInvestmentInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -16894,10 +16951,10 @@ export declare class UserUncheckedUpdateManyWithoutReferredByNestedInput {
     connectOrCreate?: Array<UserCreateOrConnectWithoutReferredByInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutReferredByInput>;
     createMany?: InstanceType<typeof UserCreateManyReferredByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutReferredByInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutReferredByInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -16914,6 +16971,7 @@ export declare class UserUncheckedUpdateManyWithoutReferredByInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -16926,10 +16984,10 @@ export declare class UserUncheckedUpdateManyWithoutSchoolNestedInput {
     connectOrCreate?: Array<UserCreateOrConnectWithoutSchoolInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutSchoolInput>;
     createMany?: InstanceType<typeof UserCreateManySchoolInputEnvelope>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutSchoolInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutSchoolInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -16946,6 +17004,7 @@ export declare class UserUncheckedUpdateManyWithoutSchoolInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -16965,6 +17024,7 @@ export declare class UserUncheckedUpdateManyInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -16979,7 +17039,7 @@ export declare class UserUncheckedUpdateOneWithoutAddressNestedInput {
     upsert?: InstanceType<typeof UserUpsertWithoutAddressInput>;
     disconnect?: InstanceType<typeof UserWhereInput>;
     delete?: InstanceType<typeof UserWhereInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutAddressInput>;
 }
 export declare class UserUncheckedUpdateWithoutAccountsInput {
@@ -16994,6 +17054,7 @@ export declare class UserUncheckedUpdateWithoutAccountsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17026,6 +17087,7 @@ export declare class UserUncheckedUpdateWithoutAddressInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17060,6 +17122,7 @@ export declare class UserUncheckedUpdateWithoutCheckInsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17093,6 +17156,7 @@ export declare class UserUncheckedUpdateWithoutClaimedRewardsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17126,6 +17190,7 @@ export declare class UserUncheckedUpdateWithoutFilesCreatedInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17159,6 +17224,7 @@ export declare class UserUncheckedUpdateWithoutHotelsCreatedInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17192,6 +17258,7 @@ export declare class UserUncheckedUpdateWithoutOrdersInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17225,6 +17292,7 @@ export declare class UserUncheckedUpdateWithoutPointTransactionsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17258,6 +17326,7 @@ export declare class UserUncheckedUpdateWithoutProgramsCreatedInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17291,6 +17360,7 @@ export declare class UserUncheckedUpdateWithoutProgramsParticipationInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17324,6 +17394,7 @@ export declare class UserUncheckedUpdateWithoutProjectsInvestmentInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17357,6 +17428,7 @@ export declare class UserUncheckedUpdateWithoutReferredByInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17390,6 +17462,7 @@ export declare class UserUncheckedUpdateWithoutReferredUsersInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17423,6 +17496,7 @@ export declare class UserUncheckedUpdateWithoutSchoolInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17456,6 +17530,7 @@ export declare class UserUncheckedUpdateWithoutSessionsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17489,6 +17564,7 @@ export declare class UserUncheckedUpdateWithoutTransactionsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17522,6 +17598,7 @@ export declare class UserUncheckedUpdateWithoutUserNotificationsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17555,6 +17632,7 @@ export declare class UserUncheckedUpdateInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -17588,6 +17666,7 @@ export declare class UserUpdateManyMutationInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17618,10 +17697,10 @@ export declare class UserUpdateManyWithoutClaimedRewardsNestedInput {
     create?: Array<UserCreateWithoutClaimedRewardsInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutClaimedRewardsInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutClaimedRewardsInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutClaimedRewardsInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutClaimedRewardsInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -17630,10 +17709,10 @@ export declare class UserUpdateManyWithoutProgramsParticipationNestedInput {
     create?: Array<UserCreateWithoutProgramsParticipationInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProgramsParticipationInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutProgramsParticipationInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutProgramsParticipationInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutProgramsParticipationInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -17642,10 +17721,10 @@ export declare class UserUpdateManyWithoutProjectsInvestmentNestedInput {
     create?: Array<UserCreateWithoutProjectsInvestmentInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutProjectsInvestmentInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -17655,10 +17734,10 @@ export declare class UserUpdateManyWithoutReferredByNestedInput {
     connectOrCreate?: Array<UserCreateOrConnectWithoutReferredByInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutReferredByInput>;
     createMany?: InstanceType<typeof UserCreateManyReferredByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutReferredByInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutReferredByInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -17668,10 +17747,10 @@ export declare class UserUpdateManyWithoutSchoolNestedInput {
     connectOrCreate?: Array<UserCreateOrConnectWithoutSchoolInput>;
     upsert?: Array<UserUpsertWithWhereUniqueWithoutSchoolInput>;
     createMany?: InstanceType<typeof UserCreateManySchoolInputEnvelope>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>>;
+    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
+    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutSchoolInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutSchoolInput>;
     deleteMany?: Array<UserScalarWhereInput>;
@@ -17680,70 +17759,70 @@ export declare class UserUpdateOneRequiredWithoutAccountsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutAccountsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutAccountsInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutAccountsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutAccountsInput>;
 }
 export declare class UserUpdateOneRequiredWithoutCheckInsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutCheckInsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutCheckInsInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutCheckInsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutCheckInsInput>;
 }
 export declare class UserUpdateOneRequiredWithoutFilesCreatedNestedInput {
     create?: InstanceType<typeof UserCreateWithoutFilesCreatedInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutFilesCreatedInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutFilesCreatedInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutFilesCreatedInput>;
 }
 export declare class UserUpdateOneRequiredWithoutHotelsCreatedNestedInput {
     create?: InstanceType<typeof UserCreateWithoutHotelsCreatedInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutHotelsCreatedInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutHotelsCreatedInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutHotelsCreatedInput>;
 }
 export declare class UserUpdateOneRequiredWithoutOrdersNestedInput {
     create?: InstanceType<typeof UserCreateWithoutOrdersInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutOrdersInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutOrdersInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutOrdersInput>;
 }
 export declare class UserUpdateOneRequiredWithoutPointTransactionsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutPointTransactionsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutPointTransactionsInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutPointTransactionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutPointTransactionsInput>;
 }
 export declare class UserUpdateOneRequiredWithoutProgramsCreatedNestedInput {
     create?: InstanceType<typeof UserCreateWithoutProgramsCreatedInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutProgramsCreatedInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutProgramsCreatedInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutProgramsCreatedInput>;
 }
 export declare class UserUpdateOneRequiredWithoutSessionsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutSessionsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutSessionsInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutSessionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutSessionsInput>;
 }
 export declare class UserUpdateOneRequiredWithoutTransactionsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutTransactionsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutTransactionsInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutTransactionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutTransactionsInput>;
 }
 export declare class UserUpdateOneRequiredWithoutUserNotificationsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutUserNotificationsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutUserNotificationsInput>;
     upsert?: InstanceType<typeof UserUpsertWithoutUserNotificationsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutUserNotificationsInput>;
 }
 export declare class UserUpdateOneWithoutAddressNestedInput {
@@ -17752,7 +17831,7 @@ export declare class UserUpdateOneWithoutAddressNestedInput {
     upsert?: InstanceType<typeof UserUpsertWithoutAddressInput>;
     disconnect?: InstanceType<typeof UserWhereInput>;
     delete?: InstanceType<typeof UserWhereInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutAddressInput>;
 }
 export declare class UserUpdateOneWithoutReferredUsersNestedInput {
@@ -17761,7 +17840,7 @@ export declare class UserUpdateOneWithoutReferredUsersNestedInput {
     upsert?: InstanceType<typeof UserUpsertWithoutReferredUsersInput>;
     disconnect?: InstanceType<typeof UserWhereInput>;
     delete?: InstanceType<typeof UserWhereInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutReferredUsersInput>;
 }
 export declare class UserUpdateToOneWithWhereWithoutAccountsInput {
@@ -17813,23 +17892,23 @@ export declare class UserUpdateToOneWithWhereWithoutUserNotificationsInput {
     data: InstanceType<typeof UserUpdateWithoutUserNotificationsInput>;
 }
 export declare class UserUpdateWithWhereUniqueWithoutClaimedRewardsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutClaimedRewardsInput>;
 }
 export declare class UserUpdateWithWhereUniqueWithoutProgramsParticipationInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutProgramsParticipationInput>;
 }
 export declare class UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutProjectsInvestmentInput>;
 }
 export declare class UserUpdateWithWhereUniqueWithoutReferredByInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutReferredByInput>;
 }
 export declare class UserUpdateWithWhereUniqueWithoutSchoolInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutSchoolInput>;
 }
 export declare class UserUpdateWithoutAccountsInput {
@@ -17843,6 +17922,7 @@ export declare class UserUpdateWithoutAccountsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17876,6 +17956,7 @@ export declare class UserUpdateWithoutAddressInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17909,6 +17990,7 @@ export declare class UserUpdateWithoutCheckInsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17942,6 +18024,7 @@ export declare class UserUpdateWithoutClaimedRewardsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -17975,6 +18058,7 @@ export declare class UserUpdateWithoutFilesCreatedInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18008,6 +18092,7 @@ export declare class UserUpdateWithoutHotelsCreatedInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18041,6 +18126,7 @@ export declare class UserUpdateWithoutOrdersInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18074,6 +18160,7 @@ export declare class UserUpdateWithoutPointTransactionsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18107,6 +18194,7 @@ export declare class UserUpdateWithoutProgramsCreatedInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18140,6 +18228,7 @@ export declare class UserUpdateWithoutProgramsParticipationInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18173,6 +18262,7 @@ export declare class UserUpdateWithoutProjectsInvestmentInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18206,6 +18296,7 @@ export declare class UserUpdateWithoutReferredByInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18239,6 +18330,7 @@ export declare class UserUpdateWithoutReferredUsersInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18272,6 +18364,7 @@ export declare class UserUpdateWithoutSchoolInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18305,6 +18398,7 @@ export declare class UserUpdateWithoutSessionsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18338,6 +18432,7 @@ export declare class UserUpdateWithoutTransactionsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18371,6 +18466,7 @@ export declare class UserUpdateWithoutUserNotificationsInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18404,6 +18500,7 @@ export declare class UserUpdateInput {
     whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -18428,27 +18525,27 @@ export declare class UserUpdateInput {
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutClaimedRewardsInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update: InstanceType<typeof UserUpdateWithoutClaimedRewardsInput>;
     create: InstanceType<typeof UserCreateWithoutClaimedRewardsInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutProgramsParticipationInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update: InstanceType<typeof UserUpdateWithoutProgramsParticipationInput>;
     create: InstanceType<typeof UserCreateWithoutProgramsParticipationInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update: InstanceType<typeof UserUpdateWithoutProjectsInvestmentInput>;
     create: InstanceType<typeof UserCreateWithoutProjectsInvestmentInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutReferredByInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update: InstanceType<typeof UserUpdateWithoutReferredByInput>;
     create: InstanceType<typeof UserCreateWithoutReferredByInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutSchoolInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber'>;
+    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update: InstanceType<typeof UserUpdateWithoutSchoolInput>;
     create: InstanceType<typeof UserCreateWithoutSchoolInput>;
 }
@@ -18517,6 +18614,7 @@ export declare class UserWhereUniqueInput {
     email?: string;
     addressId?: number;
     whatsappNumber?: string;
+    referralCode?: string;
     AND?: Array<UserWhereInput>;
     OR?: Array<UserWhereInput>;
     NOT?: Array<UserWhereInput>;
@@ -18567,6 +18665,7 @@ export declare class UserWhereInput {
     whatsappNumber?: InstanceType<typeof StringFilter>;
     whatsappVerifiedAt?: InstanceType<typeof DateTimeNullableFilter>;
     password?: InstanceType<typeof StringFilter>;
+    referralCode?: InstanceType<typeof StringFilter>;
     referredById?: InstanceType<typeof StringNullableFilter>;
     status?: InstanceType<typeof EnumUserStatusFilter>;
     schoolId?: InstanceType<typeof IntNullableFilter>;
@@ -18604,6 +18703,7 @@ export declare class User {
     whatsappNumber: string;
     whatsappVerifiedAt: Date | null;
     password: string;
+    referralCode: string;
     referredById: string | null;
     status: keyof typeof UserStatus;
     schoolId: number | null;

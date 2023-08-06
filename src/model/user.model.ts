@@ -1,4 +1,4 @@
-import { Field, HideField, Int, ObjectType } from '@nestjs/graphql';
+import { Extensions, Field, HideField, Int, ObjectType } from '@nestjs/graphql';
 import {
   Address,
   CheckIn,
@@ -21,6 +21,7 @@ import {
   File,
 } from 'src/@generated';
 import * as G from 'src/@generated';
+import { checkRoleMiddleware } from 'src/middleware/check-role.middleware';
 
 @ObjectType()
 export class User extends G.User {
@@ -29,8 +30,9 @@ export class User extends G.User {
     description: 'Dwadidaw',
   })
   id!: string;
-  // @Field(() => String, { nullable: false })
-  // firstName!: string;
+  @Field(() => String, { nullable: false, middleware: [checkRoleMiddleware] })
+  @Extensions({ role: UserRole.MEMBER })
+  firstName!: string;
   // @Field(() => String, { nullable: true })
   // lastName!: string | null;
   // @Field(() => String, { nullable: false })

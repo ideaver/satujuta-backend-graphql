@@ -53,6 +53,7 @@ model City {
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
   name    String
+  /// @HideField()   
   address Address[] @relation("CityAddress")
 }
 
@@ -62,6 +63,7 @@ model District {
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
   name    String
+  /// @HideField()   
   address Address[] @relation("DistrictAddress")
 }
 
@@ -71,6 +73,7 @@ model PostalCode {
   /// @Validator.MinLength(3)
   /// @Validator.IsPostalCode('ID')
   code    Int       @unique
+  /// @HideField()   
   address Address[] @relation("PostalCodeAddress")
 }
 
@@ -150,6 +153,8 @@ model User {
   /// @Validator.IsAlphanumeric()
   /// @HideField({ output: true, input: false })
   password              String
+  /// @HideField({ output: false, input: true })
+  referralCode          String             @unique
   referredBy            User?              @relation("UserReferral", fields: [referredById], references: [id])
   /// @HideField({ output: false, input: true })   
   referredById          String?

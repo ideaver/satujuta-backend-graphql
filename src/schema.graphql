@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Auth {
+  """Example field (placeholder)"""
+  message: String!
+}
+
 type AccountAvgAggregate {
   id: Float
   accountNumber: Float
@@ -93,6 +98,7 @@ type UserAbstract {
   avatarUrl: String
   whatsappNumber: String!
   whatsappVerifiedAt: DateTime
+  referralCode: String!
   referredById: String
   status: UserStatus!
   schoolId: Int
@@ -324,7 +330,6 @@ type CitySumAggregate {
 type City {
   id: Int!
   name: String!
-  address: [Address!]
   _count: CityCount!
 }
 
@@ -359,7 +364,6 @@ type DistrictSumAggregate {
 type District {
   id: Int!
   name: String!
-  address: [Address!]
   _count: DistrictCount!
 }
 
@@ -959,7 +963,6 @@ type PostalCodeSumAggregate {
 type PostalCode {
   id: Int!
   code: Int!
-  address: [Address!]
   _count: PostalCodeCount!
 }
 
@@ -1503,6 +1506,7 @@ type UserCountAggregate {
   avatarUrl: Int!
   whatsappNumber: Int!
   whatsappVerifiedAt: Int!
+  referralCode: Int!
   referredById: Int!
   status: Int!
   schoolId: Int!
@@ -1541,6 +1545,7 @@ type UserMaxAggregate {
   avatarUrl: String
   whatsappNumber: String
   whatsappVerifiedAt: DateTime
+  referralCode: String
   referredById: String
   status: UserStatus
   schoolId: Int
@@ -1561,6 +1566,7 @@ type UserMinAggregate {
   avatarUrl: String
   whatsappNumber: String
   whatsappVerifiedAt: DateTime
+  referralCode: String
   referredById: String
   status: UserStatus
   schoolId: Int
@@ -1659,6 +1665,7 @@ type User {
   avatarUrl: String
   whatsappNumber: String!
   whatsappVerifiedAt: DateTime
+  referralCode: String!
   referredById: String
   status: UserStatus!
   schoolId: Int
@@ -1696,6 +1703,9 @@ type Query {
 
   """Default prisma query include nested address & checkIns"""
   hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
+  auth(id: Int!): Auth!
+  cityFindMany(cityNameSearch: String!): [City!]!
+  districtFindMany(districtNameSearch: String!): [District!]!
 }
 
 input UserFindManyArgs {
@@ -2738,6 +2748,7 @@ enum UserScalarFieldEnum {
   whatsappNumber
   whatsappVerifiedAt
   password
+  referralCode
   referredById
   status
   schoolId
@@ -2834,6 +2845,9 @@ type Mutation {
   userRemove(userId: String!): User
   hotelCreate(hotelCreateArgs: HotelCreateArgs!): Hotel!
   removeHotel(id: Int!): Hotel!
+  createAuth(createAuthInput: CreateAuthInput!): Auth!
+  resetPassword(email: String!): Auth!
+  removeAuth(id: Int!): Auth!
 }
 
 input UserCreateArgs {
@@ -6174,4 +6188,9 @@ input HotelCreateInput {
   address: AddressCreateNestedOneWithoutHotelInput!
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input CreateAuthInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }
