@@ -85,7 +85,8 @@ export class User extends G.User {
   // orders?: Array<Order>;
   // @Field(() => [Session], { nullable: true })
   // sessions?: Array<Session>;
-  // @Field(() => [Hotel], { nullable: true })
+  // @Field(() => [Hotel], { nullable: true, middleware: [checkRoleMiddleware] })
+  // @Extensions({ role: [UserRole.ADMIN, UserRole.SUPERUSER] })
   // hotelsCreated?: Array<Hotel>;
   // @Field(() => [Program], { nullable: true })
   // programsParticipation?: Array<Program>;

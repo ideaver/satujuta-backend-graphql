@@ -188,7 +188,7 @@ model User {
   orders                Order[]
   /// @HideField({ output: false, input: true })   
   sessions              Session[]
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })
   hotelsCreated         Hotel[]
   /// @HideField({ output: false, input: true })   
   programsParticipation Program[]          @relation("participant")
@@ -198,7 +198,7 @@ model User {
   claimedRewards        Reward[]           @relation("reward claimer")
   /// @HideField({ output: false, input: true })   
   userNotifications     UserNotification[]
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })   
   programsCreated       Program[]
   /// @HideField({ output: false, input: true })   
   filesCreated          File[]
@@ -404,7 +404,9 @@ model CheckIn {
   userId    String
   hotelId   Int
   checkInAt DateTime @default(now())
+  /// @HideField({ output: false, input: true }) 
   createdAt DateTime @default(now())
+  /// @HideField({ output: false, input: true }) 
   updatedAt DateTime @updatedAt
 }
 
@@ -523,11 +525,15 @@ model Program {
   description String
   Images      Images[]
   createdBy   User            @relation(fields: [createdById], references: [id])
-  createdById String          @unique
+  createdById String
+  /// @HideField({ match: 'ProgramCreate*Input' }) 
   participant User[]          @relation("participant")
   category    ProgramCategory @relation(fields: [categoryId], references: [id])
+  /// @HideField({ match: 'ProgramCreate*Input' }) 
   categoryId  Int
+  /// @HideField({ match: 'ProgramCreate*Input' }) 
   createdAt   DateTime        @default(now())
+  /// @HideField({ match: 'ProgramCreate*Input' }) 
   updatedAt   DateTime        @updatedAt
 }
 
