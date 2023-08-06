@@ -75,11 +75,73 @@ type Account {
   updatedAt: DateTime!
   userId: String!
   accountCategory: AccountCategory!
-  user: User!
+  user: UserAbstract!
   transactions: [Transaction!]
   project: Project
   bankAccount: Bank
   _count: AccountCount!
+}
+
+type UserAbstract {
+  id: String!
+  firstName: String!
+  lastName: String
+  email: String!
+  addressId: Int!
+  userRole: UserRole!
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  whatsappVerifiedAt: DateTime
+  referredById: String
+  status: UserStatus!
+  schoolId: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  theme: Theme!
+  address: Address!
+  referredBy: UserAbstract
+  referredUsers: [UserAbstract!]
+  checkIns: [CheckIn!]
+  school: School
+  accounts: [Account!]
+  transactions: [Transaction!]
+  PointTransactions: [PointTransaction!]
+  orders: [Order!]
+  sessions: [Session!]
+  hotelsCreated: [Hotel!]
+  programsParticipation: [Program!]
+  projectsInvestment: [Project!]
+  claimedRewards: [Reward!]
+  userNotifications: [UserNotification!]
+  programsCreated: [Program!]
+  filesCreated: [File!]
+  _count: UserCount!
+}
+
+enum UserRole {
+  MEMBER
+  ADMIN
+  SUPERUSER
+  STUDENT
+}
+
+enum UserType {
+  PARENT
+  SCHOOL_HEAD
+  STUDENT
+}
+
+enum UserStatus {
+  ACTIVE
+  PENDING
+  INACTIVE
+}
+
+enum Theme {
+  LIGHT
+  DARK
 }
 
 type AddressAvgAggregate {
@@ -130,7 +192,7 @@ type Address {
   city: City!
   district: District!
   postalCode: PostalCode!
-  user: User
+  user: UserAbstract
   hotel: Hotel
   school: School
   Shipping: Shipping
@@ -227,7 +289,7 @@ type CheckIn {
   checkInAt: DateTime!
   createdAt: DateTime!
   updatedAt: DateTime!
-  user: User!
+  user: UserAbstract!
   hotel: Hotel!
 }
 
@@ -398,7 +460,7 @@ type File {
   createdById: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  createdBy: User!
+  createdBy: UserAbstract!
 }
 
 type HotelAvgAggregate {
@@ -474,7 +536,7 @@ type Hotel {
   address: Address!
   images: [Images!]
   checkIns: [CheckIn!]
-  createdBy: User!
+  createdBy: UserAbstract!
   _count: HotelCount!
 }
 
@@ -579,13 +641,6 @@ type ItemMaxAggregate {
   orderId: Int
   createdAt: DateTime
   updatedAt: DateTime
-}
-
-enum UserRole {
-  MEMBER
-  ADMIN
-  SUPERUSER
-  STUDENT
 }
 
 type ItemMinAggregate {
@@ -700,7 +755,7 @@ type Order {
   total: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
-  orderBy: User!
+  orderBy: UserAbstract!
   items: [Item!]
   shipping: Shipping
   payments: [Payment!]
@@ -868,7 +923,7 @@ type PointTransaction {
   currentBalance: Float!
   userId: String!
   createdAt: DateTime!
-  User: User!
+  User: UserAbstract!
 }
 
 type PostalCodeAvgAggregate {
@@ -971,8 +1026,8 @@ type Program {
   createdAt: DateTime!
   updatedAt: DateTime!
   Images: [Images!]
-  createdBy: User!
-  participant: [User!]
+  createdBy: UserAbstract!
+  participant: [UserAbstract!]
   category: ProgramCategory!
   _count: ProgramCount!
 }
@@ -1118,7 +1173,7 @@ type Project {
   createdAt: DateTime!
   updatedAt: DateTime!
   images: [Images!]
-  investors: [User!]
+  investors: [UserAbstract!]
   account: Account!
   _count: ProjectCount!
 }
@@ -1174,7 +1229,7 @@ type Reward {
   createdAt: DateTime!
   updatedAt: DateTime!
   images: [Images!]
-  claimers: [User!]
+  claimers: [UserAbstract!]
   _count: RewardCount!
 }
 
@@ -1224,7 +1279,7 @@ type School {
   createdAt: DateTime!
   updatedAt: DateTime!
   address: Address!
-  students: [User!]
+  students: [UserAbstract!]
   _count: SchoolCount!
 }
 
@@ -1277,7 +1332,7 @@ type Session {
   userId: String!
   device: String!
   ipAddress: Float!
-  user: User!
+  user: UserAbstract!
 }
 
 type ShippingAvgAggregate {
@@ -1427,7 +1482,7 @@ type Transaction {
   userId: String!
   accountId: Int!
   createdAt: DateTime!
-  User: User!
+  User: UserAbstract!
   account: Account!
   payment: Payment
 }
@@ -1495,23 +1550,6 @@ type UserMaxAggregate {
   theme: Theme
 }
 
-enum UserType {
-  PARENT
-  SCHOOL_HEAD
-  STUDENT
-}
-
-enum UserStatus {
-  ACTIVE
-  PENDING
-  INACTIVE
-}
-
-enum Theme {
-  LIGHT
-  DARK
-}
-
 type UserMinAggregate {
   id: String
   firstName: String
@@ -1535,44 +1573,6 @@ type UserMinAggregate {
 type UserSumAggregate {
   addressId: Int
   schoolId: Int
-}
-
-type User {
-  id: String!
-  firstName: String!
-  lastName: String
-  email: String!
-  addressId: Int!
-  userRole: UserRole!
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  whatsappVerifiedAt: DateTime
-  referredById: String
-  status: UserStatus!
-  schoolId: Int
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  deletedAt: DateTime
-  theme: Theme!
-  address: Address!
-  referredBy: User
-  referredUsers: [User!]
-  checkIns: [CheckIn!]
-  school: School
-  accounts: [Account!]
-  transactions: [Transaction!]
-  PointTransactions: [PointTransaction!]
-  orders: [Order!]
-  sessions: [Session!]
-  hotelsCreated: [Hotel!]
-  programsParticipation: [Program!]
-  projectsInvestment: [Project!]
-  claimedRewards: [Reward!]
-  userNotifications: [UserNotification!]
-  programsCreated: [Program!]
-  filesCreated: [File!]
-  _count: UserCount!
 }
 
 type UserNotificationAvgAggregate {
@@ -1644,7 +1644,46 @@ type UserNotification {
   userId: String!
   deepLink: String
   fcmToken: String
-  user: User!
+  user: UserAbstract!
+}
+
+type User {
+  """Dwadidaw"""
+  id: String!
+  firstName: String!
+  lastName: String
+  email: String!
+  addressId: Int!
+  userRole: UserRole!
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  whatsappVerifiedAt: DateTime
+  referredById: String
+  status: UserStatus!
+  schoolId: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  theme: Theme!
+  address: Address!
+  referredBy: UserAbstract
+  referredUsers: [UserAbstract!]
+  checkIns: [CheckIn!]
+  school: School
+  accounts: [Account!]
+  transactions: [Transaction!]
+  PointTransactions: [PointTransaction!]
+  orders: [Order!]
+  sessions: [Session!]
+  hotelsCreated: [Hotel!]
+  programsParticipation: [Program!]
+  projectsInvestment: [Project!]
+  claimedRewards: [Reward!]
+  userNotifications: [UserNotification!]
+  programsCreated: [Program!]
+  filesCreated: [File!]
+  _count: UserCount!
 }
 
 type Query {

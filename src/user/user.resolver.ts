@@ -1,10 +1,19 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  Context,
+  Info,
+} from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { User } from 'src/@generated';
+import { PrismaSelect } from '@paljs/plugins';
+import { User } from 'src/model/user.model';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -24,7 +33,12 @@ export class UserResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  userFindMany(@Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs) {
+  userFindMany(
+    @Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs,
+    @Info() info: any,
+  ) {
+    const select = new PrismaSelect(info).dataModel;
+    console.log('select ' + JSON.stringify(select));
     return this.userService.findMany(userFindManyArgs);
   }
 

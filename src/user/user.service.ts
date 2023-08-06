@@ -4,8 +4,8 @@ import { PrismaService } from 'prisma/prisma.service';
 import { UserFindManyArgs as UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { User } from 'src/@generated';
 import { GraphQLError } from 'graphql';
+import { User } from 'src/model/user.model';
 
 @Injectable()
 export class UserService {

@@ -59131,7 +59131,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserCount, { nullable: false })
 ], User.prototype, "_count", void 0);
 User = User_1 = __decorate([
-    (0, graphql_5.ObjectType)()
+    (0, graphql_5.ObjectType)('UserAbstract', { isAbstract: true })
 ], User);
 exports.User = User;
 let AggregateUserNotification = class AggregateUserNotification {

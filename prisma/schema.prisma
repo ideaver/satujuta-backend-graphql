@@ -117,6 +117,7 @@ model School {
 }
 
 //Make CRU Available, implement soft delete
+/// @ObjectType('UserAbstract', { isAbstract: true })
 model User {
   /// @HideField({ match: 'UserCreate*Input' })
   id                    String             @id @default(uuid())
