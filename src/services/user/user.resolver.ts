@@ -55,7 +55,9 @@ export class UserResolver {
   }
 
   @Mutation(() => User, { description: 'Deskripsinya ada disini loh' })
-  updateUser(@Args('userUpdateOneArgs') userUpdateOneArgs: UserUpdateOneArgs) {
+  userUpdateOne(
+    @Args('userUpdateOneArgs') userUpdateOneArgs: UserUpdateOneArgs,
+  ) {
     return this.userService.update(userUpdateOneArgs);
   }
 

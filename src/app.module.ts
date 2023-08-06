@@ -10,6 +10,8 @@ import { UserModule } from './services/user/user.module';
 import { HotelModule } from './services/hotel/hotel.module';
 import { CityModule } from './services/city/city.module';
 import { DistrictModule } from './services/district/district';
+import { PostalCodeModule } from './services/postal-code/postal-code.module';
+import { BankModule } from './services/bank/bank.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { DistrictModule } from './services/district/district';
     AuthModule,
     CityModule,
     DistrictModule,
+    PostalCodeModule,
+    BankModule,
   ],
   controllers: [],
   providers: [PrismaService],

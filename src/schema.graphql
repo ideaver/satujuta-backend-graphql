@@ -246,8 +246,6 @@ type Bank {
   name: String!
   logoUrl: String!
   accountNumber: Int!
-  accountId: Int!
-  account: Account!
 }
 
 type CheckInAvgAggregate {
@@ -1706,6 +1704,8 @@ type Query {
   auth(id: Int!): Auth!
   cityFindMany(cityNameSearch: String!): [City!]!
   districtFindMany(districtNameSearch: String!): [District!]!
+  postalCodeFindMany: [PostalCode!]!
+  bankFindMany: [Bank!]!
 }
 
 input UserFindManyArgs {
@@ -1771,6 +1771,7 @@ input UserWhereInput {
   avatarUrl: StringNullableFilter
   whatsappNumber: StringFilter
   password: StringFilter
+  referralCode: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   deletedAt: DateTimeNullableFilter
@@ -2552,9 +2553,6 @@ input SchoolWhereInput {
   NOT: [SchoolWhereInput!]
   id: IntFilter
   name: StringFilter
-  addressId: IntFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
   address: AddressRelationFilter
   students: UserListRelationFilter
 }
@@ -2569,6 +2567,7 @@ input UserOrderByWithRelationInput {
   avatarUrl: SortOrderInput
   whatsappNumber: SortOrder
   password: SortOrder
+  referralCode: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
   deletedAt: SortOrderInput
@@ -2660,9 +2659,6 @@ input CheckInOrderByRelationAggregateInput {
 input SchoolOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
-  addressId: SortOrder
-  createdAt: SortOrder
-  updatedAt: SortOrder
   address: AddressOrderByWithRelationInput
   students: UserOrderByRelationAggregateInput
 }
@@ -2716,6 +2712,7 @@ input UserWhereUniqueInput {
   id: String
   email: String
   whatsappNumber: String
+  referralCode: String
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -2837,7 +2834,7 @@ type Mutation {
   userCreate(userCreateArgs: UserCreateArgs!): User
 
   """Deskripsinya ada disini loh"""
-  updateUser(userUpdateOneArgs: UserUpdateOneArgs!): User!
+  userUpdateOne(userUpdateOneArgs: UserUpdateOneArgs!): User!
 
   """
   Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas user akan terisi. select: { id: true, firstName: true, deletedAt: true }
@@ -3129,8 +3126,6 @@ input SchoolCreateNestedOneWithoutStudentsInput {
 
 input SchoolCreateWithoutStudentsInput {
   name: String!
-  createdAt: DateTime
-  updatedAt: DateTime
   address: AddressCreateNestedOneWithoutSchoolInput!
 }
 
@@ -3159,13 +3154,10 @@ input SchoolCreateOrConnectWithoutStudentsInput {
 
 input SchoolWhereUniqueInput {
   id: Int
-  addressId: Int
   AND: [SchoolWhereInput!]
   OR: [SchoolWhereInput!]
   NOT: [SchoolWhereInput!]
   name: StringFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
   address: AddressRelationFilter
   students: UserListRelationFilter
 }
@@ -3225,7 +3217,6 @@ input UserUpdateOneArgs {
 }
 
 input UserUpdateInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3621,7 +3612,6 @@ input UserUpsertWithoutProgramsCreatedInput {
 }
 
 input UserUpdateWithoutProgramsCreatedInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3658,7 +3648,6 @@ input UserUpsertWithoutReferredUsersInput {
 }
 
 input UserUpdateWithoutReferredUsersInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3792,7 +3781,6 @@ input UserUpsertWithoutAddressInput {
 }
 
 input UserUpdateWithoutAddressInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3852,7 +3840,6 @@ input UserUpsertWithWhereUniqueWithoutReferredByInput {
 }
 
 input UserUpdateWithoutReferredByInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -3889,8 +3876,6 @@ input SchoolUpsertWithoutStudentsInput {
 
 input SchoolUpdateWithoutStudentsInput {
   name: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutSchoolNestedInput
 }
 
@@ -4519,7 +4504,6 @@ input UserUpsertWithoutOrdersInput {
 }
 
 input UserUpdateWithoutOrdersInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4685,7 +4669,6 @@ input UserUpsertWithoutTransactionsInput {
 }
 
 input UserUpdateWithoutTransactionsInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4755,7 +4738,6 @@ input UserUpsertWithoutAccountsInput {
 }
 
 input UserUpdateWithoutAccountsInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -4971,7 +4953,6 @@ input UserUpsertWithoutCheckInsInput {
 }
 
 input UserUpdateWithoutCheckInsInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -5051,7 +5032,6 @@ input UserUpsertWithoutHotelsCreatedInput {
 }
 
 input UserUpdateWithoutHotelsCreatedInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -5181,7 +5161,6 @@ input UserUpsertWithWhereUniqueWithoutClaimedRewardsInput {
 }
 
 input UserUpdateWithoutClaimedRewardsInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -5224,6 +5203,7 @@ input UserScalarWhereInput {
   avatarUrl: StringNullableFilter
   whatsappNumber: StringFilter
   password: StringFilter
+  referralCode: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   deletedAt: DateTimeNullableFilter
@@ -5231,7 +5211,6 @@ input UserScalarWhereInput {
 }
 
 input UserUpdateManyMutationInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -5303,7 +5282,6 @@ input UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput {
 }
 
 input UserUpdateWithoutProjectsInvestmentInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -5494,53 +5472,6 @@ input SchoolUpdateOneWithoutAddressNestedInput {
 
 input SchoolCreateWithoutAddressInput {
   name: String!
-  createdAt: DateTime
-  updatedAt: DateTime
-  students: UserCreateNestedManyWithoutSchoolInput
-}
-
-input UserCreateNestedManyWithoutSchoolInput {
-  create: [UserCreateWithoutSchoolInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
-  createMany: UserCreateManySchoolInputEnvelope
-  connect: [UserWhereUniqueInput!]
-}
-
-input UserCreateWithoutSchoolInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  checkIns: CheckInCreateNestedManyWithoutUserInput
-}
-
-input UserCreateOrConnectWithoutSchoolInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutSchoolInput!
-}
-
-input UserCreateManySchoolInputEnvelope {
-  data: [UserCreateManySchoolInput!]!
-  skipDuplicates: Boolean
-}
-
-input UserCreateManySchoolInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
 }
 
 input SchoolCreateOrConnectWithoutAddressInput {
@@ -5556,59 +5487,6 @@ input SchoolUpsertWithoutAddressInput {
 
 input SchoolUpdateWithoutAddressInput {
   name: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  students: UserUpdateManyWithoutSchoolNestedInput
-}
-
-input UserUpdateManyWithoutSchoolNestedInput {
-  create: [UserCreateWithoutSchoolInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutSchoolInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutSchoolInput!]
-  createMany: UserCreateManySchoolInputEnvelope
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutSchoolInput!]
-  updateMany: [UserUpdateManyWithWhereWithoutSchoolInput!]
-  deleteMany: [UserScalarWhereInput!]
-}
-
-input UserUpsertWithWhereUniqueWithoutSchoolInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutSchoolInput!
-  create: UserCreateWithoutSchoolInput!
-}
-
-input UserUpdateWithoutSchoolInput {
-  id: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-}
-
-input UserUpdateWithWhereUniqueWithoutSchoolInput {
-  where: UserWhereUniqueInput!
-  data: UserUpdateWithoutSchoolInput!
-}
-
-input UserUpdateManyWithWhereWithoutSchoolInput {
-  where: UserScalarWhereInput!
-  data: UserUpdateManyMutationInput!
 }
 
 input SchoolUpdateToOneWithWhereWithoutAddressInput {
@@ -5666,7 +5544,6 @@ input UserUpsertWithWhereUniqueWithoutProgramsParticipationInput {
 }
 
 input UserUpdateWithoutProgramsParticipationInput {
-  id: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   lastName: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput

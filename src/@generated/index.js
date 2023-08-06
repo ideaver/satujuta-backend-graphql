@@ -6957,10 +6957,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Bank.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], Bank.prototype, "accountId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Account, { nullable: false })
+    (0, graphql_8.HideField)()
 ], Bank.prototype, "account", void 0);
 Bank = __decorate([
     (0, graphql_5.ObjectType)()
@@ -40039,7 +40039,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolAvgAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolAvgAggregateInput.prototype, "addressId", void 0);
 SchoolAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40063,7 +40063,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolAvgOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolAvgOrderByAggregateInput.prototype, "addressId", void 0);
 SchoolAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40078,13 +40078,13 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolCountAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCountAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCountAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCountAggregateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -40126,13 +40126,13 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolCountOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCountOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCountOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCountOrderByAggregateInput.prototype, "updatedAt", void 0);
 SchoolCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40150,7 +40150,7 @@ exports.SchoolCount = SchoolCount;
 let SchoolCreateManyInput = class SchoolCreateManyInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateManyInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -40158,13 +40158,13 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolCreateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], SchoolCreateManyInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateManyInput.prototype, "updatedAt", void 0);
 SchoolCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40242,13 +40242,13 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolCreateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutSchoolInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateWithoutAddressInput.prototype, "students", void 0);
 SchoolCreateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40262,10 +40262,10 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolCreateWithoutStudentsInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateWithoutStudentsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateWithoutStudentsInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressCreateNestedOneWithoutSchoolInput, { nullable: false })
@@ -40282,16 +40282,16 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressCreateNestedOneWithoutSchoolInput, { nullable: false })
 ], SchoolCreateInput.prototype, "address", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutSchoolInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolCreateInput.prototype, "students", void 0);
 SchoolCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40382,13 +40382,13 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolMaxAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMaxAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMaxAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMaxAggregateInput.prototype, "updatedAt", void 0);
 SchoolMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40424,13 +40424,13 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolMaxOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMaxOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMaxOrderByAggregateInput.prototype, "updatedAt", void 0);
 SchoolMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40445,13 +40445,13 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolMinAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMinAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMinAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMinAggregateInput.prototype, "updatedAt", void 0);
 SchoolMinAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40487,13 +40487,13 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolMinOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMinOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMinOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolMinOrderByAggregateInput.prototype, "updatedAt", void 0);
 SchoolMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40520,13 +40520,13 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolOrderByWithAggregationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolOrderByWithAggregationInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolOrderByWithAggregationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolOrderByWithAggregationInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SchoolCountOrderByAggregateInput, { nullable: true })
@@ -40556,13 +40556,13 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolOrderByWithRelationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolOrderByWithRelationInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolOrderByWithRelationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolOrderByWithRelationInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressOrderByWithRelationInput, { nullable: true })
@@ -40592,13 +40592,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], SchoolScalarWhereWithAggregatesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolScalarWhereWithAggregatesInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolScalarWhereWithAggregatesInput.prototype, "updatedAt", void 0);
 SchoolScalarWhereWithAggregatesInput = SchoolScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -40610,7 +40610,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolSumAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolSumAggregateInput.prototype, "addressId", void 0);
 SchoolSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40634,7 +40634,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolSumOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolSumOrderByAggregateInput.prototype, "addressId", void 0);
 SchoolSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40669,10 +40669,10 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolUncheckedCreateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedCreateNestedManyWithoutSchoolInput, { nullable: true })
@@ -40692,13 +40692,13 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "updatedAt", void 0);
 SchoolUncheckedCreateWithoutStudentsInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40715,13 +40715,13 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolUncheckedCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedCreateNestedManyWithoutSchoolInput, { nullable: true })
@@ -40739,13 +40739,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateManyInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateManyInput.prototype, "updatedAt", void 0);
 SchoolUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40794,10 +40794,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedUpdateManyWithoutSchoolNestedInput, { nullable: true })
@@ -40815,13 +40815,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "updatedAt", void 0);
 SchoolUncheckedUpdateWithoutStudentsInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40836,13 +40836,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUncheckedUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedUpdateManyWithoutSchoolNestedInput, { nullable: true })
@@ -40857,10 +40857,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUpdateManyMutationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateManyMutationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateManyMutationInput.prototype, "updatedAt", void 0);
 SchoolUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40968,13 +40968,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUpdateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateManyWithoutSchoolNestedInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateWithoutAddressInput.prototype, "students", void 0);
 SchoolUpdateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
@@ -40986,10 +40986,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUpdateWithoutStudentsInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateWithoutStudentsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateWithoutStudentsInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressUpdateOneRequiredWithoutSchoolNestedInput, { nullable: true })
@@ -41004,16 +41004,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressUpdateOneRequiredWithoutSchoolNestedInput, { nullable: true })
 ], SchoolUpdateInput.prototype, "address", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateManyWithoutSchoolNestedInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolUpdateInput.prototype, "students", void 0);
 SchoolUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41061,7 +41061,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], SchoolWhereUniqueInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolWhereUniqueInput.prototype, "addressId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [SchoolWhereInput], { nullable: true })
@@ -41076,10 +41076,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], SchoolWhereUniqueInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolWhereUniqueInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressRelationFilter, { nullable: true })
@@ -41109,13 +41109,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], SchoolWhereInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolWhereInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], SchoolWhereInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressRelationFilter, { nullable: true })
@@ -47287,7 +47287,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserCountAggregateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserCountAggregateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -47419,7 +47419,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserCountOrderByAggregateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserCountOrderByAggregateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -50557,7 +50557,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMaxAggregateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMaxAggregateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -50683,7 +50683,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMaxOrderByAggregateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMaxOrderByAggregateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -50746,7 +50746,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMinAggregateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMinAggregateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -50872,7 +50872,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMinOrderByAggregateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMinOrderByAggregateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -50956,7 +50956,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserOrderByWithAggregationInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserOrderByWithAggregationInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51034,7 +51034,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51169,7 +51169,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], UserScalarWhereWithAggregatesInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], UserScalarWhereWithAggregatesInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51241,7 +51241,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], UserScalarWhereInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], UserScalarWhereInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51470,7 +51470,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51583,7 +51583,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutAddressInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51702,7 +51702,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51818,7 +51818,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51934,7 +51934,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52050,7 +52050,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52166,7 +52166,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52282,7 +52282,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52398,7 +52398,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52514,7 +52514,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52630,7 +52630,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52746,7 +52746,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52862,7 +52862,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52978,7 +52978,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53094,7 +53094,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53210,7 +53210,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutTransactionsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutTransactionsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53326,7 +53326,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53442,7 +53442,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], UserUncheckedCreateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], UserUncheckedCreateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53593,7 +53593,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutClaimedRewardsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutClaimedRewardsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53702,7 +53702,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutProgramsParticipationInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutProgramsParticipationInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53811,7 +53811,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutProjectsInvestmentInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutProjectsInvestmentInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53924,7 +53924,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutReferredByInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutReferredByInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54034,7 +54034,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutSchoolInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutSchoolInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54094,7 +54094,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54191,7 +54191,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54290,7 +54290,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54395,7 +54395,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54497,7 +54497,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54599,7 +54599,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54701,7 +54701,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54803,7 +54803,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54905,7 +54905,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55007,7 +55007,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55109,7 +55109,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55211,7 +55211,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55313,7 +55313,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55415,7 +55415,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55517,7 +55517,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55619,7 +55619,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55721,7 +55721,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutTransactionsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutTransactionsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55823,7 +55823,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55925,7 +55925,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55997,7 +55997,7 @@ exports.UserUncheckedUpdateInput = UserUncheckedUpdateInput;
 let UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateManyMutationInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -56925,7 +56925,7 @@ exports.UserUpdateWithWhereUniqueWithoutSchoolInput = UserUpdateWithWhereUniqueW
 let UserUpdateWithoutAccountsInput = class UserUpdateWithoutAccountsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57027,7 +57027,7 @@ exports.UserUpdateWithoutAccountsInput = UserUpdateWithoutAccountsInput;
 let UserUpdateWithoutAddressInput = class UserUpdateWithoutAddressInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57129,7 +57129,7 @@ exports.UserUpdateWithoutAddressInput = UserUpdateWithoutAddressInput;
 let UserUpdateWithoutCheckInsInput = class UserUpdateWithoutCheckInsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57231,7 +57231,7 @@ exports.UserUpdateWithoutCheckInsInput = UserUpdateWithoutCheckInsInput;
 let UserUpdateWithoutClaimedRewardsInput = class UserUpdateWithoutClaimedRewardsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57333,7 +57333,7 @@ exports.UserUpdateWithoutClaimedRewardsInput = UserUpdateWithoutClaimedRewardsIn
 let UserUpdateWithoutFilesCreatedInput = class UserUpdateWithoutFilesCreatedInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57435,7 +57435,7 @@ exports.UserUpdateWithoutFilesCreatedInput = UserUpdateWithoutFilesCreatedInput;
 let UserUpdateWithoutHotelsCreatedInput = class UserUpdateWithoutHotelsCreatedInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57537,7 +57537,7 @@ exports.UserUpdateWithoutHotelsCreatedInput = UserUpdateWithoutHotelsCreatedInpu
 let UserUpdateWithoutOrdersInput = class UserUpdateWithoutOrdersInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57639,7 +57639,7 @@ exports.UserUpdateWithoutOrdersInput = UserUpdateWithoutOrdersInput;
 let UserUpdateWithoutPointTransactionsInput = class UserUpdateWithoutPointTransactionsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57741,7 +57741,7 @@ exports.UserUpdateWithoutPointTransactionsInput = UserUpdateWithoutPointTransact
 let UserUpdateWithoutProgramsCreatedInput = class UserUpdateWithoutProgramsCreatedInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57843,7 +57843,7 @@ exports.UserUpdateWithoutProgramsCreatedInput = UserUpdateWithoutProgramsCreated
 let UserUpdateWithoutProgramsParticipationInput = class UserUpdateWithoutProgramsParticipationInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -57945,7 +57945,7 @@ exports.UserUpdateWithoutProgramsParticipationInput = UserUpdateWithoutProgramsP
 let UserUpdateWithoutProjectsInvestmentInput = class UserUpdateWithoutProjectsInvestmentInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58047,7 +58047,7 @@ exports.UserUpdateWithoutProjectsInvestmentInput = UserUpdateWithoutProjectsInve
 let UserUpdateWithoutReferredByInput = class UserUpdateWithoutReferredByInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58149,7 +58149,7 @@ exports.UserUpdateWithoutReferredByInput = UserUpdateWithoutReferredByInput;
 let UserUpdateWithoutReferredUsersInput = class UserUpdateWithoutReferredUsersInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58251,7 +58251,7 @@ exports.UserUpdateWithoutReferredUsersInput = UserUpdateWithoutReferredUsersInpu
 let UserUpdateWithoutSchoolInput = class UserUpdateWithoutSchoolInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58353,7 +58353,7 @@ exports.UserUpdateWithoutSchoolInput = UserUpdateWithoutSchoolInput;
 let UserUpdateWithoutSessionsInput = class UserUpdateWithoutSessionsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58455,7 +58455,7 @@ exports.UserUpdateWithoutSessionsInput = UserUpdateWithoutSessionsInput;
 let UserUpdateWithoutTransactionsInput = class UserUpdateWithoutTransactionsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutTransactionsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58557,7 +58557,7 @@ exports.UserUpdateWithoutTransactionsInput = UserUpdateWithoutTransactionsInput;
 let UserUpdateWithoutUserNotificationsInput = class UserUpdateWithoutUserNotificationsInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -58659,7 +58659,7 @@ exports.UserUpdateWithoutUserNotificationsInput = UserUpdateWithoutUserNotificat
 let UserUpdateInput = class UserUpdateInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], UserUpdateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -59084,7 +59084,7 @@ __decorate([
     Validator.IsNotEmpty()
 ], UserWhereUniqueInput.prototype, "whatsappNumber", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], UserWhereUniqueInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [UserWhereInput], { nullable: true })
@@ -59237,7 +59237,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], UserWhereInput.prototype, "password", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], UserWhereInput.prototype, "referralCode", void 0);
 __decorate([
     (0, graphql_8.HideField)()

@@ -7,6 +7,7 @@ import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { GraphQLError } from 'graphql';
 import { User } from 'src/model/user.model';
 import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code';
+import { AccountCategory } from 'src/@generated';
 
 @Injectable()
 export class UserService {
@@ -28,20 +29,24 @@ export class UserService {
     //   .then((postalCode) => {
     //     console.log('postalCode created ' + postalCode);
     //   });
-    // await this.prisma.bank.create({
-    //   data: {
-    //     name: 'BCA',
-    //     accountNumber: 2572653525,
-    //     logoUrl: 'https://www.google.com/jfdggfpg',
-    //     account: {
-    //       create: {
-    //         name: 'BCA Bank Account',
-    //         accountCategory: AccountCategory.PLATFORM,
-    //         user: { connect: { id: '92853b58-f8fe-45a1-a41b-83c9eb812ea8' } },
+    // await this.prisma.bank
+    //   .create({
+    //     data: {
+    //       name: 'BCA',
+    //       accountNumber: 2572653525,
+    //       logoUrl: 'https://www.google.com/jfdggfpg',
+    //       account: {
+    //         create: {
+    //           name: 'BCA Bank Account',
+    //           accountCategory: AccountCategory.PLATFORM,
+    //           user: { connect: { id: '5bfa338c-dd73-4435-b9b9-701ad364a355' } },
+    //         },
     //       },
     //     },
-    //   },
-    // }).then((bank) => {console.log('bank created ' + bank)});
+    //   })
+    //   .then((bank) => {
+    //     console.log('bank created ' + bank);
+    //   });
 
     userCreateArgs.data.referralCode = generateRandomReferralCode();
     return await this.prisma.user
