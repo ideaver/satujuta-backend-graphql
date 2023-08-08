@@ -10032,12 +10032,12 @@ export declare class DeleteManyProgramArgs {
     where?: InstanceType<typeof ProgramWhereInput>;
 }
 export declare class DeleteOneProgramArgs {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
 }
 export declare class FindFirstProgramOrThrowArgs {
     where?: InstanceType<typeof ProgramWhereInput>;
     orderBy?: Array<ProgramOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof ProgramScalarFieldEnum>;
@@ -10045,7 +10045,7 @@ export declare class FindFirstProgramOrThrowArgs {
 export declare class FindFirstProgramArgs {
     where?: InstanceType<typeof ProgramWhereInput>;
     orderBy?: Array<ProgramOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof ProgramScalarFieldEnum>;
@@ -10053,21 +10053,21 @@ export declare class FindFirstProgramArgs {
 export declare class FindManyProgramArgs {
     where?: InstanceType<typeof ProgramWhereInput>;
     orderBy?: Array<ProgramOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof ProgramScalarFieldEnum>;
 }
 export declare class FindUniqueProgramOrThrowArgs {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
 }
 export declare class FindUniqueProgramArgs {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
 }
 export declare class ProgramAggregateArgs {
     where?: InstanceType<typeof ProgramWhereInput>;
     orderBy?: Array<ProgramOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof ProgramCountAggregateInput>;
@@ -10170,38 +10170,38 @@ export declare class ProgramCreateNestedManyWithoutCategoryInput {
     create?: Array<ProgramCreateWithoutCategoryInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCategoryInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCategoryInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
 }
 export declare class ProgramCreateNestedManyWithoutCreatedByInput {
     create?: Array<ProgramCreateWithoutCreatedByInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCreatedByInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCreatedByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
 }
 export declare class ProgramCreateNestedManyWithoutParticipantInput {
     create?: Array<ProgramCreateWithoutParticipantInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutParticipantInput>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
 }
 export declare class ProgramCreateNestedOneWithoutImagesInput {
     create?: InstanceType<typeof ProgramCreateWithoutImagesInput>;
     connectOrCreate?: InstanceType<typeof ProgramCreateOrConnectWithoutImagesInput>;
-    connect?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    connect?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
 }
 export declare class ProgramCreateOrConnectWithoutCategoryInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     create: InstanceType<typeof ProgramCreateWithoutCategoryInput>;
 }
 export declare class ProgramCreateOrConnectWithoutCreatedByInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     create: InstanceType<typeof ProgramCreateWithoutCreatedByInput>;
 }
 export declare class ProgramCreateOrConnectWithoutImagesInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     create: InstanceType<typeof ProgramCreateWithoutImagesInput>;
 }
 export declare class ProgramCreateOrConnectWithoutParticipantInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     create: InstanceType<typeof ProgramCreateWithoutParticipantInput>;
 }
 export declare class ProgramCreateWithoutCategoryInput {
@@ -10442,18 +10442,18 @@ export declare class ProgramUncheckedCreateNestedManyWithoutCategoryInput {
     create?: Array<ProgramCreateWithoutCategoryInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCategoryInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCategoryInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
 }
 export declare class ProgramUncheckedCreateNestedManyWithoutCreatedByInput {
     create?: Array<ProgramCreateWithoutCreatedByInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCreatedByInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCreatedByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
 }
 export declare class ProgramUncheckedCreateNestedManyWithoutParticipantInput {
     create?: Array<ProgramCreateWithoutParticipantInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutParticipantInput>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
 }
 export declare class ProgramUncheckedCreateWithoutCategoryInput {
     id?: number;
@@ -10521,10 +10521,10 @@ export declare class ProgramUncheckedUpdateManyWithoutCategoryNestedInput {
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCategoryInput>;
     upsert?: Array<ProgramUpsertWithWhereUniqueWithoutCategoryInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCategoryInputEnvelope>;
-    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
     update?: Array<ProgramUpdateWithWhereUniqueWithoutCategoryInput>;
     updateMany?: Array<ProgramUpdateManyWithWhereWithoutCategoryInput>;
     deleteMany?: Array<ProgramScalarWhereInput>;
@@ -10544,10 +10544,10 @@ export declare class ProgramUncheckedUpdateManyWithoutCreatedByNestedInput {
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCreatedByInput>;
     upsert?: Array<ProgramUpsertWithWhereUniqueWithoutCreatedByInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCreatedByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
     update?: Array<ProgramUpdateWithWhereUniqueWithoutCreatedByInput>;
     updateMany?: Array<ProgramUpdateManyWithWhereWithoutCreatedByInput>;
     deleteMany?: Array<ProgramScalarWhereInput>;
@@ -10566,10 +10566,10 @@ export declare class ProgramUncheckedUpdateManyWithoutParticipantNestedInput {
     create?: Array<ProgramCreateWithoutParticipantInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutParticipantInput>;
     upsert?: Array<ProgramUpsertWithWhereUniqueWithoutParticipantInput>;
-    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
     update?: Array<ProgramUpdateWithWhereUniqueWithoutParticipantInput>;
     updateMany?: Array<ProgramUpdateManyWithWhereWithoutParticipantInput>;
     deleteMany?: Array<ProgramScalarWhereInput>;
@@ -10682,10 +10682,10 @@ export declare class ProgramUpdateManyWithoutCategoryNestedInput {
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCategoryInput>;
     upsert?: Array<ProgramUpsertWithWhereUniqueWithoutCategoryInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCategoryInputEnvelope>;
-    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
     update?: Array<ProgramUpdateWithWhereUniqueWithoutCategoryInput>;
     updateMany?: Array<ProgramUpdateManyWithWhereWithoutCategoryInput>;
     deleteMany?: Array<ProgramScalarWhereInput>;
@@ -10695,10 +10695,10 @@ export declare class ProgramUpdateManyWithoutCreatedByNestedInput {
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutCreatedByInput>;
     upsert?: Array<ProgramUpsertWithWhereUniqueWithoutCreatedByInput>;
     createMany?: InstanceType<typeof ProgramCreateManyCreatedByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
     update?: Array<ProgramUpdateWithWhereUniqueWithoutCreatedByInput>;
     updateMany?: Array<ProgramUpdateManyWithWhereWithoutCreatedByInput>;
     deleteMany?: Array<ProgramScalarWhereInput>;
@@ -10707,10 +10707,10 @@ export declare class ProgramUpdateManyWithoutParticipantNestedInput {
     create?: Array<ProgramCreateWithoutParticipantInput>;
     connectOrCreate?: Array<ProgramCreateOrConnectWithoutParticipantInput>;
     upsert?: Array<ProgramUpsertWithWhereUniqueWithoutParticipantInput>;
-    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>>;
     update?: Array<ProgramUpdateWithWhereUniqueWithoutParticipantInput>;
     updateMany?: Array<ProgramUpdateManyWithWhereWithoutParticipantInput>;
     deleteMany?: Array<ProgramScalarWhereInput>;
@@ -10721,7 +10721,7 @@ export declare class ProgramUpdateOneWithoutImagesNestedInput {
     upsert?: InstanceType<typeof ProgramUpsertWithoutImagesInput>;
     disconnect?: InstanceType<typeof ProgramWhereInput>;
     delete?: InstanceType<typeof ProgramWhereInput>;
-    connect?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    connect?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof ProgramUpdateToOneWithWhereWithoutImagesInput>;
 }
 export declare class ProgramUpdateToOneWithWhereWithoutImagesInput {
@@ -10729,15 +10729,15 @@ export declare class ProgramUpdateToOneWithWhereWithoutImagesInput {
     data: InstanceType<typeof ProgramUpdateWithoutImagesInput>;
 }
 export declare class ProgramUpdateWithWhereUniqueWithoutCategoryInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     data: InstanceType<typeof ProgramUpdateWithoutCategoryInput>;
 }
 export declare class ProgramUpdateWithWhereUniqueWithoutCreatedByInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     data: InstanceType<typeof ProgramUpdateWithoutCreatedByInput>;
 }
 export declare class ProgramUpdateWithWhereUniqueWithoutParticipantInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     data: InstanceType<typeof ProgramUpdateWithoutParticipantInput>;
 }
 export declare class ProgramUpdateWithoutCategoryInput {
@@ -10797,17 +10797,17 @@ export declare class ProgramUpdateInput {
     category?: InstanceType<typeof ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput>;
 }
 export declare class ProgramUpsertWithWhereUniqueWithoutCategoryInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     update: InstanceType<typeof ProgramUpdateWithoutCategoryInput>;
     create: InstanceType<typeof ProgramCreateWithoutCategoryInput>;
 }
 export declare class ProgramUpsertWithWhereUniqueWithoutCreatedByInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     update: InstanceType<typeof ProgramUpdateWithoutCreatedByInput>;
     create: InstanceType<typeof ProgramCreateWithoutCreatedByInput>;
 }
 export declare class ProgramUpsertWithWhereUniqueWithoutParticipantInput {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     update: InstanceType<typeof ProgramUpdateWithoutParticipantInput>;
     create: InstanceType<typeof ProgramCreateWithoutParticipantInput>;
 }
@@ -10818,7 +10818,6 @@ export declare class ProgramUpsertWithoutImagesInput {
 }
 export declare class ProgramWhereUniqueInput {
     id?: number;
-    createdById?: string;
     AND?: Array<ProgramWhereInput>;
     OR?: Array<ProgramWhereInput>;
     NOT?: Array<ProgramWhereInput>;
@@ -10826,6 +10825,7 @@ export declare class ProgramWhereUniqueInput {
     startDate?: InstanceType<typeof DateTimeFilter>;
     dueDate?: InstanceType<typeof DateTimeNullableFilter>;
     description?: InstanceType<typeof StringFilter>;
+    createdById?: InstanceType<typeof StringFilter>;
     categoryId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -10874,10 +10874,10 @@ export declare class UpdateManyProgramArgs {
 }
 export declare class UpdateOneProgramArgs {
     data: InstanceType<typeof ProgramUpdateInput>;
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
 }
 export declare class UpsertOneProgramArgs {
-    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
     create: InstanceType<typeof ProgramCreateInput>;
     update: InstanceType<typeof ProgramUpdateInput>;
 }

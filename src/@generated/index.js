@@ -31746,10 +31746,10 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ProgramCreateManyCategoryInput.prototype, "createdById", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCategoryInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCategoryInput.prototype, "updatedAt", void 0);
 ProgramCreateManyCategoryInput = __decorate([
     (0, graphql_4.InputType)()
@@ -31791,13 +31791,13 @@ __decorate([
     Validator.IsNotEmpty()
 ], ProgramCreateManyCreatedByInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCreatedByInput.prototype, "categoryId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCreatedByInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCreatedByInput.prototype, "updatedAt", void 0);
 ProgramCreateManyCreatedByInput = __decorate([
     (0, graphql_4.InputType)()
@@ -31829,13 +31829,13 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ProgramCreateManyInput.prototype, "createdById", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyInput.prototype, "categoryId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyInput.prototype, "updatedAt", void 0);
 ProgramCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -31997,10 +31997,10 @@ __decorate([
     Validator.IsNotEmpty()
 ], ProgramCreateWithoutCategoryInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutCategoryInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutCategoryInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesCreateNestedManyWithoutProgramImageInput, { nullable: true })
@@ -32009,7 +32009,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutProgramsCreatedInput, { nullable: false })
 ], ProgramCreateWithoutCategoryInput.prototype, "createdBy", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutProgramsParticipationInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutCategoryInput.prototype, "participant", void 0);
 ProgramCreateWithoutCategoryInput = __decorate([
     (0, graphql_4.InputType)()
@@ -32035,16 +32035,16 @@ __decorate([
     Validator.IsNotEmpty()
 ], ProgramCreateWithoutCreatedByInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutCreatedByInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutCreatedByInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesCreateNestedManyWithoutProgramImageInput, { nullable: true })
 ], ProgramCreateWithoutCreatedByInput.prototype, "Images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutProgramsParticipationInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutCreatedByInput.prototype, "participant", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramCategoryCreateNestedOneWithoutProgramsInput, { nullable: false })
@@ -32073,16 +32073,16 @@ __decorate([
     Validator.IsNotEmpty()
 ], ProgramCreateWithoutImagesInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutProgramsCreatedInput, { nullable: false })
 ], ProgramCreateWithoutImagesInput.prototype, "createdBy", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutProgramsParticipationInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutImagesInput.prototype, "participant", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramCategoryCreateNestedOneWithoutProgramsInput, { nullable: false })
@@ -32111,10 +32111,10 @@ __decorate([
     Validator.IsNotEmpty()
 ], ProgramCreateWithoutParticipantInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutParticipantInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateWithoutParticipantInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesCreateNestedManyWithoutProgramImageInput, { nullable: true })
@@ -32149,10 +32149,10 @@ __decorate([
     Validator.IsNotEmpty()
 ], ProgramCreateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesCreateNestedManyWithoutProgramImageInput, { nullable: true })
@@ -32161,7 +32161,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutProgramsCreatedInput, { nullable: false })
 ], ProgramCreateInput.prototype, "createdBy", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutProgramsParticipationInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateInput.prototype, "participant", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramCategoryCreateNestedOneWithoutProgramsInput, { nullable: false })
@@ -33978,9 +33978,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProgramWhereUniqueInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: true })
-], ProgramWhereUniqueInput.prototype, "createdById", void 0);
-__decorate([
     (0, graphql_1.Field)(() => [ProgramWhereInput], { nullable: true })
 ], ProgramWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -34001,6 +33998,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], ProgramWhereUniqueInput.prototype, "description", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
+], ProgramWhereUniqueInput.prototype, "createdById", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], ProgramWhereUniqueInput.prototype, "categoryId", void 0);
