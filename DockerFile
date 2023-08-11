@@ -16,6 +16,4 @@ COPY . .
 # Set the development stage as the final stage
 FROM development AS final
 
-RUN npx prisma studio --experimental
-
 CMD ["npm", "run", "start:dev"]
