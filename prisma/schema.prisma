@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://u1804616_satujuta:satujuta123456@153.92.13.57:3306/u1804616_satujuta"
+  url      = "mysql://satujuta:satujuta123456@103.163.139.104:3306/satujuta"
 }
 
 // generator nestgraphql {
