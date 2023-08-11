@@ -3397,10 +3397,7 @@ input ProgramCreateWithoutImagesInput {
   startDate: DateTime!
   dueDate: DateTime
   description: String!
-  createdAt: DateTime
-  updatedAt: DateTime
   createdBy: UserCreateNestedOneWithoutProgramsCreatedInput!
-  participant: UserCreateNestedManyWithoutProgramsParticipationInput
   category: ProgramCategoryCreateNestedOneWithoutProgramsInput!
 }
 
@@ -3428,32 +3425,6 @@ input UserCreateWithoutProgramsCreatedInput {
 input UserCreateOrConnectWithoutProgramsCreatedInput {
   where: UserWhereUniqueInput!
   create: UserCreateWithoutProgramsCreatedInput!
-}
-
-input UserCreateNestedManyWithoutProgramsParticipationInput {
-  create: [UserCreateWithoutProgramsParticipationInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutProgramsParticipationInput!]
-  connect: [UserWhereUniqueInput!]
-}
-
-input UserCreateWithoutProgramsParticipationInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-}
-
-input UserCreateOrConnectWithoutProgramsParticipationInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutProgramsParticipationInput!
 }
 
 input ProgramCategoryCreateNestedOneWithoutProgramsInput {
@@ -3491,7 +3462,6 @@ input ProgramCreateOrConnectWithoutImagesInput {
 
 input ProgramWhereUniqueInput {
   id: Int
-  createdById: String
   AND: [ProgramWhereInput!]
   OR: [ProgramWhereInput!]
   NOT: [ProgramWhereInput!]
@@ -3499,6 +3469,7 @@ input ProgramWhereUniqueInput {
   startDate: DateTimeFilter
   dueDate: DateTimeNullableFilter
   description: StringFilter
+  createdById: StringFilter
   categoryId: IntFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -4678,10 +4649,7 @@ input ProgramCreateWithoutCreatedByInput {
   startDate: DateTime!
   dueDate: DateTime
   description: String!
-  createdAt: DateTime
-  updatedAt: DateTime
   Images: ImagesCreateNestedManyWithoutProgramImageInput
-  participant: UserCreateNestedManyWithoutProgramsParticipationInput
   category: ProgramCategoryCreateNestedOneWithoutProgramsInput!
 }
 
@@ -5800,6 +5768,26 @@ input UserUpdateManyWithoutProgramsParticipationNestedInput {
   deleteMany: [UserScalarWhereInput!]
 }
 
+input UserCreateWithoutProgramsParticipationInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutProgramsParticipationInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutProgramsParticipationInput!
+}
+
 input UserUpsertWithWhereUniqueWithoutProgramsParticipationInput {
   where: UserWhereUniqueInput!
   update: UserUpdateWithoutProgramsParticipationInput!
@@ -5874,9 +5862,6 @@ input ProgramCreateManyCreatedByInput {
   startDate: DateTime!
   dueDate: DateTime
   description: String!
-  categoryId: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
 }
 
 input ProgramUpdateWithWhereUniqueWithoutCreatedByInput {

@@ -1,0 +1,17 @@
+# Use the official Node.js LTS image as the base image
+FROM node:latest AS development
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install glob rimraf
+
+RUN npm install --only=development
+
+COPY . .
+
+# Set the development stage as the final stage
+FROM development AS final
+
+CMD ["npm", "run", "start:dev"]

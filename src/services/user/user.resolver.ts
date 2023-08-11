@@ -12,7 +12,7 @@ import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { PrismaSelect } from '@paljs/plugins';
+// import { PrismaSelect } from '@paljs/plugins';
 import { User } from 'src/model/user.model';
 import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code';
 
@@ -38,7 +38,7 @@ export class UserResolver {
     @Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs,
     @Info() info: any,
   ) {
-    userFindManyArgs.select = new PrismaSelect(info).value.select;
+    // userFindManyArgs.select = new PrismaSelect(info).value.select;
     return this.userService.findMany(userFindManyArgs);
   }
 

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+    dev:
+        container_name: satujuta-backend-graphql
+        image: nestjs-api-dev:1.0.0
+        build:
+            context: .
+            dockerfile: ./DockerFile
+        ports:
+            - "3000:3000"
+            - "5555:5555"
+            - "9229:9229"
+        networks:
+            - nestjs-network
+        volumes:
+            - ./satujuta-backend-graphql:/usr/src/app/satujuta-backend-graphql
+        restart: unless-stopped
+
+networks:
+    nestjs-network:
