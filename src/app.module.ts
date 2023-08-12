@@ -12,6 +12,7 @@ import { CityModule } from './services/city/city.module';
 import { DistrictModule } from './services/district/district';
 import { PostalCodeModule } from './services/postal-code/postal-code.module';
 import { BankModule } from './services/bank/bank.module';
+import { ProgramModule } from './services/program/program.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { BankModule } from './services/bank/bank.module';
     DistrictModule,
     PostalCodeModule,
     BankModule,
+    ProgramModule
   ],
   controllers: [],
   providers: [PrismaService],

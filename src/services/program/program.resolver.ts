@@ -1,0 +1,74 @@
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { ProgramService } from './program.service';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import { CreateOneProgramArgs, Program } from 'src/@generated';
+import { ProgramCreateArgs } from './dto/program-create-one.args';
+
+interface ProgramSelect {
+  select: Prisma.ProgramSelect;
+}
+
+@Resolver(() => Program)
+export class ProgramResolver {
+  constructor(private readonly programService: ProgramService) {}
+
+  @Mutation(() => Program, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async programCreateOne(
+    @Args('programCreateArgs') programCreateArgs: ProgramCreateArgs,
+    @Relations() relations: ProgramSelect
+  ): Promise<Program | void> {
+    programCreateArgs.select = relations.select;
+    programCreateArgs.include = relations.select;
+    console.log("programCreateArgs "+programCreateArgs)
+    return await this.programService.createOne(programCreateArgs);
+  }
+
+  // @Query(() => [Program], {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // programFindMany(
+  //   @Args('programFindManyArgs') programFindManyArgs: ProgramFindManyArgs,
+  //   @Relations() relations: ProgramSelect,
+  // ) {
+  //   //Auto implement prisma select from graphql query info
+  //   programFindManyArgs.select = relations.select;
+  //   return this.programService.findMany(programFindManyArgs);
+  // }
+
+  // @Query(() => Program, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // programFindOne(
+  //   @Args('programFindUniqueArgs')
+  //   programFindUniqueArgs: ProgramFindUniqueArgs,
+  //   @Relations() relations: ProgramSelect,
+  // ) {
+  //   //Auto implement prisma select from graphql query info
+  //   programFindUniqueArgs.select = relations.select;
+  //   return this.programService.findOne(programFindUniqueArgs);
+  // }
+
+  // @Mutation(() => Program, { description: 'Deskripsinya ada disini loh' })
+  // programUpdateOne(
+  //   @Args('programUpdateOneArgs') programUpdateOneArgs: ProgramUpdateOneArgs,
+  //   @Relations() relations: ProgramSelect,
+  // ) {
+  //   programUpdateOneArgs.select = relations.select;
+  //   return this.programService.update(programUpdateOneArgs);
+  // }
+
+  // @Mutation(() => Program, {
+  //   nullable: true,
+  //   description:
+  //     'Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas program akan terisi. select: { id: true, firstName: true, deletedAt: true }',
+  // })
+  // programRemove(@Args('programId') programId: string) {
+  //   return this.programService.remove(programId);
+  // }
+}

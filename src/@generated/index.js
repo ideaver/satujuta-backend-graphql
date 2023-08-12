@@ -31723,7 +31723,7 @@ exports.ProgramCreateManyCategoryInputEnvelope = ProgramCreateManyCategoryInputE
 let ProgramCreateManyCategoryInput = class ProgramCreateManyCategoryInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCategoryInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -31771,7 +31771,7 @@ exports.ProgramCreateManyCreatedByInputEnvelope = ProgramCreateManyCreatedByInpu
 let ProgramCreateManyCreatedByInput = class ProgramCreateManyCreatedByInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyCreatedByInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -31806,7 +31806,7 @@ exports.ProgramCreateManyCreatedByInput = ProgramCreateManyCreatedByInput;
 let ProgramCreateManyInput = class ProgramCreateManyInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCreateManyInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -34479,10 +34479,10 @@ __decorate([
     Validator.IsAlphanumeric()
 ], ProgramCategoryCreateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCategoryCreateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCategoryCreateManyInput.prototype, "updatedAt", void 0);
 ProgramCategoryCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -34530,10 +34530,10 @@ __decorate([
     Validator.IsAlphanumeric()
 ], ProgramCategoryCreateWithoutProgramsInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCategoryCreateWithoutProgramsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCategoryCreateWithoutProgramsInput.prototype, "updatedAt", void 0);
 ProgramCategoryCreateWithoutProgramsInput = __decorate([
     (0, graphql_4.InputType)()
@@ -34549,10 +34549,10 @@ __decorate([
     Validator.IsAlphanumeric()
 ], ProgramCategoryCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCategoryCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ProgramCategoryCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramCreateNestedManyWithoutCategoryInput, { nullable: true })

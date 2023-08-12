@@ -513,6 +513,7 @@ model PaymentConfirmation {
 
 //Make CRUD Available
 model Program {
+  /// @HideField({ match: 'ProgramCreate*Input' })
   id          Int             @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
@@ -546,7 +547,9 @@ model ProgramCategory {
   /// @Validator.IsAlphanumeric()
   name      String
   programs  Program[]
+  /// @HideField({ match: 'ProgramCategoryCreate*Input' })
   createdAt DateTime  @default(now())
+  /// @HideField({ match: 'ProgramCategoryCreate*Input' })
   updatedAt DateTime  @updatedAt
 }
 

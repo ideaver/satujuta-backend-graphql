@@ -2863,6 +2863,9 @@ type Mutation {
   createAuth(createAuthInput: CreateAuthInput!): Auth!
   resetPassword(email: String!): Auth!
   removeAuth(id: Int!): Auth!
+
+  """Deskripsinya ada disini loh"""
+  programCreateOne(programCreateArgs: ProgramCreateArgs!): Program
 }
 
 input UserCreateArgs {
@@ -3435,8 +3438,6 @@ input ProgramCategoryCreateNestedOneWithoutProgramsInput {
 
 input ProgramCategoryCreateWithoutProgramsInput {
   name: String!
-  createdAt: DateTime
-  updatedAt: DateTime
 }
 
 input ProgramCategoryCreateOrConnectWithoutProgramsInput {
@@ -5857,7 +5858,6 @@ input ProgramCreateManyCreatedByInputEnvelope {
 }
 
 input ProgramCreateManyCreatedByInput {
-  id: Int
   name: String!
   startDate: DateTime!
   dueDate: DateTime
@@ -6325,4 +6325,18 @@ input HotelCreateInput {
 input CreateAuthInput {
   """Example field (placeholder)"""
   exampleField: Int!
+}
+
+input ProgramCreateArgs {
+  data: ProgramCreateInput!
+}
+
+input ProgramCreateInput {
+  name: String!
+  startDate: DateTime!
+  dueDate: DateTime
+  description: String!
+  Images: ImagesCreateNestedManyWithoutProgramImageInput
+  createdBy: UserCreateNestedOneWithoutProgramsCreatedInput!
+  category: ProgramCategoryCreateNestedOneWithoutProgramsInput!
 }
