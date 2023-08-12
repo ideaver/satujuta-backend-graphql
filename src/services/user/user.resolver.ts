@@ -1,20 +1,17 @@
-import {
-  Resolver,
-  Query,
-  Mutation,
-  Args,
-  Int,
-  Context,
-  Info,
-} from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-// import { PrismaSelect } from '@paljs/plugins';
 import { User } from 'src/model/user.model';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
+
+interface UserSelect {
+  select: Prisma.UserSelect;
+}
 
 @Resolver(() => User)
 export class UserResolver {
@@ -26,7 +23,12 @@ export class UserResolver {
   })
   async userCreate(
     @Args('userCreateArgs') userCreateArgs: UserCreateArgs,
+    @Relations() relations: UserSelect,
   ): Promise<User | void> {
+    //Generate Random Referral Code
+    userCreateArgs.data.referralCode = generateRandomReferralCode();
+    //Auto implement prisma select from graphql query info
+    userCreateArgs.select = relations.select;
     return await this.userService.createOne(userCreateArgs);
   }
 
@@ -36,9 +38,10 @@ export class UserResolver {
   })
   userFindMany(
     @Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs,
-    @Info() info: any,
+    @Relations() relations: UserSelect,
   ) {
-    // userFindManyArgs.select = new PrismaSelect(info).value.select;
+    //Auto implement prisma select from graphql query info
+    userFindManyArgs.select = relations.select;
     return this.userService.findMany(userFindManyArgs);
   }
 
@@ -49,14 +52,19 @@ export class UserResolver {
   userFindOne(
     @Args('userFindUniqueArgs')
     userFindUniqueArgs: UserFindUniqueArgs,
+    @Relations() relations: UserSelect,
   ) {
+    //Auto implement prisma select from graphql query info
+    userFindUniqueArgs.select = relations.select;
     return this.userService.findOne(userFindUniqueArgs);
   }
 
   @Mutation(() => User, { description: 'Deskripsinya ada disini loh' })
   userUpdateOne(
     @Args('userUpdateOneArgs') userUpdateOneArgs: UserUpdateOneArgs,
+    @Relations() relations: UserSelect,
   ) {
+    userUpdateOneArgs.select = relations.select;
     return this.userService.update(userUpdateOneArgs);
   }
 

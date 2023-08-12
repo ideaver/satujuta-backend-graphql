@@ -8,7 +8,7 @@ import { UserUpdateInput, UserWhereUniqueInput } from 'src/@generated';
 @InputType()
 export class UserUpdateOneArgs {
   @Field(() => UserSelect, { nullable: true })
-  select?: UserSelect | null;
+  select?: Prisma.UserSelect | null;
 
   @Field(() => UserSelect, { nullable: true })
   include?: UserSelect | null;

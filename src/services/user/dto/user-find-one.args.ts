@@ -7,7 +7,7 @@ import { UserWhereUniqueInput } from 'src/@generated';
 @InputType()
 export class UserFindUniqueArgs {
   @Field(() => UserSelect, { nullable: true })
-  select?: UserSelect | null;
+  select?: Prisma.UserSelect | null;
 
   @Field(() => UserSelect, { nullable: true })
   include?: UserSelect | null;

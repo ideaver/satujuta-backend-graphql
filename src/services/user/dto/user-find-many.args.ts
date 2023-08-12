@@ -13,7 +13,7 @@ import {
 @InputType()
 export class UserFindManyArgs {
   @Field(() => UserSelect, { nullable: true })
-  select?: UserSelect | null;
+  select?: Prisma.UserSelect | null;
 
   @Field(() => UserSelect, { nullable: true })
   include?: UserSelect | null;

@@ -6,8 +6,7 @@ import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { GraphQLError } from 'graphql';
 import { User } from 'src/model/user.model';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code';
-import { AccountCategory } from 'src/@generated';
+import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 
 @Injectable()
 export class UserService {
@@ -48,34 +47,52 @@ export class UserService {
     //     console.log('bank created ' + bank);
     //   });
 
-    userCreateArgs.data.referralCode = generateRandomReferralCode();
+    //null graphql query capability
+    if (userCreateArgs.data.referredBy.connect.referralCode === null) {
+      userCreateArgs.data.referredBy = undefined;
+    }
+
     return await this.prisma.user
       .create(userCreateArgs)
       .then((user) => {
-        console.log('user created ' + JSON.stringify(user));
         return user;
       })
       .catch((err) => {
-        throw new GraphQLError('waduh' + err, {
-          extensions: {
-            code: 23525,
-          },
-        });
+        throwPrismaError(err);
       });
   }
 
   async findMany(userFindManyArgs: UserFindManyArgs) {
-    return this.prisma.user.findMany(userFindManyArgs).then((users) => {
-      return users;
-    });
+    return this.prisma.user
+      .findMany(userFindManyArgs)
+      .then((users) => {
+        return users;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
   }
 
-  async findOne(userFindUniqueArgs: UserFindUniqueArgs) {
-    return await this.prisma.user.findUnique(userFindUniqueArgs);
+  async findOne(userFindUniqueArgs: UserFindUniqueArgs): Promise<User | void> {
+    return await this.prisma.user
+      .findUnique(userFindUniqueArgs)
+      .then((user) => {
+        return user;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
   }
 
-  async update(userUpdateOneArgs: UserUpdateOneArgs) {
-    return this.prisma.user.update(userUpdateOneArgs);
+  async update(userUpdateOneArgs: UserUpdateOneArgs): Promise<User | void> {
+    return this.prisma.user
+      .update(userUpdateOneArgs)
+      .then((user) => {
+        return user;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
   }
 
   async remove(userId: string) {
@@ -87,6 +104,9 @@ export class UserService {
       })
       .then((user) => {
         return user;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
       });
   }
 }
