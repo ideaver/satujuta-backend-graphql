@@ -13,6 +13,24 @@ import { DistrictModule } from './services/district/district';
 import { PostalCodeModule } from './services/postal-code/postal-code.module';
 import { BankModule } from './services/bank/bank.module';
 import { ProgramModule } from './services/program/program.module';
+import { ProgramCategoryModule } from './services/program-category/program-category.module';
+import { RewardModule } from './services/reward/reward.module';
+import { FileModule } from './services/file/file.module';
+import { FaqModule } from './services/faq/faq.module';
+import { ProjectModule } from './services/project/project.module';
+import { PaymentConfirmationModule } from './services/payment-confirmation/payment-confirmation.module';
+import { PaymentModule } from './services/payment/payment.module';
+import { ShippingModule } from './services/shipping/shipping.module';
+import { ItemModule } from './services/item/item.module';
+import { OrderModule } from './services/order/order.module';
+import { CheckInModule } from './services/check-in/check-in.module';
+import { UserNotificationModule } from './services/user-notification/user-notification.module';
+// import { SessionModule } from './services/session/session.module';
+// import { PointTransaction } from './services/point-transaction/point-transaction.module';
+// import { TransactionModule } from './services/transaction/transaction.module';
+import { AccountModule } from './services/account/account.module';
+import { SchoolModule } from './services/school/school.module';
+import { AddressModule } from './services/address/address.module';
 
 @Module({
   imports: [
@@ -29,7 +47,25 @@ import { ProgramModule } from './services/program/program.module';
     DistrictModule,
     PostalCodeModule,
     BankModule,
-    ProgramModule
+    ProgramModule,
+    ProgramCategoryModule,
+    RewardModule,
+    FileModule,
+    FaqModule,
+    ProjectModule,
+    PaymentConfirmationModule,
+    PaymentModule,
+    ShippingModule,
+    ItemModule,
+    OrderModule,
+    CheckInModule,
+    UserNotificationModule,
+    // SessionModule,
+    // PointTransaction,
+    // TransactionModule,
+    AccountModule,
+    SchoolModule,
+    AddressModule,
   ],
   controllers: [],
   providers: [PrismaService],
