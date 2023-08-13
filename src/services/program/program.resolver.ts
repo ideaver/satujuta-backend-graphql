@@ -4,6 +4,9 @@ import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { Program } from 'src/@generated';
 import { ProgramCreateArgs } from './dto/program-create-one.args';
+import { ProgramFindManyArgs } from './dto/program-find-many.args';
+import { ProgramFindUniqueArgs } from './dto/program-find-one.args';
+import { ProgramUpdateOneArgs } from './dto/program-update-one.args';
 
 interface ProgramSelect {
   select: Prisma.ProgramSelect;
@@ -25,48 +28,48 @@ export class ProgramResolver {
     return await this.programService.createOne(programCreateArgs);
   }
 
-  // @Query(() => [Program], {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // programFindMany(
-  //   @Args('programFindManyArgs') programFindManyArgs: ProgramFindManyArgs,
-  //   @Relations() relations: ProgramSelect,
-  // ) {
-  //   //Auto implement prisma select from graphql query info
-  //   programFindManyArgs.select = relations.select;
-  //   return this.programService.findMany(programFindManyArgs);
-  // }
+  @Query(() => [Program], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programFindMany(
+    @Args('programFindManyArgs') programFindManyArgs: ProgramFindManyArgs,
+    @Relations() relations: ProgramSelect,
+  ) {
+    //Auto implement prisma select from graphql query info
+    programFindManyArgs.select = relations.select;
+    return this.programService.findMany(programFindManyArgs);
+  }
 
-  // @Query(() => Program, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // programFindOne(
-  //   @Args('programFindUniqueArgs')
-  //   programFindUniqueArgs: ProgramFindUniqueArgs,
-  //   @Relations() relations: ProgramSelect,
-  // ) {
-  //   //Auto implement prisma select from graphql query info
-  //   programFindUniqueArgs.select = relations.select;
-  //   return this.programService.findOne(programFindUniqueArgs);
-  // }
+  @Query(() => Program, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programFindOne(
+    @Args('programFindUniqueArgs')
+    programFindUniqueArgs: ProgramFindUniqueArgs,
+    @Relations() relations: ProgramSelect,
+  ) {
+    //Auto implement prisma select from graphql query info
+    programFindUniqueArgs.select = relations.select;
+    return this.programService.findOne(programFindUniqueArgs);
+  }
 
-  // @Mutation(() => Program, { description: 'Deskripsinya ada disini loh' })
-  // programUpdateOne(
-  //   @Args('programUpdateOneArgs') programUpdateOneArgs: ProgramUpdateOneArgs,
-  //   @Relations() relations: ProgramSelect,
-  // ) {
-  //   programUpdateOneArgs.select = relations.select;
-  //   return this.programService.update(programUpdateOneArgs);
-  // }
+  @Mutation(() => Program, { description: 'Deskripsinya ada disini loh' })
+  programUpdateOne(
+    @Args('programUpdateOneArgs') programUpdateOneArgs: ProgramUpdateOneArgs,
+    @Relations() relations: ProgramSelect,
+  ) {
+    programUpdateOneArgs.select = relations.select;
+    return this.programService.update(programUpdateOneArgs);
+  }
 
-  // @Mutation(() => Program, {
-  //   nullable: true,
-  //   description:
-  //     'Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas program akan terisi. select: { id: true, firstName: true, deletedAt: true }',
-  // })
-  // programRemove(@Args('programId') programId: string) {
-  //   return this.programService.remove(programId);
-  // }
+  @Mutation(() => Boolean, {
+    nullable: true,
+    description:
+      'Datanya benar2 terhapus dari db',
+  })
+  programRemove(@Args('programId') programId: number) {
+    return this.programService.remove(programId);
+  }
 }

@@ -6,9 +6,7 @@ import { Prisma } from '@prisma/client';
 
 @InputType()
 export class ProgramCreateArgs {
-  select?: Prisma.ProgramSelect | null;
-
-  include?: Prisma.ProgramInclude | null;
+  select?: Prisma.ProgramSelect;
 
   @Field(() => ProgramCreateInput, { nullable: false })
   @Type(() => ProgramCreateInput)

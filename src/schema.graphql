@@ -1706,6 +1706,12 @@ type Query {
   districtFindMany(districtNameSearch: String!): [District!]!
   postalCodeFindMany: [PostalCode!]!
   bankFindMany: [Bank!]!
+
+  """Deskripsinya ada disini loh"""
+  programFindMany(programFindManyArgs: ProgramFindManyArgs!): [Program!]
+
+  """Deskripsinya ada disini loh"""
+  programFindOne(programFindUniqueArgs: ProgramFindUniqueArgs!): Program
 }
 
 input UserFindManyArgs {
@@ -2847,6 +2853,74 @@ input HotelFindUniqueArgs {
   where: HotelWhereUniqueInput!
 }
 
+input ProgramFindManyArgs {
+  where: ProgramWhereInput
+  orderBy: [ProgramOrderByWithRelationInput!]
+  cursor: ProgramWhereUniqueInput
+  take: Int
+  skip: Int
+  distinct: [ProgramScalarFieldEnum!]
+}
+
+input ProgramOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  startDate: SortOrder
+  dueDate: SortOrderInput
+  description: SortOrder
+  createdById: SortOrder
+  categoryId: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  Images: ImagesOrderByRelationAggregateInput
+  createdBy: UserOrderByWithRelationInput
+  participant: UserOrderByRelationAggregateInput
+  category: ProgramCategoryOrderByWithRelationInput
+}
+
+input ProgramCategoryOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  programs: ProgramOrderByRelationAggregateInput
+}
+
+input ProgramWhereUniqueInput {
+  id: Int
+  AND: [ProgramWhereInput!]
+  OR: [ProgramWhereInput!]
+  NOT: [ProgramWhereInput!]
+  name: StringFilter
+  startDate: DateTimeFilter
+  dueDate: DateTimeNullableFilter
+  description: StringFilter
+  createdById: StringFilter
+  categoryId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  Images: ImagesListRelationFilter
+  createdBy: UserRelationFilter
+  participant: UserListRelationFilter
+  category: ProgramCategoryRelationFilter
+}
+
+enum ProgramScalarFieldEnum {
+  id
+  name
+  startDate
+  dueDate
+  description
+  createdById
+  categoryId
+  createdAt
+  updatedAt
+}
+
+input ProgramFindUniqueArgs {
+  where: ProgramWhereUniqueInput!
+}
+
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreate(userCreateArgs: UserCreateArgs!): User
@@ -2866,6 +2940,12 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   programCreateOne(programCreateArgs: ProgramCreateArgs!): Program
+
+  """Deskripsinya ada disini loh"""
+  programUpdateOne(programUpdateOneArgs: ProgramUpdateOneArgs!): Program!
+
+  """Datanya benar2 terhapus dari db"""
+  programRemove(programId: Float!): Boolean
 }
 
 input UserCreateArgs {
@@ -3459,25 +3539,6 @@ input ProgramCategoryWhereUniqueInput {
 input ProgramCreateOrConnectWithoutImagesInput {
   where: ProgramWhereUniqueInput!
   create: ProgramCreateWithoutImagesInput!
-}
-
-input ProgramWhereUniqueInput {
-  id: Int
-  AND: [ProgramWhereInput!]
-  OR: [ProgramWhereInput!]
-  NOT: [ProgramWhereInput!]
-  name: StringFilter
-  startDate: DateTimeFilter
-  dueDate: DateTimeNullableFilter
-  description: StringFilter
-  createdById: StringFilter
-  categoryId: IntFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  Images: ImagesListRelationFilter
-  createdBy: UserRelationFilter
-  participant: UserListRelationFilter
-  category: ProgramCategoryRelationFilter
 }
 
 input ProgramUpsertWithoutImagesInput {
@@ -6339,4 +6400,22 @@ input ProgramCreateInput {
   Images: ImagesCreateNestedManyWithoutProgramImageInput
   createdBy: UserCreateNestedOneWithoutProgramsCreatedInput!
   category: ProgramCategoryCreateNestedOneWithoutProgramsInput!
+}
+
+input ProgramUpdateOneArgs {
+  data: ProgramUpdateInput!
+  where: ProgramWhereUniqueInput!
+}
+
+input ProgramUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  dueDate: NullableDateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  Images: ImagesUpdateManyWithoutProgramImageNestedInput
+  createdBy: UserUpdateOneRequiredWithoutProgramsCreatedNestedInput
+  participant: UserUpdateManyWithoutProgramsParticipationNestedInput
+  category: ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput
 }

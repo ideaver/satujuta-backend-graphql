@@ -12,30 +12,19 @@ import {
 @InputType()
 export class ProgramFindManyArgs {
   // @Field(() => ProgramSelect, { nullable: true })
-  // select?: Prisma.ProgramSelect | null;
+  select?: Prisma.ProgramSelect;
 
-  // @Field(() => ProgramSelect, { nullable: true })
-  // include?: ProgramSelect | null;
-
-  @Field(() => ProgramWhereInput, { nullable: true })
+  @Field(() => ProgramWhereInput, {nullable:true})
   @Type(() => ProgramWhereInput)
-  where?: ProgramWhereInput;
-
-  @Field(() => [ProgramOrderByWithRelationInput], { nullable: true })
+  where?: InstanceType<typeof ProgramWhereInput>;
+  @Field(() => [ProgramOrderByWithRelationInput], {nullable:true})
   orderBy?: Array<ProgramOrderByWithRelationInput>;
-
-  @Field(() => ProgramWhereUniqueInput, { nullable: true })
-  cursor?: Prisma.AtLeast<
-    ProgramWhereUniqueInput,
-    'id' | 'email' | 'addressId' | 'whatsappNumber'
-  >;
-
-  @Field(() => Int, { nullable: true })
+  @Field(() => ProgramWhereUniqueInput, {nullable:true})
+  cursor?: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
+  @Field(() => Int, {nullable:true})
   take?: number;
-
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {nullable:true})
   skip?: number;
-
-  @Field(() => [ProgramScalarFieldEnum], { nullable: true })
+  @Field(() => [ProgramScalarFieldEnum], {nullable:true})
   distinct?: Array<keyof typeof ProgramScalarFieldEnum>;
 }

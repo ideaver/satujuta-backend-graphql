@@ -5,16 +5,9 @@ import { ProgramWhereUniqueInput } from 'src/@generated';
 
 @InputType()
 export class ProgramFindUniqueArgs {
-  // @Field(() => ProgramSelect, { nullable: true })
-  // select?: Prisma.ProgramSelect | null;
+  select?: Prisma.ProgramSelect;
 
-  // @Field(() => ProgramSelect, { nullable: true })
-  // include?: ProgramSelect | null;
-
-  @Field(() => ProgramWhereUniqueInput, { nullable: false })
-  @Type(() => ProgramWhereUniqueInput)
-  where!: Prisma.AtLeast<
-    ProgramWhereUniqueInput,
-    'id' | 'email' | 'addressId' | 'whatsappNumber'
-  >;
+    @Field(() => ProgramWhereUniqueInput, {nullable:false})
+    @Type(() => ProgramWhereUniqueInput)
+    where!: Prisma.AtLeast<ProgramWhereUniqueInput, 'id'>;
 }
