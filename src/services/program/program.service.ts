@@ -12,7 +12,6 @@ export class ProgramService {
     return await this.prisma.program
       .create(programCreateArgs)
       .then((program) => {
-        console.log("program created "+program)
         return program;
       })
       .catch((err) => {

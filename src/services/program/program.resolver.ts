@@ -1,8 +1,8 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
 import { ProgramService } from './program.service';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { CreateOneProgramArgs, Program } from 'src/@generated';
+import { Program } from 'src/@generated';
 import { ProgramCreateArgs } from './dto/program-create-one.args';
 
 interface ProgramSelect {
@@ -22,8 +22,6 @@ export class ProgramResolver {
     @Relations() relations: ProgramSelect
   ): Promise<Program | void> {
     programCreateArgs.select = relations.select;
-    programCreateArgs.include = relations.select;
-    console.log("programCreateArgs "+programCreateArgs)
     return await this.programService.createOne(programCreateArgs);
   }
 
