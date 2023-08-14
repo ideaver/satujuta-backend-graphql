@@ -1,5 +1,5 @@
 # Use the official Node.js LTS image as the base image
-FROM node:lts AS development
+FROM node:latest AS development
 
 WORKDIR /usr/src/app
 
@@ -9,9 +9,11 @@ RUN npm install glob rimraf
 
 RUN npm install --only=development
 
+RUN npx prisma generate
+
 COPY . .
 
 # Set the development stage as the final stage
 FROM development AS final
 
-CMD ["npx", "prisma", "generate"]
+CMD ["npm", "run", "start:dev"]
