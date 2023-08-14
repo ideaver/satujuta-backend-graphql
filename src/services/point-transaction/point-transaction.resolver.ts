@@ -78,6 +78,32 @@ export class PointTransactionResolver {
     );
   }
 
+  async getCurrentBalance(userId: string) {
+    const latestTransaction: PointTransaction =
+      await this.pointTransactionFindFirst(
+        {
+          where: {
+            User: {
+              is: {
+                id: {
+                  equals: userId,
+                },
+              },
+            },
+          },
+          take: 1,
+          orderBy: [
+            {
+              createdAt: 'desc',
+            },
+          ],
+        },
+        { select: { currentBalance: true } },
+      ).then((res: PointTransaction) => res);
+
+    return latestTransaction?.currentBalance;
+  }
+
   // @Mutation(() => PointTransaction, { description: 'Deskripsinya ada disini loh' })
   // pointTransactionUpdateOne(
   //   @Args('pointTransactionUpdateOneArgs') pointTransactionUpdateOneArgs: PointTransactionUpdateOneArgs,

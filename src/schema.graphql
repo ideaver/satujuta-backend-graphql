@@ -4097,7 +4097,9 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   rewardCreateOne(rewardCreateArgs: RewardCreateArgs!): Reward
 
-  """Deskripsinya ada disini loh"""
+  """
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim reward, backend akan cek apakah saldo point user cukup untuk claim
+  """
   rewardUpdateOne(rewardUpdateOneArgs: RewardUpdateOneArgs!): Reward!
 
   """Datanya benar2 terhapus dari db"""
