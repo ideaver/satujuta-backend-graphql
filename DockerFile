@@ -9,8 +9,6 @@ RUN npm install glob rimraf
 
 RUN npm install --only=development
 
-RUN npx prisma generate
-
 COPY . .
 
 # Set the development stage as the final stage
