@@ -1805,6 +1805,9 @@ type Query {
   """Deskripsinya ada disini loh"""
   pointTransactionFindOne(pointTransactionFindUniqueArgs: PointTransactionFindUniqueArgs!): PointTransaction
 
+  """Bisa juga untuk ambil balance terakhir dari point milik user"""
+  pointTransactionFindFirst(pointTransactionFindFirstArgs: PointTransactionFindFirstArgs!): PointTransaction
+
   """Deskripsinya ada disini loh"""
   transactionFindMany(transactionFindManyArgs: TransactionFindManyArgs!): [Transaction!]
 
@@ -3886,6 +3889,14 @@ input PointTransactionWhereUniqueInput {
   userId: StringFilter
   createdAt: DateTimeFilter
   User: UserRelationFilter
+}
+
+input PointTransactionFindFirstArgs {
+  where: PointTransactionWhereInput
+  orderBy: [PointTransactionOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [PointTransactionScalarFieldEnum!]
 }
 
 input TransactionFindManyArgs {
