@@ -172,7 +172,6 @@ model User {
   school                School?            @relation("StudentSchool", fields: [schoolId], references: [id])
   /// @HideField({ output: false, input: true })   
   schoolId              Int?
-  /// @HideField({ output: false, input: true })   
   accounts              Account[]
   /// @HideField({ output: false, input: true })   
   transactions          Transaction[]
@@ -216,7 +215,7 @@ enum UserStatus {
 //Make CRUD Available
 model Account {
   id                     Int             @id @default(autoincrement())
-  accountNumber          Int?
+  accountNumber          Float?
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()

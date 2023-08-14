@@ -671,7 +671,7 @@ export declare class AccountScalarWhereWithAggregatesInput {
     OR?: Array<AccountScalarWhereWithAggregatesInput>;
     NOT?: Array<AccountScalarWhereWithAggregatesInput>;
     id?: InstanceType<typeof IntWithAggregatesFilter>;
-    accountNumber?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableWithAggregatesFilter>;
     name?: InstanceType<typeof StringWithAggregatesFilter>;
     balance?: InstanceType<typeof FloatWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -684,7 +684,7 @@ export declare class AccountScalarWhereInput {
     OR?: Array<AccountScalarWhereInput>;
     NOT?: Array<AccountScalarWhereInput>;
     id?: InstanceType<typeof IntFilter>;
-    accountNumber?: InstanceType<typeof IntNullableFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableFilter>;
     name?: InstanceType<typeof StringFilter>;
     balance?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -807,7 +807,7 @@ export declare class AccountUncheckedUpdateManyWithoutUserNestedInput {
 }
 export declare class AccountUncheckedUpdateManyWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -816,7 +816,7 @@ export declare class AccountUncheckedUpdateManyWithoutUserInput {
 }
 export declare class AccountUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -826,7 +826,7 @@ export declare class AccountUncheckedUpdateManyInput {
 }
 export declare class AccountUncheckedUpdateWithoutBankAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -839,7 +839,7 @@ export declare class AccountUncheckedUpdateWithoutBankAccountInput {
 }
 export declare class AccountUncheckedUpdateWithoutProjectInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -852,7 +852,7 @@ export declare class AccountUncheckedUpdateWithoutProjectInput {
 }
 export declare class AccountUncheckedUpdateWithoutTransactionDestinationInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -865,7 +865,7 @@ export declare class AccountUncheckedUpdateWithoutTransactionDestinationInput {
 }
 export declare class AccountUncheckedUpdateWithoutTransactionOriginsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -878,7 +878,7 @@ export declare class AccountUncheckedUpdateWithoutTransactionOriginsInput {
 }
 export declare class AccountUncheckedUpdateWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -891,7 +891,7 @@ export declare class AccountUncheckedUpdateWithoutUserInput {
 }
 export declare class AccountUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -904,7 +904,7 @@ export declare class AccountUncheckedUpdateInput {
     bankAccount?: InstanceType<typeof BankUncheckedUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateManyMutationInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -977,7 +977,7 @@ export declare class AccountUpdateWithWhereUniqueWithoutUserInput {
     data: InstanceType<typeof AccountUpdateWithoutUserInput>;
 }
 export declare class AccountUpdateWithoutBankAccountInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -989,7 +989,7 @@ export declare class AccountUpdateWithoutBankAccountInput {
     project?: InstanceType<typeof ProjectUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateWithoutProjectInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -1001,7 +1001,7 @@ export declare class AccountUpdateWithoutProjectInput {
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateWithoutTransactionDestinationInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -1013,7 +1013,7 @@ export declare class AccountUpdateWithoutTransactionDestinationInput {
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateWithoutTransactionOriginsInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -1025,7 +1025,7 @@ export declare class AccountUpdateWithoutTransactionOriginsInput {
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateWithoutUserInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -1037,7 +1037,7 @@ export declare class AccountUpdateWithoutUserInput {
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateInput {
-    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -1079,7 +1079,7 @@ export declare class AccountWhereUniqueInput {
     AND?: Array<AccountWhereInput>;
     OR?: Array<AccountWhereInput>;
     NOT?: Array<AccountWhereInput>;
-    accountNumber?: InstanceType<typeof IntNullableFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableFilter>;
     name?: InstanceType<typeof StringFilter>;
     balance?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -1097,7 +1097,7 @@ export declare class AccountWhereInput {
     OR?: Array<AccountWhereInput>;
     NOT?: Array<AccountWhereInput>;
     id?: InstanceType<typeof IntFilter>;
-    accountNumber?: InstanceType<typeof IntNullableFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableFilter>;
     name?: InstanceType<typeof StringFilter>;
     balance?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -9569,6 +9569,31 @@ export declare class FloatFilter {
     gte?: number;
     not?: InstanceType<typeof NestedFloatFilter>;
 }
+export declare class FloatNullableFilter {
+    equals?: number;
+    in?: Array<number>;
+    notIn?: Array<number>;
+    lt?: number;
+    lte?: number;
+    gt?: number;
+    gte?: number;
+    not?: InstanceType<typeof NestedFloatNullableFilter>;
+}
+export declare class FloatNullableWithAggregatesFilter {
+    equals?: number;
+    in?: Array<number>;
+    notIn?: Array<number>;
+    lt?: number;
+    lte?: number;
+    gt?: number;
+    gte?: number;
+    not?: InstanceType<typeof NestedFloatNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _avg?: InstanceType<typeof NestedFloatNullableFilter>;
+    _sum?: InstanceType<typeof NestedFloatNullableFilter>;
+    _min?: InstanceType<typeof NestedFloatNullableFilter>;
+    _max?: InstanceType<typeof NestedFloatNullableFilter>;
+}
 export declare class FloatWithAggregatesFilter {
     equals?: number;
     in?: Array<number>;
@@ -9913,6 +9938,21 @@ export declare class NestedFloatNullableFilter {
     gte?: number;
     not?: InstanceType<typeof NestedFloatNullableFilter>;
 }
+export declare class NestedFloatNullableWithAggregatesFilter {
+    equals?: number;
+    in?: Array<number>;
+    notIn?: Array<number>;
+    lt?: number;
+    lte?: number;
+    gt?: number;
+    gte?: number;
+    not?: InstanceType<typeof NestedFloatNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _avg?: InstanceType<typeof NestedFloatNullableFilter>;
+    _sum?: InstanceType<typeof NestedFloatNullableFilter>;
+    _min?: InstanceType<typeof NestedFloatNullableFilter>;
+    _max?: InstanceType<typeof NestedFloatNullableFilter>;
+}
 export declare class NestedFloatWithAggregatesFilter {
     equals?: number;
     in?: Array<number>;
@@ -10038,6 +10078,13 @@ export declare class NestedStringWithAggregatesFilter {
 }
 export declare class NullableDateTimeFieldUpdateOperationsInput {
     set?: Date | string;
+}
+export declare class NullableFloatFieldUpdateOperationsInput {
+    set?: number;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
 }
 export declare class NullableIntFieldUpdateOperationsInput {
     set?: number;

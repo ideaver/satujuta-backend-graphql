@@ -21,11 +21,10 @@ export class UserResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  async userCreate(
+  async userCreateOne(
     @Args('userCreateArgs') userCreateArgs: UserCreateArgs,
     @Relations() relations: UserSelect,
   ): Promise<User | void> {
-    
     //Generate Random Referral Code
     userCreateArgs.data.referralCode = generateRandomReferralCode();
 
@@ -37,22 +36,20 @@ export class UserResolver {
       userCreateArgs.data.referredBy = undefined;
     }
 
-    //Create User Accounts
-    userCreateArgs.data.accounts = {
-      createMany: {
-        data: [
-          { name: 'BANK Account', accountCategory: 'BANK', balance: 0 },
-          { name: 'CASH Account', accountCategory: 'CASH', balance: 0 },
-          {
-            name: 'COMISSION Account',
-            accountCategory: 'COMISSION',
-            balance: 0,
-          },
-          { name: 'EQUITY Account', accountCategory: 'EQUITY', balance: 0 },
-          { name: 'DEBT Account', accountCategory: 'DEBT', balance: 0 },
-        ],
-      },
+    //Auto Create User Accounts
+    userCreateArgs.data.accounts.createMany = {
+      data: [
+        { name: 'CASH Account', accountCategory: 'CASH', balance: 0 },
+        {
+          name: 'COMISSION Account',
+          accountCategory: 'COMISSION',
+          balance: 0,
+        },
+        { name: 'EQUITY Account', accountCategory: 'EQUITY', balance: 0 },
+        { name: 'DEBT Account', accountCategory: 'DEBT', balance: 0 },
+      ],
     };
+
     return await this.userService.createOne(userCreateArgs);
   }
 
