@@ -35,7 +35,7 @@ export class AccountService {
       });
   }
 
-  //to get current userpoint balance
+  //to get current some account balance
   async findFirst(
     accountFindFirstArgs: AccountFindFirstArgs,
   ): Promise<Account | void> {

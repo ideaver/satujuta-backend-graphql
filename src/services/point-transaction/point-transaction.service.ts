@@ -1,17 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { CreateOnePointTransactionArgs, PointTransaction } from 'src/@generated';
+import {
+  CreateOnePointTransactionArgs,
+  PointTransaction,
+} from 'src/@generated';
 import { PointTransactionFindManyArgs } from './dto/point-transaction-find-many.args';
 import { PointTransactionFindUniqueArgs } from './dto/point-transaction-find-one.args';
 import { PointTransactionUpdateOneArgs } from './dto/point-transaction-update-one.args';
+import { PointTransactionFindFirstArgs } from './dto/point-transaction-find-first.args';
 
 @Injectable()
 export class PointTransactionService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(pointTransactionCreateArgs: CreateOnePointTransactionArgs): Promise<PointTransaction | void> {
-
+  async createOne(
+    pointTransactionCreateArgs: CreateOnePointTransactionArgs,
+  ): Promise<PointTransaction | void> {
     return await this.prisma.pointTransaction
       .create(pointTransactionCreateArgs)
       .then((pointTransaction) => {
@@ -33,7 +38,9 @@ export class PointTransactionService {
       });
   }
 
-  async findOne(pointTransactionFindUniqueArgs: PointTransactionFindUniqueArgs): Promise<PointTransaction | void> {
+  async findOne(
+    pointTransactionFindUniqueArgs: PointTransactionFindUniqueArgs,
+  ): Promise<PointTransaction | void> {
     return await this.prisma.pointTransaction
       .findUnique(pointTransactionFindUniqueArgs)
       .then((pointTransaction) => {
@@ -44,7 +51,18 @@ export class PointTransactionService {
       });
   }
 
-  async update(pointTransactionUpdateOneArgs: PointTransactionUpdateOneArgs): Promise<PointTransaction | void> {
+  //to get latest point balance
+  async findFirst(
+    pointTransactionFindFirstArgs: PointTransactionFindFirstArgs,
+  ): Promise<PointTransaction | void> {
+    return await this.prisma.pointTransaction.findFirst(
+      pointTransactionFindFirstArgs,
+    );
+  }
+
+  async update(
+    pointTransactionUpdateOneArgs: PointTransactionUpdateOneArgs,
+  ): Promise<PointTransaction | void> {
     return this.prisma.pointTransaction
       .update(pointTransactionUpdateOneArgs)
       .then((pointTransaction) => {
@@ -55,7 +73,7 @@ export class PointTransactionService {
       });
   }
 
-  async remove(pointTransactionId: number): Promise<boolean | void>{
+  async remove(pointTransactionId: number): Promise<boolean | void> {
     return await this.prisma.pointTransaction
       .delete({
         where: { id: pointTransactionId },
