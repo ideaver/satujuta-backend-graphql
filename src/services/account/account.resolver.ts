@@ -7,6 +7,7 @@ import { AccountCreateArgs } from './dto/account-create-one.args';
 import { AccountFindManyArgs } from './dto/account-find-many.args';
 import { AccountFindUniqueArgs } from './dto/account-find-one.args';
 import { AccountUpdateOneArgs } from './dto/account-update-one.args';
+import { AccountFindFirstArgs } from './dto/account-find-first.args';
 
 interface AccountSelect {
   select: Prisma.AccountSelect;
@@ -53,6 +54,20 @@ export class AccountResolver {
     //Auto implement prisma select from graphql query info
     accountFindUniqueArgs.select = relations.select;
     return this.accountService.findOne(accountFindUniqueArgs);
+  }
+
+  @Query(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  accountFindFirst(
+    @Args('accountFindFirstArgs')
+    accountFindFirstArgs: AccountFindFirstArgs,
+    @Relations() relations: AccountSelect,
+  ) {
+    //Auto implement prisma select from graphql query info
+    accountFindFirstArgs.select = relations.select;
+    return this.accountService.findFirst(accountFindFirstArgs);
   }
 
   @Mutation(() => Account, { description: 'Deskripsinya ada disini loh' })

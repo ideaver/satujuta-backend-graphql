@@ -5,6 +5,7 @@ import { CreateOneAccountArgs, Account } from 'src/@generated';
 import { AccountFindManyArgs } from './dto/account-find-many.args';
 import { AccountFindUniqueArgs } from './dto/account-find-one.args';
 import { AccountUpdateOneArgs } from './dto/account-update-one.args';
+import { AccountFindFirstArgs } from './dto/account-find-first.args';
 
 @Injectable()
 export class AccountService {
@@ -24,7 +25,7 @@ export class AccountService {
   }
 
   async findMany(accountFindManyArgs: AccountFindManyArgs) {
-    return this.prisma.account
+    return await this.prisma.account
       .findMany(accountFindManyArgs)
       .then((accounts) => {
         return accounts;
@@ -32,6 +33,13 @@ export class AccountService {
       .catch((err) => {
         throwPrismaError(err);
       });
+  }
+
+  //to get current userpoint balance
+  async findFirst(
+    accountFindFirstArgs: AccountFindFirstArgs,
+  ): Promise<Account | void> {
+    return await this.prisma.account.findFirst(accountFindFirstArgs);
   }
 
   async findOne(

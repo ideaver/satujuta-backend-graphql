@@ -1818,6 +1818,9 @@ type Query {
   accountFindOne(accountFindUniqueArgs: AccountFindUniqueArgs!): Account
 
   """Deskripsinya ada disini loh"""
+  accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
+
+  """Deskripsinya ada disini loh"""
   schoolFindMany(schoolFindManyArgs: SchoolFindManyArgs!): [School!]
 
   """Deskripsinya ada disini loh"""
@@ -3966,6 +3969,15 @@ input AccountWhereUniqueInput {
   transactionDestination: TransactionListRelationFilter
   project: ProjectNullableRelationFilter
   bankAccount: BankNullableRelationFilter
+}
+
+input AccountFindFirstArgs {
+  where: AccountWhereInput
+  orderBy: [AccountOrderByWithRelationInput!]
+  cursor: AccountWhereUniqueInput
+  take: Int
+  skip: Int
+  distinct: [AccountScalarFieldEnum!]
 }
 
 input SchoolFindManyArgs {
