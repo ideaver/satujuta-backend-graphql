@@ -16,24 +16,25 @@ interface TransactionSelect {
 export class TransactionResolver {
   constructor(private readonly transactionService: TransactionService) {}
 
-  @Mutation(() => Transaction, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async transactionCreateOne(
-    @Args('transactionCreateArgs') transactionCreateArgs: TransactionCreateArgs,
-    @Relations() relations: TransactionSelect
-  ): Promise<Transaction | void> {
-    transactionCreateArgs.select = relations.select;
-    return await this.transactionService.createOne(transactionCreateArgs);
-  }
+  // @Mutation(() => Transaction, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async transactionCreateOne(
+  //   @Args('transactionCreateArgs') transactionCreateArgs: TransactionCreateArgs,
+  //   @Relations() relations: TransactionSelect
+  // ): Promise<Transaction | void> {
+  //   transactionCreateArgs.select = relations.select;
+  //   return await this.transactionService.createOne(transactionCreateArgs);
+  // }
 
   @Query(() => [Transaction], {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   transactionFindMany(
-    @Args('transactionFindManyArgs') transactionFindManyArgs: TransactionFindManyArgs,
+    @Args('transactionFindManyArgs')
+    transactionFindManyArgs: TransactionFindManyArgs,
     @Relations() relations: TransactionSelect,
   ) {
     //Auto implement prisma select from graphql query info
@@ -55,14 +56,14 @@ export class TransactionResolver {
     return this.transactionService.findOne(transactionFindUniqueArgs);
   }
 
-  @Mutation(() => Transaction, { description: 'Deskripsinya ada disini loh' })
-  transactionUpdateOne(
-    @Args('transactionUpdateOneArgs') transactionUpdateOneArgs: TransactionUpdateOneArgs,
-    @Relations() relations: TransactionSelect,
-  ) {
-    transactionUpdateOneArgs.select = relations.select;
-    return this.transactionService.update(transactionUpdateOneArgs);
-  }
+  // @Mutation(() => Transaction, { description: 'Deskripsinya ada disini loh' })
+  // transactionUpdateOne(
+  //   @Args('transactionUpdateOneArgs') transactionUpdateOneArgs: TransactionUpdateOneArgs,
+  //   @Relations() relations: TransactionSelect,
+  // ) {
+  //   transactionUpdateOneArgs.select = relations.select;
+  //   return this.transactionService.update(transactionUpdateOneArgs);
+  // }
 
   // @Mutation(() => Boolean, {
   //   nullable: true,

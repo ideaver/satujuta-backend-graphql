@@ -4177,12 +4177,6 @@ type Mutation {
   pointTransactionCreateOne(pointTransactionCreateArgs: PointTransactionCreateArgs!): PointTransaction
 
   """Deskripsinya ada disini loh"""
-  transactionCreateOne(transactionCreateArgs: TransactionCreateArgs!): Transaction
-
-  """Deskripsinya ada disini loh"""
-  transactionUpdateOne(transactionUpdateOneArgs: TransactionUpdateOneArgs!): Transaction!
-
-  """Deskripsinya ada disini loh"""
   accountCreateOne(accountCreateArgs: AccountCreateArgs!): Account
 
   """Deskripsinya ada disini loh"""
@@ -8570,37 +8564,6 @@ input UserCreateWithoutPointTransactionsInput {
 input UserCreateOrConnectWithoutPointTransactionsInput {
   where: UserWhereUniqueInput!
   create: UserCreateWithoutPointTransactionsInput!
-}
-
-input TransactionCreateArgs {
-  data: TransactionCreateInput!
-}
-
-input TransactionCreateInput {
-  amount: Float!
-  status: TransactionStatus!
-  transactionCategory: TransactionCategory!
-  createdAt: DateTime
-  fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
-  toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
-  payment: PaymentCreateNestedOneWithoutTransactionInput
-  User: UserCreateNestedOneWithoutTransactionsInput
-}
-
-input TransactionUpdateOneArgs {
-  data: TransactionUpdateInput!
-  where: TransactionWhereUniqueInput!
-}
-
-input TransactionUpdateInput {
-  amount: FloatFieldUpdateOperationsInput
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
-  toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
-  payment: PaymentUpdateOneWithoutTransactionNestedInput
-  User: UserUpdateOneWithoutTransactionsNestedInput
 }
 
 input AccountCreateArgs {
