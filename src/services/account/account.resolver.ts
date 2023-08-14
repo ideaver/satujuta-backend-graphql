@@ -58,7 +58,7 @@ export class AccountResolver {
 
   @Query(() => Account, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'Bisa juga untuk ambil balance terakhir point milik user',
   })
   accountFindFirst(
     @Args('accountFindFirstArgs')
