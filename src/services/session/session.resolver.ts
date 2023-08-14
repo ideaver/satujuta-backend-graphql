@@ -16,17 +16,17 @@ interface SessionSelect {
 export class SessionResolver {
   constructor(private readonly sessionService: SessionService) {}
 
-  @Mutation(() => Session, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async sessionCreateOne(
-    @Args('sessionCreateArgs') sessionCreateArgs: SessionCreateArgs,
-    @Relations() relations: SessionSelect
-  ): Promise<Session | void> {
-    sessionCreateArgs.select = relations.select;
-    return await this.sessionService.createOne(sessionCreateArgs);
-  }
+  // @Mutation(() => Session, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async sessionCreateOne(
+  //   @Args('sessionCreateArgs') sessionCreateArgs: SessionCreateArgs,
+  //   @Relations() relations: SessionSelect
+  // ): Promise<Session | void> {
+  //   sessionCreateArgs.select = relations.select;
+  //   return await this.sessionService.createOne(sessionCreateArgs);
+  // }
 
   @Query(() => [Session], {
     nullable: true,

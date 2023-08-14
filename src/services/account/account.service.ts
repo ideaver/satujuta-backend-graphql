@@ -10,8 +10,9 @@ import { AccountUpdateOneArgs } from './dto/account-update-one.args';
 export class AccountService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(accountCreateArgs: CreateOneAccountArgs): Promise<Account | void> {
-
+  async createOne(
+    accountCreateArgs: CreateOneAccountArgs,
+  ): Promise<Account | void> {
     return await this.prisma.account
       .create(accountCreateArgs)
       .then((account) => {
@@ -33,7 +34,9 @@ export class AccountService {
       });
   }
 
-  async findOne(accountFindUniqueArgs: AccountFindUniqueArgs): Promise<Account | void> {
+  async findOne(
+    accountFindUniqueArgs: AccountFindUniqueArgs,
+  ): Promise<Account | void> {
     return await this.prisma.account
       .findUnique(accountFindUniqueArgs)
       .then((account) => {
@@ -44,7 +47,9 @@ export class AccountService {
       });
   }
 
-  async update(accountUpdateOneArgs: AccountUpdateOneArgs): Promise<Account | void> {
+  async update(
+    accountUpdateOneArgs: AccountUpdateOneArgs,
+  ): Promise<Account | void> {
     return this.prisma.account
       .update(accountUpdateOneArgs)
       .then((account) => {
@@ -55,7 +60,7 @@ export class AccountService {
       });
   }
 
-  async remove(accountId: number): Promise<boolean | void>{
+  async remove(accountId: number): Promise<boolean | void> {
     return await this.prisma.account
       .delete({
         where: { id: accountId },

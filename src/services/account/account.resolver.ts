@@ -16,17 +16,17 @@ interface AccountSelect {
 export class AccountResolver {
   constructor(private readonly accountService: AccountService) {}
 
-  @Mutation(() => Account, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async accountCreateOne(
-    @Args('accountCreateArgs') accountCreateArgs: AccountCreateArgs,
-    @Relations() relations: AccountSelect
-  ): Promise<Account | void> {
-    accountCreateArgs.select = relations.select;
-    return await this.accountService.createOne(accountCreateArgs);
-  }
+  // @Mutation(() => Account, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async accountCreateOne(
+  //   @Args('accountCreateArgs') accountCreateArgs: AccountCreateArgs,
+  //   @Relations() relations: AccountSelect
+  // ): Promise<Account | void> {
+  //   accountCreateArgs.select = relations.select;
+  //   return await this.accountService.createOne(accountCreateArgs);
+  // }
 
   @Query(() => [Account], {
     nullable: true,
@@ -66,8 +66,7 @@ export class AccountResolver {
 
   @Mutation(() => Boolean, {
     nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
+    description: 'Datanya benar2 terhapus dari db',
   })
   accountRemove(@Args('accountId') accountId: number) {
     return this.accountService.remove(accountId);

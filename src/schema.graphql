@@ -4171,13 +4171,7 @@ type Mutation {
   userNotificationRemove(userNotificationId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  sessionCreateOne(sessionCreateArgs: SessionCreateArgs!): Session
-
-  """Deskripsinya ada disini loh"""
   pointTransactionCreateOne(pointTransactionCreateArgs: PointTransactionCreateArgs!): PointTransaction
-
-  """Deskripsinya ada disini loh"""
-  accountCreateOne(accountCreateArgs: AccountCreateArgs!): Account
 
   """Deskripsinya ada disini loh"""
   accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
@@ -8486,46 +8480,6 @@ input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
   data: UserUpdateWithoutUserNotificationsInput!
 }
 
-input SessionCreateArgs {
-  data: SessionCreateInput!
-}
-
-input SessionCreateInput {
-  token: String!
-  expiresAt: DateTime!
-  createdAt: DateTime
-  device: String!
-  ipAddress: Float!
-  user: UserCreateNestedOneWithoutSessionsInput!
-}
-
-input UserCreateNestedOneWithoutSessionsInput {
-  create: UserCreateWithoutSessionsInput
-  connectOrCreate: UserCreateOrConnectWithoutSessionsInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutSessionsInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-}
-
-input UserCreateOrConnectWithoutSessionsInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutSessionsInput!
-}
-
 input PointTransactionCreateArgs {
   data: PointTransactionCreateInput!
 }
@@ -8564,24 +8518,6 @@ input UserCreateWithoutPointTransactionsInput {
 input UserCreateOrConnectWithoutPointTransactionsInput {
   where: UserWhereUniqueInput!
   create: UserCreateWithoutPointTransactionsInput!
-}
-
-input AccountCreateArgs {
-  data: AccountCreateInput!
-}
-
-input AccountCreateInput {
-  accountNumber: Float
-  name: String!
-  balance: Float
-  createdAt: DateTime
-  updatedAt: DateTime
-  accountCategory: AccountCategory!
-  user: UserCreateNestedOneWithoutAccountsInput!
-  transactionOrigins: TransactionCreateNestedManyWithoutFromAccountInput
-  transactionDestination: TransactionCreateNestedManyWithoutToAccountInput
-  project: ProjectCreateNestedOneWithoutAccountInput
-  bankAccount: BankCreateNestedOneWithoutAccountInput
 }
 
 input AccountUpdateOneArgs {
