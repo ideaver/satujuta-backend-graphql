@@ -1817,7 +1817,7 @@ type Query {
   """Deskripsinya ada disini loh"""
   accountFindOne(accountFindUniqueArgs: AccountFindUniqueArgs!): Account
 
-  """Bisa juga untuk ambil balance terakhir point milik user"""
+  """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
   accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
 
   """Deskripsinya ada disini loh"""
