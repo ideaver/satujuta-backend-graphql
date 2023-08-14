@@ -86,6 +86,7 @@ export class UserResolver {
     @Relations() relations: UserSelect,
   ) {
     userUpdateOneArgs.select = relations.select;
+    //TODO: Implement whatsapp verification
     return this.userService.update(userUpdateOneArgs);
   }
 
