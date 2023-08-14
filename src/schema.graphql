@@ -4176,9 +4176,6 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
 
-  """Datanya benar2 terhapus dari db"""
-  accountRemove(accountId: Float!): Boolean
-
   """Deskripsinya ada disini loh"""
   schoolCreateOne(schoolCreateArgs: SchoolCreateArgs!): School
 

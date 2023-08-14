@@ -64,11 +64,11 @@ export class AccountResolver {
     return this.accountService.update(accountUpdateOneArgs);
   }
 
-  @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
-  })
-  accountRemove(@Args('accountId') accountId: number) {
-    return this.accountService.remove(accountId);
-  }
+  // @Mutation(() => Boolean, {
+  //   nullable: true,
+  //   description: 'Datanya benar2 terhapus dari db',
+  // })
+  // accountRemove(@Args('accountId') accountId: number) {
+  //   return this.accountService.remove(accountId);
+  // }
 }
