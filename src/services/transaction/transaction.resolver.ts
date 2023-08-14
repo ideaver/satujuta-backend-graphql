@@ -55,14 +55,14 @@ export class TransactionResolver {
     return this.transactionService.findOne(transactionFindUniqueArgs);
   }
 
-  // @Mutation(() => Transaction, { description: 'Deskripsinya ada disini loh' })
-  // transactionUpdateOne(
-  //   @Args('transactionUpdateOneArgs') transactionUpdateOneArgs: TransactionUpdateOneArgs,
-  //   @Relations() relations: TransactionSelect,
-  // ) {
-  //   transactionUpdateOneArgs.select = relations.select;
-  //   return this.transactionService.update(transactionUpdateOneArgs);
-  // }
+  @Mutation(() => Transaction, { description: 'Deskripsinya ada disini loh' })
+  transactionUpdateOne(
+    @Args('transactionUpdateOneArgs') transactionUpdateOneArgs: TransactionUpdateOneArgs,
+    @Relations() relations: TransactionSelect,
+  ) {
+    transactionUpdateOneArgs.select = relations.select;
+    return this.transactionService.update(transactionUpdateOneArgs);
+  }
 
   // @Mutation(() => Boolean, {
   //   nullable: true,

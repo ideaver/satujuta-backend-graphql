@@ -4180,6 +4180,9 @@ type Mutation {
   transactionCreateOne(transactionCreateArgs: TransactionCreateArgs!): Transaction
 
   """Deskripsinya ada disini loh"""
+  transactionUpdateOne(transactionUpdateOneArgs: TransactionUpdateOneArgs!): Transaction!
+
+  """Deskripsinya ada disini loh"""
   accountCreateOne(accountCreateArgs: AccountCreateArgs!): Account
 
   """Deskripsinya ada disini loh"""
@@ -8582,6 +8585,22 @@ input TransactionCreateInput {
   toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
   payment: PaymentCreateNestedOneWithoutTransactionInput
   User: UserCreateNestedOneWithoutTransactionsInput
+}
+
+input TransactionUpdateOneArgs {
+  data: TransactionUpdateInput!
+  where: TransactionWhereUniqueInput!
+}
+
+input TransactionUpdateInput {
+  amount: FloatFieldUpdateOperationsInput
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
+  toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
+  payment: PaymentUpdateOneWithoutTransactionNestedInput
+  User: UserUpdateOneWithoutTransactionsNestedInput
 }
 
 input AccountCreateArgs {

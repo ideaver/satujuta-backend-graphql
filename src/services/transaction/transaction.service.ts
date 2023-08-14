@@ -55,16 +55,16 @@ export class TransactionService {
       });
   }
 
-  async remove(transactionId: number): Promise<boolean | void>{
-    return await this.prisma.transaction
-      .delete({
-        where: { id: transactionId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throwPrismaError(err);
-      });
-  }
+  // async remove(transactionId: number): Promise<boolean | void>{
+  //   return await this.prisma.transaction
+  //     .delete({
+  //       where: { id: transactionId },
+  //     })
+  //     .then(() => {
+  //       return true;
+  //     })
+  //     .catch((err) => {
+  //       throwPrismaError(err);
+  //     });
+  // }
 }
