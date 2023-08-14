@@ -1794,6 +1794,24 @@ type Query {
   userNotificationFindOne(userNotificationFindUniqueArgs: UserNotificationFindUniqueArgs!): UserNotification
 
   """Deskripsinya ada disini loh"""
+  sessionFindMany(sessionFindManyArgs: SessionFindManyArgs!): [Session!]
+
+  """Deskripsinya ada disini loh"""
+  sessionFindOne(sessionFindUniqueArgs: SessionFindUniqueArgs!): Session
+
+  """Deskripsinya ada disini loh"""
+  pointTransactionFindMany(pointTransactionFindManyArgs: PointTransactionFindManyArgs!): [PointTransaction!]
+
+  """Deskripsinya ada disini loh"""
+  pointTransactionFindOne(pointTransactionFindUniqueArgs: PointTransactionFindUniqueArgs!): PointTransaction
+
+  """Deskripsinya ada disini loh"""
+  transactionFindMany(transactionFindManyArgs: TransactionFindManyArgs!): [Transaction!]
+
+  """Deskripsinya ada disini loh"""
+  transactionFindOne(transactionFindUniqueArgs: TransactionFindUniqueArgs!): Transaction
+
+  """Deskripsinya ada disini loh"""
   accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
 
   """Deskripsinya ada disini loh"""
@@ -3694,6 +3712,184 @@ input UserNotificationWhereUniqueInput {
   user: UserRelationFilter
 }
 
+input SessionFindManyArgs {
+  where: SessionWhereInput
+  orderBy: [SessionOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [SessionScalarFieldEnum!]
+}
+
+input SessionWhereInput {
+  AND: [SessionWhereInput!]
+  OR: [SessionWhereInput!]
+  NOT: [SessionWhereInput!]
+  id: IntFilter
+  token: StringFilter
+  expiresAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  userId: StringFilter
+  device: StringFilter
+  ipAddress: FloatFilter
+  user: UserRelationFilter
+}
+
+input SessionOrderByWithRelationInput {
+  id: SortOrder
+  token: SortOrder
+  expiresAt: SortOrder
+  createdAt: SortOrder
+  userId: SortOrder
+  device: SortOrder
+  ipAddress: SortOrder
+  user: UserOrderByWithRelationInput
+}
+
+enum SessionScalarFieldEnum {
+  id
+  token
+  expiresAt
+  createdAt
+  userId
+  device
+  ipAddress
+}
+
+input SessionFindUniqueArgs {
+  where: SessionWhereUniqueInput!
+}
+
+input SessionWhereUniqueInput {
+  id: Int
+  token: String
+  AND: [SessionWhereInput!]
+  OR: [SessionWhereInput!]
+  NOT: [SessionWhereInput!]
+  expiresAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  userId: StringFilter
+  device: StringFilter
+  ipAddress: FloatFilter
+  user: UserRelationFilter
+}
+
+input PointTransactionFindManyArgs {
+  where: PointTransactionWhereInput
+  orderBy: [PointTransactionOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [PointTransactionScalarFieldEnum!]
+}
+
+input PointTransactionWhereInput {
+  AND: [PointTransactionWhereInput!]
+  OR: [PointTransactionWhereInput!]
+  NOT: [PointTransactionWhereInput!]
+  id: IntFilter
+  amount: FloatFilter
+  pointType: EnumPointTypeFilter
+  transactionType: EnumTransactionTypeFilter
+  currentBalance: FloatFilter
+  userId: StringFilter
+  createdAt: DateTimeFilter
+  User: UserRelationFilter
+}
+
+input EnumPointTypeFilter {
+  equals: PointType
+  in: [PointType!]
+  notIn: [PointType!]
+  not: NestedEnumPointTypeFilter
+}
+
+input NestedEnumPointTypeFilter {
+  equals: PointType
+  in: [PointType!]
+  notIn: [PointType!]
+  not: NestedEnumPointTypeFilter
+}
+
+input PointTransactionOrderByWithRelationInput {
+  id: SortOrder
+  amount: SortOrder
+  pointType: SortOrder
+  transactionType: SortOrder
+  currentBalance: SortOrder
+  userId: SortOrder
+  createdAt: SortOrder
+  User: UserOrderByWithRelationInput
+}
+
+enum PointTransactionScalarFieldEnum {
+  id
+  amount
+  pointType
+  transactionType
+  currentBalance
+  userId
+  createdAt
+}
+
+input PointTransactionFindUniqueArgs {
+  where: PointTransactionWhereUniqueInput!
+}
+
+input PointTransactionWhereUniqueInput {
+  id: Int
+  AND: [PointTransactionWhereInput!]
+  OR: [PointTransactionWhereInput!]
+  NOT: [PointTransactionWhereInput!]
+  amount: FloatFilter
+  pointType: EnumPointTypeFilter
+  transactionType: EnumTransactionTypeFilter
+  currentBalance: FloatFilter
+  userId: StringFilter
+  createdAt: DateTimeFilter
+  User: UserRelationFilter
+}
+
+input TransactionFindManyArgs {
+  where: TransactionWhereInput
+  orderBy: [TransactionOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [TransactionScalarFieldEnum!]
+}
+
+enum TransactionScalarFieldEnum {
+  id
+  amount
+  status
+  transactionType
+  transactionCategory
+  currentBalance
+  userId
+  accountId
+  createdAt
+}
+
+input TransactionFindUniqueArgs {
+  where: TransactionWhereUniqueInput!
+}
+
+input TransactionWhereUniqueInput {
+  id: Int
+  userId: String
+  accountId: Int
+  AND: [TransactionWhereInput!]
+  OR: [TransactionWhereInput!]
+  NOT: [TransactionWhereInput!]
+  amount: FloatFilter
+  status: EnumTransactionStatusFilter
+  transactionType: EnumTransactionTypeFilter
+  transactionCategory: EnumTransactionCategoryFilter
+  currentBalance: FloatFilter
+  createdAt: DateTimeFilter
+  User: UserRelationFilter
+  account: AccountRelationFilter
+  payment: PaymentNullableRelationFilter
+}
+
 input AccountFindManyArgs {
   where: AccountWhereInput
   orderBy: [AccountOrderByWithRelationInput!]
@@ -3936,6 +4132,15 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   userNotificationRemove(userNotificationId: Float!): Boolean
+
+  """Deskripsinya ada disini loh"""
+  sessionCreateOne(sessionCreateArgs: SessionCreateArgs!): Session
+
+  """Deskripsinya ada disini loh"""
+  pointTransactionCreateOne(pointTransactionCreateArgs: PointTransactionCreateArgs!): PointTransaction
+
+  """Deskripsinya ada disini loh"""
+  transactionCreateOne(transactionCreateArgs: TransactionCreateArgs!): Transaction
 
   """Deskripsinya ada disini loh"""
   accountCreateOne(accountCreateArgs: AccountCreateArgs!): Account
@@ -5224,24 +5429,6 @@ input AccountCreateOrConnectWithoutTransactionsInput {
 input TransactionCreateOrConnectWithoutPaymentInput {
   where: TransactionWhereUniqueInput!
   create: TransactionCreateWithoutPaymentInput!
-}
-
-input TransactionWhereUniqueInput {
-  id: Int
-  userId: String
-  accountId: Int
-  AND: [TransactionWhereInput!]
-  OR: [TransactionWhereInput!]
-  NOT: [TransactionWhereInput!]
-  amount: FloatFilter
-  status: EnumTransactionStatusFilter
-  transactionType: EnumTransactionTypeFilter
-  transactionCategory: EnumTransactionCategoryFilter
-  currentBalance: FloatFilter
-  createdAt: DateTimeFilter
-  User: UserRelationFilter
-  account: AccountRelationFilter
-  payment: PaymentNullableRelationFilter
 }
 
 input PaymentConfirmationCreateNestedOneWithoutPaymentInput {
@@ -7994,6 +8181,100 @@ input UserUpdateWithoutUserNotificationsInput {
 input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
   where: UserWhereInput
   data: UserUpdateWithoutUserNotificationsInput!
+}
+
+input SessionCreateArgs {
+  data: SessionCreateInput!
+}
+
+input SessionCreateInput {
+  token: String!
+  expiresAt: DateTime!
+  createdAt: DateTime
+  device: String!
+  ipAddress: Float!
+  user: UserCreateNestedOneWithoutSessionsInput!
+}
+
+input UserCreateNestedOneWithoutSessionsInput {
+  create: UserCreateWithoutSessionsInput
+  connectOrCreate: UserCreateOrConnectWithoutSessionsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutSessionsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutSessionsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutSessionsInput!
+}
+
+input PointTransactionCreateArgs {
+  data: PointTransactionCreateInput!
+}
+
+input PointTransactionCreateInput {
+  amount: Float!
+  pointType: PointType!
+  transactionType: TransactionType!
+  currentBalance: Float
+  createdAt: DateTime
+  User: UserCreateNestedOneWithoutPointTransactionsInput!
+}
+
+input UserCreateNestedOneWithoutPointTransactionsInput {
+  create: UserCreateWithoutPointTransactionsInput
+  connectOrCreate: UserCreateOrConnectWithoutPointTransactionsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutPointTransactionsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutPointTransactionsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutPointTransactionsInput!
+}
+
+input TransactionCreateArgs {
+  data: TransactionCreateInput!
+}
+
+input TransactionCreateInput {
+  amount: Float!
+  status: TransactionStatus!
+  transactionType: TransactionType!
+  transactionCategory: TransactionCategory!
+  currentBalance: Float!
+  createdAt: DateTime
+  User: UserCreateNestedOneWithoutTransactionsInput!
+  account: AccountCreateNestedOneWithoutTransactionsInput!
+  payment: PaymentCreateNestedOneWithoutTransactionInput
 }
 
 input AccountCreateArgs {

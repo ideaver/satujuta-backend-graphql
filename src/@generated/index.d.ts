@@ -37,12 +37,11 @@ export declare enum TransactionScalarFieldEnum {
     id = "id",
     amount = "amount",
     status = "status",
-    transactionType = "transactionType",
     transactionCategory = "transactionCategory",
-    currentBalance = "currentBalance",
-    userId = "userId",
-    accountId = "accountId",
-    createdAt = "createdAt"
+    fromAccountId = "fromAccountId",
+    toAccountId = "toAccountId",
+    createdAt = "createdAt",
+    userId = "userId"
 }
 export declare enum ShippingScalarFieldEnum {
     id = "id",
@@ -197,7 +196,8 @@ export declare enum AccountCategory {
     COMISSION = "COMISSION",
     CASH = "CASH",
     PLATFORM = "PLATFORM",
-    BANK = "BANK"
+    BANK = "BANK",
+    DEBT = "DEBT"
 }
 export declare enum PostalCodeScalarFieldEnum {
     id = "id",
@@ -391,7 +391,8 @@ export declare class AccountCountOrderByAggregateInput {
     accountCategory?: keyof typeof SortOrder;
 }
 export declare class AccountCount {
-    transactions?: number;
+    transactionOrigins?: number;
+    transactionDestination?: number;
 }
 export declare class AccountCreateManyUserInputEnvelope {
     data: Array<AccountCreateManyUserInput>;
@@ -432,9 +433,14 @@ export declare class AccountCreateNestedOneWithoutProjectInput {
     connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutProjectInput>;
     connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
 }
-export declare class AccountCreateNestedOneWithoutTransactionsInput {
-    create?: InstanceType<typeof AccountCreateWithoutTransactionsInput>;
-    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutTransactionsInput>;
+export declare class AccountCreateNestedOneWithoutTransactionDestinationInput {
+    create?: InstanceType<typeof AccountCreateWithoutTransactionDestinationInput>;
+    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutTransactionDestinationInput>;
+    connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
+}
+export declare class AccountCreateNestedOneWithoutTransactionOriginsInput {
+    create?: InstanceType<typeof AccountCreateWithoutTransactionOriginsInput>;
+    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutTransactionOriginsInput>;
     connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
 }
 export declare class AccountCreateOrConnectWithoutBankAccountInput {
@@ -445,9 +451,13 @@ export declare class AccountCreateOrConnectWithoutProjectInput {
     where: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
     create: InstanceType<typeof AccountCreateWithoutProjectInput>;
 }
-export declare class AccountCreateOrConnectWithoutTransactionsInput {
+export declare class AccountCreateOrConnectWithoutTransactionDestinationInput {
     where: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof AccountCreateWithoutTransactionsInput>;
+    create: InstanceType<typeof AccountCreateWithoutTransactionDestinationInput>;
+}
+export declare class AccountCreateOrConnectWithoutTransactionOriginsInput {
+    where: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof AccountCreateWithoutTransactionOriginsInput>;
 }
 export declare class AccountCreateOrConnectWithoutUserInput {
     where: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
@@ -461,7 +471,8 @@ export declare class AccountCreateWithoutBankAccountInput {
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
     user: InstanceType<typeof UserCreateNestedOneWithoutAccountsInput>;
-    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectCreateNestedOneWithoutAccountInput>;
 }
 export declare class AccountCreateWithoutProjectInput {
@@ -472,10 +483,11 @@ export declare class AccountCreateWithoutProjectInput {
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
     user: InstanceType<typeof UserCreateNestedOneWithoutAccountsInput>;
-    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionCreateNestedManyWithoutToAccountInput>;
     bankAccount?: InstanceType<typeof BankCreateNestedOneWithoutAccountInput>;
 }
-export declare class AccountCreateWithoutTransactionsInput {
+export declare class AccountCreateWithoutTransactionDestinationInput {
     accountNumber?: number;
     name: string;
     balance?: number;
@@ -483,6 +495,19 @@ export declare class AccountCreateWithoutTransactionsInput {
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
     user: InstanceType<typeof UserCreateNestedOneWithoutAccountsInput>;
+    transactionOrigins?: InstanceType<typeof TransactionCreateNestedManyWithoutFromAccountInput>;
+    project?: InstanceType<typeof ProjectCreateNestedOneWithoutAccountInput>;
+    bankAccount?: InstanceType<typeof BankCreateNestedOneWithoutAccountInput>;
+}
+export declare class AccountCreateWithoutTransactionOriginsInput {
+    accountNumber?: number;
+    name: string;
+    balance?: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    accountCategory: keyof typeof AccountCategory;
+    user: InstanceType<typeof UserCreateNestedOneWithoutAccountsInput>;
+    transactionDestination?: InstanceType<typeof TransactionCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectCreateNestedOneWithoutAccountInput>;
     bankAccount?: InstanceType<typeof BankCreateNestedOneWithoutAccountInput>;
 }
@@ -493,7 +518,8 @@ export declare class AccountCreateWithoutUserInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
-    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectCreateNestedOneWithoutAccountInput>;
     bankAccount?: InstanceType<typeof BankCreateNestedOneWithoutAccountInput>;
 }
@@ -505,7 +531,8 @@ export declare class AccountCreateInput {
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
     user: InstanceType<typeof UserCreateNestedOneWithoutAccountsInput>;
-    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectCreateNestedOneWithoutAccountInput>;
     bankAccount?: InstanceType<typeof BankCreateNestedOneWithoutAccountInput>;
 }
@@ -630,7 +657,8 @@ export declare class AccountOrderByWithRelationInput {
     userId?: keyof typeof SortOrder;
     accountCategory?: keyof typeof SortOrder;
     user?: InstanceType<typeof UserOrderByWithRelationInput>;
-    transactions?: InstanceType<typeof TransactionOrderByRelationAggregateInput>;
+    transactionOrigins?: InstanceType<typeof TransactionOrderByRelationAggregateInput>;
+    transactionDestination?: InstanceType<typeof TransactionOrderByRelationAggregateInput>;
     project?: InstanceType<typeof ProjectOrderByWithRelationInput>;
     bankAccount?: InstanceType<typeof BankOrderByWithRelationInput>;
 }
@@ -694,7 +722,8 @@ export declare class AccountUncheckedCreateWithoutBankAccountInput {
     updatedAt?: Date | string;
     userId: string;
     accountCategory: keyof typeof AccountCategory;
-    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectUncheckedCreateNestedOneWithoutAccountInput>;
 }
 export declare class AccountUncheckedCreateWithoutProjectInput {
@@ -706,10 +735,11 @@ export declare class AccountUncheckedCreateWithoutProjectInput {
     updatedAt?: Date | string;
     userId: string;
     accountCategory: keyof typeof AccountCategory;
-    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutToAccountInput>;
     bankAccount?: InstanceType<typeof BankUncheckedCreateNestedOneWithoutAccountInput>;
 }
-export declare class AccountUncheckedCreateWithoutTransactionsInput {
+export declare class AccountUncheckedCreateWithoutTransactionDestinationInput {
     id?: number;
     accountNumber?: number;
     name: string;
@@ -718,6 +748,20 @@ export declare class AccountUncheckedCreateWithoutTransactionsInput {
     updatedAt?: Date | string;
     userId: string;
     accountCategory: keyof typeof AccountCategory;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutFromAccountInput>;
+    project?: InstanceType<typeof ProjectUncheckedCreateNestedOneWithoutAccountInput>;
+    bankAccount?: InstanceType<typeof BankUncheckedCreateNestedOneWithoutAccountInput>;
+}
+export declare class AccountUncheckedCreateWithoutTransactionOriginsInput {
+    id?: number;
+    accountNumber?: number;
+    name: string;
+    balance?: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    userId: string;
+    accountCategory: keyof typeof AccountCategory;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectUncheckedCreateNestedOneWithoutAccountInput>;
     bankAccount?: InstanceType<typeof BankUncheckedCreateNestedOneWithoutAccountInput>;
 }
@@ -729,7 +773,8 @@ export declare class AccountUncheckedCreateWithoutUserInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
-    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectUncheckedCreateNestedOneWithoutAccountInput>;
     bankAccount?: InstanceType<typeof BankUncheckedCreateNestedOneWithoutAccountInput>;
 }
@@ -742,7 +787,8 @@ export declare class AccountUncheckedCreateInput {
     updatedAt?: Date | string;
     userId: string;
     accountCategory: keyof typeof AccountCategory;
-    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutAccountInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutFromAccountInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutToAccountInput>;
     project?: InstanceType<typeof ProjectUncheckedCreateNestedOneWithoutAccountInput>;
     bankAccount?: InstanceType<typeof BankUncheckedCreateNestedOneWithoutAccountInput>;
 }
@@ -787,7 +833,8 @@ export declare class AccountUncheckedUpdateWithoutBankAccountInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
-    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUncheckedUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUncheckedUpdateWithoutProjectInput {
@@ -799,10 +846,11 @@ export declare class AccountUncheckedUpdateWithoutProjectInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
-    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutToAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUncheckedUpdateOneWithoutAccountNestedInput>;
 }
-export declare class AccountUncheckedUpdateWithoutTransactionsInput {
+export declare class AccountUncheckedUpdateWithoutTransactionDestinationInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -811,6 +859,20 @@ export declare class AccountUncheckedUpdateWithoutTransactionsInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutFromAccountNestedInput>;
+    project?: InstanceType<typeof ProjectUncheckedUpdateOneWithoutAccountNestedInput>;
+    bankAccount?: InstanceType<typeof BankUncheckedUpdateOneWithoutAccountNestedInput>;
+}
+export declare class AccountUncheckedUpdateWithoutTransactionOriginsInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUncheckedUpdateOneWithoutAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUncheckedUpdateOneWithoutAccountNestedInput>;
 }
@@ -822,7 +884,8 @@ export declare class AccountUncheckedUpdateWithoutUserInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
-    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUncheckedUpdateOneWithoutAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUncheckedUpdateOneWithoutAccountNestedInput>;
 }
@@ -835,7 +898,8 @@ export declare class AccountUncheckedUpdateInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
-    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUncheckedUpdateOneWithoutAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUncheckedUpdateOneWithoutAccountNestedInput>;
 }
@@ -878,12 +942,19 @@ export declare class AccountUpdateOneRequiredWithoutProjectNestedInput {
     connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutProjectInput>;
 }
-export declare class AccountUpdateOneRequiredWithoutTransactionsNestedInput {
-    create?: InstanceType<typeof AccountCreateWithoutTransactionsInput>;
-    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutTransactionsInput>;
-    upsert?: InstanceType<typeof AccountUpsertWithoutTransactionsInput>;
+export declare class AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput {
+    create?: InstanceType<typeof AccountCreateWithoutTransactionDestinationInput>;
+    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutTransactionDestinationInput>;
+    upsert?: InstanceType<typeof AccountUpsertWithoutTransactionDestinationInput>;
     connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
-    update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutTransactionsInput>;
+    update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutTransactionDestinationInput>;
+}
+export declare class AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput {
+    create?: InstanceType<typeof AccountCreateWithoutTransactionOriginsInput>;
+    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutTransactionOriginsInput>;
+    upsert?: InstanceType<typeof AccountUpsertWithoutTransactionOriginsInput>;
+    connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutTransactionOriginsInput>;
 }
 export declare class AccountUpdateToOneWithWhereWithoutBankAccountInput {
     where?: InstanceType<typeof AccountWhereInput>;
@@ -893,9 +964,13 @@ export declare class AccountUpdateToOneWithWhereWithoutProjectInput {
     where?: InstanceType<typeof AccountWhereInput>;
     data: InstanceType<typeof AccountUpdateWithoutProjectInput>;
 }
-export declare class AccountUpdateToOneWithWhereWithoutTransactionsInput {
+export declare class AccountUpdateToOneWithWhereWithoutTransactionDestinationInput {
     where?: InstanceType<typeof AccountWhereInput>;
-    data: InstanceType<typeof AccountUpdateWithoutTransactionsInput>;
+    data: InstanceType<typeof AccountUpdateWithoutTransactionDestinationInput>;
+}
+export declare class AccountUpdateToOneWithWhereWithoutTransactionOriginsInput {
+    where?: InstanceType<typeof AccountWhereInput>;
+    data: InstanceType<typeof AccountUpdateWithoutTransactionOriginsInput>;
 }
 export declare class AccountUpdateWithWhereUniqueWithoutUserInput {
     where: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
@@ -909,7 +984,8 @@ export declare class AccountUpdateWithoutBankAccountInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUpdateOneRequiredWithoutAccountsNestedInput>;
-    transactions?: InstanceType<typeof TransactionUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUpdateOneWithoutAccountNestedInput>;
 }
 export declare class AccountUpdateWithoutProjectInput {
@@ -920,10 +996,11 @@ export declare class AccountUpdateWithoutProjectInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUpdateOneRequiredWithoutAccountsNestedInput>;
-    transactions?: InstanceType<typeof TransactionUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUpdateManyWithoutToAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
-export declare class AccountUpdateWithoutTransactionsInput {
+export declare class AccountUpdateWithoutTransactionDestinationInput {
     accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
@@ -931,6 +1008,19 @@ export declare class AccountUpdateWithoutTransactionsInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUpdateOneRequiredWithoutAccountsNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUpdateManyWithoutFromAccountNestedInput>;
+    project?: InstanceType<typeof ProjectUpdateOneWithoutAccountNestedInput>;
+    bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
+}
+export declare class AccountUpdateWithoutTransactionOriginsInput {
+    accountNumber?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
+    user?: InstanceType<typeof UserUpdateOneRequiredWithoutAccountsNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUpdateOneWithoutAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
@@ -941,7 +1031,8 @@ export declare class AccountUpdateWithoutUserInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
-    transactions?: InstanceType<typeof TransactionUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUpdateOneWithoutAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
@@ -953,7 +1044,8 @@ export declare class AccountUpdateInput {
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUpdateOneRequiredWithoutAccountsNestedInput>;
-    transactions?: InstanceType<typeof TransactionUpdateManyWithoutAccountNestedInput>;
+    transactionOrigins?: InstanceType<typeof TransactionUpdateManyWithoutFromAccountNestedInput>;
+    transactionDestination?: InstanceType<typeof TransactionUpdateManyWithoutToAccountNestedInput>;
     project?: InstanceType<typeof ProjectUpdateOneWithoutAccountNestedInput>;
     bankAccount?: InstanceType<typeof BankUpdateOneWithoutAccountNestedInput>;
 }
@@ -972,9 +1064,14 @@ export declare class AccountUpsertWithoutProjectInput {
     create: InstanceType<typeof AccountCreateWithoutProjectInput>;
     where?: InstanceType<typeof AccountWhereInput>;
 }
-export declare class AccountUpsertWithoutTransactionsInput {
-    update: InstanceType<typeof AccountUpdateWithoutTransactionsInput>;
-    create: InstanceType<typeof AccountCreateWithoutTransactionsInput>;
+export declare class AccountUpsertWithoutTransactionDestinationInput {
+    update: InstanceType<typeof AccountUpdateWithoutTransactionDestinationInput>;
+    create: InstanceType<typeof AccountCreateWithoutTransactionDestinationInput>;
+    where?: InstanceType<typeof AccountWhereInput>;
+}
+export declare class AccountUpsertWithoutTransactionOriginsInput {
+    update: InstanceType<typeof AccountUpdateWithoutTransactionOriginsInput>;
+    create: InstanceType<typeof AccountCreateWithoutTransactionOriginsInput>;
     where?: InstanceType<typeof AccountWhereInput>;
 }
 export declare class AccountWhereUniqueInput {
@@ -990,7 +1087,8 @@ export declare class AccountWhereUniqueInput {
     userId?: InstanceType<typeof StringFilter>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFilter>;
     user?: InstanceType<typeof UserRelationFilter>;
-    transactions?: InstanceType<typeof TransactionListRelationFilter>;
+    transactionOrigins?: InstanceType<typeof TransactionListRelationFilter>;
+    transactionDestination?: InstanceType<typeof TransactionListRelationFilter>;
     project?: InstanceType<typeof ProjectNullableRelationFilter>;
     bankAccount?: InstanceType<typeof BankNullableRelationFilter>;
 }
@@ -1007,7 +1105,8 @@ export declare class AccountWhereInput {
     userId?: InstanceType<typeof StringFilter>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFilter>;
     user?: InstanceType<typeof UserRelationFilter>;
-    transactions?: InstanceType<typeof TransactionListRelationFilter>;
+    transactionOrigins?: InstanceType<typeof TransactionListRelationFilter>;
+    transactionDestination?: InstanceType<typeof TransactionListRelationFilter>;
     project?: InstanceType<typeof ProjectNullableRelationFilter>;
     bankAccount?: InstanceType<typeof BankNullableRelationFilter>;
 }
@@ -1021,7 +1120,8 @@ export declare class Account {
     userId: string;
     accountCategory: keyof typeof AccountCategory;
     user?: InstanceType<typeof User>;
-    transactions?: Array<Transaction>;
+    transactionOrigins?: Array<Transaction>;
+    transactionDestination?: Array<Transaction>;
     project?: InstanceType<typeof Project> | null;
     bankAccount?: InstanceType<typeof Bank> | null;
     _count?: InstanceType<typeof AccountCount>;
@@ -14166,12 +14266,12 @@ export declare class DeleteManyTransactionArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
 }
 export declare class DeleteOneTransactionArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
 }
 export declare class FindFirstTransactionOrThrowArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof TransactionScalarFieldEnum>;
@@ -14179,7 +14279,7 @@ export declare class FindFirstTransactionOrThrowArgs {
 export declare class FindFirstTransactionArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof TransactionScalarFieldEnum>;
@@ -14187,21 +14287,21 @@ export declare class FindFirstTransactionArgs {
 export declare class FindManyTransactionArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof TransactionScalarFieldEnum>;
 }
 export declare class FindUniqueTransactionOrThrowArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
 }
 export declare class FindUniqueTransactionArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
 }
 export declare class TransactionAggregateArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof TransactionCountAggregateInput>;
@@ -14213,69 +14313,78 @@ export declare class TransactionAggregateArgs {
 export declare class TransactionAvgAggregateInput {
     id?: true;
     amount?: true;
-    currentBalance?: true;
-    accountId?: true;
+    fromAccountId?: true;
+    toAccountId?: true;
 }
 export declare class TransactionAvgAggregate {
     id?: number;
     amount?: number;
-    currentBalance?: number;
-    accountId?: number;
+    fromAccountId?: number;
+    toAccountId?: number;
 }
 export declare class TransactionAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
 }
 export declare class TransactionCountAggregateInput {
     id?: true;
     amount?: true;
     status?: true;
-    transactionType?: true;
     transactionCategory?: true;
-    currentBalance?: true;
-    userId?: true;
-    accountId?: true;
+    fromAccountId?: true;
+    toAccountId?: true;
     createdAt?: true;
+    userId?: true;
     _all?: true;
 }
 export declare class TransactionCountAggregate {
     id: number;
     amount: number;
     status: number;
-    transactionType: number;
     transactionCategory: number;
-    currentBalance: number;
-    userId: number;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt: number;
+    userId: number;
     _all: number;
 }
 export declare class TransactionCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
-    transactionType?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    userId?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 }
-export declare class TransactionCreateManyAccountInputEnvelope {
-    data: Array<TransactionCreateManyAccountInput>;
+export declare class TransactionCreateManyFromAccountInputEnvelope {
+    data: Array<TransactionCreateManyFromAccountInput>;
     skipDuplicates?: boolean;
 }
-export declare class TransactionCreateManyAccountInput {
+export declare class TransactionCreateManyFromAccountInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
+    toAccountId: number;
     createdAt?: Date | string;
+    userId?: string;
+}
+export declare class TransactionCreateManyToAccountInputEnvelope {
+    data: Array<TransactionCreateManyToAccountInput>;
+    skipDuplicates?: boolean;
+}
+export declare class TransactionCreateManyToAccountInput {
+    id?: number;
+    amount: number;
+    status: keyof typeof TransactionStatus;
+    transactionCategory: keyof typeof TransactionCategory;
+    fromAccountId: number;
+    createdAt?: Date | string;
+    userId?: string;
 }
 export declare class TransactionCreateManyUserInputEnvelope {
     data: Array<TransactionCreateManyUserInput>;
@@ -14285,92 +14394,105 @@ export declare class TransactionCreateManyUserInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateManyInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt?: Date | string;
+    userId?: string;
 }
-export declare class TransactionCreateNestedManyWithoutAccountInput {
-    create?: Array<TransactionCreateWithoutAccountInput>;
-    connectOrCreate?: Array<TransactionCreateOrConnectWithoutAccountInput>;
-    createMany?: InstanceType<typeof TransactionCreateManyAccountInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
+export declare class TransactionCreateNestedManyWithoutFromAccountInput {
+    create?: Array<TransactionCreateWithoutFromAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+}
+export declare class TransactionCreateNestedManyWithoutToAccountInput {
+    create?: Array<TransactionCreateWithoutToAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
 }
 export declare class TransactionCreateNestedManyWithoutUserInput {
     create?: Array<TransactionCreateWithoutUserInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutUserInput>;
     createMany?: InstanceType<typeof TransactionCreateManyUserInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
 }
 export declare class TransactionCreateNestedOneWithoutPaymentInput {
     create?: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
     connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutPaymentInput>;
-    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
 }
-export declare class TransactionCreateOrConnectWithoutAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
-    create: InstanceType<typeof TransactionCreateWithoutAccountInput>;
+export declare class TransactionCreateOrConnectWithoutFromAccountInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof TransactionCreateWithoutFromAccountInput>;
 }
 export declare class TransactionCreateOrConnectWithoutPaymentInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     create: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
 }
+export declare class TransactionCreateOrConnectWithoutToAccountInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof TransactionCreateWithoutToAccountInput>;
+}
 export declare class TransactionCreateOrConnectWithoutUserInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     create: InstanceType<typeof TransactionCreateWithoutUserInput>;
 }
-export declare class TransactionCreateWithoutAccountInput {
+export declare class TransactionCreateWithoutFromAccountInput {
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
     createdAt?: Date | string;
-    User: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
+    toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
     payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
+    User?: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
 }
 export declare class TransactionCreateWithoutPaymentInput {
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
     createdAt?: Date | string;
-    User: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
-    account: InstanceType<typeof AccountCreateNestedOneWithoutTransactionsInput>;
+    fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
+    toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
+    User?: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
+}
+export declare class TransactionCreateWithoutToAccountInput {
+    amount: number;
+    status: keyof typeof TransactionStatus;
+    transactionCategory: keyof typeof TransactionCategory;
+    createdAt?: Date | string;
+    fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
+    payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
+    User?: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
 }
 export declare class TransactionCreateWithoutUserInput {
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
     createdAt?: Date | string;
-    account: InstanceType<typeof AccountCreateNestedOneWithoutTransactionsInput>;
+    fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
+    toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
     payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionCreateInput {
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
     createdAt?: Date | string;
-    User: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
-    account: InstanceType<typeof AccountCreateNestedOneWithoutTransactionsInput>;
+    fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
+    toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
     payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
+    User?: InstanceType<typeof UserCreateNestedOneWithoutTransactionsInput>;
 }
 export declare class TransactionGroupByArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
@@ -14389,12 +14511,11 @@ export declare class TransactionGroupBy {
     id: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt: Date | string;
+    userId?: string;
     _count?: InstanceType<typeof TransactionCountAggregate>;
     _avg?: InstanceType<typeof TransactionAvgAggregate>;
     _sum?: InstanceType<typeof TransactionSumAggregate>;
@@ -14410,67 +14531,61 @@ export declare class TransactionMaxAggregateInput {
     id?: true;
     amount?: true;
     status?: true;
-    transactionType?: true;
     transactionCategory?: true;
-    currentBalance?: true;
-    userId?: true;
-    accountId?: true;
+    fromAccountId?: true;
+    toAccountId?: true;
     createdAt?: true;
+    userId?: true;
 }
 export declare class TransactionMaxAggregate {
     id?: number;
     amount?: number;
     status?: keyof typeof TransactionStatus;
-    transactionType?: keyof typeof TransactionType;
     transactionCategory?: keyof typeof TransactionCategory;
-    currentBalance?: number;
-    userId?: string;
-    accountId?: number;
+    fromAccountId?: number;
+    toAccountId?: number;
     createdAt?: Date | string;
+    userId?: string;
 }
 export declare class TransactionMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
-    transactionType?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    userId?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 }
 export declare class TransactionMinAggregateInput {
     id?: true;
     amount?: true;
     status?: true;
-    transactionType?: true;
     transactionCategory?: true;
-    currentBalance?: true;
-    userId?: true;
-    accountId?: true;
+    fromAccountId?: true;
+    toAccountId?: true;
     createdAt?: true;
+    userId?: true;
 }
 export declare class TransactionMinAggregate {
     id?: number;
     amount?: number;
     status?: keyof typeof TransactionStatus;
-    transactionType?: keyof typeof TransactionType;
     transactionCategory?: keyof typeof TransactionCategory;
-    currentBalance?: number;
-    userId?: string;
-    accountId?: number;
+    fromAccountId?: number;
+    toAccountId?: number;
     createdAt?: Date | string;
+    userId?: string;
 }
 export declare class TransactionMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
-    transactionType?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    userId?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 }
 export declare class TransactionOrderByRelationAggregateInput {
     _count?: keyof typeof SortOrder;
@@ -14479,12 +14594,11 @@ export declare class TransactionOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
-    transactionType?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    userId?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    userId?: InstanceType<typeof SortOrderInput>;
     _count?: InstanceType<typeof TransactionCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof TransactionAvgOrderByAggregateInput>;
     _max?: InstanceType<typeof TransactionMaxOrderByAggregateInput>;
@@ -14495,15 +14609,15 @@ export declare class TransactionOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
-    transactionType?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    userId?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
-    User?: InstanceType<typeof UserOrderByWithRelationInput>;
-    account?: InstanceType<typeof AccountOrderByWithRelationInput>;
+    userId?: InstanceType<typeof SortOrderInput>;
+    fromAccount?: InstanceType<typeof AccountOrderByWithRelationInput>;
+    toAccount?: InstanceType<typeof AccountOrderByWithRelationInput>;
     payment?: InstanceType<typeof PaymentOrderByWithRelationInput>;
+    User?: InstanceType<typeof UserOrderByWithRelationInput>;
 }
 export declare class TransactionRelationFilter {
     is?: InstanceType<typeof TransactionWhereInput>;
@@ -14516,12 +14630,11 @@ export declare class TransactionScalarWhereWithAggregatesInput {
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     amount?: InstanceType<typeof FloatWithAggregatesFilter>;
     status?: InstanceType<typeof EnumTransactionStatusWithAggregatesFilter>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeWithAggregatesFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryWithAggregatesFilter>;
-    currentBalance?: InstanceType<typeof FloatWithAggregatesFilter>;
-    userId?: InstanceType<typeof StringWithAggregatesFilter>;
-    accountId?: InstanceType<typeof IntWithAggregatesFilter>;
+    fromAccountId?: InstanceType<typeof IntWithAggregatesFilter>;
+    toAccountId?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    userId?: InstanceType<typeof StringNullableWithAggregatesFilter>;
 }
 export declare class TransactionScalarWhereInput {
     AND?: Array<TransactionScalarWhereInput>;
@@ -14530,73 +14643,85 @@ export declare class TransactionScalarWhereInput {
     id?: InstanceType<typeof IntFilter>;
     amount?: InstanceType<typeof FloatFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFilter>;
-    currentBalance?: InstanceType<typeof FloatFilter>;
-    userId?: InstanceType<typeof StringFilter>;
-    accountId?: InstanceType<typeof IntFilter>;
+    fromAccountId?: InstanceType<typeof IntFilter>;
+    toAccountId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
+    userId?: InstanceType<typeof StringNullableFilter>;
 }
 export declare class TransactionSumAggregateInput {
     id?: true;
     amount?: true;
-    currentBalance?: true;
-    accountId?: true;
+    fromAccountId?: true;
+    toAccountId?: true;
 }
 export declare class TransactionSumAggregate {
     id?: number;
     amount?: number;
-    currentBalance?: number;
-    accountId?: number;
+    fromAccountId?: number;
+    toAccountId?: number;
 }
 export declare class TransactionSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
-    currentBalance?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    fromAccountId?: keyof typeof SortOrder;
+    toAccountId?: keyof typeof SortOrder;
 }
-export declare class TransactionUncheckedCreateNestedManyWithoutAccountInput {
-    create?: Array<TransactionCreateWithoutAccountInput>;
-    connectOrCreate?: Array<TransactionCreateOrConnectWithoutAccountInput>;
-    createMany?: InstanceType<typeof TransactionCreateManyAccountInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
+export declare class TransactionUncheckedCreateNestedManyWithoutFromAccountInput {
+    create?: Array<TransactionCreateWithoutFromAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+}
+export declare class TransactionUncheckedCreateNestedManyWithoutToAccountInput {
+    create?: Array<TransactionCreateWithoutToAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
 }
 export declare class TransactionUncheckedCreateNestedManyWithoutUserInput {
     create?: Array<TransactionCreateWithoutUserInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutUserInput>;
     createMany?: InstanceType<typeof TransactionCreateManyUserInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
 }
-export declare class TransactionUncheckedCreateWithoutAccountInput {
+export declare class TransactionUncheckedCreateWithoutFromAccountInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
+    toAccountId: number;
     createdAt?: Date | string;
+    userId?: string;
     payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionUncheckedCreateWithoutPaymentInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt?: Date | string;
+    userId?: string;
+}
+export declare class TransactionUncheckedCreateWithoutToAccountInput {
+    id?: number;
+    amount: number;
+    status: keyof typeof TransactionStatus;
+    transactionCategory: keyof typeof TransactionCategory;
+    fromAccountId: number;
+    createdAt?: Date | string;
+    userId?: string;
+    payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionUncheckedCreateWithoutUserInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt?: Date | string;
     payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
@@ -14604,46 +14729,66 @@ export declare class TransactionUncheckedCreateInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt?: Date | string;
+    userId?: string;
     payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
-export declare class TransactionUncheckedUpdateManyWithoutAccountNestedInput {
-    create?: Array<TransactionCreateWithoutAccountInput>;
-    connectOrCreate?: Array<TransactionCreateOrConnectWithoutAccountInput>;
-    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutAccountInput>;
-    createMany?: InstanceType<typeof TransactionCreateManyAccountInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    update?: Array<TransactionUpdateWithWhereUniqueWithoutAccountInput>;
-    updateMany?: Array<TransactionUpdateManyWithWhereWithoutAccountInput>;
+export declare class TransactionUncheckedUpdateManyWithoutFromAccountNestedInput {
+    create?: Array<TransactionCreateWithoutFromAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
+    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutFromAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    update?: Array<TransactionUpdateWithWhereUniqueWithoutFromAccountInput>;
+    updateMany?: Array<TransactionUpdateManyWithWhereWithoutFromAccountInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
 }
-export declare class TransactionUncheckedUpdateManyWithoutAccountInput {
+export declare class TransactionUncheckedUpdateManyWithoutFromAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+}
+export declare class TransactionUncheckedUpdateManyWithoutToAccountNestedInput {
+    create?: Array<TransactionCreateWithoutToAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
+    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutToAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    update?: Array<TransactionUpdateWithWhereUniqueWithoutToAccountInput>;
+    updateMany?: Array<TransactionUpdateManyWithWhereWithoutToAccountInput>;
+    deleteMany?: Array<TransactionScalarWhereInput>;
+}
+export declare class TransactionUncheckedUpdateManyWithoutToAccountInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyWithoutUserNestedInput {
     create?: Array<TransactionCreateWithoutUserInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutUserInput>;
     upsert?: Array<TransactionUpsertWithWhereUniqueWithoutUserInput>;
     createMany?: InstanceType<typeof TransactionCreateManyUserInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
     update?: Array<TransactionUpdateWithWhereUniqueWithoutUserInput>;
     updateMany?: Array<TransactionUpdateManyWithWhereWithoutUserInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
@@ -14652,53 +14797,58 @@ export declare class TransactionUncheckedUpdateManyWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
 }
-export declare class TransactionUncheckedUpdateWithoutAccountInput {
+export declare class TransactionUncheckedUpdateWithoutFromAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutPaymentInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+}
+export declare class TransactionUncheckedUpdateWithoutToAccountInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
@@ -14706,23 +14856,24 @@ export declare class TransactionUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    userId?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUpdateManyMutationInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class TransactionUpdateManyWithWhereWithoutAccountInput {
+export declare class TransactionUpdateManyWithWhereWithoutFromAccountInput {
+    where: InstanceType<typeof TransactionScalarWhereInput>;
+    data: InstanceType<typeof TransactionUpdateManyMutationInput>;
+}
+export declare class TransactionUpdateManyWithWhereWithoutToAccountInput {
     where: InstanceType<typeof TransactionScalarWhereInput>;
     data: InstanceType<typeof TransactionUpdateManyMutationInput>;
 }
@@ -14730,17 +14881,30 @@ export declare class TransactionUpdateManyWithWhereWithoutUserInput {
     where: InstanceType<typeof TransactionScalarWhereInput>;
     data: InstanceType<typeof TransactionUpdateManyMutationInput>;
 }
-export declare class TransactionUpdateManyWithoutAccountNestedInput {
-    create?: Array<TransactionCreateWithoutAccountInput>;
-    connectOrCreate?: Array<TransactionCreateOrConnectWithoutAccountInput>;
-    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutAccountInput>;
-    createMany?: InstanceType<typeof TransactionCreateManyAccountInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    update?: Array<TransactionUpdateWithWhereUniqueWithoutAccountInput>;
-    updateMany?: Array<TransactionUpdateManyWithWhereWithoutAccountInput>;
+export declare class TransactionUpdateManyWithoutFromAccountNestedInput {
+    create?: Array<TransactionCreateWithoutFromAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
+    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutFromAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    update?: Array<TransactionUpdateWithWhereUniqueWithoutFromAccountInput>;
+    updateMany?: Array<TransactionUpdateManyWithWhereWithoutFromAccountInput>;
+    deleteMany?: Array<TransactionScalarWhereInput>;
+}
+export declare class TransactionUpdateManyWithoutToAccountNestedInput {
+    create?: Array<TransactionCreateWithoutToAccountInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
+    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutToAccountInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    update?: Array<TransactionUpdateWithWhereUniqueWithoutToAccountInput>;
+    updateMany?: Array<TransactionUpdateManyWithWhereWithoutToAccountInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
 }
 export declare class TransactionUpdateManyWithoutUserNestedInput {
@@ -14748,10 +14912,10 @@ export declare class TransactionUpdateManyWithoutUserNestedInput {
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutUserInput>;
     upsert?: Array<TransactionUpsertWithWhereUniqueWithoutUserInput>;
     createMany?: InstanceType<typeof TransactionCreateManyUserInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
     update?: Array<TransactionUpdateWithWhereUniqueWithoutUserInput>;
     updateMany?: Array<TransactionUpdateManyWithWhereWithoutUserInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
@@ -14760,69 +14924,83 @@ export declare class TransactionUpdateOneRequiredWithoutPaymentNestedInput {
     create?: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
     connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutPaymentInput>;
     upsert?: InstanceType<typeof TransactionUpsertWithoutPaymentInput>;
-    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof TransactionUpdateToOneWithWhereWithoutPaymentInput>;
 }
 export declare class TransactionUpdateToOneWithWhereWithoutPaymentInput {
     where?: InstanceType<typeof TransactionWhereInput>;
     data: InstanceType<typeof TransactionUpdateWithoutPaymentInput>;
 }
-export declare class TransactionUpdateWithWhereUniqueWithoutAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
-    data: InstanceType<typeof TransactionUpdateWithoutAccountInput>;
+export declare class TransactionUpdateWithWhereUniqueWithoutFromAccountInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    data: InstanceType<typeof TransactionUpdateWithoutFromAccountInput>;
+}
+export declare class TransactionUpdateWithWhereUniqueWithoutToAccountInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    data: InstanceType<typeof TransactionUpdateWithoutToAccountInput>;
 }
 export declare class TransactionUpdateWithWhereUniqueWithoutUserInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     data: InstanceType<typeof TransactionUpdateWithoutUserInput>;
 }
-export declare class TransactionUpdateWithoutAccountInput {
+export declare class TransactionUpdateWithoutFromAccountInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    User?: InstanceType<typeof UserUpdateOneRequiredWithoutTransactionsNestedInput>;
+    toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
     payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
+    User?: InstanceType<typeof UserUpdateOneWithoutTransactionsNestedInput>;
 }
 export declare class TransactionUpdateWithoutPaymentInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    User?: InstanceType<typeof UserUpdateOneRequiredWithoutTransactionsNestedInput>;
-    account?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionsNestedInput>;
+    fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
+    toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
+    User?: InstanceType<typeof UserUpdateOneWithoutTransactionsNestedInput>;
+}
+export declare class TransactionUpdateWithoutToAccountInput {
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
+    payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
+    User?: InstanceType<typeof UserUpdateOneWithoutTransactionsNestedInput>;
 }
 export declare class TransactionUpdateWithoutUserInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    account?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionsNestedInput>;
+    fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
+    toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
     payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUpdateInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
-    currentBalance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    User?: InstanceType<typeof UserUpdateOneRequiredWithoutTransactionsNestedInput>;
-    account?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionsNestedInput>;
+    fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
+    toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
     payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
+    User?: InstanceType<typeof UserUpdateOneWithoutTransactionsNestedInput>;
 }
-export declare class TransactionUpsertWithWhereUniqueWithoutAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
-    update: InstanceType<typeof TransactionUpdateWithoutAccountInput>;
-    create: InstanceType<typeof TransactionCreateWithoutAccountInput>;
+export declare class TransactionUpsertWithWhereUniqueWithoutFromAccountInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    update: InstanceType<typeof TransactionUpdateWithoutFromAccountInput>;
+    create: InstanceType<typeof TransactionCreateWithoutFromAccountInput>;
+}
+export declare class TransactionUpsertWithWhereUniqueWithoutToAccountInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    update: InstanceType<typeof TransactionUpdateWithoutToAccountInput>;
+    create: InstanceType<typeof TransactionCreateWithoutToAccountInput>;
 }
 export declare class TransactionUpsertWithWhereUniqueWithoutUserInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     update: InstanceType<typeof TransactionUpdateWithoutUserInput>;
     create: InstanceType<typeof TransactionCreateWithoutUserInput>;
 }
@@ -14833,20 +15011,20 @@ export declare class TransactionUpsertWithoutPaymentInput {
 }
 export declare class TransactionWhereUniqueInput {
     id?: number;
-    userId?: string;
-    accountId?: number;
     AND?: Array<TransactionWhereInput>;
     OR?: Array<TransactionWhereInput>;
     NOT?: Array<TransactionWhereInput>;
     amount?: InstanceType<typeof FloatFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFilter>;
-    currentBalance?: InstanceType<typeof FloatFilter>;
+    fromAccountId?: InstanceType<typeof IntFilter>;
+    toAccountId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
-    User?: InstanceType<typeof UserRelationFilter>;
-    account?: InstanceType<typeof AccountRelationFilter>;
+    userId?: InstanceType<typeof StringNullableFilter>;
+    fromAccount?: InstanceType<typeof AccountRelationFilter>;
+    toAccount?: InstanceType<typeof AccountRelationFilter>;
     payment?: InstanceType<typeof PaymentNullableRelationFilter>;
+    User?: InstanceType<typeof UserNullableRelationFilter>;
 }
 export declare class TransactionWhereInput {
     AND?: Array<TransactionWhereInput>;
@@ -14855,29 +15033,29 @@ export declare class TransactionWhereInput {
     id?: InstanceType<typeof IntFilter>;
     amount?: InstanceType<typeof FloatFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
-    transactionType?: InstanceType<typeof EnumTransactionTypeFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFilter>;
-    currentBalance?: InstanceType<typeof FloatFilter>;
-    userId?: InstanceType<typeof StringFilter>;
-    accountId?: InstanceType<typeof IntFilter>;
+    fromAccountId?: InstanceType<typeof IntFilter>;
+    toAccountId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
-    User?: InstanceType<typeof UserRelationFilter>;
-    account?: InstanceType<typeof AccountRelationFilter>;
+    userId?: InstanceType<typeof StringNullableFilter>;
+    fromAccount?: InstanceType<typeof AccountRelationFilter>;
+    toAccount?: InstanceType<typeof AccountRelationFilter>;
     payment?: InstanceType<typeof PaymentNullableRelationFilter>;
+    User?: InstanceType<typeof UserNullableRelationFilter>;
 }
 export declare class Transaction {
     id: number;
     amount: number;
     status: keyof typeof TransactionStatus;
-    transactionType: keyof typeof TransactionType;
     transactionCategory: keyof typeof TransactionCategory;
-    currentBalance: number;
-    userId: string;
-    accountId: number;
+    fromAccountId: number;
+    toAccountId: number;
     createdAt: Date;
-    User?: InstanceType<typeof User>;
-    account?: InstanceType<typeof Account>;
+    userId: string | null;
+    fromAccount?: InstanceType<typeof Account>;
+    toAccount?: InstanceType<typeof Account>;
     payment?: InstanceType<typeof Payment> | null;
+    User?: InstanceType<typeof User> | null;
 }
 export declare class UpdateManyTransactionArgs {
     data: InstanceType<typeof TransactionUpdateManyMutationInput>;
@@ -14885,10 +15063,10 @@ export declare class UpdateManyTransactionArgs {
 }
 export declare class UpdateOneTransactionArgs {
     data: InstanceType<typeof TransactionUpdateInput>;
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
 }
 export declare class UpsertOneTransactionArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'userId' | 'accountId'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
     create: InstanceType<typeof TransactionCreateInput>;
     update: InstanceType<typeof TransactionUpdateInput>;
 }
@@ -17811,13 +17989,6 @@ export declare class UserUpdateOneRequiredWithoutSessionsNestedInput {
     connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutSessionsInput>;
 }
-export declare class UserUpdateOneRequiredWithoutTransactionsNestedInput {
-    create?: InstanceType<typeof UserCreateWithoutTransactionsInput>;
-    connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutTransactionsInput>;
-    upsert?: InstanceType<typeof UserUpsertWithoutTransactionsInput>;
-    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
-    update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutTransactionsInput>;
-}
 export declare class UserUpdateOneRequiredWithoutUserNotificationsNestedInput {
     create?: InstanceType<typeof UserCreateWithoutUserNotificationsInput>;
     connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutUserNotificationsInput>;
@@ -17842,6 +18013,15 @@ export declare class UserUpdateOneWithoutReferredUsersNestedInput {
     delete?: InstanceType<typeof UserWhereInput>;
     connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutReferredUsersInput>;
+}
+export declare class UserUpdateOneWithoutTransactionsNestedInput {
+    create?: InstanceType<typeof UserCreateWithoutTransactionsInput>;
+    connectOrCreate?: InstanceType<typeof UserCreateOrConnectWithoutTransactionsInput>;
+    upsert?: InstanceType<typeof UserUpsertWithoutTransactionsInput>;
+    disconnect?: InstanceType<typeof UserWhereInput>;
+    delete?: InstanceType<typeof UserWhereInput>;
+    connect?: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
+    update?: InstanceType<typeof UserUpdateToOneWithWhereWithoutTransactionsInput>;
 }
 export declare class UserUpdateToOneWithWhereWithoutAccountsInput {
     where?: InstanceType<typeof UserWhereInput>;

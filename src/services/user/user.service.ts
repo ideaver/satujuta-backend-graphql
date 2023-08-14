@@ -7,6 +7,7 @@ import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { GraphQLError } from 'graphql';
 import { User } from 'src/model/user.model';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { AccountCreateNestedManyWithoutUserInput } from 'src/@generated';
 
 @Injectable()
 export class UserService {
@@ -46,11 +47,6 @@ export class UserService {
     //   .then((bank) => {
     //     console.log('bank created ' + bank);
     //   });
-
-    //null graphql query capability
-    if (userCreateArgs.data.referredBy.connect.referralCode === null) {
-      userCreateArgs.data.referredBy = undefined;
-    }
 
     return await this.prisma.user
       .create(userCreateArgs)

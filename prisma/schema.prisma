@@ -215,21 +215,22 @@ enum UserStatus {
 //superuser memiliki akun bernama platform account dan juga cash account
 //Make CRUD Available
 model Account {
-  id              Int             @id @default(autoincrement())
-  accountNumber   Int?
+  id                     Int             @id @default(autoincrement())
+  accountNumber          Int?
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()
-  name            String
-  balance         Float           @default(0)
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-  user            User            @relation(fields: [userId], references: [id])
-  userId          String
-  accountCategory AccountCategory
-  transactions    Transaction[]
-  project         Project?
-  bankAccount     Bank?
+  name                   String
+  balance                Float           @default(0)
+  createdAt              DateTime        @default(now())
+  updatedAt              DateTime        @updatedAt
+  user                   User            @relation(fields: [userId], references: [id])
+  userId                 String
+  accountCategory        AccountCategory
+  transactionOrigins     Transaction[]   @relation("origin")
+  transactionDestination Transaction[]   @relation("destination")
+  project                Project?
+  bankAccount            Bank?
 }
 
 enum AccountCategory {
@@ -239,6 +240,7 @@ enum AccountCategory {
   CASH
   PLATFORM
   BANK
+  DEBT
 }
 
 //Make Read only without update, delete
@@ -248,15 +250,15 @@ model Transaction {
   /// @Validator.IsNotEmpty()
   amount              Float
   status              TransactionStatus
-  transactionType     TransactionType
   transactionCategory TransactionCategory
-  currentBalance      Float
-  User                User                @relation(fields: [userId], references: [id])
-  userId              String              @unique
-  account             Account             @relation(fields: [accountId], references: [id])
-  accountId           Int                 @unique
+  fromAccount         Account             @relation("origin", fields: [fromAccountId], references: [id])
+  fromAccountId       Int
+  toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
+  toAccountId         Int
   payment             Payment?
   createdAt           DateTime            @default(now())
+  User                User?               @relation(fields: [userId], references: [id])
+  userId              String?
 }
 
 enum TransactionType {
