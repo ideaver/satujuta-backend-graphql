@@ -15,7 +15,7 @@ services:
         networks:
             - nestjs-network
         volumes:
-            - ./container:/usr/src/app
+            - ./satujuta-backend-graphql:/usr/src/app/satujuta-backend-graphql
         restart: unless-stopped
 
 networks:
