@@ -101,26 +101,28 @@ export class TransactionService {
         },
       });
 
-      for (const account of accounts) {
-        const monthlyBalanceQuery: AccountMonthlyBalanceQuery = {
-          month: new Date().toLocaleString('en-us', { month: 'long' }), // You can adjust this to get the specific month
-          total_balance: account.balance,
-        };
+      console.log(accounts);
 
-        for (const transaction of account.transactionOrigins) {
-          if (transaction.amount) {
-            monthlyBalanceQuery.total_balance -= transaction.amount;
-          }
-        }
+      // for (const account of accounts) {
+      //   const monthlyBalanceQuery: AccountMonthlyBalanceQuery = {
+      //     month: new Date().toLocaleString('en-us', { month: 'long' }), // You can adjust this to get the specific month
+      //     total_balance: account.balance,
+      //   };
 
-        for (const transaction of account.transactionDestination) {
-          if (transaction.amount) {
-            monthlyBalanceQuery.total_balance += transaction.amount;
-          }
-        }
+      //   for (const transaction of account.transactionOrigins) {
+      //     if (transaction.amount) {
+      //       monthlyBalanceQuery.total_balance -= transaction.amount;
+      //     }
+      //   }
 
-        accountMonthlyBalances.push(monthlyBalanceQuery);
-      }
+      //   for (const transaction of account.transactionDestination) {
+      //     if (transaction.amount) {
+      //       monthlyBalanceQuery.total_balance += transaction.amount;
+      //     }
+      //   }
+
+      //   accountMonthlyBalances.push(monthlyBalanceQuery);
+      // }
     } catch (error) {
       throw new Error(`Error retrieving account monthly balances: ${error}`);
     }
