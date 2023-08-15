@@ -1699,6 +1699,12 @@ type User {
   _count: UserCount!
 }
 
+type AccountMonthlyBalanceQuery {
+  month: String
+  account_id: Int
+  total_balance: Int
+}
+
 type Query {
   """Deskripsinya ada disini loh"""
   userFindMany(userFindManyArgs: UserFindManyArgs!): [User!]
@@ -1813,6 +1819,7 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   transactionFindOne(transactionFindUniqueArgs: TransactionFindUniqueArgs!): Transaction
+  getMonthlyBalances(accountMonthlyBalanceArgs: AccountMonthlyBalanceArgs!): [AccountMonthlyBalanceQuery!]!
 
   """Deskripsinya ada disini loh"""
   accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
@@ -3938,6 +3945,12 @@ input TransactionWhereUniqueInput {
   toAccount: AccountRelationFilter
   payment: PaymentNullableRelationFilter
   User: UserNullableRelationFilter
+}
+
+input AccountMonthlyBalanceArgs {
+  accountId: Int!
+  year: Int!
+  accountCategory: AccountCategory!
 }
 
 input AccountFindManyArgs {

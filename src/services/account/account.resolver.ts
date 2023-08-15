@@ -87,4 +87,5 @@ export class AccountResolver {
   // accountRemove(@Args('accountId') accountId: number) {
   //   return this.accountService.remove(accountId);
   // }
+
 }

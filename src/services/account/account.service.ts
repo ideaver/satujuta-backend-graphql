@@ -55,17 +55,6 @@ export class AccountService {
       });
   }
 
-  // async aggregate(accountFindUniqueArgs: AccountFindUniqueArgs) {
-  //   return await this.prisma.account
-  //     .aggregate({})
-  //     .then((account) => {
-  //       return account;
-  //     })
-  //     .catch((err) => {
-  //       throwPrismaError(err);
-  //     });
-  // }
-
   async update(
     accountUpdateOneArgs: AccountUpdateOneArgs,
   ): Promise<Account | void> {
