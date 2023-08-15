@@ -1819,7 +1819,7 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   transactionFindOne(transactionFindUniqueArgs: TransactionFindUniqueArgs!): Transaction
-  getMonthlyBalances(accountMonthlyBalanceArgs: AccountMonthlyBalanceArgs!): [AccountMonthlyBalanceQuery!]!
+  getMonthlyAccountBalances(accountMonthlyBalanceArgs: AccountMonthlyBalanceArgs!): [AccountMonthlyBalanceQuery!]!
 
   """Deskripsinya ada disini loh"""
   accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]

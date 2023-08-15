@@ -76,7 +76,7 @@ export class TransactionResolver {
   // }
 
   @Query(() => [AccountMonthlyBalanceQuery])
-  async getMonthlyBalances(
+  async getMonthlyAccountBalances(
     @Args('accountMonthlyBalanceArgs') accountMonthlyBalanceArgs: AccountMonthlyBalanceArgs,
   ): Promise<AccountMonthlyBalanceQuery[] | void> {
     return this.transactionService.getMonthlyBalances(
