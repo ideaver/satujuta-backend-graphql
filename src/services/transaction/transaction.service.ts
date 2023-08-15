@@ -101,7 +101,7 @@ export class TransactionService {
         },
       });
 
-      console.log(accounts);
+      console.log(JSON.stringify(accounts));
 
       // for (const account of accounts) {
       //   const monthlyBalanceQuery: AccountMonthlyBalanceQuery = {
