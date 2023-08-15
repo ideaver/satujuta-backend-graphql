@@ -77,11 +77,15 @@ export class TransactionService {
   //     });
   // }
 
-  async getMonthlyBalances(): Promise<AccountMonthlyBalanceQuery[]> {
+  async getMonthlyBalances({
+    accountId,
+    year,
+  }: AccountMonthlyBalanceArgs): Promise<AccountMonthlyBalanceQuery[]> {
     const accountMonthlyBalances: AccountMonthlyBalanceQuery[] = [];
 
     try {
       const accounts = await this.prisma.account.findMany({
+        where: { id: accountId },
         include: {
           transactionOrigins: {
             include: {
