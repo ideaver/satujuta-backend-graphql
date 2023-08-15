@@ -80,7 +80,6 @@ export class TransactionService {
   async getMonthlyBalances({
     accountId,
     year,
-    accountCategory,
   }: AccountMonthlyBalanceArgs): Promise<AccountMonthlyBalanceQuery[] | void> {
     const yearStart: number = year;
     const yearEnd: number = yearStart + 1;
@@ -103,14 +102,10 @@ export class TransactionService {
     AND (
       t.fromAccountId = ${accountId} OR t.toAccountId = ${accountId}
     )
-    AND (
-      fa.accountCategory = ${accountCategory} OR ta.accountCategory = ${accountCategory}
-    )
   GROUP BY
     month, account_id
   ORDER BY
     month ASC, account_id ASC;
-  
   `.catch((err) => {
       throwPrismaError(err);
     });
