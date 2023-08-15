@@ -86,15 +86,16 @@ export class TransactionService {
     try {
       const accounts = await this.prisma.account.findMany({
         where: { id: accountId },
-        include: {
+        select: {
+          balance: true,
           transactionOrigins: {
-            include: {
-              payment: true,
+            select: {
+              amount: true,
             },
           },
           transactionDestination: {
-            include: {
-              payment: true,
+            select: {
+              amount: true,
             },
           },
         },
@@ -107,13 +108,13 @@ export class TransactionService {
         };
 
         for (const transaction of account.transactionOrigins) {
-          if (transaction.payment) {
+          if (transaction.amount) {
             monthlyBalanceQuery.total_balance -= transaction.amount;
           }
         }
 
         for (const transaction of account.transactionDestination) {
-          if (transaction.payment) {
+          if (transaction.amount) {
             monthlyBalanceQuery.total_balance += transaction.amount;
           }
         }
