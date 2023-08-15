@@ -7,9 +7,6 @@ export class AccountMonthlyBalanceQuery {
   month: string;
 
   @Field(() => Int, { nullable: true })
-  account_id: number;
-
-  @Field(() => Int, { nullable: true })
   total_balance: number;
 }
 

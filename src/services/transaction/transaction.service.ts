@@ -77,37 +77,49 @@ export class TransactionService {
   //     });
   // }
 
-  async getMonthlyBalances({
-    accountId,
-    year,
-  }: AccountMonthlyBalanceArgs): Promise<AccountMonthlyBalanceQuery[] | void> {
-    const yearStart: number = year;
-    const yearEnd: number = yearStart + 1;
+  async getMonthlyBalances(): Promise<AccountMonthlyBalanceQuery[]> {
+    const accountMonthlyBalances: AccountMonthlyBalanceQuery[] = [];
 
-    return await this.prisma.$queryRaw<AccountMonthlyBalanceQuery[]>`SELECT
-    DATE_FORMAT(t.createdAt, '%Y-%m') AS month,
-    IF(t.fromAccountId = ${accountId}, t.fromAccountId, t.toAccountId) AS account_id,
-    SUM(
-      CASE
-        WHEN t.fromAccountId = ${accountId} THEN -t.amount
-        ELSE t.amount
-      END
-    ) AS total_balance
-  FROM
-    Transaction AS t
-  JOIN Account AS fa ON t.fromAccountId = fa.id
-  JOIN Account AS ta ON t.toAccountId = ta.id
-  WHERE
-    t.createdAt >= ${yearStart}+'-01-01' AND t.createdAt < ${yearEnd}+'-01-01'
-    AND (
-      t.fromAccountId = ${accountId} OR t.toAccountId = ${accountId}
-    )
-  GROUP BY
-    month, account_id
-  ORDER BY
-    month ASC, account_id ASC;
-  `.catch((err) => {
-      throwPrismaError(err);
-    });
+    try {
+      const accounts = await this.prisma.account.findMany({
+        include: {
+          transactionOrigins: {
+            include: {
+              payment: true,
+            },
+          },
+          transactionDestination: {
+            include: {
+              payment: true,
+            },
+          },
+        },
+      });
+
+      for (const account of accounts) {
+        const monthlyBalanceQuery: AccountMonthlyBalanceQuery = {
+          month: new Date().toLocaleString('en-us', { month: 'long' }), // You can adjust this to get the specific month
+          total_balance: account.balance,
+        };
+
+        for (const transaction of account.transactionOrigins) {
+          if (transaction.payment) {
+            monthlyBalanceQuery.total_balance -= transaction.amount;
+          }
+        }
+
+        for (const transaction of account.transactionDestination) {
+          if (transaction.payment) {
+            monthlyBalanceQuery.total_balance += transaction.amount;
+          }
+        }
+
+        accountMonthlyBalances.push(monthlyBalanceQuery);
+      }
+    } catch (error) {
+      throw new Error(`Error retrieving account monthly balances: ${error}`);
+    }
+
+    return accountMonthlyBalances;
   }
 }
