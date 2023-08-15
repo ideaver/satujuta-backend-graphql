@@ -7,6 +7,7 @@ import {
 } from '@prisma/client';
 import { CreateOneAccountArgs } from 'src/@generated';
 import { fakeTransaction, fakeTransactionComplete } from './fake-data';
+import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
 
@@ -28,9 +29,7 @@ async function main() {
   //   });
 
   //   await seedBank();
-  await transactionCreateManySeed({
-    userId: '119204a6-ba42-451e-9416-ea2c6bd1288f',
-  });
+  await transactionCreateManySeed({ numberOfTransactions: 10 });
 }
 
 main()
@@ -43,29 +42,33 @@ main()
   });
 
 async function transactionCreateManySeed({
-  userId,
-}): Promise<Transaction | void> {
+  numberOfTransactions,
+}): Promise<void> {
+  const transactionsToCreate: Prisma.TransactionCreateManyInput[] = [];
+
+  for (let i = 0; i < numberOfTransactions; i++) {
+    transactionsToCreate.push({
+      amount: generateRandomRupiah(),
+      status: 'COMPLETED',
+      transactionCategory: 'COMISSION_BONUS',
+      fromAccountId: 1,
+      toAccountId: 2,
+      createdAt: faker.date.past(),
+    });
+  }
+
   const transactionCreateManyArgs: Prisma.TransactionCreateManyArgs = {
-    data: [
-      {
-        amount: generateRandomRupiah(),
-        status: 'COMPLETED',
-        transactionCategory: 'COMISSION_BONUS',
-        fromAccountId: 1,
-        toAccountId: 2,
-        createdAt: new Date(),
-      },
-    ],
+    data: transactionsToCreate,
   };
 
-  return await prisma.transaction
-    .createMany(transactionCreateManyArgs)
-    .then((transaction) => {
-      console.log('transaction created ' + JSON.stringify(transaction));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const createdTransactions = await prisma.transaction.createMany(
+      transactionCreateManyArgs,
+    );
+    console.log('Transactions created: ' + JSON.stringify(createdTransactions));
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 async function accountCreateOneSeed(
