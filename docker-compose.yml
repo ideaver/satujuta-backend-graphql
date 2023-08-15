@@ -4,7 +4,7 @@ services:
     dev:
         container_name: satujuta-backend-graphql
         image: nestjs-api-dev:1.0.0
-        command: npm run start:dev
+        command: npx prisma generate
         build:
             context: .
             dockerfile: ./DockerFile
