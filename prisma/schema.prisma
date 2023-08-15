@@ -17,6 +17,11 @@ datasource db {
 //   fields_Validator_input = true
 // }
 
+// generator custom_generator {
+//   provider = "prisma-generator-fake-data"
+//   output   = "./fake-data.ts"
+// }
+
 generator nestgraphql {
   provider                              = "node node_modules/prisma-nestjs-graphql"
   output                                = "../src/@generated"
@@ -174,8 +179,6 @@ model User {
   schoolId              Int?
   accounts              Account[]
   /// @HideField({ output: false, input: true })   
-  transactions          Transaction[]
-  /// @HideField({ output: false, input: true })   
   PointTransactions     PointTransaction[]
   /// @HideField({ match: 'UserCreate*Input' })
   createdAt             DateTime           @default(now())
@@ -256,8 +259,6 @@ model Transaction {
   toAccountId         Int
   payment             Payment?
   createdAt           DateTime            @default(now())
-  User                User?               @relation(fields: [userId], references: [id])
-  userId              String?
 }
 
 enum TransactionType {

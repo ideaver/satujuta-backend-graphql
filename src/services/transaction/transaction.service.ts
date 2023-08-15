@@ -9,7 +9,6 @@ import {
   AccountMonthlyBalanceArgs,
   AccountMonthlyBalanceQuery,
 } from './dto/get-account-monthly-balance.args';
-import { AccountCategory } from '@prisma/client';
 
 @Injectable()
 export class TransactionService {
