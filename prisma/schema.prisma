@@ -17,10 +17,10 @@ datasource db {
 //   fields_Validator_input = true
 // }
 
-// generator custom_generator {
-//   provider = "prisma-generator-fake-data"
-//   output   = "./fake-data.ts"
-// }
+generator custom_generator {
+  provider = "prisma-generator-fake-data"
+  output   = "./fake-data.ts"
+}
 
 generator nestgraphql {
   provider                              = "node node_modules/prisma-nestjs-graphql"
@@ -170,7 +170,6 @@ model User {
   referredById          String?
   /// @HideField({ match: 'UserCreate*Input' })    
   referredUsers         User[]             @relation("UserReferral")
-  /// @HideField({ output: false, input: true })   
   status                UserStatus         @default(PENDING)
   /// @HideField({ match: 'UserCreate*Input' })
   checkIns              CheckIn[]
@@ -641,6 +640,14 @@ model Faq {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  type        FaqType
+}
+
+enum FaqType {
+  ReferralPage
+  DashboardPage
+  RewardPage
+  Project
 }
 
 //Make CRU Available, cannot be deleted

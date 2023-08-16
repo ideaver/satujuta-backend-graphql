@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
 import { ProgramService } from './program.service';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
@@ -22,7 +22,7 @@ export class ProgramResolver {
   })
   async programCreateOne(
     @Args('programCreateArgs') programCreateArgs: ProgramCreateArgs,
-    @Relations() relations: ProgramSelect
+    @Relations() relations: ProgramSelect,
   ): Promise<Program | void> {
     programCreateArgs.select = relations.select;
     return await this.programService.createOne(programCreateArgs);
@@ -66,10 +66,20 @@ export class ProgramResolver {
 
   @Mutation(() => Boolean, {
     nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
+    description: 'Datanya benar2 terhapus dari db',
   })
   programRemove(@Args('programId') programId: number) {
     return this.programService.remove(programId);
+  }
+
+  @Query(() => Int, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programCount(
+    @Args('programFindManyArgs', { nullable: true })
+    programFindManyArgs: ProgramFindManyArgs,
+  ) {
+    return this.programService.count(programFindManyArgs);
   }
 }

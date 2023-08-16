@@ -371,6 +371,7 @@ type FaqCountAggregate {
   description: Int!
   createdAt: Int!
   updatedAt: Int!
+  type: Int!
   _all: Int!
 }
 
@@ -380,6 +381,14 @@ type FaqMaxAggregate {
   description: String
   createdAt: DateTime
   updatedAt: DateTime
+  type: FaqType
+}
+
+enum FaqType {
+  ReferralPage
+  DashboardPage
+  RewardPage
+  Project
 }
 
 type FaqMinAggregate {
@@ -388,6 +397,7 @@ type FaqMinAggregate {
   description: String
   createdAt: DateTime
   updatedAt: DateTime
+  type: FaqType
 }
 
 type FaqSumAggregate {
@@ -400,6 +410,7 @@ type Faq {
   description: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  type: FaqType!
 }
 
 type FileAvgAggregate {
@@ -1716,6 +1727,9 @@ type Query {
   programFindOne(programFindUniqueArgs: ProgramFindUniqueArgs!): Program
 
   """Deskripsinya ada disini loh"""
+  programCount(programFindManyArgs: ProgramFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
   programCategoryFindMany(programCategoryFindManyArgs: ProgramCategoryFindManyArgs!): [ProgramCategory!]
 
   """Deskripsinya ada disini loh"""
@@ -1855,6 +1869,7 @@ input UserWhereInput {
   whatsappNumber: StringFilter
   password: StringFilter
   referralCode: StringFilter
+  status: EnumUserStatusFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   deletedAt: DateTimeNullableFilter
@@ -1951,6 +1966,20 @@ input NestedEnumUserTypeFilter {
   in: [UserType!]
   notIn: [UserType!]
   not: NestedEnumUserTypeFilter
+}
+
+input EnumUserStatusFilter {
+  equals: UserStatus
+  in: [UserStatus!]
+  notIn: [UserStatus!]
+  not: NestedEnumUserStatusFilter
+}
+
+input NestedEnumUserStatusFilter {
+  equals: UserStatus
+  in: [UserStatus!]
+  notIn: [UserStatus!]
+  not: NestedEnumUserStatusFilter
 }
 
 input DateTimeFilter {
@@ -2670,6 +2699,7 @@ input UserOrderByWithRelationInput {
   whatsappNumber: SortOrder
   password: SortOrder
   referralCode: SortOrder
+  status: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
   deletedAt: SortOrderInput
@@ -2839,6 +2869,7 @@ input UserWhereUniqueInput {
   userType: EnumUserTypeFilter
   avatarUrl: StringNullableFilter
   password: StringFilter
+  status: EnumUserStatusFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   deletedAt: DateTimeNullableFilter
@@ -3315,6 +3346,21 @@ input FaqWhereInput {
   description: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  type: EnumFaqTypeFilter
+}
+
+input EnumFaqTypeFilter {
+  equals: FaqType
+  in: [FaqType!]
+  notIn: [FaqType!]
+  not: NestedEnumFaqTypeFilter
+}
+
+input NestedEnumFaqTypeFilter {
+  equals: FaqType
+  in: [FaqType!]
+  notIn: [FaqType!]
+  not: NestedEnumFaqTypeFilter
 }
 
 input FaqOrderByWithRelationInput {
@@ -3323,6 +3369,7 @@ input FaqOrderByWithRelationInput {
   description: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
+  type: SortOrder
 }
 
 enum FaqScalarFieldEnum {
@@ -3331,6 +3378,7 @@ enum FaqScalarFieldEnum {
   description
   createdAt
   updatedAt
+  type
 }
 
 input FaqFindUniqueArgs {
@@ -3346,6 +3394,7 @@ input FaqWhereUniqueInput {
   description: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
+  type: EnumFaqTypeFilter
 }
 
 input ProjectFindManyArgs {
@@ -4232,6 +4281,7 @@ input UserCreateInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -4344,6 +4394,7 @@ input UserCreateWithoutReferredUsersInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -4453,6 +4504,7 @@ input UserCreateWithoutAccountsInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -4550,6 +4602,7 @@ input UserCreateWithoutProjectsInvestmentInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -4650,6 +4703,7 @@ input UserCreateWithoutOrdersInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -4885,6 +4939,7 @@ input UserUpdateInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -4913,6 +4968,10 @@ input EnumUserRoleFieldUpdateOperationsInput {
 
 input EnumUserTypeFieldUpdateOperationsInput {
   set: UserType
+}
+
+input EnumUserStatusFieldUpdateOperationsInput {
+  set: UserStatus
 }
 
 input DateTimeFieldUpdateOperationsInput {
@@ -5092,6 +5151,7 @@ input UserCreateWithoutHotelsCreatedInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -5204,6 +5264,7 @@ input UserCreateWithoutProgramsCreatedInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -5277,6 +5338,7 @@ input UserUpdateWithoutProgramsCreatedInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -5315,6 +5377,7 @@ input UserUpdateWithoutReferredUsersInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -5473,6 +5536,7 @@ input UserCreateWithoutAddressInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
   school: SchoolCreateNestedOneWithoutStudentsInput
@@ -5499,6 +5563,7 @@ input UserUpdateWithoutAddressInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -5535,6 +5600,7 @@ input UserCreateWithoutReferredByInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   school: SchoolCreateNestedOneWithoutStudentsInput
@@ -5561,6 +5627,7 @@ input UserUpdateWithoutReferredByInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -5813,6 +5880,7 @@ input UserUpdateWithoutOrdersInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -5953,6 +6021,7 @@ input UserUpdateWithoutAccountsInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -6048,6 +6117,7 @@ input UserCreateWithoutCheckInsInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -6099,6 +6169,7 @@ input UserUpdateWithoutCheckInsInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -6284,6 +6355,7 @@ input UserUpdateWithoutHotelsCreatedInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -6341,6 +6413,7 @@ input UserCreateWithoutClaimedRewardsInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -6401,6 +6474,7 @@ input UserUpdateWithoutClaimedRewardsInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -6439,6 +6513,7 @@ input UserScalarWhereInput {
   whatsappNumber: StringFilter
   password: StringFilter
   referralCode: StringFilter
+  status: EnumUserStatusFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   deletedAt: DateTimeNullableFilter
@@ -6454,6 +6529,7 @@ input UserUpdateManyMutationInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -6575,6 +6651,7 @@ input UserUpdateWithoutProjectsInvestmentInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -7134,6 +7211,7 @@ input UserCreateWithoutProgramsParticipationInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -7161,6 +7239,7 @@ input UserUpdateWithoutProgramsParticipationInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -7519,6 +7598,7 @@ input UserCreateManyReferredByInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
 }
 
@@ -7880,6 +7960,7 @@ input UserCreateWithoutPointTransactionsInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -7922,6 +8003,7 @@ input UserCreateWithoutFilesCreatedInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -7973,6 +8055,7 @@ input UserUpdateWithoutFilesCreatedInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
@@ -8001,6 +8084,7 @@ input FaqCreateInput {
   description: String!
   createdAt: DateTime
   updatedAt: DateTime
+  type: FaqType!
 }
 
 input FaqUpdateOneArgs {
@@ -8013,6 +8097,11 @@ input FaqUpdateInput {
   description: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  type: EnumFaqTypeFieldUpdateOperationsInput
+}
+
+input EnumFaqTypeFieldUpdateOperationsInput {
+  set: FaqType
 }
 
 input ProjectCreateArgs {
@@ -8372,6 +8461,7 @@ input UserCreateWithoutUserNotificationsInput {
   avatarUrl: String
   whatsappNumber: String!
   password: String!
+  status: UserStatus
   theme: Theme
   address: AddressCreateNestedOneWithoutUserInput!
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
@@ -8429,6 +8519,7 @@ input UserUpdateWithoutUserNotificationsInput {
   avatarUrl: NullableStringFieldUpdateOperationsInput
   whatsappNumber: StringFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput

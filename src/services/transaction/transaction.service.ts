@@ -9,6 +9,7 @@ import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
 } from '../account/dto/get-account-balance-by-custom-period.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class TransactionService {
@@ -28,7 +29,7 @@ export class TransactionService {
   }
 
   async findMany(
-    transactionFindManyArgs: TransactionFindManyArgs,
+    transactionFindManyArgs: Prisma.TransactionFindManyArgs,
   ): Promise<Transaction[] | void> {
     return this.prisma.transaction
       .findMany(transactionFindManyArgs)

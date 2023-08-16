@@ -7,7 +7,7 @@ import {
   TransactionStatus,
 } from '@prisma/client';
 import { CreateOneAccountArgs } from 'src/@generated';
-import { fakeTransaction, fakeTransactionComplete } from './fake-data';
+import { fakeFaq, fakeTransaction, fakeTransactionComplete } from './fake-data';
 import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
 
@@ -58,16 +58,12 @@ async function main() {
   // console.log(accountBalances);
 
   // const totalBalance = await getAccountTotalBalance(accountId);
-  const query = await prisma.user.count({
-    where: {
-      AND: {
-        referredBy: {
-          is: { id: { equals: 'd8fed83b-d892-4d75-b199-e32e29d64a1d' } },
-        },
-        userRole: { equals: 'STUDENT' },
-      },
-    },
-  });
+  const numberOfFaq = 20;
+  const faqsToCreate: Prisma.FaqCreateManyInput[] = [];
+  for (let i = 0; i < numberOfFaq; i++) {
+    faqsToCreate.push(fakeFaq());
+  }
+  const query = await prisma.faq.createMany({ data: faqsToCreate });
 
   console.log(query);
 }

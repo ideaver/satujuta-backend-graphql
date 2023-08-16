@@ -43,6 +43,7 @@ export class TransactionResolver {
   ) {
     //Auto implement prisma select from graphql query info
     transactionFindManyArgs.select = relations.select;
+
     return this.transactionService.findMany(transactionFindManyArgs);
   }
 

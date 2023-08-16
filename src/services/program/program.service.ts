@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { CreateOneProgramArgs, Program } from 'src/@generated';
+import {
+  CreateOneProgramArgs,
+  FindManyProgramArgs,
+  Program,
+} from 'src/@generated';
 import { ProgramFindManyArgs } from './dto/program-find-many.args';
 import { ProgramFindUniqueArgs } from './dto/program-find-one.args';
 import { ProgramUpdateOneArgs } from './dto/program-update-one.args';
@@ -10,8 +14,9 @@ import { ProgramUpdateOneArgs } from './dto/program-update-one.args';
 export class ProgramService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(programCreateArgs: CreateOneProgramArgs): Promise<Program | void> {
-
+  async createOne(
+    programCreateArgs: CreateOneProgramArgs,
+  ): Promise<Program | void> {
     return await this.prisma.program
       .create(programCreateArgs)
       .then((program) => {
@@ -33,7 +38,9 @@ export class ProgramService {
       });
   }
 
-  async findOne(programFindUniqueArgs: ProgramFindUniqueArgs): Promise<Program | void> {
+  async findOne(
+    programFindUniqueArgs: ProgramFindUniqueArgs,
+  ): Promise<Program | void> {
     return await this.prisma.program
       .findUnique(programFindUniqueArgs)
       .then((program) => {
@@ -44,7 +51,9 @@ export class ProgramService {
       });
   }
 
-  async update(programUpdateOneArgs: ProgramUpdateOneArgs): Promise<Program | void> {
+  async update(
+    programUpdateOneArgs: ProgramUpdateOneArgs,
+  ): Promise<Program | void> {
     return this.prisma.program
       .update(programUpdateOneArgs)
       .then((program) => {
@@ -55,13 +64,24 @@ export class ProgramService {
       });
   }
 
-  async remove(programId: number): Promise<boolean | void>{
+  async remove(programId: number): Promise<boolean | void> {
     return await this.prisma.program
       .delete({
         where: { id: programId },
       })
       .then(() => {
         return true;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async count(findManyProgramArgs: FindManyProgramArgs) {
+    return await this.prisma.program
+      .count(findManyProgramArgs)
+      .then((program) => {
+        return program;
       })
       .catch((err) => {
         throwPrismaError(err);

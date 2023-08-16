@@ -189,6 +189,12 @@ export declare enum FileType {
     PNG = "PNG",
     PDF = "PDF"
 }
+export declare enum FaqType {
+    ReferralPage = "ReferralPage",
+    DashboardPage = "DashboardPage",
+    RewardPage = "RewardPage",
+    Project = "Project"
+}
 export declare enum AccountCategory {
     EQUITY = "EQUITY",
     PROJECT = "PROJECT",
@@ -288,7 +294,8 @@ export declare enum FaqScalarFieldEnum {
     name = "name",
     description = "description",
     createdAt = "createdAt",
-    updatedAt = "updatedAt"
+    updatedAt = "updatedAt",
+    type = "type"
 }
 export declare enum DistrictScalarFieldEnum {
     id = "id",
@@ -3573,6 +3580,7 @@ export declare class FaqCountAggregateInput {
     description?: true;
     createdAt?: true;
     updatedAt?: true;
+    type?: true;
     _all?: true;
 }
 export declare class FaqCountAggregate {
@@ -3581,6 +3589,7 @@ export declare class FaqCountAggregate {
     description: number;
     createdAt: number;
     updatedAt: number;
+    type: number;
     _all: number;
 }
 export declare class FaqCountOrderByAggregateInput {
@@ -3589,6 +3598,7 @@ export declare class FaqCountOrderByAggregateInput {
     description?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
 }
 export declare class FaqCreateManyInput {
     id?: number;
@@ -3596,12 +3606,14 @@ export declare class FaqCreateManyInput {
     description: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    type: keyof typeof FaqType;
 }
 export declare class FaqCreateInput {
     name: string;
     description: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    type: keyof typeof FaqType;
 }
 export declare class FaqGroupByArgs {
     where?: InstanceType<typeof FaqWhereInput>;
@@ -3622,6 +3634,7 @@ export declare class FaqGroupBy {
     description: string;
     createdAt: Date | string;
     updatedAt: Date | string;
+    type: keyof typeof FaqType;
     _count?: InstanceType<typeof FaqCountAggregate>;
     _avg?: InstanceType<typeof FaqAvgAggregate>;
     _sum?: InstanceType<typeof FaqSumAggregate>;
@@ -3634,6 +3647,7 @@ export declare class FaqMaxAggregateInput {
     description?: true;
     createdAt?: true;
     updatedAt?: true;
+    type?: true;
 }
 export declare class FaqMaxAggregate {
     id?: number;
@@ -3641,6 +3655,7 @@ export declare class FaqMaxAggregate {
     description?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    type?: keyof typeof FaqType;
 }
 export declare class FaqMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -3648,6 +3663,7 @@ export declare class FaqMaxOrderByAggregateInput {
     description?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
 }
 export declare class FaqMinAggregateInput {
     id?: true;
@@ -3655,6 +3671,7 @@ export declare class FaqMinAggregateInput {
     description?: true;
     createdAt?: true;
     updatedAt?: true;
+    type?: true;
 }
 export declare class FaqMinAggregate {
     id?: number;
@@ -3662,6 +3679,7 @@ export declare class FaqMinAggregate {
     description?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    type?: keyof typeof FaqType;
 }
 export declare class FaqMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -3669,6 +3687,7 @@ export declare class FaqMinOrderByAggregateInput {
     description?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
 }
 export declare class FaqOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
@@ -3676,6 +3695,7 @@ export declare class FaqOrderByWithAggregationInput {
     description?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
     _count?: InstanceType<typeof FaqCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof FaqAvgOrderByAggregateInput>;
     _max?: InstanceType<typeof FaqMaxOrderByAggregateInput>;
@@ -3688,6 +3708,7 @@ export declare class FaqOrderByWithRelationInput {
     description?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
 }
 export declare class FaqScalarWhereWithAggregatesInput {
     AND?: Array<FaqScalarWhereWithAggregatesInput>;
@@ -3698,6 +3719,7 @@ export declare class FaqScalarWhereWithAggregatesInput {
     description?: InstanceType<typeof StringWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    type?: InstanceType<typeof EnumFaqTypeWithAggregatesFilter>;
 }
 export declare class FaqSumAggregateInput {
     id?: true;
@@ -3714,6 +3736,7 @@ export declare class FaqUncheckedCreateInput {
     description: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    type: keyof typeof FaqType;
 }
 export declare class FaqUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3721,6 +3744,7 @@ export declare class FaqUncheckedUpdateManyInput {
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumFaqTypeFieldUpdateOperationsInput>;
 }
 export declare class FaqUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3728,18 +3752,21 @@ export declare class FaqUncheckedUpdateInput {
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumFaqTypeFieldUpdateOperationsInput>;
 }
 export declare class FaqUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumFaqTypeFieldUpdateOperationsInput>;
 }
 export declare class FaqUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumFaqTypeFieldUpdateOperationsInput>;
 }
 export declare class FaqWhereUniqueInput {
     id?: number;
@@ -3750,6 +3777,7 @@ export declare class FaqWhereUniqueInput {
     description?: InstanceType<typeof StringFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
+    type?: InstanceType<typeof EnumFaqTypeFilter>;
 }
 export declare class FaqWhereInput {
     AND?: Array<FaqWhereInput>;
@@ -3760,6 +3788,7 @@ export declare class FaqWhereInput {
     description?: InstanceType<typeof StringFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
+    type?: InstanceType<typeof EnumFaqTypeFilter>;
 }
 export declare class Faq {
     id: number;
@@ -3767,6 +3796,7 @@ export declare class Faq {
     description: string;
     createdAt: Date;
     updatedAt: Date;
+    type: keyof typeof FaqType;
 }
 export declare class FindFirstFaqOrThrowArgs {
     where?: InstanceType<typeof FaqWhereInput>;
@@ -9282,6 +9312,24 @@ export declare class EnumAccountCategoryWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
 }
+export declare class EnumFaqTypeFieldUpdateOperationsInput {
+    set?: keyof typeof FaqType;
+}
+export declare class EnumFaqTypeFilter {
+    equals?: keyof typeof FaqType;
+    in?: Array<keyof typeof FaqType>;
+    notIn?: Array<keyof typeof FaqType>;
+    not?: InstanceType<typeof NestedEnumFaqTypeFilter>;
+}
+export declare class EnumFaqTypeWithAggregatesFilter {
+    equals?: keyof typeof FaqType;
+    in?: Array<keyof typeof FaqType>;
+    notIn?: Array<keyof typeof FaqType>;
+    not?: InstanceType<typeof NestedEnumFaqTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumFaqTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumFaqTypeFilter>;
+}
 export declare class EnumFileTypeFieldUpdateOperationsInput {
     set?: keyof typeof FileType;
 }
@@ -9683,6 +9731,21 @@ export declare class NestedEnumAccountCategoryWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntFilter>;
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
+}
+export declare class NestedEnumFaqTypeFilter {
+    equals?: keyof typeof FaqType;
+    in?: Array<keyof typeof FaqType>;
+    notIn?: Array<keyof typeof FaqType>;
+    not?: InstanceType<typeof NestedEnumFaqTypeFilter>;
+}
+export declare class NestedEnumFaqTypeWithAggregatesFilter {
+    equals?: keyof typeof FaqType;
+    in?: Array<keyof typeof FaqType>;
+    notIn?: Array<keyof typeof FaqType>;
+    not?: InstanceType<typeof NestedEnumFaqTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumFaqTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumFaqTypeFilter>;
 }
 export declare class NestedEnumFileTypeFilter {
     equals?: keyof typeof FileType;

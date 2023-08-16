@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, PointType, TransactionStatus, UserNotificationCategory, ShippingStatus, FileType, ProjectCategory } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, PointType, TransactionStatus, UserNotificationCategory, ShippingStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -116,7 +116,6 @@ export function fakeAccountComplete() {
     id: faker.datatype.number(),
     accountNumber: undefined,
     name: faker.name.fullName(),
-    balance: 0,
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
     userId: faker.datatype.uuid(),
@@ -139,7 +138,6 @@ export function fakeTransactionComplete() {
     fromAccountId: faker.datatype.number(),
     toAccountId: faker.datatype.number(),
     createdAt: new Date(),
-    userId: undefined,
   };
 }
 export function fakePointTransaction() {
@@ -466,6 +464,7 @@ export function fakeFaq() {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     updatedAt: faker.datatype.datetime(),
+    type: faker.helpers.arrayElement([FaqType.ReferralPage, FaqType.DashboardPage, FaqType.RewardPage, FaqType.Project] as const),
   };
 }
 export function fakeFaqComplete() {
@@ -475,6 +474,7 @@ export function fakeFaqComplete() {
     description: faker.lorem.words(5),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
+    type: faker.helpers.arrayElement([FaqType.ReferralPage, FaqType.DashboardPage, FaqType.RewardPage, FaqType.Project] as const),
   };
 }
 export function fakeProject() {

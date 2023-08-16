@@ -22,7 +22,7 @@ export class FaqResolver {
   })
   async faqCreateOne(
     @Args('faqCreateArgs') faqCreateArgs: FaqCreateArgs,
-    @Relations() relations: FaqSelect
+    @Relations() relations: FaqSelect,
   ): Promise<Faq | void> {
     faqCreateArgs.select = relations.select;
     return await this.faqService.createOne(faqCreateArgs);
@@ -61,13 +61,30 @@ export class FaqResolver {
     @Relations() relations: FaqSelect,
   ) {
     faqUpdateOneArgs.select = relations.select;
+
+    //Handle null value
+    if (faqUpdateOneArgs.data.name.set === null) {
+      faqUpdateOneArgs.data.name = undefined;
+    }
+
+    //Handle null value
+    if (faqUpdateOneArgs.data.description.set === null) {
+      faqUpdateOneArgs.data.description = undefined;
+    }
+
+    //Handle null value
+    if (faqUpdateOneArgs.data.type.set === null) {
+      faqUpdateOneArgs.data.type = undefined;
+    }
+
+    console.log(JSON.stringify(faqUpdateOneArgs));
+
     return this.faqService.update(faqUpdateOneArgs);
   }
 
   @Mutation(() => Boolean, {
     nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
+    description: 'Datanya benar2 terhapus dari db',
   })
   faqRemove(@Args('faqId') faqId: number) {
     return this.faqService.remove(faqId);
