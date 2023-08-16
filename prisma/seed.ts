@@ -37,7 +37,7 @@ async function main() {
   //   });
 
   //   await seedBank();
-  await transactionCreateManySeed({ numberOfTransactions: 100 });
+  // await transactionCreateManySeed({ numberOfTransactions: 100 });
 
   // const accountId = 2; // Replace with the actual account ID
   // const year = 2023; // Replace with the desired year
@@ -58,7 +58,27 @@ async function main() {
   // console.log(accountBalances);
 
   // const totalBalance = await getAccountTotalBalance(accountId);
+  const query = await prisma.user.count({
+    where: {
+      AND: {
+        referredBy: {
+          is: { id: { equals: 'd8fed83b-d892-4d75-b199-e32e29d64a1d' } },
+        },
+        userRole: { equals: 'STUDENT' },
+      },
+    },
+  });
+
+  console.log(query);
 }
+
+main()
+  .catch((error) => {
+    console.error(error);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
 
 async function getAccountTotalBalance(accountId: number) {
   const transactions = await prisma.transaction.findMany({
@@ -231,14 +251,6 @@ function getNextPeriodDate(currentDate: Date, period: Period): Date {
 //   console.log(balances);
 //   return balances;
 // }
-
-main()
-  .catch((error) => {
-    console.error(error);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
 
 async function transactionCreateManySeed({
   numberOfTransactions,

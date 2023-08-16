@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
@@ -96,5 +96,16 @@ export class UserResolver {
   })
   userRemove(@Args('userId') userId: string) {
     return this.userService.remove(userId);
+  }
+
+  @Query(() => Int, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  userCount(
+    @Args('userFindManyArgs', { nullable: true })
+    userFindManyArgs: UserFindManyArgs,
+  ) {
+    return this.userService.count(userFindManyArgs);
   }
 }

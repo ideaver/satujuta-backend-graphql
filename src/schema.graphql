@@ -1696,6 +1696,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   userFindOne(userFindUniqueArgs: UserFindUniqueArgs!): User
+
+  """Deskripsinya ada disini loh"""
+  userCount(userFindManyArgs: UserFindManyArgs): Int!
   hotelFindMany(hotelFindManyArgs: HotelFindManyArgs!): [Hotel!]
 
   """Default prisma query include nested address & checkIns"""
@@ -1830,53 +1833,12 @@ type Query {
 }
 
 input UserFindManyArgs {
-  select: UserSelect
-  include: UserSelect
   where: UserWhereInput
   orderBy: [UserOrderByWithRelationInput!]
   cursor: UserWhereUniqueInput
   take: Int
   skip: Int
   distinct: [UserScalarFieldEnum!]
-}
-
-input UserSelect {
-  id: Boolean
-  firstName: Boolean
-  lastName: Boolean
-  email: Boolean
-  addressId: Boolean
-  userRole: Boolean
-  userType: Boolean
-  avatarUrl: Boolean
-  whatsappNumber: Boolean
-  whatsappVerifiedAt: Boolean
-  password: Boolean
-  referredById: Boolean
-  status: Boolean
-  schoolId: Boolean
-  createdAt: Boolean
-  updatedAt: Boolean
-  deletedAt: Boolean
-  theme: Boolean
-  address: Boolean
-  referredBy: Boolean
-  referredUsers: Boolean
-  checkIns: Boolean
-  school: Boolean
-  accounts: Boolean
-  transactions: Boolean
-  PointTransactions: Boolean
-  orders: Boolean
-  sessions: Boolean
-  hotelsCreated: Boolean
-  programsParticipation: Boolean
-  projectsInvestment: Boolean
-  claimedRewards: Boolean
-  userNotifications: Boolean
-  programsCreated: Boolean
-  filesCreated: Boolean
-  _count: Boolean
 }
 
 input UserWhereInput {
@@ -2917,6 +2879,45 @@ input UserFindUniqueArgs {
   select: UserSelect
   include: UserSelect
   where: UserWhereUniqueInput!
+}
+
+input UserSelect {
+  id: Boolean
+  firstName: Boolean
+  lastName: Boolean
+  email: Boolean
+  addressId: Boolean
+  userRole: Boolean
+  userType: Boolean
+  avatarUrl: Boolean
+  whatsappNumber: Boolean
+  whatsappVerifiedAt: Boolean
+  password: Boolean
+  referredById: Boolean
+  status: Boolean
+  schoolId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  deletedAt: Boolean
+  theme: Boolean
+  address: Boolean
+  referredBy: Boolean
+  referredUsers: Boolean
+  checkIns: Boolean
+  school: Boolean
+  accounts: Boolean
+  transactions: Boolean
+  PointTransactions: Boolean
+  orders: Boolean
+  sessions: Boolean
+  hotelsCreated: Boolean
+  programsParticipation: Boolean
+  projectsInvestment: Boolean
+  claimedRewards: Boolean
+  userNotifications: Boolean
+  programsCreated: Boolean
+  filesCreated: Boolean
+  _count: Boolean
 }
 
 input HotelFindManyArgs {

@@ -7,7 +7,16 @@ import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { GraphQLError } from 'graphql';
 import { User } from 'src/model/user.model';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { AccountCreateNestedManyWithoutUserInput } from 'src/@generated';
+import {
+  AccountCreateNestedManyWithoutUserInput,
+  AggregateUser,
+  FindManyUserArgs,
+  UserAggregateArgs,
+  UserCount,
+  UserCountAggregate,
+  UserCountAggregateInput,
+} from 'src/@generated';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UserService {
@@ -64,6 +73,17 @@ export class UserService {
         data: { deletedAt: new Date() },
         select: { id: true, firstName: true, deletedAt: true },
       })
+      .then((user) => {
+        return user;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async count(findManyUserArgs: FindManyUserArgs) {
+    return await this.prisma.user
+      .count(findManyUserArgs)
       .then((user) => {
         return user;
       })
