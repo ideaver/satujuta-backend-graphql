@@ -1685,9 +1685,9 @@ type User {
   _count: UserCount!
 }
 
-type AccountMonthlyBalanceQuery {
-  month: String
-  total_balance: Int
+type AccountBalanceByCustomPeriodQuery {
+  period: String
+  totalBalance: Float
 }
 
 type Query {
@@ -1804,7 +1804,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   transactionFindOne(transactionFindUniqueArgs: TransactionFindUniqueArgs!): Transaction
-  getMonthlyAccountBalances(accountMonthlyBalanceArgs: AccountMonthlyBalanceArgs!): [AccountMonthlyBalanceQuery!]!
 
   """Deskripsinya ada disini loh"""
   accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
@@ -1814,6 +1813,7 @@ type Query {
 
   """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
   accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
+  getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""
   schoolFindMany(schoolFindManyArgs: SchoolFindManyArgs!): [School!]
@@ -3923,11 +3923,6 @@ input TransactionWhereUniqueInput {
   payment: PaymentNullableRelationFilter
 }
 
-input AccountMonthlyBalanceArgs {
-  accountId: Int!
-  year: Int!
-}
-
 input AccountFindManyArgs {
   where: AccountWhereInput
   orderBy: [AccountOrderByWithRelationInput!]
@@ -3975,6 +3970,20 @@ input AccountFindFirstArgs {
   take: Int
   skip: Int
   distinct: [AccountScalarFieldEnum!]
+}
+
+input AccountBalanceByCustomPeriodArgs {
+  accountId: Int!
+  start: DateTime!
+  end: DateTime!
+  period: Period!
+}
+
+"""Period options for data retrieval"""
+enum Period {
+  WEEKLY
+  MONTHLY
+  YEARLY
 }
 
 input SchoolFindManyArgs {

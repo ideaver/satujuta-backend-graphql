@@ -10,7 +10,7 @@ import { TransactionUpdateOneArgs } from './dto/transaction-update-one.args';
 import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
-} from './dto/get-account-balance-by-custom-period.args';
+} from '../account/dto/get-account-balance-by-custom-period.args';
 
 interface TransactionSelect {
   select: Prisma.TransactionSelect;

@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
 import { AccountService } from './account.service';
-import { Prisma, TransactionStatus } from '@prisma/client';
+import { Prisma, Transaction, TransactionStatus } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { Account } from 'src/@generated';
 import { AccountCreateArgs } from './dto/account-create-one.args';
@@ -11,9 +11,10 @@ import { AccountFindFirstArgs } from './dto/account-find-first.args';
 import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
-} from '../transaction/dto/get-account-balance-by-custom-period.args';
+} from './dto/get-account-balance-by-custom-period.args';
 import { Period } from 'src/model/period.enum';
 import { TransactionService } from '../transaction/transaction.service';
+import { Injectable } from '@nestjs/common';
 
 interface AccountSelect {
   select: Prisma.AccountSelect;
@@ -98,7 +99,7 @@ export class AccountResolver {
   // }
 
   @Query(() => [AccountBalanceByCustomPeriodQuery])
-  async getMonthlyAccountBalances(
+  async getAccountBalanceByCustomPeriod(
     @Args('accountBalanceByCustomPeriodArgs')
     { accountId, period, start, end }: AccountBalanceByCustomPeriodArgs,
   ): Promise<AccountBalanceByCustomPeriodQuery[] | void> {
@@ -113,21 +114,19 @@ export class AccountResolver {
         this.getNextPeriodDate(currentDate, period),
       );
 
-      const formattedDate = currentDate.toLocaleDateString();
+      if (transactions) {
+        const formattedDate = currentDate.toLocaleDateString();
 
-      const monthlyBalance = transactions.reduce((balance, transaction) => {
-        if (transaction.fromAccountId === accountId) {
-          balance -= transaction.amount;
-        } else if (transaction.toAccountId === accountId) {
-          balance += transaction.amount;
-        }
-        return balance;
-      }, 0);
+        const monthlyBalance = this.calculateMonthlyBalance(
+          transactions,
+          accountId,
+        );
 
-      balances.push({
-        period: formattedDate,
-        total_balance: monthlyBalance,
-      });
+        balances.push({
+          period: formattedDate,
+          totalBalance: monthlyBalance,
+        });
+      }
 
       currentDate = this.getNextPeriodDate(currentDate, period);
     }
@@ -158,6 +157,23 @@ export class AccountResolver {
         createdAt: true,
       },
     });
+  }
+
+  calculateMonthlyBalance(
+    transactions: Transaction[],
+    accountId: number,
+  ): number {
+    let monthlyBalance = 0;
+
+    for (const transaction of transactions) {
+      if (transaction.fromAccountId === accountId) {
+        monthlyBalance -= transaction.amount;
+      } else if (transaction.toAccountId === accountId) {
+        monthlyBalance += transaction.amount;
+      }
+    }
+
+    return monthlyBalance;
   }
 
   getNextPeriodDate(currentDate: Date, period: Period): Date {

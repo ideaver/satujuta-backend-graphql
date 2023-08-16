@@ -9,7 +9,7 @@ import { AccountFindFirstArgs } from './dto/account-find-first.args';
 import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
-} from '../transaction/dto/get-account-balance-by-custom-period.args';
+} from './dto/get-account-balance-by-custom-period.args';
 
 @Injectable()
 export class AccountService {

@@ -4,6 +4,7 @@ import { TransactionResolver } from './transaction.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 
 @Module({
-  providers: [PrismaService,TransactionResolver, TransactionService]
+  providers: [PrismaService, TransactionResolver, TransactionService],
+  exports: [TransactionService],
 })
 export class TransactionModule {}

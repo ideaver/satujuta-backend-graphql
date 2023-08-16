@@ -9,7 +9,7 @@ import {
 import { CreateOneAccountArgs } from 'src/@generated';
 import { fakeTransaction, fakeTransactionComplete } from './fake-data';
 import { faker } from '@faker-js/faker';
-import { AccountBalanceByCustomPeriodQuery as AccountBalanceByCustomPeriodQuery } from 'src/services/transaction/dto/get-account-balance-by-custom-period.args';
+import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
 
 const prisma = new PrismaClient();
 
@@ -44,7 +44,7 @@ async function main() {
 
   // await getMonthlyAccountBalance(accountId, year);
 
-  const accountId = 3; // Replace with the actual account ID
+  const accountId = 1; // Replace with the actual account ID
   const startDate = new Date('2022-01-01'); // Replace with the desired start date
   const endDate = new Date('2023-12-31'); // Replace with the desired end date
   const period = Period.MONTHLY; // Choose the desired period option
@@ -77,24 +77,34 @@ async function getAccountBalancesWithOptions(
 
     const formattedDate = currentDate.toLocaleDateString();
 
-    const monthlyBalance = transactions.reduce((balance, transaction) => {
-      if (transaction.fromAccountId === accountId) {
-        balance -= transaction.amount;
-      } else if (transaction.toAccountId === accountId) {
-        balance += transaction.amount;
-      }
-      return balance;
-    }, 0);
+    const monthlyBalance = calculateMonthlyBalance(transactions, accountId);
 
     balances.push({
       period: formattedDate,
-      total_balance: monthlyBalance,
+      totalBalance: monthlyBalance,
     });
 
     currentDate = getNextPeriodDate(currentDate, period);
   }
 
   return balances;
+}
+
+function calculateMonthlyBalance(
+  transactions: Transaction[],
+  accountId: number,
+): number {
+  let monthlyBalance = 0;
+
+  for (const transaction of transactions) {
+    if (transaction.fromAccountId === accountId) {
+      monthlyBalance -= transaction.amount;
+    } else if (transaction.toAccountId === accountId) {
+      monthlyBalance += transaction.amount;
+    }
+  }
+
+  return monthlyBalance;
 }
 
 async function getTransactions(
@@ -118,7 +128,10 @@ async function getTransactions(
       ],
     },
     select: {
+      id: true,
       amount: true,
+      status: true,
+      transactionCategory: true,
       fromAccountId: true,
       toAccountId: true,
       createdAt: true,

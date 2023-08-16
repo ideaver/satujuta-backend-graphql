@@ -1,4 +1,4 @@
-import { ObjectType, Field, InputType, Int } from '@nestjs/graphql';
+import { ObjectType, Field, InputType, Int, Float } from '@nestjs/graphql';
 import { AccountCategory } from 'src/@generated';
 import { Period } from 'src/model/period.enum';
 
@@ -7,8 +7,8 @@ export class AccountBalanceByCustomPeriodQuery {
   @Field(() => String, { nullable: true })
   period: string;
 
-  @Field(() => Int, { nullable: true })
-  total_balance: number;
+  @Field(() => Float, { nullable: true })
+  totalBalance: number;
 }
 
 @InputType()
