@@ -4,7 +4,7 @@ import { AccountCategory } from 'src/@generated';
 @ObjectType()
 export class AccountMonthlyBalanceQuery {
   @Field(() => String, { nullable: true })
-  month: string;
+  period: string;
 
   @Field(() => Int, { nullable: true })
   total_balance: number;

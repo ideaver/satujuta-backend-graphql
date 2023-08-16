@@ -8,8 +8,15 @@ import {
 import { CreateOneAccountArgs } from 'src/@generated';
 import { fakeTransaction, fakeTransactionComplete } from './fake-data';
 import { faker } from '@faker-js/faker';
+import { AccountMonthlyBalanceQuery as AccountBalanceByCustomPeriodQuery } from 'src/services/transaction/dto/get-account-monthly-balance.args';
 
 const prisma = new PrismaClient();
+
+enum Period {
+  WEEKLY = 'weekly',
+  MONTHLY = 'monthly',
+  YEARLY = 'yearly',
+}
 
 async function main() {
   console.log('Start seeding ...');
@@ -30,12 +37,161 @@ async function main() {
 
   //   await seedBank();
   // await transactionCreateManySeed({ numberOfTransactions: 10 });
+
+  // const accountId = 2; // Replace with the actual account ID
+  // const year = 2023; // Replace with the desired year
+
+  // await getMonthlyAccountBalance(accountId, year);
+
+  const accountId = 1; // Replace with the actual account ID
+  const startDate = new Date('2022-01-01'); // Replace with the desired start date
+  const endDate = new Date('2023-12-31'); // Replace with the desired end date
+  const period = Period.MONTHLY; // Choose the desired period option
+
+  const accountBalances = await getAccountBalancesWithOptions(
+    accountId,
+    startDate,
+    endDate,
+    period,
+  );
+  console.log(accountBalances);
 }
 
+async function getAccountBalancesWithOptions(
+  accountId: number,
+  start: Date,
+  end: Date,
+  period: Period,
+) {
+  const balances: AccountBalanceByCustomPeriodQuery[] = [];
+
+  let currentDate = new Date(start);
+
+  while (currentDate <= end) {
+    const transactions = await getTransactions(
+      accountId,
+      currentDate,
+      getNextPeriodDate(currentDate, period),
+    );
+
+    const formattedDate = currentDate.toLocaleDateString();
+
+    const monthlyBalance = transactions.reduce((balance, transaction) => {
+      if (transaction.fromAccountId === accountId) {
+        balance -= transaction.amount;
+      } else if (transaction.toAccountId === accountId) {
+        balance += transaction.amount;
+      }
+      return balance;
+    }, 0);
+
+    balances.push({
+      period: formattedDate,
+      total_balance: monthlyBalance,
+    });
+
+    currentDate = getNextPeriodDate(currentDate, period);
+  }
+
+  return balances;
+}
+
+async function getTransactions(
+  accountId: number,
+  startDate: Date,
+  endDate: Date,
+) {
+  return prisma.transaction.findMany({
+    where: {
+      OR: [
+        {
+          fromAccountId: accountId,
+          createdAt: { gte: startDate, lt: endDate },
+        },
+        {
+          toAccountId: accountId,
+          createdAt: { gte: startDate, lt: endDate },
+        },
+      ],
+    },
+    select: {
+      id: true,
+      amount: true,
+      status: true,
+      transactionCategory: true,
+      fromAccountId: true,
+      toAccountId: true,
+      createdAt: true,
+    },
+  });
+}
+
+function getNextPeriodDate(currentDate: Date, period: Period): Date {
+  const nextDate = new Date(currentDate);
+
+  if (period === Period.WEEKLY) {
+    nextDate.setDate(currentDate.getDate() + 7);
+  } else if (period === Period.MONTHLY) {
+    nextDate.setMonth(currentDate.getMonth() + 1);
+  } else if (period === Period.YEARLY) {
+    nextDate.setFullYear(currentDate.getFullYear() + 1);
+  }
+
+  return nextDate;
+}
+
+// async function getMonthlyAccountBalance(accountId: number, year: number) {
+//   const balances: AccountMonthlyBalanceQuery[] = [];
+
+//   for (let month = 1; month <= 12; month++) {
+//     const startDate = new Date(year, month - 1, 1);
+//     const endDate = new Date(year, month, 0);
+
+//     const transactions = await prisma.transaction.findMany({
+//       where: {
+//         OR: [
+//           {
+//             fromAccountId: accountId,
+//             createdAt: { gte: startDate, lt: endDate },
+//           },
+//           {
+//             toAccountId: accountId,
+//             createdAt: { gte: startDate, lt: endDate },
+//           },
+//         ],
+//       },
+//       select: {
+//         amount: true,
+//         fromAccountId: true,
+//         toAccountId: true,
+//       },
+//     });
+
+//     const monthlyBalance = transactions.reduce((balance, transaction) => {
+//       if (transaction.fromAccountId === accountId) {
+//         balance -= transaction.amount;
+//       } else if (transaction.toAccountId === accountId) {
+//         balance += transaction.amount;
+//       }
+//       return balance;
+//     }, 0);
+
+//     const monthName = new Date(year, month - 1).toLocaleString('default', {
+//       month: 'long',
+//     });
+
+//     balances.push({
+//       month: `${monthName} ${year}`,
+//       total_balance: monthlyBalance,
+//     });
+//   }
+//   console.log(balances);
+//   return balances;
+// }
+
 main()
-  .catch(async (e) => {
-    console.error(e);
-    process.exit(1);
+  .catch((error) => {
+    console.error(error);
   })
   .finally(async () => {
     await prisma.$disconnect();
