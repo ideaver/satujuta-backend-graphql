@@ -10,14 +10,12 @@ type Auth {
 type AccountAvgAggregate {
   id: Float
   accountNumber: Float
-  balance: Float
 }
 
 type AccountCountAggregate {
   id: Int!
   accountNumber: Int!
   name: Int!
-  balance: Int!
   createdAt: Int!
   updatedAt: Int!
   userId: Int!
@@ -34,7 +32,6 @@ type AccountMaxAggregate {
   id: Int
   accountNumber: Float
   name: String
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   userId: String
@@ -60,7 +57,6 @@ type AccountMinAggregate {
   id: Int
   accountNumber: Float
   name: String
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   userId: String
@@ -70,14 +66,12 @@ type AccountMinAggregate {
 type AccountSumAggregate {
   id: Int
   accountNumber: Float
-  balance: Float
 }
 
 type Account {
   id: Int!
   accountNumber: Float
   name: String!
-  balance: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
   userId: String!
@@ -115,7 +109,6 @@ type UserAbstract {
   checkIns: [CheckIn!]
   school: School
   accounts: [Account!]
-  transactions: [Transaction!]
   PointTransactions: [PointTransaction!]
   orders: [Order!]
   sessions: [Session!]
@@ -1439,7 +1432,6 @@ type TransactionCountAggregate {
   fromAccountId: Int!
   toAccountId: Int!
   createdAt: Int!
-  userId: Int!
   _all: Int!
 }
 
@@ -1451,7 +1443,6 @@ type TransactionMaxAggregate {
   fromAccountId: Int
   toAccountId: Int
   createdAt: DateTime
-  userId: String
 }
 
 enum TransactionCategory {
@@ -1471,7 +1462,6 @@ type TransactionMinAggregate {
   fromAccountId: Int
   toAccountId: Int
   createdAt: DateTime
-  userId: String
 }
 
 type TransactionSumAggregate {
@@ -1489,11 +1479,9 @@ type Transaction {
   fromAccountId: Int!
   toAccountId: Int!
   createdAt: DateTime!
-  userId: String
   fromAccount: Account!
   toAccount: Account!
   payment: Payment
-  User: UserAbstract
 }
 
 type UserAvgAggregate {
@@ -1527,7 +1515,6 @@ type UserCount {
   referredUsers: Int!
   checkIns: Int!
   accounts: Int!
-  transactions: Int!
   PointTransactions: Int!
   orders: Int!
   sessions: Int!
@@ -1685,7 +1672,6 @@ type User {
   checkIns: [CheckIn!]
   school: School
   accounts: [Account!]
-  transactions: [Transaction!]
   PointTransactions: [PointTransaction!]
   orders: [Order!]
   sessions: [Session!]
@@ -1701,7 +1687,6 @@ type User {
 
 type AccountMonthlyBalanceQuery {
   month: String
-  account_id: Int
   total_balance: Int
 }
 
@@ -2399,7 +2384,6 @@ input AccountWhereInput {
   id: IntFilter
   accountNumber: FloatNullableFilter
   name: StringFilter
-  balance: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   userId: StringFilter
@@ -2464,11 +2448,9 @@ input TransactionWhereInput {
   fromAccountId: IntFilter
   toAccountId: IntFilter
   createdAt: DateTimeFilter
-  userId: StringNullableFilter
   fromAccount: AccountRelationFilter
   toAccount: AccountRelationFilter
   payment: PaymentNullableRelationFilter
-  User: UserNullableRelationFilter
 }
 
 input EnumTransactionStatusFilter {
@@ -3396,7 +3378,6 @@ input AccountOrderByWithRelationInput {
   id: SortOrder
   accountNumber: SortOrderInput
   name: SortOrder
-  balance: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
   userId: SortOrder
@@ -3502,11 +3483,9 @@ input TransactionOrderByWithRelationInput {
   fromAccountId: SortOrder
   toAccountId: SortOrder
   createdAt: SortOrder
-  userId: SortOrderInput
   fromAccount: AccountOrderByWithRelationInput
   toAccount: AccountOrderByWithRelationInput
   payment: PaymentOrderByWithRelationInput
-  User: UserOrderByWithRelationInput
 }
 
 enum PaymentConfirmationScalarFieldEnum {
@@ -3922,7 +3901,6 @@ enum TransactionScalarFieldEnum {
   fromAccountId
   toAccountId
   createdAt
-  userId
 }
 
 input TransactionFindUniqueArgs {
@@ -3940,17 +3918,14 @@ input TransactionWhereUniqueInput {
   fromAccountId: IntFilter
   toAccountId: IntFilter
   createdAt: DateTimeFilter
-  userId: StringNullableFilter
   fromAccount: AccountRelationFilter
   toAccount: AccountRelationFilter
   payment: PaymentNullableRelationFilter
-  User: UserNullableRelationFilter
 }
 
 input AccountMonthlyBalanceArgs {
   accountId: Int!
   year: Int!
-  accountCategory: AccountCategory!
 }
 
 input AccountFindManyArgs {
@@ -3965,7 +3940,6 @@ enum AccountScalarFieldEnum {
   id
   accountNumber
   name
-  balance
   createdAt
   updatedAt
   userId
@@ -3983,7 +3957,6 @@ input AccountWhereUniqueInput {
   NOT: [AccountWhereInput!]
   accountNumber: FloatNullableFilter
   name: StringFilter
-  balance: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   userId: StringFilter
@@ -4411,7 +4384,6 @@ input AccountCreateNestedManyWithoutUserInput {
 input AccountCreateWithoutUserInput {
   accountNumber: Float
   name: String!
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   accountCategory: AccountCategory!
@@ -4435,7 +4407,6 @@ input TransactionCreateWithoutFromAccountInput {
   createdAt: DateTime
   toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
   payment: PaymentCreateNestedOneWithoutTransactionInput
-  User: UserCreateNestedOneWithoutTransactionsInput
 }
 
 input AccountCreateNestedOneWithoutTransactionDestinationInput {
@@ -4447,7 +4418,6 @@ input AccountCreateNestedOneWithoutTransactionDestinationInput {
 input AccountCreateWithoutTransactionDestinationInput {
   accountNumber: Float
   name: String!
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   accountCategory: AccountCategory!
@@ -4787,33 +4757,6 @@ input PaymentCreateOrConnectWithoutTransactionInput {
   create: PaymentCreateWithoutTransactionInput!
 }
 
-input UserCreateNestedOneWithoutTransactionsInput {
-  create: UserCreateWithoutTransactionsInput
-  connectOrCreate: UserCreateOrConnectWithoutTransactionsInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutTransactionsInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-}
-
-input UserCreateOrConnectWithoutTransactionsInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutTransactionsInput!
-}
-
 input TransactionCreateOrConnectWithoutFromAccountInput {
   where: TransactionWhereUniqueInput!
   create: TransactionCreateWithoutFromAccountInput!
@@ -4831,7 +4774,6 @@ input TransactionCreateManyFromAccountInput {
   transactionCategory: TransactionCategory!
   toAccountId: Int!
   createdAt: DateTime
-  userId: String
 }
 
 input TransactionCreateNestedManyWithoutToAccountInput {
@@ -4848,7 +4790,6 @@ input TransactionCreateWithoutToAccountInput {
   createdAt: DateTime
   fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
   payment: PaymentCreateNestedOneWithoutTransactionInput
-  User: UserCreateNestedOneWithoutTransactionsInput
 }
 
 input AccountCreateNestedOneWithoutTransactionOriginsInput {
@@ -4860,7 +4801,6 @@ input AccountCreateNestedOneWithoutTransactionOriginsInput {
 input AccountCreateWithoutTransactionOriginsInput {
   accountNumber: Float
   name: String!
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   accountCategory: AccountCategory!
@@ -4892,7 +4832,6 @@ input TransactionCreateManyToAccountInput {
   transactionCategory: TransactionCategory!
   fromAccountId: Int!
   createdAt: DateTime
-  userId: String
 }
 
 input AccountCreateOrConnectWithoutUserInput {
@@ -4909,7 +4848,6 @@ input AccountCreateManyUserInput {
   id: Int
   accountNumber: Float
   name: String!
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   accountCategory: AccountCategory!
@@ -5740,7 +5678,6 @@ input TransactionCreateWithoutPaymentInput {
   createdAt: DateTime
   fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
   toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
-  User: UserCreateNestedOneWithoutTransactionsInput
 }
 
 input TransactionCreateOrConnectWithoutPaymentInput {
@@ -5902,7 +5839,6 @@ input AccountUpsertWithWhereUniqueWithoutUserInput {
 input AccountUpdateWithoutUserInput {
   accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  balance: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
@@ -5951,7 +5887,6 @@ input TransactionUpdateWithoutFromAccountInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
   payment: PaymentUpdateOneWithoutTransactionNestedInput
-  User: UserUpdateOneWithoutTransactionsNestedInput
 }
 
 input EnumTransactionCategoryFieldUpdateOperationsInput {
@@ -5975,7 +5910,6 @@ input AccountUpsertWithoutTransactionDestinationInput {
 input AccountUpdateWithoutTransactionDestinationInput {
   accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  balance: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
@@ -6556,7 +6490,6 @@ input AccountCreateNestedOneWithoutProjectInput {
 input AccountCreateWithoutProjectInput {
   accountNumber: Float
   name: String!
-  balance: Float
   createdAt: DateTime
   updatedAt: DateTime
   accountCategory: AccountCategory!
@@ -6672,7 +6605,6 @@ input AccountUpsertWithoutProjectInput {
 input AccountUpdateWithoutProjectInput {
   accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  balance: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
@@ -6709,7 +6641,6 @@ input TransactionUpdateWithoutToAccountInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
   payment: PaymentUpdateOneWithoutTransactionNestedInput
-  User: UserUpdateOneWithoutTransactionsNestedInput
 }
 
 input AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput {
@@ -6729,7 +6660,6 @@ input AccountUpsertWithoutTransactionOriginsInput {
 input AccountUpdateWithoutTransactionOriginsInput {
   accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  balance: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
@@ -7121,50 +7051,6 @@ input PaymentUpdateToOneWithWhereWithoutTransactionInput {
   data: PaymentUpdateWithoutTransactionInput!
 }
 
-input UserUpdateOneWithoutTransactionsNestedInput {
-  create: UserCreateWithoutTransactionsInput
-  connectOrCreate: UserCreateOrConnectWithoutTransactionsInput
-  upsert: UserUpsertWithoutTransactionsInput
-  disconnect: UserWhereInput
-  delete: UserWhereInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutTransactionsInput
-}
-
-input UserUpsertWithoutTransactionsInput {
-  update: UserUpdateWithoutTransactionsInput!
-  create: UserCreateWithoutTransactionsInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutTransactionsInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  accounts: AccountUpdateManyWithoutUserNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
-}
-
-input UserUpdateToOneWithWhereWithoutTransactionsInput {
-  where: UserWhereInput
-  data: UserUpdateWithoutTransactionsInput!
-}
-
 input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
   where: TransactionWhereUniqueInput!
   data: TransactionUpdateWithoutToAccountInput!
@@ -7186,7 +7072,6 @@ input TransactionScalarWhereInput {
   fromAccountId: IntFilter
   toAccountId: IntFilter
   createdAt: DateTimeFilter
-  userId: StringNullableFilter
 }
 
 input TransactionUpdateManyMutationInput {
@@ -7486,7 +7371,6 @@ input AccountScalarWhereInput {
   id: IntFilter
   accountNumber: FloatNullableFilter
   name: StringFilter
-  balance: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   userId: StringFilter
@@ -7496,7 +7380,6 @@ input AccountScalarWhereInput {
 input AccountUpdateManyMutationInput {
   accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  balance: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
@@ -7556,7 +7439,6 @@ input TransactionUpdateWithoutPaymentInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
   toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
-  User: UserUpdateOneWithoutTransactionsNestedInput
 }
 
 input TransactionUpdateToOneWithWhereWithoutPaymentInput {
@@ -8563,7 +8445,6 @@ input AccountUpdateOneArgs {
 input AccountUpdateInput {
   accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  balance: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput

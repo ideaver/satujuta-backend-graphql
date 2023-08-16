@@ -29,7 +29,7 @@ async function main() {
   //   });
 
   //   await seedBank();
-  await transactionCreateManySeed({ numberOfTransactions: 10 });
+  // await transactionCreateManySeed({ numberOfTransactions: 10 });
 }
 
 main()
@@ -48,10 +48,9 @@ async function transactionCreateManySeed({
 
   for (let i = 0; i < numberOfTransactions; i++) {
     transactionsToCreate.push({
+      ...fakeTransaction(),
       amount: generateRandomRupiah(),
-      status: 'COMPLETED',
-      transactionCategory: 'COMISSION_BONUS',
-      fromAccountId: 1,
+      fromAccountId: 3,
       toAccountId: 2,
       createdAt: faker.date.past(),
     });

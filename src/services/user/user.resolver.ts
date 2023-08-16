@@ -39,14 +39,13 @@ export class UserResolver {
     //Auto Create User Accounts
     userCreateArgs.data.accounts.createMany = {
       data: [
-        { name: 'CASH Account', accountCategory: 'CASH', balance: 0 },
+        { name: 'CASH Account', accountCategory: 'CASH' },
         {
           name: 'COMISSION Account',
           accountCategory: 'COMISSION',
-          balance: 0,
         },
-        { name: 'EQUITY Account', accountCategory: 'EQUITY', balance: 0 },
-        { name: 'DEBT Account', accountCategory: 'DEBT', balance: 0 },
+        { name: 'EQUITY Account', accountCategory: 'EQUITY' },
+        { name: 'DEBT Account', accountCategory: 'DEBT' },
       ],
     };
 

@@ -429,7 +429,6 @@ var AccountScalarFieldEnum;
     AccountScalarFieldEnum["id"] = "id";
     AccountScalarFieldEnum["accountNumber"] = "accountNumber";
     AccountScalarFieldEnum["name"] = "name";
-    AccountScalarFieldEnum["balance"] = "balance";
     AccountScalarFieldEnum["createdAt"] = "createdAt";
     AccountScalarFieldEnum["updatedAt"] = "updatedAt";
     AccountScalarFieldEnum["userId"] = "userId";
@@ -522,9 +521,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountAvgAggregateInput.prototype, "accountNumber", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AccountAvgAggregateInput.prototype, "balance", void 0);
 AccountAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AccountAvgAggregateInput);
@@ -537,9 +533,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], AccountAvgAggregate.prototype, "accountNumber", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountAvgAggregate.prototype, "balance", void 0);
 AccountAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], AccountAvgAggregate);
@@ -552,9 +545,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountAvgOrderByAggregateInput.prototype, "accountNumber", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountAvgOrderByAggregateInput.prototype, "balance", void 0);
 AccountAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AccountAvgOrderByAggregateInput);
@@ -570,9 +560,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountCountAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AccountCountAggregateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountCountAggregateInput.prototype, "createdAt", void 0);
@@ -605,9 +592,6 @@ __decorate([
 ], AccountCountAggregate.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AccountCountAggregate.prototype, "balance", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AccountCountAggregate.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -636,9 +620,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountCountOrderByAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountCountOrderByAggregateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountCountOrderByAggregateInput.prototype, "createdAt", void 0);
@@ -695,9 +676,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountCreateManyUserInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateManyUserInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateManyUserInput.prototype, "createdAt", void 0);
 __decorate([
@@ -724,9 +702,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountCreateManyInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateManyInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateManyInput.prototype, "createdAt", void 0);
@@ -919,9 +894,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountCreateWithoutBankAccountInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateWithoutBankAccountInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateWithoutBankAccountInput.prototype, "createdAt", void 0);
 __decorate([
@@ -957,9 +929,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountCreateWithoutProjectInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateWithoutProjectInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateWithoutProjectInput.prototype, "createdAt", void 0);
@@ -997,9 +966,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountCreateWithoutTransactionDestinationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateWithoutTransactionDestinationInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateWithoutTransactionDestinationInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1035,9 +1001,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountCreateWithoutTransactionOriginsInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateWithoutTransactionOriginsInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateWithoutTransactionOriginsInput.prototype, "createdAt", void 0);
@@ -1075,9 +1038,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountCreateWithoutUserInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateWithoutUserInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1113,9 +1073,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountCreateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountCreateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountCreateInput.prototype, "createdAt", void 0);
@@ -1196,9 +1153,6 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], AccountGroupBy.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
-], AccountGroupBy.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], AccountGroupBy.prototype, "createdAt", void 0);
 __decorate([
@@ -1257,9 +1211,6 @@ __decorate([
 ], AccountMaxAggregateInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AccountMaxAggregateInput.prototype, "balance", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountMaxAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -1285,9 +1236,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], AccountMaxAggregate.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountMaxAggregate.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountMaxAggregate.prototype, "createdAt", void 0);
@@ -1317,9 +1265,6 @@ __decorate([
 ], AccountMaxOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountMaxOrderByAggregateInput.prototype, "balance", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -1345,9 +1290,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountMinAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AccountMinAggregateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountMinAggregateInput.prototype, "createdAt", void 0);
@@ -1376,9 +1318,6 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], AccountMinAggregate.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountMinAggregate.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountMinAggregate.prototype, "createdAt", void 0);
 __decorate([
@@ -1405,9 +1344,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountMinOrderByAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountMinOrderByAggregateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountMinOrderByAggregateInput.prototype, "createdAt", void 0);
@@ -1444,9 +1380,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountOrderByWithAggregationInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountOrderByWithAggregationInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountOrderByWithAggregationInput.prototype, "createdAt", void 0);
@@ -1489,9 +1422,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountOrderByWithRelationInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountOrderByWithRelationInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountOrderByWithRelationInput.prototype, "createdAt", void 0);
@@ -1556,9 +1486,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], AccountScalarWhereWithAggregatesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
-], AccountScalarWhereWithAggregatesInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], AccountScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1595,9 +1522,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], AccountScalarWhereInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
-], AccountScalarWhereInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], AccountScalarWhereInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1621,9 +1545,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AccountSumAggregateInput.prototype, "accountNumber", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AccountSumAggregateInput.prototype, "balance", void 0);
 AccountSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AccountSumAggregateInput);
@@ -1636,9 +1557,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], AccountSumAggregate.prototype, "accountNumber", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountSumAggregate.prototype, "balance", void 0);
 AccountSumAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], AccountSumAggregate);
@@ -1651,9 +1569,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AccountSumOrderByAggregateInput.prototype, "accountNumber", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AccountSumOrderByAggregateInput.prototype, "balance", void 0);
 AccountSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AccountSumOrderByAggregateInput);
@@ -1695,9 +1610,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountUncheckedCreateWithoutBankAccountInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountUncheckedCreateWithoutBankAccountInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountUncheckedCreateWithoutBankAccountInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1736,9 +1648,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountUncheckedCreateWithoutProjectInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountUncheckedCreateWithoutProjectInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountUncheckedCreateWithoutProjectInput.prototype, "createdAt", void 0);
@@ -1779,9 +1688,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountUncheckedCreateWithoutTransactionDestinationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountUncheckedCreateWithoutTransactionDestinationInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountUncheckedCreateWithoutTransactionDestinationInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1820,9 +1726,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountUncheckedCreateWithoutTransactionOriginsInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountUncheckedCreateWithoutTransactionOriginsInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountUncheckedCreateWithoutTransactionOriginsInput.prototype, "createdAt", void 0);
@@ -1863,9 +1766,6 @@ __decorate([
     Validator.IsAlpha()
 ], AccountUncheckedCreateWithoutUserInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountUncheckedCreateWithoutUserInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountUncheckedCreateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
@@ -1904,9 +1804,6 @@ __decorate([
     Validator.MaxLength(20),
     Validator.IsAlpha()
 ], AccountUncheckedCreateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AccountUncheckedCreateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AccountUncheckedCreateInput.prototype, "createdAt", void 0);
@@ -1997,9 +1894,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateManyWithoutUserInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateManyWithoutUserInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateManyWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2023,9 +1917,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateManyInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateManyInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateManyInput.prototype, "createdAt", void 0);
@@ -2053,9 +1944,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutBankAccountInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateWithoutBankAccountInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutBankAccountInput.prototype, "createdAt", void 0);
@@ -2093,9 +1981,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutProjectInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateWithoutProjectInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutProjectInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2131,9 +2016,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutTransactionDestinationInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateWithoutTransactionDestinationInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutTransactionDestinationInput.prototype, "createdAt", void 0);
@@ -2171,9 +2053,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutTransactionOriginsInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateWithoutTransactionOriginsInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutTransactionOriginsInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2209,9 +2088,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutUserInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateWithoutUserInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateWithoutUserInput.prototype, "createdAt", void 0);
@@ -2249,9 +2125,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUncheckedUpdateInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2287,9 +2160,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateManyMutationInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateManyMutationInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateManyMutationInput.prototype, "createdAt", void 0);
@@ -2550,9 +2420,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutBankAccountInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateWithoutBankAccountInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutBankAccountInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2585,9 +2452,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutProjectInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateWithoutProjectInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutProjectInput.prototype, "createdAt", void 0);
@@ -2622,9 +2486,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutTransactionDestinationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateWithoutTransactionDestinationInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutTransactionDestinationInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2657,9 +2518,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutTransactionOriginsInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateWithoutTransactionOriginsInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutTransactionOriginsInput.prototype, "createdAt", void 0);
@@ -2694,9 +2552,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutUserInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateWithoutUserInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2729,9 +2584,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], AccountUpdateInput.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AccountUpdateInput.prototype, "createdAt", void 0);
@@ -2871,9 +2723,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], AccountWhereUniqueInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
-], AccountWhereUniqueInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], AccountWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2925,9 +2774,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], AccountWhereInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
-], AccountWhereInput.prototype, "balance", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], AccountWhereInput.prototype, "createdAt", void 0);
 __decorate([
@@ -2969,9 +2815,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], Account.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false, defaultValue: 0 })
-], Account.prototype, "balance", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], Account.prototype, "createdAt", void 0);

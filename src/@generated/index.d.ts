@@ -324,7 +324,6 @@ export declare enum AccountScalarFieldEnum {
     id = "id",
     accountNumber = "accountNumber",
     name = "name",
-    balance = "balance",
     createdAt = "createdAt",
     updatedAt = "updatedAt",
     userId = "userId",
@@ -345,23 +344,19 @@ export declare class AccountAggregateArgs {
 export declare class AccountAvgAggregateInput {
     id?: true;
     accountNumber?: true;
-    balance?: true;
 }
 export declare class AccountAvgAggregate {
     id?: number;
     accountNumber?: number;
-    balance?: number;
 }
 export declare class AccountAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     accountNumber?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
 }
 export declare class AccountCountAggregateInput {
     id?: true;
     accountNumber?: true;
     name?: true;
-    balance?: true;
     createdAt?: true;
     updatedAt?: true;
     userId?: true;
@@ -372,7 +367,6 @@ export declare class AccountCountAggregate {
     id: number;
     accountNumber: number;
     name: number;
-    balance: number;
     createdAt: number;
     updatedAt: number;
     userId: number;
@@ -383,7 +377,6 @@ export declare class AccountCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     accountNumber?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     userId?: keyof typeof SortOrder;
@@ -401,7 +394,6 @@ export declare class AccountCreateManyUserInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -410,7 +402,6 @@ export declare class AccountCreateManyInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId: string;
@@ -465,7 +456,6 @@ export declare class AccountCreateOrConnectWithoutUserInput {
 export declare class AccountCreateWithoutBankAccountInput {
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -477,7 +467,6 @@ export declare class AccountCreateWithoutBankAccountInput {
 export declare class AccountCreateWithoutProjectInput {
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -489,7 +478,6 @@ export declare class AccountCreateWithoutProjectInput {
 export declare class AccountCreateWithoutTransactionDestinationInput {
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -501,7 +489,6 @@ export declare class AccountCreateWithoutTransactionDestinationInput {
 export declare class AccountCreateWithoutTransactionOriginsInput {
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -513,7 +500,6 @@ export declare class AccountCreateWithoutTransactionOriginsInput {
 export declare class AccountCreateWithoutUserInput {
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -525,7 +511,6 @@ export declare class AccountCreateWithoutUserInput {
 export declare class AccountCreateInput {
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -552,7 +537,6 @@ export declare class AccountGroupBy {
     id: number;
     accountNumber?: number;
     name: string;
-    balance: number;
     createdAt: Date | string;
     updatedAt: Date | string;
     userId: string;
@@ -572,7 +556,6 @@ export declare class AccountMaxAggregateInput {
     id?: true;
     accountNumber?: true;
     name?: true;
-    balance?: true;
     createdAt?: true;
     updatedAt?: true;
     userId?: true;
@@ -582,7 +565,6 @@ export declare class AccountMaxAggregate {
     id?: number;
     accountNumber?: number;
     name?: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId?: string;
@@ -592,7 +574,6 @@ export declare class AccountMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     accountNumber?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     userId?: keyof typeof SortOrder;
@@ -602,7 +583,6 @@ export declare class AccountMinAggregateInput {
     id?: true;
     accountNumber?: true;
     name?: true;
-    balance?: true;
     createdAt?: true;
     updatedAt?: true;
     userId?: true;
@@ -612,7 +592,6 @@ export declare class AccountMinAggregate {
     id?: number;
     accountNumber?: number;
     name?: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId?: string;
@@ -622,7 +601,6 @@ export declare class AccountMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     accountNumber?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     userId?: keyof typeof SortOrder;
@@ -635,7 +613,6 @@ export declare class AccountOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     accountNumber?: InstanceType<typeof SortOrderInput>;
     name?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     userId?: keyof typeof SortOrder;
@@ -650,7 +627,6 @@ export declare class AccountOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     accountNumber?: InstanceType<typeof SortOrderInput>;
     name?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     userId?: keyof typeof SortOrder;
@@ -672,7 +648,6 @@ export declare class AccountScalarWhereWithAggregatesInput {
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     accountNumber?: InstanceType<typeof FloatNullableWithAggregatesFilter>;
     name?: InstanceType<typeof StringWithAggregatesFilter>;
-    balance?: InstanceType<typeof FloatWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     userId?: InstanceType<typeof StringWithAggregatesFilter>;
@@ -685,7 +660,6 @@ export declare class AccountScalarWhereInput {
     id?: InstanceType<typeof IntFilter>;
     accountNumber?: InstanceType<typeof FloatNullableFilter>;
     name?: InstanceType<typeof StringFilter>;
-    balance?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     userId?: InstanceType<typeof StringFilter>;
@@ -694,17 +668,14 @@ export declare class AccountScalarWhereInput {
 export declare class AccountSumAggregateInput {
     id?: true;
     accountNumber?: true;
-    balance?: true;
 }
 export declare class AccountSumAggregate {
     id?: number;
     accountNumber?: number;
-    balance?: number;
 }
 export declare class AccountSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     accountNumber?: keyof typeof SortOrder;
-    balance?: keyof typeof SortOrder;
 }
 export declare class AccountUncheckedCreateNestedManyWithoutUserInput {
     create?: Array<AccountCreateWithoutUserInput>;
@@ -716,7 +687,6 @@ export declare class AccountUncheckedCreateWithoutBankAccountInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId: string;
@@ -729,7 +699,6 @@ export declare class AccountUncheckedCreateWithoutProjectInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId: string;
@@ -742,7 +711,6 @@ export declare class AccountUncheckedCreateWithoutTransactionDestinationInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId: string;
@@ -755,7 +723,6 @@ export declare class AccountUncheckedCreateWithoutTransactionOriginsInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId: string;
@@ -768,7 +735,6 @@ export declare class AccountUncheckedCreateWithoutUserInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     accountCategory: keyof typeof AccountCategory;
@@ -781,7 +747,6 @@ export declare class AccountUncheckedCreateInput {
     id?: number;
     accountNumber?: number;
     name: string;
-    balance?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     userId: string;
@@ -808,7 +773,6 @@ export declare class AccountUncheckedUpdateManyWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -817,7 +781,6 @@ export declare class AccountUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -827,7 +790,6 @@ export declare class AccountUncheckedUpdateWithoutBankAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -840,7 +802,6 @@ export declare class AccountUncheckedUpdateWithoutProjectInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -853,7 +814,6 @@ export declare class AccountUncheckedUpdateWithoutTransactionDestinationInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -866,7 +826,6 @@ export declare class AccountUncheckedUpdateWithoutTransactionOriginsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -879,7 +838,6 @@ export declare class AccountUncheckedUpdateWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -892,7 +850,6 @@ export declare class AccountUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -905,7 +862,6 @@ export declare class AccountUncheckedUpdateInput {
 export declare class AccountUpdateManyMutationInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -978,7 +934,6 @@ export declare class AccountUpdateWithWhereUniqueWithoutUserInput {
 export declare class AccountUpdateWithoutBankAccountInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -990,7 +945,6 @@ export declare class AccountUpdateWithoutBankAccountInput {
 export declare class AccountUpdateWithoutProjectInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -1002,7 +956,6 @@ export declare class AccountUpdateWithoutProjectInput {
 export declare class AccountUpdateWithoutTransactionDestinationInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -1014,7 +967,6 @@ export declare class AccountUpdateWithoutTransactionDestinationInput {
 export declare class AccountUpdateWithoutTransactionOriginsInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -1026,7 +978,6 @@ export declare class AccountUpdateWithoutTransactionOriginsInput {
 export declare class AccountUpdateWithoutUserInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -1038,7 +989,6 @@ export declare class AccountUpdateWithoutUserInput {
 export declare class AccountUpdateInput {
     accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    balance?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     accountCategory?: InstanceType<typeof EnumAccountCategoryFieldUpdateOperationsInput>;
@@ -1080,7 +1030,6 @@ export declare class AccountWhereUniqueInput {
     NOT?: Array<AccountWhereInput>;
     accountNumber?: InstanceType<typeof FloatNullableFilter>;
     name?: InstanceType<typeof StringFilter>;
-    balance?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     userId?: InstanceType<typeof StringFilter>;
@@ -1098,7 +1047,6 @@ export declare class AccountWhereInput {
     id?: InstanceType<typeof IntFilter>;
     accountNumber?: InstanceType<typeof FloatNullableFilter>;
     name?: InstanceType<typeof StringFilter>;
-    balance?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     userId?: InstanceType<typeof StringFilter>;
@@ -1113,7 +1061,6 @@ export declare class Account {
     id: number;
     accountNumber: number | null;
     name: string;
-    balance: number;
     createdAt: Date;
     updatedAt: Date;
     userId: string;

@@ -87,7 +87,6 @@ export class TransactionService {
       const accounts = await this.prisma.account.findMany({
         where: { id: accountId },
         select: {
-          balance: true,
           transactionOrigins: {
             select: {
               amount: true,
