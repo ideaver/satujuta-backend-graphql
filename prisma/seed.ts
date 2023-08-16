@@ -37,25 +37,55 @@ async function main() {
   //   });
 
   //   await seedBank();
-  // await transactionCreateManySeed({ numberOfTransactions: 10 });
+  await transactionCreateManySeed({ numberOfTransactions: 100 });
 
   // const accountId = 2; // Replace with the actual account ID
   // const year = 2023; // Replace with the desired year
 
   // await getMonthlyAccountBalance(accountId, year);
 
-  const accountId = 1; // Replace with the actual account ID
-  const startDate = new Date('2022-01-01'); // Replace with the desired start date
-  const endDate = new Date('2023-12-31'); // Replace with the desired end date
-  const period = Period.MONTHLY; // Choose the desired period option
+  // const accountId = 1; // Replace with the actual account ID
+  // const startDate = new Date('2022-01-01'); // Replace with the desired start date
+  // const endDate = new Date('2023-12-31'); // Replace with the desired end date
+  // const period = Period.MONTHLY; // Choose the desired period option
 
-  const accountBalances = await getAccountBalancesWithOptions(
-    accountId,
-    startDate,
-    endDate,
-    period,
-  );
-  console.log(accountBalances);
+  // const accountBalances = await getAccountBalancesWithOptions(
+  //   accountId,
+  //   startDate,
+  //   endDate,
+  //   period,
+  // );
+  // console.log(accountBalances);
+
+  // const totalBalance = await getAccountTotalBalance(accountId);
+}
+
+async function getAccountTotalBalance(accountId: number) {
+  const transactions = await prisma.transaction.findMany({
+    where: {
+      OR: [
+        { fromAccountId: accountId, status: TransactionStatus.COMPLETED },
+        { toAccountId: accountId, status: TransactionStatus.COMPLETED },
+      ],
+    },
+    select: {
+      amount: true,
+      fromAccountId: true,
+      toAccountId: true,
+    },
+  });
+
+  let totalBalance = 0;
+
+  for (const transaction of transactions) {
+    if (transaction.fromAccountId === accountId) {
+      totalBalance -= transaction.amount;
+    } else if (transaction.toAccountId === accountId) {
+      totalBalance += transaction.amount;
+    }
+  }
+
+  return totalBalance;
 }
 
 async function getAccountBalancesWithOptions(
@@ -219,8 +249,8 @@ async function transactionCreateManySeed({
     transactionsToCreate.push({
       ...fakeTransaction(),
       amount: generateRandomRupiah(),
-      fromAccountId: 3,
-      toAccountId: 2,
+      fromAccountId: faker.datatype.number({ min: 1, max: 9 }),
+      toAccountId: faker.datatype.number({ min: 1, max: 9 }),
       createdAt: faker.date.past(),
     });
   }

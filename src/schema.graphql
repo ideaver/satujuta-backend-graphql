@@ -1813,6 +1813,7 @@ type Query {
 
   """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
   accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
+  getAccountTotalBalance(accountId: Float!): Float!
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""

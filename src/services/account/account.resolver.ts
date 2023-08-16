@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info, Float } from '@nestjs/graphql';
 import { AccountService } from './account.service';
 import { Prisma, Transaction, TransactionStatus } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
@@ -97,6 +97,42 @@ export class AccountResolver {
   // accountRemove(@Args('accountId') accountId: number) {
   //   return this.accountService.remove(accountId);
   // }
+
+  @Query(() => Float)
+  async getAccountTotalBalance(@Args('accountId') accountId: number) {
+    const transactions = await this.transactionService.findMany({
+      where: {
+        OR: [
+          {
+            fromAccountId: { equals: accountId },
+            status: { equals: TransactionStatus.COMPLETED },
+          },
+          {
+            toAccountId: { equals: accountId },
+            status: { equals: TransactionStatus.COMPLETED },
+          },
+        ],
+      },
+      select: {
+        amount: true,
+        fromAccountId: true,
+        toAccountId: true,
+      },
+    });
+
+    let totalBalance = 0;
+    if (transactions) {
+      for (const transaction of transactions) {
+        if (transaction.fromAccountId === accountId) {
+          totalBalance -= transaction.amount;
+        } else if (transaction.toAccountId === accountId) {
+          totalBalance += transaction.amount;
+        }
+      }
+
+      return totalBalance;
+    }
+  }
 
   @Query(() => [AccountBalanceByCustomPeriodQuery])
   async getAccountBalanceByCustomPeriod(
