@@ -6,9 +6,9 @@ import { TransactionFindManyArgs } from './dto/transaction-find-many.args';
 import { TransactionFindUniqueArgs } from './dto/transaction-find-one.args';
 import { TransactionUpdateOneArgs } from './dto/transaction-update-one.args';
 import {
-  AccountMonthlyBalanceArgs,
-  AccountMonthlyBalanceQuery,
-} from './dto/get-account-monthly-balance.args';
+  AccountBalanceByCustomPeriodArgs,
+  AccountBalanceByCustomPeriodQuery,
+} from './dto/get-account-balance-by-custom-period.args';
 
 @Injectable()
 export class TransactionService {
@@ -27,7 +27,9 @@ export class TransactionService {
       });
   }
 
-  async findMany(transactionFindManyArgs: TransactionFindManyArgs) {
+  async findMany(
+    transactionFindManyArgs: TransactionFindManyArgs,
+  ): Promise<Transaction[] | void> {
     return this.prisma.transaction
       .findMany(transactionFindManyArgs)
       .then((transactions) => {
@@ -76,56 +78,4 @@ export class TransactionService {
   //       throwPrismaError(err);
   //     });
   // }
-
-  async getMonthlyBalances({
-    accountId,
-    year,
-  }: AccountMonthlyBalanceArgs): Promise<AccountMonthlyBalanceQuery[]> {
-    const accountMonthlyBalances: AccountMonthlyBalanceQuery[] = [];
-
-    try {
-      const accounts = await this.prisma.account.findMany({
-        where: { id: accountId },
-        select: {
-          transactionOrigins: {
-            select: {
-              amount: true,
-            },
-          },
-          transactionDestination: {
-            select: {
-              amount: true,
-            },
-          },
-        },
-      });
-
-      console.log(JSON.stringify(accounts));
-
-      // for (const account of accounts) {
-      //   const monthlyBalanceQuery: AccountMonthlyBalanceQuery = {
-      //     month: new Date().toLocaleString('en-us', { month: 'long' }), // You can adjust this to get the specific month
-      //     total_balance: account.balance,
-      //   };
-
-      //   for (const transaction of account.transactionOrigins) {
-      //     if (transaction.amount) {
-      //       monthlyBalanceQuery.total_balance -= transaction.amount;
-      //     }
-      //   }
-
-      //   for (const transaction of account.transactionDestination) {
-      //     if (transaction.amount) {
-      //       monthlyBalanceQuery.total_balance += transaction.amount;
-      //     }
-      //   }
-
-      //   accountMonthlyBalances.push(monthlyBalanceQuery);
-      // }
-    } catch (error) {
-      throw new Error(`Error retrieving account monthly balances: ${error}`);
-    }
-
-    return accountMonthlyBalances;
-  }
 }

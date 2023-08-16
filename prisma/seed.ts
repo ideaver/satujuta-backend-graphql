@@ -4,11 +4,12 @@ import {
   Prisma,
   PrismaClient,
   Transaction,
+  TransactionStatus,
 } from '@prisma/client';
 import { CreateOneAccountArgs } from 'src/@generated';
 import { fakeTransaction, fakeTransactionComplete } from './fake-data';
 import { faker } from '@faker-js/faker';
-import { AccountMonthlyBalanceQuery as AccountBalanceByCustomPeriodQuery } from 'src/services/transaction/dto/get-account-monthly-balance.args';
+import { AccountBalanceByCustomPeriodQuery as AccountBalanceByCustomPeriodQuery } from 'src/services/transaction/dto/get-account-balance-by-custom-period.args';
 
 const prisma = new PrismaClient();
 
@@ -43,7 +44,7 @@ async function main() {
 
   // await getMonthlyAccountBalance(accountId, year);
 
-  const accountId = 1; // Replace with the actual account ID
+  const accountId = 3; // Replace with the actual account ID
   const startDate = new Date('2022-01-01'); // Replace with the desired start date
   const endDate = new Date('2023-12-31'); // Replace with the desired end date
   const period = Period.MONTHLY; // Choose the desired period option
@@ -107,18 +108,17 @@ async function getTransactions(
         {
           fromAccountId: accountId,
           createdAt: { gte: startDate, lt: endDate },
+          status: TransactionStatus.COMPLETED,
         },
         {
           toAccountId: accountId,
           createdAt: { gte: startDate, lt: endDate },
+          status: TransactionStatus.COMPLETED,
         },
       ],
     },
     select: {
-      id: true,
       amount: true,
-      status: true,
-      transactionCategory: true,
       fromAccountId: true,
       toAccountId: true,
       createdAt: true,

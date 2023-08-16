@@ -6,6 +6,10 @@ import { AccountFindManyArgs } from './dto/account-find-many.args';
 import { AccountFindUniqueArgs } from './dto/account-find-one.args';
 import { AccountUpdateOneArgs } from './dto/account-update-one.args';
 import { AccountFindFirstArgs } from './dto/account-find-first.args';
+import {
+  AccountBalanceByCustomPeriodArgs,
+  AccountBalanceByCustomPeriodQuery,
+} from '../transaction/dto/get-account-balance-by-custom-period.args';
 
 @Injectable()
 export class AccountService {

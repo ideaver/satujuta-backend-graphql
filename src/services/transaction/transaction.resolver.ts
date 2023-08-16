@@ -7,7 +7,10 @@ import { TransactionCreateArgs } from './dto/transaction-create-one.args';
 import { TransactionFindManyArgs } from './dto/transaction-find-many.args';
 import { TransactionFindUniqueArgs } from './dto/transaction-find-one.args';
 import { TransactionUpdateOneArgs } from './dto/transaction-update-one.args';
-import { AccountMonthlyBalanceArgs, AccountMonthlyBalanceQuery } from './dto/get-account-monthly-balance.args';
+import {
+  AccountBalanceByCustomPeriodArgs,
+  AccountBalanceByCustomPeriodQuery,
+} from './dto/get-account-balance-by-custom-period.args';
 
 interface TransactionSelect {
   select: Prisma.TransactionSelect;
@@ -74,13 +77,4 @@ export class TransactionResolver {
   // transactionRemove(@Args('transactionId') transactionId: number) {
   //   return this.transactionService.remove(transactionId);
   // }
-
-  @Query(() => [AccountMonthlyBalanceQuery])
-  async getMonthlyAccountBalances(
-    @Args('accountMonthlyBalanceArgs') accountMonthlyBalanceArgs: AccountMonthlyBalanceArgs,
-  ): Promise<AccountMonthlyBalanceQuery[] | void> {
-    return this.transactionService.getMonthlyBalances(
-      accountMonthlyBalanceArgs,
-    );
-  }
 }
