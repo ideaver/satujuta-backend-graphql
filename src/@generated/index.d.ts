@@ -36,10 +36,13 @@ export declare enum UserScalarFieldEnum {
 export declare enum TransactionScalarFieldEnum {
     id = "id",
     amount = "amount",
+    proofUrl = "proofUrl",
     status = "status",
     transactionCategory = "transactionCategory",
     fromAccountId = "fromAccountId",
     toAccountId = "toAccountId",
+    invoiceId = "invoiceId",
+    installmentId = "installmentId",
     createdAt = "createdAt"
 }
 export declare enum ShippingScalarFieldEnum {
@@ -183,6 +186,10 @@ export declare enum NullsOrder {
     first = "first",
     last = "last"
 }
+export declare enum InstallmentStatus {
+    UPCOMING = "UPCOMING",
+    PAID = "PAID"
+}
 export declare enum FileType {
     MP4 = "MP4",
     JPG = "JPG",
@@ -190,10 +197,10 @@ export declare enum FileType {
     PDF = "PDF"
 }
 export declare enum FaqType {
-    ReferralPage = "ReferralPage",
-    DashboardPage = "DashboardPage",
-    RewardPage = "RewardPage",
-    Project = "Project"
+    REFERRAL_PAGE = "REFERRAL_PAGE",
+    DASHBOARD_PAGE = "DASHBOARD_PAGE",
+    REWARD_PAGE = "REWARD_PAGE",
+    PROJECT_PAGE = "PROJECT_PAGE"
 }
 export declare enum AccountCategory {
     EQUITY = "EQUITY",
@@ -217,27 +224,12 @@ export declare enum PointTransactionScalarFieldEnum {
     userId = "userId",
     createdAt = "createdAt"
 }
-export declare enum PaymentConfirmationScalarFieldEnum {
-    id = "id",
-    ProofUrl = "ProofUrl",
-    paymentId = "paymentId",
-    createdAt = "createdAt",
-    updatedAt = "updatedAt"
-}
-export declare enum PaymentScalarFieldEnum {
-    id = "id",
-    adminFee = "adminFee",
-    totalPayment = "totalPayment",
-    orderId = "orderId",
-    transactionId = "transactionId",
-    createdAt = "createdAt"
-}
 export declare enum OrderScalarFieldEnum {
     id = "id",
     status = "status",
     orderById = "orderById",
     shippingId = "shippingId",
-    isFullPaid = "isFullPaid",
+    invoiceId = "invoiceId",
     cost = "cost",
     platformFee = "platformFee",
     total = "total",
@@ -254,6 +246,22 @@ export declare enum ItemScalarFieldEnum {
     orderId = "orderId",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
+}
+export declare enum InvoiceScalarFieldEnum {
+    id = "id",
+    adminFee = "adminFee",
+    amount = "amount",
+    createdAt = "createdAt"
+}
+export declare enum InstallmentScalarFieldEnum {
+    id = "id",
+    number = "number",
+    lateFee = "lateFee",
+    amount = "amount",
+    dueDate = "dueDate",
+    status = "status",
+    transactionId = "transactionId",
+    invoiceId = "invoiceId"
 }
 export declare enum ImagesScalarFieldEnum {
     id = "id",
@@ -6125,6 +6133,1084 @@ export declare class UpsertOneImagesArgs {
     create: InstanceType<typeof ImagesCreateInput>;
     update: InstanceType<typeof ImagesUpdateInput>;
 }
+export declare class AggregateInstallment {
+    _count?: InstanceType<typeof InstallmentCountAggregate>;
+    _avg?: InstanceType<typeof InstallmentAvgAggregate>;
+    _sum?: InstanceType<typeof InstallmentSumAggregate>;
+    _min?: InstanceType<typeof InstallmentMinAggregate>;
+    _max?: InstanceType<typeof InstallmentMaxAggregate>;
+}
+export declare class CreateManyInstallmentArgs {
+    data: Array<InstallmentCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneInstallmentArgs {
+    data: InstanceType<typeof InstallmentCreateInput>;
+}
+export declare class DeleteManyInstallmentArgs {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+}
+export declare class DeleteOneInstallmentArgs {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+}
+export declare class FindFirstInstallmentOrThrowArgs {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+    orderBy?: Array<InstallmentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof InstallmentScalarFieldEnum>;
+}
+export declare class FindFirstInstallmentArgs {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+    orderBy?: Array<InstallmentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof InstallmentScalarFieldEnum>;
+}
+export declare class FindManyInstallmentArgs {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+    orderBy?: Array<InstallmentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof InstallmentScalarFieldEnum>;
+}
+export declare class FindUniqueInstallmentOrThrowArgs {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+}
+export declare class FindUniqueInstallmentArgs {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+}
+export declare class InstallmentAggregateArgs {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+    orderBy?: Array<InstallmentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof InstallmentCountAggregateInput>;
+    _avg?: InstanceType<typeof InstallmentAvgAggregateInput>;
+    _sum?: InstanceType<typeof InstallmentSumAggregateInput>;
+    _min?: InstanceType<typeof InstallmentMinAggregateInput>;
+    _max?: InstanceType<typeof InstallmentMaxAggregateInput>;
+}
+export declare class InstallmentAvgAggregateInput {
+    id?: true;
+    number?: true;
+    lateFee?: true;
+    amount?: true;
+    transactionId?: true;
+    invoiceId?: true;
+}
+export declare class InstallmentAvgAggregate {
+    id?: number;
+    number?: number;
+    lateFee?: number;
+    amount?: number;
+    transactionId?: number;
+    invoiceId?: number;
+}
+export declare class InstallmentAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    transactionId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+}
+export declare class InstallmentCountAggregateInput {
+    id?: true;
+    number?: true;
+    lateFee?: true;
+    amount?: true;
+    dueDate?: true;
+    status?: true;
+    transactionId?: true;
+    invoiceId?: true;
+    _all?: true;
+}
+export declare class InstallmentCountAggregate {
+    id: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: number;
+    status: number;
+    transactionId: number;
+    invoiceId: number;
+    _all: number;
+}
+export declare class InstallmentCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    dueDate?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    transactionId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+}
+export declare class InstallmentCreateManyInvoiceInputEnvelope {
+    data: Array<InstallmentCreateManyInvoiceInput>;
+    skipDuplicates?: boolean;
+}
+export declare class InstallmentCreateManyInvoiceInput {
+    id?: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+}
+export declare class InstallmentCreateManyInput {
+    id?: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoiceId: number;
+}
+export declare class InstallmentCreateNestedManyWithoutInvoiceInput {
+    create?: Array<InstallmentCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<InstallmentCreateOrConnectWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof InstallmentCreateManyInvoiceInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+}
+export declare class InstallmentCreateNestedOneWithoutTransactionInput {
+    create?: InstanceType<typeof InstallmentCreateWithoutTransactionInput>;
+    connectOrCreate?: InstanceType<typeof InstallmentCreateOrConnectWithoutTransactionInput>;
+    connect?: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+}
+export declare class InstallmentCreateOrConnectWithoutInvoiceInput {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InstallmentCreateWithoutInvoiceInput>;
+}
+export declare class InstallmentCreateOrConnectWithoutTransactionInput {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InstallmentCreateWithoutTransactionInput>;
+}
+export declare class InstallmentCreateWithoutInvoiceInput {
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    transaction?: InstanceType<typeof TransactionCreateNestedOneWithoutInstallmentInput>;
+}
+export declare class InstallmentCreateWithoutTransactionInput {
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutInstallmentsInput>;
+}
+export declare class InstallmentCreateInput {
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    transaction?: InstanceType<typeof TransactionCreateNestedOneWithoutInstallmentInput>;
+    invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutInstallmentsInput>;
+}
+export declare class InstallmentGroupByArgs {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+    orderBy?: Array<InstallmentOrderByWithAggregationInput>;
+    by: Array<keyof typeof InstallmentScalarFieldEnum>;
+    having?: InstanceType<typeof InstallmentScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof InstallmentCountAggregateInput>;
+    _avg?: InstanceType<typeof InstallmentAvgAggregateInput>;
+    _sum?: InstanceType<typeof InstallmentSumAggregateInput>;
+    _min?: InstanceType<typeof InstallmentMinAggregateInput>;
+    _max?: InstanceType<typeof InstallmentMaxAggregateInput>;
+}
+export declare class InstallmentGroupBy {
+    id: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoiceId: number;
+    _count?: InstanceType<typeof InstallmentCountAggregate>;
+    _avg?: InstanceType<typeof InstallmentAvgAggregate>;
+    _sum?: InstanceType<typeof InstallmentSumAggregate>;
+    _min?: InstanceType<typeof InstallmentMinAggregate>;
+    _max?: InstanceType<typeof InstallmentMaxAggregate>;
+}
+export declare class InstallmentListRelationFilter {
+    every?: InstanceType<typeof InstallmentWhereInput>;
+    some?: InstanceType<typeof InstallmentWhereInput>;
+    none?: InstanceType<typeof InstallmentWhereInput>;
+}
+export declare class InstallmentMaxAggregateInput {
+    id?: true;
+    number?: true;
+    lateFee?: true;
+    amount?: true;
+    dueDate?: true;
+    status?: true;
+    transactionId?: true;
+    invoiceId?: true;
+}
+export declare class InstallmentMaxAggregate {
+    id?: number;
+    number?: number;
+    lateFee?: number;
+    amount?: number;
+    dueDate?: Date | string;
+    status?: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoiceId?: number;
+}
+export declare class InstallmentMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    dueDate?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    transactionId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+}
+export declare class InstallmentMinAggregateInput {
+    id?: true;
+    number?: true;
+    lateFee?: true;
+    amount?: true;
+    dueDate?: true;
+    status?: true;
+    transactionId?: true;
+    invoiceId?: true;
+}
+export declare class InstallmentMinAggregate {
+    id?: number;
+    number?: number;
+    lateFee?: number;
+    amount?: number;
+    dueDate?: Date | string;
+    status?: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoiceId?: number;
+}
+export declare class InstallmentMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    dueDate?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    transactionId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+}
+export declare class InstallmentNullableRelationFilter {
+    is?: InstanceType<typeof InstallmentWhereInput>;
+    isNot?: InstanceType<typeof InstallmentWhereInput>;
+}
+export declare class InstallmentOrderByRelationAggregateInput {
+    _count?: keyof typeof SortOrder;
+}
+export declare class InstallmentOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    dueDate?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    transactionId?: InstanceType<typeof SortOrderInput>;
+    invoiceId?: keyof typeof SortOrder;
+    _count?: InstanceType<typeof InstallmentCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof InstallmentAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof InstallmentMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof InstallmentMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof InstallmentSumOrderByAggregateInput>;
+}
+export declare class InstallmentOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    dueDate?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    transactionId?: InstanceType<typeof SortOrderInput>;
+    invoiceId?: keyof typeof SortOrder;
+    transaction?: InstanceType<typeof TransactionOrderByWithRelationInput>;
+    invoice?: InstanceType<typeof InvoiceOrderByWithRelationInput>;
+}
+export declare class InstallmentScalarWhereWithAggregatesInput {
+    AND?: Array<InstallmentScalarWhereWithAggregatesInput>;
+    OR?: Array<InstallmentScalarWhereWithAggregatesInput>;
+    NOT?: Array<InstallmentScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    number?: InstanceType<typeof IntWithAggregatesFilter>;
+    lateFee?: InstanceType<typeof FloatWithAggregatesFilter>;
+    amount?: InstanceType<typeof FloatWithAggregatesFilter>;
+    dueDate?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    status?: InstanceType<typeof EnumInstallmentStatusWithAggregatesFilter>;
+    transactionId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    invoiceId?: InstanceType<typeof IntWithAggregatesFilter>;
+}
+export declare class InstallmentScalarWhereInput {
+    AND?: Array<InstallmentScalarWhereInput>;
+    OR?: Array<InstallmentScalarWhereInput>;
+    NOT?: Array<InstallmentScalarWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    number?: InstanceType<typeof IntFilter>;
+    lateFee?: InstanceType<typeof FloatFilter>;
+    amount?: InstanceType<typeof FloatFilter>;
+    dueDate?: InstanceType<typeof DateTimeFilter>;
+    status?: InstanceType<typeof EnumInstallmentStatusFilter>;
+    transactionId?: InstanceType<typeof IntNullableFilter>;
+    invoiceId?: InstanceType<typeof IntFilter>;
+}
+export declare class InstallmentSumAggregateInput {
+    id?: true;
+    number?: true;
+    lateFee?: true;
+    amount?: true;
+    transactionId?: true;
+    invoiceId?: true;
+}
+export declare class InstallmentSumAggregate {
+    id?: number;
+    number?: number;
+    lateFee?: number;
+    amount?: number;
+    transactionId?: number;
+    invoiceId?: number;
+}
+export declare class InstallmentSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    number?: keyof typeof SortOrder;
+    lateFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    transactionId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+}
+export declare class InstallmentUncheckedCreateNestedManyWithoutInvoiceInput {
+    create?: Array<InstallmentCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<InstallmentCreateOrConnectWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof InstallmentCreateManyInvoiceInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+}
+export declare class InstallmentUncheckedCreateWithoutInvoiceInput {
+    id?: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    transaction?: InstanceType<typeof TransactionUncheckedCreateNestedOneWithoutInstallmentInput>;
+}
+export declare class InstallmentUncheckedCreateWithoutTransactionInput {
+    id?: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoiceId: number;
+}
+export declare class InstallmentUncheckedCreateInput {
+    id?: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date | string;
+    status: keyof typeof InstallmentStatus;
+    transactionId?: number;
+    invoiceId: number;
+    transaction?: InstanceType<typeof TransactionUncheckedCreateNestedOneWithoutInstallmentInput>;
+}
+export declare class InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput {
+    create?: Array<InstallmentCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<InstallmentCreateOrConnectWithoutInvoiceInput>;
+    upsert?: Array<InstallmentUpsertWithWhereUniqueWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof InstallmentCreateManyInvoiceInputEnvelope>;
+    set?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    update?: Array<InstallmentUpdateWithWhereUniqueWithoutInvoiceInput>;
+    updateMany?: Array<InstallmentUpdateManyWithWhereWithoutInvoiceInput>;
+    deleteMany?: Array<InstallmentScalarWhereInput>;
+}
+export declare class InstallmentUncheckedUpdateManyWithoutInvoiceInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+}
+export declare class InstallmentUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+}
+export declare class InstallmentUncheckedUpdateWithoutInvoiceInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    transaction?: InstanceType<typeof TransactionUncheckedUpdateOneWithoutInstallmentNestedInput>;
+}
+export declare class InstallmentUncheckedUpdateWithoutTransactionInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+}
+export declare class InstallmentUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    transaction?: InstanceType<typeof TransactionUncheckedUpdateOneWithoutInstallmentNestedInput>;
+}
+export declare class InstallmentUpdateManyMutationInput {
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+}
+export declare class InstallmentUpdateManyWithWhereWithoutInvoiceInput {
+    where: InstanceType<typeof InstallmentScalarWhereInput>;
+    data: InstanceType<typeof InstallmentUpdateManyMutationInput>;
+}
+export declare class InstallmentUpdateManyWithoutInvoiceNestedInput {
+    create?: Array<InstallmentCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<InstallmentCreateOrConnectWithoutInvoiceInput>;
+    upsert?: Array<InstallmentUpsertWithWhereUniqueWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof InstallmentCreateManyInvoiceInputEnvelope>;
+    set?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>>;
+    update?: Array<InstallmentUpdateWithWhereUniqueWithoutInvoiceInput>;
+    updateMany?: Array<InstallmentUpdateManyWithWhereWithoutInvoiceInput>;
+    deleteMany?: Array<InstallmentScalarWhereInput>;
+}
+export declare class InstallmentUpdateOneWithoutTransactionNestedInput {
+    create?: InstanceType<typeof InstallmentCreateWithoutTransactionInput>;
+    connectOrCreate?: InstanceType<typeof InstallmentCreateOrConnectWithoutTransactionInput>;
+    upsert?: InstanceType<typeof InstallmentUpsertWithoutTransactionInput>;
+    disconnect?: InstanceType<typeof InstallmentWhereInput>;
+    delete?: InstanceType<typeof InstallmentWhereInput>;
+    connect?: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof InstallmentUpdateToOneWithWhereWithoutTransactionInput>;
+}
+export declare class InstallmentUpdateToOneWithWhereWithoutTransactionInput {
+    where?: InstanceType<typeof InstallmentWhereInput>;
+    data: InstanceType<typeof InstallmentUpdateWithoutTransactionInput>;
+}
+export declare class InstallmentUpdateWithWhereUniqueWithoutInvoiceInput {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    data: InstanceType<typeof InstallmentUpdateWithoutInvoiceInput>;
+}
+export declare class InstallmentUpdateWithoutInvoiceInput {
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    transaction?: InstanceType<typeof TransactionUpdateOneWithoutInstallmentNestedInput>;
+}
+export declare class InstallmentUpdateWithoutTransactionInput {
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput>;
+}
+export declare class InstallmentUpdateInput {
+    number?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    lateFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    dueDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumInstallmentStatusFieldUpdateOperationsInput>;
+    transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    transaction?: InstanceType<typeof TransactionUpdateOneWithoutInstallmentNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput>;
+}
+export declare class InstallmentUpsertWithWhereUniqueWithoutInvoiceInput {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    update: InstanceType<typeof InstallmentUpdateWithoutInvoiceInput>;
+    create: InstanceType<typeof InstallmentCreateWithoutInvoiceInput>;
+}
+export declare class InstallmentUpsertWithoutTransactionInput {
+    update: InstanceType<typeof InstallmentUpdateWithoutTransactionInput>;
+    create: InstanceType<typeof InstallmentCreateWithoutTransactionInput>;
+    where?: InstanceType<typeof InstallmentWhereInput>;
+}
+export declare class InstallmentWhereUniqueInput {
+    id?: number;
+    AND?: Array<InstallmentWhereInput>;
+    OR?: Array<InstallmentWhereInput>;
+    NOT?: Array<InstallmentWhereInput>;
+    number?: InstanceType<typeof IntFilter>;
+    lateFee?: InstanceType<typeof FloatFilter>;
+    amount?: InstanceType<typeof FloatFilter>;
+    dueDate?: InstanceType<typeof DateTimeFilter>;
+    status?: InstanceType<typeof EnumInstallmentStatusFilter>;
+    transactionId?: InstanceType<typeof IntNullableFilter>;
+    invoiceId?: InstanceType<typeof IntFilter>;
+    transaction?: InstanceType<typeof TransactionNullableRelationFilter>;
+    invoice?: InstanceType<typeof InvoiceRelationFilter>;
+}
+export declare class InstallmentWhereInput {
+    AND?: Array<InstallmentWhereInput>;
+    OR?: Array<InstallmentWhereInput>;
+    NOT?: Array<InstallmentWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    number?: InstanceType<typeof IntFilter>;
+    lateFee?: InstanceType<typeof FloatFilter>;
+    amount?: InstanceType<typeof FloatFilter>;
+    dueDate?: InstanceType<typeof DateTimeFilter>;
+    status?: InstanceType<typeof EnumInstallmentStatusFilter>;
+    transactionId?: InstanceType<typeof IntNullableFilter>;
+    invoiceId?: InstanceType<typeof IntFilter>;
+    transaction?: InstanceType<typeof TransactionNullableRelationFilter>;
+    invoice?: InstanceType<typeof InvoiceRelationFilter>;
+}
+export declare class Installment {
+    id: number;
+    number: number;
+    lateFee: number;
+    amount: number;
+    dueDate: Date;
+    status: keyof typeof InstallmentStatus;
+    transactionId: number | null;
+    invoiceId: number;
+    transaction?: InstanceType<typeof Transaction> | null;
+    invoice?: InstanceType<typeof Invoice>;
+}
+export declare class UpdateManyInstallmentArgs {
+    data: InstanceType<typeof InstallmentUpdateManyMutationInput>;
+    where?: InstanceType<typeof InstallmentWhereInput>;
+}
+export declare class UpdateOneInstallmentArgs {
+    data: InstanceType<typeof InstallmentUpdateInput>;
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+}
+export declare class UpsertOneInstallmentArgs {
+    where: Prisma.AtLeast<InstallmentWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InstallmentCreateInput>;
+    update: InstanceType<typeof InstallmentUpdateInput>;
+}
+export declare class AggregateInvoice {
+    _count?: InstanceType<typeof InvoiceCountAggregate>;
+    _avg?: InstanceType<typeof InvoiceAvgAggregate>;
+    _sum?: InstanceType<typeof InvoiceSumAggregate>;
+    _min?: InstanceType<typeof InvoiceMinAggregate>;
+    _max?: InstanceType<typeof InvoiceMaxAggregate>;
+}
+export declare class CreateManyInvoiceArgs {
+    data: Array<InvoiceCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneInvoiceArgs {
+    data: InstanceType<typeof InvoiceCreateInput>;
+}
+export declare class DeleteManyInvoiceArgs {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class DeleteOneInvoiceArgs {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class FindFirstInvoiceOrThrowArgs {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    orderBy?: Array<InvoiceOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof InvoiceScalarFieldEnum>;
+}
+export declare class FindFirstInvoiceArgs {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    orderBy?: Array<InvoiceOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof InvoiceScalarFieldEnum>;
+}
+export declare class FindManyInvoiceArgs {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    orderBy?: Array<InvoiceOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof InvoiceScalarFieldEnum>;
+}
+export declare class FindUniqueInvoiceOrThrowArgs {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class FindUniqueInvoiceArgs {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class InvoiceAggregateArgs {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    orderBy?: Array<InvoiceOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof InvoiceCountAggregateInput>;
+    _avg?: InstanceType<typeof InvoiceAvgAggregateInput>;
+    _sum?: InstanceType<typeof InvoiceSumAggregateInput>;
+    _min?: InstanceType<typeof InvoiceMinAggregateInput>;
+    _max?: InstanceType<typeof InvoiceMaxAggregateInput>;
+}
+export declare class InvoiceAvgAggregateInput {
+    id?: true;
+    adminFee?: true;
+    amount?: true;
+}
+export declare class InvoiceAvgAggregate {
+    id?: number;
+    adminFee?: number;
+    amount?: number;
+}
+export declare class InvoiceAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+}
+export declare class InvoiceCountAggregateInput {
+    id?: true;
+    adminFee?: true;
+    amount?: true;
+    createdAt?: true;
+    _all?: true;
+}
+export declare class InvoiceCountAggregate {
+    id: number;
+    adminFee: number;
+    amount: number;
+    createdAt: number;
+    _all: number;
+}
+export declare class InvoiceCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+}
+export declare class InvoiceCount {
+    transactions?: number;
+    Installments?: number;
+}
+export declare class InvoiceCreateManyInput {
+    id?: number;
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+}
+export declare class InvoiceCreateNestedOneWithoutInstallmentsInput {
+    create?: InstanceType<typeof InvoiceCreateWithoutInstallmentsInput>;
+    connectOrCreate?: InstanceType<typeof InvoiceCreateOrConnectWithoutInstallmentsInput>;
+    connect?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class InvoiceCreateNestedOneWithoutOrderInput {
+    create?: InstanceType<typeof InvoiceCreateWithoutOrderInput>;
+    connectOrCreate?: InstanceType<typeof InvoiceCreateOrConnectWithoutOrderInput>;
+    connect?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class InvoiceCreateNestedOneWithoutTransactionsInput {
+    create?: InstanceType<typeof InvoiceCreateWithoutTransactionsInput>;
+    connectOrCreate?: InstanceType<typeof InvoiceCreateOrConnectWithoutTransactionsInput>;
+    connect?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class InvoiceCreateOrConnectWithoutInstallmentsInput {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InvoiceCreateWithoutInstallmentsInput>;
+}
+export declare class InvoiceCreateOrConnectWithoutOrderInput {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InvoiceCreateWithoutOrderInput>;
+}
+export declare class InvoiceCreateOrConnectWithoutTransactionsInput {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InvoiceCreateWithoutTransactionsInput>;
+}
+export declare class InvoiceCreateWithoutInstallmentsInput {
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    Order?: InstanceType<typeof OrderCreateNestedOneWithoutInvoiceInput>;
+    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceCreateWithoutOrderInput {
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutInvoiceInput>;
+    Installments?: InstanceType<typeof InstallmentCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceCreateWithoutTransactionsInput {
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    Order?: InstanceType<typeof OrderCreateNestedOneWithoutInvoiceInput>;
+    Installments?: InstanceType<typeof InstallmentCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceCreateInput {
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    Order?: InstanceType<typeof OrderCreateNestedOneWithoutInvoiceInput>;
+    transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutInvoiceInput>;
+    Installments?: InstanceType<typeof InstallmentCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceGroupByArgs {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    orderBy?: Array<InvoiceOrderByWithAggregationInput>;
+    by: Array<keyof typeof InvoiceScalarFieldEnum>;
+    having?: InstanceType<typeof InvoiceScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof InvoiceCountAggregateInput>;
+    _avg?: InstanceType<typeof InvoiceAvgAggregateInput>;
+    _sum?: InstanceType<typeof InvoiceSumAggregateInput>;
+    _min?: InstanceType<typeof InvoiceMinAggregateInput>;
+    _max?: InstanceType<typeof InvoiceMaxAggregateInput>;
+}
+export declare class InvoiceGroupBy {
+    id: number;
+    adminFee: number;
+    amount: number;
+    createdAt: Date | string;
+    _count?: InstanceType<typeof InvoiceCountAggregate>;
+    _avg?: InstanceType<typeof InvoiceAvgAggregate>;
+    _sum?: InstanceType<typeof InvoiceSumAggregate>;
+    _min?: InstanceType<typeof InvoiceMinAggregate>;
+    _max?: InstanceType<typeof InvoiceMaxAggregate>;
+}
+export declare class InvoiceMaxAggregateInput {
+    id?: true;
+    adminFee?: true;
+    amount?: true;
+    createdAt?: true;
+}
+export declare class InvoiceMaxAggregate {
+    id?: number;
+    adminFee?: number;
+    amount?: number;
+    createdAt?: Date | string;
+}
+export declare class InvoiceMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+}
+export declare class InvoiceMinAggregateInput {
+    id?: true;
+    adminFee?: true;
+    amount?: true;
+    createdAt?: true;
+}
+export declare class InvoiceMinAggregate {
+    id?: number;
+    adminFee?: number;
+    amount?: number;
+    createdAt?: Date | string;
+}
+export declare class InvoiceMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+}
+export declare class InvoiceNullableRelationFilter {
+    is?: InstanceType<typeof InvoiceWhereInput>;
+    isNot?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class InvoiceOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    _count?: InstanceType<typeof InvoiceCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof InvoiceAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof InvoiceMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof InvoiceMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof InvoiceSumOrderByAggregateInput>;
+}
+export declare class InvoiceOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    Order?: InstanceType<typeof OrderOrderByWithRelationInput>;
+    transactions?: InstanceType<typeof TransactionOrderByRelationAggregateInput>;
+    Installments?: InstanceType<typeof InstallmentOrderByRelationAggregateInput>;
+}
+export declare class InvoiceRelationFilter {
+    is?: InstanceType<typeof InvoiceWhereInput>;
+    isNot?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class InvoiceScalarWhereWithAggregatesInput {
+    AND?: Array<InvoiceScalarWhereWithAggregatesInput>;
+    OR?: Array<InvoiceScalarWhereWithAggregatesInput>;
+    NOT?: Array<InvoiceScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    adminFee?: InstanceType<typeof FloatWithAggregatesFilter>;
+    amount?: InstanceType<typeof FloatWithAggregatesFilter>;
+    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+}
+export declare class InvoiceSumAggregateInput {
+    id?: true;
+    adminFee?: true;
+    amount?: true;
+}
+export declare class InvoiceSumAggregate {
+    id?: number;
+    adminFee?: number;
+    amount?: number;
+}
+export declare class InvoiceSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    adminFee?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+}
+export declare class InvoiceUncheckedCreateWithoutInstallmentsInput {
+    id?: number;
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    Order?: InstanceType<typeof OrderUncheckedCreateNestedOneWithoutInvoiceInput>;
+    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceUncheckedCreateWithoutOrderInput {
+    id?: number;
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutInvoiceInput>;
+    Installments?: InstanceType<typeof InstallmentUncheckedCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceUncheckedCreateWithoutTransactionsInput {
+    id?: number;
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    Order?: InstanceType<typeof OrderUncheckedCreateNestedOneWithoutInvoiceInput>;
+    Installments?: InstanceType<typeof InstallmentUncheckedCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceUncheckedCreateInput {
+    id?: number;
+    adminFee: number;
+    amount: number;
+    createdAt?: Date | string;
+    Order?: InstanceType<typeof OrderUncheckedCreateNestedOneWithoutInvoiceInput>;
+    transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutInvoiceInput>;
+    Installments?: InstanceType<typeof InstallmentUncheckedCreateNestedManyWithoutInvoiceInput>;
+}
+export declare class InvoiceUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class InvoiceUncheckedUpdateWithoutInstallmentsInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Order?: InstanceType<typeof OrderUncheckedUpdateOneWithoutInvoiceNestedInput>;
+    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUncheckedUpdateWithoutOrderInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutInvoiceNestedInput>;
+    Installments?: InstanceType<typeof InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUncheckedUpdateWithoutTransactionsInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Order?: InstanceType<typeof OrderUncheckedUpdateOneWithoutInvoiceNestedInput>;
+    Installments?: InstanceType<typeof InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Order?: InstanceType<typeof OrderUncheckedUpdateOneWithoutInvoiceNestedInput>;
+    transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutInvoiceNestedInput>;
+    Installments?: InstanceType<typeof InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUpdateManyMutationInput {
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput {
+    create?: InstanceType<typeof InvoiceCreateWithoutInstallmentsInput>;
+    connectOrCreate?: InstanceType<typeof InvoiceCreateOrConnectWithoutInstallmentsInput>;
+    upsert?: InstanceType<typeof InvoiceUpsertWithoutInstallmentsInput>;
+    connect?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof InvoiceUpdateToOneWithWhereWithoutInstallmentsInput>;
+}
+export declare class InvoiceUpdateOneRequiredWithoutOrderNestedInput {
+    create?: InstanceType<typeof InvoiceCreateWithoutOrderInput>;
+    connectOrCreate?: InstanceType<typeof InvoiceCreateOrConnectWithoutOrderInput>;
+    upsert?: InstanceType<typeof InvoiceUpsertWithoutOrderInput>;
+    connect?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof InvoiceUpdateToOneWithWhereWithoutOrderInput>;
+}
+export declare class InvoiceUpdateOneWithoutTransactionsNestedInput {
+    create?: InstanceType<typeof InvoiceCreateWithoutTransactionsInput>;
+    connectOrCreate?: InstanceType<typeof InvoiceCreateOrConnectWithoutTransactionsInput>;
+    upsert?: InstanceType<typeof InvoiceUpsertWithoutTransactionsInput>;
+    disconnect?: InstanceType<typeof InvoiceWhereInput>;
+    delete?: InstanceType<typeof InvoiceWhereInput>;
+    connect?: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof InvoiceUpdateToOneWithWhereWithoutTransactionsInput>;
+}
+export declare class InvoiceUpdateToOneWithWhereWithoutInstallmentsInput {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    data: InstanceType<typeof InvoiceUpdateWithoutInstallmentsInput>;
+}
+export declare class InvoiceUpdateToOneWithWhereWithoutOrderInput {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    data: InstanceType<typeof InvoiceUpdateWithoutOrderInput>;
+}
+export declare class InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
+    where?: InstanceType<typeof InvoiceWhereInput>;
+    data: InstanceType<typeof InvoiceUpdateWithoutTransactionsInput>;
+}
+export declare class InvoiceUpdateWithoutInstallmentsInput {
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Order?: InstanceType<typeof OrderUpdateOneWithoutInvoiceNestedInput>;
+    transactions?: InstanceType<typeof TransactionUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUpdateWithoutOrderInput {
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    transactions?: InstanceType<typeof TransactionUpdateManyWithoutInvoiceNestedInput>;
+    Installments?: InstanceType<typeof InstallmentUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUpdateWithoutTransactionsInput {
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Order?: InstanceType<typeof OrderUpdateOneWithoutInvoiceNestedInput>;
+    Installments?: InstanceType<typeof InstallmentUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUpdateInput {
+    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Order?: InstanceType<typeof OrderUpdateOneWithoutInvoiceNestedInput>;
+    transactions?: InstanceType<typeof TransactionUpdateManyWithoutInvoiceNestedInput>;
+    Installments?: InstanceType<typeof InstallmentUpdateManyWithoutInvoiceNestedInput>;
+}
+export declare class InvoiceUpsertWithoutInstallmentsInput {
+    update: InstanceType<typeof InvoiceUpdateWithoutInstallmentsInput>;
+    create: InstanceType<typeof InvoiceCreateWithoutInstallmentsInput>;
+    where?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class InvoiceUpsertWithoutOrderInput {
+    update: InstanceType<typeof InvoiceUpdateWithoutOrderInput>;
+    create: InstanceType<typeof InvoiceCreateWithoutOrderInput>;
+    where?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class InvoiceUpsertWithoutTransactionsInput {
+    update: InstanceType<typeof InvoiceUpdateWithoutTransactionsInput>;
+    create: InstanceType<typeof InvoiceCreateWithoutTransactionsInput>;
+    where?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class InvoiceWhereUniqueInput {
+    id?: number;
+    AND?: Array<InvoiceWhereInput>;
+    OR?: Array<InvoiceWhereInput>;
+    NOT?: Array<InvoiceWhereInput>;
+    adminFee?: InstanceType<typeof FloatFilter>;
+    amount?: InstanceType<typeof FloatFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    Order?: InstanceType<typeof OrderNullableRelationFilter>;
+    transactions?: InstanceType<typeof TransactionListRelationFilter>;
+    Installments?: InstanceType<typeof InstallmentListRelationFilter>;
+}
+export declare class InvoiceWhereInput {
+    AND?: Array<InvoiceWhereInput>;
+    OR?: Array<InvoiceWhereInput>;
+    NOT?: Array<InvoiceWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    adminFee?: InstanceType<typeof FloatFilter>;
+    amount?: InstanceType<typeof FloatFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    Order?: InstanceType<typeof OrderNullableRelationFilter>;
+    transactions?: InstanceType<typeof TransactionListRelationFilter>;
+    Installments?: InstanceType<typeof InstallmentListRelationFilter>;
+}
+export declare class Invoice {
+    id: number;
+    adminFee: number;
+    amount: number;
+    createdAt: Date;
+    Order?: InstanceType<typeof Order> | null;
+    transactions?: Array<Transaction>;
+    Installments?: Array<Installment>;
+    _count?: InstanceType<typeof InvoiceCount>;
+}
+export declare class UpdateManyInvoiceArgs {
+    data: InstanceType<typeof InvoiceUpdateManyMutationInput>;
+    where?: InstanceType<typeof InvoiceWhereInput>;
+}
+export declare class UpdateOneInvoiceArgs {
+    data: InstanceType<typeof InvoiceUpdateInput>;
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+}
+export declare class UpsertOneInvoiceArgs {
+    where: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof InvoiceCreateInput>;
+    update: InstanceType<typeof InvoiceUpdateInput>;
+}
 export declare class AggregateItem {
     _count?: InstanceType<typeof ItemCountAggregate>;
     _avg?: InstanceType<typeof ItemAvgAggregate>;
@@ -6680,12 +7766,12 @@ export declare class DeleteManyOrderArgs {
     where?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class DeleteOneOrderArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
 }
 export declare class FindFirstOrderOrThrowArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof OrderScalarFieldEnum>;
@@ -6693,7 +7779,7 @@ export declare class FindFirstOrderOrThrowArgs {
 export declare class FindFirstOrderArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof OrderScalarFieldEnum>;
@@ -6701,21 +7787,21 @@ export declare class FindFirstOrderArgs {
 export declare class FindManyOrderArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof OrderScalarFieldEnum>;
 }
 export declare class FindUniqueOrderOrThrowArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
 }
 export declare class FindUniqueOrderArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
 }
 export declare class OrderAggregateArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof OrderCountAggregateInput>;
@@ -6727,6 +7813,7 @@ export declare class OrderAggregateArgs {
 export declare class OrderAvgAggregateInput {
     id?: true;
     shippingId?: true;
+    invoiceId?: true;
     cost?: true;
     platformFee?: true;
     total?: true;
@@ -6734,6 +7821,7 @@ export declare class OrderAvgAggregateInput {
 export declare class OrderAvgAggregate {
     id?: number;
     shippingId?: number;
+    invoiceId?: number;
     cost?: number;
     platformFee?: number;
     total?: number;
@@ -6741,6 +7829,7 @@ export declare class OrderAvgAggregate {
 export declare class OrderAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     shippingId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
@@ -6750,7 +7839,7 @@ export declare class OrderCountAggregateInput {
     status?: true;
     orderById?: true;
     shippingId?: true;
-    isFullPaid?: true;
+    invoiceId?: true;
     cost?: true;
     platformFee?: true;
     total?: true;
@@ -6763,7 +7852,7 @@ export declare class OrderCountAggregate {
     status: number;
     orderById: number;
     shippingId: number;
-    isFullPaid: number;
+    invoiceId: number;
     cost: number;
     platformFee: number;
     total: number;
@@ -6776,7 +7865,7 @@ export declare class OrderCountOrderByAggregateInput {
     status?: keyof typeof SortOrder;
     orderById?: keyof typeof SortOrder;
     shippingId?: keyof typeof SortOrder;
-    isFullPaid?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
@@ -6785,7 +7874,6 @@ export declare class OrderCountOrderByAggregateInput {
 }
 export declare class OrderCount {
     items?: number;
-    payments?: number;
 }
 export declare class OrderCreateManyOrderByInputEnvelope {
     data: Array<OrderCreateManyOrderByInput>;
@@ -6795,8 +7883,8 @@ export declare class OrderCreateManyOrderByInput {
     id?: number;
     status: keyof typeof TransactionStatus;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
@@ -6807,8 +7895,8 @@ export declare class OrderCreateManyInput {
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
@@ -6818,96 +7906,91 @@ export declare class OrderCreateNestedManyWithoutOrderByInput {
     create?: Array<OrderCreateWithoutOrderByInput>;
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+}
+export declare class OrderCreateNestedOneWithoutInvoiceInput {
+    create?: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
+    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutInvoiceInput>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
 }
 export declare class OrderCreateNestedOneWithoutItemsInput {
     create?: InstanceType<typeof OrderCreateWithoutItemsInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutItemsInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
-}
-export declare class OrderCreateNestedOneWithoutPaymentsInput {
-    create?: InstanceType<typeof OrderCreateWithoutPaymentsInput>;
-    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutPaymentsInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
 }
 export declare class OrderCreateNestedOneWithoutShippingInput {
     create?: InstanceType<typeof OrderCreateWithoutShippingInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutShippingInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+}
+export declare class OrderCreateOrConnectWithoutInvoiceInput {
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    create: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
 }
 export declare class OrderCreateOrConnectWithoutItemsInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateWithoutItemsInput>;
 }
 export declare class OrderCreateOrConnectWithoutOrderByInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateWithoutOrderByInput>;
 }
-export declare class OrderCreateOrConnectWithoutPaymentsInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
-    create: InstanceType<typeof OrderCreateWithoutPaymentsInput>;
-}
 export declare class OrderCreateOrConnectWithoutShippingInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateWithoutShippingInput>;
+}
+export declare class OrderCreateWithoutInvoiceInput {
+    status: keyof typeof TransactionStatus;
+    shippingId?: number;
+    cost?: number;
+    platformFee: number;
+    total: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
+    items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
+    shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderCreateWithoutItemsInput {
     status: keyof typeof TransactionStatus;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
     shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentCreateNestedManyWithoutOrderInput>;
+    invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderCreateWithoutOrderByInput {
     status: keyof typeof TransactionStatus;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentCreateNestedManyWithoutOrderInput>;
-}
-export declare class OrderCreateWithoutPaymentsInput {
-    status: keyof typeof TransactionStatus;
-    shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
-    platformFee: number;
-    total: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
-    items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
-    shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
+    invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderCreateWithoutShippingInput {
     status: keyof typeof TransactionStatus;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
     items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentCreateNestedManyWithoutOrderInput>;
+    invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderCreateInput {
     status: keyof typeof TransactionStatus;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
@@ -6915,7 +7998,7 @@ export declare class OrderCreateInput {
     orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
     items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentCreateNestedManyWithoutOrderInput>;
+    invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderGroupByArgs {
     where?: InstanceType<typeof OrderWhereInput>;
@@ -6935,8 +8018,8 @@ export declare class OrderGroupBy {
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt: Date | string;
@@ -6957,7 +8040,7 @@ export declare class OrderMaxAggregateInput {
     status?: true;
     orderById?: true;
     shippingId?: true;
-    isFullPaid?: true;
+    invoiceId?: true;
     cost?: true;
     platformFee?: true;
     total?: true;
@@ -6969,7 +8052,7 @@ export declare class OrderMaxAggregate {
     status?: keyof typeof TransactionStatus;
     orderById?: string;
     shippingId?: number;
-    isFullPaid?: boolean;
+    invoiceId?: number;
     cost?: number;
     platformFee?: number;
     total?: number;
@@ -6981,7 +8064,7 @@ export declare class OrderMaxOrderByAggregateInput {
     status?: keyof typeof SortOrder;
     orderById?: keyof typeof SortOrder;
     shippingId?: keyof typeof SortOrder;
-    isFullPaid?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
@@ -6993,7 +8076,7 @@ export declare class OrderMinAggregateInput {
     status?: true;
     orderById?: true;
     shippingId?: true;
-    isFullPaid?: true;
+    invoiceId?: true;
     cost?: true;
     platformFee?: true;
     total?: true;
@@ -7005,7 +8088,7 @@ export declare class OrderMinAggregate {
     status?: keyof typeof TransactionStatus;
     orderById?: string;
     shippingId?: number;
-    isFullPaid?: boolean;
+    invoiceId?: number;
     cost?: number;
     platformFee?: number;
     total?: number;
@@ -7017,12 +8100,16 @@ export declare class OrderMinOrderByAggregateInput {
     status?: keyof typeof SortOrder;
     orderById?: keyof typeof SortOrder;
     shippingId?: keyof typeof SortOrder;
-    isFullPaid?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+}
+export declare class OrderNullableRelationFilter {
+    is?: InstanceType<typeof OrderWhereInput>;
+    isNot?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class OrderOrderByRelationAggregateInput {
     _count?: keyof typeof SortOrder;
@@ -7032,8 +8119,8 @@ export declare class OrderOrderByWithAggregationInput {
     status?: keyof typeof SortOrder;
     orderById?: keyof typeof SortOrder;
     shippingId?: InstanceType<typeof SortOrderInput>;
-    isFullPaid?: keyof typeof SortOrder;
-    cost?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    cost?: InstanceType<typeof SortOrderInput>;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
@@ -7049,8 +8136,8 @@ export declare class OrderOrderByWithRelationInput {
     status?: keyof typeof SortOrder;
     orderById?: keyof typeof SortOrder;
     shippingId?: InstanceType<typeof SortOrderInput>;
-    isFullPaid?: keyof typeof SortOrder;
-    cost?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    cost?: InstanceType<typeof SortOrderInput>;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
@@ -7058,7 +8145,7 @@ export declare class OrderOrderByWithRelationInput {
     orderBy?: InstanceType<typeof UserOrderByWithRelationInput>;
     items?: InstanceType<typeof ItemOrderByRelationAggregateInput>;
     shipping?: InstanceType<typeof ShippingOrderByWithRelationInput>;
-    payments?: InstanceType<typeof PaymentOrderByRelationAggregateInput>;
+    invoice?: InstanceType<typeof InvoiceOrderByWithRelationInput>;
 }
 export declare class OrderRelationFilter {
     is?: InstanceType<typeof OrderWhereInput>;
@@ -7072,8 +8159,8 @@ export declare class OrderScalarWhereWithAggregatesInput {
     status?: InstanceType<typeof EnumTransactionStatusWithAggregatesFilter>;
     orderById?: InstanceType<typeof StringWithAggregatesFilter>;
     shippingId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
-    isFullPaid?: InstanceType<typeof BoolWithAggregatesFilter>;
-    cost?: InstanceType<typeof FloatWithAggregatesFilter>;
+    invoiceId?: InstanceType<typeof IntWithAggregatesFilter>;
+    cost?: InstanceType<typeof FloatNullableWithAggregatesFilter>;
     platformFee?: InstanceType<typeof FloatWithAggregatesFilter>;
     total?: InstanceType<typeof FloatWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -7087,8 +8174,8 @@ export declare class OrderScalarWhereInput {
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
     orderById?: InstanceType<typeof StringFilter>;
     shippingId?: InstanceType<typeof IntNullableFilter>;
-    isFullPaid?: InstanceType<typeof BoolFilter>;
-    cost?: InstanceType<typeof FloatFilter>;
+    invoiceId?: InstanceType<typeof IntFilter>;
+    cost?: InstanceType<typeof FloatNullableFilter>;
     platformFee?: InstanceType<typeof FloatFilter>;
     total?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -7097,6 +8184,7 @@ export declare class OrderScalarWhereInput {
 export declare class OrderSumAggregateInput {
     id?: true;
     shippingId?: true;
+    invoiceId?: true;
     cost?: true;
     platformFee?: true;
     total?: true;
@@ -7104,6 +8192,7 @@ export declare class OrderSumAggregateInput {
 export declare class OrderSumAggregate {
     id?: number;
     shippingId?: number;
+    invoiceId?: number;
     cost?: number;
     platformFee?: number;
     total?: number;
@@ -7111,6 +8200,7 @@ export declare class OrderSumAggregate {
 export declare class OrderSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     shippingId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     platformFee?: keyof typeof SortOrder;
     total?: keyof typeof SortOrder;
@@ -7119,43 +8209,45 @@ export declare class OrderUncheckedCreateNestedManyWithoutOrderByInput {
     create?: Array<OrderCreateWithoutOrderByInput>;
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
 }
-export declare class OrderUncheckedCreateWithoutItemsInput {
+export declare class OrderUncheckedCreateNestedOneWithoutInvoiceInput {
+    create?: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
+    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutInvoiceInput>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+}
+export declare class OrderUncheckedCreateWithoutInvoiceInput {
     id?: number;
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
-    platformFee: number;
-    total: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentUncheckedCreateNestedManyWithoutOrderInput>;
-}
-export declare class OrderUncheckedCreateWithoutOrderByInput {
-    id?: number;
-    status: keyof typeof TransactionStatus;
-    shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentUncheckedCreateNestedManyWithoutOrderInput>;
 }
-export declare class OrderUncheckedCreateWithoutPaymentsInput {
+export declare class OrderUncheckedCreateWithoutItemsInput {
     id?: number;
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost?: number;
+    platformFee: number;
+    total: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
+}
+export declare class OrderUncheckedCreateWithoutOrderByInput {
+    id?: number;
+    status: keyof typeof TransactionStatus;
+    shippingId?: number;
+    invoiceId: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
@@ -7168,39 +8260,37 @@ export declare class OrderUncheckedCreateWithoutShippingInput {
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentUncheckedCreateNestedManyWithoutOrderInput>;
 }
 export declare class OrderUncheckedCreateInput {
     id?: number;
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId?: number;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost?: number;
     platformFee: number;
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
-    payments?: InstanceType<typeof PaymentUncheckedCreateNestedManyWithoutOrderInput>;
 }
 export declare class OrderUncheckedUpdateManyWithoutOrderByNestedInput {
     create?: Array<OrderCreateWithoutOrderByInput>;
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     upsert?: Array<OrderUpsertWithWhereUniqueWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
-    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
-    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
+    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
     update?: Array<OrderUpdateWithWhereUniqueWithoutOrderByInput>;
     updateMany?: Array<OrderUpdateManyWithWhereWithoutOrderByInput>;
     deleteMany?: Array<OrderScalarWhereInput>;
@@ -7209,8 +8299,8 @@ export declare class OrderUncheckedUpdateManyWithoutOrderByInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -7221,48 +8311,54 @@ export declare class OrderUncheckedUpdateManyInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class OrderUncheckedUpdateWithoutItemsInput {
+export declare class OrderUncheckedUpdateOneWithoutInvoiceNestedInput {
+    create?: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
+    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutInvoiceInput>;
+    upsert?: InstanceType<typeof OrderUpsertWithoutInvoiceInput>;
+    disconnect?: InstanceType<typeof OrderWhereInput>;
+    delete?: InstanceType<typeof OrderWhereInput>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutInvoiceInput>;
+}
+export declare class OrderUncheckedUpdateWithoutInvoiceInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUncheckedUpdateManyWithoutOrderNestedInput>;
-}
-export declare class OrderUncheckedUpdateWithoutOrderByInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUncheckedUpdateManyWithoutOrderNestedInput>;
 }
-export declare class OrderUncheckedUpdateWithoutPaymentsInput {
+export declare class OrderUncheckedUpdateWithoutItemsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
+}
+export declare class OrderUncheckedUpdateWithoutOrderByInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -7275,35 +8371,32 @@ export declare class OrderUncheckedUpdateWithoutShippingInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUncheckedUpdateManyWithoutOrderNestedInput>;
 }
 export declare class OrderUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUncheckedUpdateManyWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateManyMutationInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -7318,10 +8411,10 @@ export declare class OrderUpdateManyWithoutOrderByNestedInput {
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     upsert?: Array<OrderUpsertWithWhereUniqueWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
-    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
-    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>>;
+    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
     update?: Array<OrderUpdateWithWhereUniqueWithoutOrderByInput>;
     updateMany?: Array<OrderUpdateManyWithWhereWithoutOrderByInput>;
     deleteMany?: Array<OrderScalarWhereInput>;
@@ -7330,96 +8423,93 @@ export declare class OrderUpdateOneRequiredWithoutItemsNestedInput {
     create?: InstanceType<typeof OrderCreateWithoutItemsInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutItemsInput>;
     upsert?: InstanceType<typeof OrderUpsertWithoutItemsInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutItemsInput>;
-}
-export declare class OrderUpdateOneRequiredWithoutPaymentsNestedInput {
-    create?: InstanceType<typeof OrderCreateWithoutPaymentsInput>;
-    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutPaymentsInput>;
-    upsert?: InstanceType<typeof OrderUpsertWithoutPaymentsInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
-    update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutPaymentsInput>;
 }
 export declare class OrderUpdateOneRequiredWithoutShippingNestedInput {
     create?: InstanceType<typeof OrderCreateWithoutShippingInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutShippingInput>;
     upsert?: InstanceType<typeof OrderUpsertWithoutShippingInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutShippingInput>;
+}
+export declare class OrderUpdateOneWithoutInvoiceNestedInput {
+    create?: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
+    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutInvoiceInput>;
+    upsert?: InstanceType<typeof OrderUpsertWithoutInvoiceInput>;
+    disconnect?: InstanceType<typeof OrderWhereInput>;
+    delete?: InstanceType<typeof OrderWhereInput>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutInvoiceInput>;
+}
+export declare class OrderUpdateToOneWithWhereWithoutInvoiceInput {
+    where?: InstanceType<typeof OrderWhereInput>;
+    data: InstanceType<typeof OrderUpdateWithoutInvoiceInput>;
 }
 export declare class OrderUpdateToOneWithWhereWithoutItemsInput {
     where?: InstanceType<typeof OrderWhereInput>;
     data: InstanceType<typeof OrderUpdateWithoutItemsInput>;
-}
-export declare class OrderUpdateToOneWithWhereWithoutPaymentsInput {
-    where?: InstanceType<typeof OrderWhereInput>;
-    data: InstanceType<typeof OrderUpdateWithoutPaymentsInput>;
 }
 export declare class OrderUpdateToOneWithWhereWithoutShippingInput {
     where?: InstanceType<typeof OrderWhereInput>;
     data: InstanceType<typeof OrderUpdateWithoutShippingInput>;
 }
 export declare class OrderUpdateWithWhereUniqueWithoutOrderByInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     data: InstanceType<typeof OrderUpdateWithoutOrderByInput>;
+}
+export declare class OrderUpdateWithoutInvoiceInput {
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
+    items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
+    shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateWithoutItemsInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
     shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUpdateManyWithoutOrderNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateWithoutOrderByInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUpdateManyWithoutOrderNestedInput>;
-}
-export declare class OrderUpdateWithoutPaymentsInput {
-    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
-    items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
-    shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateWithoutShippingInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
     items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUpdateManyWithoutOrderNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    isFullPaid?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
     platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -7427,21 +8517,21 @@ export declare class OrderUpdateInput {
     orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
     items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
-    payments?: InstanceType<typeof PaymentUpdateManyWithoutOrderNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
 export declare class OrderUpsertWithWhereUniqueWithoutOrderByInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     update: InstanceType<typeof OrderUpdateWithoutOrderByInput>;
     create: InstanceType<typeof OrderCreateWithoutOrderByInput>;
+}
+export declare class OrderUpsertWithoutInvoiceInput {
+    update: InstanceType<typeof OrderUpdateWithoutInvoiceInput>;
+    create: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
+    where?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class OrderUpsertWithoutItemsInput {
     update: InstanceType<typeof OrderUpdateWithoutItemsInput>;
     create: InstanceType<typeof OrderCreateWithoutItemsInput>;
-    where?: InstanceType<typeof OrderWhereInput>;
-}
-export declare class OrderUpsertWithoutPaymentsInput {
-    update: InstanceType<typeof OrderUpdateWithoutPaymentsInput>;
-    create: InstanceType<typeof OrderCreateWithoutPaymentsInput>;
     where?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class OrderUpsertWithoutShippingInput {
@@ -7451,14 +8541,14 @@ export declare class OrderUpsertWithoutShippingInput {
 }
 export declare class OrderWhereUniqueInput {
     id?: number;
-    orderById?: string;
+    invoiceId?: number;
     AND?: Array<OrderWhereInput>;
     OR?: Array<OrderWhereInput>;
     NOT?: Array<OrderWhereInput>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
+    orderById?: InstanceType<typeof StringFilter>;
     shippingId?: InstanceType<typeof IntNullableFilter>;
-    isFullPaid?: InstanceType<typeof BoolFilter>;
-    cost?: InstanceType<typeof FloatFilter>;
+    cost?: InstanceType<typeof FloatNullableFilter>;
     platformFee?: InstanceType<typeof FloatFilter>;
     total?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -7466,7 +8556,7 @@ export declare class OrderWhereUniqueInput {
     orderBy?: InstanceType<typeof UserRelationFilter>;
     items?: InstanceType<typeof ItemListRelationFilter>;
     shipping?: InstanceType<typeof ShippingNullableRelationFilter>;
-    payments?: InstanceType<typeof PaymentListRelationFilter>;
+    invoice?: InstanceType<typeof InvoiceRelationFilter>;
 }
 export declare class OrderWhereInput {
     AND?: Array<OrderWhereInput>;
@@ -7476,8 +8566,8 @@ export declare class OrderWhereInput {
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
     orderById?: InstanceType<typeof StringFilter>;
     shippingId?: InstanceType<typeof IntNullableFilter>;
-    isFullPaid?: InstanceType<typeof BoolFilter>;
-    cost?: InstanceType<typeof FloatFilter>;
+    invoiceId?: InstanceType<typeof IntFilter>;
+    cost?: InstanceType<typeof FloatNullableFilter>;
     platformFee?: InstanceType<typeof FloatFilter>;
     total?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -7485,15 +8575,15 @@ export declare class OrderWhereInput {
     orderBy?: InstanceType<typeof UserRelationFilter>;
     items?: InstanceType<typeof ItemListRelationFilter>;
     shipping?: InstanceType<typeof ShippingNullableRelationFilter>;
-    payments?: InstanceType<typeof PaymentListRelationFilter>;
+    invoice?: InstanceType<typeof InvoiceRelationFilter>;
 }
 export declare class Order {
     id: number;
     status: keyof typeof TransactionStatus;
     orderById: string;
     shippingId: number | null;
-    isFullPaid: boolean;
-    cost: number;
+    invoiceId: number;
+    cost: number | null;
     platformFee: number;
     total: number;
     createdAt: Date;
@@ -7501,7 +8591,7 @@ export declare class Order {
     orderBy?: InstanceType<typeof User>;
     items?: Array<Item>;
     shipping?: InstanceType<typeof Shipping> | null;
-    payments?: Array<Payment>;
+    invoice?: InstanceType<typeof Invoice>;
     _count?: InstanceType<typeof OrderCount>;
 }
 export declare class UpdateManyOrderArgs {
@@ -7510,975 +8600,12 @@ export declare class UpdateManyOrderArgs {
 }
 export declare class UpdateOneOrderArgs {
     data: InstanceType<typeof OrderUpdateInput>;
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
 }
 export declare class UpsertOneOrderArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateInput>;
     update: InstanceType<typeof OrderUpdateInput>;
-}
-export declare class AggregatePayment {
-    _count?: InstanceType<typeof PaymentCountAggregate>;
-    _avg?: InstanceType<typeof PaymentAvgAggregate>;
-    _sum?: InstanceType<typeof PaymentSumAggregate>;
-    _min?: InstanceType<typeof PaymentMinAggregate>;
-    _max?: InstanceType<typeof PaymentMaxAggregate>;
-}
-export declare class CreateManyPaymentArgs {
-    data: Array<PaymentCreateManyInput>;
-    skipDuplicates?: boolean;
-}
-export declare class CreateOnePaymentArgs {
-    data: InstanceType<typeof PaymentCreateInput>;
-}
-export declare class DeleteManyPaymentArgs {
-    where?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class DeleteOnePaymentArgs {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class FindFirstPaymentOrThrowArgs {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    orderBy?: Array<PaymentOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    take?: number;
-    skip?: number;
-    distinct?: Array<keyof typeof PaymentScalarFieldEnum>;
-}
-export declare class FindFirstPaymentArgs {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    orderBy?: Array<PaymentOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    take?: number;
-    skip?: number;
-    distinct?: Array<keyof typeof PaymentScalarFieldEnum>;
-}
-export declare class FindManyPaymentArgs {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    orderBy?: Array<PaymentOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    take?: number;
-    skip?: number;
-    distinct?: Array<keyof typeof PaymentScalarFieldEnum>;
-}
-export declare class FindUniquePaymentOrThrowArgs {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class FindUniquePaymentArgs {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class PaymentAggregateArgs {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    orderBy?: Array<PaymentOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    take?: number;
-    skip?: number;
-    _count?: InstanceType<typeof PaymentCountAggregateInput>;
-    _avg?: InstanceType<typeof PaymentAvgAggregateInput>;
-    _sum?: InstanceType<typeof PaymentSumAggregateInput>;
-    _min?: InstanceType<typeof PaymentMinAggregateInput>;
-    _max?: InstanceType<typeof PaymentMaxAggregateInput>;
-}
-export declare class PaymentAvgAggregateInput {
-    id?: true;
-    adminFee?: true;
-    totalPayment?: true;
-    orderId?: true;
-    transactionId?: true;
-}
-export declare class PaymentAvgAggregate {
-    id?: number;
-    adminFee?: number;
-    totalPayment?: number;
-    orderId?: number;
-    transactionId?: number;
-}
-export declare class PaymentAvgOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-}
-export declare class PaymentCountAggregateInput {
-    id?: true;
-    adminFee?: true;
-    totalPayment?: true;
-    orderId?: true;
-    transactionId?: true;
-    createdAt?: true;
-    _all?: true;
-}
-export declare class PaymentCountAggregate {
-    id: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    transactionId: number;
-    createdAt: number;
-    _all: number;
-}
-export declare class PaymentCountOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-}
-export declare class PaymentCreateManyOrderInputEnvelope {
-    data: Array<PaymentCreateManyOrderInput>;
-    skipDuplicates?: boolean;
-}
-export declare class PaymentCreateManyOrderInput {
-    id?: number;
-    adminFee: number;
-    totalPayment: number;
-    transactionId: number;
-    createdAt?: Date | string;
-}
-export declare class PaymentCreateManyInput {
-    id?: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    transactionId: number;
-    createdAt?: Date | string;
-}
-export declare class PaymentCreateNestedManyWithoutOrderInput {
-    create?: Array<PaymentCreateWithoutOrderInput>;
-    connectOrCreate?: Array<PaymentCreateOrConnectWithoutOrderInput>;
-    createMany?: InstanceType<typeof PaymentCreateManyOrderInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-}
-export declare class PaymentCreateNestedOneWithoutConfirmationInput {
-    create?: InstanceType<typeof PaymentCreateWithoutConfirmationInput>;
-    connectOrCreate?: InstanceType<typeof PaymentCreateOrConnectWithoutConfirmationInput>;
-    connect?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class PaymentCreateNestedOneWithoutTransactionInput {
-    create?: InstanceType<typeof PaymentCreateWithoutTransactionInput>;
-    connectOrCreate?: InstanceType<typeof PaymentCreateOrConnectWithoutTransactionInput>;
-    connect?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class PaymentCreateOrConnectWithoutConfirmationInput {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    create: InstanceType<typeof PaymentCreateWithoutConfirmationInput>;
-}
-export declare class PaymentCreateOrConnectWithoutOrderInput {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    create: InstanceType<typeof PaymentCreateWithoutOrderInput>;
-}
-export declare class PaymentCreateOrConnectWithoutTransactionInput {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    create: InstanceType<typeof PaymentCreateWithoutTransactionInput>;
-}
-export declare class PaymentCreateWithoutConfirmationInput {
-    adminFee: number;
-    totalPayment: number;
-    createdAt?: Date | string;
-    order: InstanceType<typeof OrderCreateNestedOneWithoutPaymentsInput>;
-    transaction: InstanceType<typeof TransactionCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentCreateWithoutOrderInput {
-    adminFee: number;
-    totalPayment: number;
-    createdAt?: Date | string;
-    transaction: InstanceType<typeof TransactionCreateNestedOneWithoutPaymentInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentCreateWithoutTransactionInput {
-    adminFee: number;
-    totalPayment: number;
-    createdAt?: Date | string;
-    order: InstanceType<typeof OrderCreateNestedOneWithoutPaymentsInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentCreateInput {
-    adminFee: number;
-    totalPayment: number;
-    createdAt?: Date | string;
-    order: InstanceType<typeof OrderCreateNestedOneWithoutPaymentsInput>;
-    transaction: InstanceType<typeof TransactionCreateNestedOneWithoutPaymentInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentGroupByArgs {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    orderBy?: Array<PaymentOrderByWithAggregationInput>;
-    by: Array<keyof typeof PaymentScalarFieldEnum>;
-    having?: InstanceType<typeof PaymentScalarWhereWithAggregatesInput>;
-    take?: number;
-    skip?: number;
-    _count?: InstanceType<typeof PaymentCountAggregateInput>;
-    _avg?: InstanceType<typeof PaymentAvgAggregateInput>;
-    _sum?: InstanceType<typeof PaymentSumAggregateInput>;
-    _min?: InstanceType<typeof PaymentMinAggregateInput>;
-    _max?: InstanceType<typeof PaymentMaxAggregateInput>;
-}
-export declare class PaymentGroupBy {
-    id: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    transactionId: number;
-    createdAt: Date | string;
-    _count?: InstanceType<typeof PaymentCountAggregate>;
-    _avg?: InstanceType<typeof PaymentAvgAggregate>;
-    _sum?: InstanceType<typeof PaymentSumAggregate>;
-    _min?: InstanceType<typeof PaymentMinAggregate>;
-    _max?: InstanceType<typeof PaymentMaxAggregate>;
-}
-export declare class PaymentListRelationFilter {
-    every?: InstanceType<typeof PaymentWhereInput>;
-    some?: InstanceType<typeof PaymentWhereInput>;
-    none?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class PaymentMaxAggregateInput {
-    id?: true;
-    adminFee?: true;
-    totalPayment?: true;
-    orderId?: true;
-    transactionId?: true;
-    createdAt?: true;
-}
-export declare class PaymentMaxAggregate {
-    id?: number;
-    adminFee?: number;
-    totalPayment?: number;
-    orderId?: number;
-    transactionId?: number;
-    createdAt?: Date | string;
-}
-export declare class PaymentMaxOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-}
-export declare class PaymentMinAggregateInput {
-    id?: true;
-    adminFee?: true;
-    totalPayment?: true;
-    orderId?: true;
-    transactionId?: true;
-    createdAt?: true;
-}
-export declare class PaymentMinAggregate {
-    id?: number;
-    adminFee?: number;
-    totalPayment?: number;
-    orderId?: number;
-    transactionId?: number;
-    createdAt?: Date | string;
-}
-export declare class PaymentMinOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-}
-export declare class PaymentNullableRelationFilter {
-    is?: InstanceType<typeof PaymentWhereInput>;
-    isNot?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class PaymentOrderByRelationAggregateInput {
-    _count?: keyof typeof SortOrder;
-}
-export declare class PaymentOrderByWithAggregationInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    _count?: InstanceType<typeof PaymentCountOrderByAggregateInput>;
-    _avg?: InstanceType<typeof PaymentAvgOrderByAggregateInput>;
-    _max?: InstanceType<typeof PaymentMaxOrderByAggregateInput>;
-    _min?: InstanceType<typeof PaymentMinOrderByAggregateInput>;
-    _sum?: InstanceType<typeof PaymentSumOrderByAggregateInput>;
-}
-export declare class PaymentOrderByWithRelationInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    order?: InstanceType<typeof OrderOrderByWithRelationInput>;
-    transaction?: InstanceType<typeof TransactionOrderByWithRelationInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationOrderByWithRelationInput>;
-}
-export declare class PaymentRelationFilter {
-    is?: InstanceType<typeof PaymentWhereInput>;
-    isNot?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class PaymentScalarWhereWithAggregatesInput {
-    AND?: Array<PaymentScalarWhereWithAggregatesInput>;
-    OR?: Array<PaymentScalarWhereWithAggregatesInput>;
-    NOT?: Array<PaymentScalarWhereWithAggregatesInput>;
-    id?: InstanceType<typeof IntWithAggregatesFilter>;
-    adminFee?: InstanceType<typeof FloatWithAggregatesFilter>;
-    totalPayment?: InstanceType<typeof FloatWithAggregatesFilter>;
-    orderId?: InstanceType<typeof IntWithAggregatesFilter>;
-    transactionId?: InstanceType<typeof IntWithAggregatesFilter>;
-    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
-}
-export declare class PaymentScalarWhereInput {
-    AND?: Array<PaymentScalarWhereInput>;
-    OR?: Array<PaymentScalarWhereInput>;
-    NOT?: Array<PaymentScalarWhereInput>;
-    id?: InstanceType<typeof IntFilter>;
-    adminFee?: InstanceType<typeof FloatFilter>;
-    totalPayment?: InstanceType<typeof FloatFilter>;
-    orderId?: InstanceType<typeof IntFilter>;
-    transactionId?: InstanceType<typeof IntFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-}
-export declare class PaymentSumAggregateInput {
-    id?: true;
-    adminFee?: true;
-    totalPayment?: true;
-    orderId?: true;
-    transactionId?: true;
-}
-export declare class PaymentSumAggregate {
-    id?: number;
-    adminFee?: number;
-    totalPayment?: number;
-    orderId?: number;
-    transactionId?: number;
-}
-export declare class PaymentSumOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    adminFee?: keyof typeof SortOrder;
-    totalPayment?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
-    transactionId?: keyof typeof SortOrder;
-}
-export declare class PaymentUncheckedCreateNestedManyWithoutOrderInput {
-    create?: Array<PaymentCreateWithoutOrderInput>;
-    connectOrCreate?: Array<PaymentCreateOrConnectWithoutOrderInput>;
-    createMany?: InstanceType<typeof PaymentCreateManyOrderInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-}
-export declare class PaymentUncheckedCreateNestedOneWithoutTransactionInput {
-    create?: InstanceType<typeof PaymentCreateWithoutTransactionInput>;
-    connectOrCreate?: InstanceType<typeof PaymentCreateOrConnectWithoutTransactionInput>;
-    connect?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class PaymentUncheckedCreateWithoutConfirmationInput {
-    id?: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    transactionId: number;
-    createdAt?: Date | string;
-}
-export declare class PaymentUncheckedCreateWithoutOrderInput {
-    id?: number;
-    adminFee: number;
-    totalPayment: number;
-    transactionId: number;
-    createdAt?: Date | string;
-    confirmation?: InstanceType<typeof PaymentConfirmationUncheckedCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentUncheckedCreateWithoutTransactionInput {
-    id?: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    createdAt?: Date | string;
-    confirmation?: InstanceType<typeof PaymentConfirmationUncheckedCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentUncheckedCreateInput {
-    id?: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    transactionId: number;
-    createdAt?: Date | string;
-    confirmation?: InstanceType<typeof PaymentConfirmationUncheckedCreateNestedOneWithoutPaymentInput>;
-}
-export declare class PaymentUncheckedUpdateManyWithoutOrderNestedInput {
-    create?: Array<PaymentCreateWithoutOrderInput>;
-    connectOrCreate?: Array<PaymentCreateOrConnectWithoutOrderInput>;
-    upsert?: Array<PaymentUpsertWithWhereUniqueWithoutOrderInput>;
-    createMany?: InstanceType<typeof PaymentCreateManyOrderInputEnvelope>;
-    set?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    disconnect?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    delete?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    connect?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    update?: Array<PaymentUpdateWithWhereUniqueWithoutOrderInput>;
-    updateMany?: Array<PaymentUpdateManyWithWhereWithoutOrderInput>;
-    deleteMany?: Array<PaymentScalarWhereInput>;
-}
-export declare class PaymentUncheckedUpdateManyWithoutOrderInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    transactionId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentUncheckedUpdateManyInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    transactionId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentUncheckedUpdateOneWithoutTransactionNestedInput {
-    create?: InstanceType<typeof PaymentCreateWithoutTransactionInput>;
-    connectOrCreate?: InstanceType<typeof PaymentCreateOrConnectWithoutTransactionInput>;
-    upsert?: InstanceType<typeof PaymentUpsertWithoutTransactionInput>;
-    disconnect?: InstanceType<typeof PaymentWhereInput>;
-    delete?: InstanceType<typeof PaymentWhereInput>;
-    connect?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    update?: InstanceType<typeof PaymentUpdateToOneWithWhereWithoutTransactionInput>;
-}
-export declare class PaymentUncheckedUpdateWithoutConfirmationInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    transactionId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentUncheckedUpdateWithoutOrderInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    transactionId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationUncheckedUpdateOneWithoutPaymentNestedInput>;
-}
-export declare class PaymentUncheckedUpdateWithoutTransactionInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationUncheckedUpdateOneWithoutPaymentNestedInput>;
-}
-export declare class PaymentUncheckedUpdateInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    transactionId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationUncheckedUpdateOneWithoutPaymentNestedInput>;
-}
-export declare class PaymentUpdateManyMutationInput {
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentUpdateManyWithWhereWithoutOrderInput {
-    where: InstanceType<typeof PaymentScalarWhereInput>;
-    data: InstanceType<typeof PaymentUpdateManyMutationInput>;
-}
-export declare class PaymentUpdateManyWithoutOrderNestedInput {
-    create?: Array<PaymentCreateWithoutOrderInput>;
-    connectOrCreate?: Array<PaymentCreateOrConnectWithoutOrderInput>;
-    upsert?: Array<PaymentUpsertWithWhereUniqueWithoutOrderInput>;
-    createMany?: InstanceType<typeof PaymentCreateManyOrderInputEnvelope>;
-    set?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    disconnect?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    delete?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    connect?: Array<Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>>;
-    update?: Array<PaymentUpdateWithWhereUniqueWithoutOrderInput>;
-    updateMany?: Array<PaymentUpdateManyWithWhereWithoutOrderInput>;
-    deleteMany?: Array<PaymentScalarWhereInput>;
-}
-export declare class PaymentUpdateOneRequiredWithoutConfirmationNestedInput {
-    create?: InstanceType<typeof PaymentCreateWithoutConfirmationInput>;
-    connectOrCreate?: InstanceType<typeof PaymentCreateOrConnectWithoutConfirmationInput>;
-    upsert?: InstanceType<typeof PaymentUpsertWithoutConfirmationInput>;
-    connect?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    update?: InstanceType<typeof PaymentUpdateToOneWithWhereWithoutConfirmationInput>;
-}
-export declare class PaymentUpdateOneWithoutTransactionNestedInput {
-    create?: InstanceType<typeof PaymentCreateWithoutTransactionInput>;
-    connectOrCreate?: InstanceType<typeof PaymentCreateOrConnectWithoutTransactionInput>;
-    upsert?: InstanceType<typeof PaymentUpsertWithoutTransactionInput>;
-    disconnect?: InstanceType<typeof PaymentWhereInput>;
-    delete?: InstanceType<typeof PaymentWhereInput>;
-    connect?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    update?: InstanceType<typeof PaymentUpdateToOneWithWhereWithoutTransactionInput>;
-}
-export declare class PaymentUpdateToOneWithWhereWithoutConfirmationInput {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    data: InstanceType<typeof PaymentUpdateWithoutConfirmationInput>;
-}
-export declare class PaymentUpdateToOneWithWhereWithoutTransactionInput {
-    where?: InstanceType<typeof PaymentWhereInput>;
-    data: InstanceType<typeof PaymentUpdateWithoutTransactionInput>;
-}
-export declare class PaymentUpdateWithWhereUniqueWithoutOrderInput {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    data: InstanceType<typeof PaymentUpdateWithoutOrderInput>;
-}
-export declare class PaymentUpdateWithoutConfirmationInput {
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutPaymentsNestedInput>;
-    transaction?: InstanceType<typeof TransactionUpdateOneRequiredWithoutPaymentNestedInput>;
-}
-export declare class PaymentUpdateWithoutOrderInput {
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    transaction?: InstanceType<typeof TransactionUpdateOneRequiredWithoutPaymentNestedInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationUpdateOneWithoutPaymentNestedInput>;
-}
-export declare class PaymentUpdateWithoutTransactionInput {
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutPaymentsNestedInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationUpdateOneWithoutPaymentNestedInput>;
-}
-export declare class PaymentUpdateInput {
-    adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    totalPayment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutPaymentsNestedInput>;
-    transaction?: InstanceType<typeof TransactionUpdateOneRequiredWithoutPaymentNestedInput>;
-    confirmation?: InstanceType<typeof PaymentConfirmationUpdateOneWithoutPaymentNestedInput>;
-}
-export declare class PaymentUpsertWithWhereUniqueWithoutOrderInput {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    update: InstanceType<typeof PaymentUpdateWithoutOrderInput>;
-    create: InstanceType<typeof PaymentCreateWithoutOrderInput>;
-}
-export declare class PaymentUpsertWithoutConfirmationInput {
-    update: InstanceType<typeof PaymentUpdateWithoutConfirmationInput>;
-    create: InstanceType<typeof PaymentCreateWithoutConfirmationInput>;
-    where?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class PaymentUpsertWithoutTransactionInput {
-    update: InstanceType<typeof PaymentUpdateWithoutTransactionInput>;
-    create: InstanceType<typeof PaymentCreateWithoutTransactionInput>;
-    where?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class PaymentWhereUniqueInput {
-    id?: number;
-    transactionId?: number;
-    AND?: Array<PaymentWhereInput>;
-    OR?: Array<PaymentWhereInput>;
-    NOT?: Array<PaymentWhereInput>;
-    adminFee?: InstanceType<typeof FloatFilter>;
-    totalPayment?: InstanceType<typeof FloatFilter>;
-    orderId?: InstanceType<typeof IntFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    order?: InstanceType<typeof OrderRelationFilter>;
-    transaction?: InstanceType<typeof TransactionRelationFilter>;
-    confirmation?: InstanceType<typeof PaymentConfirmationNullableRelationFilter>;
-}
-export declare class PaymentWhereInput {
-    AND?: Array<PaymentWhereInput>;
-    OR?: Array<PaymentWhereInput>;
-    NOT?: Array<PaymentWhereInput>;
-    id?: InstanceType<typeof IntFilter>;
-    adminFee?: InstanceType<typeof FloatFilter>;
-    totalPayment?: InstanceType<typeof FloatFilter>;
-    orderId?: InstanceType<typeof IntFilter>;
-    transactionId?: InstanceType<typeof IntFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    order?: InstanceType<typeof OrderRelationFilter>;
-    transaction?: InstanceType<typeof TransactionRelationFilter>;
-    confirmation?: InstanceType<typeof PaymentConfirmationNullableRelationFilter>;
-}
-export declare class Payment {
-    id: number;
-    adminFee: number;
-    totalPayment: number;
-    orderId: number;
-    transactionId: number;
-    createdAt: Date;
-    order?: InstanceType<typeof Order>;
-    transaction?: InstanceType<typeof Transaction>;
-    confirmation?: InstanceType<typeof PaymentConfirmation> | null;
-}
-export declare class UpdateManyPaymentArgs {
-    data: InstanceType<typeof PaymentUpdateManyMutationInput>;
-    where?: InstanceType<typeof PaymentWhereInput>;
-}
-export declare class UpdateOnePaymentArgs {
-    data: InstanceType<typeof PaymentUpdateInput>;
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-}
-export declare class UpsertOnePaymentArgs {
-    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id' | 'transactionId'>;
-    create: InstanceType<typeof PaymentCreateInput>;
-    update: InstanceType<typeof PaymentUpdateInput>;
-}
-export declare class AggregatePaymentConfirmation {
-    _count?: InstanceType<typeof PaymentConfirmationCountAggregate>;
-    _avg?: InstanceType<typeof PaymentConfirmationAvgAggregate>;
-    _sum?: InstanceType<typeof PaymentConfirmationSumAggregate>;
-    _min?: InstanceType<typeof PaymentConfirmationMinAggregate>;
-    _max?: InstanceType<typeof PaymentConfirmationMaxAggregate>;
-}
-export declare class CreateManyPaymentConfirmationArgs {
-    data: Array<PaymentConfirmationCreateManyInput>;
-    skipDuplicates?: boolean;
-}
-export declare class CreateOnePaymentConfirmationArgs {
-    data: InstanceType<typeof PaymentConfirmationCreateInput>;
-}
-export declare class DeleteManyPaymentConfirmationArgs {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-}
-export declare class DeleteOnePaymentConfirmationArgs {
-    where: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-}
-export declare class FindFirstPaymentConfirmationOrThrowArgs {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    orderBy?: Array<PaymentConfirmationOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    take?: number;
-    skip?: number;
-    distinct?: Array<keyof typeof PaymentConfirmationScalarFieldEnum>;
-}
-export declare class FindFirstPaymentConfirmationArgs {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    orderBy?: Array<PaymentConfirmationOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    take?: number;
-    skip?: number;
-    distinct?: Array<keyof typeof PaymentConfirmationScalarFieldEnum>;
-}
-export declare class FindManyPaymentConfirmationArgs {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    orderBy?: Array<PaymentConfirmationOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    take?: number;
-    skip?: number;
-    distinct?: Array<keyof typeof PaymentConfirmationScalarFieldEnum>;
-}
-export declare class FindUniquePaymentConfirmationOrThrowArgs {
-    where: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-}
-export declare class FindUniquePaymentConfirmationArgs {
-    where: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-}
-export declare class PaymentConfirmationAggregateArgs {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    orderBy?: Array<PaymentConfirmationOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    take?: number;
-    skip?: number;
-    _count?: InstanceType<typeof PaymentConfirmationCountAggregateInput>;
-    _avg?: InstanceType<typeof PaymentConfirmationAvgAggregateInput>;
-    _sum?: InstanceType<typeof PaymentConfirmationSumAggregateInput>;
-    _min?: InstanceType<typeof PaymentConfirmationMinAggregateInput>;
-    _max?: InstanceType<typeof PaymentConfirmationMaxAggregateInput>;
-}
-export declare class PaymentConfirmationAvgAggregateInput {
-    id?: true;
-    paymentId?: true;
-}
-export declare class PaymentConfirmationAvgAggregate {
-    id?: number;
-    paymentId?: number;
-}
-export declare class PaymentConfirmationAvgOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-}
-export declare class PaymentConfirmationCountAggregateInput {
-    id?: true;
-    ProofUrl?: true;
-    paymentId?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    _all?: true;
-}
-export declare class PaymentConfirmationCountAggregate {
-    id: number;
-    ProofUrl: number;
-    paymentId: number;
-    createdAt: number;
-    updatedAt: number;
-    _all: number;
-}
-export declare class PaymentConfirmationCountOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    ProofUrl?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
-}
-export declare class PaymentConfirmationCreateManyInput {
-    id?: number;
-    ProofUrl: string;
-    paymentId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class PaymentConfirmationCreateNestedOneWithoutPaymentInput {
-    create?: InstanceType<typeof PaymentConfirmationCreateWithoutPaymentInput>;
-    connectOrCreate?: InstanceType<typeof PaymentConfirmationCreateOrConnectWithoutPaymentInput>;
-    connect?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-}
-export declare class PaymentConfirmationCreateOrConnectWithoutPaymentInput {
-    where: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    create: InstanceType<typeof PaymentConfirmationCreateWithoutPaymentInput>;
-}
-export declare class PaymentConfirmationCreateWithoutPaymentInput {
-    ProofUrl: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class PaymentConfirmationCreateInput {
-    ProofUrl: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    payment: InstanceType<typeof PaymentCreateNestedOneWithoutConfirmationInput>;
-}
-export declare class PaymentConfirmationGroupByArgs {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    orderBy?: Array<PaymentConfirmationOrderByWithAggregationInput>;
-    by: Array<keyof typeof PaymentConfirmationScalarFieldEnum>;
-    having?: InstanceType<typeof PaymentConfirmationScalarWhereWithAggregatesInput>;
-    take?: number;
-    skip?: number;
-    _count?: InstanceType<typeof PaymentConfirmationCountAggregateInput>;
-    _avg?: InstanceType<typeof PaymentConfirmationAvgAggregateInput>;
-    _sum?: InstanceType<typeof PaymentConfirmationSumAggregateInput>;
-    _min?: InstanceType<typeof PaymentConfirmationMinAggregateInput>;
-    _max?: InstanceType<typeof PaymentConfirmationMaxAggregateInput>;
-}
-export declare class PaymentConfirmationGroupBy {
-    id: number;
-    ProofUrl: string;
-    paymentId: number;
-    createdAt: Date | string;
-    updatedAt: Date | string;
-    _count?: InstanceType<typeof PaymentConfirmationCountAggregate>;
-    _avg?: InstanceType<typeof PaymentConfirmationAvgAggregate>;
-    _sum?: InstanceType<typeof PaymentConfirmationSumAggregate>;
-    _min?: InstanceType<typeof PaymentConfirmationMinAggregate>;
-    _max?: InstanceType<typeof PaymentConfirmationMaxAggregate>;
-}
-export declare class PaymentConfirmationMaxAggregateInput {
-    id?: true;
-    ProofUrl?: true;
-    paymentId?: true;
-    createdAt?: true;
-    updatedAt?: true;
-}
-export declare class PaymentConfirmationMaxAggregate {
-    id?: number;
-    ProofUrl?: string;
-    paymentId?: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class PaymentConfirmationMaxOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    ProofUrl?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
-}
-export declare class PaymentConfirmationMinAggregateInput {
-    id?: true;
-    ProofUrl?: true;
-    paymentId?: true;
-    createdAt?: true;
-    updatedAt?: true;
-}
-export declare class PaymentConfirmationMinAggregate {
-    id?: number;
-    ProofUrl?: string;
-    paymentId?: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class PaymentConfirmationMinOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    ProofUrl?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
-}
-export declare class PaymentConfirmationNullableRelationFilter {
-    is?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    isNot?: InstanceType<typeof PaymentConfirmationWhereInput>;
-}
-export declare class PaymentConfirmationOrderByWithAggregationInput {
-    id?: keyof typeof SortOrder;
-    ProofUrl?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
-    _count?: InstanceType<typeof PaymentConfirmationCountOrderByAggregateInput>;
-    _avg?: InstanceType<typeof PaymentConfirmationAvgOrderByAggregateInput>;
-    _max?: InstanceType<typeof PaymentConfirmationMaxOrderByAggregateInput>;
-    _min?: InstanceType<typeof PaymentConfirmationMinOrderByAggregateInput>;
-    _sum?: InstanceType<typeof PaymentConfirmationSumOrderByAggregateInput>;
-}
-export declare class PaymentConfirmationOrderByWithRelationInput {
-    id?: keyof typeof SortOrder;
-    ProofUrl?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
-    payment?: InstanceType<typeof PaymentOrderByWithRelationInput>;
-}
-export declare class PaymentConfirmationScalarWhereWithAggregatesInput {
-    AND?: Array<PaymentConfirmationScalarWhereWithAggregatesInput>;
-    OR?: Array<PaymentConfirmationScalarWhereWithAggregatesInput>;
-    NOT?: Array<PaymentConfirmationScalarWhereWithAggregatesInput>;
-    id?: InstanceType<typeof IntWithAggregatesFilter>;
-    ProofUrl?: InstanceType<typeof StringWithAggregatesFilter>;
-    paymentId?: InstanceType<typeof IntWithAggregatesFilter>;
-    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
-    updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
-}
-export declare class PaymentConfirmationSumAggregateInput {
-    id?: true;
-    paymentId?: true;
-}
-export declare class PaymentConfirmationSumAggregate {
-    id?: number;
-    paymentId?: number;
-}
-export declare class PaymentConfirmationSumOrderByAggregateInput {
-    id?: keyof typeof SortOrder;
-    paymentId?: keyof typeof SortOrder;
-}
-export declare class PaymentConfirmationUncheckedCreateNestedOneWithoutPaymentInput {
-    create?: InstanceType<typeof PaymentConfirmationCreateWithoutPaymentInput>;
-    connectOrCreate?: InstanceType<typeof PaymentConfirmationCreateOrConnectWithoutPaymentInput>;
-    connect?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-}
-export declare class PaymentConfirmationUncheckedCreateWithoutPaymentInput {
-    id?: number;
-    ProofUrl: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class PaymentConfirmationUncheckedCreateInput {
-    id?: number;
-    ProofUrl: string;
-    paymentId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class PaymentConfirmationUncheckedUpdateManyInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    ProofUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    paymentId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentConfirmationUncheckedUpdateOneWithoutPaymentNestedInput {
-    create?: InstanceType<typeof PaymentConfirmationCreateWithoutPaymentInput>;
-    connectOrCreate?: InstanceType<typeof PaymentConfirmationCreateOrConnectWithoutPaymentInput>;
-    upsert?: InstanceType<typeof PaymentConfirmationUpsertWithoutPaymentInput>;
-    disconnect?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    delete?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    connect?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    update?: InstanceType<typeof PaymentConfirmationUpdateToOneWithWhereWithoutPaymentInput>;
-}
-export declare class PaymentConfirmationUncheckedUpdateWithoutPaymentInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    ProofUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentConfirmationUncheckedUpdateInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    ProofUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    paymentId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentConfirmationUpdateManyMutationInput {
-    ProofUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentConfirmationUpdateOneWithoutPaymentNestedInput {
-    create?: InstanceType<typeof PaymentConfirmationCreateWithoutPaymentInput>;
-    connectOrCreate?: InstanceType<typeof PaymentConfirmationCreateOrConnectWithoutPaymentInput>;
-    upsert?: InstanceType<typeof PaymentConfirmationUpsertWithoutPaymentInput>;
-    disconnect?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    delete?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    connect?: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    update?: InstanceType<typeof PaymentConfirmationUpdateToOneWithWhereWithoutPaymentInput>;
-}
-export declare class PaymentConfirmationUpdateToOneWithWhereWithoutPaymentInput {
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-    data: InstanceType<typeof PaymentConfirmationUpdateWithoutPaymentInput>;
-}
-export declare class PaymentConfirmationUpdateWithoutPaymentInput {
-    ProofUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class PaymentConfirmationUpdateInput {
-    ProofUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    payment?: InstanceType<typeof PaymentUpdateOneRequiredWithoutConfirmationNestedInput>;
-}
-export declare class PaymentConfirmationUpsertWithoutPaymentInput {
-    update: InstanceType<typeof PaymentConfirmationUpdateWithoutPaymentInput>;
-    create: InstanceType<typeof PaymentConfirmationCreateWithoutPaymentInput>;
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-}
-export declare class PaymentConfirmationWhereUniqueInput {
-    id?: number;
-    paymentId?: number;
-    AND?: Array<PaymentConfirmationWhereInput>;
-    OR?: Array<PaymentConfirmationWhereInput>;
-    NOT?: Array<PaymentConfirmationWhereInput>;
-    ProofUrl?: InstanceType<typeof StringFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
-    payment?: InstanceType<typeof PaymentRelationFilter>;
-}
-export declare class PaymentConfirmationWhereInput {
-    AND?: Array<PaymentConfirmationWhereInput>;
-    OR?: Array<PaymentConfirmationWhereInput>;
-    NOT?: Array<PaymentConfirmationWhereInput>;
-    id?: InstanceType<typeof IntFilter>;
-    ProofUrl?: InstanceType<typeof StringFilter>;
-    paymentId?: InstanceType<typeof IntFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
-    payment?: InstanceType<typeof PaymentRelationFilter>;
-}
-export declare class PaymentConfirmation {
-    id: number;
-    ProofUrl: string;
-    paymentId: number;
-    createdAt: Date;
-    updatedAt: Date;
-    payment?: InstanceType<typeof Payment>;
-}
-export declare class UpdateManyPaymentConfirmationArgs {
-    data: InstanceType<typeof PaymentConfirmationUpdateManyMutationInput>;
-    where?: InstanceType<typeof PaymentConfirmationWhereInput>;
-}
-export declare class UpdateOnePaymentConfirmationArgs {
-    data: InstanceType<typeof PaymentConfirmationUpdateInput>;
-    where: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-}
-export declare class UpsertOnePaymentConfirmationArgs {
-    where: Prisma.AtLeast<PaymentConfirmationWhereUniqueInput, 'id' | 'paymentId'>;
-    create: InstanceType<typeof PaymentConfirmationCreateInput>;
-    update: InstanceType<typeof PaymentConfirmationUpdateInput>;
 }
 export declare class AggregatePointTransaction {
     _count?: InstanceType<typeof PointTransactionCountAggregate>;
@@ -9348,6 +9475,24 @@ export declare class EnumFileTypeWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumFileTypeFilter>;
     _max?: InstanceType<typeof NestedEnumFileTypeFilter>;
 }
+export declare class EnumInstallmentStatusFieldUpdateOperationsInput {
+    set?: keyof typeof InstallmentStatus;
+}
+export declare class EnumInstallmentStatusFilter {
+    equals?: keyof typeof InstallmentStatus;
+    in?: Array<keyof typeof InstallmentStatus>;
+    notIn?: Array<keyof typeof InstallmentStatus>;
+    not?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
+}
+export declare class EnumInstallmentStatusWithAggregatesFilter {
+    equals?: keyof typeof InstallmentStatus;
+    in?: Array<keyof typeof InstallmentStatus>;
+    notIn?: Array<keyof typeof InstallmentStatus>;
+    not?: InstanceType<typeof NestedEnumInstallmentStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
+}
 export declare class EnumPointTypeFieldUpdateOperationsInput {
     set?: keyof typeof PointType;
 }
@@ -9761,6 +9906,21 @@ export declare class NestedEnumFileTypeWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntFilter>;
     _min?: InstanceType<typeof NestedEnumFileTypeFilter>;
     _max?: InstanceType<typeof NestedEnumFileTypeFilter>;
+}
+export declare class NestedEnumInstallmentStatusFilter {
+    equals?: keyof typeof InstallmentStatus;
+    in?: Array<keyof typeof InstallmentStatus>;
+    notIn?: Array<keyof typeof InstallmentStatus>;
+    not?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
+}
+export declare class NestedEnumInstallmentStatusWithAggregatesFilter {
+    equals?: keyof typeof InstallmentStatus;
+    in?: Array<keyof typeof InstallmentStatus>;
+    notIn?: Array<keyof typeof InstallmentStatus>;
+    not?: InstanceType<typeof NestedEnumInstallmentStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
 }
 export declare class NestedEnumPointTypeFilter {
     equals?: keyof typeof PointType;
@@ -14322,12 +14482,12 @@ export declare class DeleteManyTransactionArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
 }
 export declare class DeleteOneTransactionArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
 }
 export declare class FindFirstTransactionOrThrowArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof TransactionScalarFieldEnum>;
@@ -14335,7 +14495,7 @@ export declare class FindFirstTransactionOrThrowArgs {
 export declare class FindFirstTransactionArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof TransactionScalarFieldEnum>;
@@ -14343,21 +14503,21 @@ export declare class FindFirstTransactionArgs {
 export declare class FindManyTransactionArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof TransactionScalarFieldEnum>;
 }
 export declare class FindUniqueTransactionOrThrowArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
 }
 export declare class FindUniqueTransactionArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
 }
 export declare class TransactionAggregateArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
     orderBy?: Array<TransactionOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof TransactionCountAggregateInput>;
@@ -14371,46 +14531,61 @@ export declare class TransactionAvgAggregateInput {
     amount?: true;
     fromAccountId?: true;
     toAccountId?: true;
+    invoiceId?: true;
+    installmentId?: true;
 }
 export declare class TransactionAvgAggregate {
     id?: number;
     amount?: number;
     fromAccountId?: number;
     toAccountId?: number;
+    invoiceId?: number;
+    installmentId?: number;
 }
 export declare class TransactionAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    installmentId?: keyof typeof SortOrder;
 }
 export declare class TransactionCountAggregateInput {
     id?: true;
     amount?: true;
+    proofUrl?: true;
     status?: true;
     transactionCategory?: true;
     fromAccountId?: true;
     toAccountId?: true;
+    invoiceId?: true;
+    installmentId?: true;
     createdAt?: true;
     _all?: true;
 }
 export declare class TransactionCountAggregate {
     id: number;
     amount: number;
+    proofUrl: number;
     status: number;
     transactionCategory: number;
     fromAccountId: number;
     toAccountId: number;
+    invoiceId: number;
+    installmentId: number;
     createdAt: number;
     _all: number;
 }
 export declare class TransactionCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    proofUrl?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    installmentId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class TransactionCreateManyFromAccountInputEnvelope {
@@ -14420,9 +14595,27 @@ export declare class TransactionCreateManyFromAccountInputEnvelope {
 export declare class TransactionCreateManyFromAccountInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     toAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
+    createdAt?: Date | string;
+}
+export declare class TransactionCreateManyInvoiceInputEnvelope {
+    data: Array<TransactionCreateManyInvoiceInput>;
+    skipDuplicates?: boolean;
+}
+export declare class TransactionCreateManyInvoiceInput {
+    id?: number;
+    amount: number;
+    proofUrl?: string;
+    status: keyof typeof TransactionStatus;
+    transactionCategory: keyof typeof TransactionCategory;
+    fromAccountId: number;
+    toAccountId: number;
+    installmentId?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateManyToAccountInputEnvelope {
@@ -14432,81 +14625,115 @@ export declare class TransactionCreateManyToAccountInputEnvelope {
 export declare class TransactionCreateManyToAccountInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateManyInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
     toAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateNestedManyWithoutFromAccountInput {
     create?: Array<TransactionCreateWithoutFromAccountInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+}
+export declare class TransactionCreateNestedManyWithoutInvoiceInput {
+    create?: Array<TransactionCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyInvoiceInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
 }
 export declare class TransactionCreateNestedManyWithoutToAccountInput {
     create?: Array<TransactionCreateWithoutToAccountInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
 }
-export declare class TransactionCreateNestedOneWithoutPaymentInput {
-    create?: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
-    connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutPaymentInput>;
-    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+export declare class TransactionCreateNestedOneWithoutInstallmentInput {
+    create?: InstanceType<typeof TransactionCreateWithoutInstallmentInput>;
+    connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutInstallmentInput>;
+    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
 }
 export declare class TransactionCreateOrConnectWithoutFromAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     create: InstanceType<typeof TransactionCreateWithoutFromAccountInput>;
 }
-export declare class TransactionCreateOrConnectWithoutPaymentInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
+export declare class TransactionCreateOrConnectWithoutInstallmentInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
+    create: InstanceType<typeof TransactionCreateWithoutInstallmentInput>;
+}
+export declare class TransactionCreateOrConnectWithoutInvoiceInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
+    create: InstanceType<typeof TransactionCreateWithoutInvoiceInput>;
 }
 export declare class TransactionCreateOrConnectWithoutToAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     create: InstanceType<typeof TransactionCreateWithoutToAccountInput>;
 }
 export declare class TransactionCreateWithoutFromAccountInput {
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     createdAt?: Date | string;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
-    payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
+    invoice?: InstanceType<typeof InvoiceCreateNestedOneWithoutTransactionsInput>;
+    Installment?: InstanceType<typeof InstallmentCreateNestedOneWithoutTransactionInput>;
 }
-export declare class TransactionCreateWithoutPaymentInput {
+export declare class TransactionCreateWithoutInstallmentInput {
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
+    invoice?: InstanceType<typeof InvoiceCreateNestedOneWithoutTransactionsInput>;
+}
+export declare class TransactionCreateWithoutInvoiceInput {
+    amount: number;
+    proofUrl?: string;
+    status: keyof typeof TransactionStatus;
+    transactionCategory: keyof typeof TransactionCategory;
+    createdAt?: Date | string;
+    fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
+    toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
+    Installment?: InstanceType<typeof InstallmentCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionCreateWithoutToAccountInput {
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
-    payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
+    invoice?: InstanceType<typeof InvoiceCreateNestedOneWithoutTransactionsInput>;
+    Installment?: InstanceType<typeof InstallmentCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionCreateInput {
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
-    payment?: InstanceType<typeof PaymentCreateNestedOneWithoutTransactionInput>;
+    invoice?: InstanceType<typeof InvoiceCreateNestedOneWithoutTransactionsInput>;
+    Installment?: InstanceType<typeof InstallmentCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionGroupByArgs {
     where?: InstanceType<typeof TransactionWhereInput>;
@@ -14524,10 +14751,13 @@ export declare class TransactionGroupByArgs {
 export declare class TransactionGroupBy {
     id: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
     toAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt: Date | string;
     _count?: InstanceType<typeof TransactionCountAggregate>;
     _avg?: InstanceType<typeof TransactionAvgAggregate>;
@@ -14543,56 +14773,78 @@ export declare class TransactionListRelationFilter {
 export declare class TransactionMaxAggregateInput {
     id?: true;
     amount?: true;
+    proofUrl?: true;
     status?: true;
     transactionCategory?: true;
     fromAccountId?: true;
     toAccountId?: true;
+    invoiceId?: true;
+    installmentId?: true;
     createdAt?: true;
 }
 export declare class TransactionMaxAggregate {
     id?: number;
     amount?: number;
+    proofUrl?: string;
     status?: keyof typeof TransactionStatus;
     transactionCategory?: keyof typeof TransactionCategory;
     fromAccountId?: number;
     toAccountId?: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    proofUrl?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    installmentId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class TransactionMinAggregateInput {
     id?: true;
     amount?: true;
+    proofUrl?: true;
     status?: true;
     transactionCategory?: true;
     fromAccountId?: true;
     toAccountId?: true;
+    invoiceId?: true;
+    installmentId?: true;
     createdAt?: true;
 }
 export declare class TransactionMinAggregate {
     id?: number;
     amount?: number;
+    proofUrl?: string;
     status?: keyof typeof TransactionStatus;
     transactionCategory?: keyof typeof TransactionCategory;
     fromAccountId?: number;
     toAccountId?: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    proofUrl?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    installmentId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+}
+export declare class TransactionNullableRelationFilter {
+    is?: InstanceType<typeof TransactionWhereInput>;
+    isNot?: InstanceType<typeof TransactionWhereInput>;
 }
 export declare class TransactionOrderByRelationAggregateInput {
     _count?: keyof typeof SortOrder;
@@ -14600,10 +14852,13 @@ export declare class TransactionOrderByRelationAggregateInput {
 export declare class TransactionOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    proofUrl?: InstanceType<typeof SortOrderInput>;
     status?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: InstanceType<typeof SortOrderInput>;
+    installmentId?: InstanceType<typeof SortOrderInput>;
     createdAt?: keyof typeof SortOrder;
     _count?: InstanceType<typeof TransactionCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof TransactionAvgOrderByAggregateInput>;
@@ -14614,18 +14869,18 @@ export declare class TransactionOrderByWithAggregationInput {
 export declare class TransactionOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    proofUrl?: InstanceType<typeof SortOrderInput>;
     status?: keyof typeof SortOrder;
     transactionCategory?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: InstanceType<typeof SortOrderInput>;
+    installmentId?: InstanceType<typeof SortOrderInput>;
     createdAt?: keyof typeof SortOrder;
     fromAccount?: InstanceType<typeof AccountOrderByWithRelationInput>;
     toAccount?: InstanceType<typeof AccountOrderByWithRelationInput>;
-    payment?: InstanceType<typeof PaymentOrderByWithRelationInput>;
-}
-export declare class TransactionRelationFilter {
-    is?: InstanceType<typeof TransactionWhereInput>;
-    isNot?: InstanceType<typeof TransactionWhereInput>;
+    invoice?: InstanceType<typeof InvoiceOrderByWithRelationInput>;
+    Installment?: InstanceType<typeof InstallmentOrderByWithRelationInput>;
 }
 export declare class TransactionScalarWhereWithAggregatesInput {
     AND?: Array<TransactionScalarWhereWithAggregatesInput>;
@@ -14633,10 +14888,13 @@ export declare class TransactionScalarWhereWithAggregatesInput {
     NOT?: Array<TransactionScalarWhereWithAggregatesInput>;
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     amount?: InstanceType<typeof FloatWithAggregatesFilter>;
+    proofUrl?: InstanceType<typeof StringNullableWithAggregatesFilter>;
     status?: InstanceType<typeof EnumTransactionStatusWithAggregatesFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryWithAggregatesFilter>;
     fromAccountId?: InstanceType<typeof IntWithAggregatesFilter>;
     toAccountId?: InstanceType<typeof IntWithAggregatesFilter>;
+    invoiceId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    installmentId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
 }
 export declare class TransactionScalarWhereInput {
@@ -14645,10 +14903,13 @@ export declare class TransactionScalarWhereInput {
     NOT?: Array<TransactionScalarWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     amount?: InstanceType<typeof FloatFilter>;
+    proofUrl?: InstanceType<typeof StringNullableFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFilter>;
     fromAccountId?: InstanceType<typeof IntFilter>;
     toAccountId?: InstanceType<typeof IntFilter>;
+    invoiceId?: InstanceType<typeof IntNullableFilter>;
+    installmentId?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class TransactionSumAggregateInput {
@@ -14656,77 +14917,113 @@ export declare class TransactionSumAggregateInput {
     amount?: true;
     fromAccountId?: true;
     toAccountId?: true;
+    invoiceId?: true;
+    installmentId?: true;
 }
 export declare class TransactionSumAggregate {
     id?: number;
     amount?: number;
     fromAccountId?: number;
     toAccountId?: number;
+    invoiceId?: number;
+    installmentId?: number;
 }
 export declare class TransactionSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     fromAccountId?: keyof typeof SortOrder;
     toAccountId?: keyof typeof SortOrder;
+    invoiceId?: keyof typeof SortOrder;
+    installmentId?: keyof typeof SortOrder;
 }
 export declare class TransactionUncheckedCreateNestedManyWithoutFromAccountInput {
     create?: Array<TransactionCreateWithoutFromAccountInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+}
+export declare class TransactionUncheckedCreateNestedManyWithoutInvoiceInput {
+    create?: Array<TransactionCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyInvoiceInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
 }
 export declare class TransactionUncheckedCreateNestedManyWithoutToAccountInput {
     create?: Array<TransactionCreateWithoutToAccountInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+}
+export declare class TransactionUncheckedCreateNestedOneWithoutInstallmentInput {
+    create?: InstanceType<typeof TransactionCreateWithoutInstallmentInput>;
+    connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutInstallmentInput>;
+    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
 }
 export declare class TransactionUncheckedCreateWithoutFromAccountInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     toAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
-    payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
-export declare class TransactionUncheckedCreateWithoutPaymentInput {
+export declare class TransactionUncheckedCreateWithoutInstallmentInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
     toAccountId: number;
+    invoiceId?: number;
+    createdAt?: Date | string;
+}
+export declare class TransactionUncheckedCreateWithoutInvoiceInput {
+    id?: number;
+    amount: number;
+    proofUrl?: string;
+    status: keyof typeof TransactionStatus;
+    transactionCategory: keyof typeof TransactionCategory;
+    fromAccountId: number;
+    toAccountId: number;
+    installmentId?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionUncheckedCreateWithoutToAccountInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
-    payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionUncheckedCreateInput {
     id?: number;
     amount: number;
+    proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
     toAccountId: number;
+    invoiceId?: number;
+    installmentId?: number;
     createdAt?: Date | string;
-    payment?: InstanceType<typeof PaymentUncheckedCreateNestedOneWithoutTransactionInput>;
 }
 export declare class TransactionUncheckedUpdateManyWithoutFromAccountNestedInput {
     create?: Array<TransactionCreateWithoutFromAccountInput>;
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
     upsert?: Array<TransactionUpsertWithWhereUniqueWithoutFromAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
     update?: Array<TransactionUpdateWithWhereUniqueWithoutFromAccountInput>;
     updateMany?: Array<TransactionUpdateManyWithWhereWithoutFromAccountInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
@@ -14734,9 +15031,36 @@ export declare class TransactionUncheckedUpdateManyWithoutFromAccountNestedInput
 export declare class TransactionUncheckedUpdateManyWithoutFromAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class TransactionUncheckedUpdateManyWithoutInvoiceNestedInput {
+    create?: Array<TransactionCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutInvoiceInput>;
+    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyInvoiceInputEnvelope>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    update?: Array<TransactionUpdateWithWhereUniqueWithoutInvoiceInput>;
+    updateMany?: Array<TransactionUpdateManyWithWhereWithoutInvoiceInput>;
+    deleteMany?: Array<TransactionScalarWhereInput>;
+}
+export declare class TransactionUncheckedUpdateManyWithoutInvoiceInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyWithoutToAccountNestedInput {
@@ -14744,10 +15068,10 @@ export declare class TransactionUncheckedUpdateManyWithoutToAccountNestedInput {
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
     upsert?: Array<TransactionUpsertWithWhereUniqueWithoutToAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
     update?: Array<TransactionUpdateWithWhereUniqueWithoutToAccountInput>;
     updateMany?: Array<TransactionUpdateManyWithWhereWithoutToAccountInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
@@ -14755,64 +15079,103 @@ export declare class TransactionUncheckedUpdateManyWithoutToAccountNestedInput {
 export declare class TransactionUncheckedUpdateManyWithoutToAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class TransactionUncheckedUpdateOneWithoutInstallmentNestedInput {
+    create?: InstanceType<typeof TransactionCreateWithoutInstallmentInput>;
+    connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutInstallmentInput>;
+    upsert?: InstanceType<typeof TransactionUpsertWithoutInstallmentInput>;
+    disconnect?: InstanceType<typeof TransactionWhereInput>;
+    delete?: InstanceType<typeof TransactionWhereInput>;
+    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
+    update?: InstanceType<typeof TransactionUpdateToOneWithWhereWithoutInstallmentInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutFromAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
-export declare class TransactionUncheckedUpdateWithoutPaymentInput {
+export declare class TransactionUncheckedUpdateWithoutInstallmentInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class TransactionUncheckedUpdateWithoutInvoiceInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutToAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    payment?: InstanceType<typeof PaymentUncheckedUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUpdateManyMutationInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUpdateManyWithWhereWithoutFromAccountInput {
+    where: InstanceType<typeof TransactionScalarWhereInput>;
+    data: InstanceType<typeof TransactionUpdateManyMutationInput>;
+}
+export declare class TransactionUpdateManyWithWhereWithoutInvoiceInput {
     where: InstanceType<typeof TransactionScalarWhereInput>;
     data: InstanceType<typeof TransactionUpdateManyMutationInput>;
 }
@@ -14825,12 +15188,25 @@ export declare class TransactionUpdateManyWithoutFromAccountNestedInput {
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutFromAccountInput>;
     upsert?: Array<TransactionUpsertWithWhereUniqueWithoutFromAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyFromAccountInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
     update?: Array<TransactionUpdateWithWhereUniqueWithoutFromAccountInput>;
     updateMany?: Array<TransactionUpdateManyWithWhereWithoutFromAccountInput>;
+    deleteMany?: Array<TransactionScalarWhereInput>;
+}
+export declare class TransactionUpdateManyWithoutInvoiceNestedInput {
+    create?: Array<TransactionCreateWithoutInvoiceInput>;
+    connectOrCreate?: Array<TransactionCreateOrConnectWithoutInvoiceInput>;
+    upsert?: Array<TransactionUpsertWithWhereUniqueWithoutInvoiceInput>;
+    createMany?: InstanceType<typeof TransactionCreateManyInvoiceInputEnvelope>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    update?: Array<TransactionUpdateWithWhereUniqueWithoutInvoiceInput>;
+    updateMany?: Array<TransactionUpdateManyWithWhereWithoutInvoiceInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
 }
 export declare class TransactionUpdateManyWithoutToAccountNestedInput {
@@ -14838,95 +15214,128 @@ export declare class TransactionUpdateManyWithoutToAccountNestedInput {
     connectOrCreate?: Array<TransactionCreateOrConnectWithoutToAccountInput>;
     upsert?: Array<TransactionUpsertWithWhereUniqueWithoutToAccountInput>;
     createMany?: InstanceType<typeof TransactionCreateManyToAccountInputEnvelope>;
-    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    disconnect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    delete?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
+    connect?: Array<Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>>;
     update?: Array<TransactionUpdateWithWhereUniqueWithoutToAccountInput>;
     updateMany?: Array<TransactionUpdateManyWithWhereWithoutToAccountInput>;
     deleteMany?: Array<TransactionScalarWhereInput>;
 }
-export declare class TransactionUpdateOneRequiredWithoutPaymentNestedInput {
-    create?: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
-    connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutPaymentInput>;
-    upsert?: InstanceType<typeof TransactionUpsertWithoutPaymentInput>;
-    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
-    update?: InstanceType<typeof TransactionUpdateToOneWithWhereWithoutPaymentInput>;
+export declare class TransactionUpdateOneWithoutInstallmentNestedInput {
+    create?: InstanceType<typeof TransactionCreateWithoutInstallmentInput>;
+    connectOrCreate?: InstanceType<typeof TransactionCreateOrConnectWithoutInstallmentInput>;
+    upsert?: InstanceType<typeof TransactionUpsertWithoutInstallmentInput>;
+    disconnect?: InstanceType<typeof TransactionWhereInput>;
+    delete?: InstanceType<typeof TransactionWhereInput>;
+    connect?: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
+    update?: InstanceType<typeof TransactionUpdateToOneWithWhereWithoutInstallmentInput>;
 }
-export declare class TransactionUpdateToOneWithWhereWithoutPaymentInput {
+export declare class TransactionUpdateToOneWithWhereWithoutInstallmentInput {
     where?: InstanceType<typeof TransactionWhereInput>;
-    data: InstanceType<typeof TransactionUpdateWithoutPaymentInput>;
+    data: InstanceType<typeof TransactionUpdateWithoutInstallmentInput>;
 }
 export declare class TransactionUpdateWithWhereUniqueWithoutFromAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     data: InstanceType<typeof TransactionUpdateWithoutFromAccountInput>;
 }
+export declare class TransactionUpdateWithWhereUniqueWithoutInvoiceInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
+    data: InstanceType<typeof TransactionUpdateWithoutInvoiceInput>;
+}
 export declare class TransactionUpdateWithWhereUniqueWithoutToAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     data: InstanceType<typeof TransactionUpdateWithoutToAccountInput>;
 }
 export declare class TransactionUpdateWithoutFromAccountInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
-    payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneWithoutTransactionsNestedInput>;
+    Installment?: InstanceType<typeof InstallmentUpdateOneWithoutTransactionNestedInput>;
 }
-export declare class TransactionUpdateWithoutPaymentInput {
+export declare class TransactionUpdateWithoutInstallmentInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneWithoutTransactionsNestedInput>;
+}
+export declare class TransactionUpdateWithoutInvoiceInput {
+    amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
+    toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
+    Installment?: InstanceType<typeof InstallmentUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUpdateWithoutToAccountInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
-    payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneWithoutTransactionsNestedInput>;
+    Installment?: InstanceType<typeof InstallmentUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUpdateInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
-    payment?: InstanceType<typeof PaymentUpdateOneWithoutTransactionNestedInput>;
+    invoice?: InstanceType<typeof InvoiceUpdateOneWithoutTransactionsNestedInput>;
+    Installment?: InstanceType<typeof InstallmentUpdateOneWithoutTransactionNestedInput>;
 }
 export declare class TransactionUpsertWithWhereUniqueWithoutFromAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     update: InstanceType<typeof TransactionUpdateWithoutFromAccountInput>;
     create: InstanceType<typeof TransactionCreateWithoutFromAccountInput>;
 }
+export declare class TransactionUpsertWithWhereUniqueWithoutInvoiceInput {
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
+    update: InstanceType<typeof TransactionUpdateWithoutInvoiceInput>;
+    create: InstanceType<typeof TransactionCreateWithoutInvoiceInput>;
+}
 export declare class TransactionUpsertWithWhereUniqueWithoutToAccountInput {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     update: InstanceType<typeof TransactionUpdateWithoutToAccountInput>;
     create: InstanceType<typeof TransactionCreateWithoutToAccountInput>;
 }
-export declare class TransactionUpsertWithoutPaymentInput {
-    update: InstanceType<typeof TransactionUpdateWithoutPaymentInput>;
-    create: InstanceType<typeof TransactionCreateWithoutPaymentInput>;
+export declare class TransactionUpsertWithoutInstallmentInput {
+    update: InstanceType<typeof TransactionUpdateWithoutInstallmentInput>;
+    create: InstanceType<typeof TransactionCreateWithoutInstallmentInput>;
     where?: InstanceType<typeof TransactionWhereInput>;
 }
 export declare class TransactionWhereUniqueInput {
     id?: number;
+    installmentId?: number;
     AND?: Array<TransactionWhereInput>;
     OR?: Array<TransactionWhereInput>;
     NOT?: Array<TransactionWhereInput>;
     amount?: InstanceType<typeof FloatFilter>;
+    proofUrl?: InstanceType<typeof StringNullableFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFilter>;
     fromAccountId?: InstanceType<typeof IntFilter>;
     toAccountId?: InstanceType<typeof IntFilter>;
+    invoiceId?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     fromAccount?: InstanceType<typeof AccountRelationFilter>;
     toAccount?: InstanceType<typeof AccountRelationFilter>;
-    payment?: InstanceType<typeof PaymentNullableRelationFilter>;
+    invoice?: InstanceType<typeof InvoiceNullableRelationFilter>;
+    Installment?: InstanceType<typeof InstallmentNullableRelationFilter>;
 }
 export declare class TransactionWhereInput {
     AND?: Array<TransactionWhereInput>;
@@ -14934,26 +15343,34 @@ export declare class TransactionWhereInput {
     NOT?: Array<TransactionWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     amount?: InstanceType<typeof FloatFilter>;
+    proofUrl?: InstanceType<typeof StringNullableFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFilter>;
     fromAccountId?: InstanceType<typeof IntFilter>;
     toAccountId?: InstanceType<typeof IntFilter>;
+    invoiceId?: InstanceType<typeof IntNullableFilter>;
+    installmentId?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     fromAccount?: InstanceType<typeof AccountRelationFilter>;
     toAccount?: InstanceType<typeof AccountRelationFilter>;
-    payment?: InstanceType<typeof PaymentNullableRelationFilter>;
+    invoice?: InstanceType<typeof InvoiceNullableRelationFilter>;
+    Installment?: InstanceType<typeof InstallmentNullableRelationFilter>;
 }
 export declare class Transaction {
     id: number;
     amount: number;
+    proofUrl: string | null;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
     fromAccountId: number;
     toAccountId: number;
+    invoiceId: number | null;
+    installmentId: number | null;
     createdAt: Date;
     fromAccount?: InstanceType<typeof Account>;
     toAccount?: InstanceType<typeof Account>;
-    payment?: InstanceType<typeof Payment> | null;
+    invoice?: InstanceType<typeof Invoice> | null;
+    Installment?: InstanceType<typeof Installment> | null;
 }
 export declare class UpdateManyTransactionArgs {
     data: InstanceType<typeof TransactionUpdateManyMutationInput>;
@@ -14961,10 +15378,10 @@ export declare class UpdateManyTransactionArgs {
 }
 export declare class UpdateOneTransactionArgs {
     data: InstanceType<typeof TransactionUpdateInput>;
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
 }
 export declare class UpsertOneTransactionArgs {
-    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<TransactionWhereUniqueInput, 'id' | 'installmentId'>;
     create: InstanceType<typeof TransactionCreateInput>;
     update: InstanceType<typeof TransactionUpdateInput>;
 }

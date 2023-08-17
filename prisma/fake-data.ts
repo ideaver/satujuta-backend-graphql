@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, PointType, TransactionStatus, UserNotificationCategory, ShippingStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, PointType, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -125,6 +125,7 @@ export function fakeAccountComplete() {
 export function fakeTransaction() {
   return {
     amount: faker.datatype.float(),
+    proofUrl: undefined,
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
     transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION] as const),
   };
@@ -133,10 +134,13 @@ export function fakeTransactionComplete() {
   return {
     id: faker.datatype.number(),
     amount: faker.datatype.float(),
+    proofUrl: undefined,
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
     transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION] as const),
     fromAccountId: faker.datatype.number(),
     toAccountId: faker.datatype.number(),
+    invoiceId: undefined,
+    installmentId: undefined,
     createdAt: new Date(),
   };
 }
@@ -261,8 +265,7 @@ export function fakeOrder() {
   return {
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
     shippingId: undefined,
-    isFullPaid: faker.datatype.boolean(),
-    cost: faker.datatype.float(),
+    cost: undefined,
     platformFee: faker.datatype.float(),
     total: faker.datatype.float(),
     updatedAt: faker.datatype.datetime(),
@@ -274,8 +277,8 @@ export function fakeOrderComplete() {
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
     orderById: faker.datatype.uuid(),
     shippingId: undefined,
-    isFullPaid: faker.datatype.boolean(),
-    cost: faker.datatype.float(),
+    invoiceId: faker.datatype.number(),
+    cost: undefined,
     platformFee: faker.datatype.float(),
     total: faker.datatype.float(),
     createdAt: new Date(),
@@ -331,35 +334,40 @@ export function fakeShippingComplete() {
     updatedAt: faker.datatype.datetime(),
   };
 }
-export function fakePayment() {
+export function fakeInvoice() {
   return {
     adminFee: faker.datatype.float(),
-    totalPayment: faker.datatype.float(),
+    amount: faker.datatype.float(),
   };
 }
-export function fakePaymentComplete() {
+export function fakeInvoiceComplete() {
   return {
     id: faker.datatype.number(),
     adminFee: faker.datatype.float(),
-    totalPayment: faker.datatype.float(),
-    orderId: faker.datatype.number(),
-    transactionId: faker.datatype.number(),
+    amount: faker.datatype.float(),
     createdAt: new Date(),
   };
 }
-export function fakePaymentConfirmation() {
+export function fakeInstallment() {
   return {
-    ProofUrl: faker.lorem.words(5),
-    updatedAt: faker.datatype.datetime(),
+    number: faker.datatype.number(),
+    lateFee: faker.datatype.float(),
+    amount: faker.datatype.float(),
+    dueDate: faker.datatype.datetime(),
+    status: faker.helpers.arrayElement([InstallmentStatus.UPCOMING, InstallmentStatus.PAID] as const),
+    transactionId: undefined,
   };
 }
-export function fakePaymentConfirmationComplete() {
+export function fakeInstallmentComplete() {
   return {
     id: faker.datatype.number(),
-    ProofUrl: faker.lorem.words(5),
-    paymentId: faker.datatype.number(),
-    createdAt: new Date(),
-    updatedAt: faker.datatype.datetime(),
+    number: faker.datatype.number(),
+    lateFee: faker.datatype.float(),
+    amount: faker.datatype.float(),
+    dueDate: faker.datatype.datetime(),
+    status: faker.helpers.arrayElement([InstallmentStatus.UPCOMING, InstallmentStatus.PAID] as const),
+    transactionId: undefined,
+    invoiceId: faker.datatype.number(),
   };
 }
 export function fakeProgram() {
@@ -464,7 +472,7 @@ export function fakeFaq() {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     updatedAt: faker.datatype.datetime(),
-    type: faker.helpers.arrayElement([FaqType.ReferralPage, FaqType.DashboardPage, FaqType.RewardPage, FaqType.Project] as const),
+    type: faker.helpers.arrayElement([FaqType.REFERRAL_PAGE, FaqType.DASHBOARD_PAGE, FaqType.REWARD_PAGE, FaqType.PROJECT_PAGE] as const),
   };
 }
 export function fakeFaqComplete() {
@@ -474,7 +482,7 @@ export function fakeFaqComplete() {
     description: faker.lorem.words(5),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
-    type: faker.helpers.arrayElement([FaqType.ReferralPage, FaqType.DashboardPage, FaqType.RewardPage, FaqType.Project] as const),
+    type: faker.helpers.arrayElement([FaqType.REFERRAL_PAGE, FaqType.DASHBOARD_PAGE, FaqType.REWARD_PAGE, FaqType.PROJECT_PAGE] as const),
   };
 }
 export function fakeProject() {

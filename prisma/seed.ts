@@ -58,14 +58,10 @@ async function main() {
   // console.log(accountBalances);
 
   // const totalBalance = await getAccountTotalBalance(accountId);
-  const numberOfFaq = 20;
-  const faqsToCreate: Prisma.FaqCreateManyInput[] = [];
-  for (let i = 0; i < numberOfFaq; i++) {
-    faqsToCreate.push(fakeFaq());
-  }
-  const query = await prisma.faq.createMany({ data: faqsToCreate });
+  // await faqCreateManyInput();
+  // console.log(await prisma.faq.deleteMany());
 
-  console.log(query);
+  console.log('Seeding finished.');
 }
 
 main()
@@ -75,6 +71,17 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+async function faqCreateManyInput() {
+  const numberOfFaq = 20;
+  const faqsToCreate: Prisma.FaqCreateManyInput[] = [];
+  for (let i = 0; i < numberOfFaq; i++) {
+    faqsToCreate.push(fakeFaq());
+  }
+  const query = await prisma.faq.createMany({ data: faqsToCreate });
+
+  console.log(query);
+}
 
 async function getAccountTotalBalance(accountId: number) {
   const transactions = await prisma.transaction.findMany({
@@ -176,11 +183,14 @@ async function getTransactions(
     select: {
       id: true,
       amount: true,
+      proofUrl: true,
       status: true,
       transactionCategory: true,
       fromAccountId: true,
       toAccountId: true,
       createdAt: true,
+      installmentId: true,
+      invoiceId: true,
     },
   });
 }

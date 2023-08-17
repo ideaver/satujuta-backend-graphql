@@ -249,14 +249,23 @@ model Transaction {
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
   amount              Float
+  proofUrl            String?
   status              TransactionStatus
   transactionCategory TransactionCategory
   fromAccount         Account             @relation("origin", fields: [fromAccountId], references: [id])
   fromAccountId       Int
   toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
   toAccountId         Int
-  payment             Payment?
+  invoice             Invoice?            @relation(fields: [invoiceId], references: [id])
+  invoiceId           Int?
+  Installment         Installment?        @relation(fields: [installmentId], references: [id])
+  installmentId       Int?                @unique
   createdAt           DateTime            @default(now())
+
+  @@index([amount], name: "amount")
+  @@index([fromAccountId], name: "from_account_id")
+  @@index([toAccountId], name: "to_account_id")
+  @@index([createdAt], name: "created_at")
 }
 
 enum TransactionType {
@@ -415,15 +424,15 @@ model Order {
   id          Int               @id @default(autoincrement())
   status      TransactionStatus
   orderBy     User              @relation(fields: [orderById], references: [id])
-  orderById   String            @unique
+  orderById   String
   items       Item[]
   shipping    Shipping?
   shippingId  Int?
-  payments    Payment[]
-  isFullPaid  Boolean
+  invoice     Invoice           @relation(fields: [invoiceId], references: [id])
+  invoiceId   Int               @unique
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  cost        Float
+  cost        Float?
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
   platformFee Float
@@ -484,31 +493,37 @@ enum ShippingStatus {
 }
 
 //Make CRU Available, cannot be deleted
-model Payment {
-  id            Int                  @id @default(autoincrement())
+model Invoice {
+  id           Int           @id @default(autoincrement())
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
-  adminFee      Float
+  adminFee     Float
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
-  totalPayment  Float
-  order         Order                @relation(fields: [orderId], references: [id])
-  orderId       Int
-  transaction   Transaction          @relation(fields: [transactionId], references: [id])
-  transactionId Int                  @unique
-  confirmation  PaymentConfirmation?
-  createdAt     DateTime             @default(now())
+  amount       Float
+  Order        Order?
+  transactions Transaction[]
+  Installments Installment[]
+  createdAt    DateTime      @default(now())
+ 
 }
 
-//Make CRUD Available
-model PaymentConfirmation {
-  id        Int      @id @default(autoincrement())
-  /// @Validator.IsUrl({ require_protocol: true })
-  ProofUrl  String
-  payment   Payment  @relation(fields: [paymentId], references: [id])
-  paymentId Int      @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Installment {
+  id            Int               @id @default(autoincrement())
+  number        Int
+  lateFee       Float 
+  amount        Float
+  dueDate       DateTime
+  status        InstallmentStatus
+  transaction   Transaction?
+  transactionId Int?
+  invoice       Invoice           @relation(fields: [invoiceId], references: [id])
+  invoiceId     Int
+}
+
+enum InstallmentStatus {
+  UPCOMING
+  PAID
 }
 
 //Make CRUD Available
@@ -644,10 +659,10 @@ model Faq {
 }
 
 enum FaqType {
-  ReferralPage
-  DashboardPage
-  RewardPage
-  Project
+  REFERRAL_PAGE
+  DASHBOARD_PAGE
+  REWARD_PAGE
+  PROJECT_PAGE
 }
 
 //Make CRU Available, cannot be deleted
