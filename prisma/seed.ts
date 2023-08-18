@@ -23,19 +23,19 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  // await prisma.city.create({ data: { name: 'Surabaya' } }).then((city) => {
-  //   console.log('city created ' + city);
-  // });
-  // await prisma.district
-  //   .create({ data: { name: 'Surabaya Selatan' } })
-  //   .then((district) => {
-  //     console.log('district created ' + district);
-  //   });
-  // await prisma.postalCode
-  //   .create({ data: { code: 4553247 } })
-  //   .then((postalCode) => {
-  //     console.log('postalCode created ' + postalCode);
-  //   });
+  await prisma.city.create({ data: { name: 'Surabaya' } }).then((city) => {
+    console.log('city created ' + city);
+  });
+  await prisma.district
+    .create({ data: { name: 'Surabaya Selatan' } })
+    .then((district) => {
+      console.log('district created ' + district);
+    });
+  await prisma.postalCode
+    .create({ data: { code: 4553247 } })
+    .then((postalCode) => {
+      console.log('postalCode created ' + postalCode);
+    });
 
   //   await seedBank();
   // await transactionCreateManySeed({ numberOfTransactions: 100 });

@@ -249,6 +249,8 @@ type CartAvgAggregate {
   orderId: Float
   itemId: Float
   quantity: Float
+  price: Float
+  cost: Float
 }
 
 type CartCountAggregate {
@@ -256,6 +258,8 @@ type CartCountAggregate {
   orderId: Int!
   itemId: Int!
   quantity: Int!
+  price: Int!
+  cost: Int!
   createdAt: Int!
   updatedAt: Int!
   _all: Int!
@@ -266,6 +270,8 @@ type CartMaxAggregate {
   orderId: Int
   itemId: Int
   quantity: Int
+  price: Float
+  cost: Float
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -275,6 +281,8 @@ type CartMinAggregate {
   orderId: Int
   itemId: Int
   quantity: Int
+  price: Float
+  cost: Float
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -284,6 +292,8 @@ type CartSumAggregate {
   orderId: Int
   itemId: Int
   quantity: Int
+  price: Float
+  cost: Float
 }
 
 type Cart {
@@ -291,6 +301,8 @@ type Cart {
   orderId: Int!
   itemId: Int!
   quantity: Int!
+  price: Float!
+  cost: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
   order: Order!
@@ -868,7 +880,6 @@ type OrderAvgAggregate {
   id: Float
   shippingId: Float
   invoiceId: Float
-  cost: Float
   platformFee: Float
   total: Float
 }
@@ -879,7 +890,6 @@ type OrderCountAggregate {
   orderById: Int!
   shippingId: Int!
   invoiceId: Int!
-  cost: Int!
   platformFee: Int!
   total: Int!
   createdAt: Int!
@@ -897,7 +907,6 @@ type OrderMaxAggregate {
   orderById: String
   shippingId: Int
   invoiceId: Int
-  cost: Float
   platformFee: Float
   total: Float
   createdAt: DateTime
@@ -918,7 +927,6 @@ type OrderMinAggregate {
   orderById: String
   shippingId: Int
   invoiceId: Int
-  cost: Float
   platformFee: Float
   total: Float
   createdAt: DateTime
@@ -929,7 +937,6 @@ type OrderSumAggregate {
   id: Int
   shippingId: Int
   invoiceId: Int
-  cost: Float
   platformFee: Float
   total: Float
 }
@@ -940,7 +947,6 @@ type Order {
   orderById: String!
   shippingId: Int
   invoiceId: Int!
-  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime!
@@ -2582,7 +2588,6 @@ input OrderWhereInput {
   orderById: StringFilter
   shippingId: IntNullableFilter
   invoiceId: IntFilter
-  cost: FloatNullableFilter
   platformFee: FloatFilter
   total: FloatFilter
   createdAt: DateTimeFilter
@@ -2607,6 +2612,8 @@ input CartWhereInput {
   orderId: IntFilter
   itemId: IntFilter
   quantity: IntFilter
+  price: FloatFilter
+  cost: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   order: OrderRelationFilter
@@ -2937,7 +2944,6 @@ input OrderOrderByWithRelationInput {
   orderById: SortOrder
   shippingId: SortOrderInput
   invoiceId: SortOrder
-  cost: SortOrderInput
   platformFee: SortOrder
   total: SortOrder
   createdAt: SortOrder
@@ -4524,7 +4530,6 @@ input OrderCreateNestedManyWithoutOrderByInput {
 input OrderCreateWithoutOrderByInput {
   status: TransactionStatus!
   shippingId: Int
-  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
@@ -4576,12 +4581,14 @@ input CartCreateOrConnectWithoutOrderInput {
 
 input CartWhereUniqueInput {
   id: Int
-  itemId: Int
   AND: [CartWhereInput!]
   OR: [CartWhereInput!]
   NOT: [CartWhereInput!]
   orderId: IntFilter
+  itemId: IntFilter
   quantity: IntFilter
+  price: FloatFilter
+  cost: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   order: OrderRelationFilter
@@ -4733,7 +4740,6 @@ input OrderCreateNestedOneWithoutInvoiceInput {
 input OrderCreateWithoutInvoiceInput {
   status: TransactionStatus!
   shippingId: Int
-  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
@@ -4785,7 +4791,6 @@ input OrderWhereUniqueInput {
   NOT: [OrderWhereInput!]
   status: EnumTransactionStatusFilter
   shippingId: IntNullableFilter
-  cost: FloatNullableFilter
   platformFee: FloatFilter
   total: FloatFilter
   createdAt: DateTimeFilter
@@ -5132,7 +5137,6 @@ input OrderCreateManyOrderByInput {
   status: TransactionStatus!
   shippingId: Int
   invoiceId: Int!
-  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
@@ -5998,7 +6002,6 @@ input OrderCreateNestedOneWithoutShippingInput {
 input OrderCreateWithoutShippingInput {
   status: TransactionStatus!
   shippingId: Int
-  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
@@ -6057,7 +6060,6 @@ input OrderUpsertWithoutShippingInput {
 input OrderUpdateWithoutShippingInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -6077,14 +6079,6 @@ input NullableIntFieldUpdateOperationsInput {
   decrement: Int
   multiply: Int
   divide: Int
-}
-
-input NullableFloatFieldUpdateOperationsInput {
-  set: Float
-  increment: Float
-  decrement: Float
-  multiply: Float
-  divide: Float
 }
 
 input UserUpdateOneRequiredWithoutOrdersNestedInput {
@@ -6155,6 +6149,14 @@ input AccountUpdateWithoutUserInput {
   transactionDestination: TransactionUpdateManyWithoutToAccountNestedInput
   project: ProjectUpdateOneWithoutAccountNestedInput
   bankAccount: BankUpdateOneWithoutAccountNestedInput
+}
+
+input NullableFloatFieldUpdateOperationsInput {
+  set: Float
+  increment: Float
+  decrement: Float
+  multiply: Float
+  divide: Float
 }
 
 input EnumAccountCategoryFieldUpdateOperationsInput {
@@ -6283,7 +6285,6 @@ input OrderUpsertWithWhereUniqueWithoutOrderByInput {
 input OrderUpdateWithoutOrderByInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -6315,6 +6316,8 @@ input CartUpsertWithWhereUniqueWithoutOrderInput {
 
 input CartUpdateWithoutOrderInput {
   quantity: IntFieldUpdateOperationsInput
+  price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   item: ItemUpdateOneRequiredWithoutCartNestedInput
@@ -6367,12 +6370,16 @@ input CartScalarWhereInput {
   orderId: IntFilter
   itemId: IntFilter
   quantity: IntFilter
+  price: FloatFilter
+  cost: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
 }
 
 input CartUpdateManyMutationInput {
   quantity: IntFieldUpdateOperationsInput
+  price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -6626,7 +6633,6 @@ input OrderUpsertWithoutInvoiceInput {
 input OrderUpdateWithoutInvoiceInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -7933,7 +7939,6 @@ input OrderScalarWhereInput {
   orderById: StringFilter
   shippingId: IntNullableFilter
   invoiceId: IntFilter
-  cost: FloatNullableFilter
   platformFee: FloatFilter
   total: FloatFilter
   createdAt: DateTimeFilter
@@ -7943,7 +7948,6 @@ input OrderScalarWhereInput {
 input OrderUpdateManyMutationInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -8163,7 +8167,6 @@ input OrderCreateNestedOneWithoutCartInput {
 input OrderCreateWithoutCartInput {
   status: TransactionStatus!
   shippingId: Int
-  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
@@ -8234,6 +8237,8 @@ input CartUpsertWithWhereUniqueWithoutItemInput {
 
 input CartUpdateWithoutItemInput {
   quantity: IntFieldUpdateOperationsInput
+  price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   order: OrderUpdateOneRequiredWithoutCartNestedInput
@@ -8256,7 +8261,6 @@ input OrderUpsertWithoutCartInput {
 input OrderUpdateWithoutCartInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput

@@ -326,7 +326,6 @@ var OrderScalarFieldEnum;
     OrderScalarFieldEnum["orderById"] = "orderById";
     OrderScalarFieldEnum["shippingId"] = "shippingId";
     OrderScalarFieldEnum["invoiceId"] = "invoiceId";
-    OrderScalarFieldEnum["cost"] = "cost";
     OrderScalarFieldEnum["platformFee"] = "platformFee";
     OrderScalarFieldEnum["total"] = "total";
     OrderScalarFieldEnum["createdAt"] = "createdAt";
@@ -432,6 +431,8 @@ var CartScalarFieldEnum;
     CartScalarFieldEnum["orderId"] = "orderId";
     CartScalarFieldEnum["itemId"] = "itemId";
     CartScalarFieldEnum["quantity"] = "quantity";
+    CartScalarFieldEnum["price"] = "price";
+    CartScalarFieldEnum["cost"] = "cost";
     CartScalarFieldEnum["createdAt"] = "createdAt";
     CartScalarFieldEnum["updatedAt"] = "updatedAt";
 })(CartScalarFieldEnum = exports.CartScalarFieldEnum || (exports.CartScalarFieldEnum = {}));
@@ -7415,6 +7416,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartAvgAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartAvgAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartAvgAggregateInput.prototype, "cost", void 0);
 CartAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CartAvgAggregateInput);
@@ -7433,6 +7440,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], CartAvgAggregate.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartAvgAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartAvgAggregate.prototype, "cost", void 0);
 CartAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], CartAvgAggregate);
@@ -7451,6 +7464,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartAvgOrderByAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartAvgOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartAvgOrderByAggregateInput.prototype, "cost", void 0);
 CartAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CartAvgOrderByAggregateInput);
@@ -7469,6 +7488,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartCountAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartCountAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartCountAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartCountAggregateInput.prototype, "createdAt", void 0);
@@ -7498,6 +7523,12 @@ __decorate([
 ], CartCountAggregate.prototype, "quantity", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], CartCountAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], CartCountAggregate.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCountAggregate.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -7523,6 +7554,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartCountOrderByAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartCountOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartCountOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartCountOrderByAggregateInput.prototype, "createdAt", void 0);
@@ -7558,6 +7595,12 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCreateManyItemInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_8.HideField)()
+], CartCreateManyItemInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateManyItemInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartCreateManyItemInput.prototype, "createdAt", void 0);
 __decorate([
@@ -7592,6 +7635,12 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCreateManyOrderInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_8.HideField)()
+], CartCreateManyOrderInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateManyOrderInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartCreateManyOrderInput.prototype, "createdAt", void 0);
 __decorate([
@@ -7615,6 +7664,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCreateManyInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateManyInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateManyInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartCreateManyInput.prototype, "createdAt", void 0);
@@ -7703,6 +7758,12 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCreateWithoutItemInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_8.HideField)()
+], CartCreateWithoutItemInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateWithoutItemInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartCreateWithoutItemInput.prototype, "createdAt", void 0);
 __decorate([
@@ -7721,6 +7782,12 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCreateWithoutOrderInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_8.HideField)()
+], CartCreateWithoutOrderInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateWithoutOrderInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartCreateWithoutOrderInput.prototype, "createdAt", void 0);
 __decorate([
@@ -7738,6 +7805,12 @@ let CartCreateInput = class CartCreateInput {
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartCreateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_8.HideField)()
+], CartCreateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartCreateInput.prototype, "createdAt", void 0);
@@ -7809,6 +7882,12 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartGroupBy.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+], CartGroupBy.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+], CartGroupBy.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], CartGroupBy.prototype, "createdAt", void 0);
 __decorate([
@@ -7864,6 +7943,12 @@ __decorate([
 ], CartMaxAggregateInput.prototype, "quantity", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartMaxAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartMaxAggregateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartMaxAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -7886,6 +7971,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], CartMaxAggregate.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartMaxAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartMaxAggregate.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartMaxAggregate.prototype, "createdAt", void 0);
@@ -7912,6 +8003,12 @@ __decorate([
 ], CartMaxOrderByAggregateInput.prototype, "quantity", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartMaxOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartMaxOrderByAggregateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -7934,6 +8031,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartMinAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartMinAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartMinAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartMinAggregateInput.prototype, "createdAt", void 0);
@@ -7959,6 +8062,12 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], CartMinAggregate.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartMinAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartMinAggregate.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartMinAggregate.prototype, "createdAt", void 0);
 __decorate([
@@ -7982,6 +8091,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartMinOrderByAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartMinOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartMinOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartMinOrderByAggregateInput.prototype, "createdAt", void 0);
@@ -8015,6 +8130,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartOrderByWithAggregationInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartOrderByWithAggregationInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartOrderByWithAggregationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartOrderByWithAggregationInput.prototype, "createdAt", void 0);
@@ -8056,6 +8177,12 @@ __decorate([
 ], CartOrderByWithRelationInput.prototype, "quantity", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartOrderByWithRelationInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartOrderByWithRelationInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartOrderByWithRelationInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -8094,6 +8221,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], CartScalarWhereWithAggregatesInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
+], CartScalarWhereWithAggregatesInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
+], CartScalarWhereWithAggregatesInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], CartScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8127,6 +8260,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], CartScalarWhereInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], CartScalarWhereInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], CartScalarWhereInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], CartScalarWhereInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8150,6 +8289,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], CartSumAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartSumAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], CartSumAggregateInput.prototype, "cost", void 0);
 CartSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CartSumAggregateInput);
@@ -8168,6 +8313,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], CartSumAggregate.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartSumAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], CartSumAggregate.prototype, "cost", void 0);
 CartSumAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], CartSumAggregate);
@@ -8186,6 +8337,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], CartSumOrderByAggregateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartSumOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], CartSumOrderByAggregateInput.prototype, "cost", void 0);
 CartSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CartSumOrderByAggregateInput);
@@ -8246,6 +8403,14 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartUncheckedCreateWithoutItemInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
+], CartUncheckedCreateWithoutItemInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
+], CartUncheckedCreateWithoutItemInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartUncheckedCreateWithoutItemInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8266,6 +8431,14 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartUncheckedCreateWithoutOrderInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
+], CartUncheckedCreateWithoutOrderInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
+], CartUncheckedCreateWithoutOrderInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartUncheckedCreateWithoutOrderInput.prototype, "createdAt", void 0);
@@ -8290,6 +8463,14 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CartUncheckedCreateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
+], CartUncheckedCreateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
+], CartUncheckedCreateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], CartUncheckedCreateInput.prototype, "createdAt", void 0);
@@ -8362,6 +8543,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateManyWithoutItemInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateManyWithoutItemInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateManyWithoutItemInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateManyWithoutItemInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8433,6 +8620,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateManyWithoutOrderInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateManyWithoutOrderInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateManyWithoutOrderInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateManyWithoutOrderInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8457,6 +8650,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateManyInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateManyInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateManyInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateManyInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8478,6 +8677,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateWithoutItemInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateWithoutItemInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateWithoutItemInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateWithoutItemInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8498,6 +8703,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateWithoutOrderInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateWithoutOrderInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateWithoutOrderInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateWithoutOrderInput.prototype, "createdAt", void 0);
@@ -8523,6 +8734,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUncheckedUpdateInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8537,6 +8754,12 @@ let CartUpdateManyMutationInput = class CartUpdateManyMutationInput {
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateManyMutationInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateManyMutationInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateManyMutationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateManyMutationInput.prototype, "createdAt", void 0);
@@ -8709,6 +8932,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateWithoutItemInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateWithoutItemInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateWithoutItemInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateWithoutItemInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8727,6 +8956,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateWithoutOrderInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateWithoutOrderInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateWithoutOrderInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateWithoutOrderInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8744,6 +8979,12 @@ let CartUpdateInput = class CartUpdateInput {
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], CartUpdateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], CartUpdateInput.prototype, "createdAt", void 0);
@@ -8802,9 +9043,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], CartWhereUniqueInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], CartWhereUniqueInput.prototype, "itemId", void 0);
-__decorate([
     (0, graphql_1.Field)(() => [CartWhereInput], { nullable: true })
 ], CartWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -8818,7 +9056,16 @@ __decorate([
 ], CartWhereUniqueInput.prototype, "orderId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+], CartWhereUniqueInput.prototype, "itemId", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], CartWhereUniqueInput.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], CartWhereUniqueInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], CartWhereUniqueInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], CartWhereUniqueInput.prototype, "createdAt", void 0);
@@ -8859,6 +9106,12 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], CartWhereInput.prototype, "quantity", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], CartWhereInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], CartWhereInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], CartWhereInput.prototype, "createdAt", void 0);
 __decorate([
@@ -8888,6 +9141,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Cart.prototype, "quantity", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+], Cart.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+], Cart.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], Cart.prototype, "createdAt", void 0);
@@ -25911,9 +26170,6 @@ __decorate([
 ], OrderAvgAggregateInput.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], OrderAvgAggregateInput.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderAvgAggregateInput.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -25935,9 +26191,6 @@ __decorate([
 ], OrderAvgAggregate.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], OrderAvgAggregate.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], OrderAvgAggregate.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
@@ -25957,9 +26210,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderAvgOrderByAggregateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], OrderAvgOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderAvgOrderByAggregateInput.prototype, "platformFee", void 0);
@@ -25987,9 +26237,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderCountAggregateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], OrderCountAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderCountAggregateInput.prototype, "platformFee", void 0);
@@ -26028,9 +26275,6 @@ __decorate([
 ], OrderCountAggregate.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], OrderCountAggregate.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderCountAggregate.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -26065,9 +26309,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderCountOrderByAggregateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], OrderCountOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderCountOrderByAggregateInput.prototype, "platformFee", void 0);
@@ -26121,11 +26362,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderCreateManyOrderByInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateManyOrderByInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -26162,11 +26398,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderCreateManyInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateManyInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
@@ -26328,11 +26559,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderCreateWithoutCartInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateWithoutCartInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -26369,11 +26595,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderCreateWithoutInvoiceInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateWithoutInvoiceInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
@@ -26412,11 +26633,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderCreateWithoutOrderByInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateWithoutOrderByInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -26454,11 +26670,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderCreateWithoutShippingInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateWithoutShippingInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -26495,11 +26706,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderCreateInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderCreateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
@@ -26590,9 +26796,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderGroupBy.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], OrderGroupBy.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], OrderGroupBy.prototype, "platformFee", void 0);
 __decorate([
@@ -26657,9 +26860,6 @@ __decorate([
 ], OrderMaxAggregateInput.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], OrderMaxAggregateInput.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderMaxAggregateInput.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -26691,9 +26891,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderMaxAggregate.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], OrderMaxAggregate.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], OrderMaxAggregate.prototype, "platformFee", void 0);
@@ -26729,9 +26926,6 @@ __decorate([
 ], OrderMaxOrderByAggregateInput.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], OrderMaxOrderByAggregateInput.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderMaxOrderByAggregateInput.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -26763,9 +26957,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderMinAggregateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], OrderMinAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderMinAggregateInput.prototype, "platformFee", void 0);
@@ -26801,9 +26992,6 @@ __decorate([
 ], OrderMinAggregate.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], OrderMinAggregate.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], OrderMinAggregate.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
@@ -26835,9 +27023,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderMinOrderByAggregateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], OrderMinOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderMinOrderByAggregateInput.prototype, "platformFee", void 0);
@@ -26893,9 +27078,6 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderOrderByWithAggregationInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
-], OrderOrderByWithAggregationInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderOrderByWithAggregationInput.prototype, "platformFee", void 0);
 __decorate([
@@ -26943,9 +27125,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderOrderByWithRelationInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
-], OrderOrderByWithRelationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderOrderByWithRelationInput.prototype, "platformFee", void 0);
@@ -27013,9 +27192,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], OrderScalarWhereWithAggregatesInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatNullableWithAggregatesFilter, { nullable: true })
-], OrderScalarWhereWithAggregatesInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], OrderScalarWhereWithAggregatesInput.prototype, "platformFee", void 0);
 __decorate([
@@ -27058,9 +27234,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], OrderScalarWhereInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatNullableFilter, { nullable: true })
-], OrderScalarWhereInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], OrderScalarWhereInput.prototype, "platformFee", void 0);
 __decorate([
@@ -27089,9 +27262,6 @@ __decorate([
 ], OrderSumAggregateInput.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], OrderSumAggregateInput.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], OrderSumAggregateInput.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -27113,9 +27283,6 @@ __decorate([
 ], OrderSumAggregate.prototype, "invoiceId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], OrderSumAggregate.prototype, "cost", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], OrderSumAggregate.prototype, "platformFee", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
@@ -27135,9 +27302,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderSumOrderByAggregateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], OrderSumOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], OrderSumOrderByAggregateInput.prototype, "platformFee", void 0);
@@ -27206,11 +27370,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderUncheckedCreateWithoutCartInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderUncheckedCreateWithoutCartInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -27247,11 +27406,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], OrderUncheckedCreateWithoutInvoiceInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderUncheckedCreateWithoutInvoiceInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
@@ -27292,11 +27446,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderUncheckedCreateWithoutOrderByInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderUncheckedCreateWithoutOrderByInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
@@ -27341,11 +27490,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderUncheckedCreateWithoutShippingInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderUncheckedCreateWithoutShippingInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -27385,11 +27529,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], OrderUncheckedCreateInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true }),
-    Validator.IsNumber(),
-    Validator.IsNotEmpty()
-], OrderUncheckedCreateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
@@ -27481,9 +27620,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateManyWithoutOrderByInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateManyWithoutOrderByInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateManyWithoutOrderByInput.prototype, "platformFee", void 0);
 __decorate([
@@ -27516,9 +27652,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateManyInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateManyInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateManyInput.prototype, "platformFee", void 0);
@@ -27587,9 +27720,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutCartInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateWithoutCartInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutCartInput.prototype, "platformFee", void 0);
 __decorate([
@@ -27622,9 +27752,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutInvoiceInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateWithoutInvoiceInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutInvoiceInput.prototype, "platformFee", void 0);
@@ -27661,9 +27788,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutOrderByInput.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateWithoutOrderByInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutOrderByInput.prototype, "platformFee", void 0);
@@ -27704,9 +27828,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutShippingInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateWithoutShippingInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateWithoutShippingInput.prototype, "platformFee", void 0);
 __decorate([
@@ -27743,9 +27864,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUncheckedUpdateInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUncheckedUpdateInput.prototype, "platformFee", void 0);
 __decorate([
@@ -27775,9 +27893,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateManyMutationInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUpdateManyMutationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateManyMutationInput.prototype, "platformFee", void 0);
@@ -28009,9 +28124,6 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutCartInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUpdateWithoutCartInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutCartInput.prototype, "platformFee", void 0);
 __decorate([
@@ -28044,9 +28156,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutInvoiceInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUpdateWithoutInvoiceInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutInvoiceInput.prototype, "platformFee", void 0);
@@ -28081,9 +28190,6 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutOrderByInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUpdateWithoutOrderByInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutOrderByInput.prototype, "platformFee", void 0);
 __decorate([
@@ -28117,9 +28223,6 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutShippingInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUpdateWithoutShippingInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateWithoutShippingInput.prototype, "platformFee", void 0);
 __decorate([
@@ -28152,9 +28255,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateInput.prototype, "shippingId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-], OrderUpdateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], OrderUpdateInput.prototype, "platformFee", void 0);
@@ -28282,9 +28382,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], OrderWhereUniqueInput.prototype, "shippingId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatNullableFilter, { nullable: true })
-], OrderWhereUniqueInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], OrderWhereUniqueInput.prototype, "platformFee", void 0);
 __decorate([
@@ -28339,9 +28436,6 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], OrderWhereInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatNullableFilter, { nullable: true })
-], OrderWhereInput.prototype, "cost", void 0);
-__decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], OrderWhereInput.prototype, "platformFee", void 0);
 __decorate([
@@ -28386,9 +28480,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Order.prototype, "invoiceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], Order.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], Order.prototype, "platformFee", void 0);

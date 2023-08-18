@@ -36,43 +36,9 @@ export class UserController {
     accountCreateManyUserInput(userCreateArgsPrisma);
 
     // Auto Create Order
-    const platformFee = 2000;
-    //get Items
-    const items: Item[] | void = await this.itemService.findMany({
-      where: { userRole: { equals: UserRole.MEMBER } },
-    });
+    await orderCreate(userCreateArgsPrisma, this.itemService);
 
-    if (items) {
-      // Calculate the sum of item prices
-      const totalPrice = items.reduce((total, item) => total + item.price, 0);
-
-      userCreateArgsPrisma.data.orders = {
-        create: {
-          status: TransactionStatus.PENDING,
-          platformFee: platformFee,
-          total: totalPrice + platformFee,
-          cost: 0,
-          cart: {
-            createMany: {
-              data: items.map((item) => ({
-                itemId: item.id,
-                quantity: 1,
-              })),
-            },
-          },
-          invoice: {
-            create: {
-              amount: 0,
-              adminFee: 0,
-            },
-          },
-        },
-      };
-    }
-
-    this.logger.log(userCreateArgsPrisma);
-
-    // return await this.userService.createOne(userCreateArgsPrisma);
+    return await this.userService.createOne(userCreateArgsPrisma);
   }
 
   findMany(userFindManyArgs: UserFindManyArgs) {
@@ -95,6 +61,46 @@ export class UserController {
   count(userFindManyArgs: UserFindManyArgs) {
     return this.userService.count(userFindManyArgs);
   }
+}
+
+async function orderCreate(userCreateArgsPrisma, itemService: ItemService) {
+  const platformFee = 2000;
+  const adminFee = 3000;
+  //get Items
+  const items: Item[] | void = await itemService.findMany({
+    where: { userRole: { equals: userCreateArgsPrisma.data.userRole } },
+  });
+
+  // Calculate the sum of item prices
+  const totalPrice = items
+    ? items.reduce((total, item) => total + item.price, 0)
+    : 0;
+
+  userCreateArgsPrisma.data.orders = {
+    create: {
+      status: TransactionStatus.PENDING,
+      platformFee: platformFee,
+      total: totalPrice + platformFee,
+      cart: {
+        createMany: {
+          data: items
+            ? items.map((item) => ({
+                itemId: item.id,
+                quantity: 1,
+                cost: item.cost,
+                price: item.price,
+              }))
+            : undefined,
+        },
+      },
+      invoice: {
+        create: {
+          amount: totalPrice + platformFee + adminFee,
+          adminFee: adminFee,
+        },
+      },
+    },
+  };
 }
 
 function accountCreateManyUserInput(

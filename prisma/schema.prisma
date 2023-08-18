@@ -431,9 +431,6 @@ model Order {
   invoiceId   Int               @unique
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  cost        Float?
-  /// @Validator.IsNumber() 
-  /// @Validator.IsNotEmpty()
   platformFee Float
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
@@ -447,8 +444,14 @@ model Cart {
   order     Order    @relation(fields: [orderId], references: [id])
   orderId   Int
   item      Item     @relation(fields: [itemId], references: [id])
-  itemId    Int      @unique
+  itemId    Int
   quantity  Int
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: 'CartCreate*Input' })
+  price     Float
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: 'CartCreate*Input' })
+  cost      Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

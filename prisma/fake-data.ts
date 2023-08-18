@@ -265,7 +265,6 @@ export function fakeOrder() {
   return {
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
     shippingId: undefined,
-    cost: undefined,
     platformFee: faker.datatype.float(),
     total: faker.datatype.float(),
     updatedAt: faker.datatype.datetime(),
@@ -278,7 +277,6 @@ export function fakeOrderComplete() {
     orderById: faker.datatype.uuid(),
     shippingId: undefined,
     invoiceId: faker.datatype.number(),
-    cost: undefined,
     platformFee: faker.datatype.float(),
     total: faker.datatype.float(),
     createdAt: new Date(),
@@ -288,6 +286,8 @@ export function fakeOrderComplete() {
 export function fakeCart() {
   return {
     quantity: faker.datatype.number(),
+    price: faker.datatype.float(),
+    cost: faker.datatype.float(),
     updatedAt: faker.datatype.datetime(),
   };
 }
@@ -297,6 +297,8 @@ export function fakeCartComplete() {
     orderId: faker.datatype.number(),
     itemId: faker.datatype.number(),
     quantity: faker.datatype.number(),
+    price: faker.datatype.float(),
+    cost: faker.datatype.float(),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
   };
