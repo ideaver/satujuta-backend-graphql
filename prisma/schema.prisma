@@ -185,7 +185,6 @@ model User {
   updatedAt             DateTime           @updatedAt
   /// @HideField({ match: 'UserCreate*Input' })  
   deletedAt             DateTime?
-  /// @HideField({ output: false, input: true })   
   orders                Order[]
   /// @HideField({ output: false, input: true })   
   sessions              Session[]

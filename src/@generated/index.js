@@ -51226,7 +51226,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutAccountsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutAccountsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51339,7 +51339,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutAddressInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutAddressInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51452,7 +51452,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutCheckInsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutCheckInsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51568,7 +51568,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutClaimedRewardsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutClaimedRewardsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51681,7 +51681,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutFilesCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutFilesCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51794,7 +51794,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutHotelsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutHotelsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52017,7 +52017,7 @@ __decorate([
     (0, graphql_1.Field)(() => AccountCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserCreateWithoutPointTransactionsInput.prototype, "accounts", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutPointTransactionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52133,7 +52133,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutProgramsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutProgramsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52246,7 +52246,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutProgramsParticipationInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutProgramsParticipationInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52359,7 +52359,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52469,7 +52469,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutReferredByInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutReferredByInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52582,7 +52582,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutReferredUsersInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutReferredUsersInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52695,7 +52695,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutSchoolInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutSchoolInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52811,7 +52811,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutSessionsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutSessionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52924,7 +52924,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutUserNotificationsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateWithoutUserNotificationsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53037,7 +53037,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserCreateInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53758,7 +53758,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserOrderByWithRelationInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderOrderByRelationAggregateInput, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54179,7 +54179,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54292,7 +54292,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutAddressInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54405,7 +54405,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54521,7 +54521,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54634,7 +54634,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54747,7 +54747,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54970,7 +54970,7 @@ __decorate([
     (0, graphql_1.Field)(() => AccountUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "accounts", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55086,7 +55086,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55199,7 +55199,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55312,7 +55312,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55422,7 +55422,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55535,7 +55535,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55648,7 +55648,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55764,7 +55764,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
@@ -55877,7 +55877,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55990,7 +55990,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedCreateNestedManyWithoutOrderByInput, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56733,7 +56733,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56832,7 +56832,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56931,7 +56931,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57033,7 +57033,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57132,7 +57132,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57231,7 +57231,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57426,7 +57426,7 @@ __decorate([
     (0, graphql_1.Field)(() => AccountUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "accounts", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57528,7 +57528,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57627,7 +57627,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57726,7 +57726,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57822,7 +57822,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57921,7 +57921,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58020,7 +58020,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58122,7 +58122,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
@@ -58221,7 +58221,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58320,7 +58320,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUncheckedUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59307,7 +59307,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutAccountsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59406,7 +59406,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutAddressInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59505,7 +59505,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutCheckInsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59607,7 +59607,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59706,7 +59706,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutFilesCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59805,7 +59805,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60000,7 +60000,7 @@ __decorate([
     (0, graphql_1.Field)(() => AccountUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUpdateWithoutPointTransactionsInput.prototype, "accounts", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutPointTransactionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60102,7 +60102,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60201,7 +60201,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60300,7 +60300,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60396,7 +60396,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutReferredByInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60495,7 +60495,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutReferredUsersInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60594,7 +60594,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutSchoolInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60696,7 +60696,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutSessionsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUpdateManyWithoutCreatedByNestedInput, { nullable: true })
@@ -60795,7 +60795,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateWithoutUserNotificationsInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60894,7 +60894,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderUpdateManyWithoutOrderByNestedInput, { nullable: true })
 ], UserUpdateInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61304,7 +61304,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserWhereUniqueInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderListRelationFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61424,7 +61424,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserWhereInput.prototype, "PointTransactions", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => OrderListRelationFilter, { nullable: true })
 ], UserWhereInput.prototype, "orders", void 0);
 __decorate([
     (0, graphql_8.HideField)()

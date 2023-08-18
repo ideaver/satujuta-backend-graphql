@@ -22,7 +22,7 @@ import { Prisma } from '@prisma/client';
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(userCreateArgs: UserCreateArgs): Promise<User | void> {
+  async createOne(userCreateArgs: Prisma.UserCreateArgs): Promise<User | void> {
     return await this.prisma.user
       .create(userCreateArgs)
       .then((user) => {
