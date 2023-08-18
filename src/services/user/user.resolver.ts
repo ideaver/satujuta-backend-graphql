@@ -1,5 +1,4 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { UserService } from './user.service';
 import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
@@ -8,6 +7,7 @@ import { User } from 'src/model/user.model';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
+import { UserController } from './user.controller';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -15,7 +15,7 @@ interface UserSelect {
 
 @Resolver(() => User)
 export class UserResolver {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userController: UserController) {}
 
   @Mutation(() => User, {
     nullable: true,
@@ -25,31 +25,10 @@ export class UserResolver {
     @Args('userCreateArgs') userCreateArgs: UserCreateArgs,
     @Relations() relations: UserSelect,
   ): Promise<User | void> {
-    //Generate Random Referral Code
-    userCreateArgs.data.referralCode = generateRandomReferralCode();
-
     //Auto implement prisma select from graphql query info
     userCreateArgs.select = relations.select;
 
-    //Handle null value GraphQL Capabitlity
-    if (userCreateArgs.data.referredBy.connect.referralCode === null) {
-      userCreateArgs.data.referredBy = undefined;
-    }
-
-    //Auto Create User Accounts
-    userCreateArgs.data.accounts.createMany = {
-      data: [
-        { name: 'CASH Account', accountCategory: 'CASH' },
-        {
-          name: 'COMISSION Account',
-          accountCategory: 'COMISSION',
-        },
-        { name: 'EQUITY Account', accountCategory: 'EQUITY' },
-        { name: 'DEBT Account', accountCategory: 'DEBT' },
-      ],
-    };
-
-    return await this.userService.createOne(userCreateArgs);
+    return await this.userController.createOne(userCreateArgs);
   }
 
   @Query(() => [User], {
@@ -62,7 +41,7 @@ export class UserResolver {
   ) {
     //Auto implement prisma select from graphql query info
     userFindManyArgs.select = relations.select;
-    return this.userService.findMany(userFindManyArgs);
+    return this.userController.findMany(userFindManyArgs);
   }
 
   @Query(() => User, {
@@ -76,7 +55,7 @@ export class UserResolver {
   ) {
     //Auto implement prisma select from graphql query info
     userFindUniqueArgs.select = relations.select;
-    return this.userService.findOne(userFindUniqueArgs);
+    return this.userController.findOne(userFindUniqueArgs);
   }
 
   @Mutation(() => User, { description: 'Deskripsinya ada disini loh' })
@@ -85,8 +64,7 @@ export class UserResolver {
     @Relations() relations: UserSelect,
   ) {
     userUpdateOneArgs.select = relations.select;
-    //TODO: Implement whatsapp verification
-    return this.userService.update(userUpdateOneArgs);
+    return this.userController.updateOne(userUpdateOneArgs);
   }
 
   @Mutation(() => User, {
@@ -95,7 +73,7 @@ export class UserResolver {
       'Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas user akan terisi. select: { id: true, firstName: true, deletedAt: true }',
   })
   userRemove(@Args('userId') userId: string) {
-    return this.userService.remove(userId);
+    return this.userController.remove(userId);
   }
 
   @Query(() => Int, {
@@ -106,6 +84,6 @@ export class UserResolver {
     @Args('userFindManyArgs', { nullable: true })
     userFindManyArgs: UserFindManyArgs,
   ) {
-    return this.userService.count(userFindManyArgs);
+    return this.userController.count(userFindManyArgs);
   }
 }
