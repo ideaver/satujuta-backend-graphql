@@ -424,8 +424,8 @@ model Order {
   id          Int               @id @default(autoincrement())
   status      TransactionStatus
   orderBy     User              @relation(fields: [orderById], references: [id])
-  orderById   String
-  items       Item[]
+  orderById   String            @unique
+  cart        Cart[]
   shipping    Shipping?
   shippingId  Int?
   invoice     Invoice           @relation(fields: [invoiceId], references: [id])
@@ -443,6 +443,17 @@ model Order {
   updatedAt   DateTime          @updatedAt
 }
 
+model Cart {
+  id        Int      @id @default(autoincrement())
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   Int
+  item      Item     @relation(fields: [itemId], references: [id])
+  itemId    Int      @unique
+  quantity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 //Make CRUD Available
 //Setiap user role memiliki pilihan item sesuai user rolenya
 model Item {
@@ -458,10 +469,8 @@ model Item {
   price       Float
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  qty         Int
   userRole    UserRole
-  order       Order    @relation(fields: [orderId], references: [id])
-  orderId     Int
+  cart        Cart[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -505,13 +514,12 @@ model Invoice {
   transactions Transaction[]
   Installments Installment[]
   createdAt    DateTime      @default(now())
- 
 }
 
 model Installment {
   id            Int               @id @default(autoincrement())
   number        Int
-  lateFee       Float 
+  lateFee       Float
   amount        Float
   dueDate       DateTime
   status        InstallmentStatus

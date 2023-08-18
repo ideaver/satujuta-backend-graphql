@@ -241,9 +241,7 @@ export declare enum ItemScalarFieldEnum {
     name = "name",
     description = "description",
     price = "price",
-    qty = "qty",
     userRole = "userRole",
-    orderId = "orderId",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
 }
@@ -318,6 +316,14 @@ export declare enum CheckInScalarFieldEnum {
     userId = "userId",
     hotelId = "hotelId",
     checkInAt = "checkInAt",
+    createdAt = "createdAt",
+    updatedAt = "updatedAt"
+}
+export declare enum CartScalarFieldEnum {
+    id = "id",
+    orderId = "orderId",
+    itemId = "itemId",
+    quantity = "quantity",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
 }
@@ -2461,6 +2467,555 @@ export declare class UpsertOneBankArgs {
     where: Prisma.AtLeast<BankWhereUniqueInput, 'id' | 'accountId'>;
     create: InstanceType<typeof BankCreateInput>;
     update: InstanceType<typeof BankUpdateInput>;
+}
+export declare class AggregateCart {
+    _count?: InstanceType<typeof CartCountAggregate>;
+    _avg?: InstanceType<typeof CartAvgAggregate>;
+    _sum?: InstanceType<typeof CartSumAggregate>;
+    _min?: InstanceType<typeof CartMinAggregate>;
+    _max?: InstanceType<typeof CartMaxAggregate>;
+}
+export declare class CartAggregateArgs {
+    where?: InstanceType<typeof CartWhereInput>;
+    orderBy?: Array<CartOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof CartCountAggregateInput>;
+    _avg?: InstanceType<typeof CartAvgAggregateInput>;
+    _sum?: InstanceType<typeof CartSumAggregateInput>;
+    _min?: InstanceType<typeof CartMinAggregateInput>;
+    _max?: InstanceType<typeof CartMaxAggregateInput>;
+}
+export declare class CartAvgAggregateInput {
+    id?: true;
+    orderId?: true;
+    itemId?: true;
+    quantity?: true;
+}
+export declare class CartAvgAggregate {
+    id?: number;
+    orderId?: number;
+    itemId?: number;
+    quantity?: number;
+}
+export declare class CartAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+}
+export declare class CartCountAggregateInput {
+    id?: true;
+    orderId?: true;
+    itemId?: true;
+    quantity?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+}
+export declare class CartCountAggregate {
+    id: number;
+    orderId: number;
+    itemId: number;
+    quantity: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+}
+export declare class CartCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+}
+export declare class CartCreateManyItemInputEnvelope {
+    data: Array<CartCreateManyItemInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CartCreateManyItemInput {
+    id?: number;
+    orderId: number;
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartCreateManyOrderInputEnvelope {
+    data: Array<CartCreateManyOrderInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CartCreateManyOrderInput {
+    id?: number;
+    itemId: number;
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartCreateManyInput {
+    id?: number;
+    orderId: number;
+    itemId: number;
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartCreateNestedManyWithoutItemInput {
+    create?: Array<CartCreateWithoutItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+}
+export declare class CartCreateNestedManyWithoutOrderInput {
+    create?: Array<CartCreateWithoutOrderInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutOrderInput>;
+    createMany?: InstanceType<typeof CartCreateManyOrderInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+}
+export declare class CartCreateOrConnectWithoutItemInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    create: InstanceType<typeof CartCreateWithoutItemInput>;
+}
+export declare class CartCreateOrConnectWithoutOrderInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    create: InstanceType<typeof CartCreateWithoutOrderInput>;
+}
+export declare class CartCreateWithoutItemInput {
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    order: InstanceType<typeof OrderCreateNestedOneWithoutCartInput>;
+}
+export declare class CartCreateWithoutOrderInput {
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    item: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
+}
+export declare class CartCreateInput {
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    order: InstanceType<typeof OrderCreateNestedOneWithoutCartInput>;
+    item: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
+}
+export declare class CartGroupByArgs {
+    where?: InstanceType<typeof CartWhereInput>;
+    orderBy?: Array<CartOrderByWithAggregationInput>;
+    by: Array<keyof typeof CartScalarFieldEnum>;
+    having?: InstanceType<typeof CartScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof CartCountAggregateInput>;
+    _avg?: InstanceType<typeof CartAvgAggregateInput>;
+    _sum?: InstanceType<typeof CartSumAggregateInput>;
+    _min?: InstanceType<typeof CartMinAggregateInput>;
+    _max?: InstanceType<typeof CartMaxAggregateInput>;
+}
+export declare class CartGroupBy {
+    id: number;
+    orderId: number;
+    itemId: number;
+    quantity: number;
+    createdAt: Date | string;
+    updatedAt: Date | string;
+    _count?: InstanceType<typeof CartCountAggregate>;
+    _avg?: InstanceType<typeof CartAvgAggregate>;
+    _sum?: InstanceType<typeof CartSumAggregate>;
+    _min?: InstanceType<typeof CartMinAggregate>;
+    _max?: InstanceType<typeof CartMaxAggregate>;
+}
+export declare class CartListRelationFilter {
+    every?: InstanceType<typeof CartWhereInput>;
+    some?: InstanceType<typeof CartWhereInput>;
+    none?: InstanceType<typeof CartWhereInput>;
+}
+export declare class CartMaxAggregateInput {
+    id?: true;
+    orderId?: true;
+    itemId?: true;
+    quantity?: true;
+    createdAt?: true;
+    updatedAt?: true;
+}
+export declare class CartMaxAggregate {
+    id?: number;
+    orderId?: number;
+    itemId?: number;
+    quantity?: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+}
+export declare class CartMinAggregateInput {
+    id?: true;
+    orderId?: true;
+    itemId?: true;
+    quantity?: true;
+    createdAt?: true;
+    updatedAt?: true;
+}
+export declare class CartMinAggregate {
+    id?: number;
+    orderId?: number;
+    itemId?: number;
+    quantity?: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+}
+export declare class CartOrderByRelationAggregateInput {
+    _count?: keyof typeof SortOrder;
+}
+export declare class CartOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    _count?: InstanceType<typeof CartCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof CartAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof CartMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof CartMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof CartSumOrderByAggregateInput>;
+}
+export declare class CartOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    order?: InstanceType<typeof OrderOrderByWithRelationInput>;
+    item?: InstanceType<typeof ItemOrderByWithRelationInput>;
+}
+export declare class CartScalarWhereWithAggregatesInput {
+    AND?: Array<CartScalarWhereWithAggregatesInput>;
+    OR?: Array<CartScalarWhereWithAggregatesInput>;
+    NOT?: Array<CartScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    orderId?: InstanceType<typeof IntWithAggregatesFilter>;
+    itemId?: InstanceType<typeof IntWithAggregatesFilter>;
+    quantity?: InstanceType<typeof IntWithAggregatesFilter>;
+    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+}
+export declare class CartScalarWhereInput {
+    AND?: Array<CartScalarWhereInput>;
+    OR?: Array<CartScalarWhereInput>;
+    NOT?: Array<CartScalarWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    orderId?: InstanceType<typeof IntFilter>;
+    itemId?: InstanceType<typeof IntFilter>;
+    quantity?: InstanceType<typeof IntFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
+}
+export declare class CartSumAggregateInput {
+    id?: true;
+    orderId?: true;
+    itemId?: true;
+    quantity?: true;
+}
+export declare class CartSumAggregate {
+    id?: number;
+    orderId?: number;
+    itemId?: number;
+    quantity?: number;
+}
+export declare class CartSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    orderId?: keyof typeof SortOrder;
+    itemId?: keyof typeof SortOrder;
+    quantity?: keyof typeof SortOrder;
+}
+export declare class CartUncheckedCreateNestedManyWithoutItemInput {
+    create?: Array<CartCreateWithoutItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+}
+export declare class CartUncheckedCreateNestedManyWithoutOrderInput {
+    create?: Array<CartCreateWithoutOrderInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutOrderInput>;
+    createMany?: InstanceType<typeof CartCreateManyOrderInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+}
+export declare class CartUncheckedCreateWithoutItemInput {
+    id?: number;
+    orderId: number;
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartUncheckedCreateWithoutOrderInput {
+    id?: number;
+    itemId: number;
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartUncheckedCreateInput {
+    id?: number;
+    orderId: number;
+    itemId: number;
+    quantity: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartUncheckedUpdateManyWithoutItemNestedInput {
+    create?: Array<CartCreateWithoutItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+    set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutItemInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutItemInput>;
+    deleteMany?: Array<CartScalarWhereInput>;
+}
+export declare class CartUncheckedUpdateManyWithoutItemInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateManyWithoutOrderNestedInput {
+    create?: Array<CartCreateWithoutOrderInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutOrderInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutOrderInput>;
+    createMany?: InstanceType<typeof CartCreateManyOrderInputEnvelope>;
+    set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutOrderInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutOrderInput>;
+    deleteMany?: Array<CartScalarWhereInput>;
+}
+export declare class CartUncheckedUpdateManyWithoutOrderInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateWithoutItemInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateWithoutOrderInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUpdateManyMutationInput {
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUpdateManyWithWhereWithoutItemInput {
+    where: InstanceType<typeof CartScalarWhereInput>;
+    data: InstanceType<typeof CartUpdateManyMutationInput>;
+}
+export declare class CartUpdateManyWithWhereWithoutOrderInput {
+    where: InstanceType<typeof CartScalarWhereInput>;
+    data: InstanceType<typeof CartUpdateManyMutationInput>;
+}
+export declare class CartUpdateManyWithoutItemNestedInput {
+    create?: Array<CartCreateWithoutItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+    set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutItemInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutItemInput>;
+    deleteMany?: Array<CartScalarWhereInput>;
+}
+export declare class CartUpdateManyWithoutOrderNestedInput {
+    create?: Array<CartCreateWithoutOrderInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutOrderInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutOrderInput>;
+    createMany?: InstanceType<typeof CartCreateManyOrderInputEnvelope>;
+    set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutOrderInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutOrderInput>;
+    deleteMany?: Array<CartScalarWhereInput>;
+}
+export declare class CartUpdateWithWhereUniqueWithoutItemInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    data: InstanceType<typeof CartUpdateWithoutItemInput>;
+}
+export declare class CartUpdateWithWhereUniqueWithoutOrderInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    data: InstanceType<typeof CartUpdateWithoutOrderInput>;
+}
+export declare class CartUpdateWithoutItemInput {
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutCartNestedInput>;
+}
+export declare class CartUpdateWithoutOrderInput {
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    item?: InstanceType<typeof ItemUpdateOneRequiredWithoutCartNestedInput>;
+}
+export declare class CartUpdateInput {
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutCartNestedInput>;
+    item?: InstanceType<typeof ItemUpdateOneRequiredWithoutCartNestedInput>;
+}
+export declare class CartUpsertWithWhereUniqueWithoutItemInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    update: InstanceType<typeof CartUpdateWithoutItemInput>;
+    create: InstanceType<typeof CartCreateWithoutItemInput>;
+}
+export declare class CartUpsertWithWhereUniqueWithoutOrderInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    update: InstanceType<typeof CartUpdateWithoutOrderInput>;
+    create: InstanceType<typeof CartCreateWithoutOrderInput>;
+}
+export declare class CartWhereUniqueInput {
+    id?: number;
+    itemId?: number;
+    AND?: Array<CartWhereInput>;
+    OR?: Array<CartWhereInput>;
+    NOT?: Array<CartWhereInput>;
+    orderId?: InstanceType<typeof IntFilter>;
+    quantity?: InstanceType<typeof IntFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
+    order?: InstanceType<typeof OrderRelationFilter>;
+    item?: InstanceType<typeof ItemRelationFilter>;
+}
+export declare class CartWhereInput {
+    AND?: Array<CartWhereInput>;
+    OR?: Array<CartWhereInput>;
+    NOT?: Array<CartWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    orderId?: InstanceType<typeof IntFilter>;
+    itemId?: InstanceType<typeof IntFilter>;
+    quantity?: InstanceType<typeof IntFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
+    order?: InstanceType<typeof OrderRelationFilter>;
+    item?: InstanceType<typeof ItemRelationFilter>;
+}
+export declare class Cart {
+    id: number;
+    orderId: number;
+    itemId: number;
+    quantity: number;
+    createdAt: Date;
+    updatedAt: Date;
+    order?: InstanceType<typeof Order>;
+    item?: InstanceType<typeof Item>;
+}
+export declare class CreateManyCartArgs {
+    data: Array<CartCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneCartArgs {
+    data: InstanceType<typeof CartCreateInput>;
+}
+export declare class DeleteManyCartArgs {
+    where?: InstanceType<typeof CartWhereInput>;
+}
+export declare class DeleteOneCartArgs {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+}
+export declare class FindFirstCartOrThrowArgs {
+    where?: InstanceType<typeof CartWhereInput>;
+    orderBy?: Array<CartOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof CartScalarFieldEnum>;
+}
+export declare class FindFirstCartArgs {
+    where?: InstanceType<typeof CartWhereInput>;
+    orderBy?: Array<CartOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof CartScalarFieldEnum>;
+}
+export declare class FindManyCartArgs {
+    where?: InstanceType<typeof CartWhereInput>;
+    orderBy?: Array<CartOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof CartScalarFieldEnum>;
+}
+export declare class FindUniqueCartOrThrowArgs {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+}
+export declare class FindUniqueCartArgs {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+}
+export declare class UpdateManyCartArgs {
+    data: InstanceType<typeof CartUpdateManyMutationInput>;
+    where?: InstanceType<typeof CartWhereInput>;
+}
+export declare class UpdateOneCartArgs {
+    data: InstanceType<typeof CartUpdateInput>;
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+}
+export declare class UpsertOneCartArgs {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id' | 'itemId'>;
+    create: InstanceType<typeof CartCreateInput>;
+    update: InstanceType<typeof CartUpdateInput>;
 }
 export declare class AggregateCheckIn {
     _count?: InstanceType<typeof CheckInCountAggregate>;
@@ -7276,29 +7831,21 @@ export declare class ItemAggregateArgs {
 export declare class ItemAvgAggregateInput {
     id?: true;
     price?: true;
-    qty?: true;
-    orderId?: true;
 }
 export declare class ItemAvgAggregate {
     id?: number;
     price?: number;
-    qty?: number;
-    orderId?: number;
 }
 export declare class ItemAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
 }
 export declare class ItemCountAggregateInput {
     id?: true;
     name?: true;
     description?: true;
     price?: true;
-    qty?: true;
     userRole?: true;
-    orderId?: true;
     createdAt?: true;
     updatedAt?: true;
     _all?: true;
@@ -7308,9 +7855,7 @@ export declare class ItemCountAggregate {
     name: number;
     description: number;
     price: number;
-    qty: number;
     userRole: number;
-    orderId: number;
     createdAt: number;
     updatedAt: number;
     _all: number;
@@ -7320,52 +7865,35 @@ export declare class ItemCountOrderByAggregateInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
-export declare class ItemCreateManyOrderInputEnvelope {
-    data: Array<ItemCreateManyOrderInput>;
-    skipDuplicates?: boolean;
-}
-export declare class ItemCreateManyOrderInput {
-    id?: number;
-    name: string;
-    description: string;
-    price: number;
-    qty: number;
-    userRole: keyof typeof UserRole;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+export declare class ItemCount {
+    cart?: number;
 }
 export declare class ItemCreateManyInput {
     id?: number;
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
-    orderId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
-export declare class ItemCreateNestedManyWithoutOrderInput {
-    create?: Array<ItemCreateWithoutOrderInput>;
-    connectOrCreate?: Array<ItemCreateOrConnectWithoutOrderInput>;
-    createMany?: InstanceType<typeof ItemCreateManyOrderInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
+export declare class ItemCreateNestedOneWithoutCartInput {
+    create?: InstanceType<typeof ItemCreateWithoutCartInput>;
+    connectOrCreate?: InstanceType<typeof ItemCreateOrConnectWithoutCartInput>;
+    connect?: Prisma.AtLeast<ItemWhereUniqueInput, 'id'>;
 }
-export declare class ItemCreateOrConnectWithoutOrderInput {
+export declare class ItemCreateOrConnectWithoutCartInput {
     where: Prisma.AtLeast<ItemWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof ItemCreateWithoutOrderInput>;
+    create: InstanceType<typeof ItemCreateWithoutCartInput>;
 }
-export declare class ItemCreateWithoutOrderInput {
+export declare class ItemCreateWithoutCartInput {
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7374,11 +7902,10 @@ export declare class ItemCreateInput {
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    order: InstanceType<typeof OrderCreateNestedOneWithoutItemsInput>;
+    cart?: InstanceType<typeof CartCreateNestedManyWithoutItemInput>;
 }
 export declare class ItemGroupByArgs {
     where?: InstanceType<typeof ItemWhereInput>;
@@ -7398,9 +7925,7 @@ export declare class ItemGroupBy {
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
-    orderId: number;
     createdAt: Date | string;
     updatedAt: Date | string;
     _count?: InstanceType<typeof ItemCountAggregate>;
@@ -7409,19 +7934,12 @@ export declare class ItemGroupBy {
     _min?: InstanceType<typeof ItemMinAggregate>;
     _max?: InstanceType<typeof ItemMaxAggregate>;
 }
-export declare class ItemListRelationFilter {
-    every?: InstanceType<typeof ItemWhereInput>;
-    some?: InstanceType<typeof ItemWhereInput>;
-    none?: InstanceType<typeof ItemWhereInput>;
-}
 export declare class ItemMaxAggregateInput {
     id?: true;
     name?: true;
     description?: true;
     price?: true;
-    qty?: true;
     userRole?: true;
-    orderId?: true;
     createdAt?: true;
     updatedAt?: true;
 }
@@ -7430,9 +7948,7 @@ export declare class ItemMaxAggregate {
     name?: string;
     description?: string;
     price?: number;
-    qty?: number;
     userRole?: keyof typeof UserRole;
-    orderId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
@@ -7441,9 +7957,7 @@ export declare class ItemMaxOrderByAggregateInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
@@ -7452,9 +7966,7 @@ export declare class ItemMinAggregateInput {
     name?: true;
     description?: true;
     price?: true;
-    qty?: true;
     userRole?: true;
-    orderId?: true;
     createdAt?: true;
     updatedAt?: true;
 }
@@ -7463,9 +7975,7 @@ export declare class ItemMinAggregate {
     name?: string;
     description?: string;
     price?: number;
-    qty?: number;
     userRole?: keyof typeof UserRole;
-    orderId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
@@ -7474,23 +7984,16 @@ export declare class ItemMinOrderByAggregateInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
-}
-export declare class ItemOrderByRelationAggregateInput {
-    _count?: keyof typeof SortOrder;
 }
 export declare class ItemOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     _count?: InstanceType<typeof ItemCountOrderByAggregateInput>;
@@ -7504,12 +8007,14 @@ export declare class ItemOrderByWithRelationInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
-    order?: InstanceType<typeof OrderOrderByWithRelationInput>;
+    cart?: InstanceType<typeof CartOrderByRelationAggregateInput>;
+}
+export declare class ItemRelationFilter {
+    is?: InstanceType<typeof ItemWhereInput>;
+    isNot?: InstanceType<typeof ItemWhereInput>;
 }
 export declare class ItemScalarWhereWithAggregatesInput {
     AND?: Array<ItemScalarWhereWithAggregatesInput>;
@@ -7519,56 +8024,27 @@ export declare class ItemScalarWhereWithAggregatesInput {
     name?: InstanceType<typeof StringWithAggregatesFilter>;
     description?: InstanceType<typeof StringWithAggregatesFilter>;
     price?: InstanceType<typeof FloatWithAggregatesFilter>;
-    qty?: InstanceType<typeof IntWithAggregatesFilter>;
     userRole?: InstanceType<typeof EnumUserRoleWithAggregatesFilter>;
-    orderId?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
-}
-export declare class ItemScalarWhereInput {
-    AND?: Array<ItemScalarWhereInput>;
-    OR?: Array<ItemScalarWhereInput>;
-    NOT?: Array<ItemScalarWhereInput>;
-    id?: InstanceType<typeof IntFilter>;
-    name?: InstanceType<typeof StringFilter>;
-    description?: InstanceType<typeof StringFilter>;
-    price?: InstanceType<typeof FloatFilter>;
-    qty?: InstanceType<typeof IntFilter>;
-    userRole?: InstanceType<typeof EnumUserRoleFilter>;
-    orderId?: InstanceType<typeof IntFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class ItemSumAggregateInput {
     id?: true;
     price?: true;
-    qty?: true;
-    orderId?: true;
 }
 export declare class ItemSumAggregate {
     id?: number;
     price?: number;
-    qty?: number;
-    orderId?: number;
 }
 export declare class ItemSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
-    qty?: keyof typeof SortOrder;
-    orderId?: keyof typeof SortOrder;
 }
-export declare class ItemUncheckedCreateNestedManyWithoutOrderInput {
-    create?: Array<ItemCreateWithoutOrderInput>;
-    connectOrCreate?: Array<ItemCreateOrConnectWithoutOrderInput>;
-    createMany?: InstanceType<typeof ItemCreateManyOrderInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-}
-export declare class ItemUncheckedCreateWithoutOrderInput {
+export declare class ItemUncheckedCreateWithoutCartInput {
     id?: number;
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7578,52 +8054,25 @@ export declare class ItemUncheckedCreateInput {
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
-    orderId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-}
-export declare class ItemUncheckedUpdateManyWithoutOrderNestedInput {
-    create?: Array<ItemCreateWithoutOrderInput>;
-    connectOrCreate?: Array<ItemCreateOrConnectWithoutOrderInput>;
-    upsert?: Array<ItemUpsertWithWhereUniqueWithoutOrderInput>;
-    createMany?: InstanceType<typeof ItemCreateManyOrderInputEnvelope>;
-    set?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    update?: Array<ItemUpdateWithWhereUniqueWithoutOrderInput>;
-    updateMany?: Array<ItemUpdateManyWithWhereWithoutOrderInput>;
-    deleteMany?: Array<ItemScalarWhereInput>;
-}
-export declare class ItemUncheckedUpdateManyWithoutOrderInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutItemInput>;
 }
 export declare class ItemUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
-    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class ItemUncheckedUpdateWithoutOrderInput {
+export declare class ItemUncheckedUpdateWithoutCartInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -7633,47 +8082,34 @@ export declare class ItemUncheckedUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
-    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutItemNestedInput>;
 }
 export declare class ItemUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class ItemUpdateManyWithWhereWithoutOrderInput {
-    where: InstanceType<typeof ItemScalarWhereInput>;
-    data: InstanceType<typeof ItemUpdateManyMutationInput>;
+export declare class ItemUpdateOneRequiredWithoutCartNestedInput {
+    create?: InstanceType<typeof ItemCreateWithoutCartInput>;
+    connectOrCreate?: InstanceType<typeof ItemCreateOrConnectWithoutCartInput>;
+    upsert?: InstanceType<typeof ItemUpsertWithoutCartInput>;
+    connect?: Prisma.AtLeast<ItemWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof ItemUpdateToOneWithWhereWithoutCartInput>;
 }
-export declare class ItemUpdateManyWithoutOrderNestedInput {
-    create?: Array<ItemCreateWithoutOrderInput>;
-    connectOrCreate?: Array<ItemCreateOrConnectWithoutOrderInput>;
-    upsert?: Array<ItemUpsertWithWhereUniqueWithoutOrderInput>;
-    createMany?: InstanceType<typeof ItemCreateManyOrderInputEnvelope>;
-    set?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<ItemWhereUniqueInput, 'id'>>;
-    update?: Array<ItemUpdateWithWhereUniqueWithoutOrderInput>;
-    updateMany?: Array<ItemUpdateManyWithWhereWithoutOrderInput>;
-    deleteMany?: Array<ItemScalarWhereInput>;
+export declare class ItemUpdateToOneWithWhereWithoutCartInput {
+    where?: InstanceType<typeof ItemWhereInput>;
+    data: InstanceType<typeof ItemUpdateWithoutCartInput>;
 }
-export declare class ItemUpdateWithWhereUniqueWithoutOrderInput {
-    where: Prisma.AtLeast<ItemWhereUniqueInput, 'id'>;
-    data: InstanceType<typeof ItemUpdateWithoutOrderInput>;
-}
-export declare class ItemUpdateWithoutOrderInput {
+export declare class ItemUpdateWithoutCartInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -7682,16 +8118,15 @@ export declare class ItemUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    qty?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutItemsNestedInput>;
+    cart?: InstanceType<typeof CartUpdateManyWithoutItemNestedInput>;
 }
-export declare class ItemUpsertWithWhereUniqueWithoutOrderInput {
-    where: Prisma.AtLeast<ItemWhereUniqueInput, 'id'>;
-    update: InstanceType<typeof ItemUpdateWithoutOrderInput>;
-    create: InstanceType<typeof ItemCreateWithoutOrderInput>;
+export declare class ItemUpsertWithoutCartInput {
+    update: InstanceType<typeof ItemUpdateWithoutCartInput>;
+    create: InstanceType<typeof ItemCreateWithoutCartInput>;
+    where?: InstanceType<typeof ItemWhereInput>;
 }
 export declare class ItemWhereUniqueInput {
     id?: number;
@@ -7701,12 +8136,10 @@ export declare class ItemWhereUniqueInput {
     name?: InstanceType<typeof StringFilter>;
     description?: InstanceType<typeof StringFilter>;
     price?: InstanceType<typeof FloatFilter>;
-    qty?: InstanceType<typeof IntFilter>;
     userRole?: InstanceType<typeof EnumUserRoleFilter>;
-    orderId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
-    order?: InstanceType<typeof OrderRelationFilter>;
+    cart?: InstanceType<typeof CartListRelationFilter>;
 }
 export declare class ItemWhereInput {
     AND?: Array<ItemWhereInput>;
@@ -7716,24 +8149,21 @@ export declare class ItemWhereInput {
     name?: InstanceType<typeof StringFilter>;
     description?: InstanceType<typeof StringFilter>;
     price?: InstanceType<typeof FloatFilter>;
-    qty?: InstanceType<typeof IntFilter>;
     userRole?: InstanceType<typeof EnumUserRoleFilter>;
-    orderId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
-    order?: InstanceType<typeof OrderRelationFilter>;
+    cart?: InstanceType<typeof CartListRelationFilter>;
 }
 export declare class Item {
     id: number;
     name: string;
     description: string;
     price: number;
-    qty: number;
     userRole: keyof typeof UserRole;
-    orderId: number;
     createdAt: Date;
     updatedAt: Date;
-    order?: InstanceType<typeof Order>;
+    cart?: Array<Cart>;
+    _count?: InstanceType<typeof ItemCount>;
 }
 export declare class UpdateManyItemArgs {
     data: InstanceType<typeof ItemUpdateManyMutationInput>;
@@ -7766,12 +8196,12 @@ export declare class DeleteManyOrderArgs {
     where?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class DeleteOneOrderArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
 }
 export declare class FindFirstOrderOrThrowArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof OrderScalarFieldEnum>;
@@ -7779,7 +8209,7 @@ export declare class FindFirstOrderOrThrowArgs {
 export declare class FindFirstOrderArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof OrderScalarFieldEnum>;
@@ -7787,21 +8217,21 @@ export declare class FindFirstOrderArgs {
 export declare class FindManyOrderArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof OrderScalarFieldEnum>;
 }
 export declare class FindUniqueOrderOrThrowArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
 }
 export declare class FindUniqueOrderArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
 }
 export declare class OrderAggregateArgs {
     where?: InstanceType<typeof OrderWhereInput>;
     orderBy?: Array<OrderOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    cursor?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof OrderCountAggregateInput>;
@@ -7873,7 +8303,7 @@ export declare class OrderCountOrderByAggregateInput {
     updatedAt?: keyof typeof SortOrder;
 }
 export declare class OrderCount {
-    items?: number;
+    cart?: number;
 }
 export declare class OrderCreateManyOrderByInputEnvelope {
     data: Array<OrderCreateManyOrderByInput>;
@@ -7906,52 +8336,40 @@ export declare class OrderCreateNestedManyWithoutOrderByInput {
     create?: Array<OrderCreateWithoutOrderByInput>;
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+}
+export declare class OrderCreateNestedOneWithoutCartInput {
+    create?: InstanceType<typeof OrderCreateWithoutCartInput>;
+    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutCartInput>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
 }
 export declare class OrderCreateNestedOneWithoutInvoiceInput {
     create?: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutInvoiceInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
-}
-export declare class OrderCreateNestedOneWithoutItemsInput {
-    create?: InstanceType<typeof OrderCreateWithoutItemsInput>;
-    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutItemsInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
 }
 export declare class OrderCreateNestedOneWithoutShippingInput {
     create?: InstanceType<typeof OrderCreateWithoutShippingInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutShippingInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
+}
+export declare class OrderCreateOrConnectWithoutCartInput {
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
+    create: InstanceType<typeof OrderCreateWithoutCartInput>;
 }
 export declare class OrderCreateOrConnectWithoutInvoiceInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
 }
-export declare class OrderCreateOrConnectWithoutItemsInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
-    create: InstanceType<typeof OrderCreateWithoutItemsInput>;
-}
 export declare class OrderCreateOrConnectWithoutOrderByInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateWithoutOrderByInput>;
 }
 export declare class OrderCreateOrConnectWithoutShippingInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateWithoutShippingInput>;
 }
-export declare class OrderCreateWithoutInvoiceInput {
-    status: keyof typeof TransactionStatus;
-    shippingId?: number;
-    cost?: number;
-    platformFee: number;
-    total: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
-    items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
-    shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
-}
-export declare class OrderCreateWithoutItemsInput {
+export declare class OrderCreateWithoutCartInput {
     status: keyof typeof TransactionStatus;
     shippingId?: number;
     cost?: number;
@@ -7963,6 +8381,18 @@ export declare class OrderCreateWithoutItemsInput {
     shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
     invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
+export declare class OrderCreateWithoutInvoiceInput {
+    status: keyof typeof TransactionStatus;
+    shippingId?: number;
+    cost?: number;
+    platformFee: number;
+    total: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
+    cart?: InstanceType<typeof CartCreateNestedManyWithoutOrderInput>;
+    shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
+}
 export declare class OrderCreateWithoutOrderByInput {
     status: keyof typeof TransactionStatus;
     shippingId?: number;
@@ -7971,7 +8401,7 @@ export declare class OrderCreateWithoutOrderByInput {
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
+    cart?: InstanceType<typeof CartCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
     invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
@@ -7984,7 +8414,7 @@ export declare class OrderCreateWithoutShippingInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
-    items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
+    cart?: InstanceType<typeof CartCreateNestedManyWithoutOrderInput>;
     invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderCreateInput {
@@ -7996,7 +8426,7 @@ export declare class OrderCreateInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     orderBy: InstanceType<typeof UserCreateNestedOneWithoutOrdersInput>;
-    items?: InstanceType<typeof ItemCreateNestedManyWithoutOrderInput>;
+    cart?: InstanceType<typeof CartCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutOrderInput>;
     invoice: InstanceType<typeof InvoiceCreateNestedOneWithoutOrderInput>;
 }
@@ -8143,7 +8573,7 @@ export declare class OrderOrderByWithRelationInput {
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     orderBy?: InstanceType<typeof UserOrderByWithRelationInput>;
-    items?: InstanceType<typeof ItemOrderByRelationAggregateInput>;
+    cart?: InstanceType<typeof CartOrderByRelationAggregateInput>;
     shipping?: InstanceType<typeof ShippingOrderByWithRelationInput>;
     invoice?: InstanceType<typeof InvoiceOrderByWithRelationInput>;
 }
@@ -8209,12 +8639,25 @@ export declare class OrderUncheckedCreateNestedManyWithoutOrderByInput {
     create?: Array<OrderCreateWithoutOrderByInput>;
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
 }
 export declare class OrderUncheckedCreateNestedOneWithoutInvoiceInput {
     create?: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutInvoiceInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
+}
+export declare class OrderUncheckedCreateWithoutCartInput {
+    id?: number;
+    status: keyof typeof TransactionStatus;
+    orderById: string;
+    shippingId?: number;
+    invoiceId: number;
+    cost?: number;
+    platformFee: number;
+    total: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderUncheckedCreateWithoutInvoiceInput {
     id?: number;
@@ -8226,20 +8669,7 @@ export declare class OrderUncheckedCreateWithoutInvoiceInput {
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
-    shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
-}
-export declare class OrderUncheckedCreateWithoutItemsInput {
-    id?: number;
-    status: keyof typeof TransactionStatus;
-    orderById: string;
-    shippingId?: number;
-    invoiceId: number;
-    cost?: number;
-    platformFee: number;
-    total: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderUncheckedCreateWithoutOrderByInput {
@@ -8252,7 +8682,7 @@ export declare class OrderUncheckedCreateWithoutOrderByInput {
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
+    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderUncheckedCreateWithoutShippingInput {
@@ -8266,7 +8696,7 @@ export declare class OrderUncheckedCreateWithoutShippingInput {
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
+    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutOrderInput>;
 }
 export declare class OrderUncheckedCreateInput {
     id?: number;
@@ -8279,7 +8709,7 @@ export declare class OrderUncheckedCreateInput {
     total: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    items?: InstanceType<typeof ItemUncheckedCreateNestedManyWithoutOrderInput>;
+    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutOrderInput>;
     shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutOrderInput>;
 }
 export declare class OrderUncheckedUpdateManyWithoutOrderByNestedInput {
@@ -8287,10 +8717,10 @@ export declare class OrderUncheckedUpdateManyWithoutOrderByNestedInput {
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     upsert?: Array<OrderUpsertWithWhereUniqueWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
-    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
-    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
     update?: Array<OrderUpdateWithWhereUniqueWithoutOrderByInput>;
     updateMany?: Array<OrderUpdateManyWithWhereWithoutOrderByInput>;
     deleteMany?: Array<OrderScalarWhereInput>;
@@ -8324,8 +8754,21 @@ export declare class OrderUncheckedUpdateOneWithoutInvoiceNestedInput {
     upsert?: InstanceType<typeof OrderUpsertWithoutInvoiceInput>;
     disconnect?: InstanceType<typeof OrderWhereInput>;
     delete?: InstanceType<typeof OrderWhereInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutInvoiceInput>;
+}
+export declare class OrderUncheckedUpdateWithoutCartInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
 }
 export declare class OrderUncheckedUpdateWithoutInvoiceInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -8337,20 +8780,7 @@ export declare class OrderUncheckedUpdateWithoutInvoiceInput {
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
-    shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
-}
-export declare class OrderUncheckedUpdateWithoutItemsInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    orderById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    invoiceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
-    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
 }
 export declare class OrderUncheckedUpdateWithoutOrderByInput {
@@ -8363,7 +8793,7 @@ export declare class OrderUncheckedUpdateWithoutOrderByInput {
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
+    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
 }
 export declare class OrderUncheckedUpdateWithoutShippingInput {
@@ -8377,7 +8807,7 @@ export declare class OrderUncheckedUpdateWithoutShippingInput {
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
+    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutOrderNestedInput>;
 }
 export declare class OrderUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -8390,7 +8820,7 @@ export declare class OrderUncheckedUpdateInput {
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    items?: InstanceType<typeof ItemUncheckedUpdateManyWithoutOrderNestedInput>;
+    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateManyMutationInput {
@@ -8411,26 +8841,26 @@ export declare class OrderUpdateManyWithoutOrderByNestedInput {
     connectOrCreate?: Array<OrderCreateOrConnectWithoutOrderByInput>;
     upsert?: Array<OrderUpsertWithWhereUniqueWithoutOrderByInput>;
     createMany?: InstanceType<typeof OrderCreateManyOrderByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
-    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
-    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
-    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>>;
+    set?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+    disconnect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+    delete?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
+    connect?: Array<Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>>;
     update?: Array<OrderUpdateWithWhereUniqueWithoutOrderByInput>;
     updateMany?: Array<OrderUpdateManyWithWhereWithoutOrderByInput>;
     deleteMany?: Array<OrderScalarWhereInput>;
 }
-export declare class OrderUpdateOneRequiredWithoutItemsNestedInput {
-    create?: InstanceType<typeof OrderCreateWithoutItemsInput>;
-    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutItemsInput>;
-    upsert?: InstanceType<typeof OrderUpsertWithoutItemsInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
-    update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutItemsInput>;
+export declare class OrderUpdateOneRequiredWithoutCartNestedInput {
+    create?: InstanceType<typeof OrderCreateWithoutCartInput>;
+    connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutCartInput>;
+    upsert?: InstanceType<typeof OrderUpsertWithoutCartInput>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
+    update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutCartInput>;
 }
 export declare class OrderUpdateOneRequiredWithoutShippingNestedInput {
     create?: InstanceType<typeof OrderCreateWithoutShippingInput>;
     connectOrCreate?: InstanceType<typeof OrderCreateOrConnectWithoutShippingInput>;
     upsert?: InstanceType<typeof OrderUpsertWithoutShippingInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutShippingInput>;
 }
 export declare class OrderUpdateOneWithoutInvoiceNestedInput {
@@ -8439,38 +8869,26 @@ export declare class OrderUpdateOneWithoutInvoiceNestedInput {
     upsert?: InstanceType<typeof OrderUpsertWithoutInvoiceInput>;
     disconnect?: InstanceType<typeof OrderWhereInput>;
     delete?: InstanceType<typeof OrderWhereInput>;
-    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    connect?: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     update?: InstanceType<typeof OrderUpdateToOneWithWhereWithoutInvoiceInput>;
+}
+export declare class OrderUpdateToOneWithWhereWithoutCartInput {
+    where?: InstanceType<typeof OrderWhereInput>;
+    data: InstanceType<typeof OrderUpdateWithoutCartInput>;
 }
 export declare class OrderUpdateToOneWithWhereWithoutInvoiceInput {
     where?: InstanceType<typeof OrderWhereInput>;
     data: InstanceType<typeof OrderUpdateWithoutInvoiceInput>;
-}
-export declare class OrderUpdateToOneWithWhereWithoutItemsInput {
-    where?: InstanceType<typeof OrderWhereInput>;
-    data: InstanceType<typeof OrderUpdateWithoutItemsInput>;
 }
 export declare class OrderUpdateToOneWithWhereWithoutShippingInput {
     where?: InstanceType<typeof OrderWhereInput>;
     data: InstanceType<typeof OrderUpdateWithoutShippingInput>;
 }
 export declare class OrderUpdateWithWhereUniqueWithoutOrderByInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     data: InstanceType<typeof OrderUpdateWithoutOrderByInput>;
 }
-export declare class OrderUpdateWithoutInvoiceInput {
-    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
-    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
-    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
-    items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
-    shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
-}
-export declare class OrderUpdateWithoutItemsInput {
+export declare class OrderUpdateWithoutCartInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
@@ -8482,6 +8900,18 @@ export declare class OrderUpdateWithoutItemsInput {
     shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
     invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
+export declare class OrderUpdateWithoutInvoiceInput {
+    status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    platformFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
+    cart?: InstanceType<typeof CartUpdateManyWithoutOrderNestedInput>;
+    shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
+}
 export declare class OrderUpdateWithoutOrderByInput {
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     shippingId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -8490,7 +8920,7 @@ export declare class OrderUpdateWithoutOrderByInput {
     total?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
+    cart?: InstanceType<typeof CartUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
     invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
@@ -8503,7 +8933,7 @@ export declare class OrderUpdateWithoutShippingInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
-    items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
+    cart?: InstanceType<typeof CartUpdateManyWithoutOrderNestedInput>;
     invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
 export declare class OrderUpdateInput {
@@ -8515,23 +8945,23 @@ export declare class OrderUpdateInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     orderBy?: InstanceType<typeof UserUpdateOneRequiredWithoutOrdersNestedInput>;
-    items?: InstanceType<typeof ItemUpdateManyWithoutOrderNestedInput>;
+    cart?: InstanceType<typeof CartUpdateManyWithoutOrderNestedInput>;
     shipping?: InstanceType<typeof ShippingUpdateOneWithoutOrderNestedInput>;
     invoice?: InstanceType<typeof InvoiceUpdateOneRequiredWithoutOrderNestedInput>;
 }
 export declare class OrderUpsertWithWhereUniqueWithoutOrderByInput {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     update: InstanceType<typeof OrderUpdateWithoutOrderByInput>;
     create: InstanceType<typeof OrderCreateWithoutOrderByInput>;
+}
+export declare class OrderUpsertWithoutCartInput {
+    update: InstanceType<typeof OrderUpdateWithoutCartInput>;
+    create: InstanceType<typeof OrderCreateWithoutCartInput>;
+    where?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class OrderUpsertWithoutInvoiceInput {
     update: InstanceType<typeof OrderUpdateWithoutInvoiceInput>;
     create: InstanceType<typeof OrderCreateWithoutInvoiceInput>;
-    where?: InstanceType<typeof OrderWhereInput>;
-}
-export declare class OrderUpsertWithoutItemsInput {
-    update: InstanceType<typeof OrderUpdateWithoutItemsInput>;
-    create: InstanceType<typeof OrderCreateWithoutItemsInput>;
     where?: InstanceType<typeof OrderWhereInput>;
 }
 export declare class OrderUpsertWithoutShippingInput {
@@ -8541,12 +8971,12 @@ export declare class OrderUpsertWithoutShippingInput {
 }
 export declare class OrderWhereUniqueInput {
     id?: number;
+    orderById?: string;
     invoiceId?: number;
     AND?: Array<OrderWhereInput>;
     OR?: Array<OrderWhereInput>;
     NOT?: Array<OrderWhereInput>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
-    orderById?: InstanceType<typeof StringFilter>;
     shippingId?: InstanceType<typeof IntNullableFilter>;
     cost?: InstanceType<typeof FloatNullableFilter>;
     platformFee?: InstanceType<typeof FloatFilter>;
@@ -8554,7 +8984,7 @@ export declare class OrderWhereUniqueInput {
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     orderBy?: InstanceType<typeof UserRelationFilter>;
-    items?: InstanceType<typeof ItemListRelationFilter>;
+    cart?: InstanceType<typeof CartListRelationFilter>;
     shipping?: InstanceType<typeof ShippingNullableRelationFilter>;
     invoice?: InstanceType<typeof InvoiceRelationFilter>;
 }
@@ -8573,7 +9003,7 @@ export declare class OrderWhereInput {
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     orderBy?: InstanceType<typeof UserRelationFilter>;
-    items?: InstanceType<typeof ItemListRelationFilter>;
+    cart?: InstanceType<typeof CartListRelationFilter>;
     shipping?: InstanceType<typeof ShippingNullableRelationFilter>;
     invoice?: InstanceType<typeof InvoiceRelationFilter>;
 }
@@ -8589,7 +9019,7 @@ export declare class Order {
     createdAt: Date;
     updatedAt: Date;
     orderBy?: InstanceType<typeof User>;
-    items?: Array<Item>;
+    cart?: Array<Cart>;
     shipping?: InstanceType<typeof Shipping> | null;
     invoice?: InstanceType<typeof Invoice>;
     _count?: InstanceType<typeof OrderCount>;
@@ -8600,10 +9030,10 @@ export declare class UpdateManyOrderArgs {
 }
 export declare class UpdateOneOrderArgs {
     data: InstanceType<typeof OrderUpdateInput>;
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
 }
 export declare class UpsertOneOrderArgs {
-    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'invoiceId'>;
+    where: Prisma.AtLeast<OrderWhereUniqueInput, 'id' | 'orderById' | 'invoiceId'>;
     create: InstanceType<typeof OrderCreateInput>;
     update: InstanceType<typeof OrderUpdateInput>;
 }

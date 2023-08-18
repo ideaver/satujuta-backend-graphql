@@ -244,6 +244,59 @@ type Bank {
   accountNumber: Int!
 }
 
+type CartAvgAggregate {
+  id: Float
+  orderId: Float
+  itemId: Float
+  quantity: Float
+}
+
+type CartCountAggregate {
+  id: Int!
+  orderId: Int!
+  itemId: Int!
+  quantity: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type CartMaxAggregate {
+  id: Int
+  orderId: Int
+  itemId: Int
+  quantity: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type CartMinAggregate {
+  id: Int
+  orderId: Int
+  itemId: Int
+  quantity: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type CartSumAggregate {
+  id: Int
+  orderId: Int
+  itemId: Int
+  quantity: Int
+}
+
+type Cart {
+  id: Int!
+  orderId: Int!
+  itemId: Int!
+  quantity: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  order: Order!
+  item: Item!
+}
+
 type CheckInAvgAggregate {
   id: Float
   hotelId: Float
@@ -385,10 +438,10 @@ type FaqMaxAggregate {
 }
 
 enum FaqType {
-  ReferralPage
-  DashboardPage
-  RewardPage
-  Project
+  REFERRAL_PAGE
+  DASHBOARD_PAGE
+  REWARD_PAGE
+  PROJECT_PAGE
 }
 
 type FaqMinAggregate {
@@ -628,11 +681,129 @@ type Images {
   projectImage: Project
 }
 
+type InstallmentAvgAggregate {
+  id: Float
+  number: Float
+  lateFee: Float
+  amount: Float
+  transactionId: Float
+  invoiceId: Float
+}
+
+type InstallmentCountAggregate {
+  id: Int!
+  number: Int!
+  lateFee: Int!
+  amount: Int!
+  dueDate: Int!
+  status: Int!
+  transactionId: Int!
+  invoiceId: Int!
+  _all: Int!
+}
+
+type InstallmentMaxAggregate {
+  id: Int
+  number: Int
+  lateFee: Float
+  amount: Float
+  dueDate: DateTime
+  status: InstallmentStatus
+  transactionId: Int
+  invoiceId: Int
+}
+
+enum InstallmentStatus {
+  UPCOMING
+  PAID
+}
+
+type InstallmentMinAggregate {
+  id: Int
+  number: Int
+  lateFee: Float
+  amount: Float
+  dueDate: DateTime
+  status: InstallmentStatus
+  transactionId: Int
+  invoiceId: Int
+}
+
+type InstallmentSumAggregate {
+  id: Int
+  number: Int
+  lateFee: Float
+  amount: Float
+  transactionId: Int
+  invoiceId: Int
+}
+
+type Installment {
+  id: Int!
+  number: Int!
+  lateFee: Float!
+  amount: Float!
+  dueDate: DateTime!
+  status: InstallmentStatus!
+  transactionId: Int
+  invoiceId: Int!
+  transaction: Transaction
+  invoice: Invoice!
+}
+
+type InvoiceAvgAggregate {
+  id: Float
+  adminFee: Float
+  amount: Float
+}
+
+type InvoiceCountAggregate {
+  id: Int!
+  adminFee: Int!
+  amount: Int!
+  createdAt: Int!
+  _all: Int!
+}
+
+type InvoiceCount {
+  transactions: Int!
+  Installments: Int!
+}
+
+type InvoiceMaxAggregate {
+  id: Int
+  adminFee: Float
+  amount: Float
+  createdAt: DateTime
+}
+
+type InvoiceMinAggregate {
+  id: Int
+  adminFee: Float
+  amount: Float
+  createdAt: DateTime
+}
+
+type InvoiceSumAggregate {
+  id: Int
+  adminFee: Float
+  amount: Float
+}
+
+type Invoice {
+  id: Int!
+  adminFee: Float!
+  amount: Float!
+  createdAt: DateTime!
+  Order: Order
+  transactions: [Transaction!]
+  Installments: [Installment!]
+  _count: InvoiceCount!
+}
+
 type ItemAvgAggregate {
   id: Float
   price: Float
-  qty: Float
-  orderId: Float
 }
 
 type ItemCountAggregate {
@@ -640,12 +811,14 @@ type ItemCountAggregate {
   name: Int!
   description: Int!
   price: Int!
-  qty: Int!
   userRole: Int!
-  orderId: Int!
   createdAt: Int!
   updatedAt: Int!
   _all: Int!
+}
+
+type ItemCount {
+  cart: Int!
 }
 
 type ItemMaxAggregate {
@@ -653,9 +826,7 @@ type ItemMaxAggregate {
   name: String
   description: String
   price: Float
-  qty: Int
   userRole: UserRole
-  orderId: Int
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -665,9 +836,7 @@ type ItemMinAggregate {
   name: String
   description: String
   price: Float
-  qty: Int
   userRole: UserRole
-  orderId: Int
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -675,8 +844,6 @@ type ItemMinAggregate {
 type ItemSumAggregate {
   id: Int
   price: Float
-  qty: Int
-  orderId: Int
 }
 
 type Item {
@@ -684,17 +851,17 @@ type Item {
   name: String!
   description: String!
   price: Float!
-  qty: Int!
   userRole: UserRole!
-  orderId: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
-  order: Order!
+  cart: [Cart!]
+  _count: ItemCount!
 }
 
 type OrderAvgAggregate {
   id: Float
   shippingId: Float
+  invoiceId: Float
   cost: Float
   platformFee: Float
   total: Float
@@ -705,7 +872,7 @@ type OrderCountAggregate {
   status: Int!
   orderById: Int!
   shippingId: Int!
-  isFullPaid: Int!
+  invoiceId: Int!
   cost: Int!
   platformFee: Int!
   total: Int!
@@ -715,8 +882,7 @@ type OrderCountAggregate {
 }
 
 type OrderCount {
-  items: Int!
-  payments: Int!
+  cart: Int!
 }
 
 type OrderMaxAggregate {
@@ -724,7 +890,7 @@ type OrderMaxAggregate {
   status: TransactionStatus
   orderById: String
   shippingId: Int
-  isFullPaid: Boolean
+  invoiceId: Int
   cost: Float
   platformFee: Float
   total: Float
@@ -745,7 +911,7 @@ type OrderMinAggregate {
   status: TransactionStatus
   orderById: String
   shippingId: Int
-  isFullPaid: Boolean
+  invoiceId: Int
   cost: Float
   platformFee: Float
   total: Float
@@ -756,6 +922,7 @@ type OrderMinAggregate {
 type OrderSumAggregate {
   id: Int
   shippingId: Int
+  invoiceId: Int
   cost: Float
   platformFee: Float
   total: Float
@@ -766,117 +933,17 @@ type Order {
   status: TransactionStatus!
   orderById: String!
   shippingId: Int
-  isFullPaid: Boolean!
-  cost: Float!
+  invoiceId: Int!
+  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
   orderBy: UserAbstract!
-  items: [Item!]
+  cart: [Cart!]
   shipping: Shipping
-  payments: [Payment!]
+  invoice: Invoice!
   _count: OrderCount!
-}
-
-type PaymentAvgAggregate {
-  id: Float
-  adminFee: Float
-  totalPayment: Float
-  orderId: Float
-  transactionId: Float
-}
-
-type PaymentCountAggregate {
-  id: Int!
-  adminFee: Int!
-  totalPayment: Int!
-  orderId: Int!
-  transactionId: Int!
-  createdAt: Int!
-  _all: Int!
-}
-
-type PaymentMaxAggregate {
-  id: Int
-  adminFee: Float
-  totalPayment: Float
-  orderId: Int
-  transactionId: Int
-  createdAt: DateTime
-}
-
-type PaymentMinAggregate {
-  id: Int
-  adminFee: Float
-  totalPayment: Float
-  orderId: Int
-  transactionId: Int
-  createdAt: DateTime
-}
-
-type PaymentSumAggregate {
-  id: Int
-  adminFee: Float
-  totalPayment: Float
-  orderId: Int
-  transactionId: Int
-}
-
-type Payment {
-  id: Int!
-  adminFee: Float!
-  totalPayment: Float!
-  orderId: Int!
-  transactionId: Int!
-  createdAt: DateTime!
-  order: Order!
-  transaction: Transaction!
-  confirmation: PaymentConfirmation
-}
-
-type PaymentConfirmationAvgAggregate {
-  id: Float
-  paymentId: Float
-}
-
-type PaymentConfirmationCountAggregate {
-  id: Int!
-  ProofUrl: Int!
-  paymentId: Int!
-  createdAt: Int!
-  updatedAt: Int!
-  _all: Int!
-}
-
-type PaymentConfirmationMaxAggregate {
-  id: Int
-  ProofUrl: String
-  paymentId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type PaymentConfirmationMinAggregate {
-  id: Int
-  ProofUrl: String
-  paymentId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type PaymentConfirmationSumAggregate {
-  id: Int
-  paymentId: Int
-}
-
-type PaymentConfirmation {
-  id: Int!
-  ProofUrl: String!
-  paymentId: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  payment: Payment!
 }
 
 type PointTransactionAvgAggregate {
@@ -1433,15 +1500,20 @@ type TransactionAvgAggregate {
   amount: Float
   fromAccountId: Float
   toAccountId: Float
+  invoiceId: Float
+  installmentId: Float
 }
 
 type TransactionCountAggregate {
   id: Int!
   amount: Int!
+  proofUrl: Int!
   status: Int!
   transactionCategory: Int!
   fromAccountId: Int!
   toAccountId: Int!
+  invoiceId: Int!
+  installmentId: Int!
   createdAt: Int!
   _all: Int!
 }
@@ -1449,10 +1521,13 @@ type TransactionCountAggregate {
 type TransactionMaxAggregate {
   id: Int
   amount: Float
+  proofUrl: String
   status: TransactionStatus
   transactionCategory: TransactionCategory
   fromAccountId: Int
   toAccountId: Int
+  invoiceId: Int
+  installmentId: Int
   createdAt: DateTime
 }
 
@@ -1468,10 +1543,13 @@ enum TransactionCategory {
 type TransactionMinAggregate {
   id: Int
   amount: Float
+  proofUrl: String
   status: TransactionStatus
   transactionCategory: TransactionCategory
   fromAccountId: Int
   toAccountId: Int
+  invoiceId: Int
+  installmentId: Int
   createdAt: DateTime
 }
 
@@ -1480,19 +1558,25 @@ type TransactionSumAggregate {
   amount: Float
   fromAccountId: Int
   toAccountId: Int
+  invoiceId: Int
+  installmentId: Int
 }
 
 type Transaction {
   id: Int!
   amount: Float!
+  proofUrl: String
   status: TransactionStatus!
   transactionCategory: TransactionCategory!
   fromAccountId: Int!
   toAccountId: Int!
+  invoiceId: Int
+  installmentId: Int
   createdAt: DateTime!
   fromAccount: Account!
   toAccount: Account!
-  payment: Payment
+  invoice: Invoice
+  Installment: Installment
 }
 
 type UserAvgAggregate {
@@ -1769,18 +1853,6 @@ type Query {
   projectFindOne(projectFindUniqueArgs: ProjectFindUniqueArgs!): Project
 
   """Deskripsinya ada disini loh"""
-  paymentConfirmationFindMany(paymentConfirmationFindManyArgs: PaymentConfirmationFindManyArgs!): [PaymentConfirmation!]
-
-  """Deskripsinya ada disini loh"""
-  paymentConfirmationFindOne(paymentConfirmationFindUniqueArgs: PaymentConfirmationFindUniqueArgs!): PaymentConfirmation
-
-  """Deskripsinya ada disini loh"""
-  paymentFindMany(paymentFindManyArgs: PaymentFindManyArgs!): [Payment!]
-
-  """Deskripsinya ada disini loh"""
-  paymentFindOne(paymentFindUniqueArgs: PaymentFindUniqueArgs!): Payment
-
-  """Deskripsinya ada disini loh"""
   shippingFindMany(shippingFindManyArgs: ShippingFindManyArgs!): [Shipping!]
 
   """Deskripsinya ada disini loh"""
@@ -1791,12 +1863,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
-
-  """Deskripsinya ada disini loh"""
-  orderFindMany(orderFindManyArgs: OrderFindManyArgs!): [Order!]
-
-  """Deskripsinya ada disini loh"""
-  orderFindOne(orderFindUniqueArgs: OrderFindUniqueArgs!): Order
 
   """Deskripsinya ada disini loh"""
   checkInFindMany(checkInFindManyArgs: CheckInFindManyArgs!): [CheckIn!]
@@ -2435,14 +2501,18 @@ input TransactionWhereInput {
   NOT: [TransactionWhereInput!]
   id: IntFilter
   amount: FloatFilter
+  proofUrl: StringNullableFilter
   status: EnumTransactionStatusFilter
   transactionCategory: EnumTransactionCategoryFilter
   fromAccountId: IntFilter
   toAccountId: IntFilter
+  invoiceId: IntNullableFilter
+  installmentId: IntNullableFilter
   createdAt: DateTimeFilter
   fromAccount: AccountRelationFilter
   toAccount: AccountRelationFilter
-  payment: PaymentNullableRelationFilter
+  invoice: InvoiceNullableRelationFilter
+  Installment: InstallmentNullableRelationFilter
 }
 
 input EnumTransactionStatusFilter {
@@ -2473,27 +2543,25 @@ input NestedEnumTransactionCategoryFilter {
   not: NestedEnumTransactionCategoryFilter
 }
 
-input PaymentNullableRelationFilter {
-  is: PaymentWhereInput
-  isNot: PaymentWhereInput
+input InvoiceNullableRelationFilter {
+  is: InvoiceWhereInput
+  isNot: InvoiceWhereInput
 }
 
-input PaymentWhereInput {
-  AND: [PaymentWhereInput!]
-  OR: [PaymentWhereInput!]
-  NOT: [PaymentWhereInput!]
+input InvoiceWhereInput {
+  AND: [InvoiceWhereInput!]
+  OR: [InvoiceWhereInput!]
+  NOT: [InvoiceWhereInput!]
   id: IntFilter
   adminFee: FloatFilter
-  totalPayment: FloatFilter
-  orderId: IntFilter
-  transactionId: IntFilter
+  amount: FloatFilter
   createdAt: DateTimeFilter
-  order: OrderRelationFilter
-  transaction: TransactionRelationFilter
-  confirmation: PaymentConfirmationNullableRelationFilter
+  Order: OrderNullableRelationFilter
+  transactions: TransactionListRelationFilter
+  Installments: InstallmentListRelationFilter
 }
 
-input OrderRelationFilter {
+input OrderNullableRelationFilter {
   is: OrderWhereInput
   isNot: OrderWhereInput
 }
@@ -2506,32 +2574,46 @@ input OrderWhereInput {
   status: EnumTransactionStatusFilter
   orderById: StringFilter
   shippingId: IntNullableFilter
-  isFullPaid: BoolFilter
-  cost: FloatFilter
+  invoiceId: IntFilter
+  cost: FloatNullableFilter
   platformFee: FloatFilter
   total: FloatFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   orderBy: UserRelationFilter
-  items: ItemListRelationFilter
+  cart: CartListRelationFilter
   shipping: ShippingNullableRelationFilter
-  payments: PaymentListRelationFilter
+  invoice: InvoiceRelationFilter
 }
 
-input BoolFilter {
-  equals: Boolean
-  not: NestedBoolFilter
+input CartListRelationFilter {
+  every: CartWhereInput
+  some: CartWhereInput
+  none: CartWhereInput
 }
 
-input NestedBoolFilter {
-  equals: Boolean
-  not: NestedBoolFilter
+input CartWhereInput {
+  AND: [CartWhereInput!]
+  OR: [CartWhereInput!]
+  NOT: [CartWhereInput!]
+  id: IntFilter
+  orderId: IntFilter
+  itemId: IntFilter
+  quantity: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+  item: ItemRelationFilter
 }
 
-input ItemListRelationFilter {
-  every: ItemWhereInput
-  some: ItemWhereInput
-  none: ItemWhereInput
+input OrderRelationFilter {
+  is: OrderWhereInput
+  isNot: OrderWhereInput
+}
+
+input ItemRelationFilter {
+  is: ItemWhereInput
+  isNot: ItemWhereInput
 }
 
 input ItemWhereInput {
@@ -2542,12 +2624,10 @@ input ItemWhereInput {
   name: StringFilter
   description: StringFilter
   price: FloatFilter
-  qty: IntFilter
   userRole: EnumUserRoleFilter
-  orderId: IntFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
-  order: OrderRelationFilter
+  cart: CartListRelationFilter
 }
 
 input ShippingNullableRelationFilter {
@@ -2588,37 +2668,55 @@ input NestedEnumShippingStatusFilter {
   not: NestedEnumShippingStatusFilter
 }
 
-input PaymentListRelationFilter {
-  every: PaymentWhereInput
-  some: PaymentWhereInput
-  none: PaymentWhereInput
+input InvoiceRelationFilter {
+  is: InvoiceWhereInput
+  isNot: InvoiceWhereInput
 }
 
-input TransactionRelationFilter {
+input InstallmentListRelationFilter {
+  every: InstallmentWhereInput
+  some: InstallmentWhereInput
+  none: InstallmentWhereInput
+}
+
+input InstallmentWhereInput {
+  AND: [InstallmentWhereInput!]
+  OR: [InstallmentWhereInput!]
+  NOT: [InstallmentWhereInput!]
+  id: IntFilter
+  number: IntFilter
+  lateFee: FloatFilter
+  amount: FloatFilter
+  dueDate: DateTimeFilter
+  status: EnumInstallmentStatusFilter
+  transactionId: IntNullableFilter
+  invoiceId: IntFilter
+  transaction: TransactionNullableRelationFilter
+  invoice: InvoiceRelationFilter
+}
+
+input EnumInstallmentStatusFilter {
+  equals: InstallmentStatus
+  in: [InstallmentStatus!]
+  notIn: [InstallmentStatus!]
+  not: NestedEnumInstallmentStatusFilter
+}
+
+input NestedEnumInstallmentStatusFilter {
+  equals: InstallmentStatus
+  in: [InstallmentStatus!]
+  notIn: [InstallmentStatus!]
+  not: NestedEnumInstallmentStatusFilter
+}
+
+input TransactionNullableRelationFilter {
   is: TransactionWhereInput
   isNot: TransactionWhereInput
 }
 
-input PaymentConfirmationNullableRelationFilter {
-  is: PaymentConfirmationWhereInput
-  isNot: PaymentConfirmationWhereInput
-}
-
-input PaymentConfirmationWhereInput {
-  AND: [PaymentConfirmationWhereInput!]
-  OR: [PaymentConfirmationWhereInput!]
-  NOT: [PaymentConfirmationWhereInput!]
-  id: IntFilter
-  ProofUrl: StringFilter
-  paymentId: IntFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  payment: PaymentRelationFilter
-}
-
-input PaymentRelationFilter {
-  is: PaymentWhereInput
-  isNot: PaymentWhereInput
+input InstallmentNullableRelationFilter {
+  is: InstallmentWhereInput
+  isNot: InstallmentWhereInput
 }
 
 input BankNullableRelationFilter {
@@ -2823,23 +2921,37 @@ input OrderOrderByWithRelationInput {
   status: SortOrder
   orderById: SortOrder
   shippingId: SortOrderInput
-  isFullPaid: SortOrder
-  cost: SortOrder
+  invoiceId: SortOrder
+  cost: SortOrderInput
   platformFee: SortOrder
   total: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
   orderBy: UserOrderByWithRelationInput
-  items: ItemOrderByRelationAggregateInput
+  cart: CartOrderByRelationAggregateInput
   shipping: ShippingOrderByWithRelationInput
-  payments: PaymentOrderByRelationAggregateInput
+  invoice: InvoiceOrderByWithRelationInput
 }
 
-input ItemOrderByRelationAggregateInput {
+input CartOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
-input PaymentOrderByRelationAggregateInput {
+input InvoiceOrderByWithRelationInput {
+  id: SortOrder
+  adminFee: SortOrder
+  amount: SortOrder
+  createdAt: SortOrder
+  Order: OrderOrderByWithRelationInput
+  transactions: TransactionOrderByRelationAggregateInput
+  Installments: InstallmentOrderByRelationAggregateInput
+}
+
+input TransactionOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input InstallmentOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
@@ -3440,10 +3552,6 @@ input AccountOrderByWithRelationInput {
   bankAccount: BankOrderByWithRelationInput
 }
 
-input TransactionOrderByRelationAggregateInput {
-  _count: SortOrder
-}
-
 input BankOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
@@ -3495,108 +3603,6 @@ input ProjectWhereUniqueInput {
   images: ImagesListRelationFilter
   investors: UserListRelationFilter
   account: AccountRelationFilter
-}
-
-input PaymentConfirmationFindManyArgs {
-  where: PaymentConfirmationWhereInput
-  orderBy: [PaymentConfirmationOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [PaymentConfirmationScalarFieldEnum!]
-}
-
-input PaymentConfirmationOrderByWithRelationInput {
-  id: SortOrder
-  ProofUrl: SortOrder
-  paymentId: SortOrder
-  createdAt: SortOrder
-  updatedAt: SortOrder
-  payment: PaymentOrderByWithRelationInput
-}
-
-input PaymentOrderByWithRelationInput {
-  id: SortOrder
-  adminFee: SortOrder
-  totalPayment: SortOrder
-  orderId: SortOrder
-  transactionId: SortOrder
-  createdAt: SortOrder
-  order: OrderOrderByWithRelationInput
-  transaction: TransactionOrderByWithRelationInput
-  confirmation: PaymentConfirmationOrderByWithRelationInput
-}
-
-input TransactionOrderByWithRelationInput {
-  id: SortOrder
-  amount: SortOrder
-  status: SortOrder
-  transactionCategory: SortOrder
-  fromAccountId: SortOrder
-  toAccountId: SortOrder
-  createdAt: SortOrder
-  fromAccount: AccountOrderByWithRelationInput
-  toAccount: AccountOrderByWithRelationInput
-  payment: PaymentOrderByWithRelationInput
-}
-
-enum PaymentConfirmationScalarFieldEnum {
-  id
-  ProofUrl
-  paymentId
-  createdAt
-  updatedAt
-}
-
-input PaymentConfirmationFindUniqueArgs {
-  where: PaymentConfirmationWhereUniqueInput!
-}
-
-input PaymentConfirmationWhereUniqueInput {
-  id: Int
-  paymentId: Int
-  AND: [PaymentConfirmationWhereInput!]
-  OR: [PaymentConfirmationWhereInput!]
-  NOT: [PaymentConfirmationWhereInput!]
-  ProofUrl: StringFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  payment: PaymentRelationFilter
-}
-
-input PaymentFindManyArgs {
-  where: PaymentWhereInput
-  orderBy: [PaymentOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [PaymentScalarFieldEnum!]
-}
-
-enum PaymentScalarFieldEnum {
-  id
-  adminFee
-  totalPayment
-  orderId
-  transactionId
-  createdAt
-}
-
-input PaymentFindUniqueArgs {
-  where: PaymentWhereUniqueInput!
-}
-
-input PaymentWhereUniqueInput {
-  id: Int
-  transactionId: Int
-  AND: [PaymentWhereInput!]
-  OR: [PaymentWhereInput!]
-  NOT: [PaymentWhereInput!]
-  adminFee: FloatFilter
-  totalPayment: FloatFilter
-  orderId: IntFilter
-  createdAt: DateTimeFilter
-  order: OrderRelationFilter
-  transaction: TransactionRelationFilter
-  confirmation: PaymentConfirmationNullableRelationFilter
 }
 
 input ShippingFindManyArgs {
@@ -3657,12 +3663,10 @@ input ItemOrderByWithRelationInput {
   name: SortOrder
   description: SortOrder
   price: SortOrder
-  qty: SortOrder
   userRole: SortOrder
-  orderId: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
-  order: OrderOrderByWithRelationInput
+  cart: CartOrderByRelationAggregateInput
 }
 
 enum ItemScalarFieldEnum {
@@ -3670,9 +3674,7 @@ enum ItemScalarFieldEnum {
   name
   description
   price
-  qty
   userRole
-  orderId
   createdAt
   updatedAt
 }
@@ -3689,57 +3691,10 @@ input ItemWhereUniqueInput {
   name: StringFilter
   description: StringFilter
   price: FloatFilter
-  qty: IntFilter
   userRole: EnumUserRoleFilter
-  orderId: IntFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
-  order: OrderRelationFilter
-}
-
-input OrderFindManyArgs {
-  where: OrderWhereInput
-  orderBy: [OrderOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [OrderScalarFieldEnum!]
-}
-
-enum OrderScalarFieldEnum {
-  id
-  status
-  orderById
-  shippingId
-  isFullPaid
-  cost
-  platformFee
-  total
-  createdAt
-  updatedAt
-}
-
-input OrderFindUniqueArgs {
-  where: OrderWhereUniqueInput!
-}
-
-input OrderWhereUniqueInput {
-  id: Int
-  orderById: String
-  AND: [OrderWhereInput!]
-  OR: [OrderWhereInput!]
-  NOT: [OrderWhereInput!]
-  status: EnumTransactionStatusFilter
-  shippingId: IntNullableFilter
-  isFullPaid: BoolFilter
-  cost: FloatFilter
-  platformFee: FloatFilter
-  total: FloatFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  orderBy: UserRelationFilter
-  items: ItemListRelationFilter
-  shipping: ShippingNullableRelationFilter
-  payments: PaymentListRelationFilter
+  cart: CartListRelationFilter
 }
 
 input CheckInFindManyArgs {
@@ -3822,6 +3777,16 @@ input NestedEnumUserNotificationCategoryFilter {
   in: [UserNotificationCategory!]
   notIn: [UserNotificationCategory!]
   not: NestedEnumUserNotificationCategoryFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
 }
 
 input UserNotificationOrderByWithRelationInput {
@@ -3944,13 +3909,46 @@ input TransactionFindManyArgs {
   distinct: [TransactionScalarFieldEnum!]
 }
 
+input TransactionOrderByWithRelationInput {
+  id: SortOrder
+  amount: SortOrder
+  proofUrl: SortOrderInput
+  status: SortOrder
+  transactionCategory: SortOrder
+  fromAccountId: SortOrder
+  toAccountId: SortOrder
+  invoiceId: SortOrderInput
+  installmentId: SortOrderInput
+  createdAt: SortOrder
+  fromAccount: AccountOrderByWithRelationInput
+  toAccount: AccountOrderByWithRelationInput
+  invoice: InvoiceOrderByWithRelationInput
+  Installment: InstallmentOrderByWithRelationInput
+}
+
+input InstallmentOrderByWithRelationInput {
+  id: SortOrder
+  number: SortOrder
+  lateFee: SortOrder
+  amount: SortOrder
+  dueDate: SortOrder
+  status: SortOrder
+  transactionId: SortOrderInput
+  invoiceId: SortOrder
+  transaction: TransactionOrderByWithRelationInput
+  invoice: InvoiceOrderByWithRelationInput
+}
+
 enum TransactionScalarFieldEnum {
   id
   amount
+  proofUrl
   status
   transactionCategory
   fromAccountId
   toAccountId
+  invoiceId
+  installmentId
   createdAt
 }
 
@@ -3960,18 +3958,22 @@ input TransactionFindUniqueArgs {
 
 input TransactionWhereUniqueInput {
   id: Int
+  installmentId: Int
   AND: [TransactionWhereInput!]
   OR: [TransactionWhereInput!]
   NOT: [TransactionWhereInput!]
   amount: FloatFilter
+  proofUrl: StringNullableFilter
   status: EnumTransactionStatusFilter
   transactionCategory: EnumTransactionCategoryFilter
   fromAccountId: IntFilter
   toAccountId: IntFilter
+  invoiceId: IntNullableFilter
   createdAt: DateTimeFilter
   fromAccount: AccountRelationFilter
   toAccount: AccountRelationFilter
-  payment: PaymentNullableRelationFilter
+  invoice: InvoiceNullableRelationFilter
+  Installment: InstallmentNullableRelationFilter
 }
 
 input AccountFindManyArgs {
@@ -4182,24 +4184,6 @@ type Mutation {
   projectRemove(projectId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  paymentConfirmationCreateOne(paymentConfirmationCreateArgs: PaymentConfirmationCreateArgs!): PaymentConfirmation
-
-  """Deskripsinya ada disini loh"""
-  paymentConfirmationUpdateOne(paymentConfirmationUpdateOneArgs: PaymentConfirmationUpdateOneArgs!): PaymentConfirmation!
-
-  """Datanya benar2 terhapus dari db"""
-  paymentConfirmationRemove(paymentConfirmationId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
-  paymentCreateOne(paymentCreateArgs: PaymentCreateArgs!): Payment
-
-  """Deskripsinya ada disini loh"""
-  paymentUpdateOne(paymentUpdateOneArgs: PaymentUpdateOneArgs!): Payment!
-
-  """Datanya benar2 terhapus dari db"""
-  paymentRemove(paymentId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
   shippingCreateOne(shippingCreateArgs: ShippingCreateArgs!): Shipping
 
   """Deskripsinya ada disini loh"""
@@ -4216,15 +4200,6 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   itemRemove(itemId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
-  orderCreateOne(orderCreateArgs: OrderCreateArgs!): Order
-
-  """Deskripsinya ada disini loh"""
-  orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
-
-  """Datanya benar2 terhapus dari db"""
-  orderRemove(orderId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
   checkInCreateOne(checkInCreateArgs: CheckInCreateArgs!): CheckIn
@@ -4464,11 +4439,13 @@ input TransactionCreateNestedManyWithoutFromAccountInput {
 
 input TransactionCreateWithoutFromAccountInput {
   amount: Float!
+  proofUrl: String
   status: TransactionStatus!
   transactionCategory: TransactionCategory!
   createdAt: DateTime
   toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
-  payment: PaymentCreateNestedOneWithoutTransactionInput
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+  Installment: InstallmentCreateNestedOneWithoutTransactionInput
 }
 
 input AccountCreateNestedOneWithoutTransactionDestinationInput {
@@ -4654,37 +4631,36 @@ input AccountCreateOrConnectWithoutTransactionDestinationInput {
   create: AccountCreateWithoutTransactionDestinationInput!
 }
 
-input PaymentCreateNestedOneWithoutTransactionInput {
-  create: PaymentCreateWithoutTransactionInput
-  connectOrCreate: PaymentCreateOrConnectWithoutTransactionInput
-  connect: PaymentWhereUniqueInput
+input InvoiceCreateNestedOneWithoutTransactionsInput {
+  create: InvoiceCreateWithoutTransactionsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
+  connect: InvoiceWhereUniqueInput
 }
 
-input PaymentCreateWithoutTransactionInput {
+input InvoiceCreateWithoutTransactionsInput {
   adminFee: Float!
-  totalPayment: Float!
+  amount: Float!
   createdAt: DateTime
-  order: OrderCreateNestedOneWithoutPaymentsInput!
-  confirmation: PaymentConfirmationCreateNestedOneWithoutPaymentInput
+  Order: OrderCreateNestedOneWithoutInvoiceInput
+  Installments: InstallmentCreateNestedManyWithoutInvoiceInput
 }
 
-input OrderCreateNestedOneWithoutPaymentsInput {
-  create: OrderCreateWithoutPaymentsInput
-  connectOrCreate: OrderCreateOrConnectWithoutPaymentsInput
+input OrderCreateNestedOneWithoutInvoiceInput {
+  create: OrderCreateWithoutInvoiceInput
+  connectOrCreate: OrderCreateOrConnectWithoutInvoiceInput
   connect: OrderWhereUniqueInput
 }
 
-input OrderCreateWithoutPaymentsInput {
+input OrderCreateWithoutInvoiceInput {
   status: TransactionStatus!
   shippingId: Int
-  isFullPaid: Boolean!
-  cost: Float!
+  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
   updatedAt: DateTime
   orderBy: UserCreateNestedOneWithoutOrdersInput!
-  items: ItemCreateNestedManyWithoutOrderInput
+  cart: CartCreateNestedManyWithoutOrderInput
   shipping: ShippingCreateNestedOneWithoutOrderInput
 }
 
@@ -4716,40 +4692,68 @@ input UserCreateOrConnectWithoutOrdersInput {
   create: UserCreateWithoutOrdersInput!
 }
 
-input ItemCreateNestedManyWithoutOrderInput {
-  create: [ItemCreateWithoutOrderInput!]
-  connectOrCreate: [ItemCreateOrConnectWithoutOrderInput!]
-  createMany: ItemCreateManyOrderInputEnvelope
-  connect: [ItemWhereUniqueInput!]
+input CartCreateNestedManyWithoutOrderInput {
+  create: [CartCreateWithoutOrderInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutOrderInput!]
+  createMany: CartCreateManyOrderInputEnvelope
+  connect: [CartWhereUniqueInput!]
 }
 
-input ItemCreateWithoutOrderInput {
+input CartCreateWithoutOrderInput {
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  item: ItemCreateNestedOneWithoutCartInput!
+}
+
+input ItemCreateNestedOneWithoutCartInput {
+  create: ItemCreateWithoutCartInput
+  connectOrCreate: ItemCreateOrConnectWithoutCartInput
+  connect: ItemWhereUniqueInput
+}
+
+input ItemCreateWithoutCartInput {
   name: String!
   description: String!
   price: Float!
-  qty: Int!
   userRole: UserRole!
   createdAt: DateTime
   updatedAt: DateTime
 }
 
-input ItemCreateOrConnectWithoutOrderInput {
+input ItemCreateOrConnectWithoutCartInput {
   where: ItemWhereUniqueInput!
-  create: ItemCreateWithoutOrderInput!
+  create: ItemCreateWithoutCartInput!
 }
 
-input ItemCreateManyOrderInputEnvelope {
-  data: [ItemCreateManyOrderInput!]!
+input CartCreateOrConnectWithoutOrderInput {
+  where: CartWhereUniqueInput!
+  create: CartCreateWithoutOrderInput!
+}
+
+input CartWhereUniqueInput {
+  id: Int
+  itemId: Int
+  AND: [CartWhereInput!]
+  OR: [CartWhereInput!]
+  NOT: [CartWhereInput!]
+  orderId: IntFilter
+  quantity: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+  item: ItemRelationFilter
+}
+
+input CartCreateManyOrderInputEnvelope {
+  data: [CartCreateManyOrderInput!]!
   skipDuplicates: Boolean
 }
 
-input ItemCreateManyOrderInput {
+input CartCreateManyOrderInput {
   id: Int
-  name: String!
-  description: String!
-  price: Float!
-  qty: Int!
-  userRole: UserRole!
+  itemId: Int!
+  quantity: Int!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -4795,66 +4799,63 @@ input ShippingCreateOrConnectWithoutOrderInput {
   create: ShippingCreateWithoutOrderInput!
 }
 
-input OrderCreateOrConnectWithoutPaymentsInput {
+input OrderCreateOrConnectWithoutInvoiceInput {
   where: OrderWhereUniqueInput!
-  create: OrderCreateWithoutPaymentsInput!
+  create: OrderCreateWithoutInvoiceInput!
 }
 
-input PaymentConfirmationCreateNestedOneWithoutPaymentInput {
-  create: PaymentConfirmationCreateWithoutPaymentInput
-  connectOrCreate: PaymentConfirmationCreateOrConnectWithoutPaymentInput
-  connect: PaymentConfirmationWhereUniqueInput
-}
-
-input PaymentConfirmationCreateWithoutPaymentInput {
-  ProofUrl: String!
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input PaymentConfirmationCreateOrConnectWithoutPaymentInput {
-  where: PaymentConfirmationWhereUniqueInput!
-  create: PaymentConfirmationCreateWithoutPaymentInput!
-}
-
-input PaymentCreateOrConnectWithoutTransactionInput {
-  where: PaymentWhereUniqueInput!
-  create: PaymentCreateWithoutTransactionInput!
-}
-
-input TransactionCreateOrConnectWithoutFromAccountInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutFromAccountInput!
-}
-
-input TransactionCreateManyFromAccountInputEnvelope {
-  data: [TransactionCreateManyFromAccountInput!]!
-  skipDuplicates: Boolean
-}
-
-input TransactionCreateManyFromAccountInput {
+input OrderWhereUniqueInput {
   id: Int
-  amount: Float!
-  status: TransactionStatus!
-  transactionCategory: TransactionCategory!
-  toAccountId: Int!
-  createdAt: DateTime
+  orderById: String
+  invoiceId: Int
+  AND: [OrderWhereInput!]
+  OR: [OrderWhereInput!]
+  NOT: [OrderWhereInput!]
+  status: EnumTransactionStatusFilter
+  shippingId: IntNullableFilter
+  cost: FloatNullableFilter
+  platformFee: FloatFilter
+  total: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  orderBy: UserRelationFilter
+  cart: CartListRelationFilter
+  shipping: ShippingNullableRelationFilter
+  invoice: InvoiceRelationFilter
 }
 
-input TransactionCreateNestedManyWithoutToAccountInput {
-  create: [TransactionCreateWithoutToAccountInput!]
-  connectOrCreate: [TransactionCreateOrConnectWithoutToAccountInput!]
-  createMany: TransactionCreateManyToAccountInputEnvelope
-  connect: [TransactionWhereUniqueInput!]
+input InstallmentCreateNestedManyWithoutInvoiceInput {
+  create: [InstallmentCreateWithoutInvoiceInput!]
+  connectOrCreate: [InstallmentCreateOrConnectWithoutInvoiceInput!]
+  createMany: InstallmentCreateManyInvoiceInputEnvelope
+  connect: [InstallmentWhereUniqueInput!]
 }
 
-input TransactionCreateWithoutToAccountInput {
+input InstallmentCreateWithoutInvoiceInput {
+  number: Int!
+  lateFee: Float!
   amount: Float!
+  dueDate: DateTime!
+  status: InstallmentStatus!
+  transactionId: Int
+  transaction: TransactionCreateNestedOneWithoutInstallmentInput
+}
+
+input TransactionCreateNestedOneWithoutInstallmentInput {
+  create: TransactionCreateWithoutInstallmentInput
+  connectOrCreate: TransactionCreateOrConnectWithoutInstallmentInput
+  connect: TransactionWhereUniqueInput
+}
+
+input TransactionCreateWithoutInstallmentInput {
+  amount: Float!
+  proofUrl: String
   status: TransactionStatus!
   transactionCategory: TransactionCategory!
   createdAt: DateTime
   fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
-  payment: PaymentCreateNestedOneWithoutTransactionInput
+  toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
 }
 
 input AccountCreateNestedOneWithoutTransactionOriginsInput {
@@ -4875,9 +4876,131 @@ input AccountCreateWithoutTransactionOriginsInput {
   bankAccount: BankCreateNestedOneWithoutAccountInput
 }
 
-input AccountCreateOrConnectWithoutTransactionOriginsInput {
-  where: AccountWhereUniqueInput!
-  create: AccountCreateWithoutTransactionOriginsInput!
+input TransactionCreateNestedManyWithoutToAccountInput {
+  create: [TransactionCreateWithoutToAccountInput!]
+  connectOrCreate: [TransactionCreateOrConnectWithoutToAccountInput!]
+  createMany: TransactionCreateManyToAccountInputEnvelope
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateWithoutToAccountInput {
+  amount: Float!
+  proofUrl: String
+  status: TransactionStatus!
+  transactionCategory: TransactionCategory!
+  createdAt: DateTime
+  fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+  Installment: InstallmentCreateNestedOneWithoutTransactionInput
+}
+
+input InstallmentCreateNestedOneWithoutTransactionInput {
+  create: InstallmentCreateWithoutTransactionInput
+  connectOrCreate: InstallmentCreateOrConnectWithoutTransactionInput
+  connect: InstallmentWhereUniqueInput
+}
+
+input InstallmentCreateWithoutTransactionInput {
+  number: Int!
+  lateFee: Float!
+  amount: Float!
+  dueDate: DateTime!
+  status: InstallmentStatus!
+  transactionId: Int
+  invoice: InvoiceCreateNestedOneWithoutInstallmentsInput!
+}
+
+input InvoiceCreateNestedOneWithoutInstallmentsInput {
+  create: InvoiceCreateWithoutInstallmentsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutInstallmentsInput
+  connect: InvoiceWhereUniqueInput
+}
+
+input InvoiceCreateWithoutInstallmentsInput {
+  adminFee: Float!
+  amount: Float!
+  createdAt: DateTime
+  Order: OrderCreateNestedOneWithoutInvoiceInput
+  transactions: TransactionCreateNestedManyWithoutInvoiceInput
+}
+
+input TransactionCreateNestedManyWithoutInvoiceInput {
+  create: [TransactionCreateWithoutInvoiceInput!]
+  connectOrCreate: [TransactionCreateOrConnectWithoutInvoiceInput!]
+  createMany: TransactionCreateManyInvoiceInputEnvelope
+  connect: [TransactionWhereUniqueInput!]
+}
+
+input TransactionCreateWithoutInvoiceInput {
+  amount: Float!
+  proofUrl: String
+  status: TransactionStatus!
+  transactionCategory: TransactionCategory!
+  createdAt: DateTime
+  fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
+  toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
+  Installment: InstallmentCreateNestedOneWithoutTransactionInput
+}
+
+input TransactionCreateOrConnectWithoutInvoiceInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutInvoiceInput!
+}
+
+input TransactionCreateManyInvoiceInputEnvelope {
+  data: [TransactionCreateManyInvoiceInput!]!
+  skipDuplicates: Boolean
+}
+
+input TransactionCreateManyInvoiceInput {
+  id: Int
+  amount: Float!
+  proofUrl: String
+  status: TransactionStatus!
+  transactionCategory: TransactionCategory!
+  fromAccountId: Int!
+  toAccountId: Int!
+  installmentId: Int
+  createdAt: DateTime
+}
+
+input InvoiceCreateOrConnectWithoutInstallmentsInput {
+  where: InvoiceWhereUniqueInput!
+  create: InvoiceCreateWithoutInstallmentsInput!
+}
+
+input InvoiceWhereUniqueInput {
+  id: Int
+  AND: [InvoiceWhereInput!]
+  OR: [InvoiceWhereInput!]
+  NOT: [InvoiceWhereInput!]
+  adminFee: FloatFilter
+  amount: FloatFilter
+  createdAt: DateTimeFilter
+  Order: OrderNullableRelationFilter
+  transactions: TransactionListRelationFilter
+  Installments: InstallmentListRelationFilter
+}
+
+input InstallmentCreateOrConnectWithoutTransactionInput {
+  where: InstallmentWhereUniqueInput!
+  create: InstallmentCreateWithoutTransactionInput!
+}
+
+input InstallmentWhereUniqueInput {
+  id: Int
+  AND: [InstallmentWhereInput!]
+  OR: [InstallmentWhereInput!]
+  NOT: [InstallmentWhereInput!]
+  number: IntFilter
+  lateFee: FloatFilter
+  amount: FloatFilter
+  dueDate: DateTimeFilter
+  status: EnumInstallmentStatusFilter
+  transactionId: IntNullableFilter
+  invoiceId: IntFilter
+  transaction: TransactionNullableRelationFilter
+  invoice: InvoiceRelationFilter
 }
 
 input TransactionCreateOrConnectWithoutToAccountInput {
@@ -4893,9 +5016,69 @@ input TransactionCreateManyToAccountInputEnvelope {
 input TransactionCreateManyToAccountInput {
   id: Int
   amount: Float!
+  proofUrl: String
   status: TransactionStatus!
   transactionCategory: TransactionCategory!
   fromAccountId: Int!
+  invoiceId: Int
+  installmentId: Int
+  createdAt: DateTime
+}
+
+input AccountCreateOrConnectWithoutTransactionOriginsInput {
+  where: AccountWhereUniqueInput!
+  create: AccountCreateWithoutTransactionOriginsInput!
+}
+
+input TransactionCreateOrConnectWithoutInstallmentInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutInstallmentInput!
+}
+
+input InstallmentCreateOrConnectWithoutInvoiceInput {
+  where: InstallmentWhereUniqueInput!
+  create: InstallmentCreateWithoutInvoiceInput!
+}
+
+input InstallmentCreateManyInvoiceInputEnvelope {
+  data: [InstallmentCreateManyInvoiceInput!]!
+  skipDuplicates: Boolean
+}
+
+input InstallmentCreateManyInvoiceInput {
+  id: Int
+  number: Int!
+  lateFee: Float!
+  amount: Float!
+  dueDate: DateTime!
+  status: InstallmentStatus!
+  transactionId: Int
+}
+
+input InvoiceCreateOrConnectWithoutTransactionsInput {
+  where: InvoiceWhereUniqueInput!
+  create: InvoiceCreateWithoutTransactionsInput!
+}
+
+input TransactionCreateOrConnectWithoutFromAccountInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutFromAccountInput!
+}
+
+input TransactionCreateManyFromAccountInputEnvelope {
+  data: [TransactionCreateManyFromAccountInput!]!
+  skipDuplicates: Boolean
+}
+
+input TransactionCreateManyFromAccountInput {
+  id: Int
+  amount: Float!
+  proofUrl: String
+  status: TransactionStatus!
+  transactionCategory: TransactionCategory!
+  toAccountId: Int!
+  invoiceId: Int
+  installmentId: Int
   createdAt: DateTime
 }
 
@@ -5717,68 +5900,33 @@ input OrderCreateNestedOneWithoutShippingInput {
 input OrderCreateWithoutShippingInput {
   status: TransactionStatus!
   shippingId: Int
-  isFullPaid: Boolean!
-  cost: Float!
+  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
   updatedAt: DateTime
   orderBy: UserCreateNestedOneWithoutOrdersInput!
-  items: ItemCreateNestedManyWithoutOrderInput
-  payments: PaymentCreateNestedManyWithoutOrderInput
+  cart: CartCreateNestedManyWithoutOrderInput
+  invoice: InvoiceCreateNestedOneWithoutOrderInput!
 }
 
-input PaymentCreateNestedManyWithoutOrderInput {
-  create: [PaymentCreateWithoutOrderInput!]
-  connectOrCreate: [PaymentCreateOrConnectWithoutOrderInput!]
-  createMany: PaymentCreateManyOrderInputEnvelope
-  connect: [PaymentWhereUniqueInput!]
+input InvoiceCreateNestedOneWithoutOrderInput {
+  create: InvoiceCreateWithoutOrderInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutOrderInput
+  connect: InvoiceWhereUniqueInput
 }
 
-input PaymentCreateWithoutOrderInput {
+input InvoiceCreateWithoutOrderInput {
   adminFee: Float!
-  totalPayment: Float!
-  createdAt: DateTime
-  transaction: TransactionCreateNestedOneWithoutPaymentInput!
-  confirmation: PaymentConfirmationCreateNestedOneWithoutPaymentInput
-}
-
-input TransactionCreateNestedOneWithoutPaymentInput {
-  create: TransactionCreateWithoutPaymentInput
-  connectOrCreate: TransactionCreateOrConnectWithoutPaymentInput
-  connect: TransactionWhereUniqueInput
-}
-
-input TransactionCreateWithoutPaymentInput {
   amount: Float!
-  status: TransactionStatus!
-  transactionCategory: TransactionCategory!
   createdAt: DateTime
-  fromAccount: AccountCreateNestedOneWithoutTransactionOriginsInput!
-  toAccount: AccountCreateNestedOneWithoutTransactionDestinationInput!
+  transactions: TransactionCreateNestedManyWithoutInvoiceInput
+  Installments: InstallmentCreateNestedManyWithoutInvoiceInput
 }
 
-input TransactionCreateOrConnectWithoutPaymentInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutPaymentInput!
-}
-
-input PaymentCreateOrConnectWithoutOrderInput {
-  where: PaymentWhereUniqueInput!
-  create: PaymentCreateWithoutOrderInput!
-}
-
-input PaymentCreateManyOrderInputEnvelope {
-  data: [PaymentCreateManyOrderInput!]!
-  skipDuplicates: Boolean
-}
-
-input PaymentCreateManyOrderInput {
-  id: Int
-  adminFee: Float!
-  totalPayment: Float!
-  transactionId: Int!
-  createdAt: DateTime
+input InvoiceCreateOrConnectWithoutOrderInput {
+  where: InvoiceWhereUniqueInput!
+  create: InvoiceCreateWithoutOrderInput!
 }
 
 input OrderCreateOrConnectWithoutShippingInput {
@@ -5830,15 +5978,14 @@ input OrderUpsertWithoutShippingInput {
 input OrderUpdateWithoutShippingInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  isFullPaid: BoolFieldUpdateOperationsInput
-  cost: FloatFieldUpdateOperationsInput
+  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
-  items: ItemUpdateManyWithoutOrderNestedInput
-  payments: PaymentUpdateManyWithoutOrderNestedInput
+  cart: CartUpdateManyWithoutOrderNestedInput
+  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
 }
 
 input EnumTransactionStatusFieldUpdateOperationsInput {
@@ -5853,8 +6000,12 @@ input NullableIntFieldUpdateOperationsInput {
   divide: Int
 }
 
-input BoolFieldUpdateOperationsInput {
-  set: Boolean
+input NullableFloatFieldUpdateOperationsInput {
+  set: Float
+  increment: Float
+  decrement: Float
+  multiply: Float
+  divide: Float
 }
 
 input UserUpdateOneRequiredWithoutOrdersNestedInput {
@@ -5927,14 +6078,6 @@ input AccountUpdateWithoutUserInput {
   bankAccount: BankUpdateOneWithoutAccountNestedInput
 }
 
-input NullableFloatFieldUpdateOperationsInput {
-  set: Float
-  increment: Float
-  decrement: Float
-  multiply: Float
-  divide: Float
-}
-
 input EnumAccountCategoryFieldUpdateOperationsInput {
   set: AccountCategory
 }
@@ -5961,11 +6104,13 @@ input TransactionUpsertWithWhereUniqueWithoutFromAccountInput {
 
 input TransactionUpdateWithoutFromAccountInput {
   amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
   status: EnumTransactionStatusFieldUpdateOperationsInput
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
-  payment: PaymentUpdateOneWithoutTransactionNestedInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+  Installment: InstallmentUpdateOneWithoutTransactionNestedInput
 }
 
 input EnumTransactionCategoryFieldUpdateOperationsInput {
@@ -6724,11 +6869,13 @@ input TransactionUpsertWithWhereUniqueWithoutToAccountInput {
 
 input TransactionUpdateWithoutToAccountInput {
   amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
   status: EnumTransactionStatusFieldUpdateOperationsInput
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
-  payment: PaymentUpdateOneWithoutTransactionNestedInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+  Installment: InstallmentUpdateOneWithoutTransactionNestedInput
 }
 
 input AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput {
@@ -6889,119 +7036,138 @@ input AccountUpdateToOneWithWhereWithoutTransactionOriginsInput {
   data: AccountUpdateWithoutTransactionOriginsInput!
 }
 
-input PaymentUpdateOneWithoutTransactionNestedInput {
-  create: PaymentCreateWithoutTransactionInput
-  connectOrCreate: PaymentCreateOrConnectWithoutTransactionInput
-  upsert: PaymentUpsertWithoutTransactionInput
-  disconnect: PaymentWhereInput
-  delete: PaymentWhereInput
-  connect: PaymentWhereUniqueInput
-  update: PaymentUpdateToOneWithWhereWithoutTransactionInput
+input InvoiceUpdateOneWithoutTransactionsNestedInput {
+  create: InvoiceCreateWithoutTransactionsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
+  upsert: InvoiceUpsertWithoutTransactionsInput
+  disconnect: InvoiceWhereInput
+  delete: InvoiceWhereInput
+  connect: InvoiceWhereUniqueInput
+  update: InvoiceUpdateToOneWithWhereWithoutTransactionsInput
 }
 
-input PaymentUpsertWithoutTransactionInput {
-  update: PaymentUpdateWithoutTransactionInput!
-  create: PaymentCreateWithoutTransactionInput!
-  where: PaymentWhereInput
+input InvoiceUpsertWithoutTransactionsInput {
+  update: InvoiceUpdateWithoutTransactionsInput!
+  create: InvoiceCreateWithoutTransactionsInput!
+  where: InvoiceWhereInput
 }
 
-input PaymentUpdateWithoutTransactionInput {
+input InvoiceUpdateWithoutTransactionsInput {
   adminFee: FloatFieldUpdateOperationsInput
-  totalPayment: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  order: OrderUpdateOneRequiredWithoutPaymentsNestedInput
-  confirmation: PaymentConfirmationUpdateOneWithoutPaymentNestedInput
+  Order: OrderUpdateOneWithoutInvoiceNestedInput
+  Installments: InstallmentUpdateManyWithoutInvoiceNestedInput
 }
 
-input OrderUpdateOneRequiredWithoutPaymentsNestedInput {
-  create: OrderCreateWithoutPaymentsInput
-  connectOrCreate: OrderCreateOrConnectWithoutPaymentsInput
-  upsert: OrderUpsertWithoutPaymentsInput
+input OrderUpdateOneWithoutInvoiceNestedInput {
+  create: OrderCreateWithoutInvoiceInput
+  connectOrCreate: OrderCreateOrConnectWithoutInvoiceInput
+  upsert: OrderUpsertWithoutInvoiceInput
+  disconnect: OrderWhereInput
+  delete: OrderWhereInput
   connect: OrderWhereUniqueInput
-  update: OrderUpdateToOneWithWhereWithoutPaymentsInput
+  update: OrderUpdateToOneWithWhereWithoutInvoiceInput
 }
 
-input OrderUpsertWithoutPaymentsInput {
-  update: OrderUpdateWithoutPaymentsInput!
-  create: OrderCreateWithoutPaymentsInput!
+input OrderUpsertWithoutInvoiceInput {
+  update: OrderUpdateWithoutInvoiceInput!
+  create: OrderCreateWithoutInvoiceInput!
   where: OrderWhereInput
 }
 
-input OrderUpdateWithoutPaymentsInput {
+input OrderUpdateWithoutInvoiceInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  isFullPaid: BoolFieldUpdateOperationsInput
-  cost: FloatFieldUpdateOperationsInput
+  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
-  items: ItemUpdateManyWithoutOrderNestedInput
+  cart: CartUpdateManyWithoutOrderNestedInput
   shipping: ShippingUpdateOneWithoutOrderNestedInput
 }
 
-input ItemUpdateManyWithoutOrderNestedInput {
-  create: [ItemCreateWithoutOrderInput!]
-  connectOrCreate: [ItemCreateOrConnectWithoutOrderInput!]
-  upsert: [ItemUpsertWithWhereUniqueWithoutOrderInput!]
-  createMany: ItemCreateManyOrderInputEnvelope
-  set: [ItemWhereUniqueInput!]
-  disconnect: [ItemWhereUniqueInput!]
-  delete: [ItemWhereUniqueInput!]
-  connect: [ItemWhereUniqueInput!]
-  update: [ItemUpdateWithWhereUniqueWithoutOrderInput!]
-  updateMany: [ItemUpdateManyWithWhereWithoutOrderInput!]
-  deleteMany: [ItemScalarWhereInput!]
+input CartUpdateManyWithoutOrderNestedInput {
+  create: [CartCreateWithoutOrderInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutOrderInput!]
+  upsert: [CartUpsertWithWhereUniqueWithoutOrderInput!]
+  createMany: CartCreateManyOrderInputEnvelope
+  set: [CartWhereUniqueInput!]
+  disconnect: [CartWhereUniqueInput!]
+  delete: [CartWhereUniqueInput!]
+  connect: [CartWhereUniqueInput!]
+  update: [CartUpdateWithWhereUniqueWithoutOrderInput!]
+  updateMany: [CartUpdateManyWithWhereWithoutOrderInput!]
+  deleteMany: [CartScalarWhereInput!]
 }
 
-input ItemUpsertWithWhereUniqueWithoutOrderInput {
-  where: ItemWhereUniqueInput!
-  update: ItemUpdateWithoutOrderInput!
-  create: ItemCreateWithoutOrderInput!
+input CartUpsertWithWhereUniqueWithoutOrderInput {
+  where: CartWhereUniqueInput!
+  update: CartUpdateWithoutOrderInput!
+  create: CartCreateWithoutOrderInput!
 }
 
-input ItemUpdateWithoutOrderInput {
+input CartUpdateWithoutOrderInput {
+  quantity: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  item: ItemUpdateOneRequiredWithoutCartNestedInput
+}
+
+input ItemUpdateOneRequiredWithoutCartNestedInput {
+  create: ItemCreateWithoutCartInput
+  connectOrCreate: ItemCreateOrConnectWithoutCartInput
+  upsert: ItemUpsertWithoutCartInput
+  connect: ItemWhereUniqueInput
+  update: ItemUpdateToOneWithWhereWithoutCartInput
+}
+
+input ItemUpsertWithoutCartInput {
+  update: ItemUpdateWithoutCartInput!
+  create: ItemCreateWithoutCartInput!
+  where: ItemWhereInput
+}
+
+input ItemUpdateWithoutCartInput {
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   price: FloatFieldUpdateOperationsInput
-  qty: IntFieldUpdateOperationsInput
   userRole: EnumUserRoleFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input ItemUpdateWithWhereUniqueWithoutOrderInput {
-  where: ItemWhereUniqueInput!
-  data: ItemUpdateWithoutOrderInput!
+input ItemUpdateToOneWithWhereWithoutCartInput {
+  where: ItemWhereInput
+  data: ItemUpdateWithoutCartInput!
 }
 
-input ItemUpdateManyWithWhereWithoutOrderInput {
-  where: ItemScalarWhereInput!
-  data: ItemUpdateManyMutationInput!
+input CartUpdateWithWhereUniqueWithoutOrderInput {
+  where: CartWhereUniqueInput!
+  data: CartUpdateWithoutOrderInput!
 }
 
-input ItemScalarWhereInput {
-  AND: [ItemScalarWhereInput!]
-  OR: [ItemScalarWhereInput!]
-  NOT: [ItemScalarWhereInput!]
+input CartUpdateManyWithWhereWithoutOrderInput {
+  where: CartScalarWhereInput!
+  data: CartUpdateManyMutationInput!
+}
+
+input CartScalarWhereInput {
+  AND: [CartScalarWhereInput!]
+  OR: [CartScalarWhereInput!]
+  NOT: [CartScalarWhereInput!]
   id: IntFilter
-  name: StringFilter
-  description: StringFilter
-  price: FloatFilter
-  qty: IntFilter
-  userRole: EnumUserRoleFilter
   orderId: IntFilter
+  itemId: IntFilter
+  quantity: IntFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
 }
 
-input ItemUpdateManyMutationInput {
-  name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  price: FloatFieldUpdateOperationsInput
-  qty: IntFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
+input CartUpdateManyMutationInput {
+  quantity: IntFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -7102,49 +7268,200 @@ input ShippingUpdateToOneWithWhereWithoutOrderInput {
   data: ShippingUpdateWithoutOrderInput!
 }
 
-input OrderUpdateToOneWithWhereWithoutPaymentsInput {
+input OrderUpdateToOneWithWhereWithoutInvoiceInput {
   where: OrderWhereInput
-  data: OrderUpdateWithoutPaymentsInput!
+  data: OrderUpdateWithoutInvoiceInput!
 }
 
-input PaymentConfirmationUpdateOneWithoutPaymentNestedInput {
-  create: PaymentConfirmationCreateWithoutPaymentInput
-  connectOrCreate: PaymentConfirmationCreateOrConnectWithoutPaymentInput
-  upsert: PaymentConfirmationUpsertWithoutPaymentInput
-  disconnect: PaymentConfirmationWhereInput
-  delete: PaymentConfirmationWhereInput
-  connect: PaymentConfirmationWhereUniqueInput
-  update: PaymentConfirmationUpdateToOneWithWhereWithoutPaymentInput
+input InstallmentUpdateManyWithoutInvoiceNestedInput {
+  create: [InstallmentCreateWithoutInvoiceInput!]
+  connectOrCreate: [InstallmentCreateOrConnectWithoutInvoiceInput!]
+  upsert: [InstallmentUpsertWithWhereUniqueWithoutInvoiceInput!]
+  createMany: InstallmentCreateManyInvoiceInputEnvelope
+  set: [InstallmentWhereUniqueInput!]
+  disconnect: [InstallmentWhereUniqueInput!]
+  delete: [InstallmentWhereUniqueInput!]
+  connect: [InstallmentWhereUniqueInput!]
+  update: [InstallmentUpdateWithWhereUniqueWithoutInvoiceInput!]
+  updateMany: [InstallmentUpdateManyWithWhereWithoutInvoiceInput!]
+  deleteMany: [InstallmentScalarWhereInput!]
 }
 
-input PaymentConfirmationUpsertWithoutPaymentInput {
-  update: PaymentConfirmationUpdateWithoutPaymentInput!
-  create: PaymentConfirmationCreateWithoutPaymentInput!
-  where: PaymentConfirmationWhereInput
+input InstallmentUpsertWithWhereUniqueWithoutInvoiceInput {
+  where: InstallmentWhereUniqueInput!
+  update: InstallmentUpdateWithoutInvoiceInput!
+  create: InstallmentCreateWithoutInvoiceInput!
 }
 
-input PaymentConfirmationUpdateWithoutPaymentInput {
-  ProofUrl: StringFieldUpdateOperationsInput
+input InstallmentUpdateWithoutInvoiceInput {
+  number: IntFieldUpdateOperationsInput
+  lateFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+  dueDate: DateTimeFieldUpdateOperationsInput
+  status: EnumInstallmentStatusFieldUpdateOperationsInput
+  transactionId: NullableIntFieldUpdateOperationsInput
+  transaction: TransactionUpdateOneWithoutInstallmentNestedInput
+}
+
+input EnumInstallmentStatusFieldUpdateOperationsInput {
+  set: InstallmentStatus
+}
+
+input TransactionUpdateOneWithoutInstallmentNestedInput {
+  create: TransactionCreateWithoutInstallmentInput
+  connectOrCreate: TransactionCreateOrConnectWithoutInstallmentInput
+  upsert: TransactionUpsertWithoutInstallmentInput
+  disconnect: TransactionWhereInput
+  delete: TransactionWhereInput
+  connect: TransactionWhereUniqueInput
+  update: TransactionUpdateToOneWithWhereWithoutInstallmentInput
+}
+
+input TransactionUpsertWithoutInstallmentInput {
+  update: TransactionUpdateWithoutInstallmentInput!
+  create: TransactionCreateWithoutInstallmentInput!
+  where: TransactionWhereInput
+}
+
+input TransactionUpdateWithoutInstallmentInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
+  fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
+  toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
 }
 
-input PaymentConfirmationUpdateToOneWithWhereWithoutPaymentInput {
-  where: PaymentConfirmationWhereInput
-  data: PaymentConfirmationUpdateWithoutPaymentInput!
+input TransactionUpdateToOneWithWhereWithoutInstallmentInput {
+  where: TransactionWhereInput
+  data: TransactionUpdateWithoutInstallmentInput!
 }
 
-input PaymentUpdateToOneWithWhereWithoutTransactionInput {
-  where: PaymentWhereInput
-  data: PaymentUpdateWithoutTransactionInput!
+input InstallmentUpdateWithWhereUniqueWithoutInvoiceInput {
+  where: InstallmentWhereUniqueInput!
+  data: InstallmentUpdateWithoutInvoiceInput!
 }
 
-input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
+input InstallmentUpdateManyWithWhereWithoutInvoiceInput {
+  where: InstallmentScalarWhereInput!
+  data: InstallmentUpdateManyMutationInput!
+}
+
+input InstallmentScalarWhereInput {
+  AND: [InstallmentScalarWhereInput!]
+  OR: [InstallmentScalarWhereInput!]
+  NOT: [InstallmentScalarWhereInput!]
+  id: IntFilter
+  number: IntFilter
+  lateFee: FloatFilter
+  amount: FloatFilter
+  dueDate: DateTimeFilter
+  status: EnumInstallmentStatusFilter
+  transactionId: IntNullableFilter
+  invoiceId: IntFilter
+}
+
+input InstallmentUpdateManyMutationInput {
+  number: IntFieldUpdateOperationsInput
+  lateFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+  dueDate: DateTimeFieldUpdateOperationsInput
+  status: EnumInstallmentStatusFieldUpdateOperationsInput
+  transactionId: NullableIntFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
+  where: InvoiceWhereInput
+  data: InvoiceUpdateWithoutTransactionsInput!
+}
+
+input InstallmentUpdateOneWithoutTransactionNestedInput {
+  create: InstallmentCreateWithoutTransactionInput
+  connectOrCreate: InstallmentCreateOrConnectWithoutTransactionInput
+  upsert: InstallmentUpsertWithoutTransactionInput
+  disconnect: InstallmentWhereInput
+  delete: InstallmentWhereInput
+  connect: InstallmentWhereUniqueInput
+  update: InstallmentUpdateToOneWithWhereWithoutTransactionInput
+}
+
+input InstallmentUpsertWithoutTransactionInput {
+  update: InstallmentUpdateWithoutTransactionInput!
+  create: InstallmentCreateWithoutTransactionInput!
+  where: InstallmentWhereInput
+}
+
+input InstallmentUpdateWithoutTransactionInput {
+  number: IntFieldUpdateOperationsInput
+  lateFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+  dueDate: DateTimeFieldUpdateOperationsInput
+  status: EnumInstallmentStatusFieldUpdateOperationsInput
+  transactionId: NullableIntFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput
+}
+
+input InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput {
+  create: InvoiceCreateWithoutInstallmentsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutInstallmentsInput
+  upsert: InvoiceUpsertWithoutInstallmentsInput
+  connect: InvoiceWhereUniqueInput
+  update: InvoiceUpdateToOneWithWhereWithoutInstallmentsInput
+}
+
+input InvoiceUpsertWithoutInstallmentsInput {
+  update: InvoiceUpdateWithoutInstallmentsInput!
+  create: InvoiceCreateWithoutInstallmentsInput!
+  where: InvoiceWhereInput
+}
+
+input InvoiceUpdateWithoutInstallmentsInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  Order: OrderUpdateOneWithoutInvoiceNestedInput
+  transactions: TransactionUpdateManyWithoutInvoiceNestedInput
+}
+
+input TransactionUpdateManyWithoutInvoiceNestedInput {
+  create: [TransactionCreateWithoutInvoiceInput!]
+  connectOrCreate: [TransactionCreateOrConnectWithoutInvoiceInput!]
+  upsert: [TransactionUpsertWithWhereUniqueWithoutInvoiceInput!]
+  createMany: TransactionCreateManyInvoiceInputEnvelope
+  set: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  delete: [TransactionWhereUniqueInput!]
+  connect: [TransactionWhereUniqueInput!]
+  update: [TransactionUpdateWithWhereUniqueWithoutInvoiceInput!]
+  updateMany: [TransactionUpdateManyWithWhereWithoutInvoiceInput!]
+  deleteMany: [TransactionScalarWhereInput!]
+}
+
+input TransactionUpsertWithWhereUniqueWithoutInvoiceInput {
   where: TransactionWhereUniqueInput!
-  data: TransactionUpdateWithoutToAccountInput!
+  update: TransactionUpdateWithoutInvoiceInput!
+  create: TransactionCreateWithoutInvoiceInput!
 }
 
-input TransactionUpdateManyWithWhereWithoutToAccountInput {
+input TransactionUpdateWithoutInvoiceInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
+  toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
+  Installment: InstallmentUpdateOneWithoutTransactionNestedInput
+}
+
+input TransactionUpdateWithWhereUniqueWithoutInvoiceInput {
+  where: TransactionWhereUniqueInput!
+  data: TransactionUpdateWithoutInvoiceInput!
+}
+
+input TransactionUpdateManyWithWhereWithoutInvoiceInput {
   where: TransactionScalarWhereInput!
   data: TransactionUpdateManyMutationInput!
 }
@@ -7155,18 +7472,42 @@ input TransactionScalarWhereInput {
   NOT: [TransactionScalarWhereInput!]
   id: IntFilter
   amount: FloatFilter
+  proofUrl: StringNullableFilter
   status: EnumTransactionStatusFilter
   transactionCategory: EnumTransactionCategoryFilter
   fromAccountId: IntFilter
   toAccountId: IntFilter
+  invoiceId: IntNullableFilter
+  installmentId: IntNullableFilter
   createdAt: DateTimeFilter
 }
 
 input TransactionUpdateManyMutationInput {
   amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
   status: EnumTransactionStatusFieldUpdateOperationsInput
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateToOneWithWhereWithoutInstallmentsInput {
+  where: InvoiceWhereInput
+  data: InvoiceUpdateWithoutInstallmentsInput!
+}
+
+input InstallmentUpdateToOneWithWhereWithoutTransactionInput {
+  where: InstallmentWhereInput
+  data: InstallmentUpdateWithoutTransactionInput!
+}
+
+input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
+  where: TransactionWhereUniqueInput!
+  data: TransactionUpdateWithoutToAccountInput!
+}
+
+input TransactionUpdateManyWithWhereWithoutToAccountInput {
+  where: TransactionScalarWhereInput!
+  data: TransactionUpdateManyMutationInput!
 }
 
 input AccountUpdateToOneWithWhereWithoutProjectInput {
@@ -7480,88 +7821,31 @@ input UserUpdateToOneWithWhereWithoutOrdersInput {
   data: UserUpdateWithoutOrdersInput!
 }
 
-input PaymentUpdateManyWithoutOrderNestedInput {
-  create: [PaymentCreateWithoutOrderInput!]
-  connectOrCreate: [PaymentCreateOrConnectWithoutOrderInput!]
-  upsert: [PaymentUpsertWithWhereUniqueWithoutOrderInput!]
-  createMany: PaymentCreateManyOrderInputEnvelope
-  set: [PaymentWhereUniqueInput!]
-  disconnect: [PaymentWhereUniqueInput!]
-  delete: [PaymentWhereUniqueInput!]
-  connect: [PaymentWhereUniqueInput!]
-  update: [PaymentUpdateWithWhereUniqueWithoutOrderInput!]
-  updateMany: [PaymentUpdateManyWithWhereWithoutOrderInput!]
-  deleteMany: [PaymentScalarWhereInput!]
+input InvoiceUpdateOneRequiredWithoutOrderNestedInput {
+  create: InvoiceCreateWithoutOrderInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutOrderInput
+  upsert: InvoiceUpsertWithoutOrderInput
+  connect: InvoiceWhereUniqueInput
+  update: InvoiceUpdateToOneWithWhereWithoutOrderInput
 }
 
-input PaymentUpsertWithWhereUniqueWithoutOrderInput {
-  where: PaymentWhereUniqueInput!
-  update: PaymentUpdateWithoutOrderInput!
-  create: PaymentCreateWithoutOrderInput!
+input InvoiceUpsertWithoutOrderInput {
+  update: InvoiceUpdateWithoutOrderInput!
+  create: InvoiceCreateWithoutOrderInput!
+  where: InvoiceWhereInput
 }
 
-input PaymentUpdateWithoutOrderInput {
+input InvoiceUpdateWithoutOrderInput {
   adminFee: FloatFieldUpdateOperationsInput
-  totalPayment: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  transaction: TransactionUpdateOneRequiredWithoutPaymentNestedInput
-  confirmation: PaymentConfirmationUpdateOneWithoutPaymentNestedInput
-}
-
-input TransactionUpdateOneRequiredWithoutPaymentNestedInput {
-  create: TransactionCreateWithoutPaymentInput
-  connectOrCreate: TransactionCreateOrConnectWithoutPaymentInput
-  upsert: TransactionUpsertWithoutPaymentInput
-  connect: TransactionWhereUniqueInput
-  update: TransactionUpdateToOneWithWhereWithoutPaymentInput
-}
-
-input TransactionUpsertWithoutPaymentInput {
-  update: TransactionUpdateWithoutPaymentInput!
-  create: TransactionCreateWithoutPaymentInput!
-  where: TransactionWhereInput
-}
-
-input TransactionUpdateWithoutPaymentInput {
   amount: FloatFieldUpdateOperationsInput
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  fromAccount: AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput
-  toAccount: AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput
+  transactions: TransactionUpdateManyWithoutInvoiceNestedInput
+  Installments: InstallmentUpdateManyWithoutInvoiceNestedInput
 }
 
-input TransactionUpdateToOneWithWhereWithoutPaymentInput {
-  where: TransactionWhereInput
-  data: TransactionUpdateWithoutPaymentInput!
-}
-
-input PaymentUpdateWithWhereUniqueWithoutOrderInput {
-  where: PaymentWhereUniqueInput!
-  data: PaymentUpdateWithoutOrderInput!
-}
-
-input PaymentUpdateManyWithWhereWithoutOrderInput {
-  where: PaymentScalarWhereInput!
-  data: PaymentUpdateManyMutationInput!
-}
-
-input PaymentScalarWhereInput {
-  AND: [PaymentScalarWhereInput!]
-  OR: [PaymentScalarWhereInput!]
-  NOT: [PaymentScalarWhereInput!]
-  id: IntFilter
-  adminFee: FloatFilter
-  totalPayment: FloatFilter
-  orderId: IntFilter
-  transactionId: IntFilter
-  createdAt: DateTimeFilter
-}
-
-input PaymentUpdateManyMutationInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  totalPayment: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
+input InvoiceUpdateToOneWithWhereWithoutOrderInput {
+  where: InvoiceWhereInput
+  data: InvoiceUpdateWithoutOrderInput!
 }
 
 input OrderUpdateToOneWithWhereWithoutShippingInput {
@@ -8149,102 +8433,6 @@ input ProjectUpdateInput {
   account: AccountUpdateOneRequiredWithoutProjectNestedInput
 }
 
-input PaymentConfirmationCreateArgs {
-  data: PaymentConfirmationCreateInput!
-}
-
-input PaymentConfirmationCreateInput {
-  ProofUrl: String!
-  createdAt: DateTime
-  updatedAt: DateTime
-  payment: PaymentCreateNestedOneWithoutConfirmationInput!
-}
-
-input PaymentCreateNestedOneWithoutConfirmationInput {
-  create: PaymentCreateWithoutConfirmationInput
-  connectOrCreate: PaymentCreateOrConnectWithoutConfirmationInput
-  connect: PaymentWhereUniqueInput
-}
-
-input PaymentCreateWithoutConfirmationInput {
-  adminFee: Float!
-  totalPayment: Float!
-  createdAt: DateTime
-  order: OrderCreateNestedOneWithoutPaymentsInput!
-  transaction: TransactionCreateNestedOneWithoutPaymentInput!
-}
-
-input PaymentCreateOrConnectWithoutConfirmationInput {
-  where: PaymentWhereUniqueInput!
-  create: PaymentCreateWithoutConfirmationInput!
-}
-
-input PaymentConfirmationUpdateOneArgs {
-  data: PaymentConfirmationUpdateInput!
-  where: PaymentConfirmationWhereUniqueInput!
-}
-
-input PaymentConfirmationUpdateInput {
-  ProofUrl: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  payment: PaymentUpdateOneRequiredWithoutConfirmationNestedInput
-}
-
-input PaymentUpdateOneRequiredWithoutConfirmationNestedInput {
-  create: PaymentCreateWithoutConfirmationInput
-  connectOrCreate: PaymentCreateOrConnectWithoutConfirmationInput
-  upsert: PaymentUpsertWithoutConfirmationInput
-  connect: PaymentWhereUniqueInput
-  update: PaymentUpdateToOneWithWhereWithoutConfirmationInput
-}
-
-input PaymentUpsertWithoutConfirmationInput {
-  update: PaymentUpdateWithoutConfirmationInput!
-  create: PaymentCreateWithoutConfirmationInput!
-  where: PaymentWhereInput
-}
-
-input PaymentUpdateWithoutConfirmationInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  totalPayment: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  order: OrderUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction: TransactionUpdateOneRequiredWithoutPaymentNestedInput
-}
-
-input PaymentUpdateToOneWithWhereWithoutConfirmationInput {
-  where: PaymentWhereInput
-  data: PaymentUpdateWithoutConfirmationInput!
-}
-
-input PaymentCreateArgs {
-  data: PaymentCreateInput!
-}
-
-input PaymentCreateInput {
-  adminFee: Float!
-  totalPayment: Float!
-  createdAt: DateTime
-  order: OrderCreateNestedOneWithoutPaymentsInput!
-  transaction: TransactionCreateNestedOneWithoutPaymentInput!
-  confirmation: PaymentConfirmationCreateNestedOneWithoutPaymentInput
-}
-
-input PaymentUpdateOneArgs {
-  data: PaymentUpdateInput!
-  where: PaymentWhereUniqueInput!
-}
-
-input PaymentUpdateInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  totalPayment: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  order: OrderUpdateOneRequiredWithoutPaymentsNestedInput
-  transaction: TransactionUpdateOneRequiredWithoutPaymentNestedInput
-  confirmation: PaymentConfirmationUpdateOneWithoutPaymentNestedInput
-}
-
 input ShippingCreateArgs {
   data: ShippingCreateInput!
 }
@@ -8288,36 +8476,66 @@ input ItemCreateInput {
   name: String!
   description: String!
   price: Float!
-  qty: Int!
   userRole: UserRole!
   createdAt: DateTime
   updatedAt: DateTime
-  order: OrderCreateNestedOneWithoutItemsInput!
+  cart: CartCreateNestedManyWithoutItemInput
 }
 
-input OrderCreateNestedOneWithoutItemsInput {
-  create: OrderCreateWithoutItemsInput
-  connectOrCreate: OrderCreateOrConnectWithoutItemsInput
+input CartCreateNestedManyWithoutItemInput {
+  create: [CartCreateWithoutItemInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutItemInput!]
+  createMany: CartCreateManyItemInputEnvelope
+  connect: [CartWhereUniqueInput!]
+}
+
+input CartCreateWithoutItemInput {
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  order: OrderCreateNestedOneWithoutCartInput!
+}
+
+input OrderCreateNestedOneWithoutCartInput {
+  create: OrderCreateWithoutCartInput
+  connectOrCreate: OrderCreateOrConnectWithoutCartInput
   connect: OrderWhereUniqueInput
 }
 
-input OrderCreateWithoutItemsInput {
+input OrderCreateWithoutCartInput {
   status: TransactionStatus!
   shippingId: Int
-  isFullPaid: Boolean!
-  cost: Float!
+  cost: Float
   platformFee: Float!
   total: Float!
   createdAt: DateTime
   updatedAt: DateTime
   orderBy: UserCreateNestedOneWithoutOrdersInput!
   shipping: ShippingCreateNestedOneWithoutOrderInput
-  payments: PaymentCreateNestedManyWithoutOrderInput
+  invoice: InvoiceCreateNestedOneWithoutOrderInput!
 }
 
-input OrderCreateOrConnectWithoutItemsInput {
+input OrderCreateOrConnectWithoutCartInput {
   where: OrderWhereUniqueInput!
-  create: OrderCreateWithoutItemsInput!
+  create: OrderCreateWithoutCartInput!
+}
+
+input CartCreateOrConnectWithoutItemInput {
+  where: CartWhereUniqueInput!
+  create: CartCreateWithoutItemInput!
+}
+
+input CartCreateManyItemInputEnvelope {
+  data: [CartCreateManyItemInput!]!
+  skipDuplicates: Boolean
+}
+
+input CartCreateManyItemInput {
+  id: Int
+  orderId: Int!
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input ItemUpdateOneArgs {
@@ -8329,83 +8547,79 @@ input ItemUpdateInput {
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   price: FloatFieldUpdateOperationsInput
-  qty: IntFieldUpdateOperationsInput
   userRole: EnumUserRoleFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-  order: OrderUpdateOneRequiredWithoutItemsNestedInput
+  cart: CartUpdateManyWithoutItemNestedInput
 }
 
-input OrderUpdateOneRequiredWithoutItemsNestedInput {
-  create: OrderCreateWithoutItemsInput
-  connectOrCreate: OrderCreateOrConnectWithoutItemsInput
-  upsert: OrderUpsertWithoutItemsInput
+input CartUpdateManyWithoutItemNestedInput {
+  create: [CartCreateWithoutItemInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutItemInput!]
+  upsert: [CartUpsertWithWhereUniqueWithoutItemInput!]
+  createMany: CartCreateManyItemInputEnvelope
+  set: [CartWhereUniqueInput!]
+  disconnect: [CartWhereUniqueInput!]
+  delete: [CartWhereUniqueInput!]
+  connect: [CartWhereUniqueInput!]
+  update: [CartUpdateWithWhereUniqueWithoutItemInput!]
+  updateMany: [CartUpdateManyWithWhereWithoutItemInput!]
+  deleteMany: [CartScalarWhereInput!]
+}
+
+input CartUpsertWithWhereUniqueWithoutItemInput {
+  where: CartWhereUniqueInput!
+  update: CartUpdateWithoutItemInput!
+  create: CartCreateWithoutItemInput!
+}
+
+input CartUpdateWithoutItemInput {
+  quantity: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  order: OrderUpdateOneRequiredWithoutCartNestedInput
+}
+
+input OrderUpdateOneRequiredWithoutCartNestedInput {
+  create: OrderCreateWithoutCartInput
+  connectOrCreate: OrderCreateOrConnectWithoutCartInput
+  upsert: OrderUpsertWithoutCartInput
   connect: OrderWhereUniqueInput
-  update: OrderUpdateToOneWithWhereWithoutItemsInput
+  update: OrderUpdateToOneWithWhereWithoutCartInput
 }
 
-input OrderUpsertWithoutItemsInput {
-  update: OrderUpdateWithoutItemsInput!
-  create: OrderCreateWithoutItemsInput!
+input OrderUpsertWithoutCartInput {
+  update: OrderUpdateWithoutCartInput!
+  create: OrderCreateWithoutCartInput!
   where: OrderWhereInput
 }
 
-input OrderUpdateWithoutItemsInput {
+input OrderUpdateWithoutCartInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   shippingId: NullableIntFieldUpdateOperationsInput
-  isFullPaid: BoolFieldUpdateOperationsInput
-  cost: FloatFieldUpdateOperationsInput
+  cost: NullableFloatFieldUpdateOperationsInput
   platformFee: FloatFieldUpdateOperationsInput
   total: FloatFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
   shipping: ShippingUpdateOneWithoutOrderNestedInput
-  payments: PaymentUpdateManyWithoutOrderNestedInput
+  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
 }
 
-input OrderUpdateToOneWithWhereWithoutItemsInput {
+input OrderUpdateToOneWithWhereWithoutCartInput {
   where: OrderWhereInput
-  data: OrderUpdateWithoutItemsInput!
+  data: OrderUpdateWithoutCartInput!
 }
 
-input OrderCreateArgs {
-  data: OrderCreateInput!
+input CartUpdateWithWhereUniqueWithoutItemInput {
+  where: CartWhereUniqueInput!
+  data: CartUpdateWithoutItemInput!
 }
 
-input OrderCreateInput {
-  status: TransactionStatus!
-  shippingId: Int
-  isFullPaid: Boolean!
-  cost: Float!
-  platformFee: Float!
-  total: Float!
-  createdAt: DateTime
-  updatedAt: DateTime
-  orderBy: UserCreateNestedOneWithoutOrdersInput!
-  items: ItemCreateNestedManyWithoutOrderInput
-  shipping: ShippingCreateNestedOneWithoutOrderInput
-  payments: PaymentCreateNestedManyWithoutOrderInput
-}
-
-input OrderUpdateOneArgs {
-  data: OrderUpdateInput!
-  where: OrderWhereUniqueInput!
-}
-
-input OrderUpdateInput {
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  shippingId: NullableIntFieldUpdateOperationsInput
-  isFullPaid: BoolFieldUpdateOperationsInput
-  cost: FloatFieldUpdateOperationsInput
-  platformFee: FloatFieldUpdateOperationsInput
-  total: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
-  items: ItemUpdateManyWithoutOrderNestedInput
-  shipping: ShippingUpdateOneWithoutOrderNestedInput
-  payments: PaymentUpdateManyWithoutOrderNestedInput
+input CartUpdateManyWithWhereWithoutItemInput {
+  where: CartScalarWhereInput!
+  data: CartUpdateManyMutationInput!
 }
 
 input CheckInCreateArgs {
@@ -8494,6 +8708,10 @@ input UserNotificationUpdateInput {
 
 input EnumUserNotificationCategoryFieldUpdateOperationsInput {
   set: UserNotificationCategory
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
 }
 
 input UserUpdateOneRequiredWithoutUserNotificationsNestedInput {

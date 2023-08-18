@@ -285,12 +285,27 @@ export function fakeOrderComplete() {
     updatedAt: faker.datatype.datetime(),
   };
 }
+export function fakeCart() {
+  return {
+    quantity: faker.datatype.number(),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeCartComplete() {
+  return {
+    id: faker.datatype.number(),
+    orderId: faker.datatype.number(),
+    itemId: faker.datatype.number(),
+    quantity: faker.datatype.number(),
+    createdAt: new Date(),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
 export function fakeItem() {
   return {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     price: faker.datatype.float(),
-    qty: faker.datatype.number(),
     userRole: faker.helpers.arrayElement([UserRole.MEMBER, UserRole.ADMIN, UserRole.SUPERUSER, UserRole.STUDENT] as const),
     updatedAt: faker.datatype.datetime(),
   };
@@ -301,9 +316,7 @@ export function fakeItemComplete() {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     price: faker.datatype.float(),
-    qty: faker.datatype.number(),
     userRole: faker.helpers.arrayElement([UserRole.MEMBER, UserRole.ADMIN, UserRole.SUPERUSER, UserRole.STUDENT] as const),
-    orderId: faker.datatype.number(),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
   };

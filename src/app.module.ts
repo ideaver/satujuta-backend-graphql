@@ -18,11 +18,8 @@ import { RewardModule } from './services/reward/reward.module';
 import { FileModule } from './services/file/file.module';
 import { FaqModule } from './services/faq/faq.module';
 import { ProjectModule } from './services/project/project.module';
-import { PaymentConfirmationModule } from './services/payment-confirmation/payment-confirmation.module';
-import { PaymentModule } from './services/payment/payment.module';
 import { ShippingModule } from './services/shipping/shipping.module';
 import { ItemModule } from './services/item/item.module';
-import { OrderModule } from './services/order/order.module';
 import { CheckInModule } from './services/check-in/check-in.module';
 import { UserNotificationModule } from './services/user-notification/user-notification.module';
 import { SessionModule } from './services/session/session.module';
@@ -53,11 +50,8 @@ import { AddressModule } from './services/address/address.module';
     FileModule,
     FaqModule,
     ProjectModule,
-    PaymentConfirmationModule,
-    PaymentModule,
     ShippingModule,
     ItemModule,
-    OrderModule,
     CheckInModule,
     UserNotificationModule,
     SessionModule,
