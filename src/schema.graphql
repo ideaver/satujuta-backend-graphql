@@ -1922,6 +1922,15 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   addressFindOne(addressFindUniqueArgs: AddressFindUniqueArgs!): Address
+
+  """Deskripsinya ada disini loh"""
+  orderFindMany(orderFindManyArgs: OrderFindManyArgs!): [Order!]
+
+  """Deskripsinya ada disini loh"""
+  orderFindOne(orderFindUniqueArgs: OrderFindUniqueArgs!): Order
+
+  """Deskripsinya ada disini loh"""
+  orderCount(orderFindManyArgs: OrderFindManyArgs): Int!
 }
 
 input UserFindManyArgs {
@@ -3045,48 +3054,7 @@ enum UserScalarFieldEnum {
 }
 
 input UserFindUniqueArgs {
-  select: UserSelect
-  include: UserSelect
   where: UserWhereUniqueInput!
-}
-
-input UserSelect {
-  id: Boolean
-  firstName: Boolean
-  lastName: Boolean
-  email: Boolean
-  addressId: Boolean
-  userRole: Boolean
-  userType: Boolean
-  avatarUrl: Boolean
-  whatsappNumber: Boolean
-  whatsappVerifiedAt: Boolean
-  password: Boolean
-  referredById: Boolean
-  status: Boolean
-  schoolId: Boolean
-  createdAt: Boolean
-  updatedAt: Boolean
-  deletedAt: Boolean
-  theme: Boolean
-  address: Boolean
-  referredBy: Boolean
-  referredUsers: Boolean
-  checkIns: Boolean
-  school: Boolean
-  accounts: Boolean
-  transactions: Boolean
-  PointTransactions: Boolean
-  orders: Boolean
-  sessions: Boolean
-  hotelsCreated: Boolean
-  programsParticipation: Boolean
-  projectsInvestment: Boolean
-  claimedRewards: Boolean
-  userNotifications: Boolean
-  programsCreated: Boolean
-  filesCreated: Boolean
-  _count: Boolean
 }
 
 input ItemFindManyArgs {
@@ -4136,6 +4104,49 @@ input AddressWhereUniqueInput {
   Shipping: ShippingNullableRelationFilter
 }
 
+input OrderFindManyArgs {
+  where: OrderWhereInput
+  orderBy: [OrderOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [OrderScalarFieldEnum!]
+}
+
+enum OrderScalarFieldEnum {
+  id
+  status
+  orderById
+  shippingId
+  invoiceId
+  platformFee
+  total
+  createdAt
+  updatedAt
+}
+
+input OrderFindUniqueArgs {
+  where: OrderWhereUniqueInput!
+}
+
+input OrderWhereUniqueInput {
+  id: Int
+  orderById: String
+  invoiceId: Int
+  AND: [OrderWhereInput!]
+  OR: [OrderWhereInput!]
+  NOT: [OrderWhereInput!]
+  status: EnumTransactionStatusFilter
+  shippingId: IntNullableFilter
+  platformFee: FloatFilter
+  total: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  orderBy: UserRelationFilter
+  cart: CartListRelationFilter
+  shipping: ShippingNullableRelationFilter
+  invoice: InvoiceRelationFilter
+}
+
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreateOne(userCreateArgs: UserCreateArgs!): User
@@ -4268,11 +4279,12 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   addressRemove(addressId: Float!): Boolean
+
+  """Deskripsinya ada disini loh"""
+  orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
 }
 
 input UserCreateArgs {
-  select: UserSelect
-  include: UserSelect
   data: UserCreateInput!
 }
 
@@ -4782,25 +4794,6 @@ input OrderCreateOrConnectWithoutInvoiceInput {
   create: OrderCreateWithoutInvoiceInput!
 }
 
-input OrderWhereUniqueInput {
-  id: Int
-  orderById: String
-  invoiceId: Int
-  AND: [OrderWhereInput!]
-  OR: [OrderWhereInput!]
-  NOT: [OrderWhereInput!]
-  status: EnumTransactionStatusFilter
-  shippingId: IntNullableFilter
-  platformFee: FloatFilter
-  total: FloatFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  orderBy: UserRelationFilter
-  cart: CartListRelationFilter
-  shipping: ShippingNullableRelationFilter
-  invoice: InvoiceRelationFilter
-}
-
 input InstallmentCreateNestedManyWithoutInvoiceInput {
   create: [InstallmentCreateWithoutInvoiceInput!]
   connectOrCreate: [InstallmentCreateOrConnectWithoutInvoiceInput!]
@@ -5200,8 +5193,6 @@ input UserCreateOrConnectWithoutReferredUsersInput {
 }
 
 input UserUpdateOneArgs {
-  select: UserSelect
-  include: UserSelect
   data: UserUpdateInput!
   where: UserWhereUniqueInput!
 }
@@ -8988,4 +8979,22 @@ input AddressUpdateInput {
   hotel: HotelUpdateOneWithoutAddressNestedInput
   school: SchoolUpdateOneWithoutAddressNestedInput
   Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input OrderUpdateOneArgs {
+  data: OrderUpdateInput!
+  where: OrderWhereUniqueInput!
+}
+
+input OrderUpdateInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  shippingId: NullableIntFieldUpdateOperationsInput
+  platformFee: FloatFieldUpdateOperationsInput
+  total: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
+  cart: CartUpdateManyWithoutOrderNestedInput
+  shipping: ShippingUpdateOneWithoutOrderNestedInput
+  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
 }

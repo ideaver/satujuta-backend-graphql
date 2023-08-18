@@ -2,7 +2,6 @@ import { Field, InputType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { Prisma } from '@prisma/client';
 import { Int } from '@nestjs/graphql';
-import { UserSelect } from '../model/user-select.input';
 import {
   UserWhereInput,
   UserOrderByWithRelationInput,

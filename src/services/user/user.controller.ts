@@ -7,10 +7,6 @@ import { User } from 'src/model/user.model';
 import { Item, Prisma, TransactionStatus, UserRole } from '@prisma/client';
 import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
 import { Injectable, Logger } from '@nestjs/common';
-import {
-  OrderCreateNestedManyWithoutOrderByInput,
-  Transaction,
-} from 'src/@generated';
 import { ItemService } from '../item/item.service';
 
 @Injectable()

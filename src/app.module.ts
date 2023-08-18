@@ -28,6 +28,7 @@ import { TransactionModule } from './services/transaction/transaction.module';
 import { AccountModule } from './services/account/account.module';
 import { SchoolModule } from './services/school/school.module';
 import { AddressModule } from './services/address/address.module';
+import { OrderModule } from './services/order/order.module';
 
 @Module({
   imports: [
@@ -60,6 +61,7 @@ import { AddressModule } from './services/address/address.module';
     AccountModule,
     SchoolModule,
     AddressModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [PrismaService],
