@@ -338,6 +338,7 @@ var ItemScalarFieldEnum;
     ItemScalarFieldEnum["name"] = "name";
     ItemScalarFieldEnum["description"] = "description";
     ItemScalarFieldEnum["price"] = "price";
+    ItemScalarFieldEnum["cost"] = "cost";
     ItemScalarFieldEnum["userRole"] = "userRole";
     ItemScalarFieldEnum["createdAt"] = "createdAt";
     ItemScalarFieldEnum["updatedAt"] = "updatedAt";
@@ -24497,6 +24498,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ItemAvgAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ItemAvgAggregateInput.prototype, "cost", void 0);
 ItemAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ItemAvgAggregateInput);
@@ -24509,6 +24513,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ItemAvgAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], ItemAvgAggregate.prototype, "cost", void 0);
 ItemAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], ItemAvgAggregate);
@@ -24521,6 +24528,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemAvgOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemAvgOrderByAggregateInput.prototype, "cost", void 0);
 ItemAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ItemAvgOrderByAggregateInput);
@@ -24539,6 +24549,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ItemCountAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ItemCountAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ItemCountAggregateInput.prototype, "userRole", void 0);
@@ -24571,6 +24584,9 @@ __decorate([
 ], ItemCountAggregate.prototype, "price", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], ItemCountAggregate.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ItemCountAggregate.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -24599,6 +24615,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemCountOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemCountOrderByAggregateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemCountOrderByAggregateInput.prototype, "userRole", void 0);
@@ -24642,9 +24661,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], ItemCreateManyInput.prototype, "price", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserRole, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
+], ItemCreateManyInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], ItemCreateManyInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -24706,9 +24728,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], ItemCreateWithoutCartInput.prototype, "price", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserRole, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
+], ItemCreateWithoutCartInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], ItemCreateWithoutCartInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -24738,9 +24763,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], ItemCreateInput.prototype, "price", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserRole, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
+], ItemCreateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], ItemCreateInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -24810,6 +24838,9 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], ItemGroupBy.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+], ItemGroupBy.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], ItemGroupBy.prototype, "userRole", void 0);
 __decorate([
@@ -24853,6 +24884,9 @@ __decorate([
 ], ItemMaxAggregateInput.prototype, "price", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ItemMaxAggregateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ItemMaxAggregateInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -24878,6 +24912,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ItemMaxAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], ItemMaxAggregate.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserRole, { nullable: true })
 ], ItemMaxAggregate.prototype, "userRole", void 0);
@@ -24907,6 +24944,9 @@ __decorate([
 ], ItemMaxOrderByAggregateInput.prototype, "price", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemMaxOrderByAggregateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemMaxOrderByAggregateInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -24934,6 +24974,9 @@ __decorate([
 ], ItemMinAggregateInput.prototype, "price", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ItemMinAggregateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ItemMinAggregateInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -24959,6 +25002,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ItemMinAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], ItemMinAggregate.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserRole, { nullable: true })
 ], ItemMinAggregate.prototype, "userRole", void 0);
@@ -24988,6 +25034,9 @@ __decorate([
 ], ItemMinOrderByAggregateInput.prototype, "price", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemMinOrderByAggregateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemMinOrderByAggregateInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -25013,6 +25062,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemOrderByWithAggregationInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemOrderByWithAggregationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemOrderByWithAggregationInput.prototype, "userRole", void 0);
@@ -25055,6 +25107,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemOrderByWithRelationInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemOrderByWithRelationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemOrderByWithRelationInput.prototype, "userRole", void 0);
@@ -25107,6 +25162,9 @@ __decorate([
     (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], ItemScalarWhereWithAggregatesInput.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
+], ItemScalarWhereWithAggregatesInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => EnumUserRoleWithAggregatesFilter, { nullable: true })
 ], ItemScalarWhereWithAggregatesInput.prototype, "userRole", void 0);
 __decorate([
@@ -25127,6 +25185,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ItemSumAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ItemSumAggregateInput.prototype, "cost", void 0);
 ItemSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ItemSumAggregateInput);
@@ -25139,6 +25200,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ItemSumAggregate.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], ItemSumAggregate.prototype, "cost", void 0);
 ItemSumAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], ItemSumAggregate);
@@ -25151,6 +25215,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ItemSumOrderByAggregateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ItemSumOrderByAggregateInput.prototype, "cost", void 0);
 ItemSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ItemSumOrderByAggregateInput);
@@ -25176,9 +25243,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], ItemUncheckedCreateWithoutCartInput.prototype, "price", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserRole, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
+], ItemUncheckedCreateWithoutCartInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], ItemUncheckedCreateWithoutCartInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -25211,9 +25281,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], ItemUncheckedCreateInput.prototype, "price", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserRole, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
+], ItemUncheckedCreateInput.prototype, "cost", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], ItemUncheckedCreateInput.prototype, "userRole", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -25243,6 +25316,9 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ItemUncheckedUpdateManyInput.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], ItemUncheckedUpdateManyInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFieldUpdateOperationsInput, { nullable: true })
 ], ItemUncheckedUpdateManyInput.prototype, "userRole", void 0);
 __decorate([
@@ -25269,6 +25345,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ItemUncheckedUpdateWithoutCartInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], ItemUncheckedUpdateWithoutCartInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFieldUpdateOperationsInput, { nullable: true })
 ], ItemUncheckedUpdateWithoutCartInput.prototype, "userRole", void 0);
@@ -25297,6 +25376,9 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ItemUncheckedUpdateInput.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], ItemUncheckedUpdateInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFieldUpdateOperationsInput, { nullable: true })
 ], ItemUncheckedUpdateInput.prototype, "userRole", void 0);
 __decorate([
@@ -25323,6 +25405,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ItemUpdateManyMutationInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], ItemUpdateManyMutationInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFieldUpdateOperationsInput, { nullable: true })
 ], ItemUpdateManyMutationInput.prototype, "userRole", void 0);
@@ -25388,6 +25473,9 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ItemUpdateWithoutCartInput.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], ItemUpdateWithoutCartInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFieldUpdateOperationsInput, { nullable: true })
 ], ItemUpdateWithoutCartInput.prototype, "userRole", void 0);
 __decorate([
@@ -25411,6 +25499,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ItemUpdateInput.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+], ItemUpdateInput.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFieldUpdateOperationsInput, { nullable: true })
 ], ItemUpdateInput.prototype, "userRole", void 0);
@@ -25469,6 +25560,9 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], ItemWhereUniqueInput.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], ItemWhereUniqueInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFilter, { nullable: true })
 ], ItemWhereUniqueInput.prototype, "userRole", void 0);
 __decorate([
@@ -25508,6 +25602,9 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], ItemWhereInput.prototype, "price", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+], ItemWhereInput.prototype, "cost", void 0);
+__decorate([
     (0, graphql_1.Field)(() => EnumUserRoleFilter, { nullable: true })
 ], ItemWhereInput.prototype, "userRole", void 0);
 __decorate([
@@ -25537,6 +25634,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], Item.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+], Item.prototype, "cost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserRole, { nullable: false })
 ], Item.prototype, "userRole", void 0);

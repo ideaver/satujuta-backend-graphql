@@ -4,14 +4,21 @@ import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/model/user.model';
-import { Prisma } from '@prisma/client';
+import { Item, Prisma, TransactionStatus, UserRole } from '@prisma/client';
 import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
 import { Injectable, Logger } from '@nestjs/common';
-import { OrderCreateNestedManyWithoutOrderByInput } from 'src/@generated';
+import {
+  OrderCreateNestedManyWithoutOrderByInput,
+  Transaction,
+} from 'src/@generated';
+import { ItemService } from '../item/item.service';
 
 @Injectable()
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly itemService: ItemService,
+  ) {}
   private readonly logger = new Logger(UserController.name);
 
   async createOne(userCreateArgs: UserCreateArgs): Promise<User | void> {
@@ -29,35 +36,39 @@ export class UserController {
     accountCreateManyUserInput(userCreateArgsPrisma);
 
     // Auto Create Order
-    userCreateArgsPrisma.data.orders = {
-      create: {
-        status: 'PENDING',
-        platformFee: 2000,
-        total: 0,
-        cost: 0,
+    const platformFee = 2000;
+    //get Items
+    const items: Item[] | void = await this.itemService.findMany({
+      where: { userRole: { equals: UserRole.MEMBER } },
+    });
 
-        cart: { createMany: { data: [{ itemId: 1, quantity: 3 }] } },
-        invoice: {
-          create: {
-            amount: 0,
-            adminFee: 0,
-            Installments: {
-              createMany: {
-                data: [
-                  {
-                    number: 1,
-                    status: 'UPCOMING',
-                    amount: 0,
-                    lateFee: 2000,
-                    dueDate: new Date(),
-                  },
-                ],
-              },
+    if (items) {
+      // Calculate the sum of item prices
+      const totalPrice = items.reduce((total, item) => total + item.price, 0);
+
+      userCreateArgsPrisma.data.orders = {
+        create: {
+          status: TransactionStatus.PENDING,
+          platformFee: platformFee,
+          total: totalPrice + platformFee,
+          cost: 0,
+          cart: {
+            createMany: {
+              data: items.map((item) => ({
+                itemId: item.id,
+                quantity: 1,
+              })),
+            },
+          },
+          invoice: {
+            create: {
+              amount: 0,
+              adminFee: 0,
             },
           },
         },
-      },
-    };
+      };
+    }
 
     this.logger.log(userCreateArgsPrisma);
 

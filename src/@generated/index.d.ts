@@ -241,6 +241,7 @@ export declare enum ItemScalarFieldEnum {
     name = "name",
     description = "description",
     price = "price",
+    cost = "cost",
     userRole = "userRole",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
@@ -7831,20 +7832,24 @@ export declare class ItemAggregateArgs {
 export declare class ItemAvgAggregateInput {
     id?: true;
     price?: true;
+    cost?: true;
 }
 export declare class ItemAvgAggregate {
     id?: number;
     price?: number;
+    cost?: number;
 }
 export declare class ItemAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
 }
 export declare class ItemCountAggregateInput {
     id?: true;
     name?: true;
     description?: true;
     price?: true;
+    cost?: true;
     userRole?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -7855,6 +7860,7 @@ export declare class ItemCountAggregate {
     name: number;
     description: number;
     price: number;
+    cost: number;
     userRole: number;
     createdAt: number;
     updatedAt: number;
@@ -7865,6 +7871,7 @@ export declare class ItemCountOrderByAggregateInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -7877,6 +7884,7 @@ export declare class ItemCreateManyInput {
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7894,6 +7902,7 @@ export declare class ItemCreateWithoutCartInput {
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7902,6 +7911,7 @@ export declare class ItemCreateInput {
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7925,6 +7935,7 @@ export declare class ItemGroupBy {
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt: Date | string;
     updatedAt: Date | string;
@@ -7939,6 +7950,7 @@ export declare class ItemMaxAggregateInput {
     name?: true;
     description?: true;
     price?: true;
+    cost?: true;
     userRole?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -7948,6 +7960,7 @@ export declare class ItemMaxAggregate {
     name?: string;
     description?: string;
     price?: number;
+    cost?: number;
     userRole?: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7957,6 +7970,7 @@ export declare class ItemMaxOrderByAggregateInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -7966,6 +7980,7 @@ export declare class ItemMinAggregateInput {
     name?: true;
     description?: true;
     price?: true;
+    cost?: true;
     userRole?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -7975,6 +7990,7 @@ export declare class ItemMinAggregate {
     name?: string;
     description?: string;
     price?: number;
+    cost?: number;
     userRole?: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -7984,6 +8000,7 @@ export declare class ItemMinOrderByAggregateInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -7993,6 +8010,7 @@ export declare class ItemOrderByWithAggregationInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -8007,6 +8025,7 @@ export declare class ItemOrderByWithRelationInput {
     name?: keyof typeof SortOrder;
     description?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
     userRole?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -8024,6 +8043,7 @@ export declare class ItemScalarWhereWithAggregatesInput {
     name?: InstanceType<typeof StringWithAggregatesFilter>;
     description?: InstanceType<typeof StringWithAggregatesFilter>;
     price?: InstanceType<typeof FloatWithAggregatesFilter>;
+    cost?: InstanceType<typeof FloatWithAggregatesFilter>;
     userRole?: InstanceType<typeof EnumUserRoleWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -8031,20 +8051,24 @@ export declare class ItemScalarWhereWithAggregatesInput {
 export declare class ItemSumAggregateInput {
     id?: true;
     price?: true;
+    cost?: true;
 }
 export declare class ItemSumAggregate {
     id?: number;
     price?: number;
+    cost?: number;
 }
 export declare class ItemSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
+    cost?: keyof typeof SortOrder;
 }
 export declare class ItemUncheckedCreateWithoutCartInput {
     id?: number;
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -8054,6 +8078,7 @@ export declare class ItemUncheckedCreateInput {
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -8064,6 +8089,7 @@ export declare class ItemUncheckedUpdateManyInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -8073,6 +8099,7 @@ export declare class ItemUncheckedUpdateWithoutCartInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -8082,6 +8109,7 @@ export declare class ItemUncheckedUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -8091,6 +8119,7 @@ export declare class ItemUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -8110,6 +8139,7 @@ export declare class ItemUpdateWithoutCartInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -8118,6 +8148,7 @@ export declare class ItemUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -8136,6 +8167,7 @@ export declare class ItemWhereUniqueInput {
     name?: InstanceType<typeof StringFilter>;
     description?: InstanceType<typeof StringFilter>;
     price?: InstanceType<typeof FloatFilter>;
+    cost?: InstanceType<typeof FloatFilter>;
     userRole?: InstanceType<typeof EnumUserRoleFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -8149,6 +8181,7 @@ export declare class ItemWhereInput {
     name?: InstanceType<typeof StringFilter>;
     description?: InstanceType<typeof StringFilter>;
     price?: InstanceType<typeof FloatFilter>;
+    cost?: InstanceType<typeof FloatFilter>;
     userRole?: InstanceType<typeof EnumUserRoleFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -8159,6 +8192,7 @@ export declare class Item {
     name: string;
     description: string;
     price: number;
+    cost: number;
     userRole: keyof typeof UserRole;
     createdAt: Date;
     updatedAt: Date;

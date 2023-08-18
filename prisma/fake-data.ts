@@ -306,6 +306,7 @@ export function fakeItem() {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     price: faker.datatype.float(),
+    cost: faker.datatype.float(),
     userRole: faker.helpers.arrayElement([UserRole.MEMBER, UserRole.ADMIN, UserRole.SUPERUSER, UserRole.STUDENT] as const),
     updatedAt: faker.datatype.datetime(),
   };
@@ -316,6 +317,7 @@ export function fakeItemComplete() {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     price: faker.datatype.float(),
+    cost: faker.datatype.float(),
     userRole: faker.helpers.arrayElement([UserRole.MEMBER, UserRole.ADMIN, UserRole.SUPERUSER, UserRole.STUDENT] as const),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),

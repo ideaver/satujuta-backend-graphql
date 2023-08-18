@@ -5,6 +5,7 @@ import {
   PrismaClient,
   Transaction,
   TransactionStatus,
+  UserRole,
 } from '@prisma/client';
 import { CreateOneAccountArgs } from 'src/@generated';
 import { fakeFaq, fakeTransaction, fakeTransactionComplete } from './fake-data';
@@ -59,7 +60,9 @@ async function main() {
 
   // const totalBalance = await getAccountTotalBalance(accountId);
   // await faqCreateManyInput();
-  // console.log(await prisma.faq.deleteMany());
+  // await createItem();
+
+  // console.log(await prisma.item.deleteMany());
 
   console.log('Seeding finished.');
 }
@@ -72,93 +75,107 @@ main()
     await prisma.$disconnect();
   });
 
-async function faqCreateManyInput() {
-  const numberOfFaq = 20;
-  const faqsToCreate: Prisma.FaqCreateManyInput[] = [];
-  for (let i = 0; i < numberOfFaq; i++) {
-    faqsToCreate.push(fakeFaq());
-  }
-  const query = await prisma.faq.createMany({ data: faqsToCreate });
-
-  console.log(query);
+async function createItem() {
+  console.log(
+    await prisma.item.create({
+      data: {
+        name: 'Paket PREMIUM SatuJuta Membership',
+        description: 'Berlisensi PT. SatuJuta Kampung Inggris',
+        price: 1000000,
+        cost: 300000,
+        userRole: UserRole.MEMBER,
+      },
+    }),
+  );
 }
 
-async function getAccountTotalBalance(accountId: number) {
-  const transactions = await prisma.transaction.findMany({
-    where: {
-      OR: [
-        { fromAccountId: accountId, status: TransactionStatus.COMPLETED },
-        { toAccountId: accountId, status: TransactionStatus.COMPLETED },
-      ],
-    },
-    select: {
-      amount: true,
-      fromAccountId: true,
-      toAccountId: true,
-    },
-  });
+// async function faqCreateManyInput() {
+//   const numberOfFaq = 20;
+//   const faqsToCreate: Prisma.FaqCreateManyInput[] = [];
+//   for (let i = 0; i < numberOfFaq; i++) {
+//     faqsToCreate.push(fakeFaq());
+//   }
+//   const query = await prisma.faq.createMany({ data: faqsToCreate });
 
-  let totalBalance = 0;
+//   console.log(query);
+// }
 
-  for (const transaction of transactions) {
-    if (transaction.fromAccountId === accountId) {
-      totalBalance -= transaction.amount;
-    } else if (transaction.toAccountId === accountId) {
-      totalBalance += transaction.amount;
-    }
-  }
+// async function getAccountTotalBalance(accountId: number) {
+//   const transactions = await prisma.transaction.findMany({
+//     where: {
+//       OR: [
+//         { fromAccountId: accountId, status: TransactionStatus.COMPLETED },
+//         { toAccountId: accountId, status: TransactionStatus.COMPLETED },
+//       ],
+//     },
+//     select: {
+//       amount: true,
+//       fromAccountId: true,
+//       toAccountId: true,
+//     },
+//   });
 
-  return totalBalance;
-}
+//   let totalBalance = 0;
 
-async function getAccountBalancesWithOptions(
-  accountId: number,
-  start: Date,
-  end: Date,
-  period: Period,
-) {
-  const balances: AccountBalanceByCustomPeriodQuery[] = [];
+//   for (const transaction of transactions) {
+//     if (transaction.fromAccountId === accountId) {
+//       totalBalance -= transaction.amount;
+//     } else if (transaction.toAccountId === accountId) {
+//       totalBalance += transaction.amount;
+//     }
+//   }
 
-  let currentDate = new Date(start);
+//   return totalBalance;
+// }
 
-  while (currentDate <= end) {
-    const transactions = await getTransactions(
-      accountId,
-      currentDate,
-      getNextPeriodDate(currentDate, period),
-    );
+// async function getAccountBalancesWithOptions(
+//   accountId: number,
+//   start: Date,
+//   end: Date,
+//   period: Period,
+// ) {
+//   const balances: AccountBalanceByCustomPeriodQuery[] = [];
 
-    const formattedDate = currentDate.toLocaleDateString();
+//   let currentDate = new Date(start);
 
-    const monthlyBalance = calculateMonthlyBalance(transactions, accountId);
+//   while (currentDate <= end) {
+//     const transactions = await getTransactions(
+//       accountId,
+//       currentDate,
+//       getNextPeriodDate(currentDate, period),
+//     );
 
-    balances.push({
-      period: formattedDate,
-      totalBalance: monthlyBalance,
-    });
+//     const formattedDate = currentDate.toLocaleDateString();
 
-    currentDate = getNextPeriodDate(currentDate, period);
-  }
+//     const monthlyBalance = calculateMonthlyBalance(transactions, accountId);
 
-  return balances;
-}
+//     balances.push({
+//       period: formattedDate,
+//       totalBalance: monthlyBalance,
+//     });
 
-function calculateMonthlyBalance(
-  transactions: Transaction[],
-  accountId: number,
-): number {
-  let monthlyBalance = 0;
+//     currentDate = getNextPeriodDate(currentDate, period);
+//   }
 
-  for (const transaction of transactions) {
-    if (transaction.fromAccountId === accountId) {
-      monthlyBalance -= transaction.amount;
-    } else if (transaction.toAccountId === accountId) {
-      monthlyBalance += transaction.amount;
-    }
-  }
+//   return balances;
+// }
 
-  return monthlyBalance;
-}
+// function calculateMonthlyBalance(
+//   transactions: Transaction[],
+//   accountId: number,
+// ): number {
+//   let monthlyBalance = 0;
+
+//   for (const transaction of transactions) {
+//     if (transaction.fromAccountId === accountId) {
+//       monthlyBalance -= transaction.amount;
+//     } else if (transaction.toAccountId === accountId) {
+//       monthlyBalance += transaction.amount;
+//     }
+//   }
+
+//   return monthlyBalance;
+// }
 
 async function getTransactions(
   accountId: number,

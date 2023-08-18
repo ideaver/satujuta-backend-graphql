@@ -804,6 +804,7 @@ type Invoice {
 type ItemAvgAggregate {
   id: Float
   price: Float
+  cost: Float
 }
 
 type ItemCountAggregate {
@@ -811,6 +812,7 @@ type ItemCountAggregate {
   name: Int!
   description: Int!
   price: Int!
+  cost: Int!
   userRole: Int!
   createdAt: Int!
   updatedAt: Int!
@@ -826,6 +828,7 @@ type ItemMaxAggregate {
   name: String
   description: String
   price: Float
+  cost: Float
   userRole: UserRole
   createdAt: DateTime
   updatedAt: DateTime
@@ -836,6 +839,7 @@ type ItemMinAggregate {
   name: String
   description: String
   price: Float
+  cost: Float
   userRole: UserRole
   createdAt: DateTime
   updatedAt: DateTime
@@ -844,6 +848,7 @@ type ItemMinAggregate {
 type ItemSumAggregate {
   id: Int
   price: Float
+  cost: Float
 }
 
 type Item {
@@ -851,6 +856,7 @@ type Item {
   name: String!
   description: String!
   price: Float!
+  cost: Float!
   userRole: UserRole!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -1794,6 +1800,12 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   userCount(userFindManyArgs: UserFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
+  itemFindMany(itemFindManyArgs: ItemFindManyArgs!): [Item!]
+
+  """Deskripsinya ada disini loh"""
+  itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
   hotelFindMany(hotelFindManyArgs: HotelFindManyArgs!): [Hotel!]
 
   """Default prisma query include nested address & checkIns"""
@@ -1857,12 +1869,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   shippingFindOne(shippingFindUniqueArgs: ShippingFindUniqueArgs!): Shipping
-
-  """Deskripsinya ada disini loh"""
-  itemFindMany(itemFindManyArgs: ItemFindManyArgs!): [Item!]
-
-  """Deskripsinya ada disini loh"""
-  itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
 
   """Deskripsinya ada disini loh"""
   checkInFindMany(checkInFindManyArgs: CheckInFindManyArgs!): [CheckIn!]
@@ -2625,6 +2631,7 @@ input ItemWhereInput {
   name: StringFilter
   description: StringFilter
   price: FloatFilter
+  cost: FloatFilter
   userRole: EnumUserRoleFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -3074,6 +3081,56 @@ input UserSelect {
   programsCreated: Boolean
   filesCreated: Boolean
   _count: Boolean
+}
+
+input ItemFindManyArgs {
+  where: ItemWhereInput
+  orderBy: [ItemOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [ItemScalarFieldEnum!]
+}
+
+input ItemOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  description: SortOrder
+  price: SortOrder
+  cost: SortOrder
+  userRole: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  cart: CartOrderByRelationAggregateInput
+}
+
+enum ItemScalarFieldEnum {
+  id
+  name
+  description
+  price
+  cost
+  userRole
+  createdAt
+  updatedAt
+}
+
+input ItemFindUniqueArgs {
+  where: ItemWhereUniqueInput!
+}
+
+input ItemWhereUniqueInput {
+  id: Int
+  AND: [ItemWhereInput!]
+  OR: [ItemWhereInput!]
+  NOT: [ItemWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  price: FloatFilter
+  cost: FloatFilter
+  userRole: EnumUserRoleFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  cart: CartListRelationFilter
 }
 
 input HotelFindManyArgs {
@@ -3663,53 +3720,6 @@ input ShippingWhereUniqueInput {
   order: OrderRelationFilter
 }
 
-input ItemFindManyArgs {
-  where: ItemWhereInput
-  orderBy: [ItemOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [ItemScalarFieldEnum!]
-}
-
-input ItemOrderByWithRelationInput {
-  id: SortOrder
-  name: SortOrder
-  description: SortOrder
-  price: SortOrder
-  userRole: SortOrder
-  createdAt: SortOrder
-  updatedAt: SortOrder
-  cart: CartOrderByRelationAggregateInput
-}
-
-enum ItemScalarFieldEnum {
-  id
-  name
-  description
-  price
-  userRole
-  createdAt
-  updatedAt
-}
-
-input ItemFindUniqueArgs {
-  where: ItemWhereUniqueInput!
-}
-
-input ItemWhereUniqueInput {
-  id: Int
-  AND: [ItemWhereInput!]
-  OR: [ItemWhereInput!]
-  NOT: [ItemWhereInput!]
-  name: StringFilter
-  description: StringFilter
-  price: FloatFilter
-  userRole: EnumUserRoleFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  cart: CartListRelationFilter
-}
-
 input CheckInFindManyArgs {
   where: CheckInWhereInput
   orderBy: [CheckInOrderByWithRelationInput!]
@@ -4131,6 +4141,15 @@ type Mutation {
   Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas user akan terisi. select: { id: true, firstName: true, deletedAt: true }
   """
   userRemove(userId: String!): User
+
+  """Deskripsinya ada disini loh"""
+  itemCreateOne(itemCreateArgs: ItemCreateArgs!): Item
+
+  """Deskripsinya ada disini loh"""
+  itemUpdateOne(itemUpdateOneArgs: ItemUpdateOneArgs!): Item!
+
+  """Datanya benar2 terhapus dari db"""
+  itemRemove(itemId: Float!): Boolean
   hotelCreate(hotelCreateArgs: HotelCreateArgs!): Hotel!
   removeHotel(id: Int!): Hotel!
   createAuth(createAuthInput: CreateAuthInput!): Auth!
@@ -4204,15 +4223,6 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   shippingRemove(shippingId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
-  itemCreateOne(itemCreateArgs: ItemCreateArgs!): Item
-
-  """Deskripsinya ada disini loh"""
-  itemUpdateOne(itemUpdateOneArgs: ItemUpdateOneArgs!): Item!
-
-  """Datanya benar2 terhapus dari db"""
-  itemRemove(itemId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
   checkInCreateOne(checkInCreateArgs: CheckInCreateArgs!): CheckIn
@@ -4548,6 +4558,7 @@ input ItemCreateWithoutCartInput {
   name: String!
   description: String!
   price: Float!
+  cost: Float!
   userRole: UserRole!
   createdAt: DateTime
   updatedAt: DateTime
@@ -6327,6 +6338,7 @@ input ItemUpdateWithoutCartInput {
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
   userRole: EnumUserRoleFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -8113,6 +8125,162 @@ input AddressUpdateToOneWithWhereWithoutUserInput {
   data: AddressUpdateWithoutUserInput!
 }
 
+input ItemCreateArgs {
+  data: ItemCreateInput!
+}
+
+input ItemCreateInput {
+  name: String!
+  description: String!
+  price: Float!
+  cost: Float!
+  userRole: UserRole!
+  createdAt: DateTime
+  updatedAt: DateTime
+  cart: CartCreateNestedManyWithoutItemInput
+}
+
+input CartCreateNestedManyWithoutItemInput {
+  create: [CartCreateWithoutItemInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutItemInput!]
+  createMany: CartCreateManyItemInputEnvelope
+  connect: [CartWhereUniqueInput!]
+}
+
+input CartCreateWithoutItemInput {
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  order: OrderCreateNestedOneWithoutCartInput!
+}
+
+input OrderCreateNestedOneWithoutCartInput {
+  create: OrderCreateWithoutCartInput
+  connectOrCreate: OrderCreateOrConnectWithoutCartInput
+  connect: OrderWhereUniqueInput
+}
+
+input OrderCreateWithoutCartInput {
+  status: TransactionStatus!
+  shippingId: Int
+  cost: Float
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  orderBy: UserCreateNestedOneWithoutOrdersInput!
+  shipping: ShippingCreateNestedOneWithoutOrderInput
+  invoice: InvoiceCreateNestedOneWithoutOrderInput!
+}
+
+input OrderCreateOrConnectWithoutCartInput {
+  where: OrderWhereUniqueInput!
+  create: OrderCreateWithoutCartInput!
+}
+
+input CartCreateOrConnectWithoutItemInput {
+  where: CartWhereUniqueInput!
+  create: CartCreateWithoutItemInput!
+}
+
+input CartCreateManyItemInputEnvelope {
+  data: [CartCreateManyItemInput!]!
+  skipDuplicates: Boolean
+}
+
+input CartCreateManyItemInput {
+  id: Int
+  orderId: Int!
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ItemUpdateOneArgs {
+  data: ItemUpdateInput!
+  where: ItemWhereUniqueInput!
+}
+
+input ItemUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  cart: CartUpdateManyWithoutItemNestedInput
+}
+
+input CartUpdateManyWithoutItemNestedInput {
+  create: [CartCreateWithoutItemInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutItemInput!]
+  upsert: [CartUpsertWithWhereUniqueWithoutItemInput!]
+  createMany: CartCreateManyItemInputEnvelope
+  set: [CartWhereUniqueInput!]
+  disconnect: [CartWhereUniqueInput!]
+  delete: [CartWhereUniqueInput!]
+  connect: [CartWhereUniqueInput!]
+  update: [CartUpdateWithWhereUniqueWithoutItemInput!]
+  updateMany: [CartUpdateManyWithWhereWithoutItemInput!]
+  deleteMany: [CartScalarWhereInput!]
+}
+
+input CartUpsertWithWhereUniqueWithoutItemInput {
+  where: CartWhereUniqueInput!
+  update: CartUpdateWithoutItemInput!
+  create: CartCreateWithoutItemInput!
+}
+
+input CartUpdateWithoutItemInput {
+  quantity: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  order: OrderUpdateOneRequiredWithoutCartNestedInput
+}
+
+input OrderUpdateOneRequiredWithoutCartNestedInput {
+  create: OrderCreateWithoutCartInput
+  connectOrCreate: OrderCreateOrConnectWithoutCartInput
+  upsert: OrderUpsertWithoutCartInput
+  connect: OrderWhereUniqueInput
+  update: OrderUpdateToOneWithWhereWithoutCartInput
+}
+
+input OrderUpsertWithoutCartInput {
+  update: OrderUpdateWithoutCartInput!
+  create: OrderCreateWithoutCartInput!
+  where: OrderWhereInput
+}
+
+input OrderUpdateWithoutCartInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  shippingId: NullableIntFieldUpdateOperationsInput
+  cost: NullableFloatFieldUpdateOperationsInput
+  platformFee: FloatFieldUpdateOperationsInput
+  total: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
+  shipping: ShippingUpdateOneWithoutOrderNestedInput
+  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
+}
+
+input OrderUpdateToOneWithWhereWithoutCartInput {
+  where: OrderWhereInput
+  data: OrderUpdateWithoutCartInput!
+}
+
+input CartUpdateWithWhereUniqueWithoutItemInput {
+  where: CartWhereUniqueInput!
+  data: CartUpdateWithoutItemInput!
+}
+
+input CartUpdateManyWithWhereWithoutItemInput {
+  where: CartScalarWhereInput!
+  data: CartUpdateManyMutationInput!
+}
+
 input HotelCreateArgs {
   select: HotelSelect
   include: HotelSelect
@@ -8615,160 +8783,6 @@ input ShippingUpdateInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutShippingNestedInput
   order: OrderUpdateOneRequiredWithoutShippingNestedInput
-}
-
-input ItemCreateArgs {
-  data: ItemCreateInput!
-}
-
-input ItemCreateInput {
-  name: String!
-  description: String!
-  price: Float!
-  userRole: UserRole!
-  createdAt: DateTime
-  updatedAt: DateTime
-  cart: CartCreateNestedManyWithoutItemInput
-}
-
-input CartCreateNestedManyWithoutItemInput {
-  create: [CartCreateWithoutItemInput!]
-  connectOrCreate: [CartCreateOrConnectWithoutItemInput!]
-  createMany: CartCreateManyItemInputEnvelope
-  connect: [CartWhereUniqueInput!]
-}
-
-input CartCreateWithoutItemInput {
-  quantity: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
-  order: OrderCreateNestedOneWithoutCartInput!
-}
-
-input OrderCreateNestedOneWithoutCartInput {
-  create: OrderCreateWithoutCartInput
-  connectOrCreate: OrderCreateOrConnectWithoutCartInput
-  connect: OrderWhereUniqueInput
-}
-
-input OrderCreateWithoutCartInput {
-  status: TransactionStatus!
-  shippingId: Int
-  cost: Float
-  platformFee: Float!
-  total: Float!
-  createdAt: DateTime
-  updatedAt: DateTime
-  orderBy: UserCreateNestedOneWithoutOrdersInput!
-  shipping: ShippingCreateNestedOneWithoutOrderInput
-  invoice: InvoiceCreateNestedOneWithoutOrderInput!
-}
-
-input OrderCreateOrConnectWithoutCartInput {
-  where: OrderWhereUniqueInput!
-  create: OrderCreateWithoutCartInput!
-}
-
-input CartCreateOrConnectWithoutItemInput {
-  where: CartWhereUniqueInput!
-  create: CartCreateWithoutItemInput!
-}
-
-input CartCreateManyItemInputEnvelope {
-  data: [CartCreateManyItemInput!]!
-  skipDuplicates: Boolean
-}
-
-input CartCreateManyItemInput {
-  id: Int
-  orderId: Int!
-  quantity: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input ItemUpdateOneArgs {
-  data: ItemUpdateInput!
-  where: ItemWhereUniqueInput!
-}
-
-input ItemUpdateInput {
-  name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  price: FloatFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  cart: CartUpdateManyWithoutItemNestedInput
-}
-
-input CartUpdateManyWithoutItemNestedInput {
-  create: [CartCreateWithoutItemInput!]
-  connectOrCreate: [CartCreateOrConnectWithoutItemInput!]
-  upsert: [CartUpsertWithWhereUniqueWithoutItemInput!]
-  createMany: CartCreateManyItemInputEnvelope
-  set: [CartWhereUniqueInput!]
-  disconnect: [CartWhereUniqueInput!]
-  delete: [CartWhereUniqueInput!]
-  connect: [CartWhereUniqueInput!]
-  update: [CartUpdateWithWhereUniqueWithoutItemInput!]
-  updateMany: [CartUpdateManyWithWhereWithoutItemInput!]
-  deleteMany: [CartScalarWhereInput!]
-}
-
-input CartUpsertWithWhereUniqueWithoutItemInput {
-  where: CartWhereUniqueInput!
-  update: CartUpdateWithoutItemInput!
-  create: CartCreateWithoutItemInput!
-}
-
-input CartUpdateWithoutItemInput {
-  quantity: IntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  order: OrderUpdateOneRequiredWithoutCartNestedInput
-}
-
-input OrderUpdateOneRequiredWithoutCartNestedInput {
-  create: OrderCreateWithoutCartInput
-  connectOrCreate: OrderCreateOrConnectWithoutCartInput
-  upsert: OrderUpsertWithoutCartInput
-  connect: OrderWhereUniqueInput
-  update: OrderUpdateToOneWithWhereWithoutCartInput
-}
-
-input OrderUpsertWithoutCartInput {
-  update: OrderUpdateWithoutCartInput!
-  create: OrderCreateWithoutCartInput!
-  where: OrderWhereInput
-}
-
-input OrderUpdateWithoutCartInput {
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  shippingId: NullableIntFieldUpdateOperationsInput
-  cost: NullableFloatFieldUpdateOperationsInput
-  platformFee: FloatFieldUpdateOperationsInput
-  total: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
-  shipping: ShippingUpdateOneWithoutOrderNestedInput
-  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
-}
-
-input OrderUpdateToOneWithWhereWithoutCartInput {
-  where: OrderWhereInput
-  data: OrderUpdateWithoutCartInput!
-}
-
-input CartUpdateWithWhereUniqueWithoutItemInput {
-  where: CartWhereUniqueInput!
-  data: CartUpdateWithoutItemInput!
-}
-
-input CartUpdateManyWithWhereWithoutItemInput {
-  where: CartScalarWhereInput!
-  data: CartUpdateManyMutationInput!
 }
 
 input CheckInCreateArgs {

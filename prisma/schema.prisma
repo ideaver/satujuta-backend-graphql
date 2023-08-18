@@ -468,6 +468,7 @@ model Item {
   price       Float
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
+  cost        Float
   userRole    UserRole
   cart        Cart[]
   createdAt   DateTime @default(now())
