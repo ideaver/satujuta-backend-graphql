@@ -70,7 +70,7 @@ export class OrderController {
       },
     };
 
-    this.logger.log(orderUpdateArgsPrisma);
+    // this.logger.log(orderUpdateArgsPrisma);
     return this.orderService.update(orderUpdateArgsPrisma);
   }
 

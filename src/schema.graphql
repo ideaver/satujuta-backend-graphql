@@ -4233,15 +4233,6 @@ type Mutation {
   projectRemove(projectId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  shippingCreateOne(shippingCreateArgs: ShippingCreateArgs!): Shipping
-
-  """Deskripsinya ada disini loh"""
-  shippingUpdateOne(shippingUpdateOneArgs: ShippingUpdateOneArgs!): Shipping!
-
-  """Datanya benar2 terhapus dari db"""
-  shippingRemove(shippingId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
   checkInCreateOne(checkInCreateArgs: CheckInCreateArgs!): CheckIn
 
   """Deskripsinya ada disini loh"""
@@ -8730,37 +8721,6 @@ input ProjectUpdateInput {
   images: ImagesUpdateManyWithoutProjectImageNestedInput
   investors: UserUpdateManyWithoutProjectsInvestmentNestedInput
   account: AccountUpdateOneRequiredWithoutProjectNestedInput
-}
-
-input ShippingCreateArgs {
-  data: ShippingCreateInput!
-}
-
-input ShippingCreateInput {
-  logisticName: String!
-  deliveryDate: DateTime
-  courier: String
-  estimatedTime: String
-  trackingNo: String
-  order: OrderCreateNestedOneWithoutShippingInput!
-}
-
-input ShippingUpdateOneArgs {
-  data: ShippingUpdateInput!
-  where: ShippingWhereUniqueInput!
-}
-
-input ShippingUpdateInput {
-  logisticName: StringFieldUpdateOperationsInput
-  deliveryDate: NullableDateTimeFieldUpdateOperationsInput
-  shippingStatus: EnumShippingStatusFieldUpdateOperationsInput
-  courier: NullableStringFieldUpdateOperationsInput
-  estimatedTime: NullableStringFieldUpdateOperationsInput
-  trackingNo: NullableStringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutShippingNestedInput
-  order: OrderUpdateOneRequiredWithoutShippingNestedInput
 }
 
 input CheckInCreateArgs {

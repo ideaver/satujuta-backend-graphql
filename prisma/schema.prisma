@@ -486,20 +486,20 @@ model Shipping {
   /// @Validator.IsAlphanumeric()
   logisticName   String
   deliveryDate   DateTime?
-  /// @HideField({ match: 'ShippingCreate*Input' })
+  /// @HideField({ match: 'Shipping*Input' })
   shippingStatus ShippingStatus
   /// @HideField({ match: 'ShippingCreate*Input' })
   address        Address        @relation(fields: [addressId], references: [id])
-  /// @HideField({ match: 'ShippingCreate*Input' })
+  /// @HideField({ match: 'Shipping*Input' })
   addressId      Int            @unique
   courier        String?
   estimatedTime  String?
   trackingNo     String?
   order          Order          @relation(fields: [orderId], references: [id])
   orderId        Int            @unique
-  /// @HideField({ match: 'ShippingCreate*Input' })
+  /// @HideField({ match: 'Shipping*Input' })
   createdAt      DateTime       @default(now())
-  /// @HideField({ match: 'ShippingCreate*Input' })
+  /// @HideField({ match: 'Shipping*Input' })
   updatedAt      DateTime       @updatedAt
 }
 

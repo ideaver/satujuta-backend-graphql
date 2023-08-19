@@ -16,17 +16,17 @@ interface ShippingSelect {
 export class ShippingResolver {
   constructor(private readonly shippingService: ShippingService) {}
 
-  @Mutation(() => Shipping, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async shippingCreateOne(
-    @Args('shippingCreateArgs') shippingCreateArgs: ShippingCreateArgs,
-    @Relations() relations: ShippingSelect
-  ): Promise<Shipping | void> {
-    shippingCreateArgs.select = relations.select;
-    return await this.shippingService.createOne(shippingCreateArgs);
-  }
+  // @Mutation(() => Shipping, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async shippingCreateOne(
+  //   @Args('shippingCreateArgs') shippingCreateArgs: ShippingCreateArgs,
+  //   @Relations() relations: ShippingSelect,
+  // ): Promise<Shipping | void> {
+  //   shippingCreateArgs.select = relations.select;
+  //   return await this.shippingService.createOne(shippingCreateArgs);
+  // }
 
   @Query(() => [Shipping], {
     nullable: true,
@@ -55,21 +55,20 @@ export class ShippingResolver {
     return this.shippingService.findOne(shippingFindUniqueArgs);
   }
 
-  @Mutation(() => Shipping, { description: 'Deskripsinya ada disini loh' })
-  shippingUpdateOne(
-    @Args('shippingUpdateOneArgs') shippingUpdateOneArgs: ShippingUpdateOneArgs,
-    @Relations() relations: ShippingSelect,
-  ) {
-    shippingUpdateOneArgs.select = relations.select;
-    return this.shippingService.update(shippingUpdateOneArgs);
-  }
+  // @Mutation(() => Shipping, { description: 'Deskripsinya ada disini loh' })
+  // shippingUpdateOne(
+  //   @Args('shippingUpdateOneArgs') shippingUpdateOneArgs: ShippingUpdateOneArgs,
+  //   @Relations() relations: ShippingSelect,
+  // ) {
+  //   shippingUpdateOneArgs.select = relations.select;
+  //   return this.shippingService.update(shippingUpdateOneArgs);
+  // }
 
-  @Mutation(() => Boolean, {
-    nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
-  })
-  shippingRemove(@Args('shippingId') shippingId: number) {
-    return this.shippingService.remove(shippingId);
-  }
+  // @Mutation(() => Boolean, {
+  //   nullable: true,
+  //   description: 'Datanya benar2 terhapus dari db',
+  // })
+  // shippingRemove(@Args('shippingId') shippingId: number) {
+  //   return this.shippingService.remove(shippingId);
+  // }
 }
