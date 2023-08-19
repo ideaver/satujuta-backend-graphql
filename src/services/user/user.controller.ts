@@ -11,7 +11,10 @@ import {
   TransactionStatus,
   UserRole,
 } from '@prisma/client';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
+import {
+  generateRandomReferralCode,
+  generateUniqueCode,
+} from 'src/utils/generate-random.function';
 import { Injectable, Logger } from '@nestjs/common';
 import { ItemService } from '../item/item.service';
 
@@ -102,6 +105,7 @@ async function orderCreate(
         create: {
           amount: totalPrice + platformFee + adminFee,
           adminFee: adminFee,
+          uniqueCode: generateUniqueCode(),
         },
       },
     },

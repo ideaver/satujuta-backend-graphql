@@ -4,9 +4,8 @@ import { Prisma } from '@prisma/client';
 import { Int } from '@nestjs/graphql';
 import {
   InvoiceWhereInput,
-  InvoiceInvoiceByWithRelationInput,
-  InvoiceWhereUniqueInput,
   InvoiceScalarFieldEnum,
+  InvoiceOrderByWithRelationInput,
 } from 'src/@generated';
 
 @InputType()
@@ -17,8 +16,8 @@ export class InvoiceFindManyArgs {
   @Type(() => InvoiceWhereInput)
   where?: InvoiceWhereInput;
 
-  @Field(() => [InvoiceInvoiceByWithRelationInput], { nullable: true })
-  orderBy?: Array<InvoiceInvoiceByWithRelationInput>;
+  @Field(() => [InvoiceOrderByWithRelationInput], { nullable: true })
+  orderBy?: Array<InvoiceOrderByWithRelationInput>;
 
   // @Field(() => InvoiceWhereUniqueInput, { nullable: true })
   // cursor?: Prisma.AtLeast<

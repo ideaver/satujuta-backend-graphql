@@ -11,6 +11,5 @@ export class InvoiceCreateArgs {
   @Field(() => InvoiceCreateInput, { nullable: false })
   @Type(() => InvoiceCreateInput)
   data!: InvoiceCreateInput;
-  //TODO: terapkan Case sensitive @Transform(({name}) => name.toUpperCase())
   //maybe use field middleware
 }

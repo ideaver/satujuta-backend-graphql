@@ -249,16 +249,28 @@ model Transaction {
   /// @Validator.IsNotEmpty()
   amount              Float
   proofUrl            String?
+  /// @HideField({ output: false, input: true })   
   status              TransactionStatus
   transactionCategory TransactionCategory
+  /// @HideField({ output: false, input: true })   
   fromAccount         Account             @relation("origin", fields: [fromAccountId], references: [id])
+  /// @HideField({ output: false, input: true })   
   fromAccountId       Int
+  /// @HideField({ output: false, input: true })   
   toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
+  /// @HideField({ output: false, input: true })   
   toAccountId         Int
+  /// @HideField({ output: false, input: true })   
   invoice             Invoice?            @relation(fields: [invoiceId], references: [id])
+  /// @HideField({ output: false, input: true })   
   invoiceId           Int?
+  /// @HideField({ output: false, input: true })   
   Installment         Installment?        @relation(fields: [installmentId], references: [id])
+  /// @HideField({ output: false, input: true })   
   installmentId       Int?                @unique
+  /// @HideField({ output: false, input: true })   
+  uniqueCode          Int
+  /// @HideField({ output: false, input: true })   
   createdAt           DateTime            @default(now())
 
   @@index([amount], name: "amount")
@@ -518,9 +530,15 @@ model Invoice {
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
   amount       Float
+  /// @HideField({ output: false, input: true })   
+  uniqueCode   Int
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
   Order        Order?
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
   transactions Transaction[]
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
   Installments Installment[]
+  /// @HideField({ output: false, input: true }) 
   createdAt    DateTime      @default(now())
 }
 

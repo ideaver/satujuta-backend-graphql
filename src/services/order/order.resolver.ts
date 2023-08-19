@@ -5,7 +5,7 @@ import { OrderFindUniqueArgs } from './dto/order-find-one.args';
 import { OrderUpdateOneArgs } from './dto/order-update-one.args';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
+import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 import { OrderController } from './order.controller';
 import { Order } from 'src/@generated';
 

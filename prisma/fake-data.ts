@@ -128,6 +128,7 @@ export function fakeTransaction() {
     proofUrl: undefined,
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
     transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION] as const),
+    uniqueCode: faker.datatype.number(),
   };
 }
 export function fakeTransactionComplete() {
@@ -141,6 +142,7 @@ export function fakeTransactionComplete() {
     toAccountId: faker.datatype.number(),
     invoiceId: undefined,
     installmentId: undefined,
+    uniqueCode: faker.datatype.number(),
     createdAt: new Date(),
   };
 }
@@ -355,6 +357,7 @@ export function fakeInvoice() {
   return {
     adminFee: faker.datatype.float(),
     amount: faker.datatype.float(),
+    uniqueCode: faker.datatype.number(),
   };
 }
 export function fakeInvoiceComplete() {
@@ -362,6 +365,7 @@ export function fakeInvoiceComplete() {
     id: faker.datatype.number(),
     adminFee: faker.datatype.float(),
     amount: faker.datatype.float(),
+    uniqueCode: faker.datatype.number(),
     createdAt: new Date(),
   };
 }

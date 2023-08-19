@@ -43,6 +43,7 @@ export declare enum TransactionScalarFieldEnum {
     toAccountId = "toAccountId",
     invoiceId = "invoiceId",
     installmentId = "installmentId",
+    uniqueCode = "uniqueCode",
     createdAt = "createdAt"
 }
 export declare enum ShippingScalarFieldEnum {
@@ -249,6 +250,7 @@ export declare enum InvoiceScalarFieldEnum {
     id = "id",
     adminFee = "adminFee",
     amount = "amount",
+    uniqueCode = "uniqueCode",
     createdAt = "createdAt"
 }
 export declare enum InstallmentScalarFieldEnum {
@@ -7440,21 +7442,25 @@ export declare class InvoiceAvgAggregateInput {
     id?: true;
     adminFee?: true;
     amount?: true;
+    uniqueCode?: true;
 }
 export declare class InvoiceAvgAggregate {
     id?: number;
     adminFee?: number;
     amount?: number;
+    uniqueCode?: number;
 }
 export declare class InvoiceAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
 }
 export declare class InvoiceCountAggregateInput {
     id?: true;
     adminFee?: true;
     amount?: true;
+    uniqueCode?: true;
     createdAt?: true;
     _all?: true;
 }
@@ -7462,6 +7468,7 @@ export declare class InvoiceCountAggregate {
     id: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt: number;
     _all: number;
 }
@@ -7469,6 +7476,7 @@ export declare class InvoiceCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class InvoiceCount {
@@ -7479,6 +7487,7 @@ export declare class InvoiceCreateManyInput {
     id?: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class InvoiceCreateNestedOneWithoutInstallmentsInput {
@@ -7511,6 +7520,7 @@ export declare class InvoiceCreateOrConnectWithoutTransactionsInput {
 export declare class InvoiceCreateWithoutInstallmentsInput {
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     Order?: InstanceType<typeof OrderCreateNestedOneWithoutInvoiceInput>;
     transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutInvoiceInput>;
@@ -7518,6 +7528,7 @@ export declare class InvoiceCreateWithoutInstallmentsInput {
 export declare class InvoiceCreateWithoutOrderInput {
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutInvoiceInput>;
     Installments?: InstanceType<typeof InstallmentCreateNestedManyWithoutInvoiceInput>;
@@ -7525,6 +7536,7 @@ export declare class InvoiceCreateWithoutOrderInput {
 export declare class InvoiceCreateWithoutTransactionsInput {
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     Order?: InstanceType<typeof OrderCreateNestedOneWithoutInvoiceInput>;
     Installments?: InstanceType<typeof InstallmentCreateNestedManyWithoutInvoiceInput>;
@@ -7532,6 +7544,7 @@ export declare class InvoiceCreateWithoutTransactionsInput {
 export declare class InvoiceCreateInput {
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     Order?: InstanceType<typeof OrderCreateNestedOneWithoutInvoiceInput>;
     transactions?: InstanceType<typeof TransactionCreateNestedManyWithoutInvoiceInput>;
@@ -7554,6 +7567,7 @@ export declare class InvoiceGroupBy {
     id: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt: Date | string;
     _count?: InstanceType<typeof InvoiceCountAggregate>;
     _avg?: InstanceType<typeof InvoiceAvgAggregate>;
@@ -7565,36 +7579,42 @@ export declare class InvoiceMaxAggregateInput {
     id?: true;
     adminFee?: true;
     amount?: true;
+    uniqueCode?: true;
     createdAt?: true;
 }
 export declare class InvoiceMaxAggregate {
     id?: number;
     adminFee?: number;
     amount?: number;
+    uniqueCode?: number;
     createdAt?: Date | string;
 }
 export declare class InvoiceMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class InvoiceMinAggregateInput {
     id?: true;
     adminFee?: true;
     amount?: true;
+    uniqueCode?: true;
     createdAt?: true;
 }
 export declare class InvoiceMinAggregate {
     id?: number;
     adminFee?: number;
     amount?: number;
+    uniqueCode?: number;
     createdAt?: Date | string;
 }
 export declare class InvoiceMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class InvoiceNullableRelationFilter {
@@ -7605,6 +7625,7 @@ export declare class InvoiceOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     _count?: InstanceType<typeof InvoiceCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof InvoiceAvgOrderByAggregateInput>;
@@ -7616,6 +7637,7 @@ export declare class InvoiceOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     Order?: InstanceType<typeof OrderOrderByWithRelationInput>;
     transactions?: InstanceType<typeof TransactionOrderByRelationAggregateInput>;
@@ -7632,27 +7654,32 @@ export declare class InvoiceScalarWhereWithAggregatesInput {
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     adminFee?: InstanceType<typeof FloatWithAggregatesFilter>;
     amount?: InstanceType<typeof FloatWithAggregatesFilter>;
+    uniqueCode?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
 }
 export declare class InvoiceSumAggregateInput {
     id?: true;
     adminFee?: true;
     amount?: true;
+    uniqueCode?: true;
 }
 export declare class InvoiceSumAggregate {
     id?: number;
     adminFee?: number;
     amount?: number;
+    uniqueCode?: number;
 }
 export declare class InvoiceSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     adminFee?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
 }
 export declare class InvoiceUncheckedCreateWithoutInstallmentsInput {
     id?: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     Order?: InstanceType<typeof OrderUncheckedCreateNestedOneWithoutInvoiceInput>;
     transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutInvoiceInput>;
@@ -7661,6 +7688,7 @@ export declare class InvoiceUncheckedCreateWithoutOrderInput {
     id?: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutInvoiceInput>;
     Installments?: InstanceType<typeof InstallmentUncheckedCreateNestedManyWithoutInvoiceInput>;
@@ -7669,6 +7697,7 @@ export declare class InvoiceUncheckedCreateWithoutTransactionsInput {
     id?: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     Order?: InstanceType<typeof OrderUncheckedCreateNestedOneWithoutInvoiceInput>;
     Installments?: InstanceType<typeof InstallmentUncheckedCreateNestedManyWithoutInvoiceInput>;
@@ -7677,6 +7706,7 @@ export declare class InvoiceUncheckedCreateInput {
     id?: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt?: Date | string;
     Order?: InstanceType<typeof OrderUncheckedCreateNestedOneWithoutInvoiceInput>;
     transactions?: InstanceType<typeof TransactionUncheckedCreateNestedManyWithoutInvoiceInput>;
@@ -7686,12 +7716,14 @@ export declare class InvoiceUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class InvoiceUncheckedUpdateWithoutInstallmentsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     Order?: InstanceType<typeof OrderUncheckedUpdateOneWithoutInvoiceNestedInput>;
     transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutInvoiceNestedInput>;
@@ -7700,6 +7732,7 @@ export declare class InvoiceUncheckedUpdateWithoutOrderInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutInvoiceNestedInput>;
     Installments?: InstanceType<typeof InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput>;
@@ -7708,6 +7741,7 @@ export declare class InvoiceUncheckedUpdateWithoutTransactionsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     Order?: InstanceType<typeof OrderUncheckedUpdateOneWithoutInvoiceNestedInput>;
     Installments?: InstanceType<typeof InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput>;
@@ -7716,6 +7750,7 @@ export declare class InvoiceUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     Order?: InstanceType<typeof OrderUncheckedUpdateOneWithoutInvoiceNestedInput>;
     transactions?: InstanceType<typeof TransactionUncheckedUpdateManyWithoutInvoiceNestedInput>;
@@ -7724,6 +7759,7 @@ export declare class InvoiceUncheckedUpdateInput {
 export declare class InvoiceUpdateManyMutationInput {
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput {
@@ -7764,6 +7800,7 @@ export declare class InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
 export declare class InvoiceUpdateWithoutInstallmentsInput {
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     Order?: InstanceType<typeof OrderUpdateOneWithoutInvoiceNestedInput>;
     transactions?: InstanceType<typeof TransactionUpdateManyWithoutInvoiceNestedInput>;
@@ -7771,6 +7808,7 @@ export declare class InvoiceUpdateWithoutInstallmentsInput {
 export declare class InvoiceUpdateWithoutOrderInput {
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     transactions?: InstanceType<typeof TransactionUpdateManyWithoutInvoiceNestedInput>;
     Installments?: InstanceType<typeof InstallmentUpdateManyWithoutInvoiceNestedInput>;
@@ -7778,6 +7816,7 @@ export declare class InvoiceUpdateWithoutOrderInput {
 export declare class InvoiceUpdateWithoutTransactionsInput {
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     Order?: InstanceType<typeof OrderUpdateOneWithoutInvoiceNestedInput>;
     Installments?: InstanceType<typeof InstallmentUpdateManyWithoutInvoiceNestedInput>;
@@ -7785,6 +7824,7 @@ export declare class InvoiceUpdateWithoutTransactionsInput {
 export declare class InvoiceUpdateInput {
     adminFee?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     Order?: InstanceType<typeof OrderUpdateOneWithoutInvoiceNestedInput>;
     transactions?: InstanceType<typeof TransactionUpdateManyWithoutInvoiceNestedInput>;
@@ -7812,6 +7852,7 @@ export declare class InvoiceWhereUniqueInput {
     NOT?: Array<InvoiceWhereInput>;
     adminFee?: InstanceType<typeof FloatFilter>;
     amount?: InstanceType<typeof FloatFilter>;
+    uniqueCode?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     Order?: InstanceType<typeof OrderNullableRelationFilter>;
     transactions?: InstanceType<typeof TransactionListRelationFilter>;
@@ -7824,6 +7865,7 @@ export declare class InvoiceWhereInput {
     id?: InstanceType<typeof IntFilter>;
     adminFee?: InstanceType<typeof FloatFilter>;
     amount?: InstanceType<typeof FloatFilter>;
+    uniqueCode?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     Order?: InstanceType<typeof OrderNullableRelationFilter>;
     transactions?: InstanceType<typeof TransactionListRelationFilter>;
@@ -7833,6 +7875,7 @@ export declare class Invoice {
     id: number;
     adminFee: number;
     amount: number;
+    uniqueCode: number;
     createdAt: Date;
     Order?: InstanceType<typeof Order> | null;
     transactions?: Array<Transaction>;
@@ -15034,6 +15077,7 @@ export declare class TransactionAvgAggregateInput {
     toAccountId?: true;
     invoiceId?: true;
     installmentId?: true;
+    uniqueCode?: true;
 }
 export declare class TransactionAvgAggregate {
     id?: number;
@@ -15042,6 +15086,7 @@ export declare class TransactionAvgAggregate {
     toAccountId?: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode?: number;
 }
 export declare class TransactionAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -15050,6 +15095,7 @@ export declare class TransactionAvgOrderByAggregateInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: keyof typeof SortOrder;
     installmentId?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
 }
 export declare class TransactionCountAggregateInput {
     id?: true;
@@ -15061,6 +15107,7 @@ export declare class TransactionCountAggregateInput {
     toAccountId?: true;
     invoiceId?: true;
     installmentId?: true;
+    uniqueCode?: true;
     createdAt?: true;
     _all?: true;
 }
@@ -15074,6 +15121,7 @@ export declare class TransactionCountAggregate {
     toAccountId: number;
     invoiceId: number;
     installmentId: number;
+    uniqueCode: number;
     createdAt: number;
     _all: number;
 }
@@ -15087,6 +15135,7 @@ export declare class TransactionCountOrderByAggregateInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: keyof typeof SortOrder;
     installmentId?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class TransactionCreateManyFromAccountInputEnvelope {
@@ -15102,6 +15151,7 @@ export declare class TransactionCreateManyFromAccountInput {
     toAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateManyInvoiceInputEnvelope {
@@ -15117,6 +15167,7 @@ export declare class TransactionCreateManyInvoiceInput {
     fromAccountId: number;
     toAccountId: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateManyToAccountInputEnvelope {
@@ -15132,6 +15183,7 @@ export declare class TransactionCreateManyToAccountInput {
     fromAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateManyInput {
@@ -15144,6 +15196,7 @@ export declare class TransactionCreateManyInput {
     toAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionCreateNestedManyWithoutFromAccountInput {
@@ -15190,6 +15243,7 @@ export declare class TransactionCreateWithoutFromAccountInput {
     proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
+    uniqueCode: number;
     createdAt?: Date | string;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
     invoice?: InstanceType<typeof InvoiceCreateNestedOneWithoutTransactionsInput>;
@@ -15200,6 +15254,7 @@ export declare class TransactionCreateWithoutInstallmentInput {
     proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
+    uniqueCode: number;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
@@ -15210,6 +15265,7 @@ export declare class TransactionCreateWithoutInvoiceInput {
     proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
+    uniqueCode: number;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
@@ -15220,6 +15276,7 @@ export declare class TransactionCreateWithoutToAccountInput {
     proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
+    uniqueCode: number;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
     invoice?: InstanceType<typeof InvoiceCreateNestedOneWithoutTransactionsInput>;
@@ -15230,6 +15287,7 @@ export declare class TransactionCreateInput {
     proofUrl?: string;
     status: keyof typeof TransactionStatus;
     transactionCategory: keyof typeof TransactionCategory;
+    uniqueCode: number;
     createdAt?: Date | string;
     fromAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionOriginsInput>;
     toAccount: InstanceType<typeof AccountCreateNestedOneWithoutTransactionDestinationInput>;
@@ -15259,6 +15317,7 @@ export declare class TransactionGroupBy {
     toAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt: Date | string;
     _count?: InstanceType<typeof TransactionCountAggregate>;
     _avg?: InstanceType<typeof TransactionAvgAggregate>;
@@ -15281,6 +15340,7 @@ export declare class TransactionMaxAggregateInput {
     toAccountId?: true;
     invoiceId?: true;
     installmentId?: true;
+    uniqueCode?: true;
     createdAt?: true;
 }
 export declare class TransactionMaxAggregate {
@@ -15293,6 +15353,7 @@ export declare class TransactionMaxAggregate {
     toAccountId?: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionMaxOrderByAggregateInput {
@@ -15305,6 +15366,7 @@ export declare class TransactionMaxOrderByAggregateInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: keyof typeof SortOrder;
     installmentId?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class TransactionMinAggregateInput {
@@ -15317,6 +15379,7 @@ export declare class TransactionMinAggregateInput {
     toAccountId?: true;
     invoiceId?: true;
     installmentId?: true;
+    uniqueCode?: true;
     createdAt?: true;
 }
 export declare class TransactionMinAggregate {
@@ -15329,6 +15392,7 @@ export declare class TransactionMinAggregate {
     toAccountId?: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode?: number;
     createdAt?: Date | string;
 }
 export declare class TransactionMinOrderByAggregateInput {
@@ -15341,6 +15405,7 @@ export declare class TransactionMinOrderByAggregateInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: keyof typeof SortOrder;
     installmentId?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
 }
 export declare class TransactionNullableRelationFilter {
@@ -15360,6 +15425,7 @@ export declare class TransactionOrderByWithAggregationInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: InstanceType<typeof SortOrderInput>;
     installmentId?: InstanceType<typeof SortOrderInput>;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     _count?: InstanceType<typeof TransactionCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof TransactionAvgOrderByAggregateInput>;
@@ -15377,6 +15443,7 @@ export declare class TransactionOrderByWithRelationInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: InstanceType<typeof SortOrderInput>;
     installmentId?: InstanceType<typeof SortOrderInput>;
+    uniqueCode?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     fromAccount?: InstanceType<typeof AccountOrderByWithRelationInput>;
     toAccount?: InstanceType<typeof AccountOrderByWithRelationInput>;
@@ -15396,6 +15463,7 @@ export declare class TransactionScalarWhereWithAggregatesInput {
     toAccountId?: InstanceType<typeof IntWithAggregatesFilter>;
     invoiceId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     installmentId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    uniqueCode?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
 }
 export declare class TransactionScalarWhereInput {
@@ -15411,6 +15479,7 @@ export declare class TransactionScalarWhereInput {
     toAccountId?: InstanceType<typeof IntFilter>;
     invoiceId?: InstanceType<typeof IntNullableFilter>;
     installmentId?: InstanceType<typeof IntNullableFilter>;
+    uniqueCode?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class TransactionSumAggregateInput {
@@ -15420,6 +15489,7 @@ export declare class TransactionSumAggregateInput {
     toAccountId?: true;
     invoiceId?: true;
     installmentId?: true;
+    uniqueCode?: true;
 }
 export declare class TransactionSumAggregate {
     id?: number;
@@ -15428,6 +15498,7 @@ export declare class TransactionSumAggregate {
     toAccountId?: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode?: number;
 }
 export declare class TransactionSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -15436,6 +15507,7 @@ export declare class TransactionSumOrderByAggregateInput {
     toAccountId?: keyof typeof SortOrder;
     invoiceId?: keyof typeof SortOrder;
     installmentId?: keyof typeof SortOrder;
+    uniqueCode?: keyof typeof SortOrder;
 }
 export declare class TransactionUncheckedCreateNestedManyWithoutFromAccountInput {
     create?: Array<TransactionCreateWithoutFromAccountInput>;
@@ -15469,6 +15541,7 @@ export declare class TransactionUncheckedCreateWithoutFromAccountInput {
     toAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionUncheckedCreateWithoutInstallmentInput {
@@ -15480,6 +15553,7 @@ export declare class TransactionUncheckedCreateWithoutInstallmentInput {
     fromAccountId: number;
     toAccountId: number;
     invoiceId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionUncheckedCreateWithoutInvoiceInput {
@@ -15491,6 +15565,7 @@ export declare class TransactionUncheckedCreateWithoutInvoiceInput {
     fromAccountId: number;
     toAccountId: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionUncheckedCreateWithoutToAccountInput {
@@ -15502,6 +15577,7 @@ export declare class TransactionUncheckedCreateWithoutToAccountInput {
     fromAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionUncheckedCreateInput {
@@ -15514,6 +15590,7 @@ export declare class TransactionUncheckedCreateInput {
     toAccountId: number;
     invoiceId?: number;
     installmentId?: number;
+    uniqueCode: number;
     createdAt?: Date | string;
 }
 export declare class TransactionUncheckedUpdateManyWithoutFromAccountNestedInput {
@@ -15538,6 +15615,7 @@ export declare class TransactionUncheckedUpdateManyWithoutFromAccountInput {
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyWithoutInvoiceNestedInput {
@@ -15562,6 +15640,7 @@ export declare class TransactionUncheckedUpdateManyWithoutInvoiceInput {
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyWithoutToAccountNestedInput {
@@ -15586,6 +15665,7 @@ export declare class TransactionUncheckedUpdateManyWithoutToAccountInput {
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateManyInput {
@@ -15598,6 +15678,7 @@ export declare class TransactionUncheckedUpdateManyInput {
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateOneWithoutInstallmentNestedInput {
@@ -15618,6 +15699,7 @@ export declare class TransactionUncheckedUpdateWithoutFromAccountInput {
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutInstallmentInput {
@@ -15629,6 +15711,7 @@ export declare class TransactionUncheckedUpdateWithoutInstallmentInput {
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutInvoiceInput {
@@ -15640,6 +15723,7 @@ export declare class TransactionUncheckedUpdateWithoutInvoiceInput {
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateWithoutToAccountInput {
@@ -15651,6 +15735,7 @@ export declare class TransactionUncheckedUpdateWithoutToAccountInput {
     fromAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUncheckedUpdateInput {
@@ -15663,6 +15748,7 @@ export declare class TransactionUncheckedUpdateInput {
     toAccountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     invoiceId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     installmentId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUpdateManyMutationInput {
@@ -15670,6 +15756,7 @@ export declare class TransactionUpdateManyMutationInput {
     proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class TransactionUpdateManyWithWhereWithoutFromAccountInput {
@@ -15753,6 +15840,7 @@ export declare class TransactionUpdateWithoutFromAccountInput {
     proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
     invoice?: InstanceType<typeof InvoiceUpdateOneWithoutTransactionsNestedInput>;
@@ -15763,6 +15851,7 @@ export declare class TransactionUpdateWithoutInstallmentInput {
     proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
@@ -15773,6 +15862,7 @@ export declare class TransactionUpdateWithoutInvoiceInput {
     proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
@@ -15783,6 +15873,7 @@ export declare class TransactionUpdateWithoutToAccountInput {
     proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
     invoice?: InstanceType<typeof InvoiceUpdateOneWithoutTransactionsNestedInput>;
@@ -15793,6 +15884,7 @@ export declare class TransactionUpdateInput {
     proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
     transactionCategory?: InstanceType<typeof EnumTransactionCategoryFieldUpdateOperationsInput>;
+    uniqueCode?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     fromAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput>;
     toAccount?: InstanceType<typeof AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput>;
@@ -15832,6 +15924,7 @@ export declare class TransactionWhereUniqueInput {
     fromAccountId?: InstanceType<typeof IntFilter>;
     toAccountId?: InstanceType<typeof IntFilter>;
     invoiceId?: InstanceType<typeof IntNullableFilter>;
+    uniqueCode?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     fromAccount?: InstanceType<typeof AccountRelationFilter>;
     toAccount?: InstanceType<typeof AccountRelationFilter>;
@@ -15851,6 +15944,7 @@ export declare class TransactionWhereInput {
     toAccountId?: InstanceType<typeof IntFilter>;
     invoiceId?: InstanceType<typeof IntNullableFilter>;
     installmentId?: InstanceType<typeof IntNullableFilter>;
+    uniqueCode?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     fromAccount?: InstanceType<typeof AccountRelationFilter>;
     toAccount?: InstanceType<typeof AccountRelationFilter>;
@@ -15867,6 +15961,7 @@ export declare class Transaction {
     toAccountId: number;
     invoiceId: number | null;
     installmentId: number | null;
+    uniqueCode: number;
     createdAt: Date;
     fromAccount?: InstanceType<typeof Account>;
     toAccount?: InstanceType<typeof Account>;

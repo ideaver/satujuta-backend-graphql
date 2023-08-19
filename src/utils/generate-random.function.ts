@@ -15,3 +15,9 @@ export function generateRandomReferralCode(): string {
 
   return referralCode.toLowerCase();
 }
+
+export function generateUniqueCode() {
+  // Generate a random 3-digit number
+  const code = Math.floor(Math.random() * 1000);
+  return code; // Return the 3-digit number
+}

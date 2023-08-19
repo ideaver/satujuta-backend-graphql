@@ -6,7 +6,7 @@ import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/model/user.model';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
+import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 import { UserController } from './user.controller';
 
 interface UserSelect {

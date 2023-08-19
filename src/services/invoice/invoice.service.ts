@@ -4,6 +4,9 @@ import { InvoiceFindManyArgs as InvoiceFindManyArgs } from './dto/invoice-find-m
 import { InvoiceFindUniqueArgs } from './dto/invoice-find-one.args';
 import { InvoiceUpdateOneArgs } from './dto/invoice-update-one.args';
 import { Prisma } from '@prisma/client';
+import { PrismaService } from 'prisma/prisma.service';
+import { FindManyInvoiceArgs, Invoice } from 'src/@generated';
+import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 
 @Injectable()
 export class InvoiceService {

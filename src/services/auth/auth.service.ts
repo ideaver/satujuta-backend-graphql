@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateAuthInput } from './dto/create-auth.input';
 import { UpdateAuthInput } from './dto/update-auth.input';
 import { PrismaService } from 'prisma/prisma.service';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
+import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 import { GraphQLError } from 'graphql';
 import { Auth } from './entities/auth.entity';
 

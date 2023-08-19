@@ -9,8 +9,5 @@ export class InvoiceFindUniqueArgs {
 
   @Field(() => InvoiceWhereUniqueInput, { nullable: false })
   @Type(() => InvoiceWhereUniqueInput)
-  where!: Prisma.AtLeast<
-    InvoiceWhereUniqueInput,
-    'id' | 'orderById' | 'invoiceId'
-  >;
+  where!: Prisma.AtLeast<InvoiceWhereUniqueInput, 'id'>;
 }

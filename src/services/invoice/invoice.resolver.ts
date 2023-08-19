@@ -4,9 +4,9 @@ import { InvoiceFindManyArgs } from './dto/invoice-find-many.args';
 import { InvoiceFindUniqueArgs } from './dto/invoice-find-one.args';
 import { InvoiceUpdateOneArgs } from './dto/invoice-update-one.args';
 import { Prisma } from '@prisma/client';
-import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
 import { InvoiceController } from './invoice.controller';
 import { Invoice } from 'src/@generated';
+import { Relations } from 'src/utils/relations.decorator';
 
 interface InvoiceSelect {
   select: Prisma.InvoiceSelect;

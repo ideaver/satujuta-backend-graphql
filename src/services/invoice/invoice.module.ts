@@ -3,7 +3,6 @@ import { InvoiceService } from './invoice.service';
 import { InvoiceResolver } from './invoice.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 import { InvoiceController } from './invoice.controller';
-import { UserModule } from '../user/user.module';
 
 @Module({
   providers: [
@@ -12,6 +11,5 @@ import { UserModule } from '../user/user.module';
     InvoiceService,
     InvoiceController,
   ],
-  imports: [UserModule],
 })
 export class InvoiceModule {}
