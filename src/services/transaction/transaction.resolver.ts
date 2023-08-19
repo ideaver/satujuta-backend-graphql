@@ -1,5 +1,4 @@
 import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
-import { TransactionService } from './transaction.service';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { Transaction } from 'src/@generated';
@@ -11,6 +10,7 @@ import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
 } from '../account/dto/get-account-balance-by-custom-period.args';
+import { TransactionController } from './transaction.controller';
 
 interface TransactionSelect {
   select: Prisma.TransactionSelect;
@@ -18,19 +18,19 @@ interface TransactionSelect {
 
 @Resolver(() => Transaction)
 export class TransactionResolver {
-  constructor(private readonly transactionService: TransactionService) {}
+  constructor(private readonly transactionController: TransactionController) {}
 
-  // @Mutation(() => Transaction, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // async transactionCreateOne(
-  //   @Args('transactionCreateArgs') transactionCreateArgs: TransactionCreateArgs,
-  //   @Relations() relations: TransactionSelect
-  // ): Promise<Transaction | void> {
-  //   transactionCreateArgs.select = relations.select;
-  //   return await this.transactionService.createOne(transactionCreateArgs);
-  // }
+  @Mutation(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async transactionCreateOne(
+    @Args('transactionCreateArgs') transactionCreateArgs: TransactionCreateArgs,
+    @Relations() relations: TransactionSelect,
+  ): Promise<Transaction | void> {
+    transactionCreateArgs.select = relations.select;
+    return await this.transactionController.createOne(transactionCreateArgs);
+  }
 
   @Query(() => [Transaction], {
     nullable: true,
@@ -44,7 +44,7 @@ export class TransactionResolver {
     //Auto implement prisma select from graphql query info
     transactionFindManyArgs.select = relations.select;
 
-    return this.transactionService.findMany(transactionFindManyArgs);
+    return this.transactionController.findMany(transactionFindManyArgs);
   }
 
   @Query(() => Transaction, {
@@ -58,7 +58,7 @@ export class TransactionResolver {
   ) {
     //Auto implement prisma select from graphql query info
     transactionFindUniqueArgs.select = relations.select;
-    return this.transactionService.findOne(transactionFindUniqueArgs);
+    return this.transactionController.findOne(transactionFindUniqueArgs);
   }
 
   // @Mutation(() => Transaction, { description: 'Deskripsinya ada disini loh' })
@@ -67,7 +67,7 @@ export class TransactionResolver {
   //   @Relations() relations: TransactionSelect,
   // ) {
   //   transactionUpdateOneArgs.select = relations.select;
-  //   return this.transactionService.update(transactionUpdateOneArgs);
+  //   return this.transactionController.update(transactionUpdateOneArgs);
   // }
 
   // @Mutation(() => Boolean, {
@@ -76,6 +76,6 @@ export class TransactionResolver {
   //     'Datanya benar2 terhapus dari db',
   // })
   // transactionRemove(@Args('transactionId') transactionId: number) {
-  //   return this.transactionService.remove(transactionId);
+  //   return this.transactionController.remove(transactionId);
   // }
 }

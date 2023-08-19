@@ -11,5 +11,6 @@ import { InvoiceController } from './invoice.controller';
     InvoiceService,
     InvoiceController,
   ],
+  exports: [InvoiceService],
 })
 export class InvoiceModule {}

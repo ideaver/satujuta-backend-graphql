@@ -1913,6 +1913,15 @@ type Query {
   transactionFindOne(transactionFindUniqueArgs: TransactionFindUniqueArgs!): Transaction
 
   """Deskripsinya ada disini loh"""
+  invoiceFindMany(invoiceFindManyArgs: InvoiceFindManyArgs!): [Invoice!]
+
+  """Deskripsinya ada disini loh"""
+  invoiceFindOne(invoiceFindUniqueArgs: InvoiceFindUniqueArgs!): Invoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceCount(invoiceFindManyArgs: InvoiceFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
   accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
 
   """Deskripsinya ada disini loh"""
@@ -1943,15 +1952,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   orderCount(orderFindManyArgs: OrderFindManyArgs): Int!
-
-  """Deskripsinya ada disini loh"""
-  invoiceFindMany(invoiceFindManyArgs: InvoiceFindManyArgs!): [Invoice!]
-
-  """Deskripsinya ada disini loh"""
-  invoiceFindOne(invoiceFindUniqueArgs: InvoiceFindUniqueArgs!): Invoice
-
-  """Deskripsinya ada disini loh"""
-  invoiceCount(invoiceFindManyArgs: InvoiceFindManyArgs): Int!
 }
 
 input UserFindManyArgs {
@@ -2546,6 +2546,9 @@ input TransactionWhereInput {
   amount: FloatFilter
   proofUrl: StringNullableFilter
   transactionCategory: EnumTransactionCategoryFilter
+  invoiceId: IntNullableFilter
+  installmentId: IntNullableFilter
+  invoice: InvoiceNullableRelationFilter
 }
 
 input EnumTransactionCategoryFilter {
@@ -2562,82 +2565,24 @@ input NestedEnumTransactionCategoryFilter {
   not: NestedEnumTransactionCategoryFilter
 }
 
-input BankNullableRelationFilter {
-  is: BankWhereInput
-  isNot: BankWhereInput
+input InvoiceNullableRelationFilter {
+  is: InvoiceWhereInput
+  isNot: InvoiceWhereInput
 }
 
-input BankWhereInput {
-  AND: [BankWhereInput!]
-  OR: [BankWhereInput!]
-  NOT: [BankWhereInput!]
+input InvoiceWhereInput {
+  AND: [InvoiceWhereInput!]
+  OR: [InvoiceWhereInput!]
+  NOT: [InvoiceWhereInput!]
   id: IntFilter
-  name: StringFilter
-  logoUrl: StringFilter
-  accountNumber: IntFilter
-  accountId: IntFilter
-  account: AccountRelationFilter
+  adminFee: FloatFilter
+  amount: FloatFilter
+  Order: OrderNullableRelationFilter
+  transactions: TransactionListRelationFilter
+  Installments: InstallmentListRelationFilter
 }
 
-input CheckInListRelationFilter {
-  every: CheckInWhereInput
-  some: CheckInWhereInput
-  none: CheckInWhereInput
-}
-
-input CheckInWhereInput {
-  AND: [CheckInWhereInput!]
-  OR: [CheckInWhereInput!]
-  NOT: [CheckInWhereInput!]
-  id: IntFilter
-  userId: StringFilter
-  hotelId: IntFilter
-  checkInAt: DateTimeFilter
-  user: UserRelationFilter
-  hotel: HotelRelationFilter
-}
-
-input HotelRelationFilter {
-  is: HotelWhereInput
-  isNot: HotelWhereInput
-}
-
-input SchoolNullableRelationFilter {
-  is: SchoolWhereInput
-  isNot: SchoolWhereInput
-}
-
-input SchoolWhereInput {
-  AND: [SchoolWhereInput!]
-  OR: [SchoolWhereInput!]
-  NOT: [SchoolWhereInput!]
-  id: IntFilter
-  name: StringFilter
-  address: AddressRelationFilter
-  students: UserListRelationFilter
-}
-
-input ShippingNullableRelationFilter {
-  is: ShippingWhereInput
-  isNot: ShippingWhereInput
-}
-
-input ShippingWhereInput {
-  AND: [ShippingWhereInput!]
-  OR: [ShippingWhereInput!]
-  NOT: [ShippingWhereInput!]
-  id: IntFilter
-  logisticName: StringFilter
-  deliveryDate: DateTimeNullableFilter
-  courier: StringNullableFilter
-  estimatedTime: StringNullableFilter
-  trackingNo: StringNullableFilter
-  orderId: IntFilter
-  address: AddressRelationFilter
-  order: OrderRelationFilter
-}
-
-input OrderRelationFilter {
+input OrderNullableRelationFilter {
   is: OrderWhereInput
   isNot: OrderWhereInput
 }
@@ -2697,6 +2642,11 @@ input CartWhereInput {
   item: ItemRelationFilter
 }
 
+input OrderRelationFilter {
+  is: OrderWhereInput
+  isNot: OrderWhereInput
+}
+
 input ItemRelationFilter {
   is: ItemWhereInput
   isNot: ItemWhereInput
@@ -2717,27 +2667,29 @@ input ItemWhereInput {
   cart: CartListRelationFilter
 }
 
+input ShippingNullableRelationFilter {
+  is: ShippingWhereInput
+  isNot: ShippingWhereInput
+}
+
+input ShippingWhereInput {
+  AND: [ShippingWhereInput!]
+  OR: [ShippingWhereInput!]
+  NOT: [ShippingWhereInput!]
+  id: IntFilter
+  logisticName: StringFilter
+  deliveryDate: DateTimeNullableFilter
+  courier: StringNullableFilter
+  estimatedTime: StringNullableFilter
+  trackingNo: StringNullableFilter
+  orderId: IntFilter
+  address: AddressRelationFilter
+  order: OrderRelationFilter
+}
+
 input InvoiceRelationFilter {
   is: InvoiceWhereInput
   isNot: InvoiceWhereInput
-}
-
-input InvoiceWhereInput {
-  AND: [InvoiceWhereInput!]
-  OR: [InvoiceWhereInput!]
-  NOT: [InvoiceWhereInput!]
-  id: IntFilter
-  adminFee: FloatFilter
-  amount: FloatFilter
-  createdAt: DateTimeFilter
-  Order: OrderNullableRelationFilter
-  transactions: TransactionListRelationFilter
-  Installments: InstallmentListRelationFilter
-}
-
-input OrderNullableRelationFilter {
-  is: OrderWhereInput
-  isNot: OrderWhereInput
 }
 
 input InstallmentListRelationFilter {
@@ -2779,6 +2731,61 @@ input NestedEnumInstallmentStatusFilter {
 input TransactionNullableRelationFilter {
   is: TransactionWhereInput
   isNot: TransactionWhereInput
+}
+
+input BankNullableRelationFilter {
+  is: BankWhereInput
+  isNot: BankWhereInput
+}
+
+input BankWhereInput {
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  logoUrl: StringFilter
+  accountNumber: IntFilter
+  accountId: IntFilter
+  account: AccountRelationFilter
+}
+
+input CheckInListRelationFilter {
+  every: CheckInWhereInput
+  some: CheckInWhereInput
+  none: CheckInWhereInput
+}
+
+input CheckInWhereInput {
+  AND: [CheckInWhereInput!]
+  OR: [CheckInWhereInput!]
+  NOT: [CheckInWhereInput!]
+  id: IntFilter
+  userId: StringFilter
+  hotelId: IntFilter
+  checkInAt: DateTimeFilter
+  user: UserRelationFilter
+  hotel: HotelRelationFilter
+}
+
+input HotelRelationFilter {
+  is: HotelWhereInput
+  isNot: HotelWhereInput
+}
+
+input SchoolNullableRelationFilter {
+  is: SchoolWhereInput
+  isNot: SchoolWhereInput
+}
+
+input SchoolWhereInput {
+  AND: [SchoolWhereInput!]
+  OR: [SchoolWhereInput!]
+  NOT: [SchoolWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  address: AddressRelationFilter
+  students: UserListRelationFilter
 }
 
 input AccountListRelationFilter {
@@ -2950,7 +2957,6 @@ input InvoiceOrderByWithRelationInput {
   id: SortOrder
   adminFee: SortOrder
   amount: SortOrder
-  createdAt: SortOrder
   Order: OrderOrderByWithRelationInput
   transactions: TransactionOrderByRelationAggregateInput
   Installments: InstallmentOrderByRelationAggregateInput
@@ -3886,6 +3892,9 @@ input TransactionOrderByWithRelationInput {
   amount: SortOrder
   proofUrl: SortOrderInput
   transactionCategory: SortOrder
+  invoiceId: SortOrderInput
+  installmentId: SortOrderInput
+  invoice: InvoiceOrderByWithRelationInput
 }
 
 enum TransactionScalarFieldEnum {
@@ -3908,12 +3917,47 @@ input TransactionFindUniqueArgs {
 
 input TransactionWhereUniqueInput {
   id: Int
+  installmentId: Int
   AND: [TransactionWhereInput!]
   OR: [TransactionWhereInput!]
   NOT: [TransactionWhereInput!]
   amount: FloatFilter
   proofUrl: StringNullableFilter
   transactionCategory: EnumTransactionCategoryFilter
+  invoiceId: IntNullableFilter
+  invoice: InvoiceNullableRelationFilter
+}
+
+input InvoiceFindManyArgs {
+  where: InvoiceWhereInput
+  orderBy: [InvoiceOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [InvoiceScalarFieldEnum!]
+}
+
+enum InvoiceScalarFieldEnum {
+  id
+  adminFee
+  amount
+  uniqueCode
+  createdAt
+}
+
+input InvoiceFindUniqueArgs {
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceWhereUniqueInput {
+  id: Int
+  AND: [InvoiceWhereInput!]
+  OR: [InvoiceWhereInput!]
+  NOT: [InvoiceWhereInput!]
+  adminFee: FloatFilter
+  amount: FloatFilter
+  Order: OrderNullableRelationFilter
+  transactions: TransactionListRelationFilter
+  Installments: InstallmentListRelationFilter
 }
 
 input AccountFindManyArgs {
@@ -4090,39 +4134,6 @@ input OrderWhereUniqueInput {
   invoice: InvoiceRelationFilter
 }
 
-input InvoiceFindManyArgs {
-  where: InvoiceWhereInput
-  orderBy: [InvoiceOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [InvoiceScalarFieldEnum!]
-}
-
-enum InvoiceScalarFieldEnum {
-  id
-  adminFee
-  amount
-  uniqueCode
-  createdAt
-}
-
-input InvoiceFindUniqueArgs {
-  where: InvoiceWhereUniqueInput!
-}
-
-input InvoiceWhereUniqueInput {
-  id: Int
-  AND: [InvoiceWhereInput!]
-  OR: [InvoiceWhereInput!]
-  NOT: [InvoiceWhereInput!]
-  adminFee: FloatFilter
-  amount: FloatFilter
-  createdAt: DateTimeFilter
-  Order: OrderNullableRelationFilter
-  transactions: TransactionListRelationFilter
-  Installments: InstallmentListRelationFilter
-}
-
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreateOne(userCreateArgs: UserCreateArgs!): User
@@ -4227,6 +4238,12 @@ type Mutation {
   userNotificationRemove(userNotificationId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
+  transactionCreateOne(transactionCreateArgs: TransactionCreateArgs!): Transaction
+
+  """Deskripsinya ada disini loh"""
+  invoiceUpdateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs!): Invoice!
+
+  """Deskripsinya ada disini loh"""
   accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
 
   """Deskripsinya ada disini loh"""
@@ -4249,9 +4266,6 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
-
-  """Deskripsinya ada disini loh"""
-  invoiceUpdateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs!): Invoice!
 }
 
 input UserCreateArgs {
@@ -4454,6 +4468,235 @@ input TransactionCreateWithoutFromAccountInput {
   amount: Float!
   proofUrl: String
   transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+}
+
+input InvoiceCreateNestedOneWithoutTransactionsInput {
+  create: InvoiceCreateWithoutTransactionsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
+  connect: InvoiceWhereUniqueInput
+}
+
+input InvoiceCreateWithoutTransactionsInput {
+  adminFee: Float!
+  amount: Float!
+  Order: OrderCreateNestedOneWithoutInvoiceInput
+  Installments: InstallmentCreateNestedManyWithoutInvoiceInput
+}
+
+input OrderCreateNestedOneWithoutInvoiceInput {
+  create: OrderCreateWithoutInvoiceInput
+  connectOrCreate: OrderCreateOrConnectWithoutInvoiceInput
+  connect: OrderWhereUniqueInput
+}
+
+input OrderCreateWithoutInvoiceInput {
+  status: TransactionStatus!
+  shippingId: Int
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  orderBy: UserCreateNestedOneWithoutOrdersInput!
+  cart: CartCreateNestedManyWithoutOrderInput
+  shipping: ShippingCreateNestedOneWithoutOrderInput
+}
+
+input UserCreateNestedOneWithoutOrdersInput {
+  create: UserCreateWithoutOrdersInput
+  connectOrCreate: UserCreateOrConnectWithoutOrdersInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutOrdersInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  status: UserStatus
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutOrdersInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutOrdersInput!
+}
+
+input CartCreateNestedManyWithoutOrderInput {
+  create: [CartCreateWithoutOrderInput!]
+  connectOrCreate: [CartCreateOrConnectWithoutOrderInput!]
+  createMany: CartCreateManyOrderInputEnvelope
+  connect: [CartWhereUniqueInput!]
+}
+
+input CartCreateWithoutOrderInput {
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  item: ItemCreateNestedOneWithoutCartInput!
+}
+
+input ItemCreateNestedOneWithoutCartInput {
+  create: ItemCreateWithoutCartInput
+  connectOrCreate: ItemCreateOrConnectWithoutCartInput
+  connect: ItemWhereUniqueInput
+}
+
+input ItemCreateWithoutCartInput {
+  name: String!
+  description: String!
+  price: Float!
+  cost: Float!
+  userRole: UserRole!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ItemCreateOrConnectWithoutCartInput {
+  where: ItemWhereUniqueInput!
+  create: ItemCreateWithoutCartInput!
+}
+
+input CartCreateOrConnectWithoutOrderInput {
+  where: CartWhereUniqueInput!
+  create: CartCreateWithoutOrderInput!
+}
+
+input CartWhereUniqueInput {
+  id: Int
+  AND: [CartWhereInput!]
+  OR: [CartWhereInput!]
+  NOT: [CartWhereInput!]
+  orderId: IntFilter
+  itemId: IntFilter
+  quantity: IntFilter
+  price: FloatFilter
+  cost: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+  item: ItemRelationFilter
+}
+
+input CartCreateManyOrderInputEnvelope {
+  data: [CartCreateManyOrderInput!]!
+  skipDuplicates: Boolean
+}
+
+input CartCreateManyOrderInput {
+  id: Int
+  itemId: Int!
+  quantity: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ShippingCreateNestedOneWithoutOrderInput {
+  create: ShippingCreateWithoutOrderInput
+  connectOrCreate: ShippingCreateOrConnectWithoutOrderInput
+  connect: ShippingWhereUniqueInput
+}
+
+input ShippingCreateWithoutOrderInput {
+  logisticName: String!
+  deliveryDate: DateTime
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+}
+
+input ShippingCreateOrConnectWithoutOrderInput {
+  where: ShippingWhereUniqueInput!
+  create: ShippingCreateWithoutOrderInput!
+}
+
+input OrderCreateOrConnectWithoutInvoiceInput {
+  where: OrderWhereUniqueInput!
+  create: OrderCreateWithoutInvoiceInput!
+}
+
+input InstallmentCreateNestedManyWithoutInvoiceInput {
+  create: [InstallmentCreateWithoutInvoiceInput!]
+  connectOrCreate: [InstallmentCreateOrConnectWithoutInvoiceInput!]
+  createMany: InstallmentCreateManyInvoiceInputEnvelope
+  connect: [InstallmentWhereUniqueInput!]
+}
+
+input InstallmentCreateWithoutInvoiceInput {
+  number: Int!
+  lateFee: Float!
+  amount: Float!
+  dueDate: DateTime!
+  status: InstallmentStatus!
+  transactionId: Int
+  transaction: TransactionCreateNestedOneWithoutInstallmentInput
+}
+
+input TransactionCreateNestedOneWithoutInstallmentInput {
+  create: TransactionCreateWithoutInstallmentInput
+  connectOrCreate: TransactionCreateOrConnectWithoutInstallmentInput
+  connect: TransactionWhereUniqueInput
+}
+
+input TransactionCreateWithoutInstallmentInput {
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+}
+
+input TransactionCreateOrConnectWithoutInstallmentInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutInstallmentInput!
+}
+
+input InstallmentCreateOrConnectWithoutInvoiceInput {
+  where: InstallmentWhereUniqueInput!
+  create: InstallmentCreateWithoutInvoiceInput!
+}
+
+input InstallmentWhereUniqueInput {
+  id: Int
+  AND: [InstallmentWhereInput!]
+  OR: [InstallmentWhereInput!]
+  NOT: [InstallmentWhereInput!]
+  number: IntFilter
+  lateFee: FloatFilter
+  amount: FloatFilter
+  dueDate: DateTimeFilter
+  status: EnumInstallmentStatusFilter
+  transactionId: IntNullableFilter
+  invoiceId: IntFilter
+  transaction: TransactionNullableRelationFilter
+  invoice: InvoiceRelationFilter
+}
+
+input InstallmentCreateManyInvoiceInputEnvelope {
+  data: [InstallmentCreateManyInvoiceInput!]!
+  skipDuplicates: Boolean
+}
+
+input InstallmentCreateManyInvoiceInput {
+  id: Int
+  number: Int!
+  lateFee: Float!
+  amount: Float!
+  dueDate: DateTime!
+  status: InstallmentStatus!
+  transactionId: Int
+}
+
+input InvoiceCreateOrConnectWithoutTransactionsInput {
+  where: InvoiceWhereUniqueInput!
+  create: InvoiceCreateWithoutTransactionsInput!
 }
 
 input TransactionCreateOrConnectWithoutFromAccountInput {
@@ -4471,6 +4714,8 @@ input TransactionCreateManyFromAccountInput {
   amount: Float!
   proofUrl: String
   transactionCategory: TransactionCategory!
+  invoiceId: Int
+  installmentId: Int
 }
 
 input TransactionCreateNestedManyWithoutToAccountInput {
@@ -4484,6 +4729,7 @@ input TransactionCreateWithoutToAccountInput {
   amount: Float!
   proofUrl: String
   transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
 }
 
 input TransactionCreateOrConnectWithoutToAccountInput {
@@ -4501,6 +4747,8 @@ input TransactionCreateManyToAccountInput {
   amount: Float!
   proofUrl: String
   transactionCategory: TransactionCategory!
+  invoiceId: Int
+  installmentId: Int
 }
 
 input ProjectCreateNestedOneWithoutAccountInput {
@@ -4617,94 +4865,6 @@ input OrderCreateWithoutOrderByInput {
   invoice: InvoiceCreateNestedOneWithoutOrderInput!
 }
 
-input CartCreateNestedManyWithoutOrderInput {
-  create: [CartCreateWithoutOrderInput!]
-  connectOrCreate: [CartCreateOrConnectWithoutOrderInput!]
-  createMany: CartCreateManyOrderInputEnvelope
-  connect: [CartWhereUniqueInput!]
-}
-
-input CartCreateWithoutOrderInput {
-  quantity: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
-  item: ItemCreateNestedOneWithoutCartInput!
-}
-
-input ItemCreateNestedOneWithoutCartInput {
-  create: ItemCreateWithoutCartInput
-  connectOrCreate: ItemCreateOrConnectWithoutCartInput
-  connect: ItemWhereUniqueInput
-}
-
-input ItemCreateWithoutCartInput {
-  name: String!
-  description: String!
-  price: Float!
-  cost: Float!
-  userRole: UserRole!
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input ItemCreateOrConnectWithoutCartInput {
-  where: ItemWhereUniqueInput!
-  create: ItemCreateWithoutCartInput!
-}
-
-input CartCreateOrConnectWithoutOrderInput {
-  where: CartWhereUniqueInput!
-  create: CartCreateWithoutOrderInput!
-}
-
-input CartWhereUniqueInput {
-  id: Int
-  AND: [CartWhereInput!]
-  OR: [CartWhereInput!]
-  NOT: [CartWhereInput!]
-  orderId: IntFilter
-  itemId: IntFilter
-  quantity: IntFilter
-  price: FloatFilter
-  cost: FloatFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  order: OrderRelationFilter
-  item: ItemRelationFilter
-}
-
-input CartCreateManyOrderInputEnvelope {
-  data: [CartCreateManyOrderInput!]!
-  skipDuplicates: Boolean
-}
-
-input CartCreateManyOrderInput {
-  id: Int
-  itemId: Int!
-  quantity: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input ShippingCreateNestedOneWithoutOrderInput {
-  create: ShippingCreateWithoutOrderInput
-  connectOrCreate: ShippingCreateOrConnectWithoutOrderInput
-  connect: ShippingWhereUniqueInput
-}
-
-input ShippingCreateWithoutOrderInput {
-  logisticName: String!
-  deliveryDate: DateTime
-  courier: String
-  estimatedTime: String
-  trackingNo: String
-}
-
-input ShippingCreateOrConnectWithoutOrderInput {
-  where: ShippingWhereUniqueInput!
-  create: ShippingCreateWithoutOrderInput!
-}
-
 input InvoiceCreateNestedOneWithoutOrderInput {
   create: InvoiceCreateWithoutOrderInput
   connectOrCreate: InvoiceCreateOrConnectWithoutOrderInput
@@ -4714,7 +4874,6 @@ input InvoiceCreateNestedOneWithoutOrderInput {
 input InvoiceCreateWithoutOrderInput {
   adminFee: Float!
   amount: Float!
-  createdAt: DateTime
   transactions: TransactionCreateNestedManyWithoutInvoiceInput
   Installments: InstallmentCreateNestedManyWithoutInvoiceInput
 }
@@ -4747,76 +4906,7 @@ input TransactionCreateManyInvoiceInput {
   amount: Float!
   proofUrl: String
   transactionCategory: TransactionCategory!
-}
-
-input InstallmentCreateNestedManyWithoutInvoiceInput {
-  create: [InstallmentCreateWithoutInvoiceInput!]
-  connectOrCreate: [InstallmentCreateOrConnectWithoutInvoiceInput!]
-  createMany: InstallmentCreateManyInvoiceInputEnvelope
-  connect: [InstallmentWhereUniqueInput!]
-}
-
-input InstallmentCreateWithoutInvoiceInput {
-  number: Int!
-  lateFee: Float!
-  amount: Float!
-  dueDate: DateTime!
-  status: InstallmentStatus!
-  transactionId: Int
-  transaction: TransactionCreateNestedOneWithoutInstallmentInput
-}
-
-input TransactionCreateNestedOneWithoutInstallmentInput {
-  create: TransactionCreateWithoutInstallmentInput
-  connectOrCreate: TransactionCreateOrConnectWithoutInstallmentInput
-  connect: TransactionWhereUniqueInput
-}
-
-input TransactionCreateWithoutInstallmentInput {
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-}
-
-input TransactionCreateOrConnectWithoutInstallmentInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutInstallmentInput!
-}
-
-input InstallmentCreateOrConnectWithoutInvoiceInput {
-  where: InstallmentWhereUniqueInput!
-  create: InstallmentCreateWithoutInvoiceInput!
-}
-
-input InstallmentWhereUniqueInput {
-  id: Int
-  AND: [InstallmentWhereInput!]
-  OR: [InstallmentWhereInput!]
-  NOT: [InstallmentWhereInput!]
-  number: IntFilter
-  lateFee: FloatFilter
-  amount: FloatFilter
-  dueDate: DateTimeFilter
-  status: EnumInstallmentStatusFilter
-  transactionId: IntNullableFilter
-  invoiceId: IntFilter
-  transaction: TransactionNullableRelationFilter
-  invoice: InvoiceRelationFilter
-}
-
-input InstallmentCreateManyInvoiceInputEnvelope {
-  data: [InstallmentCreateManyInvoiceInput!]!
-  skipDuplicates: Boolean
-}
-
-input InstallmentCreateManyInvoiceInput {
-  id: Int
-  number: Int!
-  lateFee: Float!
-  amount: Float!
-  dueDate: DateTime!
-  status: InstallmentStatus!
-  transactionId: Int
+  installmentId: Int
 }
 
 input InvoiceCreateOrConnectWithoutOrderInput {
@@ -5715,34 +5805,6 @@ input OrderCreateWithoutShippingInput {
   invoice: InvoiceCreateNestedOneWithoutOrderInput!
 }
 
-input UserCreateNestedOneWithoutOrdersInput {
-  create: UserCreateWithoutOrdersInput
-  connectOrCreate: UserCreateOrConnectWithoutOrdersInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutOrdersInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  status: UserStatus
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-}
-
-input UserCreateOrConnectWithoutOrdersInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutOrdersInput!
-}
-
 input OrderCreateOrConnectWithoutShippingInput {
   where: OrderWhereUniqueInput!
   create: OrderCreateWithoutShippingInput!
@@ -5912,10 +5974,37 @@ input TransactionUpdateWithoutFromAccountInput {
   amount: FloatFieldUpdateOperationsInput
   proofUrl: NullableStringFieldUpdateOperationsInput
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
 }
 
 input EnumTransactionCategoryFieldUpdateOperationsInput {
   set: TransactionCategory
+}
+
+input InvoiceUpdateOneWithoutTransactionsNestedInput {
+  create: InvoiceCreateWithoutTransactionsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
+  upsert: InvoiceUpsertWithoutTransactionsInput
+  disconnect: InvoiceWhereInput
+  delete: InvoiceWhereInput
+  connect: InvoiceWhereUniqueInput
+  update: InvoiceUpdateToOneWithWhereWithoutTransactionsInput
+}
+
+input InvoiceUpsertWithoutTransactionsInput {
+  update: InvoiceUpdateWithoutTransactionsInput!
+  create: InvoiceCreateWithoutTransactionsInput!
+  where: InvoiceWhereInput
+}
+
+input InvoiceUpdateWithoutTransactionsInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
+  where: InvoiceWhereInput
+  data: InvoiceUpdateWithoutTransactionsInput!
 }
 
 input TransactionUpdateWithWhereUniqueWithoutFromAccountInput {
@@ -5936,6 +6025,8 @@ input TransactionScalarWhereInput {
   amount: FloatFilter
   proofUrl: StringNullableFilter
   transactionCategory: EnumTransactionCategoryFilter
+  invoiceId: IntNullableFilter
+  installmentId: IntNullableFilter
 }
 
 input TransactionUpdateManyMutationInput {
@@ -5968,6 +6059,7 @@ input TransactionUpdateWithoutToAccountInput {
   amount: FloatFieldUpdateOperationsInput
   proofUrl: NullableStringFieldUpdateOperationsInput
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
 }
 
 input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
@@ -6437,139 +6529,6 @@ input InvoiceUpsertWithoutOrderInput {
 input InvoiceUpdateWithoutOrderInput {
   adminFee: FloatFieldUpdateOperationsInput
   amount: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  transactions: TransactionUpdateManyWithoutInvoiceNestedInput
-  Installments: InstallmentUpdateManyWithoutInvoiceNestedInput
-}
-
-input TransactionUpdateManyWithoutInvoiceNestedInput {
-  create: [TransactionCreateWithoutInvoiceInput!]
-  connectOrCreate: [TransactionCreateOrConnectWithoutInvoiceInput!]
-  upsert: [TransactionUpsertWithWhereUniqueWithoutInvoiceInput!]
-  createMany: TransactionCreateManyInvoiceInputEnvelope
-  set: [TransactionWhereUniqueInput!]
-  disconnect: [TransactionWhereUniqueInput!]
-  delete: [TransactionWhereUniqueInput!]
-  connect: [TransactionWhereUniqueInput!]
-  update: [TransactionUpdateWithWhereUniqueWithoutInvoiceInput!]
-  updateMany: [TransactionUpdateManyWithWhereWithoutInvoiceInput!]
-  deleteMany: [TransactionScalarWhereInput!]
-}
-
-input TransactionUpsertWithWhereUniqueWithoutInvoiceInput {
-  where: TransactionWhereUniqueInput!
-  update: TransactionUpdateWithoutInvoiceInput!
-  create: TransactionCreateWithoutInvoiceInput!
-}
-
-input TransactionUpdateWithoutInvoiceInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-}
-
-input TransactionUpdateWithWhereUniqueWithoutInvoiceInput {
-  where: TransactionWhereUniqueInput!
-  data: TransactionUpdateWithoutInvoiceInput!
-}
-
-input TransactionUpdateManyWithWhereWithoutInvoiceInput {
-  where: TransactionScalarWhereInput!
-  data: TransactionUpdateManyMutationInput!
-}
-
-input InstallmentUpdateManyWithoutInvoiceNestedInput {
-  create: [InstallmentCreateWithoutInvoiceInput!]
-  connectOrCreate: [InstallmentCreateOrConnectWithoutInvoiceInput!]
-  upsert: [InstallmentUpsertWithWhereUniqueWithoutInvoiceInput!]
-  createMany: InstallmentCreateManyInvoiceInputEnvelope
-  set: [InstallmentWhereUniqueInput!]
-  disconnect: [InstallmentWhereUniqueInput!]
-  delete: [InstallmentWhereUniqueInput!]
-  connect: [InstallmentWhereUniqueInput!]
-  update: [InstallmentUpdateWithWhereUniqueWithoutInvoiceInput!]
-  updateMany: [InstallmentUpdateManyWithWhereWithoutInvoiceInput!]
-  deleteMany: [InstallmentScalarWhereInput!]
-}
-
-input InstallmentUpsertWithWhereUniqueWithoutInvoiceInput {
-  where: InstallmentWhereUniqueInput!
-  update: InstallmentUpdateWithoutInvoiceInput!
-  create: InstallmentCreateWithoutInvoiceInput!
-}
-
-input InstallmentUpdateWithoutInvoiceInput {
-  number: IntFieldUpdateOperationsInput
-  lateFee: FloatFieldUpdateOperationsInput
-  amount: FloatFieldUpdateOperationsInput
-  dueDate: DateTimeFieldUpdateOperationsInput
-  status: EnumInstallmentStatusFieldUpdateOperationsInput
-  transactionId: NullableIntFieldUpdateOperationsInput
-  transaction: TransactionUpdateOneWithoutInstallmentNestedInput
-}
-
-input EnumInstallmentStatusFieldUpdateOperationsInput {
-  set: InstallmentStatus
-}
-
-input TransactionUpdateOneWithoutInstallmentNestedInput {
-  create: TransactionCreateWithoutInstallmentInput
-  connectOrCreate: TransactionCreateOrConnectWithoutInstallmentInput
-  upsert: TransactionUpsertWithoutInstallmentInput
-  disconnect: TransactionWhereInput
-  delete: TransactionWhereInput
-  connect: TransactionWhereUniqueInput
-  update: TransactionUpdateToOneWithWhereWithoutInstallmentInput
-}
-
-input TransactionUpsertWithoutInstallmentInput {
-  update: TransactionUpdateWithoutInstallmentInput!
-  create: TransactionCreateWithoutInstallmentInput!
-  where: TransactionWhereInput
-}
-
-input TransactionUpdateWithoutInstallmentInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-}
-
-input TransactionUpdateToOneWithWhereWithoutInstallmentInput {
-  where: TransactionWhereInput
-  data: TransactionUpdateWithoutInstallmentInput!
-}
-
-input InstallmentUpdateWithWhereUniqueWithoutInvoiceInput {
-  where: InstallmentWhereUniqueInput!
-  data: InstallmentUpdateWithoutInvoiceInput!
-}
-
-input InstallmentUpdateManyWithWhereWithoutInvoiceInput {
-  where: InstallmentScalarWhereInput!
-  data: InstallmentUpdateManyMutationInput!
-}
-
-input InstallmentScalarWhereInput {
-  AND: [InstallmentScalarWhereInput!]
-  OR: [InstallmentScalarWhereInput!]
-  NOT: [InstallmentScalarWhereInput!]
-  id: IntFilter
-  number: IntFilter
-  lateFee: FloatFilter
-  amount: FloatFilter
-  dueDate: DateTimeFilter
-  status: EnumInstallmentStatusFilter
-  transactionId: IntNullableFilter
-  invoiceId: IntFilter
-}
-
-input InstallmentUpdateManyMutationInput {
-  number: IntFieldUpdateOperationsInput
-  lateFee: FloatFieldUpdateOperationsInput
-  amount: FloatFieldUpdateOperationsInput
-  dueDate: DateTimeFieldUpdateOperationsInput
-  status: EnumInstallmentStatusFieldUpdateOperationsInput
-  transactionId: NullableIntFieldUpdateOperationsInput
 }
 
 input InvoiceUpdateToOneWithWhereWithoutOrderInput {
@@ -8443,6 +8402,27 @@ input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
   data: UserUpdateWithoutUserNotificationsInput!
 }
 
+input TransactionCreateArgs {
+  data: TransactionCreateInput!
+}
+
+input TransactionCreateInput {
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+}
+
+input InvoiceUpdateOneArgs {
+  data: InvoiceUpdateInput!
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceUpdateInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+}
+
 input AccountUpdateOneArgs {
   data: AccountUpdateInput!
   where: AccountWhereUniqueInput!
@@ -8523,68 +8503,4 @@ input OrderUpdateInput {
   cart: CartUpdateManyWithoutOrderNestedInput
   shipping: ShippingUpdateOneWithoutOrderNestedInput
   invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
-}
-
-input InvoiceUpdateOneArgs {
-  data: InvoiceUpdateInput!
-  where: InvoiceWhereUniqueInput!
-}
-
-input InvoiceUpdateInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  amount: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  Order: OrderUpdateOneWithoutInvoiceNestedInput
-  transactions: TransactionUpdateManyWithoutInvoiceNestedInput
-  Installments: InstallmentUpdateManyWithoutInvoiceNestedInput
-}
-
-input OrderUpdateOneWithoutInvoiceNestedInput {
-  create: OrderCreateWithoutInvoiceInput
-  connectOrCreate: OrderCreateOrConnectWithoutInvoiceInput
-  upsert: OrderUpsertWithoutInvoiceInput
-  disconnect: OrderWhereInput
-  delete: OrderWhereInput
-  connect: OrderWhereUniqueInput
-  update: OrderUpdateToOneWithWhereWithoutInvoiceInput
-}
-
-input OrderCreateWithoutInvoiceInput {
-  status: TransactionStatus!
-  shippingId: Int
-  platformFee: Float!
-  total: Float!
-  createdAt: DateTime
-  updatedAt: DateTime
-  orderBy: UserCreateNestedOneWithoutOrdersInput!
-  cart: CartCreateNestedManyWithoutOrderInput
-  shipping: ShippingCreateNestedOneWithoutOrderInput
-}
-
-input OrderCreateOrConnectWithoutInvoiceInput {
-  where: OrderWhereUniqueInput!
-  create: OrderCreateWithoutInvoiceInput!
-}
-
-input OrderUpsertWithoutInvoiceInput {
-  update: OrderUpdateWithoutInvoiceInput!
-  create: OrderCreateWithoutInvoiceInput!
-  where: OrderWhereInput
-}
-
-input OrderUpdateWithoutInvoiceInput {
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  shippingId: NullableIntFieldUpdateOperationsInput
-  platformFee: FloatFieldUpdateOperationsInput
-  total: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
-  cart: CartUpdateManyWithoutOrderNestedInput
-  shipping: ShippingUpdateOneWithoutOrderNestedInput
-}
-
-input OrderUpdateToOneWithWhereWithoutInvoiceInput {
-  where: OrderWhereInput
-  data: OrderUpdateWithoutInvoiceInput!
 }

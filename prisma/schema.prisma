@@ -260,13 +260,11 @@ model Transaction {
   toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
   /// @HideField({ output: false, input: true })   
   toAccountId         Int
-  /// @HideField({ output: false, input: true })   
   invoice             Invoice?            @relation(fields: [invoiceId], references: [id])
-  /// @HideField({ output: false, input: true })   
   invoiceId           Int?
   /// @HideField({ output: false, input: true })   
   Installment         Installment?        @relation(fields: [installmentId], references: [id])
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'TransactionUpdate*Input' })
   installmentId       Int?                @unique
   /// @HideField({ output: false, input: true })   
   uniqueCode          Int
