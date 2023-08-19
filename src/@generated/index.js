@@ -45518,10 +45518,10 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], ShippingCreateManyInput.prototype, "deliveryDate", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ShippingStatus, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateManyInput.prototype, "shippingStatus", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateManyInput.prototype, "addressId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
@@ -45536,10 +45536,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ShippingCreateManyInput.prototype, "orderId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateManyInput.prototype, "updatedAt", void 0);
 ShippingCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -45621,7 +45621,7 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], ShippingCreateWithoutAddressInput.prototype, "deliveryDate", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ShippingStatus, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutAddressInput.prototype, "shippingStatus", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
@@ -45633,10 +45633,10 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], ShippingCreateWithoutAddressInput.prototype, "trackingNo", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => OrderCreateNestedOneWithoutShippingInput, { nullable: false })
@@ -45657,7 +45657,7 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], ShippingCreateWithoutOrderInput.prototype, "deliveryDate", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ShippingStatus, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutOrderInput.prototype, "shippingStatus", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
@@ -45669,13 +45669,13 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], ShippingCreateWithoutOrderInput.prototype, "trackingNo", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutOrderInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutOrderInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedOneWithoutShippingInput, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateWithoutOrderInput.prototype, "address", void 0);
 ShippingCreateWithoutOrderInput = __decorate([
     (0, graphql_4.InputType)()
@@ -45693,7 +45693,7 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], ShippingCreateInput.prototype, "deliveryDate", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ShippingStatus, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateInput.prototype, "shippingStatus", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
@@ -45705,13 +45705,13 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], ShippingCreateInput.prototype, "trackingNo", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], ShippingCreateInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedOneWithoutShippingInput, { nullable: false })
+    (0, graphql_8.HideField)()
 ], ShippingCreateInput.prototype, "address", void 0);
 __decorate([
     (0, graphql_1.Field)(() => OrderCreateNestedOneWithoutShippingInput, { nullable: false })

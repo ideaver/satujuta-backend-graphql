@@ -4629,31 +4629,9 @@ input ShippingCreateNestedOneWithoutOrderInput {
 input ShippingCreateWithoutOrderInput {
   logisticName: String!
   deliveryDate: DateTime
-  shippingStatus: ShippingStatus!
   courier: String
   estimatedTime: String
   trackingNo: String
-  createdAt: DateTime
-  updatedAt: DateTime
-  address: AddressCreateNestedOneWithoutShippingInput!
-}
-
-input AddressCreateNestedOneWithoutShippingInput {
-  create: AddressCreateWithoutShippingInput
-  connectOrCreate: AddressCreateOrConnectWithoutShippingInput
-  connect: AddressWhereUniqueInput
-}
-
-input AddressCreateWithoutShippingInput {
-  name: String!
-  city: CityCreateNestedOneWithoutAddressInput!
-  district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
-}
-
-input AddressCreateOrConnectWithoutShippingInput {
-  where: AddressWhereUniqueInput!
-  create: AddressCreateWithoutShippingInput!
 }
 
 input ShippingCreateOrConnectWithoutOrderInput {
@@ -5975,12 +5953,9 @@ input ShippingUpdateOneWithoutAddressNestedInput {
 input ShippingCreateWithoutAddressInput {
   logisticName: String!
   deliveryDate: DateTime
-  shippingStatus: ShippingStatus!
   courier: String
   estimatedTime: String
   trackingNo: String
-  createdAt: DateTime
-  updatedAt: DateTime
   order: OrderCreateNestedOneWithoutShippingInput!
 }
 
@@ -6409,6 +6384,18 @@ input AddressUpdateOneRequiredWithoutShippingNestedInput {
   upsert: AddressUpsertWithoutShippingInput
   connect: AddressWhereUniqueInput
   update: AddressUpdateToOneWithWhereWithoutShippingInput
+}
+
+input AddressCreateWithoutShippingInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutShippingInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutShippingInput!
 }
 
 input AddressUpsertWithoutShippingInput {
@@ -8752,13 +8739,9 @@ input ShippingCreateArgs {
 input ShippingCreateInput {
   logisticName: String!
   deliveryDate: DateTime
-  shippingStatus: ShippingStatus!
   courier: String
   estimatedTime: String
   trackingNo: String
-  createdAt: DateTime
-  updatedAt: DateTime
-  address: AddressCreateNestedOneWithoutShippingInput!
   order: OrderCreateNestedOneWithoutShippingInput!
 }
 

@@ -49,9 +49,9 @@ export class OrderService {
       });
   }
 
-  async update(orderUpdateOneArgs: OrderUpdateOneArgs): Promise<Order | void> {
+  async update(orderUpdateArgs: Prisma.OrderUpdateArgs): Promise<Order | void> {
     return this.prisma.order
-      .update(orderUpdateOneArgs)
+      .update(orderUpdateArgs)
       .then((order) => {
         return order;
       })

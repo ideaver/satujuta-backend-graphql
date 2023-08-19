@@ -4,7 +4,13 @@ import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/model/user.model';
-import { Item, Prisma, TransactionStatus, UserRole } from '@prisma/client';
+import {
+  Item,
+  Prisma,
+  ShippingStatus,
+  TransactionStatus,
+  UserRole,
+} from '@prisma/client';
 import { generateRandomReferralCode } from 'src/utils/generate-random-referral-code.function';
 import { Injectable, Logger } from '@nestjs/common';
 import { ItemService } from '../item/item.service';
@@ -59,7 +65,10 @@ export class UserController {
   }
 }
 
-async function orderCreate(userCreateArgsPrisma, itemService: ItemService) {
+async function orderCreate(
+  userCreateArgsPrisma: Prisma.UserCreateArgs,
+  itemService: ItemService,
+) {
   const platformFee = 2000;
   const adminFee = 3000;
   //get Items
@@ -74,7 +83,7 @@ async function orderCreate(userCreateArgsPrisma, itemService: ItemService) {
 
   userCreateArgsPrisma.data.orders = {
     create: {
-      status: TransactionStatus.PENDING,
+      status: TransactionStatus.PROCESSING,
       platformFee: platformFee,
       total: totalPrice + platformFee,
       cart: {
