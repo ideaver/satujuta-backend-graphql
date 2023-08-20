@@ -67,27 +67,6 @@ export class RewardResolver {
     //Auto implement prisma select from graphql query info
     rewardUpdateOneArgs.select = relations.select;
 
-    const { name, description, images } = rewardUpdateOneArgs.data;
-
-    if (name?.set === null) {
-      rewardUpdateOneArgs.data.name = undefined;
-    }
-
-    if (description?.set === null) {
-      rewardUpdateOneArgs.data.description = undefined;
-    }
-
-    if (images.delete?.[0]?.url.equals === null) {
-      rewardUpdateOneArgs.data.images.delete = undefined;
-    }
-
-    if (images.deleteMany?.[0]?.url.equals === null) {
-      rewardUpdateOneArgs.data.images.deleteMany = undefined;
-    }
-
-    if (images.createMany?.data?.[0]?.url === null) {
-      rewardUpdateOneArgs.data.images.createMany = undefined;
-    }
     return this.rewardController.updateOne(rewardUpdateOneArgs);
   }
 

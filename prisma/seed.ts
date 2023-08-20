@@ -11,6 +11,8 @@ import { CreateOneAccountArgs } from 'src/@generated';
 import { fakeFaq, fakeTransaction, fakeTransactionComplete } from './fake-data';
 import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
+import * as fs from 'fs/promises';
+import { join } from 'node:path';
 
 const prisma = new PrismaClient();
 
@@ -23,19 +25,7 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  await prisma.city.create({ data: { name: 'Surabaya' } }).then((city) => {
-    console.log('city created ' + city);
-  });
-  await prisma.district
-    .create({ data: { name: 'Surabaya Selatan' } })
-    .then((district) => {
-      console.log('district created ' + district);
-    });
-  await prisma.postalCode
-    .create({ data: { code: 4553247 } })
-    .then((postalCode) => {
-      console.log('postalCode created ' + postalCode);
-    });
+  // await createCityDistrictPostalCode();
 
   //   await seedBank();
   // await transactionCreateManySeed({ numberOfTransactions: 100 });
@@ -63,6 +53,7 @@ async function main() {
   // await createItem();
 
   // console.log(await prisma.invoice.deleteMany());
+  populateDatabase();
 
   console.log('Seeding finished.');
 }
@@ -74,6 +65,55 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+async function populateDatabase() {
+  try {
+    // Define the path to the JSON file within the Prisma folder
+    const jsonFilePath = join(__dirname, 'kodepos.json');
+    console.log(jsonFilePath);
+    // Read the JSON file
+    const jsonData = await fs.readFile(jsonFilePath, 'utf-8');
+    const parsedData = JSON.parse(jsonData);
+
+    // console.log(parsedData);
+
+    // Iterate over the parsed JSON data and insert into the database
+    for (const item of parsedData) {
+      await prisma.subdistrict.create({
+        data: {
+          name: item.subdistrict,
+          district: {
+            connectOrCreate: {
+              where: { name: { equals: item.district }, id: 0 },
+              create: {
+                name: item.district,
+                city: {
+                  connectOrCreate: {
+                    where: { name: { equals: item.city }, id: 0 },
+                    create: {
+                      name: item.city,
+                      province: {
+                        connectOrCreate: {
+                          where: { name: { equals: item.province }, id: 0 },
+                          create: { name: item.province },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          postalCode: parseInt(item.postal_code),
+        },
+      });
+    }
+
+    console.log('Data successfully populated into the database.');
+  } catch (error) {
+    console.error('Error populating the database:', error);
+  }
+}
 
 async function createItem() {
   console.log(

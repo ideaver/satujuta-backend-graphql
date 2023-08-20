@@ -52,63 +52,86 @@ enum Theme {
   DARK
 }
 
-//Make CRUD Available
-model City {
+model Province {
   id      Int       @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
   name    String
   /// @HideField()   
-  address Address[] @relation("CityAddress")
+  cities  City[]
+  /// @HideField()   
+  address Address[] @relation("ProvinceAddress")
+}
+
+//Make CRUD Available
+model City {
+  id         Int        @id @default(autoincrement())
+  /// @Validator.MinLength(2)
+  /// @Validator.IsNotEmpty()
+  name       String
+  province   Province   @relation(fields: [provinceId], references: [id])
+  provinceId Int
+  districts  District[]
+  /// @HideField()   
+  address    Address[]  @relation("CityAddress")
 }
 
 //Make CRUD Available
 model District {
-  id      Int       @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name    String
+  name         String
+  city         City          @relation(fields: [cityId], references: [id])
+  cityId       Int
+  subdistricts Subdistrict[]
   /// @HideField()   
-  address Address[] @relation("DistrictAddress")
+  address      Address[]     @relation("DistrictAddress")
 }
 
-//Make CRUD Available
-model PostalCode {
-  id      Int       @id @default(autoincrement())
+model Subdistrict {
+  id         Int       @id @default(autoincrement())
+  name       String
+  district   District  @relation(fields: [districtId], references: [id])
+  districtId Int
   /// @Validator.MinLength(3)
   /// @Validator.IsPostalCode('ID')
-  code    Int       @unique
-  /// @HideField()   
-  address Address[] @relation("PostalCodeAddress")
+  postalCode Int
+  /// @HideField()
+  address    Address[] @relation("SubdistrictAddress")
 }
 
 //Make CRUD Available
 model Address {
   /// @HideField({ match: 'AddressCreate*Input' })
-  id           Int        @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   /// @Validator.MinLength(5)
   /// @Validator.IsNotEmpty()
-  name         String
+  name          String
   /// @Validator.IsNotEmpty()
-  city         City       @relation("CityAddress", fields: [cityId], references: [id])
+  province      Province    @relation("ProvinceAddress", fields: [provinceId], references: [id])
   /// @HideField({ match: 'AddressCreate*Input' })
-  cityId       Int
+  provinceId    Int
   /// @Validator.IsNotEmpty()
-  district     District   @relation("DistrictAddress", fields: [districtId], references: [id])
+  city          City        @relation("CityAddress", fields: [cityId], references: [id])
   /// @HideField({ match: 'AddressCreate*Input' })
-  districtId   Int
+  cityId        Int
   /// @Validator.IsNotEmpty()
-  postalCode   PostalCode @relation("PostalCodeAddress", fields: [postalCodeId], references: [id])
+  district      District    @relation("DistrictAddress", fields: [districtId], references: [id])
   /// @HideField({ match: 'AddressCreate*Input' })
-  postalCodeId Int
+  districtId    Int
+  /// @Validator.IsNotEmpty()
+  subdistrict   Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+  // @HideField({ match: 'AddressCreate*Input' })
+  subdistrictId Int
   /// @HideField({ match: 'AddressCreate*Input' })
-  user         User?
+  user          User?
   /// @HideField({ match: 'AddressCreate*Input' })
-  hotel        Hotel?
+  hotel         Hotel?
   /// @HideField({ match: 'AddressCreate*Input' })
-  school       School?
+  school        School?
   /// @HideField({ match: 'AddressCreate*Input' })
-  Shipping     Shipping?
+  Shipping      Shipping?
 }
 
 //Make CRUD Available

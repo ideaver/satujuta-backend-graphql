@@ -3,6 +3,17 @@ import { faker } from '@faker-js/faker';
 
 
 
+export function fakeProvince() {
+  return {
+    name: faker.name.fullName(),
+  };
+}
+export function fakeProvinceComplete() {
+  return {
+    id: faker.datatype.number(),
+    name: faker.name.fullName(),
+  };
+}
 export function fakeCity() {
   return {
     name: faker.name.fullName(),
@@ -12,6 +23,7 @@ export function fakeCityComplete() {
   return {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
+    provinceId: faker.datatype.number(),
   };
 }
 export function fakeDistrict() {
@@ -23,17 +35,21 @@ export function fakeDistrictComplete() {
   return {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
+    cityId: faker.datatype.number(),
   };
 }
-export function fakePostalCode() {
+export function fakeSubdistrict() {
   return {
-    code: faker.datatype.number(),
+    name: faker.name.fullName(),
+    postalCode: faker.datatype.number(),
   };
 }
-export function fakePostalCodeComplete() {
+export function fakeSubdistrictComplete() {
   return {
     id: faker.datatype.number(),
-    code: faker.datatype.number(),
+    name: faker.name.fullName(),
+    districtId: faker.datatype.number(),
+    postalCode: faker.datatype.number(),
   };
 }
 export function fakeAddress() {
@@ -45,9 +61,10 @@ export function fakeAddressComplete() {
   return {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
+    provinceId: faker.datatype.number(),
     cityId: faker.datatype.number(),
     districtId: faker.datatype.number(),
-    postalCodeId: faker.datatype.number(),
+    subdistrictId: faker.datatype.number(),
   };
 }
 export function fakeSchool() {
