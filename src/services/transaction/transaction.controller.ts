@@ -70,6 +70,10 @@ export class TransactionController {
     // Check if the mutation amount is equal to the invoice//installment amount
     // Check if the mutation amount is equal to the invoice amount + unique code or - unique code
     //set transaction status to completed
+
+    //if order
+    // notify order status
+    // process comission and point transaction
   }
 
   findMany(transactionFindManyArgs: TransactionFindManyArgs) {

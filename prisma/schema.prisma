@@ -194,7 +194,7 @@ model User {
   programsParticipation Program[]          @relation("participant")
   /// @HideField({ output: false, input: true })   
   projectsInvestment    Project[]          @relation("project Investment")
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})   
   claimedRewards        Reward[]           @relation("reward claimer")
   /// @HideField({ output: false, input: true })   
   userNotifications     UserNotification[]
@@ -602,6 +602,7 @@ model ProgramCategory {
 
 //Make CRUD Available
 model Reward {
+  /// @HideField({ match: ['RewardCreate*Input','RewardUpdate*Input']})
   id          Int      @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
@@ -609,13 +610,17 @@ model Reward {
   /// @Validator.IsAlphanumeric()
   name        String
   /// @Validator.IsNumber() 
+  /// @HideField({ output: false, input: true })  
   pointCost   Float
   /// @Validator.MinLength(10)
   /// @Validator.IsNotEmpty()
   description String
   images      Images[]
+  /// @HideField({ output: false, input: true })  
   claimers    User[]   @relation("reward claimer")
+  /// @HideField({ output: false, input: true })  
   createdAt   DateTime @default(now())
+  /// @HideField({ output: false, input: true })  
   updatedAt   DateTime @updatedAt
 }
 
