@@ -28,6 +28,11 @@ export class UserResolver {
     //Auto implement prisma select from graphql query info
     userCreateArgs.select = relations.select;
 
+    //Handle null value GraphQL Capabitlity
+    if (userCreateArgs.data.referredBy.connect.referralCode === null) {
+      userCreateArgs.data.referredBy = undefined;
+    }
+
     return await this.userController.createOne(userCreateArgs);
   }
 

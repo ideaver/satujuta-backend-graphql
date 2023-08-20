@@ -7,6 +7,7 @@ import { RewardFindManyArgs } from './dto/reward-find-many.args';
 import { RewardFindUniqueArgs } from './dto/reward-find-one.args';
 import { RewardUpdateOneArgs } from './dto/reward-update-one.args';
 import { RewardController } from './reward.controller';
+import { Logger } from '@nestjs/common';
 
 interface RewardSelect {
   select: Prisma.RewardSelect;
@@ -15,7 +16,7 @@ interface RewardSelect {
 @Resolver(() => Reward)
 export class RewardResolver {
   constructor(private readonly rewardController: RewardController) {}
-
+  private readonly logger = new Logger(RewardResolver.name);
   @Mutation(() => Reward, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
@@ -63,8 +64,30 @@ export class RewardResolver {
     @Args('rewardUpdateOneArgs') rewardUpdateOneArgs: RewardUpdateOneArgs,
     @Relations() relations: RewardSelect,
   ) {
+    //Auto implement prisma select from graphql query info
     rewardUpdateOneArgs.select = relations.select;
 
+    const { name, description, images } = rewardUpdateOneArgs.data;
+
+    if (name?.set === null) {
+      rewardUpdateOneArgs.data.name = undefined;
+    }
+
+    if (description?.set === null) {
+      rewardUpdateOneArgs.data.description = undefined;
+    }
+
+    if (images.delete?.[0]?.url.equals === null) {
+      rewardUpdateOneArgs.data.images.delete = undefined;
+    }
+
+    if (images.deleteMany?.[0]?.url.equals === null) {
+      rewardUpdateOneArgs.data.images.deleteMany = undefined;
+    }
+
+    if (images.createMany?.data?.[0]?.url === null) {
+      rewardUpdateOneArgs.data.images.createMany = undefined;
+    }
     return this.rewardController.updateOne(rewardUpdateOneArgs);
   }
 

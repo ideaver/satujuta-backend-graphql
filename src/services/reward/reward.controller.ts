@@ -31,8 +31,6 @@ export class RewardController {
   }
 
   async updateOne(rewardUpdateOneArgs: RewardUpdateOneArgs) {
-    //make it cannot update pointCost
-
     //check for new claim and check if user has enough point
     await this.isNewRewardClaimEventAndIsUserPointEnough(rewardUpdateOneArgs);
     return this.rewardService.update(rewardUpdateOneArgs);
@@ -45,12 +43,14 @@ export class RewardController {
   private async isNewRewardClaimEventAndIsUserPointEnough(
     rewardUpdateOneArgs: RewardUpdateOneArgs,
   ) {
-    const { connect } = rewardUpdateOneArgs.data.claimers;
-    let userId: string;
-
     //Check if user claim new reward
-    if (connect && connect.length > 0) {
-      for (const userWhereUniqueInput of connect) {
+    if (
+      rewardUpdateOneArgs.data.claimers?.connect &&
+      rewardUpdateOneArgs.data.claimers?.connect.length > 0
+    ) {
+      let userId: string;
+      for (const userWhereUniqueInput of rewardUpdateOneArgs.data.claimers
+        .connect) {
         userId = userWhereUniqueInput.id;
       }
       //Get user's point

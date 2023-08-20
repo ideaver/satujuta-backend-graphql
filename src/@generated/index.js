@@ -40992,7 +40992,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardAvgAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardAvgAggregateInput.prototype, "pointCost", void 0);
 RewardAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41016,7 +41016,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardAvgOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardAvgOrderByAggregateInput.prototype, "pointCost", void 0);
 RewardAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41031,16 +41031,16 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardCountAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCountAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardCountAggregateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCountAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCountAggregateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -41085,16 +41085,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardCountOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCountOrderByAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardCountOrderByAggregateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCountOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCountOrderByAggregateInput.prototype, "updatedAt", void 0);
 RewardCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41115,7 +41115,7 @@ exports.RewardCount = RewardCount;
 let RewardCreateManyInput = class RewardCreateManyInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateManyInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41125,8 +41125,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardCreateManyInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41134,10 +41133,10 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardCreateManyInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateManyInput.prototype, "updatedAt", void 0);
 RewardCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41217,8 +41216,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateWithoutClaimersInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutClaimersInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41226,10 +41224,10 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardCreateWithoutClaimersInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutClaimersInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutClaimersInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesCreateNestedManyWithoutRewardImageInput, { nullable: true })
@@ -41248,8 +41246,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41257,13 +41254,13 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardCreateWithoutImagesInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutClaimedRewardsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateWithoutImagesInput.prototype, "claimers", void 0);
 RewardCreateWithoutImagesInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41279,8 +41276,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardCreateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41288,16 +41284,16 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardCreateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesCreateNestedManyWithoutRewardImageInput, { nullable: true })
 ], RewardCreateInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserCreateNestedManyWithoutClaimedRewardsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardCreateInput.prototype, "claimers", void 0);
 RewardCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41406,16 +41402,16 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMaxAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMaxAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMaxAggregateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMaxAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMaxAggregateInput.prototype, "updatedAt", void 0);
 RewardMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41454,16 +41450,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMaxOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMaxOrderByAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMaxOrderByAggregateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMaxOrderByAggregateInput.prototype, "updatedAt", void 0);
 RewardMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41478,16 +41474,16 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMinAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMinAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMinAggregateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMinAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMinAggregateInput.prototype, "updatedAt", void 0);
 RewardMinAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41526,16 +41522,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMinOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMinOrderByAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMinOrderByAggregateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMinOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardMinOrderByAggregateInput.prototype, "updatedAt", void 0);
 RewardMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41571,16 +41567,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithAggregationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithAggregationInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithAggregationInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithAggregationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithAggregationInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardCountOrderByAggregateInput, { nullable: true })
@@ -41610,22 +41606,22 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithRelationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithRelationInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithRelationInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithRelationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithRelationInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesOrderByRelationAggregateInput, { nullable: true })
 ], RewardOrderByWithRelationInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserOrderByRelationAggregateInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardOrderByWithRelationInput.prototype, "claimers", void 0);
 RewardOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41649,16 +41645,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], RewardScalarWhereWithAggregatesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardScalarWhereWithAggregatesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], RewardScalarWhereWithAggregatesInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardScalarWhereWithAggregatesInput.prototype, "updatedAt", void 0);
 RewardScalarWhereWithAggregatesInput = RewardScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -41682,16 +41678,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardScalarWhereInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardScalarWhereInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardScalarWhereInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardScalarWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardScalarWhereInput.prototype, "updatedAt", void 0);
 RewardScalarWhereInput = RewardScalarWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -41703,7 +41699,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardSumAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardSumAggregateInput.prototype, "pointCost", void 0);
 RewardSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41727,7 +41723,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardSumOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardSumOrderByAggregateInput.prototype, "pointCost", void 0);
 RewardSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41764,8 +41760,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardUncheckedCreateWithoutClaimersInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutClaimersInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41773,10 +41768,10 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardUncheckedCreateWithoutClaimersInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutClaimersInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutClaimersInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesUncheckedCreateNestedManyWithoutRewardImageInput, { nullable: true })
@@ -41798,8 +41793,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41807,13 +41801,13 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUncheckedCreateNestedManyWithoutClaimedRewardsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "claimers", void 0);
 RewardUncheckedCreateWithoutImagesInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41832,8 +41826,7 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardUncheckedCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -41841,16 +41834,16 @@ __decorate([
     Validator.IsNotEmpty()
 ], RewardUncheckedCreateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesUncheckedCreateNestedManyWithoutRewardImageInput, { nullable: true })
 ], RewardUncheckedCreateInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUncheckedCreateNestedManyWithoutClaimedRewardsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedCreateInput.prototype, "claimers", void 0);
 RewardUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41911,16 +41904,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateManyWithoutClaimersInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateManyWithoutClaimersInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateManyWithoutClaimersInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateManyWithoutClaimersInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateManyWithoutClaimersInput.prototype, "updatedAt", void 0);
 RewardUncheckedUpdateManyWithoutClaimersInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41935,16 +41928,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateManyInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateManyInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateManyInput.prototype, "updatedAt", void 0);
 RewardUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -41959,16 +41952,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutClaimersInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutClaimersInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutClaimersInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutClaimersInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutClaimersInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesUncheckedUpdateManyWithoutRewardImageNestedInput, { nullable: true })
@@ -41986,19 +41979,19 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUncheckedUpdateManyWithoutClaimedRewardsNestedInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "claimers", void 0);
 RewardUncheckedUpdateWithoutImagesInput = __decorate([
     (0, graphql_4.InputType)()
@@ -42013,22 +42006,22 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesUncheckedUpdateManyWithoutRewardImageNestedInput, { nullable: true })
 ], RewardUncheckedUpdateInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUncheckedUpdateManyWithoutClaimedRewardsNestedInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUncheckedUpdateInput.prototype, "claimers", void 0);
 RewardUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -42040,16 +42033,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateManyMutationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateManyMutationInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateManyMutationInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateManyMutationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateManyMutationInput.prototype, "updatedAt", void 0);
 RewardUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -42183,16 +42176,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateWithoutClaimersInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutClaimersInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateWithoutClaimersInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutClaimersInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutClaimersInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesUpdateManyWithoutRewardImageNestedInput, { nullable: true })
@@ -42207,19 +42200,19 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateWithoutImagesInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateManyWithoutClaimedRewardsNestedInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateWithoutImagesInput.prototype, "claimers", void 0);
 RewardUpdateWithoutImagesInput = __decorate([
     (0, graphql_4.InputType)()
@@ -42231,22 +42224,22 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUpdateInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesUpdateManyWithoutRewardImageNestedInput, { nullable: true })
 ], RewardUpdateInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateManyWithoutClaimedRewardsNestedInput, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardUpdateInput.prototype, "claimers", void 0);
 RewardUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -42306,22 +42299,22 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardWhereUniqueInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereUniqueInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardWhereUniqueInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereUniqueInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesListRelationFilter, { nullable: true })
 ], RewardWhereUniqueInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserListRelationFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereUniqueInput.prototype, "claimers", void 0);
 RewardWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
@@ -42345,22 +42338,22 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardWhereInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardWhereInput.prototype, "description", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ImagesListRelationFilter, { nullable: true })
 ], RewardWhereInput.prototype, "images", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserListRelationFilter, { nullable: true })
+    (0, graphql_8.HideField)()
 ], RewardWhereInput.prototype, "claimers", void 0);
 RewardWhereInput = RewardWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -51713,7 +51706,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutAccountsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51826,7 +51819,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutAddressInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -51939,7 +51932,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutCheckInsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52168,7 +52161,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutFilesCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52278,7 +52271,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutHotelsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52391,7 +52384,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutOrdersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52504,7 +52497,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutPointTransactionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52620,7 +52613,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutProgramsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52730,7 +52723,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutProgramsParticipationInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52843,7 +52836,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "programsParticipation", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -52956,7 +52949,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutReferredByInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53069,7 +53062,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutReferredUsersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53182,7 +53175,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutSchoolInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53295,7 +53288,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutSessionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53411,7 +53404,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateWithoutUserNotificationsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -53524,7 +53517,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserCreateInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserCreateInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54245,7 +54238,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserOrderByWithRelationInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardOrderByRelationAggregateInput, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54666,7 +54659,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54779,7 +54772,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutAddressInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -54892,7 +54885,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55121,7 +55114,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55231,7 +55224,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55344,7 +55337,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55457,7 +55450,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55573,7 +55566,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55683,7 +55676,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55796,7 +55789,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "programsParticipation", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -55909,7 +55902,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56022,7 +56015,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56135,7 +56128,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56248,7 +56241,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -56364,7 +56357,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
@@ -56477,7 +56470,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedCreateInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedCreateNestedManyWithoutClaimersInput, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57220,7 +57213,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57319,7 +57312,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57418,7 +57411,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57619,7 +57612,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57715,7 +57708,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57814,7 +57807,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -57913,7 +57906,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58015,7 +58008,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58111,7 +58104,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58210,7 +58203,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "programsParticipation", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58309,7 +58302,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58408,7 +58401,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58507,7 +58500,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58606,7 +58599,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -58708,7 +58701,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
@@ -58807,7 +58800,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUncheckedUpdateInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUncheckedUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59794,7 +59787,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59893,7 +59886,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -59992,7 +59985,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60193,7 +60186,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60289,7 +60282,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60388,7 +60381,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60487,7 +60480,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60589,7 +60582,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60685,7 +60678,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60784,7 +60777,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "programsParticipation", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60883,7 +60876,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -60982,7 +60975,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61081,7 +61074,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61180,7 +61173,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61282,7 +61275,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramUpdateManyWithoutCreatedByNestedInput, { nullable: true })
@@ -61381,7 +61374,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserUpdateInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardUpdateManyWithoutClaimersNestedInput, { nullable: true })
 ], UserUpdateInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61791,7 +61784,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserWhereUniqueInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardListRelationFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()
@@ -61911,7 +61904,7 @@ __decorate([
     (0, graphql_8.HideField)()
 ], UserWhereInput.prototype, "projectsInvestment", void 0);
 __decorate([
-    (0, graphql_8.HideField)()
+    (0, graphql_1.Field)(() => RewardListRelationFilter, { nullable: true })
 ], UserWhereInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_8.HideField)()

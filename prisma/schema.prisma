@@ -194,7 +194,6 @@ model User {
   programsParticipation Program[]          @relation("participant")
   /// @HideField({ output: false, input: true })   
   projectsInvestment    Project[]          @relation("project Investment")
-  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})   
   claimedRewards        Reward[]           @relation("reward claimer")
   /// @HideField({ output: false, input: true })   
   userNotifications     UserNotification[]

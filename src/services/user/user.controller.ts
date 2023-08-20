@@ -32,11 +32,6 @@ export class UserController {
     //Generate Random Referral Code
     userCreateArgsPrisma.data.referralCode = generateRandomReferralCode();
 
-    //Handle null value GraphQL Capabitlity
-    if (userCreateArgsPrisma.data.referredBy.connect.referralCode === null) {
-      userCreateArgsPrisma.data.referredBy = undefined;
-    }
-
     //Auto Create User Accounts
     accountCreateManyUserInput(userCreateArgsPrisma);
 
