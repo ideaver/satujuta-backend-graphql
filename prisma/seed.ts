@@ -74,73 +74,95 @@ async function populateDatabase() {
     const jsonData = await fs.readFile(jsonFilePath, 'utf-8');
     const parsedData = JSON.parse(jsonData);
 
-    for (const locationData of parsedData) {
-      const province = await prisma.province.upsert({
-        where: { name: locationData.province },
-        create: { name: locationData.province },
-        update: { name: locationData.province },
-      });
+    // Create maps to track unique names and assigned IDs
+    const provinceMap = new Map();
+    const cityMap = new Map();
+    const districtMap = new Map();
+    const subdistrictMap = new Map();
 
-      const city = await prisma.city.upsert({
-        where: { name: locationData.city },
-        create: { name: locationData.city, provinceId: province.id },
-        update: { name: locationData.city },
-      });
+    // Create arrays to store models data
+    const provinceModels = [];
+    const cityModels = [];
+    const districtModels = [];
+    const subdistrictModels = [];
 
-      const district = await prisma.district.upsert({
-        where: { name: locationData.district },
-        create: { name: locationData.district, cityId: city.id },
-        update: { name: locationData.district },
-      });
+    parsedData.forEach((locationData) => {
+      // Handling provinces
+      if (!provinceMap.has(locationData.province)) {
+        provinceMap.set(locationData.province, provinceMap.size + 1);
+        provinceModels.push({ name: locationData.province });
+      }
 
-      await prisma.subdistrict.create({
-        data: {
+      // Handling cities
+      const cityKey = locationData.province + '-' + locationData.city;
+      if (!cityMap.has(cityKey)) {
+        cityMap.set(cityKey, cityMap.size + 1);
+        cityModels.push({
+          name: locationData.city,
+          provinceId: provinceMap.get(locationData.province),
+        });
+      }
+
+      // Handling districts
+      const districtKey = cityKey + '-' + locationData.district;
+      if (!districtMap.has(districtKey)) {
+        districtMap.set(districtKey, districtMap.size + 1);
+        districtModels.push({
+          name: locationData.district,
+          cityId: cityMap.get(cityKey),
+        });
+      }
+
+      // Handling subdistricts
+      const subdistrictKey = districtKey + '-' + locationData.subdistrict;
+      if (!subdistrictMap.has(subdistrictKey)) {
+        subdistrictMap.set(subdistrictKey, subdistrictMap.size + 1);
+        subdistrictModels.push({
           name: locationData.subdistrict,
-          districtId: district.id,
+          districtId: districtMap.get(districtKey),
           postalCode: parseInt(locationData.postal_code),
-        },
-      });
-      //console log the iteration count
-      console.log(
-        `Iteration ${parsedData.indexOf(locationData) + 1} of ${
-          parsedData.length
-        } completed.`,
-      );
-    }
+        });
+      }
+    });
 
-    // console.log(parsedData);
+    // Now, use Prisma's createMany to insert the data
+    await prisma.$transaction(async (prisma) => {
+      await prisma.province
+        .createMany({
+          data: provinceModels,
+        })
+        .then((res) => {
+          console.log('province query finished');
+          return res;
+        });
 
-    // Iterate over the parsed JSON data and insert into the database
+      await prisma.city
+        .createMany({
+          data: cityModels,
+        })
+        .then((res) => {
+          console.log('province city finished');
+          return res;
+        });
 
-    // await prisma.province
-    //   .createMany({
-    //     data: parsedData.map((item) => ({
-    //       name: item.province,
-    //     })),
-    //     skipDuplicates: true,
-    //   })
-    //   .then((res) => console.log('Create Province Success'));
+      await prisma.district
+        .createMany({
+          data: districtModels,
+        })
+        .then((res) => {
+          console.log('province disrict finished');
+          return res;
+        });
 
-    // const data:
-
-    // await Promise.all(
-    //   parsedData.map(async (item) =>
-    //     prisma.province.upsert({
-    //       where: { name: item.province },
-    //       update: {},
-    //       create: item,
-    //     }),
-    //   ),
-    // );
-
-    // for (const item of parsedData) {
-    //   await prisma.city.create({
-    //     data: {
-    //       name: item.city,
-    //       province: {  },
-    //     },
-    //   });
-    // }
+      await prisma.subdistrict
+        .createMany({
+          data: subdistrictModels,
+        })
+        .then((res) => {
+          console.log('province subdistrict finished');
+          return res;
+        });
+    });
 
     console.log('Data successfully populated into the database.');
   } catch (error) {
