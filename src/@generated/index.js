@@ -12917,6 +12917,11 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], CityWhereUniqueInput.prototype, "id", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    Validator.MinLength(2),
+    Validator.IsNotEmpty()
+], CityWhereUniqueInput.prototype, "name", void 0);
+__decorate([
     (0, graphql_1.Field)(() => [CityWhereInput], { nullable: true })
 ], CityWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -12925,9 +12930,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [CityWhereInput], { nullable: true })
 ], CityWhereUniqueInput.prototype, "NOT", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
-], CityWhereUniqueInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], CityWhereUniqueInput.prototype, "provinceId", void 0);
@@ -14484,6 +14486,11 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "id", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    Validator.MinLength(2),
+    Validator.IsNotEmpty()
+], DistrictWhereUniqueInput.prototype, "name", void 0);
+__decorate([
     (0, graphql_1.Field)(() => [DistrictWhereInput], { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -14492,9 +14499,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [DistrictWhereInput], { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "NOT", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
-], DistrictWhereUniqueInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "cityId", void 0);
@@ -42784,6 +42788,11 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProvinceWhereUniqueInput.prototype, "id", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    Validator.MinLength(2),
+    Validator.IsNotEmpty()
+], ProvinceWhereUniqueInput.prototype, "name", void 0);
+__decorate([
     (0, graphql_1.Field)(() => [ProvinceWhereInput], { nullable: true })
 ], ProvinceWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -42792,9 +42801,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [ProvinceWhereInput], { nullable: true })
 ], ProvinceWhereUniqueInput.prototype, "NOT", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
-], ProvinceWhereUniqueInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => CityListRelationFilter, { nullable: true })
 ], ProvinceWhereUniqueInput.prototype, "cities", void 0);

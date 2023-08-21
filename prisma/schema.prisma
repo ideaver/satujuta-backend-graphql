@@ -56,7 +56,7 @@ model Province {
   id      Int       @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name    String
+  name    String    @unique
   /// @HideField()   
   cities  City[]
   /// @HideField()   
@@ -68,7 +68,7 @@ model City {
   id         Int        @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name       String
+  name       String     @unique
   province   Province   @relation(fields: [provinceId], references: [id])
   provinceId Int
   districts  District[]
@@ -81,7 +81,7 @@ model District {
   id           Int           @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name         String
+  name         String        @unique
   city         City          @relation(fields: [cityId], references: [id])
   cityId       Int
   subdistricts Subdistrict[]

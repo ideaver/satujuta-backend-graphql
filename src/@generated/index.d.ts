@@ -3843,7 +3843,7 @@ export declare class AggregateCity {
 export declare class CityAggregateArgs {
     where?: InstanceType<typeof CityWhereInput>;
     orderBy?: Array<CityOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof CityCountAggregateInput>;
@@ -3902,28 +3902,28 @@ export declare class CityCreateNestedManyWithoutProvinceInput {
     create?: Array<CityCreateWithoutProvinceInput>;
     connectOrCreate?: Array<CityCreateOrConnectWithoutProvinceInput>;
     createMany?: InstanceType<typeof CityCreateManyProvinceInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
 }
 export declare class CityCreateNestedOneWithoutAddressInput {
     create?: InstanceType<typeof CityCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class CityCreateNestedOneWithoutDistrictsInput {
     create?: InstanceType<typeof CityCreateWithoutDistrictsInput>;
     connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutDistrictsInput>;
-    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class CityCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof CityCreateWithoutAddressInput>;
 }
 export declare class CityCreateOrConnectWithoutDistrictsInput {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof CityCreateWithoutDistrictsInput>;
 }
 export declare class CityCreateOrConnectWithoutProvinceInput {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof CityCreateWithoutProvinceInput>;
 }
 export declare class CityCreateWithoutAddressInput {
@@ -4062,7 +4062,7 @@ export declare class CityUncheckedCreateNestedManyWithoutProvinceInput {
     create?: Array<CityCreateWithoutProvinceInput>;
     connectOrCreate?: Array<CityCreateOrConnectWithoutProvinceInput>;
     createMany?: InstanceType<typeof CityCreateManyProvinceInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
 }
 export declare class CityUncheckedCreateWithoutAddressInput {
     id?: number;
@@ -4094,10 +4094,10 @@ export declare class CityUncheckedUpdateManyWithoutProvinceNestedInput {
     connectOrCreate?: Array<CityCreateOrConnectWithoutProvinceInput>;
     upsert?: Array<CityUpsertWithWhereUniqueWithoutProvinceInput>;
     createMany?: InstanceType<typeof CityCreateManyProvinceInputEnvelope>;
-    set?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
+    disconnect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
+    delete?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
+    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
     update?: Array<CityUpdateWithWhereUniqueWithoutProvinceInput>;
     updateMany?: Array<CityUpdateManyWithWhereWithoutProvinceInput>;
     deleteMany?: Array<CityScalarWhereInput>;
@@ -4148,10 +4148,10 @@ export declare class CityUpdateManyWithoutProvinceNestedInput {
     connectOrCreate?: Array<CityCreateOrConnectWithoutProvinceInput>;
     upsert?: Array<CityUpsertWithWhereUniqueWithoutProvinceInput>;
     createMany?: InstanceType<typeof CityCreateManyProvinceInputEnvelope>;
-    set?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
+    disconnect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
+    delete?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
+    connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>>;
     update?: Array<CityUpdateWithWhereUniqueWithoutProvinceInput>;
     updateMany?: Array<CityUpdateManyWithWhereWithoutProvinceInput>;
     deleteMany?: Array<CityScalarWhereInput>;
@@ -4160,14 +4160,14 @@ export declare class CityUpdateOneRequiredWithoutAddressNestedInput {
     create?: InstanceType<typeof CityCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutAddressInput>;
     upsert?: InstanceType<typeof CityUpsertWithoutAddressInput>;
-    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof CityUpdateToOneWithWhereWithoutAddressInput>;
 }
 export declare class CityUpdateOneRequiredWithoutDistrictsNestedInput {
     create?: InstanceType<typeof CityCreateWithoutDistrictsInput>;
     connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutDistrictsInput>;
     upsert?: InstanceType<typeof CityUpsertWithoutDistrictsInput>;
-    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof CityUpdateToOneWithWhereWithoutDistrictsInput>;
 }
 export declare class CityUpdateToOneWithWhereWithoutAddressInput {
@@ -4179,7 +4179,7 @@ export declare class CityUpdateToOneWithWhereWithoutDistrictsInput {
     data: InstanceType<typeof CityUpdateWithoutDistrictsInput>;
 }
 export declare class CityUpdateWithWhereUniqueWithoutProvinceInput {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     data: InstanceType<typeof CityUpdateWithoutProvinceInput>;
 }
 export declare class CityUpdateWithoutAddressInput {
@@ -4204,7 +4204,7 @@ export declare class CityUpdateInput {
     address?: InstanceType<typeof AddressUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUpsertWithWhereUniqueWithoutProvinceInput {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     update: InstanceType<typeof CityUpdateWithoutProvinceInput>;
     create: InstanceType<typeof CityCreateWithoutProvinceInput>;
 }
@@ -4220,10 +4220,10 @@ export declare class CityUpsertWithoutDistrictsInput {
 }
 export declare class CityWhereUniqueInput {
     id?: number;
+    name?: string;
     AND?: Array<CityWhereInput>;
     OR?: Array<CityWhereInput>;
     NOT?: Array<CityWhereInput>;
-    name?: InstanceType<typeof StringFilter>;
     provinceId?: InstanceType<typeof IntFilter>;
     province?: InstanceType<typeof ProvinceRelationFilter>;
     districts?: InstanceType<typeof DistrictListRelationFilter>;
@@ -4260,12 +4260,12 @@ export declare class DeleteManyCityArgs {
     where?: InstanceType<typeof CityWhereInput>;
 }
 export declare class DeleteOneCityArgs {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class FindFirstCityOrThrowArgs {
     where?: InstanceType<typeof CityWhereInput>;
     orderBy?: Array<CityOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof CityScalarFieldEnum>;
@@ -4273,7 +4273,7 @@ export declare class FindFirstCityOrThrowArgs {
 export declare class FindFirstCityArgs {
     where?: InstanceType<typeof CityWhereInput>;
     orderBy?: Array<CityOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof CityScalarFieldEnum>;
@@ -4281,16 +4281,16 @@ export declare class FindFirstCityArgs {
 export declare class FindManyCityArgs {
     where?: InstanceType<typeof CityWhereInput>;
     orderBy?: Array<CityOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof CityScalarFieldEnum>;
 }
 export declare class FindUniqueCityOrThrowArgs {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class FindUniqueCityArgs {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class UpdateManyCityArgs {
     data: InstanceType<typeof CityUpdateManyMutationInput>;
@@ -4298,10 +4298,10 @@ export declare class UpdateManyCityArgs {
 }
 export declare class UpdateOneCityArgs {
     data: InstanceType<typeof CityUpdateInput>;
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class UpsertOneCityArgs {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<CityWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof CityCreateInput>;
     update: InstanceType<typeof CityUpdateInput>;
 }
@@ -4323,12 +4323,12 @@ export declare class DeleteManyDistrictArgs {
     where?: InstanceType<typeof DistrictWhereInput>;
 }
 export declare class DeleteOneDistrictArgs {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class DistrictAggregateArgs {
     where?: InstanceType<typeof DistrictWhereInput>;
     orderBy?: Array<DistrictOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof DistrictCountAggregateInput>;
@@ -4387,28 +4387,28 @@ export declare class DistrictCreateNestedManyWithoutCityInput {
     create?: Array<DistrictCreateWithoutCityInput>;
     connectOrCreate?: Array<DistrictCreateOrConnectWithoutCityInput>;
     createMany?: InstanceType<typeof DistrictCreateManyCityInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
 }
 export declare class DistrictCreateNestedOneWithoutAddressInput {
     create?: InstanceType<typeof DistrictCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class DistrictCreateNestedOneWithoutSubdistrictsInput {
     create?: InstanceType<typeof DistrictCreateWithoutSubdistrictsInput>;
     connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutSubdistrictsInput>;
-    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class DistrictCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof DistrictCreateWithoutAddressInput>;
 }
 export declare class DistrictCreateOrConnectWithoutCityInput {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof DistrictCreateWithoutCityInput>;
 }
 export declare class DistrictCreateOrConnectWithoutSubdistrictsInput {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof DistrictCreateWithoutSubdistrictsInput>;
 }
 export declare class DistrictCreateWithoutAddressInput {
@@ -4547,7 +4547,7 @@ export declare class DistrictUncheckedCreateNestedManyWithoutCityInput {
     create?: Array<DistrictCreateWithoutCityInput>;
     connectOrCreate?: Array<DistrictCreateOrConnectWithoutCityInput>;
     createMany?: InstanceType<typeof DistrictCreateManyCityInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
 }
 export declare class DistrictUncheckedCreateWithoutAddressInput {
     id?: number;
@@ -4579,10 +4579,10 @@ export declare class DistrictUncheckedUpdateManyWithoutCityNestedInput {
     connectOrCreate?: Array<DistrictCreateOrConnectWithoutCityInput>;
     upsert?: Array<DistrictUpsertWithWhereUniqueWithoutCityInput>;
     createMany?: InstanceType<typeof DistrictCreateManyCityInputEnvelope>;
-    set?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
+    disconnect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
+    delete?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
+    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
     update?: Array<DistrictUpdateWithWhereUniqueWithoutCityInput>;
     updateMany?: Array<DistrictUpdateManyWithWhereWithoutCityInput>;
     deleteMany?: Array<DistrictScalarWhereInput>;
@@ -4633,10 +4633,10 @@ export declare class DistrictUpdateManyWithoutCityNestedInput {
     connectOrCreate?: Array<DistrictCreateOrConnectWithoutCityInput>;
     upsert?: Array<DistrictUpsertWithWhereUniqueWithoutCityInput>;
     createMany?: InstanceType<typeof DistrictCreateManyCityInputEnvelope>;
-    set?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
+    set?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
+    disconnect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
+    delete?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
+    connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>>;
     update?: Array<DistrictUpdateWithWhereUniqueWithoutCityInput>;
     updateMany?: Array<DistrictUpdateManyWithWhereWithoutCityInput>;
     deleteMany?: Array<DistrictScalarWhereInput>;
@@ -4645,14 +4645,14 @@ export declare class DistrictUpdateOneRequiredWithoutAddressNestedInput {
     create?: InstanceType<typeof DistrictCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutAddressInput>;
     upsert?: InstanceType<typeof DistrictUpsertWithoutAddressInput>;
-    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof DistrictUpdateToOneWithWhereWithoutAddressInput>;
 }
 export declare class DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput {
     create?: InstanceType<typeof DistrictCreateWithoutSubdistrictsInput>;
     connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutSubdistrictsInput>;
     upsert?: InstanceType<typeof DistrictUpsertWithoutSubdistrictsInput>;
-    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof DistrictUpdateToOneWithWhereWithoutSubdistrictsInput>;
 }
 export declare class DistrictUpdateToOneWithWhereWithoutAddressInput {
@@ -4664,7 +4664,7 @@ export declare class DistrictUpdateToOneWithWhereWithoutSubdistrictsInput {
     data: InstanceType<typeof DistrictUpdateWithoutSubdistrictsInput>;
 }
 export declare class DistrictUpdateWithWhereUniqueWithoutCityInput {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     data: InstanceType<typeof DistrictUpdateWithoutCityInput>;
 }
 export declare class DistrictUpdateWithoutAddressInput {
@@ -4689,7 +4689,7 @@ export declare class DistrictUpdateInput {
     address?: InstanceType<typeof AddressUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUpsertWithWhereUniqueWithoutCityInput {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     update: InstanceType<typeof DistrictUpdateWithoutCityInput>;
     create: InstanceType<typeof DistrictCreateWithoutCityInput>;
 }
@@ -4705,10 +4705,10 @@ export declare class DistrictUpsertWithoutSubdistrictsInput {
 }
 export declare class DistrictWhereUniqueInput {
     id?: number;
+    name?: string;
     AND?: Array<DistrictWhereInput>;
     OR?: Array<DistrictWhereInput>;
     NOT?: Array<DistrictWhereInput>;
-    name?: InstanceType<typeof StringFilter>;
     cityId?: InstanceType<typeof IntFilter>;
     city?: InstanceType<typeof CityRelationFilter>;
     subdistricts?: InstanceType<typeof SubdistrictListRelationFilter>;
@@ -4737,7 +4737,7 @@ export declare class District {
 export declare class FindFirstDistrictOrThrowArgs {
     where?: InstanceType<typeof DistrictWhereInput>;
     orderBy?: Array<DistrictOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof DistrictScalarFieldEnum>;
@@ -4745,7 +4745,7 @@ export declare class FindFirstDistrictOrThrowArgs {
 export declare class FindFirstDistrictArgs {
     where?: InstanceType<typeof DistrictWhereInput>;
     orderBy?: Array<DistrictOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof DistrictScalarFieldEnum>;
@@ -4753,16 +4753,16 @@ export declare class FindFirstDistrictArgs {
 export declare class FindManyDistrictArgs {
     where?: InstanceType<typeof DistrictWhereInput>;
     orderBy?: Array<DistrictOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof DistrictScalarFieldEnum>;
 }
 export declare class FindUniqueDistrictOrThrowArgs {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class FindUniqueDistrictArgs {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class UpdateManyDistrictArgs {
     data: InstanceType<typeof DistrictUpdateManyMutationInput>;
@@ -4770,10 +4770,10 @@ export declare class UpdateManyDistrictArgs {
 }
 export declare class UpdateOneDistrictArgs {
     data: InstanceType<typeof DistrictUpdateInput>;
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class UpsertOneDistrictArgs {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof DistrictCreateInput>;
     update: InstanceType<typeof DistrictUpdateInput>;
 }
@@ -13316,12 +13316,12 @@ export declare class DeleteManyProvinceArgs {
     where?: InstanceType<typeof ProvinceWhereInput>;
 }
 export declare class DeleteOneProvinceArgs {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class FindFirstProvinceOrThrowArgs {
     where?: InstanceType<typeof ProvinceWhereInput>;
     orderBy?: Array<ProvinceOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof ProvinceScalarFieldEnum>;
@@ -13329,7 +13329,7 @@ export declare class FindFirstProvinceOrThrowArgs {
 export declare class FindFirstProvinceArgs {
     where?: InstanceType<typeof ProvinceWhereInput>;
     orderBy?: Array<ProvinceOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof ProvinceScalarFieldEnum>;
@@ -13337,21 +13337,21 @@ export declare class FindFirstProvinceArgs {
 export declare class FindManyProvinceArgs {
     where?: InstanceType<typeof ProvinceWhereInput>;
     orderBy?: Array<ProvinceOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof ProvinceScalarFieldEnum>;
 }
 export declare class FindUniqueProvinceOrThrowArgs {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class FindUniqueProvinceArgs {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class ProvinceAggregateArgs {
     where?: InstanceType<typeof ProvinceWhereInput>;
     orderBy?: Array<ProvinceOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    cursor?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof ProvinceCountAggregateInput>;
@@ -13394,19 +13394,19 @@ export declare class ProvinceCreateManyInput {
 export declare class ProvinceCreateNestedOneWithoutAddressInput {
     create?: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class ProvinceCreateNestedOneWithoutCitiesInput {
     create?: InstanceType<typeof ProvinceCreateWithoutCitiesInput>;
     connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutCitiesInput>;
-    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class ProvinceCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
 }
 export declare class ProvinceCreateOrConnectWithoutCitiesInput {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof ProvinceCreateWithoutCitiesInput>;
 }
 export declare class ProvinceCreateWithoutAddressInput {
@@ -13546,14 +13546,14 @@ export declare class ProvinceUpdateOneRequiredWithoutAddressNestedInput {
     create?: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
     connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutAddressInput>;
     upsert?: InstanceType<typeof ProvinceUpsertWithoutAddressInput>;
-    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof ProvinceUpdateToOneWithWhereWithoutAddressInput>;
 }
 export declare class ProvinceUpdateOneRequiredWithoutCitiesNestedInput {
     create?: InstanceType<typeof ProvinceCreateWithoutCitiesInput>;
     connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutCitiesInput>;
     upsert?: InstanceType<typeof ProvinceUpsertWithoutCitiesInput>;
-    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof ProvinceUpdateToOneWithWhereWithoutCitiesInput>;
 }
 export declare class ProvinceUpdateToOneWithWhereWithoutAddressInput {
@@ -13589,10 +13589,10 @@ export declare class ProvinceUpsertWithoutCitiesInput {
 }
 export declare class ProvinceWhereUniqueInput {
     id?: number;
+    name?: string;
     AND?: Array<ProvinceWhereInput>;
     OR?: Array<ProvinceWhereInput>;
     NOT?: Array<ProvinceWhereInput>;
-    name?: InstanceType<typeof StringFilter>;
     cities?: InstanceType<typeof CityListRelationFilter>;
     address?: InstanceType<typeof AddressListRelationFilter>;
 }
@@ -13618,10 +13618,10 @@ export declare class UpdateManyProvinceArgs {
 }
 export declare class UpdateOneProvinceArgs {
     data: InstanceType<typeof ProvinceUpdateInput>;
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class UpsertOneProvinceArgs {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id'>;
+    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof ProvinceCreateInput>;
     update: InstanceType<typeof ProvinceUpdateInput>;
 }

@@ -53,7 +53,7 @@ async function main() {
   // await createItem();
 
   // console.log(await prisma.invoice.deleteMany());
-  populateDatabase();
+  await populateDatabase();
 
   console.log('Seeding finished.');
 }
@@ -70,44 +70,77 @@ async function populateDatabase() {
   try {
     // Define the path to the JSON file within the Prisma folder
     const jsonFilePath = join(__dirname, 'kodepos.json');
-    console.log(jsonFilePath);
     // Read the JSON file
     const jsonData = await fs.readFile(jsonFilePath, 'utf-8');
     const parsedData = JSON.parse(jsonData);
 
+    for (const locationData of parsedData) {
+      const province = await prisma.province.upsert({
+        where: { name: locationData.province },
+        create: { name: locationData.province },
+        update: { name: locationData.province },
+      });
+
+      const city = await prisma.city.upsert({
+        where: { name: locationData.city },
+        create: { name: locationData.city, provinceId: province.id },
+        update: { name: locationData.city },
+      });
+
+      const district = await prisma.district.upsert({
+        where: { name: locationData.district },
+        create: { name: locationData.district, cityId: city.id },
+        update: { name: locationData.district },
+      });
+
+      await prisma.subdistrict.create({
+        data: {
+          name: locationData.subdistrict,
+          districtId: district.id,
+          postalCode: parseInt(locationData.postal_code),
+        },
+      });
+      //console log the iteration count
+      console.log(
+        `Iteration ${parsedData.indexOf(locationData) + 1} of ${
+          parsedData.length
+        } completed.`,
+      );
+    }
+
     // console.log(parsedData);
 
     // Iterate over the parsed JSON data and insert into the database
-    for (const item of parsedData) {
-      await prisma.subdistrict.create({
-        data: {
-          name: item.subdistrict,
-          district: {
-            connectOrCreate: {
-              where: { name: { equals: item.district }, id: 0 },
-              create: {
-                name: item.district,
-                city: {
-                  connectOrCreate: {
-                    where: { name: { equals: item.city }, id: 0 },
-                    create: {
-                      name: item.city,
-                      province: {
-                        connectOrCreate: {
-                          where: { name: { equals: item.province }, id: 0 },
-                          create: { name: item.province },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-          postalCode: parseInt(item.postal_code),
-        },
-      });
-    }
+
+    // await prisma.province
+    //   .createMany({
+    //     data: parsedData.map((item) => ({
+    //       name: item.province,
+    //     })),
+    //     skipDuplicates: true,
+    //   })
+    //   .then((res) => console.log('Create Province Success'));
+
+    // const data:
+
+    // await Promise.all(
+    //   parsedData.map(async (item) =>
+    //     prisma.province.upsert({
+    //       where: { name: item.province },
+    //       update: {},
+    //       create: item,
+    //     }),
+    //   ),
+    // );
+
+    // for (const item of parsedData) {
+    //   await prisma.city.create({
+    //     data: {
+    //       name: item.city,
+    //       province: {  },
+    //     },
+    //   });
+    // }
 
     console.log('Data successfully populated into the database.');
   } catch (error) {
