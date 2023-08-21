@@ -12917,11 +12917,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], CityWhereUniqueInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: true }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], CityWhereUniqueInput.prototype, "name", void 0);
-__decorate([
     (0, graphql_1.Field)(() => [CityWhereInput], { nullable: true })
 ], CityWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -12930,6 +12925,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [CityWhereInput], { nullable: true })
 ], CityWhereUniqueInput.prototype, "NOT", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
+], CityWhereUniqueInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], CityWhereUniqueInput.prototype, "provinceId", void 0);
@@ -14486,11 +14484,6 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: true }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], DistrictWhereUniqueInput.prototype, "name", void 0);
-__decorate([
     (0, graphql_1.Field)(() => [DistrictWhereInput], { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "AND", void 0);
 __decorate([
@@ -14499,6 +14492,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [DistrictWhereInput], { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "NOT", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
+], DistrictWhereUniqueInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "cityId", void 0);
@@ -49526,9 +49522,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SubdistrictAvgAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], SubdistrictAvgAggregateInput.prototype, "postalCode", void 0);
 SubdistrictAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], SubdistrictAvgAggregateInput);
@@ -49541,9 +49534,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], SubdistrictAvgAggregate.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], SubdistrictAvgAggregate.prototype, "postalCode", void 0);
 SubdistrictAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], SubdistrictAvgAggregate);
@@ -49556,9 +49546,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SubdistrictAvgOrderByAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], SubdistrictAvgOrderByAggregateInput.prototype, "postalCode", void 0);
 SubdistrictAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], SubdistrictAvgOrderByAggregateInput);
@@ -49654,7 +49641,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], SubdistrictCreateManyDistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictCreateManyDistrictInput.prototype, "postalCode", void 0);
@@ -49674,7 +49661,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], SubdistrictCreateManyInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictCreateManyInput.prototype, "postalCode", void 0);
@@ -49756,7 +49743,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], SubdistrictCreateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictCreateWithoutAddressInput.prototype, "postalCode", void 0);
@@ -49773,7 +49760,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], SubdistrictCreateWithoutDistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictCreateWithoutDistrictInput.prototype, "postalCode", void 0);
@@ -49790,7 +49777,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], SubdistrictCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictCreateInput.prototype, "postalCode", void 0);
@@ -49856,7 +49843,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], SubdistrictGroupBy.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], SubdistrictGroupBy.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictCountAggregate, { nullable: true })
@@ -49922,7 +49909,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], SubdistrictMaxAggregate.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], SubdistrictMaxAggregate.prototype, "postalCode", void 0);
 SubdistrictMaxAggregate = __decorate([
     (0, graphql_5.ObjectType)()
@@ -49976,7 +49963,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], SubdistrictMinAggregate.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], SubdistrictMinAggregate.prototype, "postalCode", void 0);
 SubdistrictMinAggregate = __decorate([
     (0, graphql_5.ObjectType)()
@@ -50099,7 +50086,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], SubdistrictScalarWhereWithAggregatesInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], SubdistrictScalarWhereWithAggregatesInput.prototype, "postalCode", void 0);
 SubdistrictScalarWhereWithAggregatesInput = SubdistrictScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -50126,7 +50113,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], SubdistrictScalarWhereInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], SubdistrictScalarWhereInput.prototype, "postalCode", void 0);
 SubdistrictScalarWhereInput = SubdistrictScalarWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -50140,9 +50127,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SubdistrictSumAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], SubdistrictSumAggregateInput.prototype, "postalCode", void 0);
 SubdistrictSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], SubdistrictSumAggregateInput);
@@ -50155,9 +50139,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], SubdistrictSumAggregate.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], SubdistrictSumAggregate.prototype, "postalCode", void 0);
 SubdistrictSumAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], SubdistrictSumAggregate);
@@ -50170,9 +50151,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SubdistrictSumOrderByAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], SubdistrictSumOrderByAggregateInput.prototype, "postalCode", void 0);
 SubdistrictSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], SubdistrictSumOrderByAggregateInput);
@@ -50211,7 +50189,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], SubdistrictUncheckedCreateWithoutAddressInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictUncheckedCreateWithoutAddressInput.prototype, "postalCode", void 0);
@@ -50228,7 +50206,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], SubdistrictUncheckedCreateWithoutDistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictUncheckedCreateWithoutDistrictInput.prototype, "postalCode", void 0);
@@ -50251,7 +50229,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], SubdistrictUncheckedCreateInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.MinLength(3),
     Validator.IsPostalCode('ID')
 ], SubdistrictUncheckedCreateInput.prototype, "postalCode", void 0);
@@ -50321,7 +50299,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateManyWithoutDistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateManyWithoutDistrictInput.prototype, "postalCode", void 0);
 SubdistrictUncheckedUpdateManyWithoutDistrictInput = __decorate([
     (0, graphql_4.InputType)()
@@ -50339,7 +50317,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateManyInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateManyInput.prototype, "postalCode", void 0);
 SubdistrictUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -50357,7 +50335,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateWithoutAddressInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateWithoutAddressInput.prototype, "postalCode", void 0);
 SubdistrictUncheckedUpdateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
@@ -50372,7 +50350,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateWithoutDistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateWithoutDistrictInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutSubdistrictNestedInput, { nullable: true })
@@ -50393,7 +50371,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUncheckedUpdateInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutSubdistrictNestedInput, { nullable: true })
@@ -50408,7 +50386,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateManyMutationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateManyMutationInput.prototype, "postalCode", void 0);
 SubdistrictUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -50538,7 +50516,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateWithoutAddressInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput, { nullable: true })
@@ -50553,7 +50531,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateWithoutDistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateWithoutDistrictInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressUpdateManyWithoutSubdistrictNestedInput, { nullable: true })
@@ -50568,7 +50546,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SubdistrictUpdateInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput, { nullable: true })
@@ -50637,7 +50615,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], SubdistrictWhereUniqueInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], SubdistrictWhereUniqueInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DistrictRelationFilter, { nullable: true })
@@ -50670,7 +50648,7 @@ __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], SubdistrictWhereInput.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], SubdistrictWhereInput.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DistrictRelationFilter, { nullable: true })
@@ -50694,7 +50672,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Subdistrict.prototype, "districtId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], Subdistrict.prototype, "postalCode", void 0);
 __decorate([
     (0, graphql_1.Field)(() => District, { nullable: false })

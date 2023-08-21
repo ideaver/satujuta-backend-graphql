@@ -68,7 +68,7 @@ model City {
   id         Int        @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name       String     @unique
+  name       String
   province   Province   @relation(fields: [provinceId], references: [id])
   provinceId Int
   districts  District[]
@@ -81,7 +81,7 @@ model District {
   id           Int           @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name         String        @unique
+  name         String
   city         City          @relation(fields: [cityId], references: [id])
   cityId       Int
   subdistricts Subdistrict[]
@@ -96,7 +96,7 @@ model Subdistrict {
   districtId Int
   /// @Validator.MinLength(3)
   /// @Validator.IsPostalCode('ID')
-  postalCode Int
+  postalCode String
   /// @HideField()
   address    Address[] @relation("SubdistrictAddress")
 }

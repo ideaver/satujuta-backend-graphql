@@ -41,7 +41,7 @@ export function fakeDistrictComplete() {
 export function fakeSubdistrict() {
   return {
     name: faker.name.fullName(),
-    postalCode: faker.datatype.number(),
+    postalCode: faker.lorem.words(5),
   };
 }
 export function fakeSubdistrictComplete() {
@@ -49,7 +49,7 @@ export function fakeSubdistrictComplete() {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
     districtId: faker.datatype.number(),
-    postalCode: faker.datatype.number(),
+    postalCode: faker.lorem.words(5),
   };
 }
 export function fakeAddress() {
