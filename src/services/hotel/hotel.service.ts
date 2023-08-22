@@ -14,7 +14,6 @@ export class HotelService {
     return this.prisma.hotel
       .create(hotelCreateArgs)
       .then((hotel) => {
-        console.log('hotel created ' + JSON.stringify(hotel));
         return hotel;
       })
       .catch((err) => {
@@ -32,14 +31,7 @@ export class HotelService {
   }
 
   findOne(hotelFindUniqueArgs: HotelFindUniqueArgs) {
-    return this.prisma.hotel.findUnique({
-      ...hotelFindUniqueArgs,
-      include: {
-        ...hotelFindUniqueArgs.include,
-        address: { include: { city: true, district: true, postalCode: true } },
-        checkIns: { include: { user: true } },
-      },
-    });
+    return this.prisma.hotel.findUnique(hotelFindUniqueArgs);
   }
 
   update(hotelUpdateOneArgs: HotelUpdateOneArgs) {
@@ -47,6 +39,6 @@ export class HotelService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} hotel`;
+    return this.prisma.hotel.delete({ where: { id } });
   }
 }

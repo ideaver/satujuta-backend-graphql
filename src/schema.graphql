@@ -148,52 +148,59 @@ enum Theme {
 
 type AddressAvgAggregate {
   id: Float
+  provinceId: Float
   cityId: Float
   districtId: Float
-  postalCodeId: Float
+  subdistrictId: Float
 }
 
 type AddressCountAggregate {
   id: Int!
   name: Int!
+  provinceId: Int!
   cityId: Int!
   districtId: Int!
-  postalCodeId: Int!
+  subdistrictId: Int!
   _all: Int!
 }
 
 type AddressMaxAggregate {
   id: Int
   name: String
+  provinceId: Int
   cityId: Int
   districtId: Int
-  postalCodeId: Int
+  subdistrictId: Int
 }
 
 type AddressMinAggregate {
   id: Int
   name: String
+  provinceId: Int
   cityId: Int
   districtId: Int
-  postalCodeId: Int
+  subdistrictId: Int
 }
 
 type AddressSumAggregate {
   id: Int
+  provinceId: Int
   cityId: Int
   districtId: Int
-  postalCodeId: Int
+  subdistrictId: Int
 }
 
 type Address {
   id: Int!
   name: String!
+  provinceId: Int!
   cityId: Int!
   districtId: Int!
-  postalCodeId: Int!
+  subdistrictId: Int!
+  province: Province!
   city: City!
   district: District!
-  postalCode: PostalCode!
+  subdistrict: Subdistrict!
   user: UserAbstract
   hotel: Hotel
   school: School
@@ -360,69 +367,87 @@ type CheckIn {
 
 type CityAvgAggregate {
   id: Float
+  provinceId: Float
 }
 
 type CityCountAggregate {
   id: Int!
   name: Int!
+  provinceId: Int!
   _all: Int!
 }
 
 type CityCount {
+  districts: Int!
   address: Int!
 }
 
 type CityMaxAggregate {
   id: Int
   name: String
+  provinceId: Int
 }
 
 type CityMinAggregate {
   id: Int
   name: String
+  provinceId: Int
 }
 
 type CitySumAggregate {
   id: Int
+  provinceId: Int
 }
 
 type City {
   id: Int!
   name: String!
+  provinceId: Int!
+  province: Province!
+  districts: [District!]
   _count: CityCount!
 }
 
 type DistrictAvgAggregate {
   id: Float
+  cityId: Float
 }
 
 type DistrictCountAggregate {
   id: Int!
   name: Int!
+  cityId: Int!
   _all: Int!
 }
 
 type DistrictCount {
+  subdistricts: Int!
   address: Int!
 }
 
 type DistrictMaxAggregate {
   id: Int
   name: String
+  cityId: Int
 }
 
 type DistrictMinAggregate {
   id: Int
   name: String
+  cityId: Int
 }
 
 type DistrictSumAggregate {
   id: Int
+  cityId: Int
 }
 
 type District {
   id: Int!
   name: String!
+  cityId: Int!
+  city: City!
+  subdistricts: [Subdistrict!]
   _count: DistrictCount!
 }
 
@@ -1028,42 +1053,6 @@ type PointTransaction {
   User: UserAbstract!
 }
 
-type PostalCodeAvgAggregate {
-  id: Float
-  code: Float
-}
-
-type PostalCodeCountAggregate {
-  id: Int!
-  code: Int!
-  _all: Int!
-}
-
-type PostalCodeCount {
-  address: Int!
-}
-
-type PostalCodeMaxAggregate {
-  id: Int
-  code: Int
-}
-
-type PostalCodeMinAggregate {
-  id: Int
-  code: Int
-}
-
-type PostalCodeSumAggregate {
-  id: Int
-  code: Int
-}
-
-type PostalCode {
-  id: Int!
-  code: Int!
-  _count: PostalCodeCount!
-}
-
 type ProgramAvgAggregate {
   id: Float
   categoryId: Float
@@ -1277,6 +1266,41 @@ type Project {
   investors: [UserAbstract!]
   account: Account!
   _count: ProjectCount!
+}
+
+type ProvinceAvgAggregate {
+  id: Float
+}
+
+type ProvinceCountAggregate {
+  id: Int!
+  name: Int!
+  _all: Int!
+}
+
+type ProvinceCount {
+  cities: Int!
+  address: Int!
+}
+
+type ProvinceMaxAggregate {
+  id: Int
+  name: String
+}
+
+type ProvinceMinAggregate {
+  id: Int
+  name: String
+}
+
+type ProvinceSumAggregate {
+  id: Int
+}
+
+type Province {
+  id: Int!
+  name: String!
+  _count: ProvinceCount!
 }
 
 type RewardAvgAggregate {
@@ -1511,6 +1535,51 @@ type Shipping {
   updatedAt: DateTime!
   address: Address!
   order: Order!
+}
+
+type SubdistrictAvgAggregate {
+  id: Float
+  districtId: Float
+}
+
+type SubdistrictCountAggregate {
+  id: Int!
+  name: Int!
+  districtId: Int!
+  postalCode: Int!
+  _all: Int!
+}
+
+type SubdistrictCount {
+  address: Int!
+}
+
+type SubdistrictMaxAggregate {
+  id: Int
+  name: String
+  districtId: Int
+  postalCode: String
+}
+
+type SubdistrictMinAggregate {
+  id: Int
+  name: String
+  districtId: Int
+  postalCode: String
+}
+
+type SubdistrictSumAggregate {
+  id: Int
+  districtId: Int
+}
+
+type Subdistrict {
+  id: Int!
+  name: String!
+  districtId: Int!
+  postalCode: String!
+  district: District!
+  _count: SubdistrictCount!
 }
 
 type TransactionAvgAggregate {
@@ -1824,14 +1893,15 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
+
+  """Deskripsinya ada disini loh"""
   hotelFindMany(hotelFindManyArgs: HotelFindManyArgs!): [Hotel!]
 
-  """Default prisma query include nested address & checkIns"""
+  """Deskripsinya ada disini loh"""
   hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
   auth(id: Int!): Auth!
   cityFindMany(cityNameSearch: String!): [City!]!
   districtFindMany(districtNameSearch: String!): [District!]!
-  postalCodeFindMany: [PostalCode!]!
   bankFindMany: [Bank!]!
 
   """Deskripsinya ada disini loh"""
@@ -2161,12 +2231,14 @@ input AddressWhereInput {
   NOT: [AddressWhereInput!]
   id: IntFilter
   name: StringFilter
+  provinceId: IntFilter
   cityId: IntFilter
   districtId: IntFilter
-  postalCodeId: IntFilter
+  subdistrictId: IntFilter
+  province: ProvinceRelationFilter
   city: CityRelationFilter
   district: DistrictRelationFilter
-  postalCode: PostalCodeRelationFilter
+  subdistrict: SubdistrictRelationFilter
   user: UserNullableRelationFilter
   hotel: HotelNullableRelationFilter
   school: SchoolNullableRelationFilter
@@ -2195,9 +2267,25 @@ input NestedIntFilter {
   not: NestedIntFilter
 }
 
-input CityRelationFilter {
-  is: CityWhereInput
-  isNot: CityWhereInput
+input ProvinceRelationFilter {
+  is: ProvinceWhereInput
+  isNot: ProvinceWhereInput
+}
+
+input ProvinceWhereInput {
+  AND: [ProvinceWhereInput!]
+  OR: [ProvinceWhereInput!]
+  NOT: [ProvinceWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  cities: CityListRelationFilter
+  address: AddressListRelationFilter
+}
+
+input CityListRelationFilter {
+  every: CityWhereInput
+  some: CityWhereInput
+  none: CityWhereInput
 }
 
 input CityWhereInput {
@@ -2206,18 +2294,16 @@ input CityWhereInput {
   NOT: [CityWhereInput!]
   id: IntFilter
   name: StringFilter
+  provinceId: IntFilter
+  province: ProvinceRelationFilter
+  districts: DistrictListRelationFilter
   address: AddressListRelationFilter
 }
 
-input AddressListRelationFilter {
-  every: AddressWhereInput
-  some: AddressWhereInput
-  none: AddressWhereInput
-}
-
-input DistrictRelationFilter {
-  is: DistrictWhereInput
-  isNot: DistrictWhereInput
+input DistrictListRelationFilter {
+  every: DistrictWhereInput
+  some: DistrictWhereInput
+  none: DistrictWhereInput
 }
 
 input DistrictWhereInput {
@@ -2226,21 +2312,49 @@ input DistrictWhereInput {
   NOT: [DistrictWhereInput!]
   id: IntFilter
   name: StringFilter
+  cityId: IntFilter
+  city: CityRelationFilter
+  subdistricts: SubdistrictListRelationFilter
   address: AddressListRelationFilter
 }
 
-input PostalCodeRelationFilter {
-  is: PostalCodeWhereInput
-  isNot: PostalCodeWhereInput
+input CityRelationFilter {
+  is: CityWhereInput
+  isNot: CityWhereInput
 }
 
-input PostalCodeWhereInput {
-  AND: [PostalCodeWhereInput!]
-  OR: [PostalCodeWhereInput!]
-  NOT: [PostalCodeWhereInput!]
+input SubdistrictListRelationFilter {
+  every: SubdistrictWhereInput
+  some: SubdistrictWhereInput
+  none: SubdistrictWhereInput
+}
+
+input SubdistrictWhereInput {
+  AND: [SubdistrictWhereInput!]
+  OR: [SubdistrictWhereInput!]
+  NOT: [SubdistrictWhereInput!]
   id: IntFilter
-  code: IntFilter
+  name: StringFilter
+  districtId: IntFilter
+  postalCode: StringFilter
+  district: DistrictRelationFilter
   address: AddressListRelationFilter
+}
+
+input DistrictRelationFilter {
+  is: DistrictWhereInput
+  isNot: DistrictWhereInput
+}
+
+input AddressListRelationFilter {
+  every: AddressWhereInput
+  some: AddressWhereInput
+  none: AddressWhereInput
+}
+
+input SubdistrictRelationFilter {
+  is: SubdistrictWhereInput
+  isNot: SubdistrictWhereInput
 }
 
 input UserNullableRelationFilter {
@@ -2855,37 +2969,67 @@ enum NullsOrder {
 input AddressOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
+  provinceId: SortOrder
   cityId: SortOrder
   districtId: SortOrder
-  postalCodeId: SortOrder
+  subdistrictId: SortOrder
+  province: ProvinceOrderByWithRelationInput
   city: CityOrderByWithRelationInput
   district: DistrictOrderByWithRelationInput
-  postalCode: PostalCodeOrderByWithRelationInput
+  subdistrict: SubdistrictOrderByWithRelationInput
   user: UserOrderByWithRelationInput
   hotel: HotelOrderByWithRelationInput
   school: SchoolOrderByWithRelationInput
   Shipping: ShippingOrderByWithRelationInput
 }
 
-input CityOrderByWithRelationInput {
+input ProvinceOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
+  cities: CityOrderByRelationAggregateInput
   address: AddressOrderByRelationAggregateInput
+}
+
+input CityOrderByRelationAggregateInput {
+  _count: SortOrder
 }
 
 input AddressOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
-input DistrictOrderByWithRelationInput {
+input CityOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
+  provinceId: SortOrder
+  province: ProvinceOrderByWithRelationInput
+  districts: DistrictOrderByRelationAggregateInput
   address: AddressOrderByRelationAggregateInput
 }
 
-input PostalCodeOrderByWithRelationInput {
+input DistrictOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input DistrictOrderByWithRelationInput {
   id: SortOrder
-  code: SortOrder
+  name: SortOrder
+  cityId: SortOrder
+  city: CityOrderByWithRelationInput
+  subdistricts: SubdistrictOrderByRelationAggregateInput
+  address: AddressOrderByRelationAggregateInput
+}
+
+input SubdistrictOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SubdistrictOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  districtId: SortOrder
+  postalCode: SortOrder
+  district: DistrictOrderByWithRelationInput
   address: AddressOrderByRelationAggregateInput
 }
 
@@ -3102,32 +3246,28 @@ input ItemWhereUniqueInput {
 }
 
 input HotelFindManyArgs {
-  select: HotelSelect
-  include: HotelSelect
-  where: HotelWhereUniqueInput
+  where: HotelWhereInput
   orderBy: [HotelOrderByWithRelationInput!]
-  cursor: HotelWhereUniqueInput
   take: Int
   skip: Int
   distinct: [HotelScalarFieldEnum!]
 }
 
-input HotelSelect {
-  id: Boolean
-  name: Boolean
-  addressId: Boolean
-  description: Boolean
-  rating: Boolean
-  startDate: Boolean
-  quota: Boolean
-  createdById: Boolean
-  createdAt: Boolean
-  updatedAt: Boolean
-  address: Boolean
-  images: Boolean
-  checkIns: Boolean
-  createdBy: Boolean
-  _count: Boolean
+enum HotelScalarFieldEnum {
+  id
+  name
+  addressId
+  description
+  rating
+  startDate
+  quota
+  createdById
+  createdAt
+  updatedAt
+}
+
+input HotelFindUniqueArgs {
+  where: HotelWhereUniqueInput!
 }
 
 input HotelWhereUniqueInput {
@@ -3148,25 +3288,6 @@ input HotelWhereUniqueInput {
   images: ImagesListRelationFilter
   checkIns: CheckInListRelationFilter
   createdBy: UserRelationFilter
-}
-
-enum HotelScalarFieldEnum {
-  id
-  name
-  addressId
-  description
-  rating
-  startDate
-  quota
-  createdById
-  createdAt
-  updatedAt
-}
-
-input HotelFindUniqueArgs {
-  select: HotelSelect
-  include: HotelSelect
-  where: HotelWhereUniqueInput!
 }
 
 input ProgramFindManyArgs {
@@ -4065,9 +4186,10 @@ input AddressFindManyArgs {
 enum AddressScalarFieldEnum {
   id
   name
+  provinceId
   cityId
   districtId
-  postalCodeId
+  subdistrictId
 }
 
 input AddressFindUniqueArgs {
@@ -4080,12 +4202,14 @@ input AddressWhereUniqueInput {
   OR: [AddressWhereInput!]
   NOT: [AddressWhereInput!]
   name: StringFilter
+  provinceId: IntFilter
   cityId: IntFilter
   districtId: IntFilter
-  postalCodeId: IntFilter
+  subdistrictId: IntFilter
+  province: ProvinceRelationFilter
   city: CityRelationFilter
   district: DistrictRelationFilter
-  postalCode: PostalCodeRelationFilter
+  subdistrict: SubdistrictRelationFilter
   user: UserNullableRelationFilter
   hotel: HotelNullableRelationFilter
   school: SchoolNullableRelationFilter
@@ -4155,8 +4279,17 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   itemRemove(itemId: Float!): Boolean
-  hotelCreate(hotelCreateArgs: HotelCreateArgs!): Hotel!
-  removeHotel(id: Int!): Hotel!
+
+  """Deskripsinya ada disini loh"""
+  hotelCreateOne(hotelCreateArgs: HotelCreateArgs!): Hotel
+
+  """
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim hotel, backend akan cek apakah saldo point user cukup untuk claim
+  """
+  hotelUpdateOne(hotelUpdateOneArgs: HotelUpdateOneArgs!): Hotel!
+
+  """Datanya benar2 terhapus dari db"""
+  hotelRemove(hotelId: Float!): Boolean
   createAuth(createAuthInput: CreateAuthInput!): Auth!
   resetPassword(email: String!): Auth!
   removeAuth(id: Int!): Auth!
@@ -4300,9 +4433,74 @@ input AddressCreateNestedOneWithoutUserInput {
 
 input AddressCreateWithoutUserInput {
   name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
   city: CityCreateNestedOneWithoutAddressInput!
   district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
+}
+
+input ProvinceCreateNestedOneWithoutAddressInput {
+  create: ProvinceCreateWithoutAddressInput
+  connectOrCreate: ProvinceCreateOrConnectWithoutAddressInput
+  connect: ProvinceWhereUniqueInput
+}
+
+input ProvinceCreateWithoutAddressInput {
+  name: String!
+  cities: CityCreateNestedManyWithoutProvinceInput
+}
+
+input CityCreateNestedManyWithoutProvinceInput {
+  create: [CityCreateWithoutProvinceInput!]
+  connectOrCreate: [CityCreateOrConnectWithoutProvinceInput!]
+  createMany: CityCreateManyProvinceInputEnvelope
+  connect: [CityWhereUniqueInput!]
+}
+
+input CityCreateWithoutProvinceInput {
+  name: String!
+  districts: DistrictCreateNestedManyWithoutCityInput
+  address: AddressCreateNestedManyWithoutCityInput
+}
+
+input DistrictCreateNestedManyWithoutCityInput {
+  create: [DistrictCreateWithoutCityInput!]
+  connectOrCreate: [DistrictCreateOrConnectWithoutCityInput!]
+  createMany: DistrictCreateManyCityInputEnvelope
+  connect: [DistrictWhereUniqueInput!]
+}
+
+input DistrictCreateWithoutCityInput {
+  name: String!
+  subdistricts: SubdistrictCreateNestedManyWithoutDistrictInput
+  address: AddressCreateNestedManyWithoutDistrictInput
+}
+
+input SubdistrictCreateNestedManyWithoutDistrictInput {
+  create: [SubdistrictCreateWithoutDistrictInput!]
+  connectOrCreate: [SubdistrictCreateOrConnectWithoutDistrictInput!]
+  createMany: SubdistrictCreateManyDistrictInputEnvelope
+  connect: [SubdistrictWhereUniqueInput!]
+}
+
+input SubdistrictCreateWithoutDistrictInput {
+  name: String!
+  postalCode: String!
+  address: AddressCreateNestedManyWithoutSubdistrictInput
+}
+
+input AddressCreateNestedManyWithoutSubdistrictInput {
+  create: [AddressCreateWithoutSubdistrictInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutSubdistrictInput!]
+  createMany: AddressCreateManySubdistrictInputEnvelope
+  connect: [AddressWhereUniqueInput!]
+}
+
+input AddressCreateWithoutSubdistrictInput {
+  name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
 }
 
 input CityCreateNestedOneWithoutAddressInput {
@@ -4313,20 +4511,33 @@ input CityCreateNestedOneWithoutAddressInput {
 
 input CityCreateWithoutAddressInput {
   name: String!
+  province: ProvinceCreateNestedOneWithoutCitiesInput!
+  districts: DistrictCreateNestedManyWithoutCityInput
 }
 
-input CityCreateOrConnectWithoutAddressInput {
-  where: CityWhereUniqueInput!
-  create: CityCreateWithoutAddressInput!
+input ProvinceCreateNestedOneWithoutCitiesInput {
+  create: ProvinceCreateWithoutCitiesInput
+  connectOrCreate: ProvinceCreateOrConnectWithoutCitiesInput
+  connect: ProvinceWhereUniqueInput
 }
 
-input CityWhereUniqueInput {
-  id: Int
-  AND: [CityWhereInput!]
-  OR: [CityWhereInput!]
-  NOT: [CityWhereInput!]
-  name: StringFilter
-  address: AddressListRelationFilter
+input ProvinceCreateWithoutCitiesInput {
+  name: String!
+  address: AddressCreateNestedManyWithoutProvinceInput
+}
+
+input AddressCreateNestedManyWithoutProvinceInput {
+  create: [AddressCreateWithoutProvinceInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutProvinceInput!]
+  createMany: AddressCreateManyProvinceInputEnvelope
+  connect: [AddressWhereUniqueInput!]
+}
+
+input AddressCreateWithoutProvinceInput {
+  name: String!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
 }
 
 input DistrictCreateNestedOneWithoutAddressInput {
@@ -4337,11 +4548,92 @@ input DistrictCreateNestedOneWithoutAddressInput {
 
 input DistrictCreateWithoutAddressInput {
   name: String!
+  city: CityCreateNestedOneWithoutDistrictsInput!
+  subdistricts: SubdistrictCreateNestedManyWithoutDistrictInput
 }
 
-input DistrictCreateOrConnectWithoutAddressInput {
+input CityCreateNestedOneWithoutDistrictsInput {
+  create: CityCreateWithoutDistrictsInput
+  connectOrCreate: CityCreateOrConnectWithoutDistrictsInput
+  connect: CityWhereUniqueInput
+}
+
+input CityCreateWithoutDistrictsInput {
+  name: String!
+  province: ProvinceCreateNestedOneWithoutCitiesInput!
+  address: AddressCreateNestedManyWithoutCityInput
+}
+
+input AddressCreateNestedManyWithoutCityInput {
+  create: [AddressCreateWithoutCityInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutCityInput!]
+  createMany: AddressCreateManyCityInputEnvelope
+  connect: [AddressWhereUniqueInput!]
+}
+
+input AddressCreateWithoutCityInput {
+  name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
+}
+
+input SubdistrictCreateNestedOneWithoutAddressInput {
+  create: SubdistrictCreateWithoutAddressInput
+  connectOrCreate: SubdistrictCreateOrConnectWithoutAddressInput
+  connect: SubdistrictWhereUniqueInput
+}
+
+input SubdistrictCreateWithoutAddressInput {
+  name: String!
+  postalCode: String!
+  district: DistrictCreateNestedOneWithoutSubdistrictsInput!
+}
+
+input DistrictCreateNestedOneWithoutSubdistrictsInput {
+  create: DistrictCreateWithoutSubdistrictsInput
+  connectOrCreate: DistrictCreateOrConnectWithoutSubdistrictsInput
+  connect: DistrictWhereUniqueInput
+}
+
+input DistrictCreateWithoutSubdistrictsInput {
+  name: String!
+  city: CityCreateNestedOneWithoutDistrictsInput!
+  address: AddressCreateNestedManyWithoutDistrictInput
+}
+
+input AddressCreateNestedManyWithoutDistrictInput {
+  create: [AddressCreateWithoutDistrictInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutDistrictInput!]
+  createMany: AddressCreateManyDistrictInputEnvelope
+  connect: [AddressWhereUniqueInput!]
+}
+
+input AddressCreateWithoutDistrictInput {
+  name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
+  city: CityCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutDistrictInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutDistrictInput!
+}
+
+input AddressCreateManyDistrictInputEnvelope {
+  data: [AddressCreateManyDistrictInput!]!
+  skipDuplicates: Boolean
+}
+
+input AddressCreateManyDistrictInput {
+  name: String!
+  subdistrictId: Int!
+}
+
+input DistrictCreateOrConnectWithoutSubdistrictsInput {
   where: DistrictWhereUniqueInput!
-  create: DistrictCreateWithoutAddressInput!
+  create: DistrictCreateWithoutSubdistrictsInput!
 }
 
 input DistrictWhereUniqueInput {
@@ -4350,31 +4642,164 @@ input DistrictWhereUniqueInput {
   OR: [DistrictWhereInput!]
   NOT: [DistrictWhereInput!]
   name: StringFilter
+  cityId: IntFilter
+  city: CityRelationFilter
+  subdistricts: SubdistrictListRelationFilter
   address: AddressListRelationFilter
 }
 
-input PostalCodeCreateNestedOneWithoutAddressInput {
-  create: PostalCodeCreateWithoutAddressInput
-  connectOrCreate: PostalCodeCreateOrConnectWithoutAddressInput
-  connect: PostalCodeWhereUniqueInput
+input SubdistrictCreateOrConnectWithoutAddressInput {
+  where: SubdistrictWhereUniqueInput!
+  create: SubdistrictCreateWithoutAddressInput!
 }
 
-input PostalCodeCreateWithoutAddressInput {
-  code: Int!
-}
-
-input PostalCodeCreateOrConnectWithoutAddressInput {
-  where: PostalCodeWhereUniqueInput!
-  create: PostalCodeCreateWithoutAddressInput!
-}
-
-input PostalCodeWhereUniqueInput {
+input SubdistrictWhereUniqueInput {
   id: Int
-  code: Int
-  AND: [PostalCodeWhereInput!]
-  OR: [PostalCodeWhereInput!]
-  NOT: [PostalCodeWhereInput!]
+  AND: [SubdistrictWhereInput!]
+  OR: [SubdistrictWhereInput!]
+  NOT: [SubdistrictWhereInput!]
+  name: StringFilter
+  districtId: IntFilter
+  postalCode: StringFilter
+  district: DistrictRelationFilter
   address: AddressListRelationFilter
+}
+
+input AddressCreateOrConnectWithoutCityInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutCityInput!
+}
+
+input AddressCreateManyCityInputEnvelope {
+  data: [AddressCreateManyCityInput!]!
+  skipDuplicates: Boolean
+}
+
+input AddressCreateManyCityInput {
+  name: String!
+  subdistrictId: Int!
+}
+
+input CityCreateOrConnectWithoutDistrictsInput {
+  where: CityWhereUniqueInput!
+  create: CityCreateWithoutDistrictsInput!
+}
+
+input CityWhereUniqueInput {
+  id: Int
+  AND: [CityWhereInput!]
+  OR: [CityWhereInput!]
+  NOT: [CityWhereInput!]
+  name: StringFilter
+  provinceId: IntFilter
+  province: ProvinceRelationFilter
+  districts: DistrictListRelationFilter
+  address: AddressListRelationFilter
+}
+
+input DistrictCreateOrConnectWithoutAddressInput {
+  where: DistrictWhereUniqueInput!
+  create: DistrictCreateWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutProvinceInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutProvinceInput!
+}
+
+input AddressCreateManyProvinceInputEnvelope {
+  data: [AddressCreateManyProvinceInput!]!
+  skipDuplicates: Boolean
+}
+
+input AddressCreateManyProvinceInput {
+  name: String!
+  subdistrictId: Int!
+}
+
+input ProvinceCreateOrConnectWithoutCitiesInput {
+  where: ProvinceWhereUniqueInput!
+  create: ProvinceCreateWithoutCitiesInput!
+}
+
+input ProvinceWhereUniqueInput {
+  id: Int
+  name: String
+  AND: [ProvinceWhereInput!]
+  OR: [ProvinceWhereInput!]
+  NOT: [ProvinceWhereInput!]
+  cities: CityListRelationFilter
+  address: AddressListRelationFilter
+}
+
+input CityCreateOrConnectWithoutAddressInput {
+  where: CityWhereUniqueInput!
+  create: CityCreateWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutSubdistrictInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutSubdistrictInput!
+}
+
+input AddressCreateManySubdistrictInputEnvelope {
+  data: [AddressCreateManySubdistrictInput!]!
+  skipDuplicates: Boolean
+}
+
+input AddressCreateManySubdistrictInput {
+  name: String!
+}
+
+input SubdistrictCreateOrConnectWithoutDistrictInput {
+  where: SubdistrictWhereUniqueInput!
+  create: SubdistrictCreateWithoutDistrictInput!
+}
+
+input SubdistrictCreateManyDistrictInputEnvelope {
+  data: [SubdistrictCreateManyDistrictInput!]!
+  skipDuplicates: Boolean
+}
+
+input SubdistrictCreateManyDistrictInput {
+  id: Int
+  name: String!
+  postalCode: String!
+}
+
+input DistrictCreateOrConnectWithoutCityInput {
+  where: DistrictWhereUniqueInput!
+  create: DistrictCreateWithoutCityInput!
+}
+
+input DistrictCreateManyCityInputEnvelope {
+  data: [DistrictCreateManyCityInput!]!
+  skipDuplicates: Boolean
+}
+
+input DistrictCreateManyCityInput {
+  id: Int
+  name: String!
+}
+
+input CityCreateOrConnectWithoutProvinceInput {
+  where: CityWhereUniqueInput!
+  create: CityCreateWithoutProvinceInput!
+}
+
+input CityCreateManyProvinceInputEnvelope {
+  data: [CityCreateManyProvinceInput!]!
+  skipDuplicates: Boolean
+}
+
+input CityCreateManyProvinceInput {
+  id: Int
+  name: String!
+}
+
+input ProvinceCreateOrConnectWithoutAddressInput {
+  where: ProvinceWhereUniqueInput!
+  create: ProvinceCreateWithoutAddressInput!
 }
 
 input AddressCreateOrConnectWithoutUserInput {
@@ -4426,9 +4851,10 @@ input AddressCreateNestedOneWithoutSchoolInput {
 
 input AddressCreateWithoutSchoolInput {
   name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
   city: CityCreateNestedOneWithoutAddressInput!
   district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
 }
 
 input AddressCreateOrConnectWithoutSchoolInput {
@@ -5128,9 +5554,138 @@ input AddressUpsertWithoutUserInput {
 
 input AddressUpdateWithoutUserInput {
   name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
   city: CityUpdateOneRequiredWithoutAddressNestedInput
   district: DistrictUpdateOneRequiredWithoutAddressNestedInput
-  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
+  hotel: HotelUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input ProvinceUpdateOneRequiredWithoutAddressNestedInput {
+  create: ProvinceCreateWithoutAddressInput
+  connectOrCreate: ProvinceCreateOrConnectWithoutAddressInput
+  upsert: ProvinceUpsertWithoutAddressInput
+  connect: ProvinceWhereUniqueInput
+  update: ProvinceUpdateToOneWithWhereWithoutAddressInput
+}
+
+input ProvinceUpsertWithoutAddressInput {
+  update: ProvinceUpdateWithoutAddressInput!
+  create: ProvinceCreateWithoutAddressInput!
+  where: ProvinceWhereInput
+}
+
+input ProvinceUpdateWithoutAddressInput {
+  name: StringFieldUpdateOperationsInput
+  cities: CityUpdateManyWithoutProvinceNestedInput
+}
+
+input CityUpdateManyWithoutProvinceNestedInput {
+  create: [CityCreateWithoutProvinceInput!]
+  connectOrCreate: [CityCreateOrConnectWithoutProvinceInput!]
+  upsert: [CityUpsertWithWhereUniqueWithoutProvinceInput!]
+  createMany: CityCreateManyProvinceInputEnvelope
+  set: [CityWhereUniqueInput!]
+  disconnect: [CityWhereUniqueInput!]
+  delete: [CityWhereUniqueInput!]
+  connect: [CityWhereUniqueInput!]
+  update: [CityUpdateWithWhereUniqueWithoutProvinceInput!]
+  updateMany: [CityUpdateManyWithWhereWithoutProvinceInput!]
+  deleteMany: [CityScalarWhereInput!]
+}
+
+input CityUpsertWithWhereUniqueWithoutProvinceInput {
+  where: CityWhereUniqueInput!
+  update: CityUpdateWithoutProvinceInput!
+  create: CityCreateWithoutProvinceInput!
+}
+
+input CityUpdateWithoutProvinceInput {
+  name: StringFieldUpdateOperationsInput
+  districts: DistrictUpdateManyWithoutCityNestedInput
+  address: AddressUpdateManyWithoutCityNestedInput
+}
+
+input DistrictUpdateManyWithoutCityNestedInput {
+  create: [DistrictCreateWithoutCityInput!]
+  connectOrCreate: [DistrictCreateOrConnectWithoutCityInput!]
+  upsert: [DistrictUpsertWithWhereUniqueWithoutCityInput!]
+  createMany: DistrictCreateManyCityInputEnvelope
+  set: [DistrictWhereUniqueInput!]
+  disconnect: [DistrictWhereUniqueInput!]
+  delete: [DistrictWhereUniqueInput!]
+  connect: [DistrictWhereUniqueInput!]
+  update: [DistrictUpdateWithWhereUniqueWithoutCityInput!]
+  updateMany: [DistrictUpdateManyWithWhereWithoutCityInput!]
+  deleteMany: [DistrictScalarWhereInput!]
+}
+
+input DistrictUpsertWithWhereUniqueWithoutCityInput {
+  where: DistrictWhereUniqueInput!
+  update: DistrictUpdateWithoutCityInput!
+  create: DistrictCreateWithoutCityInput!
+}
+
+input DistrictUpdateWithoutCityInput {
+  name: StringFieldUpdateOperationsInput
+  subdistricts: SubdistrictUpdateManyWithoutDistrictNestedInput
+  address: AddressUpdateManyWithoutDistrictNestedInput
+}
+
+input SubdistrictUpdateManyWithoutDistrictNestedInput {
+  create: [SubdistrictCreateWithoutDistrictInput!]
+  connectOrCreate: [SubdistrictCreateOrConnectWithoutDistrictInput!]
+  upsert: [SubdistrictUpsertWithWhereUniqueWithoutDistrictInput!]
+  createMany: SubdistrictCreateManyDistrictInputEnvelope
+  set: [SubdistrictWhereUniqueInput!]
+  disconnect: [SubdistrictWhereUniqueInput!]
+  delete: [SubdistrictWhereUniqueInput!]
+  connect: [SubdistrictWhereUniqueInput!]
+  update: [SubdistrictUpdateWithWhereUniqueWithoutDistrictInput!]
+  updateMany: [SubdistrictUpdateManyWithWhereWithoutDistrictInput!]
+  deleteMany: [SubdistrictScalarWhereInput!]
+}
+
+input SubdistrictUpsertWithWhereUniqueWithoutDistrictInput {
+  where: SubdistrictWhereUniqueInput!
+  update: SubdistrictUpdateWithoutDistrictInput!
+  create: SubdistrictCreateWithoutDistrictInput!
+}
+
+input SubdistrictUpdateWithoutDistrictInput {
+  name: StringFieldUpdateOperationsInput
+  postalCode: StringFieldUpdateOperationsInput
+  address: AddressUpdateManyWithoutSubdistrictNestedInput
+}
+
+input AddressUpdateManyWithoutSubdistrictNestedInput {
+  create: [AddressCreateWithoutSubdistrictInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutSubdistrictInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutSubdistrictInput!]
+  createMany: AddressCreateManySubdistrictInputEnvelope
+  set: [AddressWhereUniqueInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  delete: [AddressWhereUniqueInput!]
+  connect: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutSubdistrictInput!]
+  updateMany: [AddressUpdateManyWithWhereWithoutSubdistrictInput!]
+  deleteMany: [AddressScalarWhereInput!]
+}
+
+input AddressUpsertWithWhereUniqueWithoutSubdistrictInput {
+  where: AddressWhereUniqueInput!
+  update: AddressUpdateWithoutSubdistrictInput!
+  create: AddressCreateWithoutSubdistrictInput!
+}
+
+input AddressUpdateWithoutSubdistrictInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
+  city: CityUpdateOneRequiredWithoutAddressNestedInput
+  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
   hotel: HotelUpdateOneWithoutAddressNestedInput
   school: SchoolUpdateOneWithoutAddressNestedInput
   Shipping: ShippingUpdateOneWithoutAddressNestedInput
@@ -5152,11 +5707,58 @@ input CityUpsertWithoutAddressInput {
 
 input CityUpdateWithoutAddressInput {
   name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+  districts: DistrictUpdateManyWithoutCityNestedInput
 }
 
-input CityUpdateToOneWithWhereWithoutAddressInput {
-  where: CityWhereInput
-  data: CityUpdateWithoutAddressInput!
+input ProvinceUpdateOneRequiredWithoutCitiesNestedInput {
+  create: ProvinceCreateWithoutCitiesInput
+  connectOrCreate: ProvinceCreateOrConnectWithoutCitiesInput
+  upsert: ProvinceUpsertWithoutCitiesInput
+  connect: ProvinceWhereUniqueInput
+  update: ProvinceUpdateToOneWithWhereWithoutCitiesInput
+}
+
+input ProvinceUpsertWithoutCitiesInput {
+  update: ProvinceUpdateWithoutCitiesInput!
+  create: ProvinceCreateWithoutCitiesInput!
+  where: ProvinceWhereInput
+}
+
+input ProvinceUpdateWithoutCitiesInput {
+  name: StringFieldUpdateOperationsInput
+  address: AddressUpdateManyWithoutProvinceNestedInput
+}
+
+input AddressUpdateManyWithoutProvinceNestedInput {
+  create: [AddressCreateWithoutProvinceInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutProvinceInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutProvinceInput!]
+  createMany: AddressCreateManyProvinceInputEnvelope
+  set: [AddressWhereUniqueInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  delete: [AddressWhereUniqueInput!]
+  connect: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutProvinceInput!]
+  updateMany: [AddressUpdateManyWithWhereWithoutProvinceInput!]
+  deleteMany: [AddressScalarWhereInput!]
+}
+
+input AddressUpsertWithWhereUniqueWithoutProvinceInput {
+  where: AddressWhereUniqueInput!
+  update: AddressUpdateWithoutProvinceInput!
+  create: AddressCreateWithoutProvinceInput!
+}
+
+input AddressUpdateWithoutProvinceInput {
+  name: StringFieldUpdateOperationsInput
+  city: CityUpdateOneRequiredWithoutAddressNestedInput
+  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  hotel: HotelUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
 }
 
 input DistrictUpdateOneRequiredWithoutAddressNestedInput {
@@ -5175,62 +5777,290 @@ input DistrictUpsertWithoutAddressInput {
 
 input DistrictUpdateWithoutAddressInput {
   name: StringFieldUpdateOperationsInput
+  city: CityUpdateOneRequiredWithoutDistrictsNestedInput
+  subdistricts: SubdistrictUpdateManyWithoutDistrictNestedInput
 }
 
-input DistrictUpdateToOneWithWhereWithoutAddressInput {
+input CityUpdateOneRequiredWithoutDistrictsNestedInput {
+  create: CityCreateWithoutDistrictsInput
+  connectOrCreate: CityCreateOrConnectWithoutDistrictsInput
+  upsert: CityUpsertWithoutDistrictsInput
+  connect: CityWhereUniqueInput
+  update: CityUpdateToOneWithWhereWithoutDistrictsInput
+}
+
+input CityUpsertWithoutDistrictsInput {
+  update: CityUpdateWithoutDistrictsInput!
+  create: CityCreateWithoutDistrictsInput!
+  where: CityWhereInput
+}
+
+input CityUpdateWithoutDistrictsInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+  address: AddressUpdateManyWithoutCityNestedInput
+}
+
+input AddressUpdateManyWithoutCityNestedInput {
+  create: [AddressCreateWithoutCityInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutCityInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutCityInput!]
+  createMany: AddressCreateManyCityInputEnvelope
+  set: [AddressWhereUniqueInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  delete: [AddressWhereUniqueInput!]
+  connect: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutCityInput!]
+  updateMany: [AddressUpdateManyWithWhereWithoutCityInput!]
+  deleteMany: [AddressScalarWhereInput!]
+}
+
+input AddressUpsertWithWhereUniqueWithoutCityInput {
+  where: AddressWhereUniqueInput!
+  update: AddressUpdateWithoutCityInput!
+  create: AddressCreateWithoutCityInput!
+}
+
+input AddressUpdateWithoutCityInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
+  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  hotel: HotelUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input SubdistrictUpdateOneRequiredWithoutAddressNestedInput {
+  create: SubdistrictCreateWithoutAddressInput
+  connectOrCreate: SubdistrictCreateOrConnectWithoutAddressInput
+  upsert: SubdistrictUpsertWithoutAddressInput
+  connect: SubdistrictWhereUniqueInput
+  update: SubdistrictUpdateToOneWithWhereWithoutAddressInput
+}
+
+input SubdistrictUpsertWithoutAddressInput {
+  update: SubdistrictUpdateWithoutAddressInput!
+  create: SubdistrictCreateWithoutAddressInput!
+  where: SubdistrictWhereInput
+}
+
+input SubdistrictUpdateWithoutAddressInput {
+  name: StringFieldUpdateOperationsInput
+  postalCode: StringFieldUpdateOperationsInput
+  district: DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput
+}
+
+input DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput {
+  create: DistrictCreateWithoutSubdistrictsInput
+  connectOrCreate: DistrictCreateOrConnectWithoutSubdistrictsInput
+  upsert: DistrictUpsertWithoutSubdistrictsInput
+  connect: DistrictWhereUniqueInput
+  update: DistrictUpdateToOneWithWhereWithoutSubdistrictsInput
+}
+
+input DistrictUpsertWithoutSubdistrictsInput {
+  update: DistrictUpdateWithoutSubdistrictsInput!
+  create: DistrictCreateWithoutSubdistrictsInput!
   where: DistrictWhereInput
-  data: DistrictUpdateWithoutAddressInput!
 }
 
-input PostalCodeUpdateOneRequiredWithoutAddressNestedInput {
-  create: PostalCodeCreateWithoutAddressInput
-  connectOrCreate: PostalCodeCreateOrConnectWithoutAddressInput
-  upsert: PostalCodeUpsertWithoutAddressInput
-  connect: PostalCodeWhereUniqueInput
-  update: PostalCodeUpdateToOneWithWhereWithoutAddressInput
+input DistrictUpdateWithoutSubdistrictsInput {
+  name: StringFieldUpdateOperationsInput
+  city: CityUpdateOneRequiredWithoutDistrictsNestedInput
+  address: AddressUpdateManyWithoutDistrictNestedInput
 }
 
-input PostalCodeUpsertWithoutAddressInput {
-  update: PostalCodeUpdateWithoutAddressInput!
-  create: PostalCodeCreateWithoutAddressInput!
-  where: PostalCodeWhereInput
+input AddressUpdateManyWithoutDistrictNestedInput {
+  create: [AddressCreateWithoutDistrictInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutDistrictInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutDistrictInput!]
+  createMany: AddressCreateManyDistrictInputEnvelope
+  set: [AddressWhereUniqueInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  delete: [AddressWhereUniqueInput!]
+  connect: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutDistrictInput!]
+  updateMany: [AddressUpdateManyWithWhereWithoutDistrictInput!]
+  deleteMany: [AddressScalarWhereInput!]
 }
 
-input PostalCodeUpdateWithoutAddressInput {
-  code: IntFieldUpdateOperationsInput
+input AddressUpsertWithWhereUniqueWithoutDistrictInput {
+  where: AddressWhereUniqueInput!
+  update: AddressUpdateWithoutDistrictInput!
+  create: AddressCreateWithoutDistrictInput!
 }
 
-input IntFieldUpdateOperationsInput {
-  set: Int
-  increment: Int
-  decrement: Int
-  multiply: Int
-  divide: Int
+input AddressUpdateWithoutDistrictInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
+  city: CityUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  hotel: HotelUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
 }
 
-input PostalCodeUpdateToOneWithWhereWithoutAddressInput {
-  where: PostalCodeWhereInput
-  data: PostalCodeUpdateWithoutAddressInput!
+input UserUpdateOneWithoutAddressNestedInput {
+  create: UserCreateWithoutAddressInput
+  connectOrCreate: UserCreateOrConnectWithoutAddressInput
+  upsert: UserUpsertWithoutAddressInput
+  disconnect: UserWhereInput
+  delete: UserWhereInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutAddressInput
 }
 
-input HotelUpdateOneWithoutAddressNestedInput {
-  create: HotelCreateWithoutAddressInput
-  connectOrCreate: HotelCreateOrConnectWithoutAddressInput
-  upsert: HotelUpsertWithoutAddressInput
-  disconnect: HotelWhereInput
-  delete: HotelWhereInput
+input UserCreateWithoutAddressInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  status: UserStatus
+  theme: Theme
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  orders: OrderCreateNestedManyWithoutOrderByInput
+  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
+}
+
+input UserCreateOrConnectWithoutAddressInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutAddressInput!
+}
+
+input UserUpsertWithoutAddressInput {
+  update: UserUpdateWithoutAddressInput!
+  create: UserCreateWithoutAddressInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutAddressInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  accounts: AccountUpdateManyWithoutUserNestedInput
+  orders: OrderUpdateManyWithoutOrderByNestedInput
+  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
+  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
+  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
+}
+
+input UserUpdateOneWithoutReferredUsersNestedInput {
+  create: UserCreateWithoutReferredUsersInput
+  connectOrCreate: UserCreateOrConnectWithoutReferredUsersInput
+  upsert: UserUpsertWithoutReferredUsersInput
+  disconnect: UserWhereInput
+  delete: UserWhereInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutReferredUsersInput
+}
+
+input UserUpsertWithoutReferredUsersInput {
+  update: UserUpdateWithoutReferredUsersInput!
+  create: UserCreateWithoutReferredUsersInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutReferredUsersInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  accounts: AccountUpdateManyWithoutUserNestedInput
+  orders: OrderUpdateManyWithoutOrderByNestedInput
+  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
+  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
+  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
+}
+
+input CheckInUpdateManyWithoutUserNestedInput {
+  create: [CheckInCreateWithoutUserInput!]
+  connectOrCreate: [CheckInCreateOrConnectWithoutUserInput!]
+  upsert: [CheckInUpsertWithWhereUniqueWithoutUserInput!]
+  createMany: CheckInCreateManyUserInputEnvelope
+  set: [CheckInWhereUniqueInput!]
+  disconnect: [CheckInWhereUniqueInput!]
+  delete: [CheckInWhereUniqueInput!]
+  connect: [CheckInWhereUniqueInput!]
+  update: [CheckInUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [CheckInUpdateManyWithWhereWithoutUserInput!]
+  deleteMany: [CheckInScalarWhereInput!]
+}
+
+input CheckInCreateWithoutUserInput {
+  checkInAt: DateTime
+  hotel: HotelCreateNestedOneWithoutCheckInsInput!
+}
+
+input HotelCreateNestedOneWithoutCheckInsInput {
+  create: HotelCreateWithoutCheckInsInput
+  connectOrCreate: HotelCreateOrConnectWithoutCheckInsInput
   connect: HotelWhereUniqueInput
-  update: HotelUpdateToOneWithWhereWithoutAddressInput
 }
 
-input HotelCreateWithoutAddressInput {
+input HotelCreateWithoutCheckInsInput {
   name: String!
   description: String!
   rating: Float!
   startDate: DateTime!
   quota: Int!
+  address: AddressCreateNestedOneWithoutHotelInput!
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input AddressCreateNestedOneWithoutHotelInput {
+  create: AddressCreateWithoutHotelInput
+  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
+  connect: AddressWhereUniqueInput
+}
+
+input AddressCreateWithoutHotelInput {
+  name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
+  city: CityCreateNestedOneWithoutAddressInput!
+  district: DistrictCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
+}
+
+input AddressCreateOrConnectWithoutHotelInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutHotelInput!
 }
 
 input ImagesCreateNestedManyWithoutHotelImageInput {
@@ -5292,6 +6122,402 @@ input UserCreateOrConnectWithoutHotelsCreatedInput {
   create: UserCreateWithoutHotelsCreatedInput!
 }
 
+input HotelCreateOrConnectWithoutCheckInsInput {
+  where: HotelWhereUniqueInput!
+  create: HotelCreateWithoutCheckInsInput!
+}
+
+input CheckInCreateOrConnectWithoutUserInput {
+  where: CheckInWhereUniqueInput!
+  create: CheckInCreateWithoutUserInput!
+}
+
+input CheckInUpsertWithWhereUniqueWithoutUserInput {
+  where: CheckInWhereUniqueInput!
+  update: CheckInUpdateWithoutUserInput!
+  create: CheckInCreateWithoutUserInput!
+}
+
+input CheckInUpdateWithoutUserInput {
+  checkInAt: DateTimeFieldUpdateOperationsInput
+  hotel: HotelUpdateOneRequiredWithoutCheckInsNestedInput
+}
+
+input HotelUpdateOneRequiredWithoutCheckInsNestedInput {
+  create: HotelCreateWithoutCheckInsInput
+  connectOrCreate: HotelCreateOrConnectWithoutCheckInsInput
+  upsert: HotelUpsertWithoutCheckInsInput
+  connect: HotelWhereUniqueInput
+  update: HotelUpdateToOneWithWhereWithoutCheckInsInput
+}
+
+input HotelUpsertWithoutCheckInsInput {
+  update: HotelUpdateWithoutCheckInsInput!
+  create: HotelCreateWithoutCheckInsInput!
+  where: HotelWhereInput
+}
+
+input HotelUpdateWithoutCheckInsInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: FloatFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  quota: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutHotelNestedInput
+  images: ImagesUpdateManyWithoutHotelImageNestedInput
+  createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
+}
+
+input FloatFieldUpdateOperationsInput {
+  set: Float
+  increment: Float
+  decrement: Float
+  multiply: Float
+  divide: Float
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input AddressUpdateOneRequiredWithoutHotelNestedInput {
+  create: AddressCreateWithoutHotelInput
+  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
+  upsert: AddressUpsertWithoutHotelInput
+  connect: AddressWhereUniqueInput
+  update: AddressUpdateToOneWithWhereWithoutHotelInput
+}
+
+input AddressUpsertWithoutHotelInput {
+  update: AddressUpdateWithoutHotelInput!
+  create: AddressCreateWithoutHotelInput!
+  where: AddressWhereInput
+}
+
+input AddressUpdateWithoutHotelInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
+  city: CityUpdateOneRequiredWithoutAddressNestedInput
+  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input SchoolUpdateOneWithoutAddressNestedInput {
+  create: SchoolCreateWithoutAddressInput
+  connectOrCreate: SchoolCreateOrConnectWithoutAddressInput
+  upsert: SchoolUpsertWithoutAddressInput
+  disconnect: SchoolWhereInput
+  delete: SchoolWhereInput
+  connect: SchoolWhereUniqueInput
+  update: SchoolUpdateToOneWithWhereWithoutAddressInput
+}
+
+input SchoolCreateWithoutAddressInput {
+  name: String!
+}
+
+input SchoolCreateOrConnectWithoutAddressInput {
+  where: SchoolWhereUniqueInput!
+  create: SchoolCreateWithoutAddressInput!
+}
+
+input SchoolUpsertWithoutAddressInput {
+  update: SchoolUpdateWithoutAddressInput!
+  create: SchoolCreateWithoutAddressInput!
+  where: SchoolWhereInput
+}
+
+input SchoolUpdateWithoutAddressInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input SchoolUpdateToOneWithWhereWithoutAddressInput {
+  where: SchoolWhereInput
+  data: SchoolUpdateWithoutAddressInput!
+}
+
+input ShippingUpdateOneWithoutAddressNestedInput {
+  create: ShippingCreateWithoutAddressInput
+  connectOrCreate: ShippingCreateOrConnectWithoutAddressInput
+  upsert: ShippingUpsertWithoutAddressInput
+  disconnect: ShippingWhereInput
+  delete: ShippingWhereInput
+  connect: ShippingWhereUniqueInput
+  update: ShippingUpdateToOneWithWhereWithoutAddressInput
+}
+
+input ShippingCreateWithoutAddressInput {
+  logisticName: String!
+  deliveryDate: DateTime
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  order: OrderCreateNestedOneWithoutShippingInput!
+}
+
+input OrderCreateNestedOneWithoutShippingInput {
+  create: OrderCreateWithoutShippingInput
+  connectOrCreate: OrderCreateOrConnectWithoutShippingInput
+  connect: OrderWhereUniqueInput
+}
+
+input OrderCreateWithoutShippingInput {
+  status: TransactionStatus!
+  shippingId: Int
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  orderBy: UserCreateNestedOneWithoutOrdersInput!
+  cart: CartCreateNestedManyWithoutOrderInput
+  invoice: InvoiceCreateNestedOneWithoutOrderInput!
+}
+
+input OrderCreateOrConnectWithoutShippingInput {
+  where: OrderWhereUniqueInput!
+  create: OrderCreateWithoutShippingInput!
+}
+
+input ShippingCreateOrConnectWithoutAddressInput {
+  where: ShippingWhereUniqueInput!
+  create: ShippingCreateWithoutAddressInput!
+}
+
+input ShippingUpsertWithoutAddressInput {
+  update: ShippingUpdateWithoutAddressInput!
+  create: ShippingCreateWithoutAddressInput!
+  where: ShippingWhereInput
+}
+
+input ShippingUpdateWithoutAddressInput {
+  logisticName: StringFieldUpdateOperationsInput
+  deliveryDate: NullableDateTimeFieldUpdateOperationsInput
+  courier: NullableStringFieldUpdateOperationsInput
+  estimatedTime: NullableStringFieldUpdateOperationsInput
+  trackingNo: NullableStringFieldUpdateOperationsInput
+  order: OrderUpdateOneRequiredWithoutShippingNestedInput
+}
+
+input OrderUpdateOneRequiredWithoutShippingNestedInput {
+  create: OrderCreateWithoutShippingInput
+  connectOrCreate: OrderCreateOrConnectWithoutShippingInput
+  upsert: OrderUpsertWithoutShippingInput
+  connect: OrderWhereUniqueInput
+  update: OrderUpdateToOneWithWhereWithoutShippingInput
+}
+
+input OrderUpsertWithoutShippingInput {
+  update: OrderUpdateWithoutShippingInput!
+  create: OrderCreateWithoutShippingInput!
+  where: OrderWhereInput
+}
+
+input OrderUpdateWithoutShippingInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  shippingId: NullableIntFieldUpdateOperationsInput
+  platformFee: FloatFieldUpdateOperationsInput
+  total: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
+  cart: CartUpdateManyWithoutOrderNestedInput
+  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
+}
+
+input EnumTransactionStatusFieldUpdateOperationsInput {
+  set: TransactionStatus
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input UserUpdateOneRequiredWithoutOrdersNestedInput {
+  create: UserCreateWithoutOrdersInput
+  connectOrCreate: UserCreateOrConnectWithoutOrdersInput
+  upsert: UserUpsertWithoutOrdersInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutOrdersInput
+}
+
+input UserUpsertWithoutOrdersInput {
+  update: UserUpdateWithoutOrdersInput!
+  create: UserCreateWithoutOrdersInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutOrdersInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  accounts: AccountUpdateManyWithoutUserNestedInput
+  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
+  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
+  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
+}
+
+input UserUpdateManyWithoutReferredByNestedInput {
+  create: [UserCreateWithoutReferredByInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutReferredByInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutReferredByInput!]
+  createMany: UserCreateManyReferredByInputEnvelope
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  connect: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutReferredByInput!]
+  updateMany: [UserUpdateManyWithWhereWithoutReferredByInput!]
+  deleteMany: [UserScalarWhereInput!]
+}
+
+input UserCreateWithoutReferredByInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  status: UserStatus
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  orders: OrderCreateNestedManyWithoutOrderByInput
+  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
+}
+
+input UserCreateOrConnectWithoutReferredByInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutReferredByInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutReferredByInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutReferredByInput!
+  create: UserCreateWithoutReferredByInput!
+}
+
+input UserUpdateWithoutReferredByInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  accounts: AccountUpdateManyWithoutUserNestedInput
+  orders: OrderUpdateManyWithoutOrderByNestedInput
+  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
+  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
+  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
+}
+
+input SchoolUpdateOneWithoutStudentsNestedInput {
+  create: SchoolCreateWithoutStudentsInput
+  connectOrCreate: SchoolCreateOrConnectWithoutStudentsInput
+  upsert: SchoolUpsertWithoutStudentsInput
+  disconnect: SchoolWhereInput
+  delete: SchoolWhereInput
+  connect: SchoolWhereUniqueInput
+  update: SchoolUpdateToOneWithWhereWithoutStudentsInput
+}
+
+input SchoolUpsertWithoutStudentsInput {
+  update: SchoolUpdateWithoutStudentsInput!
+  create: SchoolCreateWithoutStudentsInput!
+  where: SchoolWhereInput
+}
+
+input SchoolUpdateWithoutStudentsInput {
+  name: StringFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutSchoolNestedInput
+}
+
+input AddressUpdateOneRequiredWithoutSchoolNestedInput {
+  create: AddressCreateWithoutSchoolInput
+  connectOrCreate: AddressCreateOrConnectWithoutSchoolInput
+  upsert: AddressUpsertWithoutSchoolInput
+  connect: AddressWhereUniqueInput
+  update: AddressUpdateToOneWithWhereWithoutSchoolInput
+}
+
+input AddressUpsertWithoutSchoolInput {
+  update: AddressUpdateWithoutSchoolInput!
+  create: AddressCreateWithoutSchoolInput!
+  where: AddressWhereInput
+}
+
+input AddressUpdateWithoutSchoolInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
+  city: CityUpdateOneRequiredWithoutAddressNestedInput
+  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  hotel: HotelUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input HotelUpdateOneWithoutAddressNestedInput {
+  create: HotelCreateWithoutAddressInput
+  connectOrCreate: HotelCreateOrConnectWithoutAddressInput
+  upsert: HotelUpsertWithoutAddressInput
+  disconnect: HotelWhereInput
+  delete: HotelWhereInput
+  connect: HotelWhereUniqueInput
+  update: HotelUpdateToOneWithWhereWithoutAddressInput
+}
+
+input HotelCreateWithoutAddressInput {
+  name: String!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  images: ImagesCreateNestedManyWithoutHotelImageInput
+  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
 input HotelCreateOrConnectWithoutAddressInput {
   where: HotelWhereUniqueInput!
   create: HotelCreateWithoutAddressInput!
@@ -5314,14 +6540,6 @@ input HotelUpdateWithoutAddressInput {
   images: ImagesUpdateManyWithoutHotelImageNestedInput
   checkIns: CheckInUpdateManyWithoutHotelNestedInput
   createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
-}
-
-input FloatFieldUpdateOperationsInput {
-  set: Float
-  increment: Float
-  decrement: Float
-  multiply: Float
-  divide: Float
 }
 
 input ImagesUpdateManyWithoutHotelImageNestedInput {
@@ -5482,489 +6700,6 @@ input UserUpdateWithoutProgramsCreatedInput {
   orders: OrderUpdateManyWithoutOrderByNestedInput
   hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
   claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-}
-
-input UserUpdateOneWithoutReferredUsersNestedInput {
-  create: UserCreateWithoutReferredUsersInput
-  connectOrCreate: UserCreateOrConnectWithoutReferredUsersInput
-  upsert: UserUpsertWithoutReferredUsersInput
-  disconnect: UserWhereInput
-  delete: UserWhereInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutReferredUsersInput
-}
-
-input UserUpsertWithoutReferredUsersInput {
-  update: UserUpdateWithoutReferredUsersInput!
-  create: UserCreateWithoutReferredUsersInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutReferredUsersInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  accounts: AccountUpdateManyWithoutUserNestedInput
-  orders: OrderUpdateManyWithoutOrderByNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
-}
-
-input CheckInUpdateManyWithoutUserNestedInput {
-  create: [CheckInCreateWithoutUserInput!]
-  connectOrCreate: [CheckInCreateOrConnectWithoutUserInput!]
-  upsert: [CheckInUpsertWithWhereUniqueWithoutUserInput!]
-  createMany: CheckInCreateManyUserInputEnvelope
-  set: [CheckInWhereUniqueInput!]
-  disconnect: [CheckInWhereUniqueInput!]
-  delete: [CheckInWhereUniqueInput!]
-  connect: [CheckInWhereUniqueInput!]
-  update: [CheckInUpdateWithWhereUniqueWithoutUserInput!]
-  updateMany: [CheckInUpdateManyWithWhereWithoutUserInput!]
-  deleteMany: [CheckInScalarWhereInput!]
-}
-
-input CheckInCreateWithoutUserInput {
-  checkInAt: DateTime
-  hotel: HotelCreateNestedOneWithoutCheckInsInput!
-}
-
-input HotelCreateNestedOneWithoutCheckInsInput {
-  create: HotelCreateWithoutCheckInsInput
-  connectOrCreate: HotelCreateOrConnectWithoutCheckInsInput
-  connect: HotelWhereUniqueInput
-}
-
-input HotelCreateWithoutCheckInsInput {
-  name: String!
-  description: String!
-  rating: Float!
-  startDate: DateTime!
-  quota: Int!
-  address: AddressCreateNestedOneWithoutHotelInput!
-  images: ImagesCreateNestedManyWithoutHotelImageInput
-  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
-}
-
-input AddressCreateNestedOneWithoutHotelInput {
-  create: AddressCreateWithoutHotelInput
-  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
-  connect: AddressWhereUniqueInput
-}
-
-input AddressCreateWithoutHotelInput {
-  name: String!
-  city: CityCreateNestedOneWithoutAddressInput!
-  district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
-}
-
-input AddressCreateOrConnectWithoutHotelInput {
-  where: AddressWhereUniqueInput!
-  create: AddressCreateWithoutHotelInput!
-}
-
-input HotelCreateOrConnectWithoutCheckInsInput {
-  where: HotelWhereUniqueInput!
-  create: HotelCreateWithoutCheckInsInput!
-}
-
-input CheckInCreateOrConnectWithoutUserInput {
-  where: CheckInWhereUniqueInput!
-  create: CheckInCreateWithoutUserInput!
-}
-
-input CheckInUpsertWithWhereUniqueWithoutUserInput {
-  where: CheckInWhereUniqueInput!
-  update: CheckInUpdateWithoutUserInput!
-  create: CheckInCreateWithoutUserInput!
-}
-
-input CheckInUpdateWithoutUserInput {
-  checkInAt: DateTimeFieldUpdateOperationsInput
-  hotel: HotelUpdateOneRequiredWithoutCheckInsNestedInput
-}
-
-input HotelUpdateOneRequiredWithoutCheckInsNestedInput {
-  create: HotelCreateWithoutCheckInsInput
-  connectOrCreate: HotelCreateOrConnectWithoutCheckInsInput
-  upsert: HotelUpsertWithoutCheckInsInput
-  connect: HotelWhereUniqueInput
-  update: HotelUpdateToOneWithWhereWithoutCheckInsInput
-}
-
-input HotelUpsertWithoutCheckInsInput {
-  update: HotelUpdateWithoutCheckInsInput!
-  create: HotelCreateWithoutCheckInsInput!
-  where: HotelWhereInput
-}
-
-input HotelUpdateWithoutCheckInsInput {
-  name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  rating: FloatFieldUpdateOperationsInput
-  startDate: DateTimeFieldUpdateOperationsInput
-  quota: IntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutHotelNestedInput
-  images: ImagesUpdateManyWithoutHotelImageNestedInput
-  createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
-}
-
-input AddressUpdateOneRequiredWithoutHotelNestedInput {
-  create: AddressCreateWithoutHotelInput
-  connectOrCreate: AddressCreateOrConnectWithoutHotelInput
-  upsert: AddressUpsertWithoutHotelInput
-  connect: AddressWhereUniqueInput
-  update: AddressUpdateToOneWithWhereWithoutHotelInput
-}
-
-input AddressUpsertWithoutHotelInput {
-  update: AddressUpdateWithoutHotelInput!
-  create: AddressCreateWithoutHotelInput!
-  where: AddressWhereInput
-}
-
-input AddressUpdateWithoutHotelInput {
-  name: StringFieldUpdateOperationsInput
-  city: CityUpdateOneRequiredWithoutAddressNestedInput
-  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
-  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
-  user: UserUpdateOneWithoutAddressNestedInput
-  school: SchoolUpdateOneWithoutAddressNestedInput
-  Shipping: ShippingUpdateOneWithoutAddressNestedInput
-}
-
-input UserUpdateOneWithoutAddressNestedInput {
-  create: UserCreateWithoutAddressInput
-  connectOrCreate: UserCreateOrConnectWithoutAddressInput
-  upsert: UserUpsertWithoutAddressInput
-  disconnect: UserWhereInput
-  delete: UserWhereInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutAddressInput
-}
-
-input UserCreateWithoutAddressInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  status: UserStatus
-  theme: Theme
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-  orders: OrderCreateNestedManyWithoutOrderByInput
-  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
-}
-
-input UserCreateOrConnectWithoutAddressInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutAddressInput!
-}
-
-input UserUpsertWithoutAddressInput {
-  update: UserUpdateWithoutAddressInput!
-  create: UserCreateWithoutAddressInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutAddressInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  accounts: AccountUpdateManyWithoutUserNestedInput
-  orders: OrderUpdateManyWithoutOrderByNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
-}
-
-input UserUpdateManyWithoutReferredByNestedInput {
-  create: [UserCreateWithoutReferredByInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutReferredByInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutReferredByInput!]
-  createMany: UserCreateManyReferredByInputEnvelope
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutReferredByInput!]
-  updateMany: [UserUpdateManyWithWhereWithoutReferredByInput!]
-  deleteMany: [UserScalarWhereInput!]
-}
-
-input UserCreateWithoutReferredByInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  status: UserStatus
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-  orders: OrderCreateNestedManyWithoutOrderByInput
-  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
-}
-
-input UserCreateOrConnectWithoutReferredByInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutReferredByInput!
-}
-
-input UserUpsertWithWhereUniqueWithoutReferredByInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutReferredByInput!
-  create: UserCreateWithoutReferredByInput!
-}
-
-input UserUpdateWithoutReferredByInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  accounts: AccountUpdateManyWithoutUserNestedInput
-  orders: OrderUpdateManyWithoutOrderByNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
-}
-
-input SchoolUpdateOneWithoutStudentsNestedInput {
-  create: SchoolCreateWithoutStudentsInput
-  connectOrCreate: SchoolCreateOrConnectWithoutStudentsInput
-  upsert: SchoolUpsertWithoutStudentsInput
-  disconnect: SchoolWhereInput
-  delete: SchoolWhereInput
-  connect: SchoolWhereUniqueInput
-  update: SchoolUpdateToOneWithWhereWithoutStudentsInput
-}
-
-input SchoolUpsertWithoutStudentsInput {
-  update: SchoolUpdateWithoutStudentsInput!
-  create: SchoolCreateWithoutStudentsInput!
-  where: SchoolWhereInput
-}
-
-input SchoolUpdateWithoutStudentsInput {
-  name: StringFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutSchoolNestedInput
-}
-
-input AddressUpdateOneRequiredWithoutSchoolNestedInput {
-  create: AddressCreateWithoutSchoolInput
-  connectOrCreate: AddressCreateOrConnectWithoutSchoolInput
-  upsert: AddressUpsertWithoutSchoolInput
-  connect: AddressWhereUniqueInput
-  update: AddressUpdateToOneWithWhereWithoutSchoolInput
-}
-
-input AddressUpsertWithoutSchoolInput {
-  update: AddressUpdateWithoutSchoolInput!
-  create: AddressCreateWithoutSchoolInput!
-  where: AddressWhereInput
-}
-
-input AddressUpdateWithoutSchoolInput {
-  name: StringFieldUpdateOperationsInput
-  city: CityUpdateOneRequiredWithoutAddressNestedInput
-  district: DistrictUpdateOneRequiredWithoutAddressNestedInput
-  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
-  user: UserUpdateOneWithoutAddressNestedInput
-  hotel: HotelUpdateOneWithoutAddressNestedInput
-  Shipping: ShippingUpdateOneWithoutAddressNestedInput
-}
-
-input ShippingUpdateOneWithoutAddressNestedInput {
-  create: ShippingCreateWithoutAddressInput
-  connectOrCreate: ShippingCreateOrConnectWithoutAddressInput
-  upsert: ShippingUpsertWithoutAddressInput
-  disconnect: ShippingWhereInput
-  delete: ShippingWhereInput
-  connect: ShippingWhereUniqueInput
-  update: ShippingUpdateToOneWithWhereWithoutAddressInput
-}
-
-input ShippingCreateWithoutAddressInput {
-  logisticName: String!
-  deliveryDate: DateTime
-  courier: String
-  estimatedTime: String
-  trackingNo: String
-  order: OrderCreateNestedOneWithoutShippingInput!
-}
-
-input OrderCreateNestedOneWithoutShippingInput {
-  create: OrderCreateWithoutShippingInput
-  connectOrCreate: OrderCreateOrConnectWithoutShippingInput
-  connect: OrderWhereUniqueInput
-}
-
-input OrderCreateWithoutShippingInput {
-  status: TransactionStatus!
-  shippingId: Int
-  platformFee: Float!
-  total: Float!
-  createdAt: DateTime
-  updatedAt: DateTime
-  orderBy: UserCreateNestedOneWithoutOrdersInput!
-  cart: CartCreateNestedManyWithoutOrderInput
-  invoice: InvoiceCreateNestedOneWithoutOrderInput!
-}
-
-input OrderCreateOrConnectWithoutShippingInput {
-  where: OrderWhereUniqueInput!
-  create: OrderCreateWithoutShippingInput!
-}
-
-input ShippingCreateOrConnectWithoutAddressInput {
-  where: ShippingWhereUniqueInput!
-  create: ShippingCreateWithoutAddressInput!
-}
-
-input ShippingUpsertWithoutAddressInput {
-  update: ShippingUpdateWithoutAddressInput!
-  create: ShippingCreateWithoutAddressInput!
-  where: ShippingWhereInput
-}
-
-input ShippingUpdateWithoutAddressInput {
-  logisticName: StringFieldUpdateOperationsInput
-  deliveryDate: NullableDateTimeFieldUpdateOperationsInput
-  courier: NullableStringFieldUpdateOperationsInput
-  estimatedTime: NullableStringFieldUpdateOperationsInput
-  trackingNo: NullableStringFieldUpdateOperationsInput
-  order: OrderUpdateOneRequiredWithoutShippingNestedInput
-}
-
-input OrderUpdateOneRequiredWithoutShippingNestedInput {
-  create: OrderCreateWithoutShippingInput
-  connectOrCreate: OrderCreateOrConnectWithoutShippingInput
-  upsert: OrderUpsertWithoutShippingInput
-  connect: OrderWhereUniqueInput
-  update: OrderUpdateToOneWithWhereWithoutShippingInput
-}
-
-input OrderUpsertWithoutShippingInput {
-  update: OrderUpdateWithoutShippingInput!
-  create: OrderCreateWithoutShippingInput!
-  where: OrderWhereInput
-}
-
-input OrderUpdateWithoutShippingInput {
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  shippingId: NullableIntFieldUpdateOperationsInput
-  platformFee: FloatFieldUpdateOperationsInput
-  total: FloatFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  orderBy: UserUpdateOneRequiredWithoutOrdersNestedInput
-  cart: CartUpdateManyWithoutOrderNestedInput
-  invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
-}
-
-input EnumTransactionStatusFieldUpdateOperationsInput {
-  set: TransactionStatus
-}
-
-input NullableIntFieldUpdateOperationsInput {
-  set: Int
-  increment: Int
-  decrement: Int
-  multiply: Int
-  divide: Int
-}
-
-input UserUpdateOneRequiredWithoutOrdersNestedInput {
-  create: UserCreateWithoutOrdersInput
-  connectOrCreate: UserCreateOrConnectWithoutOrdersInput
-  upsert: UserUpsertWithoutOrdersInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutOrdersInput
-}
-
-input UserUpsertWithoutOrdersInput {
-  update: UserUpdateWithoutOrdersInput!
-  create: UserCreateWithoutOrdersInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutOrdersInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  accounts: AccountUpdateManyWithoutUserNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
 }
 
 input AccountUpdateManyWithoutUserNestedInput {
@@ -6505,9 +7240,10 @@ input AddressUpdateOneRequiredWithoutShippingNestedInput {
 
 input AddressCreateWithoutShippingInput {
   name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
   city: CityCreateNestedOneWithoutAddressInput!
   district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
 }
 
 input AddressCreateOrConnectWithoutShippingInput {
@@ -6523,46 +7259,13 @@ input AddressUpsertWithoutShippingInput {
 
 input AddressUpdateWithoutShippingInput {
   name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
   city: CityUpdateOneRequiredWithoutAddressNestedInput
   district: DistrictUpdateOneRequiredWithoutAddressNestedInput
-  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
   user: UserUpdateOneWithoutAddressNestedInput
   hotel: HotelUpdateOneWithoutAddressNestedInput
   school: SchoolUpdateOneWithoutAddressNestedInput
-}
-
-input SchoolUpdateOneWithoutAddressNestedInput {
-  create: SchoolCreateWithoutAddressInput
-  connectOrCreate: SchoolCreateOrConnectWithoutAddressInput
-  upsert: SchoolUpsertWithoutAddressInput
-  disconnect: SchoolWhereInput
-  delete: SchoolWhereInput
-  connect: SchoolWhereUniqueInput
-  update: SchoolUpdateToOneWithWhereWithoutAddressInput
-}
-
-input SchoolCreateWithoutAddressInput {
-  name: String!
-}
-
-input SchoolCreateOrConnectWithoutAddressInput {
-  where: SchoolWhereUniqueInput!
-  create: SchoolCreateWithoutAddressInput!
-}
-
-input SchoolUpsertWithoutAddressInput {
-  update: SchoolUpdateWithoutAddressInput!
-  create: SchoolCreateWithoutAddressInput!
-  where: SchoolWhereInput
-}
-
-input SchoolUpdateWithoutAddressInput {
-  name: StringFieldUpdateOperationsInput
-}
-
-input SchoolUpdateToOneWithWhereWithoutAddressInput {
-  where: SchoolWhereInput
-  data: SchoolUpdateWithoutAddressInput!
 }
 
 input AddressUpdateToOneWithWhereWithoutShippingInput {
@@ -7583,19 +8286,29 @@ input AccountUpdateManyMutationInput {
   accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
 }
 
-input UserUpdateToOneWithWhereWithoutOrdersInput {
+input UserUpdateToOneWithWhereWithoutProgramsCreatedInput {
   where: UserWhereInput
-  data: UserUpdateWithoutOrdersInput!
+  data: UserUpdateWithoutProgramsCreatedInput!
 }
 
-input OrderUpdateToOneWithWhereWithoutShippingInput {
-  where: OrderWhereInput
-  data: OrderUpdateWithoutShippingInput!
+input ProgramUpdateToOneWithWhereWithoutImagesInput {
+  where: ProgramWhereInput
+  data: ProgramUpdateWithoutImagesInput!
 }
 
-input ShippingUpdateToOneWithWhereWithoutAddressInput {
-  where: ShippingWhereInput
-  data: ShippingUpdateWithoutAddressInput!
+input ImagesUpdateWithWhereUniqueWithoutHotelImageInput {
+  where: ImagesWhereUniqueInput!
+  data: ImagesUpdateWithoutHotelImageInput!
+}
+
+input ImagesUpdateManyWithWhereWithoutHotelImageInput {
+  where: ImagesScalarWhereInput!
+  data: ImagesUpdateManyMutationInput!
+}
+
+input HotelUpdateToOneWithWhereWithoutAddressInput {
+  where: HotelWhereInput
+  data: HotelUpdateWithoutAddressInput!
 }
 
 input AddressUpdateToOneWithWhereWithoutSchoolInput {
@@ -7636,9 +8349,19 @@ input UserUpdateManyWithWhereWithoutReferredByInput {
   data: UserUpdateManyMutationInput!
 }
 
-input UserUpdateToOneWithWhereWithoutAddressInput {
+input UserUpdateToOneWithWhereWithoutOrdersInput {
   where: UserWhereInput
-  data: UserUpdateWithoutAddressInput!
+  data: UserUpdateWithoutOrdersInput!
+}
+
+input OrderUpdateToOneWithWhereWithoutShippingInput {
+  where: OrderWhereInput
+  data: OrderUpdateWithoutShippingInput!
+}
+
+input ShippingUpdateToOneWithWhereWithoutAddressInput {
+  where: ShippingWhereInput
+  data: ShippingUpdateWithoutAddressInput!
 }
 
 input AddressUpdateToOneWithWhereWithoutHotelInput {
@@ -7677,29 +8400,171 @@ input UserUpdateToOneWithWhereWithoutReferredUsersInput {
   data: UserUpdateWithoutReferredUsersInput!
 }
 
-input UserUpdateToOneWithWhereWithoutProgramsCreatedInput {
+input UserUpdateToOneWithWhereWithoutAddressInput {
   where: UserWhereInput
-  data: UserUpdateWithoutProgramsCreatedInput!
+  data: UserUpdateWithoutAddressInput!
 }
 
-input ProgramUpdateToOneWithWhereWithoutImagesInput {
-  where: ProgramWhereInput
-  data: ProgramUpdateWithoutImagesInput!
+input AddressUpdateWithWhereUniqueWithoutDistrictInput {
+  where: AddressWhereUniqueInput!
+  data: AddressUpdateWithoutDistrictInput!
 }
 
-input ImagesUpdateWithWhereUniqueWithoutHotelImageInput {
-  where: ImagesWhereUniqueInput!
-  data: ImagesUpdateWithoutHotelImageInput!
+input AddressUpdateManyWithWhereWithoutDistrictInput {
+  where: AddressScalarWhereInput!
+  data: AddressUpdateManyMutationInput!
 }
 
-input ImagesUpdateManyWithWhereWithoutHotelImageInput {
-  where: ImagesScalarWhereInput!
-  data: ImagesUpdateManyMutationInput!
+input AddressScalarWhereInput {
+  AND: [AddressScalarWhereInput!]
+  OR: [AddressScalarWhereInput!]
+  NOT: [AddressScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  provinceId: IntFilter
+  cityId: IntFilter
+  districtId: IntFilter
+  subdistrictId: IntFilter
 }
 
-input HotelUpdateToOneWithWhereWithoutAddressInput {
-  where: HotelWhereInput
-  data: HotelUpdateWithoutAddressInput!
+input AddressUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input DistrictUpdateToOneWithWhereWithoutSubdistrictsInput {
+  where: DistrictWhereInput
+  data: DistrictUpdateWithoutSubdistrictsInput!
+}
+
+input SubdistrictUpdateToOneWithWhereWithoutAddressInput {
+  where: SubdistrictWhereInput
+  data: SubdistrictUpdateWithoutAddressInput!
+}
+
+input AddressUpdateWithWhereUniqueWithoutCityInput {
+  where: AddressWhereUniqueInput!
+  data: AddressUpdateWithoutCityInput!
+}
+
+input AddressUpdateManyWithWhereWithoutCityInput {
+  where: AddressScalarWhereInput!
+  data: AddressUpdateManyMutationInput!
+}
+
+input CityUpdateToOneWithWhereWithoutDistrictsInput {
+  where: CityWhereInput
+  data: CityUpdateWithoutDistrictsInput!
+}
+
+input DistrictUpdateToOneWithWhereWithoutAddressInput {
+  where: DistrictWhereInput
+  data: DistrictUpdateWithoutAddressInput!
+}
+
+input AddressUpdateWithWhereUniqueWithoutProvinceInput {
+  where: AddressWhereUniqueInput!
+  data: AddressUpdateWithoutProvinceInput!
+}
+
+input AddressUpdateManyWithWhereWithoutProvinceInput {
+  where: AddressScalarWhereInput!
+  data: AddressUpdateManyMutationInput!
+}
+
+input ProvinceUpdateToOneWithWhereWithoutCitiesInput {
+  where: ProvinceWhereInput
+  data: ProvinceUpdateWithoutCitiesInput!
+}
+
+input CityUpdateToOneWithWhereWithoutAddressInput {
+  where: CityWhereInput
+  data: CityUpdateWithoutAddressInput!
+}
+
+input AddressUpdateWithWhereUniqueWithoutSubdistrictInput {
+  where: AddressWhereUniqueInput!
+  data: AddressUpdateWithoutSubdistrictInput!
+}
+
+input AddressUpdateManyWithWhereWithoutSubdistrictInput {
+  where: AddressScalarWhereInput!
+  data: AddressUpdateManyMutationInput!
+}
+
+input SubdistrictUpdateWithWhereUniqueWithoutDistrictInput {
+  where: SubdistrictWhereUniqueInput!
+  data: SubdistrictUpdateWithoutDistrictInput!
+}
+
+input SubdistrictUpdateManyWithWhereWithoutDistrictInput {
+  where: SubdistrictScalarWhereInput!
+  data: SubdistrictUpdateManyMutationInput!
+}
+
+input SubdistrictScalarWhereInput {
+  AND: [SubdistrictScalarWhereInput!]
+  OR: [SubdistrictScalarWhereInput!]
+  NOT: [SubdistrictScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  districtId: IntFilter
+  postalCode: StringFilter
+}
+
+input SubdistrictUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  postalCode: StringFieldUpdateOperationsInput
+}
+
+input DistrictUpdateWithWhereUniqueWithoutCityInput {
+  where: DistrictWhereUniqueInput!
+  data: DistrictUpdateWithoutCityInput!
+}
+
+input DistrictUpdateManyWithWhereWithoutCityInput {
+  where: DistrictScalarWhereInput!
+  data: DistrictUpdateManyMutationInput!
+}
+
+input DistrictScalarWhereInput {
+  AND: [DistrictScalarWhereInput!]
+  OR: [DistrictScalarWhereInput!]
+  NOT: [DistrictScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  cityId: IntFilter
+}
+
+input DistrictUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CityUpdateWithWhereUniqueWithoutProvinceInput {
+  where: CityWhereUniqueInput!
+  data: CityUpdateWithoutProvinceInput!
+}
+
+input CityUpdateManyWithWhereWithoutProvinceInput {
+  where: CityScalarWhereInput!
+  data: CityUpdateManyMutationInput!
+}
+
+input CityScalarWhereInput {
+  AND: [CityScalarWhereInput!]
+  OR: [CityScalarWhereInput!]
+  NOT: [CityScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  provinceId: IntFilter
+}
+
+input CityUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input ProvinceUpdateToOneWithWhereWithoutAddressInput {
+  where: ProvinceWhereInput
+  data: ProvinceUpdateWithoutAddressInput!
 }
 
 input AddressUpdateToOneWithWhereWithoutUserInput {
@@ -7864,8 +8729,6 @@ input CartUpdateManyWithWhereWithoutItemInput {
 }
 
 input HotelCreateArgs {
-  select: HotelSelect
-  include: HotelSelect
   data: HotelCreateInput!
 }
 
@@ -7878,6 +8741,25 @@ input HotelCreateInput {
   address: AddressCreateNestedOneWithoutHotelInput!
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input HotelUpdateOneArgs {
+  data: HotelUpdateInput!
+  where: HotelWhereUniqueInput!
+}
+
+input HotelUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: FloatFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  quota: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutHotelNestedInput
+  images: ImagesUpdateManyWithoutHotelImageNestedInput
+  checkIns: CheckInUpdateManyWithoutHotelNestedInput
+  createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
 }
 
 input CreateAuthInput {
@@ -8461,9 +9343,10 @@ input AddressCreateArgs {
 
 input AddressCreateInput {
   name: String!
+  province: ProvinceCreateNestedOneWithoutAddressInput!
   city: CityCreateNestedOneWithoutAddressInput!
   district: DistrictCreateNestedOneWithoutAddressInput!
-  postalCode: PostalCodeCreateNestedOneWithoutAddressInput!
+  subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
 }
 
 input AddressUpdateOneArgs {
@@ -8473,9 +9356,10 @@ input AddressUpdateOneArgs {
 
 input AddressUpdateInput {
   name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutAddressNestedInput
   city: CityUpdateOneRequiredWithoutAddressNestedInput
   district: DistrictUpdateOneRequiredWithoutAddressNestedInput
-  postalCode: PostalCodeUpdateOneRequiredWithoutAddressNestedInput
+  subdistrict: SubdistrictUpdateOneRequiredWithoutAddressNestedInput
   user: UserUpdateOneWithoutAddressNestedInput
   hotel: HotelUpdateOneWithoutAddressNestedInput
   school: SchoolUpdateOneWithoutAddressNestedInput
