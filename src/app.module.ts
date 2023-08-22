@@ -28,6 +28,9 @@ import { AddressModule } from './services/address/address.module';
 import { OrderModule } from './services/order/order.module';
 import { InvoiceModule } from './services/invoice/invoice.module';
 import { ProvinceModule } from './services/province/province.module';
+import { CityModule } from './services/city/city.module';
+import { DistrictModule } from './services/district/district.module';
+import { SubdistrictModule } from './services/subdistrict/subdistrict.module';
 
 @Module({
   imports: [
@@ -60,6 +63,9 @@ import { ProvinceModule } from './services/province/province.module';
     OrderModule,
     InvoiceModule,
     ProvinceModule,
+    CityModule,
+    DistrictModule,
+    SubdistrictModule,
   ],
   controllers: [],
   providers: [PrismaService],

@@ -12,6 +12,5 @@ import { ProvinceController } from './province.controller';
     ProvinceController,
     ProvinceService,
   ],
-  imports: [PointTransactionModule],
 })
 export class ProvinceModule {}
