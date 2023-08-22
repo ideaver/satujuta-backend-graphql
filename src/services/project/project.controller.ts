@@ -59,7 +59,15 @@ export class ProjectController {
   }
 
   async updateOne(projectUpdateOneArgs: ProjectUpdateOneArgs) {
-    const { name, description, images } = projectUpdateOneArgs.data;
+    const {
+      name,
+      description,
+      images,
+      startDate,
+      endDate,
+      returnRate,
+      minimumInvestment,
+    } = projectUpdateOneArgs.data;
 
     if (name?.set === null) {
       projectUpdateOneArgs.data.name = undefined;
@@ -79,6 +87,22 @@ export class ProjectController {
 
     if (images.createMany?.data?.[0]?.url === null) {
       projectUpdateOneArgs.data.images.createMany = undefined;
+    }
+
+    if (startDate?.set === null) {
+      projectUpdateOneArgs.data.startDate = undefined;
+    }
+
+    if (endDate?.set === null) {
+      projectUpdateOneArgs.data.endDate = undefined;
+    }
+
+    if (returnRate?.set === null) {
+      projectUpdateOneArgs.data.returnRate = undefined;
+    }
+
+    if (minimumInvestment?.set === null) {
+      projectUpdateOneArgs.data.minimumInvestment = undefined;
     }
 
     return this.projectService.update(projectUpdateOneArgs);
