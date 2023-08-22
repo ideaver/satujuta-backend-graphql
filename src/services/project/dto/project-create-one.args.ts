@@ -11,6 +11,4 @@ export class ProjectCreateArgs {
   @Field(() => ProjectCreateInput, { nullable: false })
   @Type(() => ProjectCreateInput)
   data!: ProjectCreateInput;
-  //TODO: terapkan Case sensitive @Transform(({name}) => name.toUpperCase())
-  //maybe use field middleware
 }

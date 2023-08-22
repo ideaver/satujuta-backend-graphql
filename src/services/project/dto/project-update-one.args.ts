@@ -6,13 +6,12 @@ import { ProjectUpdateInput, ProjectWhereUniqueInput } from 'src/@generated';
 
 @InputType()
 export class ProjectUpdateOneArgs {
+  select?: Prisma.ProjectSelect;
 
-    select?: Prisma.ProjectSelect;
-
-    @Field(() => ProjectUpdateInput, {nullable:false})
-    @Type(() => ProjectUpdateInput)
-    data!: InstanceType<typeof ProjectUpdateInput>;
-    @Field(() => ProjectWhereUniqueInput, {nullable:false})
-    @Type(() => ProjectWhereUniqueInput)
-    where!: Prisma.AtLeast<ProjectWhereUniqueInput, 'id'>;
+  @Field(() => ProjectUpdateInput, { nullable: false })
+  @Type(() => ProjectUpdateInput)
+  data!: InstanceType<typeof ProjectUpdateInput>;
+  @Field(() => ProjectWhereUniqueInput, { nullable: false })
+  @Type(() => ProjectWhereUniqueInput)
+  where!: Prisma.AtLeast<ProjectWhereUniqueInput, 'id'>;
 }

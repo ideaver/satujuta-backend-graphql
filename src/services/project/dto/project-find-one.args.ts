@@ -7,7 +7,7 @@ import { ProjectWhereUniqueInput } from 'src/@generated';
 export class ProjectFindUniqueArgs {
   select?: Prisma.ProjectSelect;
 
-    @Field(() => ProjectWhereUniqueInput, {nullable:false})
-    @Type(() => ProjectWhereUniqueInput)
-    where!: Prisma.AtLeast<ProjectWhereUniqueInput, 'id'>;
+  @Field(() => ProjectWhereUniqueInput, { nullable: false })
+  @Type(() => ProjectWhereUniqueInput)
+  where!: Prisma.AtLeast<ProjectWhereUniqueInput, 'id'>;
 }

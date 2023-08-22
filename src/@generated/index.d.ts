@@ -102,7 +102,6 @@ export declare enum ProjectScalarFieldEnum {
     endDate = "endDate",
     returnRate = "returnRate",
     goalAmount = "goalAmount",
-    currentAmount = "currentAmount",
     minimumInvestment = "minimumInvestment",
     maxInvestor = "maxInvestor",
     accountId = "accountId",
@@ -129,7 +128,12 @@ export declare enum ProgramScalarFieldEnum {
 export declare enum UserType {
     PARENT = "PARENT",
     SCHOOL_HEAD = "SCHOOL_HEAD",
-    STUDENT = "STUDENT"
+    STUDENT = "STUDENT",
+    TEACHER = "TEACHER",
+    HOUSEWIFE = "HOUSEWIFE",
+    ENTREPRENEUR = "ENTREPRENEUR",
+    WORKER = "WORKER",
+    OTHER = "OTHER"
 }
 export declare enum UserStatus {
     ACTIVE = "ACTIVE",
@@ -12448,7 +12452,6 @@ export declare class ProjectAvgAggregateInput {
     id?: true;
     returnRate?: true;
     goalAmount?: true;
-    currentAmount?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
     accountId?: true;
@@ -12457,7 +12460,6 @@ export declare class ProjectAvgAggregate {
     id?: number;
     returnRate?: number;
     goalAmount?: number;
-    currentAmount?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
     accountId?: number;
@@ -12466,7 +12468,6 @@ export declare class ProjectAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12480,7 +12481,6 @@ export declare class ProjectCountAggregateInput {
     endDate?: true;
     returnRate?: true;
     goalAmount?: true;
-    currentAmount?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
     accountId?: true;
@@ -12497,7 +12497,6 @@ export declare class ProjectCountAggregate {
     endDate: number;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;
@@ -12514,7 +12513,6 @@ export declare class ProjectCountOrderByAggregateInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12534,7 +12532,6 @@ export declare class ProjectCreateManyInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;
@@ -12576,7 +12573,6 @@ export declare class ProjectCreateWithoutAccountInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     createdAt?: Date | string;
@@ -12592,7 +12588,6 @@ export declare class ProjectCreateWithoutImagesInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     createdAt?: Date | string;
@@ -12608,7 +12603,6 @@ export declare class ProjectCreateWithoutInvestorsInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     createdAt?: Date | string;
@@ -12624,7 +12618,6 @@ export declare class ProjectCreateInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     createdAt?: Date | string;
@@ -12655,7 +12648,6 @@ export declare class ProjectGroupBy {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;
@@ -12681,7 +12673,6 @@ export declare class ProjectMaxAggregateInput {
     endDate?: true;
     returnRate?: true;
     goalAmount?: true;
-    currentAmount?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
     accountId?: true;
@@ -12697,7 +12688,6 @@ export declare class ProjectMaxAggregate {
     endDate?: Date | string;
     returnRate?: number;
     goalAmount?: number;
-    currentAmount?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
     accountId?: number;
@@ -12713,7 +12703,6 @@ export declare class ProjectMaxOrderByAggregateInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12729,7 +12718,6 @@ export declare class ProjectMinAggregateInput {
     endDate?: true;
     returnRate?: true;
     goalAmount?: true;
-    currentAmount?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
     accountId?: true;
@@ -12745,7 +12733,6 @@ export declare class ProjectMinAggregate {
     endDate?: Date | string;
     returnRate?: number;
     goalAmount?: number;
-    currentAmount?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
     accountId?: number;
@@ -12761,7 +12748,6 @@ export declare class ProjectMinOrderByAggregateInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12784,7 +12770,6 @@ export declare class ProjectOrderByWithAggregationInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12805,7 +12790,6 @@ export declare class ProjectOrderByWithRelationInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12826,9 +12810,8 @@ export declare class ProjectScalarWhereWithAggregatesInput {
     startDate?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     endDate?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     returnRate?: InstanceType<typeof FloatWithAggregatesFilter>;
-    goalAmount?: InstanceType<typeof IntWithAggregatesFilter>;
-    currentAmount?: InstanceType<typeof FloatWithAggregatesFilter>;
-    minimumInvestment?: InstanceType<typeof IntWithAggregatesFilter>;
+    goalAmount?: InstanceType<typeof FloatWithAggregatesFilter>;
+    minimumInvestment?: InstanceType<typeof FloatWithAggregatesFilter>;
     maxInvestor?: InstanceType<typeof IntWithAggregatesFilter>;
     accountId?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -12845,9 +12828,8 @@ export declare class ProjectScalarWhereInput {
     startDate?: InstanceType<typeof DateTimeFilter>;
     endDate?: InstanceType<typeof DateTimeFilter>;
     returnRate?: InstanceType<typeof FloatFilter>;
-    goalAmount?: InstanceType<typeof IntFilter>;
-    currentAmount?: InstanceType<typeof FloatFilter>;
-    minimumInvestment?: InstanceType<typeof IntFilter>;
+    goalAmount?: InstanceType<typeof FloatFilter>;
+    minimumInvestment?: InstanceType<typeof FloatFilter>;
     maxInvestor?: InstanceType<typeof IntFilter>;
     accountId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -12857,7 +12839,6 @@ export declare class ProjectSumAggregateInput {
     id?: true;
     returnRate?: true;
     goalAmount?: true;
-    currentAmount?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
     accountId?: true;
@@ -12866,7 +12847,6 @@ export declare class ProjectSumAggregate {
     id?: number;
     returnRate?: number;
     goalAmount?: number;
-    currentAmount?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
     accountId?: number;
@@ -12875,7 +12855,6 @@ export declare class ProjectSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
-    currentAmount?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
@@ -12899,7 +12878,6 @@ export declare class ProjectUncheckedCreateWithoutAccountInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     createdAt?: Date | string;
@@ -12916,7 +12894,6 @@ export declare class ProjectUncheckedCreateWithoutImagesInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;
@@ -12933,7 +12910,6 @@ export declare class ProjectUncheckedCreateWithoutInvestorsInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;
@@ -12950,7 +12926,6 @@ export declare class ProjectUncheckedCreateInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;
@@ -12979,9 +12954,8 @@ export declare class ProjectUncheckedUpdateManyWithoutInvestorsInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -12995,9 +12969,8 @@ export declare class ProjectUncheckedUpdateManyInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13020,9 +12993,8 @@ export declare class ProjectUncheckedUpdateWithoutAccountInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13037,9 +13009,8 @@ export declare class ProjectUncheckedUpdateWithoutImagesInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13054,9 +13025,8 @@ export declare class ProjectUncheckedUpdateWithoutInvestorsInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13071,9 +13041,8 @@ export declare class ProjectUncheckedUpdateInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13088,9 +13057,8 @@ export declare class ProjectUpdateManyMutationInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13148,9 +13116,8 @@ export declare class ProjectUpdateWithoutAccountInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13164,9 +13131,8 @@ export declare class ProjectUpdateWithoutImagesInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13180,9 +13146,8 @@ export declare class ProjectUpdateWithoutInvestorsInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13196,9 +13161,8 @@ export declare class ProjectUpdateInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    currentAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -13233,9 +13197,8 @@ export declare class ProjectWhereUniqueInput {
     startDate?: InstanceType<typeof DateTimeFilter>;
     endDate?: InstanceType<typeof DateTimeFilter>;
     returnRate?: InstanceType<typeof FloatFilter>;
-    goalAmount?: InstanceType<typeof IntFilter>;
-    currentAmount?: InstanceType<typeof FloatFilter>;
-    minimumInvestment?: InstanceType<typeof IntFilter>;
+    goalAmount?: InstanceType<typeof FloatFilter>;
+    minimumInvestment?: InstanceType<typeof FloatFilter>;
     maxInvestor?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -13254,9 +13217,8 @@ export declare class ProjectWhereInput {
     startDate?: InstanceType<typeof DateTimeFilter>;
     endDate?: InstanceType<typeof DateTimeFilter>;
     returnRate?: InstanceType<typeof FloatFilter>;
-    goalAmount?: InstanceType<typeof IntFilter>;
-    currentAmount?: InstanceType<typeof FloatFilter>;
-    minimumInvestment?: InstanceType<typeof IntFilter>;
+    goalAmount?: InstanceType<typeof FloatFilter>;
+    minimumInvestment?: InstanceType<typeof FloatFilter>;
     maxInvestor?: InstanceType<typeof IntFilter>;
     accountId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
@@ -13274,7 +13236,6 @@ export declare class Project {
     endDate: Date;
     returnRate: number;
     goalAmount: number;
-    currentAmount: number;
     minimumInvestment: number;
     maxInvestor: number;
     accountId: number;

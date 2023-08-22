@@ -133,6 +133,11 @@ enum UserType {
   PARENT
   SCHOOL_HEAD
   STUDENT
+  TEACHER
+  HOUSEWIFE
+  ENTREPRENEUR
+  WORKER
+  OTHER
 }
 
 enum UserStatus {
@@ -1169,7 +1174,6 @@ type ProjectAvgAggregate {
   id: Float
   returnRate: Float
   goalAmount: Float
-  currentAmount: Float
   minimumInvestment: Float
   maxInvestor: Float
   accountId: Float
@@ -1184,7 +1188,6 @@ type ProjectCountAggregate {
   endDate: Int!
   returnRate: Int!
   goalAmount: Int!
-  currentAmount: Int!
   minimumInvestment: Int!
   maxInvestor: Int!
   accountId: Int!
@@ -1206,9 +1209,8 @@ type ProjectMaxAggregate {
   startDate: DateTime
   endDate: DateTime
   returnRate: Float
-  goalAmount: Int
-  currentAmount: Float
-  minimumInvestment: Int
+  goalAmount: Float
+  minimumInvestment: Float
   maxInvestor: Int
   accountId: Int
   createdAt: DateTime
@@ -1228,9 +1230,8 @@ type ProjectMinAggregate {
   startDate: DateTime
   endDate: DateTime
   returnRate: Float
-  goalAmount: Int
-  currentAmount: Float
-  minimumInvestment: Int
+  goalAmount: Float
+  minimumInvestment: Float
   maxInvestor: Int
   accountId: Int
   createdAt: DateTime
@@ -1240,9 +1241,8 @@ type ProjectMinAggregate {
 type ProjectSumAggregate {
   id: Int
   returnRate: Float
-  goalAmount: Int
-  currentAmount: Float
-  minimumInvestment: Int
+  goalAmount: Float
+  minimumInvestment: Float
   maxInvestor: Int
   accountId: Int
 }
@@ -1255,9 +1255,8 @@ type Project {
   startDate: DateTime!
   endDate: DateTime!
   returnRate: Float!
-  goalAmount: Int!
-  currentAmount: Float!
-  minimumInvestment: Int!
+  goalAmount: Float!
+  minimumInvestment: Float!
   maxInvestor: Int!
   accountId: Int!
   createdAt: DateTime!
@@ -2580,9 +2579,8 @@ input ProjectWhereInput {
   startDate: DateTimeFilter
   endDate: DateTimeFilter
   returnRate: FloatFilter
-  goalAmount: IntFilter
-  currentAmount: FloatFilter
-  minimumInvestment: IntFilter
+  goalAmount: FloatFilter
+  minimumInvestment: FloatFilter
   maxInvestor: IntFilter
   accountId: IntFilter
   createdAt: DateTimeFilter
@@ -3678,7 +3676,6 @@ input ProjectOrderByWithRelationInput {
   endDate: SortOrder
   returnRate: SortOrder
   goalAmount: SortOrder
-  currentAmount: SortOrder
   minimumInvestment: SortOrder
   maxInvestor: SortOrder
   accountId: SortOrder
@@ -3709,7 +3706,6 @@ enum ProjectScalarFieldEnum {
   endDate
   returnRate
   goalAmount
-  currentAmount
   minimumInvestment
   maxInvestor
   accountId
@@ -3733,9 +3729,8 @@ input ProjectWhereUniqueInput {
   startDate: DateTimeFilter
   endDate: DateTimeFilter
   returnRate: FloatFilter
-  goalAmount: IntFilter
-  currentAmount: FloatFilter
-  minimumInvestment: IntFilter
+  goalAmount: FloatFilter
+  minimumInvestment: FloatFilter
   maxInvestor: IntFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -4449,7 +4444,9 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   projectCreateOne(projectCreateArgs: ProjectCreateArgs!): Project
 
-  """Deskripsinya ada disini loh"""
+  """
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim project, backend akan cek apakah saldo point user cukup untuk claim
+  """
   projectUpdateOne(projectUpdateOneArgs: ProjectUpdateOneArgs!): Project!
 
   """Datanya benar2 terhapus dari db"""
@@ -7510,91 +7507,9 @@ input ProjectCreateWithoutImagesInput {
   startDate: DateTime!
   endDate: DateTime!
   returnRate: Float!
-  goalAmount: Int!
-  currentAmount: Float!
-  minimumInvestment: Int!
+  goalAmount: Float!
+  minimumInvestment: Float!
   maxInvestor: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
-  investors: UserCreateNestedManyWithoutProjectsInvestmentInput
-  account: AccountCreateNestedOneWithoutProjectInput!
-}
-
-input UserCreateNestedManyWithoutProjectsInvestmentInput {
-  create: [UserCreateWithoutProjectsInvestmentInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutProjectsInvestmentInput!]
-  connect: [UserWhereUniqueInput!]
-}
-
-input UserCreateWithoutProjectsInvestmentInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  status: UserStatus
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-  orders: OrderCreateNestedManyWithoutOrderByInput
-  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
-}
-
-input UserCreateOrConnectWithoutProjectsInvestmentInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutProjectsInvestmentInput!
-}
-
-input AccountCreateNestedOneWithoutProjectInput {
-  create: AccountCreateWithoutProjectInput
-  connectOrCreate: AccountCreateOrConnectWithoutProjectInput
-  connect: AccountWhereUniqueInput
-}
-
-input AccountCreateWithoutProjectInput {
-  accountNumber: Float
-  name: String!
-  accountCategory: AccountCategory!
-  user: UserCreateNestedOneWithoutAccountsInput!
-}
-
-input UserCreateNestedOneWithoutAccountsInput {
-  create: UserCreateWithoutAccountsInput
-  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutAccountsInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  status: UserStatus
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  orders: OrderCreateNestedManyWithoutOrderByInput
-  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
-}
-
-input UserCreateOrConnectWithoutAccountsInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutAccountsInput!
-}
-
-input AccountCreateOrConnectWithoutProjectInput {
-  where: AccountWhereUniqueInput!
-  create: AccountCreateWithoutProjectInput!
 }
 
 input ProjectCreateOrConnectWithoutImagesInput {
@@ -7615,182 +7530,13 @@ input ProjectUpdateWithoutImagesInput {
   startDate: DateTimeFieldUpdateOperationsInput
   endDate: DateTimeFieldUpdateOperationsInput
   returnRate: FloatFieldUpdateOperationsInput
-  goalAmount: IntFieldUpdateOperationsInput
-  currentAmount: FloatFieldUpdateOperationsInput
-  minimumInvestment: IntFieldUpdateOperationsInput
+  goalAmount: FloatFieldUpdateOperationsInput
+  minimumInvestment: FloatFieldUpdateOperationsInput
   maxInvestor: IntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  investors: UserUpdateManyWithoutProjectsInvestmentNestedInput
-  account: AccountUpdateOneRequiredWithoutProjectNestedInput
 }
 
 input EnumProjectCategoryFieldUpdateOperationsInput {
   set: ProjectCategory
-}
-
-input UserUpdateManyWithoutProjectsInvestmentNestedInput {
-  create: [UserCreateWithoutProjectsInvestmentInput!]
-  connectOrCreate: [UserCreateOrConnectWithoutProjectsInvestmentInput!]
-  upsert: [UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput!]
-  set: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  delete: [UserWhereUniqueInput!]
-  connect: [UserWhereUniqueInput!]
-  update: [UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput!]
-  updateMany: [UserUpdateManyWithWhereWithoutProjectsInvestmentInput!]
-  deleteMany: [UserScalarWhereInput!]
-}
-
-input UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput {
-  where: UserWhereUniqueInput!
-  update: UserUpdateWithoutProjectsInvestmentInput!
-  create: UserCreateWithoutProjectsInvestmentInput!
-}
-
-input UserUpdateWithoutProjectsInvestmentInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  accounts: AccountUpdateManyWithoutUserNestedInput
-  orders: OrderUpdateManyWithoutOrderByNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
-}
-
-input UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput {
-  where: UserWhereUniqueInput!
-  data: UserUpdateWithoutProjectsInvestmentInput!
-}
-
-input UserUpdateManyWithWhereWithoutProjectsInvestmentInput {
-  where: UserScalarWhereInput!
-  data: UserUpdateManyMutationInput!
-}
-
-input UserScalarWhereInput {
-  AND: [UserScalarWhereInput!]
-  OR: [UserScalarWhereInput!]
-  NOT: [UserScalarWhereInput!]
-  id: StringFilter
-  firstName: StringFilter
-  lastName: StringNullableFilter
-  email: StringFilter
-  userRole: EnumUserRoleFilter
-  userType: EnumUserTypeFilter
-  avatarUrl: StringNullableFilter
-  whatsappNumber: StringFilter
-  password: StringFilter
-  referralCode: StringFilter
-  status: EnumUserStatusFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  deletedAt: DateTimeNullableFilter
-  theme: EnumThemeFilter
-}
-
-input UserUpdateManyMutationInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-}
-
-input AccountUpdateOneRequiredWithoutProjectNestedInput {
-  create: AccountCreateWithoutProjectInput
-  connectOrCreate: AccountCreateOrConnectWithoutProjectInput
-  upsert: AccountUpsertWithoutProjectInput
-  connect: AccountWhereUniqueInput
-  update: AccountUpdateToOneWithWhereWithoutProjectInput
-}
-
-input AccountUpsertWithoutProjectInput {
-  update: AccountUpdateWithoutProjectInput!
-  create: AccountCreateWithoutProjectInput!
-  where: AccountWhereInput
-}
-
-input AccountUpdateWithoutProjectInput {
-  accountNumber: NullableFloatFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
-  accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
-  user: UserUpdateOneRequiredWithoutAccountsNestedInput
-  transactionOrigins: TransactionUpdateManyWithoutFromAccountNestedInput
-  transactionDestination: TransactionUpdateManyWithoutToAccountNestedInput
-}
-
-input UserUpdateOneRequiredWithoutAccountsNestedInput {
-  create: UserCreateWithoutAccountsInput
-  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
-  upsert: UserUpsertWithoutAccountsInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutAccountsInput
-}
-
-input UserUpsertWithoutAccountsInput {
-  update: UserUpdateWithoutAccountsInput!
-  create: UserCreateWithoutAccountsInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutAccountsInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userRole: EnumUserRoleFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  deletedAt: NullableDateTimeFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
-  referredUsers: UserUpdateManyWithoutReferredByNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  orders: OrderUpdateManyWithoutOrderByNestedInput
-  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
-  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
-  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
-}
-
-input UserUpdateToOneWithWhereWithoutAccountsInput {
-  where: UserWhereInput
-  data: UserUpdateWithoutAccountsInput!
-}
-
-input AccountUpdateToOneWithWhereWithoutProjectInput {
-  where: AccountWhereInput
-  data: AccountUpdateWithoutProjectInput!
 }
 
 input ProjectUpdateToOneWithWhereWithoutImagesInput {
@@ -7907,6 +7653,43 @@ input UserUpdateWithWhereUniqueWithoutProgramsParticipationInput {
 input UserUpdateManyWithWhereWithoutProgramsParticipationInput {
   where: UserScalarWhereInput!
   data: UserUpdateManyMutationInput!
+}
+
+input UserScalarWhereInput {
+  AND: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  NOT: [UserScalarWhereInput!]
+  id: StringFilter
+  firstName: StringFilter
+  lastName: StringNullableFilter
+  email: StringFilter
+  userRole: EnumUserRoleFilter
+  userType: EnumUserTypeFilter
+  avatarUrl: StringNullableFilter
+  whatsappNumber: StringFilter
+  password: StringFilter
+  referralCode: StringFilter
+  status: EnumUserStatusFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
+  theme: EnumThemeFilter
+}
+
+input UserUpdateManyMutationInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
 }
 
 input ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput {
@@ -8933,15 +8716,10 @@ input ProjectCreateInput {
   startDate: DateTime!
   endDate: DateTime!
   returnRate: Float!
-  goalAmount: Int!
-  currentAmount: Float!
-  minimumInvestment: Int!
+  goalAmount: Float!
+  minimumInvestment: Float!
   maxInvestor: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
   images: ImagesCreateNestedManyWithoutProjectImageInput
-  investors: UserCreateNestedManyWithoutProjectsInvestmentInput
-  account: AccountCreateNestedOneWithoutProjectInput!
 }
 
 input ImagesCreateNestedManyWithoutProjectImageInput {
@@ -8985,15 +8763,10 @@ input ProjectUpdateInput {
   startDate: DateTimeFieldUpdateOperationsInput
   endDate: DateTimeFieldUpdateOperationsInput
   returnRate: FloatFieldUpdateOperationsInput
-  goalAmount: IntFieldUpdateOperationsInput
-  currentAmount: FloatFieldUpdateOperationsInput
-  minimumInvestment: IntFieldUpdateOperationsInput
+  goalAmount: FloatFieldUpdateOperationsInput
+  minimumInvestment: FloatFieldUpdateOperationsInput
   maxInvestor: IntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
   images: ImagesUpdateManyWithoutProjectImageNestedInput
-  investors: UserUpdateManyWithoutProjectsInvestmentNestedInput
-  account: AccountUpdateOneRequiredWithoutProjectNestedInput
 }
 
 input ImagesUpdateManyWithoutProjectImageNestedInput {
@@ -9208,6 +8981,73 @@ input AccountUpdateInput {
   user: UserUpdateOneRequiredWithoutAccountsNestedInput
   transactionOrigins: TransactionUpdateManyWithoutFromAccountNestedInput
   transactionDestination: TransactionUpdateManyWithoutToAccountNestedInput
+}
+
+input UserUpdateOneRequiredWithoutAccountsNestedInput {
+  create: UserCreateWithoutAccountsInput
+  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
+  upsert: UserUpsertWithoutAccountsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutAccountsInput
+}
+
+input UserCreateWithoutAccountsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  status: UserStatus
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  orders: OrderCreateNestedManyWithoutOrderByInput
+  claimedRewards: RewardCreateNestedManyWithoutClaimersInput
+}
+
+input UserCreateOrConnectWithoutAccountsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutAccountsInput!
+}
+
+input UserUpsertWithoutAccountsInput {
+  update: UserUpdateWithoutAccountsInput!
+  create: UserCreateWithoutAccountsInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutAccountsInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  referredBy: UserUpdateOneWithoutReferredUsersNestedInput
+  referredUsers: UserUpdateManyWithoutReferredByNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  orders: OrderUpdateManyWithoutOrderByNestedInput
+  hotelsCreated: HotelUpdateManyWithoutCreatedByNestedInput
+  claimedRewards: RewardUpdateManyWithoutClaimersNestedInput
+  programsCreated: ProgramUpdateManyWithoutCreatedByNestedInput
+}
+
+input UserUpdateToOneWithWhereWithoutAccountsInput {
+  where: UserWhereInput
+  data: UserUpdateWithoutAccountsInput!
 }
 
 input SchoolCreateArgs {

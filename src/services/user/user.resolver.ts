@@ -6,7 +6,6 @@ import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/model/user.model';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 import { UserController } from './user.controller';
 
 interface UserSelect {
@@ -27,11 +26,6 @@ export class UserResolver {
   ): Promise<User | void> {
     //Auto implement prisma select from graphql query info
     userCreateArgs.select = relations.select;
-
-    //Handle null value GraphQL Capabitlity
-    if (userCreateArgs.data.referredBy.connect.referralCode === null) {
-      userCreateArgs.data.referredBy = undefined;
-    }
 
     return await this.userController.createOne(userCreateArgs);
   }

@@ -1,17 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { CreateOneProjectArgs, Project } from 'src/@generated';
+import { Project } from 'src/@generated';
 import { ProjectFindManyArgs } from './dto/project-find-many.args';
 import { ProjectFindUniqueArgs } from './dto/project-find-one.args';
 import { ProjectUpdateOneArgs } from './dto/project-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProjectService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(projectCreateArgs: CreateOneProjectArgs): Promise<Project | void> {
-
+  async createOne(
+    projectCreateArgs: Prisma.ProjectCreateArgs,
+  ): Promise<Project | void> {
     return await this.prisma.project
       .create(projectCreateArgs)
       .then((project) => {
@@ -33,7 +35,9 @@ export class ProjectService {
       });
   }
 
-  async findOne(projectFindUniqueArgs: ProjectFindUniqueArgs): Promise<Project | void> {
+  async findOne(
+    projectFindUniqueArgs: ProjectFindUniqueArgs,
+  ): Promise<Project | void> {
     return await this.prisma.project
       .findUnique(projectFindUniqueArgs)
       .then((project) => {
@@ -44,7 +48,9 @@ export class ProjectService {
       });
   }
 
-  async update(projectUpdateOneArgs: ProjectUpdateOneArgs): Promise<Project | void> {
+  async update(
+    projectUpdateOneArgs: ProjectUpdateOneArgs,
+  ): Promise<Project | void> {
     return this.prisma.project
       .update(projectUpdateOneArgs)
       .then((project) => {
@@ -55,7 +61,7 @@ export class ProjectService {
       });
   }
 
-  async remove(projectId: number): Promise<boolean | void>{
+  async remove(projectId: number): Promise<boolean | void> {
     return await this.prisma.project
       .delete({
         where: { id: projectId },

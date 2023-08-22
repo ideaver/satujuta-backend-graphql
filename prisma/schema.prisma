@@ -45,6 +45,11 @@ enum UserType {
   PARENT
   SCHOOL_HEAD
   STUDENT
+  TEACHER
+  HOUSEWIFE
+  ENTREPRENEUR
+  WORKER
+  OTHER
 }
 
 enum Theme {
@@ -749,20 +754,22 @@ model Project {
   returnRate        Float
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
-  goalAmount        Int
+  goalAmount        Float
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  currentAmount     Float
-  /// @Validator.IsNumber() 
-  /// @Validator.IsNotEmpty()
-  minimumInvestment Int
+  minimumInvestment Float
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
   maxInvestor       Int
+  /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
   investors         User[]          @relation("project Investment")
+  /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
   account           Account         @relation(fields: [accountId], references: [id])
+  /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
   accountId         Int             @unique
+  /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
   createdAt         DateTime        @default(now())
+  /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
   updatedAt         DateTime        @updatedAt
 }
 

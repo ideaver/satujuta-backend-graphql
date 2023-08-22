@@ -4,13 +4,7 @@ import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/model/user.model';
-import {
-  Item,
-  Prisma,
-  ShippingStatus,
-  TransactionStatus,
-  UserRole,
-} from '@prisma/client';
+import { Item, Prisma, TransactionStatus, UserRole } from '@prisma/client';
 import {
   generateRandomReferralCode,
   generateUniqueCode,
@@ -29,8 +23,13 @@ export class UserController {
   async createOne(userCreateArgs: UserCreateArgs): Promise<User | void> {
     let userCreateArgsPrisma: Prisma.UserCreateArgs = { ...userCreateArgs };
 
-    //Generate Random Referral Code
-    userCreateArgsPrisma.data.referralCode = generateRandomReferralCode();
+    //Handle null value GraphQL Capabitlity
+    if (
+      userCreateArgsPrisma.data.referredBy?.connect?.referralCode === null &&
+      userCreateArgsPrisma.data.referredBy === undefined
+    ) {
+      userCreateArgsPrisma.data.referredBy = undefined;
+    }
 
     //Check if school create query is null
     if (
@@ -39,11 +38,20 @@ export class UserController {
       userCreateArgsPrisma.data.school?.connectOrCreate?.create === undefined;
     }
 
-    //Auto Create User Accounts
-    accountCreateManyUserInput(userCreateArgsPrisma);
+    //Generate Random Referral Code
+    userCreateArgsPrisma.data.referralCode = generateRandomReferralCode();
 
-    // Auto Create Order
-    await orderCreate(userCreateArgsPrisma, this.itemService);
+    if (
+      userCreateArgsPrisma.data.userRole !== UserRole.SUPERUSER &&
+      userCreateArgsPrisma.data.userRole !== UserRole.ADMIN
+    ) {
+      //Auto Create User Accounts
+      accountCreateManyUserInput(userCreateArgsPrisma);
+      // Auto Create Order
+      await orderCreate(userCreateArgsPrisma, this.itemService);
+    }
+
+    console.log(userCreateArgsPrisma);
 
     return await this.userService.createOne(userCreateArgsPrisma);
   }

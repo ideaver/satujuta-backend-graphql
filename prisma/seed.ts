@@ -13,6 +13,7 @@ import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
 import * as fs from 'fs/promises';
 import { join } from 'node:path';
+import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 
 const prisma = new PrismaClient();
 
@@ -53,7 +54,10 @@ async function main() {
   // await createItem();
 
   // console.log(await prisma.invoice.deleteMany());
-  await populateDatabase();
+  // await populateProvinceCityDistricSubdistric();
+
+  await createSuperUser();
+  await createAdmin();
 
   console.log('Seeding finished.');
 }
@@ -66,7 +70,91 @@ main()
     await prisma.$disconnect();
   });
 
-async function populateDatabase() {
+async function createSuperUser() {
+  await prisma.user.create({
+    data: {
+      firstName: 'Dikki',
+      lastName: 'Setiawan',
+      email: 'alvaminddigital@gmail.com',
+      password: '234325',
+      theme: 'LIGHT',
+      userRole: 'SUPERUSER',
+      userType: 'OTHER',
+      whatsappNumber: '6289683743880',
+      avatarUrl: faker.image.avatar(),
+      referralCode: generateRandomReferralCode(),
+      address: {
+        create: {
+          name: 'www.alvamind.com',
+          province: {
+            connect: {
+              id: 1,
+            },
+          },
+          city: {
+            connect: {
+              id: 1,
+            },
+          },
+          district: {
+            connect: {
+              id: 1,
+            },
+          },
+          subdistrict: {
+            connect: {
+              id: 1,
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+async function createAdmin() {
+  await prisma.user.create({
+    data: {
+      firstName: 'Sumarno',
+      lastName: 'Setiawan',
+      email: 'alvaminddigital@gmail.com',
+      password: '234325',
+      theme: 'LIGHT',
+      userRole: 'ADMIN',
+      userType: 'OTHER',
+      whatsappNumber: '62839683743880',
+      avatarUrl: faker.image.avatar(),
+      referralCode: generateRandomReferralCode(),
+      address: {
+        create: {
+          name: 'www.alvamind.com',
+          province: {
+            connect: {
+              id: 1,
+            },
+          },
+          city: {
+            connect: {
+              id: 1,
+            },
+          },
+          district: {
+            connect: {
+              id: 1,
+            },
+          },
+          subdistrict: {
+            connect: {
+              id: 1,
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+async function populateProvinceCityDistricSubdistric() {
   try {
     // Define the path to the JSON file within the Prisma folder
     const jsonFilePath = join(__dirname, 'kodepos.json');

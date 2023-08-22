@@ -1,21 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { UserCreateArgs } from './dto/user-create-one.args';
 import { PrismaService } from 'prisma/prisma.service';
 import { UserFindManyArgs as UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { GraphQLError } from 'graphql';
 import { User } from 'src/model/user.model';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import {
-  AccountCreateNestedManyWithoutUserInput,
-  AggregateUser,
-  FindManyUserArgs,
-  UserAggregateArgs,
-  UserCount,
-  UserCountAggregate,
-  UserCountAggregateInput,
-} from 'src/@generated';
+import { FindManyUserArgs } from 'src/@generated';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
@@ -38,6 +28,17 @@ export class UserService {
       .findMany(userFindManyArgs)
       .then((users) => {
         return users;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async findFirst(userFindManyArgs: UserFindManyArgs) {
+    return await this.prisma.user
+      .findFirst(userFindManyArgs)
+      .then((user) => {
+        return user;
       })
       .catch((err) => {
         throwPrismaError(err);
