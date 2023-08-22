@@ -8,8 +8,6 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AuthModule } from './services/auth/auth.module';
 import { UserModule } from './services/user/user.module';
 import { HotelModule } from './services/hotel/hotel.module';
-import { CityModule } from './services/city/city.module';
-import { DistrictModule } from './services/district/district';
 import { BankModule } from './services/bank/bank.module';
 import { ProgramModule } from './services/program/program.module';
 import { ProgramCategoryModule } from './services/program-category/program-category.module';
@@ -29,6 +27,7 @@ import { SchoolModule } from './services/school/school.module';
 import { AddressModule } from './services/address/address.module';
 import { OrderModule } from './services/order/order.module';
 import { InvoiceModule } from './services/invoice/invoice.module';
+import { ProvinceModule } from './services/province/province.module';
 
 @Module({
   imports: [
@@ -41,8 +40,6 @@ import { InvoiceModule } from './services/invoice/invoice.module';
     UserModule,
     HotelModule,
     AuthModule,
-    CityModule,
-    DistrictModule,
     BankModule,
     ProgramModule,
     ProgramCategoryModule,
@@ -62,6 +59,7 @@ import { InvoiceModule } from './services/invoice/invoice.module';
     AddressModule,
     OrderModule,
     InvoiceModule,
+    ProvinceModule,
   ],
   controllers: [],
   providers: [PrismaService],

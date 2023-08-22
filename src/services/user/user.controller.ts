@@ -32,6 +32,13 @@ export class UserController {
     //Generate Random Referral Code
     userCreateArgsPrisma.data.referralCode = generateRandomReferralCode();
 
+    //Check if school create query is null
+    if (
+      userCreateArgsPrisma.data.school?.connectOrCreate?.create?.name === null
+    ) {
+      userCreateArgsPrisma.data.school?.connectOrCreate?.create === undefined;
+    }
+
     //Auto Create User Accounts
     accountCreateManyUserInput(userCreateArgsPrisma);
 
@@ -81,7 +88,7 @@ async function orderCreate(
 
   userCreateArgsPrisma.data.orders = {
     create: {
-      status: TransactionStatus.PROCESSING,
+      status: TransactionStatus.PENDING,
       platformFee: platformFee,
       total: totalPrice + platformFee,
       cart: {

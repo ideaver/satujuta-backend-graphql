@@ -1900,8 +1900,6 @@ type Query {
   """Deskripsinya ada disini loh"""
   hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
   auth(id: Int!): Auth!
-  cityFindMany(cityNameSearch: String!): [City!]!
-  districtFindMany(districtNameSearch: String!): [District!]!
   bankFindMany: [Bank!]!
 
   """Deskripsinya ada disini loh"""
@@ -2022,6 +2020,12 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   orderCount(orderFindManyArgs: OrderFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
+  provinceFindMany(provinceFindManyArgs: ProvinceFindManyArgs!): [Province!]
+
+  """Deskripsinya ada disini loh"""
+  provinceFindOne(provinceFindUniqueArgs: ProvinceFindUniqueArgs!): Province
 }
 
 input UserFindManyArgs {
@@ -4259,6 +4263,33 @@ input OrderWhereUniqueInput {
   invoice: InvoiceRelationFilter
 }
 
+input ProvinceFindManyArgs {
+  where: ProvinceWhereInput
+  orderBy: [ProvinceOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [ProvinceScalarFieldEnum!]
+}
+
+enum ProvinceScalarFieldEnum {
+  id
+  name
+}
+
+input ProvinceFindUniqueArgs {
+  where: ProvinceWhereUniqueInput!
+}
+
+input ProvinceWhereUniqueInput {
+  id: Int
+  name: String
+  AND: [ProvinceWhereInput!]
+  OR: [ProvinceWhereInput!]
+  NOT: [ProvinceWhereInput!]
+  cities: CityListRelationFilter
+  address: AddressListRelationFilter
+}
+
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreateOne(userCreateArgs: UserCreateArgs!): User
@@ -4720,16 +4751,6 @@ input AddressCreateManyProvinceInput {
 input ProvinceCreateOrConnectWithoutCitiesInput {
   where: ProvinceWhereUniqueInput!
   create: ProvinceCreateWithoutCitiesInput!
-}
-
-input ProvinceWhereUniqueInput {
-  id: Int
-  name: String
-  AND: [ProvinceWhereInput!]
-  OR: [ProvinceWhereInput!]
-  NOT: [ProvinceWhereInput!]
-  cities: CityListRelationFilter
-  address: AddressListRelationFilter
 }
 
 input CityCreateOrConnectWithoutAddressInput {
