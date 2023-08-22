@@ -66,6 +66,59 @@ export class UserController {
 
   updateOne(userUpdateOneArgs: UserUpdateOneArgs) {
     //TODO: Implement whatsapp verification
+    const {
+      firstName,
+      lastName,
+      email,
+      whatsappNumber,
+      whatsappVerifiedAt,
+      password,
+      theme,
+      userRole,
+      userType,
+      avatarUrl,
+    } = userUpdateOneArgs.data;
+
+    if (firstName?.set === null) {
+      userUpdateOneArgs.data.firstName = undefined;
+    }
+
+    if (lastName?.set === null) {
+      userUpdateOneArgs.data.lastName = undefined;
+    }
+
+    if (email?.set === null) {
+      userUpdateOneArgs.data.email = undefined;
+    }
+
+    if (whatsappNumber?.set === null) {
+      userUpdateOneArgs.data.whatsappNumber = undefined;
+    }
+
+    if (whatsappVerifiedAt?.set === null) {
+      userUpdateOneArgs.data.whatsappVerifiedAt = undefined;
+    }
+
+    if (password?.set === null) {
+      userUpdateOneArgs.data.password = undefined;
+    }
+
+    if (theme?.set === null) {
+      userUpdateOneArgs.data.theme = undefined;
+    }
+
+    // if (userRole?.set === null) {
+    //   userUpdateOneArgs.data.userRole = undefined;
+    // }
+
+    if (userType?.set === null) {
+      userUpdateOneArgs.data.userType = undefined;
+    }
+
+    if (avatarUrl?.set === null) {
+      userUpdateOneArgs.data.avatarUrl = undefined;
+    }
+
     return this.userService.update(userUpdateOneArgs);
   }
 

@@ -175,16 +175,18 @@ model User {
   /// @Validator.IsEmail()
   email                 String             @unique
   /// @Validator.IsNotEmpty()
+  /// @HideField({ match: 'UserUpdate*Input' })
   address               Address            @relation(fields: [addressId], references: [id])
   /// @HideField({ output: false, input: true })   
   addressId             Int                @unique
+  /// @HideField({ match: 'UserUpdate*Input' })
   userRole              UserRole           @default(MEMBER)
   userType              UserType
   /// @Validator.IsUrl({ require_protocol: true })
   avatarUrl             String?
   /// @Validator.IsNotEmpty()
   whatsappNumber        String             @unique
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })      
   whatsappVerifiedAt    DateTime?
   /// @Validator.MinLength(6)
   /// @Validator.MaxLength(15)
@@ -193,39 +195,45 @@ model User {
   password              String
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   referralCode          String             @unique
+  /// @HideField({ match: 'UserUpdate*Input' }) 
   referredBy            User?              @relation("UserReferral", fields: [referredById], references: [id])
   /// @HideField({ output: false, input: true })   
   referredById          String?
-  /// @HideField({ match: 'UserCreate*Input' })    
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
   referredUsers         User[]             @relation("UserReferral")
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   status                UserStatus         @default(PENDING)
   /// @HideField({ match: 'UserCreate*Input' })
   checkIns              CheckIn[]
+  /// @HideField({ match: 'UserUpdate*Input' }) 
   school                School?            @relation("StudentSchool", fields: [schoolId], references: [id])
   /// @HideField({ output: false, input: true })   
   schoolId              Int?
+  /// @HideField({ match: 'UserUpdate*Input' })
   accounts              Account[]
   /// @HideField({ output: false, input: true })   
   PointTransactions     PointTransaction[]
-  /// @HideField({ match: 'UserCreate*Input' })
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   createdAt             DateTime           @default(now())
-  /// @HideField({ match: 'UserCreate*Input' })  
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   updatedAt             DateTime           @updatedAt
-  /// @HideField({ match: 'UserCreate*Input' })  
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   deletedAt             DateTime?
+  /// @HideField({ match: 'UserUpdate*Input' })
   orders                Order[]
   /// @HideField({ output: false, input: true })   
   sessions              Session[]
-  /// @HideField({ match: 'UserCreate*Input' })
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   hotelsCreated         Hotel[]
   /// @HideField({ output: false, input: true })   
   programsParticipation Program[]          @relation("participant")
   /// @HideField({ output: false, input: true })   
   projectsInvestment    Project[]          @relation("project Investment")
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   claimedRewards        Reward[]           @relation("reward claimer")
   /// @HideField({ output: false, input: true })   
   userNotifications     UserNotification[]
-  /// @HideField({ match: 'UserCreate*Input' })   
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
   programsCreated       Program[]
   /// @HideField({ output: false, input: true })   
   filesCreated          File[]
