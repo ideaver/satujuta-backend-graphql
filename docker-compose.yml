@@ -21,3 +21,5 @@ services:
 
 networks:
     nestjs-network:
+volumes:
+    data-volume:
