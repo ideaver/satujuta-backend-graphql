@@ -6837,7 +6837,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], BankAvgAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankAvgAggregateInput.prototype, "accountId", void 0);
 BankAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -6867,7 +6867,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankAvgOrderByAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankAvgOrderByAggregateInput.prototype, "accountId", void 0);
 BankAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -6888,7 +6888,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], BankCountAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankCountAggregateInput.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -6936,7 +6936,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankCountOrderByAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankCountOrderByAggregateInput.prototype, "accountId", void 0);
 BankCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -6960,12 +6960,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], BankCreateManyInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankCreateManyInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_7.HideField)()
 ], BankCreateManyInput.prototype, "accountId", void 0);
 BankCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7018,7 +7018,7 @@ __decorate([
     Validator.IsNotEmpty()
 ], BankCreateWithoutAccountInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankCreateWithoutAccountInput.prototype, "accountNumber", void 0);
@@ -7041,12 +7041,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], BankCreateInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankCreateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AccountCreateNestedOneWithoutBankAccountInput, { nullable: false })
+    (0, graphql_7.HideField)()
 ], BankCreateInput.prototype, "account", void 0);
 BankCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7104,7 +7104,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], BankGroupBy.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], BankGroupBy.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -7143,7 +7143,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], BankMaxAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankMaxAggregateInput.prototype, "accountId", void 0);
 BankMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7161,7 +7161,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], BankMaxAggregate.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], BankMaxAggregate.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -7185,7 +7185,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankMaxOrderByAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankMaxOrderByAggregateInput.prototype, "accountId", void 0);
 BankMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7206,7 +7206,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], BankMinAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankMinAggregateInput.prototype, "accountId", void 0);
 BankMinAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7224,7 +7224,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], BankMinAggregate.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], BankMinAggregate.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -7248,7 +7248,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankMinOrderByAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankMinOrderByAggregateInput.prototype, "accountId", void 0);
 BankMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7281,7 +7281,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankOrderByWithAggregationInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankOrderByWithAggregationInput.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => BankCountOrderByAggregateInput, { nullable: true })
@@ -7317,10 +7317,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankOrderByWithRelationInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankOrderByWithRelationInput.prototype, "accountId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AccountOrderByWithRelationInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankOrderByWithRelationInput.prototype, "account", void 0);
 BankOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7347,10 +7347,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], BankScalarWhereWithAggregatesInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
+    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], BankScalarWhereWithAggregatesInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankScalarWhereWithAggregatesInput.prototype, "accountId", void 0);
 BankScalarWhereWithAggregatesInput = BankScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -7365,7 +7365,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], BankSumAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankSumAggregateInput.prototype, "accountId", void 0);
 BankSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7377,7 +7377,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], BankSumAggregate.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], BankSumAggregate.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -7395,7 +7395,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankSumOrderByAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankSumOrderByAggregateInput.prototype, "accountId", void 0);
 BankSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7437,7 +7437,7 @@ __decorate([
     Validator.IsNotEmpty()
 ], BankUncheckedCreateWithoutAccountInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankUncheckedCreateWithoutAccountInput.prototype, "accountNumber", void 0);
@@ -7463,12 +7463,12 @@ __decorate([
     Validator.IsNotEmpty()
 ], BankUncheckedCreateInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false }),
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankUncheckedCreateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_7.HideField)()
 ], BankUncheckedCreateInput.prototype, "accountId", void 0);
 BankUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7486,10 +7486,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateManyInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateManyInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankUncheckedUpdateManyInput.prototype, "accountId", void 0);
 BankUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7541,7 +7541,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateWithoutAccountInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateWithoutAccountInput.prototype, "accountNumber", void 0);
 BankUncheckedUpdateWithoutAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7559,10 +7559,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankUncheckedUpdateInput.prototype, "accountId", void 0);
 BankUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7577,7 +7577,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateManyMutationInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateManyMutationInput.prototype, "accountNumber", void 0);
 BankUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7640,7 +7640,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateWithoutAccountInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateWithoutAccountInput.prototype, "accountNumber", void 0);
 BankUpdateWithoutAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7655,10 +7655,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AccountUpdateOneRequiredWithoutBankAccountNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankUpdateInput.prototype, "account", void 0);
 BankUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7688,7 +7688,7 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], BankWhereUniqueInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankWhereUniqueInput.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [BankWhereInput], { nullable: true })
@@ -7706,10 +7706,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], BankWhereUniqueInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], BankWhereUniqueInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AccountRelationFilter, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankWhereUniqueInput.prototype, "account", void 0);
 BankWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
@@ -7736,13 +7736,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], BankWhereInput.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], BankWhereInput.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankWhereInput.prototype, "accountId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => AccountRelationFilter, { nullable: true })
+    (0, graphql_7.HideField)()
 ], BankWhereInput.prototype, "account", void 0);
 BankWhereInput = BankWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -7760,13 +7760,13 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], Bank.prototype, "logoUrl", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], Bank.prototype, "accountNumber", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Bank.prototype, "accountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Account, { nullable: false })
 ], Bank.prototype, "account", void 0);
 Bank = __decorate([
     (0, graphql_5.ObjectType)()
@@ -50795,10 +50795,10 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionAvgAggregateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionAvgAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionAvgAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -50807,7 +50807,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionAvgAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionAvgAggregateInput.prototype, "uniqueCode", void 0);
 TransactionAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -50849,10 +50849,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionAvgOrderByAggregateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionAvgOrderByAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionAvgOrderByAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -50861,7 +50861,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionAvgOrderByAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionAvgOrderByAggregateInput.prototype, "uniqueCode", void 0);
 TransactionAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -50879,16 +50879,16 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -50897,10 +50897,10 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionCountAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -50963,16 +50963,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -50981,10 +50981,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionCountOrderByAggregateInput.prototype, "createdAt", void 0);
 TransactionCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -51623,16 +51623,16 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -51641,10 +51641,10 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMaxAggregateInput.prototype, "createdAt", void 0);
 TransactionMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -51701,16 +51701,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -51719,10 +51719,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 TransactionMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -51740,16 +51740,16 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -51758,10 +51758,10 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionMinAggregateInput.prototype, "createdAt", void 0);
 TransactionMinAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -51818,16 +51818,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -51836,10 +51836,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionMinOrderByAggregateInput.prototype, "createdAt", void 0);
 TransactionMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -51878,16 +51878,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
@@ -51896,10 +51896,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithAggregationInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => TransactionCountOrderByAggregateInput, { nullable: true })
@@ -51932,16 +51932,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
@@ -51950,16 +51950,16 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => AccountOrderByWithRelationInput, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "fromAccount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => AccountOrderByWithRelationInput, { nullable: true })
 ], TransactionOrderByWithRelationInput.prototype, "toAccount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => InvoiceOrderByWithRelationInput, { nullable: true })
@@ -51992,16 +51992,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringNullableWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
@@ -52010,10 +52010,10 @@ __decorate([
     (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], TransactionScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 TransactionScalarWhereWithAggregatesInput = TransactionScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -52040,16 +52040,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
@@ -52058,10 +52058,10 @@ __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], TransactionScalarWhereInput.prototype, "createdAt", void 0);
 TransactionScalarWhereInput = TransactionScalarWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -52076,10 +52076,10 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionSumAggregateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionSumAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionSumAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -52088,7 +52088,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionSumAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], TransactionSumAggregateInput.prototype, "uniqueCode", void 0);
 TransactionSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52130,10 +52130,10 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionSumOrderByAggregateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionSumOrderByAggregateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionSumOrderByAggregateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -52142,7 +52142,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionSumOrderByAggregateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], TransactionSumOrderByAggregateInput.prototype, "uniqueCode", void 0);
 TransactionSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52246,13 +52246,13 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => TransactionCategory, { nullable: false })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -52261,10 +52261,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], TransactionUncheckedCreateWithoutFromAccountInput.prototype, "createdAt", void 0);
 TransactionUncheckedCreateWithoutFromAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52284,25 +52284,25 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => TransactionCategory, { nullable: false })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], TransactionUncheckedCreateWithoutInstallmentInput.prototype, "createdAt", void 0);
 TransactionUncheckedCreateWithoutInstallmentInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52322,25 +52322,25 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => TransactionCategory, { nullable: false })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], TransactionUncheckedCreateWithoutInvoiceInput.prototype, "createdAt", void 0);
 TransactionUncheckedCreateWithoutInvoiceInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52360,13 +52360,13 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => TransactionCategory, { nullable: false })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "fromAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -52375,10 +52375,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], TransactionUncheckedCreateWithoutToAccountInput.prototype, "createdAt", void 0);
 TransactionUncheckedCreateWithoutToAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52398,16 +52398,16 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], TransactionUncheckedCreateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], TransactionUncheckedCreateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => TransactionCategory, { nullable: false })
 ], TransactionUncheckedCreateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -52416,10 +52416,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], TransactionUncheckedCreateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], TransactionUncheckedCreateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], TransactionUncheckedCreateInput.prototype, "createdAt", void 0);
 TransactionUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52487,13 +52487,13 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
@@ -52502,10 +52502,10 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutFromAccountInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateManyWithoutFromAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52573,25 +52573,25 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutInvoiceInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateManyWithoutInvoiceInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52659,13 +52659,13 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "fromAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
@@ -52674,10 +52674,10 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyWithoutToAccountInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateManyWithoutToAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52695,16 +52695,16 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
@@ -52713,10 +52713,10 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateManyInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52768,13 +52768,13 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
@@ -52783,10 +52783,10 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutFromAccountInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateWithoutFromAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52804,25 +52804,25 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInstallmentInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateWithoutInstallmentInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52840,25 +52840,25 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutInvoiceInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateWithoutInvoiceInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52876,13 +52876,13 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "fromAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
@@ -52891,10 +52891,10 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateWithoutToAccountInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateWithoutToAccountInput = __decorate([
     (0, graphql_4.InputType)()
@@ -52912,16 +52912,16 @@ __decorate([
     (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
@@ -52930,10 +52930,10 @@ __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], TransactionUncheckedUpdateInput.prototype, "createdAt", void 0);
 TransactionUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -53509,31 +53509,31 @@ __decorate([
     (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "invoiceId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => AccountRelationFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "fromAccount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => AccountRelationFilter, { nullable: true })
 ], TransactionWhereUniqueInput.prototype, "toAccount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => InvoiceNullableRelationFilter, { nullable: true })
@@ -53566,16 +53566,16 @@ __decorate([
     (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "proofUrl", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionCategoryFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "transactionCategory", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "fromAccountId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "toAccountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
@@ -53584,16 +53584,16 @@ __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "installmentId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "uniqueCode", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => AccountRelationFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "fromAccount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => AccountRelationFilter, { nullable: true })
 ], TransactionWhereInput.prototype, "toAccount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => InvoiceNullableRelationFilter, { nullable: true })

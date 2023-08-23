@@ -229,7 +229,7 @@ export function fakeBank() {
   return {
     name: faker.name.fullName(),
     logoUrl: faker.lorem.words(5),
-    accountNumber: faker.datatype.number(),
+    accountNumber: faker.datatype.float(),
   };
 }
 export function fakeBankComplete() {
@@ -237,7 +237,7 @@ export function fakeBankComplete() {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
     logoUrl: faker.lorem.words(5),
-    accountNumber: faker.datatype.number(),
+    accountNumber: faker.datatype.float(),
     accountId: faker.datatype.number(),
   };
 }

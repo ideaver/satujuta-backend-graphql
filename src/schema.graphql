@@ -231,7 +231,7 @@ type BankMaxAggregate {
   id: Int
   name: String
   logoUrl: String
-  accountNumber: Int
+  accountNumber: Float
   accountId: Int
 }
 
@@ -239,13 +239,13 @@ type BankMinAggregate {
   id: Int
   name: String
   logoUrl: String
-  accountNumber: Int
+  accountNumber: Float
   accountId: Int
 }
 
 type BankSumAggregate {
   id: Int
-  accountNumber: Int
+  accountNumber: Float
   accountId: Int
 }
 
@@ -253,7 +253,9 @@ type Bank {
   id: Int!
   name: String!
   logoUrl: String!
-  accountNumber: Int!
+  accountNumber: Float!
+  accountId: Int!
+  account: Account!
 }
 
 type CartAvgAggregate {
@@ -1899,7 +1901,12 @@ type Query {
   """Deskripsinya ada disini loh"""
   hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
   auth(id: Int!): Auth!
-  bankFindMany: [Bank!]!
+
+  """Deskripsinya ada disini loh"""
+  bankFindMany(bankFindManyArgs: BankFindManyArgs): [Bank!]
+
+  """Deskripsinya ada disini loh"""
+  bankFindOne(bankFindUniqueArgs: BankFindUniqueArgs!): Bank
 
   """Deskripsinya ada disini loh"""
   programFindMany(programFindManyArgs: ProgramFindManyArgs!): [Program!]
@@ -2673,10 +2680,31 @@ input TransactionWhereInput {
   id: IntFilter
   amount: FloatFilter
   proofUrl: StringNullableFilter
+  status: EnumTransactionStatusFilter
   transactionCategory: EnumTransactionCategoryFilter
+  fromAccountId: IntFilter
+  toAccountId: IntFilter
   invoiceId: IntNullableFilter
   installmentId: IntNullableFilter
+  uniqueCode: IntFilter
+  createdAt: DateTimeFilter
+  fromAccount: AccountRelationFilter
+  toAccount: AccountRelationFilter
   invoice: InvoiceNullableRelationFilter
+}
+
+input EnumTransactionStatusFilter {
+  equals: TransactionStatus
+  in: [TransactionStatus!]
+  notIn: [TransactionStatus!]
+  not: NestedEnumTransactionStatusFilter
+}
+
+input NestedEnumTransactionStatusFilter {
+  equals: TransactionStatus
+  in: [TransactionStatus!]
+  notIn: [TransactionStatus!]
+  not: NestedEnumTransactionStatusFilter
 }
 
 input EnumTransactionCategoryFilter {
@@ -2732,20 +2760,6 @@ input OrderWhereInput {
   cart: CartListRelationFilter
   shipping: ShippingNullableRelationFilter
   invoice: InvoiceRelationFilter
-}
-
-input EnumTransactionStatusFilter {
-  equals: TransactionStatus
-  in: [TransactionStatus!]
-  notIn: [TransactionStatus!]
-  not: NestedEnumTransactionStatusFilter
-}
-
-input NestedEnumTransactionStatusFilter {
-  equals: TransactionStatus
-  in: [TransactionStatus!]
-  notIn: [TransactionStatus!]
-  not: NestedEnumTransactionStatusFilter
 }
 
 input CartListRelationFilter {
@@ -3290,6 +3304,53 @@ input HotelWhereUniqueInput {
   images: ImagesListRelationFilter
   checkIns: CheckInListRelationFilter
   createdBy: UserRelationFilter
+}
+
+input BankFindManyArgs {
+  where: BankWhereInput
+  orderBy: [BankOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [BankScalarFieldEnum!]
+}
+
+input BankWhereInput {
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  logoUrl: StringFilter
+  accountNumber: FloatFilter
+}
+
+input BankOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  logoUrl: SortOrder
+  accountNumber: SortOrder
+}
+
+enum BankScalarFieldEnum {
+  id
+  name
+  logoUrl
+  accountNumber
+  accountId
+}
+
+input BankFindUniqueArgs {
+  where: BankWhereUniqueInput!
+}
+
+input BankWhereUniqueInput {
+  id: Int
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  name: StringFilter
+  logoUrl: StringFilter
+  accountNumber: FloatFilter
 }
 
 input ProgramFindManyArgs {
@@ -3999,9 +4060,16 @@ input TransactionOrderByWithRelationInput {
   id: SortOrder
   amount: SortOrder
   proofUrl: SortOrderInput
+  status: SortOrder
   transactionCategory: SortOrder
+  fromAccountId: SortOrder
+  toAccountId: SortOrder
   invoiceId: SortOrderInput
   installmentId: SortOrderInput
+  uniqueCode: SortOrder
+  createdAt: SortOrder
+  fromAccount: AccountOrderByWithRelationInput
+  toAccount: AccountOrderByWithRelationInput
   invoice: InvoiceOrderByWithRelationInput
 }
 
@@ -4031,8 +4099,15 @@ input TransactionWhereUniqueInput {
   NOT: [TransactionWhereInput!]
   amount: FloatFilter
   proofUrl: StringNullableFilter
+  status: EnumTransactionStatusFilter
   transactionCategory: EnumTransactionCategoryFilter
+  fromAccountId: IntFilter
+  toAccountId: IntFilter
   invoiceId: IntNullableFilter
+  uniqueCode: IntFilter
+  createdAt: DateTimeFilter
+  fromAccount: AccountRelationFilter
+  toAccount: AccountRelationFilter
   invoice: InvoiceNullableRelationFilter
 }
 
@@ -4393,6 +4468,17 @@ type Mutation {
   createAuth(createAuthInput: CreateAuthInput!): Auth!
   resetPassword(email: String!): Auth!
   removeAuth(id: Int!): Auth!
+
+  """Deskripsinya ada disini loh"""
+  bankCreateOne(bankCreateArgs: BankCreateArgs!): Bank
+
+  """
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim bank, backend akan cek apakah saldo point user cukup untuk claim
+  """
+  bankUpdateOne(bankUpdateOneArgs: BankUpdateOneArgs!): Bank!
+
+  """Datanya benar2 terhapus dari db"""
+  bankRemove(bankId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
   programCreateOne(programCreateArgs: ProgramCreateArgs!): Program
@@ -7293,6 +7379,27 @@ input CreateAuthInput {
   exampleField: Int!
 }
 
+input BankCreateArgs {
+  data: BankCreateInput!
+}
+
+input BankCreateInput {
+  name: String!
+  logoUrl: String!
+  accountNumber: Float!
+}
+
+input BankUpdateOneArgs {
+  data: BankUpdateInput!
+  where: BankWhereUniqueInput!
+}
+
+input BankUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  logoUrl: StringFieldUpdateOperationsInput
+  accountNumber: FloatFieldUpdateOperationsInput
+}
+
 input ProgramCreateArgs {
   data: ProgramCreateInput!
 }
@@ -8243,9 +8350,14 @@ input TransactionScalarWhereInput {
   id: IntFilter
   amount: FloatFilter
   proofUrl: StringNullableFilter
+  status: EnumTransactionStatusFilter
   transactionCategory: EnumTransactionCategoryFilter
+  fromAccountId: IntFilter
+  toAccountId: IntFilter
   invoiceId: IntNullableFilter
   installmentId: IntNullableFilter
+  uniqueCode: IntFilter
+  createdAt: DateTimeFilter
 }
 
 input TransactionUpdateManyMutationInput {

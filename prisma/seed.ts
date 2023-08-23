@@ -8,12 +8,16 @@ import {
   UserRole,
 } from '@prisma/client';
 import { CreateOneAccountArgs } from 'src/@generated';
-import { fakeFaq, fakeTransaction, fakeTransactionComplete } from './fake-data';
+import {
+  fakeBank,
+  fakeFaq,
+  fakeTransaction,
+  fakeTransactionComplete,
+} from './fake-data';
 import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
 import * as fs from 'fs/promises';
 import { join } from 'node:path';
-import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 
 const prisma = new PrismaClient();
 
@@ -29,7 +33,9 @@ async function main() {
   // await createCityDistrictPostalCode();
 
   //   await seedBank();
-  // await transactionCreateManySeed({ numberOfTransactions: 100 });
+  // await prisma.transaction.deleteMany();
+  // await transactionCreateManySeed({ numberOfTransactions: 500 });
+  // await bankCreateManySeed({ numberOfBanks: 5 });
 
   // const accountId = 2; // Replace with the actual account ID
   // const year = 2023; // Replace with the desired year
@@ -56,8 +62,8 @@ async function main() {
   // console.log(await prisma.invoice.deleteMany());
   // await populateProvinceCityDistricSubdistric();
 
-  await createSuperUser();
-  await createAdmin();
+  // await createSuperUser();
+  // await createAdmin();
 
   console.log('Seeding finished.');
 }
@@ -70,89 +76,89 @@ main()
     await prisma.$disconnect();
   });
 
-async function createSuperUser() {
-  await prisma.user.create({
-    data: {
-      firstName: 'Dikki',
-      lastName: 'Setiawan',
-      email: 'alvaminddigital@gmail.com',
-      password: '234325',
-      theme: 'LIGHT',
-      userRole: 'SUPERUSER',
-      userType: 'OTHER',
-      whatsappNumber: '6289683743880',
-      avatarUrl: faker.image.avatar(),
-      referralCode: generateRandomReferralCode(),
-      address: {
-        create: {
-          name: 'www.alvamind.com',
-          province: {
-            connect: {
-              id: 1,
-            },
-          },
-          city: {
-            connect: {
-              id: 1,
-            },
-          },
-          district: {
-            connect: {
-              id: 1,
-            },
-          },
-          subdistrict: {
-            connect: {
-              id: 1,
-            },
-          },
-        },
-      },
-    },
-  });
-}
+// async function createSuperUser() {
+//   await prisma.user.create({
+//     data: {
+//       firstName: 'Dikki',
+//       lastName: 'Setiawan',
+//       email: 'alvaminddigital@gmail.com',
+//       password: '234325',
+//       theme: 'LIGHT',
+//       userRole: 'SUPERUSER',
+//       userType: 'OTHER',
+//       whatsappNumber: '6289683743880',
+//       avatarUrl: faker.image.avatar(),
+//       referralCode: generateRandomReferralCode(),
+//       address: {
+//         create: {
+//           name: 'www.alvamind.com',
+//           province: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//           city: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//           district: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//           subdistrict: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//         },
+//       },
+//     },
+//   });
+// }
 
-async function createAdmin() {
-  await prisma.user.create({
-    data: {
-      firstName: 'Sumarno',
-      lastName: 'Setiawan',
-      email: 'alvaminddigital@gmail.com',
-      password: '234325',
-      theme: 'LIGHT',
-      userRole: 'ADMIN',
-      userType: 'OTHER',
-      whatsappNumber: '62839683743880',
-      avatarUrl: faker.image.avatar(),
-      referralCode: generateRandomReferralCode(),
-      address: {
-        create: {
-          name: 'www.alvamind.com',
-          province: {
-            connect: {
-              id: 1,
-            },
-          },
-          city: {
-            connect: {
-              id: 1,
-            },
-          },
-          district: {
-            connect: {
-              id: 1,
-            },
-          },
-          subdistrict: {
-            connect: {
-              id: 1,
-            },
-          },
-        },
-      },
-    },
-  });
-}
+// async function createAdmin() {
+//   await prisma.user.create({
+//     data: {
+//       firstName: 'Sumarno',
+//       lastName: 'Setiawan',
+//       email: 'alvaminddigital@gmail.com',
+//       password: '234325',
+//       theme: 'LIGHT',
+//       userRole: 'ADMIN',
+//       userType: 'OTHER',
+//       whatsappNumber: '62839683743880',
+//       avatarUrl: faker.image.avatar(),
+//       referralCode: generateRandomReferralCode(),
+//       address: {
+//         create: {
+//           name: 'www.alvamind.com',
+//           province: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//           city: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//           district: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//           subdistrict: {
+//             connect: {
+//               id: 1,
+//             },
+//           },
+//         },
+//       },
+//     },
+//   });
+// }
 
 async function populateProvinceCityDistricSubdistric() {
   try {
@@ -479,6 +485,18 @@ function getNextPeriodDate(currentDate: Date, period: Period): Date {
 //   console.log(balances);
 //   return balances;
 // }
+function generateRandomRupiah(): number {
+  const minAmount = 1000; // Minimum amount in Rupiah (e.g., Rp 1,000)
+  const maxAmount = 10000000; // Maximum amount in Rupiah (e.g., Rp 10,000,000)
+
+  // Generate a random number within the specified range
+  const randomAmount = Math.random() * (maxAmount - minAmount) + minAmount;
+
+  // Round the random amount to two decimal places
+  const roundedAmount = Math.round(randomAmount * 100) / 100;
+
+  return roundedAmount;
+}
 
 async function transactionCreateManySeed({
   numberOfTransactions,
@@ -492,6 +510,8 @@ async function transactionCreateManySeed({
       fromAccountId: faker.datatype.number({ min: 1, max: 9 }),
       toAccountId: faker.datatype.number({ min: 1, max: 9 }),
       createdAt: faker.date.past(),
+      uniqueCode: faker.datatype.number({ min: 100, max: 700 }),
+      proofUrl: faker.image.imageUrl(),
     });
   }
 
@@ -508,6 +528,33 @@ async function transactionCreateManySeed({
     console.error(err);
   }
 }
+
+// async function bankCreateManySeed({ numberOfBanks }): Promise<void> {
+//   const banksToCreate: Prisma.BankCreateManyInput[] = [];
+
+//   for (let i = 0; i < numberOfBanks; i++) {
+//     banksToCreate.push({
+//       name: faker.finance.accountName(),
+//       accountNumber: faker.datatype.number({
+//         min: 1000000000,
+//         max: 9999999999,
+//       }),
+//       logoUrl: faker.image.imageUrl(),
+//       accountId:
+//     });
+//   }
+
+//   const bankCreateManyArgs: Prisma.BankCreateManyArgs = {
+//     data: banksToCreate,
+//   };
+
+//   try {
+//     const createdBanks = await prisma.bank.createMany(bankCreateManyArgs);
+//     console.log('Banks created: ' + JSON.stringify(createdBanks));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
 async function accountCreateOneSeed(
   accountCreateArgs: CreateOneAccountArgs,
@@ -541,17 +588,4 @@ async function bankCreateOneSeed() {
     .then((bank) => {
       console.log('bank created ' + bank);
     });
-}
-
-function generateRandomRupiah(): number {
-  const minAmount = 1000; // Minimum amount in Rupiah (e.g., Rp 1,000)
-  const maxAmount = 10000000; // Maximum amount in Rupiah (e.g., Rp 10,000,000)
-
-  // Generate a random number within the specified range
-  const randomAmount = Math.random() * (maxAmount - minAmount) + minAmount;
-
-  // Round the random amount to two decimal places
-  const roundedAmount = Math.round(randomAmount * 100) / 100;
-
-  return roundedAmount;
 }

@@ -2482,7 +2482,7 @@ export declare class BankScalarWhereWithAggregatesInput {
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     name?: InstanceType<typeof StringWithAggregatesFilter>;
     logoUrl?: InstanceType<typeof StringWithAggregatesFilter>;
-    accountNumber?: InstanceType<typeof IntWithAggregatesFilter>;
+    accountNumber?: InstanceType<typeof FloatWithAggregatesFilter>;
     accountId?: InstanceType<typeof IntWithAggregatesFilter>;
 }
 export declare class BankSumAggregateInput {
@@ -2522,7 +2522,7 @@ export declare class BankUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
 }
 export declare class BankUncheckedUpdateOneWithoutAccountNestedInput {
@@ -2538,19 +2538,19 @@ export declare class BankUncheckedUpdateWithoutAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
 }
 export declare class BankUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
 }
 export declare class BankUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
 }
 export declare class BankUpdateOneWithoutAccountNestedInput {
     create?: InstanceType<typeof BankCreateWithoutAccountInput>;
@@ -2568,12 +2568,12 @@ export declare class BankUpdateToOneWithWhereWithoutAccountInput {
 export declare class BankUpdateWithoutAccountInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
 }
 export declare class BankUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     account?: InstanceType<typeof AccountUpdateOneRequiredWithoutBankAccountNestedInput>;
 }
 export declare class BankUpsertWithoutAccountInput {
@@ -2589,7 +2589,7 @@ export declare class BankWhereUniqueInput {
     NOT?: Array<BankWhereInput>;
     name?: InstanceType<typeof StringFilter>;
     logoUrl?: InstanceType<typeof StringFilter>;
-    accountNumber?: InstanceType<typeof IntFilter>;
+    accountNumber?: InstanceType<typeof FloatFilter>;
     account?: InstanceType<typeof AccountRelationFilter>;
 }
 export declare class BankWhereInput {
@@ -2599,7 +2599,7 @@ export declare class BankWhereInput {
     id?: InstanceType<typeof IntFilter>;
     name?: InstanceType<typeof StringFilter>;
     logoUrl?: InstanceType<typeof StringFilter>;
-    accountNumber?: InstanceType<typeof IntFilter>;
+    accountNumber?: InstanceType<typeof FloatFilter>;
     accountId?: InstanceType<typeof IntFilter>;
     account?: InstanceType<typeof AccountRelationFilter>;
 }

@@ -290,16 +290,16 @@ model Transaction {
   /// @Validator.IsNotEmpty()
   amount              Float
   proofUrl            String?
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})     
   status              TransactionStatus
   transactionCategory TransactionCategory
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   fromAccount         Account             @relation("origin", fields: [fromAccountId], references: [id])
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
   fromAccountId       Int
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
   toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
   toAccountId         Int
   invoice             Invoice?            @relation(fields: [invoiceId], references: [id])
   invoiceId           Int?
@@ -307,9 +307,9 @@ model Transaction {
   Installment         Installment?        @relation(fields: [installmentId], references: [id])
   /// @HideField({ match: 'TransactionUpdate*Input' })
   installmentId       Int?                @unique
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   uniqueCode          Int
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   createdAt           DateTime            @default(now())
 
   @@index([amount], name: "amount")
@@ -408,13 +408,13 @@ model Bank {
   logoUrl       String
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  accountNumber Int
+  accountNumber Float
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()
-  /// @HideField({ match: 'Bank' })
+  /// @HideField({ output: false, input: true })
   account       Account @relation(fields: [accountId], references: [id])
-  /// @HideField({ match: 'Bank' })
+  /// @HideField({ output: false, input: true })
   accountId     Int     @unique
 }
 
