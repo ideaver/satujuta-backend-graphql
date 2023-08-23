@@ -7,7 +7,8 @@ import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 import { OrderController } from './order.controller';
-import { Order } from 'src/@generated';
+import { AggregateOrder, Order } from 'src/@generated';
+import { OrderAggregateArgs } from './dto/order-aggregate.args';
 
 interface OrderSelect {
   select: Prisma.OrderSelect;
@@ -85,5 +86,16 @@ export class OrderResolver {
     orderFindManyArgs: OrderFindManyArgs,
   ) {
     return this.orderController.count(orderFindManyArgs);
+  }
+
+  @Query(() => AggregateOrder, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  orderAggregate(
+    @Args('orderAggregateArgs', { nullable: false })
+    orderAggregateArgs: OrderAggregateArgs,
+  ) {
+    return this.orderController.aggregate(orderAggregateArgs);
   }
 }

@@ -30,6 +30,19 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
+  console.log(
+    await prisma.order.aggregate({
+      _sum: { total: true },
+      where: {
+        AND: [
+          { status: { not: { equals: 'CANCELLED' } } },
+          { status: { not: { equals: 'FAILED' } } },
+          { status: { not: { equals: 'PENDING' } } },
+        ],
+      },
+    }),
+  );
+
   // await createCityDistrictPostalCode();
 
   //   await seedBank();

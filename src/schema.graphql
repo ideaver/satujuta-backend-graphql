@@ -914,6 +914,14 @@ type Item {
   _count: ItemCount!
 }
 
+type AggregateOrder {
+  _count: OrderCountAggregate
+  _avg: OrderAvgAggregate
+  _sum: OrderSumAggregate
+  _min: OrderMinAggregate
+  _max: OrderMaxAggregate
+}
+
 type OrderAvgAggregate {
   id: Float
   shippingId: Float
@@ -2026,6 +2034,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   orderCount(orderFindManyArgs: OrderFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
+  orderAggregate(orderAggregateArgs: OrderAggregateArgs!): AggregateOrder!
 
   """Deskripsinya ada disini loh"""
   provinceFindMany(provinceFindManyArgs: ProvinceFindManyArgs!): [Province!]
@@ -4314,6 +4325,72 @@ input OrderWhereUniqueInput {
   cart: CartListRelationFilter
   shipping: ShippingNullableRelationFilter
   invoice: InvoiceRelationFilter
+}
+
+input OrderAggregateArgs {
+  where: OrderWhereInput
+  orderBy: [OrderOrderByWithRelationInput!]
+  cursor: OrderWhereUniqueInput
+  take: Int
+  skip: Int
+  _count: OrderCountAggregateInput
+  _avg: OrderAvgAggregateInput
+  _sum: OrderSumAggregateInput
+  _min: OrderMinAggregateInput
+  _max: OrderMaxAggregateInput
+}
+
+input OrderCountAggregateInput {
+  id: Boolean
+  status: Boolean
+  orderById: Boolean
+  shippingId: Boolean
+  invoiceId: Boolean
+  platformFee: Boolean
+  total: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input OrderAvgAggregateInput {
+  id: Boolean
+  shippingId: Boolean
+  invoiceId: Boolean
+  platformFee: Boolean
+  total: Boolean
+}
+
+input OrderSumAggregateInput {
+  id: Boolean
+  shippingId: Boolean
+  invoiceId: Boolean
+  platformFee: Boolean
+  total: Boolean
+}
+
+input OrderMinAggregateInput {
+  id: Boolean
+  status: Boolean
+  orderById: Boolean
+  shippingId: Boolean
+  invoiceId: Boolean
+  platformFee: Boolean
+  total: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input OrderMaxAggregateInput {
+  id: Boolean
+  status: Boolean
+  orderById: Boolean
+  shippingId: Boolean
+  invoiceId: Boolean
+  platformFee: Boolean
+  total: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input ProvinceFindManyArgs {

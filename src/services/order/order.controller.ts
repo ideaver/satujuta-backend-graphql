@@ -5,7 +5,7 @@ import { OrderFindUniqueArgs } from './dto/order-find-one.args';
 import { OrderUpdateOneArgs } from './dto/order-update-one.args';
 import { Prisma, ShippingStatus, User } from '@prisma/client';
 import { Injectable, Logger } from '@nestjs/common';
-import { Order } from 'src/@generated';
+import { Order, OrderAggregateArgs } from 'src/@generated';
 import { UserService } from '../user/user.service';
 
 @Injectable()
@@ -80,5 +80,9 @@ export class OrderController {
 
   count(orderFindManyArgs: OrderFindManyArgs) {
     return this.orderService.count(orderFindManyArgs);
+  }
+
+  aggregate(orderAggregateArgs: OrderAggregateArgs) {
+    return this.orderService.aggregate(orderAggregateArgs);
   }
 }

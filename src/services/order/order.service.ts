@@ -83,4 +83,15 @@ export class OrderService {
         throwPrismaError(err);
       });
   }
+
+  async aggregate(orderAggregateArgs: Prisma.OrderAggregateArgs) {
+    return await this.prisma.order
+      .aggregate(orderAggregateArgs)
+      .then((order) => {
+        return order;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
 }
