@@ -153,6 +153,7 @@ async function orderCreate(
       platformFee: platformFee,
       total: totalPrice + platformFee,
       cart: {
+        //TODO: Jika student didaftarkan member gimana?
         createMany: {
           data: items
             ? items.map((item) => ({

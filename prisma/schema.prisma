@@ -498,12 +498,14 @@ model Cart {
   itemId    Int
   quantity  Int
   /// @Validator.IsNumber() 
-  /// @HideField({ match: 'CartCreate*Input' })
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   price     Float
   /// @Validator.IsNumber() 
-  /// @HideField({ match: 'CartCreate*Input' })
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   cost      Float
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   createdAt DateTime @default(now())
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   updatedAt DateTime @updatedAt
 }
 

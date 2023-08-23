@@ -31,6 +31,7 @@ import { ProvinceModule } from './services/province/province.module';
 import { CityModule } from './services/city/city.module';
 import { DistrictModule } from './services/district/district.module';
 import { SubdistrictModule } from './services/subdistrict/subdistrict.module';
+import { CartModule } from './services/cart/cart.module';
 
 @Module({
   imports: [
@@ -66,6 +67,7 @@ import { SubdistrictModule } from './services/subdistrict/subdistrict.module';
     CityModule,
     DistrictModule,
     SubdistrictModule,
+    CartModule,
   ],
   controllers: [],
   providers: [PrismaService],

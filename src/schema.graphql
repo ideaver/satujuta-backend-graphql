@@ -2061,6 +2061,12 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   subdistrictFindOne(subdistrictFindUniqueArgs: SubdistrictFindUniqueArgs!): Subdistrict
+
+  """Deskripsinya ada disini loh"""
+  cartFindMany(cartFindManyArgs: CartFindManyArgs): [Cart!]
+
+  """Deskripsinya ada disini loh"""
+  cartFindOne(cartFindUniqueArgs: CartFindUniqueArgs!): Cart
 }
 
 input UserFindManyArgs {
@@ -4511,6 +4517,58 @@ input SubdistrictWhereUniqueInput {
   address: AddressListRelationFilter
 }
 
+input CartFindManyArgs {
+  where: CartWhereInput
+  orderBy: [CartOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [CartScalarFieldEnum!]
+}
+
+input CartOrderByWithRelationInput {
+  id: SortOrder
+  orderId: SortOrder
+  itemId: SortOrder
+  quantity: SortOrder
+  price: SortOrder
+  cost: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  order: OrderOrderByWithRelationInput
+  item: ItemOrderByWithRelationInput
+}
+
+enum CartScalarFieldEnum {
+  id
+  orderId
+  itemId
+  quantity
+  price
+  cost
+  createdAt
+  updatedAt
+}
+
+input CartFindUniqueArgs {
+  where: CartWhereUniqueInput!
+}
+
+input CartWhereUniqueInput {
+  id: Int
+  AND: [CartWhereInput!]
+  OR: [CartWhereInput!]
+  NOT: [CartWhereInput!]
+  orderId: IntFilter
+  itemId: IntFilter
+  quantity: IntFilter
+  price: FloatFilter
+  cost: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+  item: ItemRelationFilter
+}
+
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreateOne(userCreateArgs: UserCreateArgs!): User
@@ -5140,6 +5198,8 @@ input CartCreateNestedManyWithoutOrderInput {
 
 input CartCreateWithoutOrderInput {
   quantity: Int!
+  price: Float!
+  cost: Float!
   createdAt: DateTime
   updatedAt: DateTime
   item: ItemCreateNestedOneWithoutCartInput!
@@ -5171,22 +5231,6 @@ input CartCreateOrConnectWithoutOrderInput {
   create: CartCreateWithoutOrderInput!
 }
 
-input CartWhereUniqueInput {
-  id: Int
-  AND: [CartWhereInput!]
-  OR: [CartWhereInput!]
-  NOT: [CartWhereInput!]
-  orderId: IntFilter
-  itemId: IntFilter
-  quantity: IntFilter
-  price: FloatFilter
-  cost: FloatFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  order: OrderRelationFilter
-  item: ItemRelationFilter
-}
-
 input CartCreateManyOrderInputEnvelope {
   data: [CartCreateManyOrderInput!]!
   skipDuplicates: Boolean
@@ -5196,6 +5240,8 @@ input CartCreateManyOrderInput {
   id: Int
   itemId: Int!
   quantity: Int!
+  price: Float!
+  cost: Float!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -5447,6 +5493,7 @@ input UserUpdateInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -5465,6 +5512,10 @@ input EnumUserTypeFieldUpdateOperationsInput {
 
 input NullableDateTimeFieldUpdateOperationsInput {
   set: DateTime
+}
+
+input EnumUserStatusFieldUpdateOperationsInput {
+  set: UserStatus
 }
 
 input EnumThemeFieldUpdateOperationsInput {
@@ -6081,6 +6132,7 @@ input UserUpdateWithoutAddressInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -6276,6 +6328,7 @@ input UserUpdateWithoutProgramsCreatedInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -6335,6 +6388,7 @@ input UserUpdateWithoutProgramsParticipationInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -6380,6 +6434,7 @@ input UserUpdateManyMutationInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
 }
 
@@ -6621,6 +6676,7 @@ input UserUpdateWithoutCheckInsInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
 }
 
@@ -6687,6 +6743,7 @@ input UserUpdateWithoutHotelsCreatedInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -6858,6 +6915,7 @@ input UserUpdateWithoutOrdersInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -7212,6 +7270,8 @@ input CartCreateNestedManyWithoutItemInput {
 
 input CartCreateWithoutItemInput {
   quantity: Int!
+  price: Float!
+  cost: Float!
   createdAt: DateTime
   updatedAt: DateTime
   order: OrderCreateNestedOneWithoutCartInput!
@@ -7254,6 +7314,8 @@ input CartCreateManyItemInput {
   id: Int
   orderId: Int!
   quantity: Int!
+  price: Float!
+  cost: Float!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -7961,6 +8023,7 @@ input UserUpdateWithoutFilesCreatedInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -8218,6 +8281,7 @@ input UserUpdateWithoutUserNotificationsInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
@@ -8318,6 +8382,7 @@ input UserUpdateWithoutAccountsInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
 }
