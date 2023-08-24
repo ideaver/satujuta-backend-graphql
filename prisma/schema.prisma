@@ -682,7 +682,6 @@ model Reward {
   updatedAt   DateTime      @updatedAt
 }
 
-//create model rewardclaim below
 model RewardClaim {
   id          Int      @id @default(autoincrement())
   user        User     @relation(fields: [userId], references: [id])
