@@ -668,7 +668,7 @@ model Reward {
   /// @Validator.IsAlphanumeric()
   name        String
   /// @Validator.IsNumber() 
-  /// @HideField({ output: false, input: true })  
+  /// @HideField({ match: 'RewardUpdate*Input' }) 
   pointCost   Float
   /// @Validator.MinLength(10)
   /// @Validator.IsNotEmpty()
@@ -684,11 +684,15 @@ model Reward {
 
 model RewardClaim {
   id          Int      @id @default(autoincrement())
+  /// @HideField({ match: 'RewardClaimUpdate*Input' }) 
   user        User     @relation(fields: [userId], references: [id])
   userId      String
+  /// @HideField({ match: 'RewardClaimUpdate*Input' }) 
   reward      Reward   @relation(fields: [rewardId], references: [id])
   rewardId    Int
+  /// @HideField({ match: 'RewardClaimCreate*Input' }) 
   processedAt DateTime
+  /// @HideField({ match: ['RewardClaimCreate*Input','RewardClaimUpdate*Input']})
   createdAt   DateTime @default(now())
 }
 
