@@ -34,6 +34,7 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
+  console.log(await prisma.pointTransaction.deleteMany());
   await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
 
   //   const query = Prisma.sql`
@@ -585,41 +586,63 @@ async function transactionCreateManySeed({
 // }
 
 async function pointTransactionCreateManySeed({
-  numberOfBanks: numberOfPointTransaction,
+  numberOfPointTransaction,
+}: {
+  numberOfPointTransaction: number;
 }): Promise<void> {
   const pointTransactionToCreate: Prisma.PointTransactionCreateManyInput[] = [];
 
-  const users: Promise<User[]> = prisma.user.findMany();
+  const users: User[] = await prisma.user.findMany();
+
+  // for (const user of users) {
+  //   const res = await prisma.pointTransaction.create({
+  //     data: {
+  //       currentBalance: 1,
+  //       amount: 1,
+  //       User: { connect: { id: user.id } },
+  //       pointType: 'REFERRING',
+  //       transactionType: 'CREDIT',
+  //     },
+  //   });
+  // }
 
   for (let i = 0; i < numberOfPointTransaction; i++) {
-    const getUserId: string = users[i].pointTransactionToCreate.push({
-      amount: faker.datatype.number({ min: 1, max: 500 }),
-      pointType: faker.helpers.arrayElement([
-        PointType.REFERRING,
-        PointType.REDEEMING,
-      ] as const),
-      userId: '5bfa338c-dd73-4435-b9b9-701ad364a355',
-      transactionType: faker.helpers.arrayElement([
-        TransactionType.DEBIT,
-        TransactionType.CREDIT,
-      ] as const),
+    const userIndex = i % users.length;
+    const referOrRedeem = faker.helpers.arrayElement([
+      PointType.REFERRING,
+      PointType.REDEEMING,
+    ] as const);
+    const debitOrCredit =
+      referOrRedeem === PointType.REFERRING
+        ? TransactionType.CREDIT
+        : TransactionType.DEBIT;
+    const amount = faker.datatype.number({ min: 1, max: 500 });
+    const amountDebitCredit =
+      debitOrCredit === TransactionType.CREDIT ? amount : -amount;
+
+    const res = await prisma.pointTransaction
+      .findFirst({
+        where: {
+          User: {
+            id: users[userIndex].id,
+          },
+        },
+        orderBy: [{ id: 'desc' }],
+        take: 1,
+      })
+      .then((res) => (res ? res.currentBalance : 0));
+
+    await prisma.pointTransaction.create({
+      data: {
+        pointType: referOrRedeem,
+        userId: users[userIndex].id,
+        transactionType: debitOrCredit,
+        amount: amountDebitCredit,
+        currentBalance: res + amountDebitCredit,
+      },
     });
-  }
 
-  const pointTransactionCreateManyArgs: Prisma.PointTransactionCreateManyArgs =
-    {
-      data: pointTransactionToCreate,
-    };
-
-  try {
-    const createdPointTransaction = await prisma.pointTransaction.createMany(
-      pointTransactionCreateManyArgs,
-    );
-    console.log(
-      'pointTransactions created: ' + JSON.stringify(createdPointTransaction),
-    );
-  } catch (err) {
-    console.error(err);
+    console.log('Iteration: ' + i);
   }
 }
 

@@ -1,9 +1,7 @@
-import { Resolver, Query, Mutation, Args, Info, Float } from '@nestjs/graphql';
-import { AccountService } from './account.service';
-import { Prisma, Transaction, TransactionStatus } from '@prisma/client';
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { Account } from 'src/@generated';
-import { AccountCreateArgs } from './dto/account-create-one.args';
 import { AccountFindManyArgs } from './dto/account-find-many.args';
 import { AccountFindUniqueArgs } from './dto/account-find-one.args';
 import { AccountUpdateOneArgs } from './dto/account-update-one.args';
@@ -12,9 +10,7 @@ import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
 } from './dto/get-account-balance-by-custom-period.args';
-import { Period } from 'src/model/period.enum';
-import { TransactionService } from '../transaction/transaction.service';
-import { Injectable } from '@nestjs/common';
+import { AccountController } from './account.controller';
 
 interface AccountSelect {
   select: Prisma.AccountSelect;
@@ -22,10 +18,7 @@ interface AccountSelect {
 
 @Resolver(() => Account)
 export class AccountResolver {
-  constructor(
-    private readonly accountService: AccountService,
-    private readonly transactionService: TransactionService,
-  ) {}
+  constructor(private readonly accountController: AccountController) {}
 
   // @Mutation(() => Account, {
   //   nullable: true,
@@ -36,7 +29,7 @@ export class AccountResolver {
   //   @Relations() relations: AccountSelect
   // ): Promise<Account | void> {
   //   accountCreateArgs.select = relations.select;
-  //   return await this.accountService.createOne(accountCreateArgs);
+  //   return await this.accountController.createOne(accountCreateArgs);
   // }
 
   @Query(() => [Account], {
@@ -49,7 +42,7 @@ export class AccountResolver {
   ) {
     //Auto implement prisma select from graphql query info
     accountFindManyArgs.select = relations.select;
-    return this.accountService.findMany(accountFindManyArgs);
+    return this.accountController.findMany(accountFindManyArgs);
   }
 
   @Query(() => Account, {
@@ -63,7 +56,7 @@ export class AccountResolver {
   ) {
     //Auto implement prisma select from graphql query info
     accountFindUniqueArgs.select = relations.select;
-    return this.accountService.findOne(accountFindUniqueArgs);
+    return this.accountController.findOne(accountFindUniqueArgs);
   }
 
   @Query(() => Account, {
@@ -78,7 +71,7 @@ export class AccountResolver {
   ) {
     //Auto implement prisma select from graphql query info
     accountFindFirstArgs.select = relations.select;
-    return this.accountService.findFirst(accountFindFirstArgs);
+    return this.accountController.findFirst(accountFindFirstArgs);
   }
 
   @Mutation(() => Account, { description: 'Deskripsinya ada disini loh' })
@@ -87,7 +80,7 @@ export class AccountResolver {
     @Relations() relations: AccountSelect,
   ) {
     accountUpdateOneArgs.select = relations.select;
-    return this.accountService.update(accountUpdateOneArgs);
+    return this.accountController.updateOne(accountUpdateOneArgs);
   }
 
   // @Mutation(() => Boolean, {
@@ -95,134 +88,21 @@ export class AccountResolver {
   //   description: 'Datanya benar2 terhapus dari db',
   // })
   // accountRemove(@Args('accountId') accountId: number) {
-  //   return this.accountService.remove(accountId);
+  //   return this.accountController.remove(accountId);
   // }
 
   @Query(() => Float)
   async getAccountTotalBalance(@Args('accountId') accountId: number) {
-    const transactions = await this.transactionService.findMany({
-      where: {
-        OR: [
-          {
-            fromAccountId: { equals: accountId },
-            status: { equals: TransactionStatus.COMPLETED },
-          },
-          {
-            toAccountId: { equals: accountId },
-            status: { equals: TransactionStatus.COMPLETED },
-          },
-        ],
-      },
-      select: {
-        amount: true,
-        fromAccountId: true,
-        toAccountId: true,
-      },
-    });
-
-    let totalBalance = 0;
-    if (transactions) {
-      for (const transaction of transactions) {
-        if (transaction.fromAccountId === accountId) {
-          totalBalance -= transaction.amount;
-        } else if (transaction.toAccountId === accountId) {
-          totalBalance += transaction.amount;
-        }
-      }
-
-      return totalBalance;
-    }
+    return await this.accountController.getAccountTotalBalance(accountId);
   }
 
   @Query(() => [AccountBalanceByCustomPeriodQuery])
   async getAccountBalanceByCustomPeriod(
     @Args('accountBalanceByCustomPeriodArgs')
-    { accountId, period, start, end }: AccountBalanceByCustomPeriodArgs,
+    accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs,
   ): Promise<AccountBalanceByCustomPeriodQuery[] | void> {
-    const balances: AccountBalanceByCustomPeriodQuery[] = [];
-
-    let currentDate = new Date(start);
-
-    while (currentDate <= end) {
-      const transactions = await this.getTransactions(
-        accountId,
-        currentDate,
-        this.getNextPeriodDate(currentDate, period),
-      );
-
-      if (transactions) {
-        const formattedDate = currentDate.toLocaleDateString();
-
-        const monthlyBalance = this.calculateMonthlyBalance(
-          transactions,
-          accountId,
-        );
-
-        balances.push({
-          period: formattedDate,
-          totalBalance: monthlyBalance,
-        });
-      }
-
-      currentDate = this.getNextPeriodDate(currentDate, period);
-    }
-
-    return balances;
-  }
-
-  async getTransactions(accountId: number, startDate: Date, endDate: Date) {
-    return await this.transactionService.findMany({
-      where: {
-        OR: [
-          {
-            fromAccountId: { equals: accountId },
-            createdAt: { gte: startDate, lt: endDate },
-            status: { equals: TransactionStatus.COMPLETED },
-          },
-          {
-            toAccountId: { equals: accountId },
-            createdAt: { gte: startDate, lt: endDate },
-            status: { equals: TransactionStatus.COMPLETED },
-          },
-        ],
-      },
-      select: {
-        amount: true,
-        fromAccountId: true,
-        toAccountId: true,
-        createdAt: true,
-      },
-    });
-  }
-
-  calculateMonthlyBalance(
-    transactions: Transaction[],
-    accountId: number,
-  ): number {
-    let monthlyBalance = 0;
-
-    for (const transaction of transactions) {
-      if (transaction.fromAccountId === accountId) {
-        monthlyBalance -= transaction.amount;
-      } else if (transaction.toAccountId === accountId) {
-        monthlyBalance += transaction.amount;
-      }
-    }
-
-    return monthlyBalance;
-  }
-
-  getNextPeriodDate(currentDate: Date, period: Period): Date {
-    const nextDate = new Date(currentDate);
-
-    if (period === Period.WEEKLY) {
-      nextDate.setDate(currentDate.getDate() + 7);
-    } else if (period === Period.MONTHLY) {
-      nextDate.setMonth(currentDate.getMonth() + 1);
-    } else if (period === Period.YEARLY) {
-      nextDate.setFullYear(currentDate.getFullYear() + 1);
-    }
-
-    return nextDate;
+    return await this.accountController.getAccountBalanceByCustomPeriod(
+      accountBalanceByCustomPeriodArgs,
+    );
   }
 }

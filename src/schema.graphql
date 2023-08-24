@@ -118,10 +118,10 @@ type UserAbstract {
   programsParticipation: [Program!]
   projectsInvestment: [Project!]
   claimedRewards: [RewardClaim!]
+  withdrawalRequest: [WithdrawalRequest!]
   userNotifications: [UserNotification!]
   programsCreated: [Program!]
   filesCreated: [File!]
-  WithdrawalRequest: [WithdrawalRequest!]
   _count: UserCount!
 }
 
@@ -1774,10 +1774,10 @@ type UserCount {
   programsParticipation: Int!
   projectsInvestment: Int!
   claimedRewards: Int!
+  withdrawalRequest: Int!
   userNotifications: Int!
   programsCreated: Int!
   filesCreated: Int!
-  WithdrawalRequest: Int!
 }
 
 type UserMaxAggregate {
@@ -1989,11 +1989,17 @@ type User {
   programsParticipation: [Program!]
   projectsInvestment: [Project!]
   claimedRewards: [RewardClaim!]
+  withdrawalRequest: [WithdrawalRequest!]
   userNotifications: [UserNotification!]
   programsCreated: [Program!]
   filesCreated: [File!]
-  WithdrawalRequest: [WithdrawalRequest!]
   _count: UserCount!
+}
+
+type UserTypePercentage {
+  userCountType: String!
+  userCount: Float!
+  userPercentage: Float!
 }
 
 type AccountBalanceByCustomPeriodQuery {
@@ -2010,6 +2016,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   userCount(userFindManyArgs: UserFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
+  countUserTypePercentage: [UserTypePercentage!]!
 
   """Deskripsinya ada disini loh"""
   itemFindMany(itemFindManyArgs: ItemFindManyArgs!): [Item!]
@@ -2181,6 +2190,18 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   cartFindOne(cartFindUniqueArgs: CartFindUniqueArgs!): Cart
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimFindMany(rewardClaimFindManyArgs: RewardClaimFindManyArgs): [RewardClaim!]
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimFindOne(rewardClaimFindUniqueArgs: RewardClaimFindUniqueArgs!): RewardClaim
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindMany(withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs): [WithdrawalRequest!]
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
 }
 
 input UserFindManyArgs {
@@ -2222,8 +2243,8 @@ input UserWhereInput {
   orders: OrderListRelationFilter
   hotelsCreated: HotelListRelationFilter
   claimedRewards: RewardClaimListRelationFilter
+  withdrawalRequest: WithdrawalRequestListRelationFilter
   programsCreated: ProgramListRelationFilter
-  WithdrawalRequest: WithdrawalRequestListRelationFilter
 }
 
 input StringFilter {
@@ -2700,6 +2721,7 @@ input RewardWhereInput {
   NOT: [RewardWhereInput!]
   id: IntFilter
   name: StringFilter
+  pointCost: FloatFilter
   description: StringFilter
   images: ImagesListRelationFilter
   RewardClaim: RewardClaimListRelationFilter
@@ -3144,8 +3166,8 @@ input UserOrderByWithRelationInput {
   orders: OrderOrderByRelationAggregateInput
   hotelsCreated: HotelOrderByRelationAggregateInput
   claimedRewards: RewardClaimOrderByRelationAggregateInput
+  withdrawalRequest: WithdrawalRequestOrderByRelationAggregateInput
   programsCreated: ProgramOrderByRelationAggregateInput
-  WithdrawalRequest: WithdrawalRequestOrderByRelationAggregateInput
 }
 
 enum SortOrder {
@@ -3331,11 +3353,11 @@ input RewardClaimOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
-input ProgramOrderByRelationAggregateInput {
+input WithdrawalRequestOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
-input WithdrawalRequestOrderByRelationAggregateInput {
+input ProgramOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
@@ -3369,8 +3391,8 @@ input UserWhereUniqueInput {
   orders: OrderListRelationFilter
   hotelsCreated: HotelListRelationFilter
   claimedRewards: RewardClaimListRelationFilter
+  withdrawalRequest: WithdrawalRequestListRelationFilter
   programsCreated: ProgramListRelationFilter
-  WithdrawalRequest: WithdrawalRequestListRelationFilter
 }
 
 enum UserScalarFieldEnum {
@@ -3650,6 +3672,7 @@ input RewardFindManyArgs {
 input RewardOrderByWithRelationInput {
   id: SortOrder
   name: SortOrder
+  pointCost: SortOrder
   description: SortOrder
   images: ImagesOrderByRelationAggregateInput
   RewardClaim: RewardClaimOrderByRelationAggregateInput
@@ -3674,6 +3697,7 @@ input RewardWhereUniqueInput {
   OR: [RewardWhereInput!]
   NOT: [RewardWhereInput!]
   name: StringFilter
+  pointCost: FloatFilter
   description: StringFilter
   images: ImagesListRelationFilter
   RewardClaim: RewardClaimListRelationFilter
@@ -4759,6 +4783,86 @@ input CartWhereUniqueInput {
   item: ItemRelationFilter
 }
 
+input RewardClaimFindManyArgs {
+  where: RewardClaimWhereInput
+  orderBy: [RewardClaimOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [RewardClaimScalarFieldEnum!]
+}
+
+input RewardClaimOrderByWithRelationInput {
+  id: SortOrder
+  userId: SortOrder
+  rewardId: SortOrder
+  processedAt: SortOrder
+  createdAt: SortOrder
+  user: UserOrderByWithRelationInput
+  reward: RewardOrderByWithRelationInput
+}
+
+enum RewardClaimScalarFieldEnum {
+  id
+  userId
+  rewardId
+  processedAt
+  createdAt
+}
+
+input RewardClaimFindUniqueArgs {
+  where: RewardClaimWhereUniqueInput!
+}
+
+input RewardClaimWhereUniqueInput {
+  id: Int
+  AND: [RewardClaimWhereInput!]
+  OR: [RewardClaimWhereInput!]
+  NOT: [RewardClaimWhereInput!]
+  userId: StringFilter
+  rewardId: IntFilter
+  processedAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  user: UserRelationFilter
+  reward: RewardRelationFilter
+}
+
+input WithdrawalRequestFindManyArgs {
+  where: WithdrawalRequestWhereInput
+  orderBy: [WithdrawalRequestOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [WithdrawalRequestScalarFieldEnum!]
+}
+
+enum WithdrawalRequestScalarFieldEnum {
+  id
+  userId
+  amount
+  status
+  transactionId
+  createdAt
+  updatedAt
+}
+
+input WithdrawalRequestFindUniqueArgs {
+  where: WithdrawalRequestWhereUniqueInput!
+}
+
+input WithdrawalRequestWhereUniqueInput {
+  id: Int
+  AND: [WithdrawalRequestWhereInput!]
+  OR: [WithdrawalRequestWhereInput!]
+  NOT: [WithdrawalRequestWhereInput!]
+  userId: StringFilter
+  amount: FloatFilter
+  status: EnumTransactionStatusFilter
+  transactionId: IntNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  transaction: TransactionNullableRelationFilter
+}
+
 type Mutation {
   """Deskripsinya ada disini loh"""
   userCreateOne(userCreateArgs: UserCreateArgs!): User
@@ -4915,6 +5019,28 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimCreateOne(rewardClaimCreateArgs: RewardClaimCreateArgs!): RewardClaim
+
+  """
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim rewardClaim, backend akan cek apakah saldo point user cukup untuk claim
+  """
+  rewardClaimUpdateOne(rewardClaimUpdateOneArgs: RewardClaimUpdateOneArgs!): RewardClaim!
+
+  """Datanya benar2 terhapus dari db"""
+  rewardClaimRemove(rewardClaimId: Float!): Boolean
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestCreateOne(withdrawalRequestCreateArgs: WithdrawalRequestCreateArgs!): WithdrawalRequest
+
+  """
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim withdrawalRequest, backend akan cek apakah saldo point user cukup untuk claim
+  """
+  withdrawalRequestUpdateOne(withdrawalRequestUpdateOneArgs: WithdrawalRequestUpdateOneArgs!): WithdrawalRequest!
+
+  """Datanya benar2 terhapus dari db"""
+  withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
 }
 
 input UserCreateArgs {
@@ -4936,7 +5062,6 @@ input UserCreateInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input AddressCreateNestedOneWithoutUserInput {
@@ -5296,7 +5421,6 @@ input UserCreateWithoutReferredUsersInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input SchoolCreateNestedOneWithoutStudentsInput {
@@ -5534,21 +5658,6 @@ input WithdrawalRequestCreateOrConnectWithoutTransactionInput {
   create: WithdrawalRequestCreateWithoutTransactionInput!
 }
 
-input WithdrawalRequestWhereUniqueInput {
-  id: Int
-  AND: [WithdrawalRequestWhereInput!]
-  OR: [WithdrawalRequestWhereInput!]
-  NOT: [WithdrawalRequestWhereInput!]
-  userId: StringFilter
-  amount: FloatFilter
-  status: EnumTransactionStatusFilter
-  transactionId: IntNullableFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  user: UserRelationFilter
-  transaction: TransactionNullableRelationFilter
-}
-
 input TransactionCreateOrConnectWithoutInvoiceInput {
   where: TransactionWhereUniqueInput!
   create: TransactionCreateWithoutInvoiceInput!
@@ -5650,60 +5759,6 @@ input UserCreateWithoutOrdersInput {
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
-}
-
-input WithdrawalRequestCreateNestedManyWithoutUserInput {
-  create: [WithdrawalRequestCreateWithoutUserInput!]
-  connectOrCreate: [WithdrawalRequestCreateOrConnectWithoutUserInput!]
-  createMany: WithdrawalRequestCreateManyUserInputEnvelope
-  connect: [WithdrawalRequestWhereUniqueInput!]
-}
-
-input WithdrawalRequestCreateWithoutUserInput {
-  amount: Float!
-  status: TransactionStatus!
-  transactionId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
-  transaction: TransactionCreateNestedOneWithoutWithdrawalRequestInput
-}
-
-input TransactionCreateNestedOneWithoutWithdrawalRequestInput {
-  create: TransactionCreateWithoutWithdrawalRequestInput
-  connectOrCreate: TransactionCreateOrConnectWithoutWithdrawalRequestInput
-  connect: TransactionWhereUniqueInput
-}
-
-input TransactionCreateWithoutWithdrawalRequestInput {
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
-}
-
-input TransactionCreateOrConnectWithoutWithdrawalRequestInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutWithdrawalRequestInput!
-}
-
-input WithdrawalRequestCreateOrConnectWithoutUserInput {
-  where: WithdrawalRequestWhereUniqueInput!
-  create: WithdrawalRequestCreateWithoutUserInput!
-}
-
-input WithdrawalRequestCreateManyUserInputEnvelope {
-  data: [WithdrawalRequestCreateManyUserInput!]!
-  skipDuplicates: Boolean
-}
-
-input WithdrawalRequestCreateManyUserInput {
-  id: Int
-  amount: Float!
-  status: TransactionStatus!
-  transactionId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
 }
 
 input UserCreateOrConnectWithoutOrdersInput {
@@ -5811,7 +5866,6 @@ input UserUpdateInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input StringFieldUpdateOperationsInput {
@@ -6227,7 +6281,6 @@ input UserCreateWithoutAddressInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutAddressInput {
@@ -6253,7 +6306,6 @@ input UserUpdateWithoutAddressInput {
   status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input CheckInUpdateManyWithoutUserNestedInput {
@@ -6380,7 +6432,6 @@ input UserCreateWithoutHotelsCreatedInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutHotelsCreatedInput {
@@ -6642,125 +6693,6 @@ input UserUpdateWithoutOrdersInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
-}
-
-input WithdrawalRequestUpdateManyWithoutUserNestedInput {
-  create: [WithdrawalRequestCreateWithoutUserInput!]
-  connectOrCreate: [WithdrawalRequestCreateOrConnectWithoutUserInput!]
-  upsert: [WithdrawalRequestUpsertWithWhereUniqueWithoutUserInput!]
-  createMany: WithdrawalRequestCreateManyUserInputEnvelope
-  set: [WithdrawalRequestWhereUniqueInput!]
-  disconnect: [WithdrawalRequestWhereUniqueInput!]
-  delete: [WithdrawalRequestWhereUniqueInput!]
-  connect: [WithdrawalRequestWhereUniqueInput!]
-  update: [WithdrawalRequestUpdateWithWhereUniqueWithoutUserInput!]
-  updateMany: [WithdrawalRequestUpdateManyWithWhereWithoutUserInput!]
-  deleteMany: [WithdrawalRequestScalarWhereInput!]
-}
-
-input WithdrawalRequestUpsertWithWhereUniqueWithoutUserInput {
-  where: WithdrawalRequestWhereUniqueInput!
-  update: WithdrawalRequestUpdateWithoutUserInput!
-  create: WithdrawalRequestCreateWithoutUserInput!
-}
-
-input WithdrawalRequestUpdateWithoutUserInput {
-  amount: FloatFieldUpdateOperationsInput
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  transactionId: NullableIntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  transaction: TransactionUpdateOneWithoutWithdrawalRequestNestedInput
-}
-
-input TransactionUpdateOneWithoutWithdrawalRequestNestedInput {
-  create: TransactionCreateWithoutWithdrawalRequestInput
-  connectOrCreate: TransactionCreateOrConnectWithoutWithdrawalRequestInput
-  upsert: TransactionUpsertWithoutWithdrawalRequestInput
-  disconnect: TransactionWhereInput
-  delete: TransactionWhereInput
-  connect: TransactionWhereUniqueInput
-  update: TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput
-}
-
-input TransactionUpsertWithoutWithdrawalRequestInput {
-  update: TransactionUpdateWithoutWithdrawalRequestInput!
-  create: TransactionCreateWithoutWithdrawalRequestInput!
-  where: TransactionWhereInput
-}
-
-input TransactionUpdateWithoutWithdrawalRequestInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
-}
-
-input EnumTransactionCategoryFieldUpdateOperationsInput {
-  set: TransactionCategory
-}
-
-input InvoiceUpdateOneWithoutTransactionsNestedInput {
-  create: InvoiceCreateWithoutTransactionsInput
-  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
-  upsert: InvoiceUpsertWithoutTransactionsInput
-  disconnect: InvoiceWhereInput
-  delete: InvoiceWhereInput
-  connect: InvoiceWhereUniqueInput
-  update: InvoiceUpdateToOneWithWhereWithoutTransactionsInput
-}
-
-input InvoiceUpsertWithoutTransactionsInput {
-  update: InvoiceUpdateWithoutTransactionsInput!
-  create: InvoiceCreateWithoutTransactionsInput!
-  where: InvoiceWhereInput
-}
-
-input InvoiceUpdateWithoutTransactionsInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  amount: FloatFieldUpdateOperationsInput
-}
-
-input InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
-  where: InvoiceWhereInput
-  data: InvoiceUpdateWithoutTransactionsInput!
-}
-
-input TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput {
-  where: TransactionWhereInput
-  data: TransactionUpdateWithoutWithdrawalRequestInput!
-}
-
-input WithdrawalRequestUpdateWithWhereUniqueWithoutUserInput {
-  where: WithdrawalRequestWhereUniqueInput!
-  data: WithdrawalRequestUpdateWithoutUserInput!
-}
-
-input WithdrawalRequestUpdateManyWithWhereWithoutUserInput {
-  where: WithdrawalRequestScalarWhereInput!
-  data: WithdrawalRequestUpdateManyMutationInput!
-}
-
-input WithdrawalRequestScalarWhereInput {
-  AND: [WithdrawalRequestScalarWhereInput!]
-  OR: [WithdrawalRequestScalarWhereInput!]
-  NOT: [WithdrawalRequestScalarWhereInput!]
-  id: IntFilter
-  userId: StringFilter
-  amount: FloatFilter
-  status: EnumTransactionStatusFilter
-  transactionId: IntNullableFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-}
-
-input WithdrawalRequestUpdateManyMutationInput {
-  amount: FloatFieldUpdateOperationsInput
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  transactionId: NullableIntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input UserUpdateToOneWithWhereWithoutOrdersInput {
@@ -6975,7 +6907,6 @@ input UserCreateWithoutProgramsCreatedInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutProgramsCreatedInput {
@@ -7048,7 +6979,6 @@ input UserUpdateWithoutProgramsCreatedInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateToOneWithWhereWithoutProgramsCreatedInput {
@@ -7084,7 +7014,6 @@ input UserCreateWithoutProgramsParticipationInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutProgramsParticipationInput {
@@ -7111,7 +7040,6 @@ input UserUpdateWithoutProgramsParticipationInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateWithWhereUniqueWithoutProgramsParticipationInput {
@@ -7202,6 +7130,7 @@ input RewardUpdateOneWithoutImagesNestedInput {
 
 input RewardCreateWithoutImagesInput {
   name: String!
+  pointCost: Float!
   description: String!
 }
 
@@ -7339,7 +7268,6 @@ input UserUpdateWithoutHotelsCreatedInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateToOneWithWhereWithoutHotelsCreatedInput {
@@ -7476,7 +7404,6 @@ input UserCreateWithoutCheckInsInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutCheckInsInput {
@@ -7526,7 +7453,6 @@ input UserUpdateWithoutCheckInsInput {
   status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateToOneWithWhereWithoutCheckInsInput {
@@ -8297,6 +8223,7 @@ input RewardCreateArgs {
 
 input RewardCreateInput {
   name: String!
+  pointCost: Float!
   description: String!
   images: ImagesCreateNestedManyWithoutRewardImageInput
 }
@@ -8417,7 +8344,6 @@ input UserCreateWithoutFilesCreatedInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutFilesCreatedInput {
@@ -8468,7 +8394,6 @@ input UserUpdateWithoutFilesCreatedInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateToOneWithWhereWithoutFilesCreatedInput {
@@ -8668,7 +8593,6 @@ input UserCreateWithoutUserNotificationsInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutUserNotificationsInput {
@@ -8729,7 +8653,6 @@ input UserUpdateWithoutUserNotificationsInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
@@ -8771,7 +8694,6 @@ input UserCreateWithoutPointTransactionsInput {
   school: SchoolCreateNestedOneWithoutStudentsInput
   accounts: AccountCreateNestedManyWithoutUserInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutPointTransactionsInput {
@@ -8849,7 +8771,6 @@ input UserCreateWithoutAccountsInput {
   referredBy: UserCreateNestedOneWithoutReferredUsersInput
   school: SchoolCreateNestedOneWithoutStudentsInput
   orders: OrderCreateNestedManyWithoutOrderByInput
-  WithdrawalRequest: WithdrawalRequestCreateNestedManyWithoutUserInput
 }
 
 input UserCreateOrConnectWithoutAccountsInput {
@@ -8876,7 +8797,6 @@ input UserUpdateWithoutAccountsInput {
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
-  WithdrawalRequest: WithdrawalRequestUpdateManyWithoutUserNestedInput
 }
 
 input UserUpdateToOneWithWhereWithoutAccountsInput {
@@ -8922,6 +8842,36 @@ input TransactionUpdateWithoutFromAccountInput {
   proofUrl: NullableStringFieldUpdateOperationsInput
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
   invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+}
+
+input EnumTransactionCategoryFieldUpdateOperationsInput {
+  set: TransactionCategory
+}
+
+input InvoiceUpdateOneWithoutTransactionsNestedInput {
+  create: InvoiceCreateWithoutTransactionsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
+  upsert: InvoiceUpsertWithoutTransactionsInput
+  disconnect: InvoiceWhereInput
+  delete: InvoiceWhereInput
+  connect: InvoiceWhereUniqueInput
+  update: InvoiceUpdateToOneWithWhereWithoutTransactionsInput
+}
+
+input InvoiceUpsertWithoutTransactionsInput {
+  update: InvoiceUpdateWithoutTransactionsInput!
+  create: InvoiceCreateWithoutTransactionsInput!
+  where: InvoiceWhereInput
+}
+
+input InvoiceUpdateWithoutTransactionsInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
+  where: InvoiceWhereInput
+  data: InvoiceUpdateWithoutTransactionsInput!
 }
 
 input TransactionCreateManyFromAccountInputEnvelope {
@@ -9132,4 +9082,177 @@ input OrderUpdateInput {
   cart: CartUpdateManyWithoutOrderNestedInput
   shipping: ShippingUpdateOneWithoutOrderNestedInput
   invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
+}
+
+input RewardClaimCreateArgs {
+  data: RewardClaimCreateInput!
+}
+
+input RewardClaimCreateInput {
+  user: UserCreateNestedOneWithoutClaimedRewardsInput!
+  reward: RewardCreateNestedOneWithoutRewardClaimInput!
+}
+
+input UserCreateNestedOneWithoutClaimedRewardsInput {
+  create: UserCreateWithoutClaimedRewardsInput
+  connectOrCreate: UserCreateOrConnectWithoutClaimedRewardsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutClaimedRewardsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+  orders: OrderCreateNestedManyWithoutOrderByInput
+}
+
+input UserCreateOrConnectWithoutClaimedRewardsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutClaimedRewardsInput!
+}
+
+input RewardCreateNestedOneWithoutRewardClaimInput {
+  create: RewardCreateWithoutRewardClaimInput
+  connectOrCreate: RewardCreateOrConnectWithoutRewardClaimInput
+  connect: RewardWhereUniqueInput
+}
+
+input RewardCreateWithoutRewardClaimInput {
+  name: String!
+  pointCost: Float!
+  description: String!
+  images: ImagesCreateNestedManyWithoutRewardImageInput
+}
+
+input RewardCreateOrConnectWithoutRewardClaimInput {
+  where: RewardWhereUniqueInput!
+  create: RewardCreateWithoutRewardClaimInput!
+}
+
+input RewardClaimUpdateOneArgs {
+  data: RewardClaimUpdateInput!
+  where: RewardClaimWhereUniqueInput!
+}
+
+input RewardClaimUpdateInput {
+  processedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input WithdrawalRequestCreateArgs {
+  data: WithdrawalRequestCreateInput!
+}
+
+input WithdrawalRequestCreateInput {
+  amount: Float!
+  status: TransactionStatus!
+  transactionId: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  user: UserCreateNestedOneWithoutWithdrawalRequestInput!
+  transaction: TransactionCreateNestedOneWithoutWithdrawalRequestInput
+}
+
+input TransactionCreateNestedOneWithoutWithdrawalRequestInput {
+  create: TransactionCreateWithoutWithdrawalRequestInput
+  connectOrCreate: TransactionCreateOrConnectWithoutWithdrawalRequestInput
+  connect: TransactionWhereUniqueInput
+}
+
+input TransactionCreateWithoutWithdrawalRequestInput {
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+}
+
+input TransactionCreateOrConnectWithoutWithdrawalRequestInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutWithdrawalRequestInput!
+}
+
+input WithdrawalRequestUpdateOneArgs {
+  data: WithdrawalRequestUpdateInput!
+  where: WithdrawalRequestWhereUniqueInput!
+}
+
+input WithdrawalRequestUpdateInput {
+  amount: FloatFieldUpdateOperationsInput
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  transactionId: NullableIntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput
+  transaction: TransactionUpdateOneWithoutWithdrawalRequestNestedInput
+}
+
+input UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput {
+  create: UserCreateWithoutWithdrawalRequestInput
+  connectOrCreate: UserCreateOrConnectWithoutWithdrawalRequestInput
+  upsert: UserUpsertWithoutWithdrawalRequestInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutWithdrawalRequestInput
+}
+
+input UserUpsertWithoutWithdrawalRequestInput {
+  update: UserUpdateWithoutWithdrawalRequestInput!
+  create: UserCreateWithoutWithdrawalRequestInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutWithdrawalRequestInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+}
+
+input UserUpdateToOneWithWhereWithoutWithdrawalRequestInput {
+  where: UserWhereInput
+  data: UserUpdateWithoutWithdrawalRequestInput!
+}
+
+input TransactionUpdateOneWithoutWithdrawalRequestNestedInput {
+  create: TransactionCreateWithoutWithdrawalRequestInput
+  connectOrCreate: TransactionCreateOrConnectWithoutWithdrawalRequestInput
+  upsert: TransactionUpsertWithoutWithdrawalRequestInput
+  disconnect: TransactionWhereInput
+  delete: TransactionWhereInput
+  connect: TransactionWhereUniqueInput
+  update: TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput
+}
+
+input TransactionUpsertWithoutWithdrawalRequestInput {
+  update: TransactionUpdateWithoutWithdrawalRequestInput!
+  create: TransactionCreateWithoutWithdrawalRequestInput!
+  where: TransactionWhereInput
+}
+
+input TransactionUpdateWithoutWithdrawalRequestInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+}
+
+input TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput {
+  where: TransactionWhereInput
+  data: TransactionUpdateWithoutWithdrawalRequestInput!
 }

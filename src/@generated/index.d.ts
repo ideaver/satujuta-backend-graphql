@@ -17805,10 +17805,10 @@ export declare class UserCount {
     programsParticipation?: number;
     projectsInvestment?: number;
     claimedRewards?: number;
+    withdrawalRequest?: number;
     userNotifications?: number;
     programsCreated?: number;
     filesCreated?: number;
-    WithdrawalRequest?: number;
 }
 export declare class UserCreateManyReferredByInputEnvelope {
     data: Array<UserCreateManyReferredByInput>;
@@ -18063,10 +18063,10 @@ export declare class UserCreateWithoutAccountsInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutAddressInput {
     id?: string;
@@ -18097,10 +18097,10 @@ export declare class UserCreateWithoutAddressInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutCheckInsInput {
     id?: string;
@@ -18131,10 +18131,10 @@ export declare class UserCreateWithoutCheckInsInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutClaimedRewardsInput {
     id?: string;
@@ -18165,10 +18165,10 @@ export declare class UserCreateWithoutClaimedRewardsInput {
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutFilesCreatedInput {
     id?: string;
@@ -18200,9 +18200,9 @@ export declare class UserCreateWithoutFilesCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutHotelsCreatedInput {
     id?: string;
@@ -18233,10 +18233,10 @@ export declare class UserCreateWithoutHotelsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutOrdersInput {
     id?: string;
@@ -18267,10 +18267,10 @@ export declare class UserCreateWithoutOrdersInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutPointTransactionsInput {
     id?: string;
@@ -18301,10 +18301,10 @@ export declare class UserCreateWithoutPointTransactionsInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutProgramsCreatedInput {
     id?: string;
@@ -18336,9 +18336,9 @@ export declare class UserCreateWithoutProgramsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutProgramsParticipationInput {
     id?: string;
@@ -18369,10 +18369,10 @@ export declare class UserCreateWithoutProgramsParticipationInput {
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutProjectsInvestmentInput {
     id?: string;
@@ -18403,10 +18403,10 @@ export declare class UserCreateWithoutProjectsInvestmentInput {
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutReferredByInput {
     id?: string;
@@ -18437,10 +18437,10 @@ export declare class UserCreateWithoutReferredByInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutReferredUsersInput {
     id?: string;
@@ -18471,10 +18471,10 @@ export declare class UserCreateWithoutReferredUsersInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutSchoolInput {
     id?: string;
@@ -18505,10 +18505,10 @@ export declare class UserCreateWithoutSchoolInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutSessionsInput {
     id?: string;
@@ -18539,10 +18539,10 @@ export declare class UserCreateWithoutSessionsInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutUserNotificationsInput {
     id?: string;
@@ -18574,9 +18574,9 @@ export declare class UserCreateWithoutUserNotificationsInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserCreateWithoutWithdrawalRequestInput {
     id?: string;
@@ -18642,10 +18642,10 @@ export declare class UserCreateInput {
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
 }
 export declare class UserGroupByArgs {
     where?: InstanceType<typeof UserWhereInput>;
@@ -18883,10 +18883,10 @@ export declare class UserOrderByWithRelationInput {
     programsParticipation?: InstanceType<typeof ProgramOrderByRelationAggregateInput>;
     projectsInvestment?: InstanceType<typeof ProjectOrderByRelationAggregateInput>;
     claimedRewards?: InstanceType<typeof RewardClaimOrderByRelationAggregateInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestOrderByRelationAggregateInput>;
     userNotifications?: InstanceType<typeof UserNotificationOrderByRelationAggregateInput>;
     programsCreated?: InstanceType<typeof ProgramOrderByRelationAggregateInput>;
     filesCreated?: InstanceType<typeof FileOrderByRelationAggregateInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestOrderByRelationAggregateInput>;
 }
 export declare class UserRelationFilter {
     is?: InstanceType<typeof UserWhereInput>;
@@ -19008,10 +19008,10 @@ export declare class UserUncheckedCreateWithoutAccountsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutAddressInput {
     id?: string;
@@ -19042,10 +19042,10 @@ export declare class UserUncheckedCreateWithoutAddressInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutCheckInsInput {
     id?: string;
@@ -19076,10 +19076,10 @@ export declare class UserUncheckedCreateWithoutCheckInsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutClaimedRewardsInput {
     id?: string;
@@ -19110,10 +19110,10 @@ export declare class UserUncheckedCreateWithoutClaimedRewardsInput {
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutFilesCreatedInput {
     id?: string;
@@ -19145,9 +19145,9 @@ export declare class UserUncheckedCreateWithoutFilesCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutHotelsCreatedInput {
     id?: string;
@@ -19178,10 +19178,10 @@ export declare class UserUncheckedCreateWithoutHotelsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutOrdersInput {
     id?: string;
@@ -19212,10 +19212,10 @@ export declare class UserUncheckedCreateWithoutOrdersInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutPointTransactionsInput {
     id?: string;
@@ -19246,10 +19246,10 @@ export declare class UserUncheckedCreateWithoutPointTransactionsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutProgramsCreatedInput {
     id?: string;
@@ -19281,9 +19281,9 @@ export declare class UserUncheckedCreateWithoutProgramsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutProgramsParticipationInput {
     id?: string;
@@ -19314,10 +19314,10 @@ export declare class UserUncheckedCreateWithoutProgramsParticipationInput {
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutProjectsInvestmentInput {
     id?: string;
@@ -19348,10 +19348,10 @@ export declare class UserUncheckedCreateWithoutProjectsInvestmentInput {
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutReferredByInput {
     id?: string;
@@ -19382,10 +19382,10 @@ export declare class UserUncheckedCreateWithoutReferredByInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutReferredUsersInput {
     id?: string;
@@ -19416,10 +19416,10 @@ export declare class UserUncheckedCreateWithoutReferredUsersInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutSchoolInput {
     id?: string;
@@ -19450,10 +19450,10 @@ export declare class UserUncheckedCreateWithoutSchoolInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutSessionsInput {
     id?: string;
@@ -19484,10 +19484,10 @@ export declare class UserUncheckedCreateWithoutSessionsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutUserNotificationsInput {
     id?: string;
@@ -19519,9 +19519,9 @@ export declare class UserUncheckedCreateWithoutUserNotificationsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedCreateWithoutWithdrawalRequestInput {
     id?: string;
@@ -19587,10 +19587,10 @@ export declare class UserUncheckedCreateInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
     filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
 }
 export declare class UserUncheckedUpdateManyWithoutProgramsParticipationNestedInput {
     create?: Array<UserCreateWithoutProgramsParticipationInput>;
@@ -19783,10 +19783,10 @@ export declare class UserUncheckedUpdateWithoutAccountsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutAddressInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -19817,10 +19817,10 @@ export declare class UserUncheckedUpdateWithoutAddressInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutCheckInsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -19851,10 +19851,10 @@ export declare class UserUncheckedUpdateWithoutCheckInsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutClaimedRewardsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -19885,10 +19885,10 @@ export declare class UserUncheckedUpdateWithoutClaimedRewardsInput {
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutFilesCreatedInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -19920,9 +19920,9 @@ export declare class UserUncheckedUpdateWithoutFilesCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutHotelsCreatedInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -19953,10 +19953,10 @@ export declare class UserUncheckedUpdateWithoutHotelsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutOrdersInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -19987,10 +19987,10 @@ export declare class UserUncheckedUpdateWithoutOrdersInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutPointTransactionsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20021,10 +20021,10 @@ export declare class UserUncheckedUpdateWithoutPointTransactionsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutProgramsCreatedInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20056,9 +20056,9 @@ export declare class UserUncheckedUpdateWithoutProgramsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutProgramsParticipationInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20089,10 +20089,10 @@ export declare class UserUncheckedUpdateWithoutProgramsParticipationInput {
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutProjectsInvestmentInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20123,10 +20123,10 @@ export declare class UserUncheckedUpdateWithoutProjectsInvestmentInput {
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutReferredByInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20157,10 +20157,10 @@ export declare class UserUncheckedUpdateWithoutReferredByInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutReferredUsersInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20191,10 +20191,10 @@ export declare class UserUncheckedUpdateWithoutReferredUsersInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutSchoolInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20225,10 +20225,10 @@ export declare class UserUncheckedUpdateWithoutSchoolInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutSessionsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20259,10 +20259,10 @@ export declare class UserUncheckedUpdateWithoutSessionsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutUserNotificationsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20294,9 +20294,9 @@ export declare class UserUncheckedUpdateWithoutUserNotificationsInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUncheckedUpdateWithoutWithdrawalRequestInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20362,10 +20362,10 @@ export declare class UserUncheckedUpdateInput {
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateManyMutationInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20643,10 +20643,10 @@ export declare class UserUpdateWithoutAccountsInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutAddressInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20677,10 +20677,10 @@ export declare class UserUpdateWithoutAddressInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutCheckInsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20711,10 +20711,10 @@ export declare class UserUpdateWithoutCheckInsInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutClaimedRewardsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20745,10 +20745,10 @@ export declare class UserUpdateWithoutClaimedRewardsInput {
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutFilesCreatedInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20780,9 +20780,9 @@ export declare class UserUpdateWithoutFilesCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutHotelsCreatedInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20813,10 +20813,10 @@ export declare class UserUpdateWithoutHotelsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutOrdersInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20847,10 +20847,10 @@ export declare class UserUpdateWithoutOrdersInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutPointTransactionsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20881,10 +20881,10 @@ export declare class UserUpdateWithoutPointTransactionsInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutProgramsCreatedInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20916,9 +20916,9 @@ export declare class UserUpdateWithoutProgramsCreatedInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutProgramsParticipationInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20949,10 +20949,10 @@ export declare class UserUpdateWithoutProgramsParticipationInput {
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutProjectsInvestmentInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -20983,10 +20983,10 @@ export declare class UserUpdateWithoutProjectsInvestmentInput {
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutReferredByInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -21017,10 +21017,10 @@ export declare class UserUpdateWithoutReferredByInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutReferredUsersInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -21051,10 +21051,10 @@ export declare class UserUpdateWithoutReferredUsersInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutSchoolInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -21085,10 +21085,10 @@ export declare class UserUpdateWithoutSchoolInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutSessionsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -21119,10 +21119,10 @@ export declare class UserUpdateWithoutSessionsInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutUserNotificationsInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -21154,9 +21154,9 @@ export declare class UserUpdateWithoutUserNotificationsInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpdateWithoutWithdrawalRequestInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -21222,10 +21222,10 @@ export declare class UserUpdateInput {
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
     filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutProgramsParticipationInput {
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
@@ -21348,10 +21348,10 @@ export declare class UserWhereUniqueInput {
     programsParticipation?: InstanceType<typeof ProgramListRelationFilter>;
     projectsInvestment?: InstanceType<typeof ProjectListRelationFilter>;
     claimedRewards?: InstanceType<typeof RewardClaimListRelationFilter>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestListRelationFilter>;
     userNotifications?: InstanceType<typeof UserNotificationListRelationFilter>;
     programsCreated?: InstanceType<typeof ProgramListRelationFilter>;
     filesCreated?: InstanceType<typeof FileListRelationFilter>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestListRelationFilter>;
 }
 export declare class UserWhereInput {
     AND?: Array<UserWhereInput>;
@@ -21389,10 +21389,10 @@ export declare class UserWhereInput {
     programsParticipation?: InstanceType<typeof ProgramListRelationFilter>;
     projectsInvestment?: InstanceType<typeof ProjectListRelationFilter>;
     claimedRewards?: InstanceType<typeof RewardClaimListRelationFilter>;
+    withdrawalRequest?: InstanceType<typeof WithdrawalRequestListRelationFilter>;
     userNotifications?: InstanceType<typeof UserNotificationListRelationFilter>;
     programsCreated?: InstanceType<typeof ProgramListRelationFilter>;
     filesCreated?: InstanceType<typeof FileListRelationFilter>;
-    WithdrawalRequest?: InstanceType<typeof WithdrawalRequestListRelationFilter>;
 }
 export declare class User {
     id: string;
@@ -21427,10 +21427,10 @@ export declare class User {
     programsParticipation?: Array<Program>;
     projectsInvestment?: Array<Project>;
     claimedRewards?: Array<RewardClaim>;
+    withdrawalRequest?: Array<WithdrawalRequest>;
     userNotifications?: Array<UserNotification>;
     programsCreated?: Array<Program>;
     filesCreated?: Array<File>;
-    WithdrawalRequest?: Array<WithdrawalRequest>;
     _count?: InstanceType<typeof UserCount>;
 }
 export declare class AggregateUserNotification {

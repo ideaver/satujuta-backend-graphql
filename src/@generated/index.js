@@ -42996,7 +42996,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardAvgAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardAvgAggregateInput.prototype, "pointCost", void 0);
 RewardAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -43020,7 +43020,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardAvgOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardAvgOrderByAggregateInput.prototype, "pointCost", void 0);
 RewardAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -43035,7 +43035,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardCountAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardCountAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -43089,7 +43089,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardCountOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardCountOrderByAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -43129,7 +43129,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardCreateManyInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43220,7 +43221,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardCreateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43250,7 +43252,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateWithoutRewardClaimInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardCreateWithoutRewardClaimInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43280,7 +43283,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardCreateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43391,7 +43395,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMaxAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMaxAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -43439,7 +43443,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMaxOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMaxOrderByAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -43463,7 +43467,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMinAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardMinAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -43511,7 +43515,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMinOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardMinOrderByAggregateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -43547,7 +43551,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithAggregationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithAggregationInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -43586,7 +43590,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithRelationInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardOrderByWithRelationInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -43637,7 +43641,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], RewardScalarWhereWithAggregatesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], RewardScalarWhereWithAggregatesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
@@ -43658,7 +43662,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardSumAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], RewardSumAggregateInput.prototype, "pointCost", void 0);
 RewardSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -43682,7 +43686,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardSumOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], RewardSumOrderByAggregateInput.prototype, "pointCost", void 0);
 RewardSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -43701,7 +43705,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardUncheckedCreateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43734,7 +43739,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardUncheckedCreateWithoutRewardClaimInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardUncheckedCreateWithoutRewardClaimInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43767,7 +43773,8 @@ __decorate([
     Validator.IsAlphanumeric()
 ], RewardUncheckedCreateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
+    Validator.IsNumber()
 ], RewardUncheckedCreateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -43799,7 +43806,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateManyInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -43823,7 +43830,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutImagesInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -43850,7 +43857,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutRewardClaimInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateWithoutRewardClaimInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -43877,7 +43884,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], RewardUncheckedUpdateInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -44136,7 +44143,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardWhereUniqueInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], RewardWhereUniqueInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
@@ -44175,7 +44182,7 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], RewardWhereInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], RewardWhereInput.prototype, "pointCost", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
@@ -44598,10 +44605,10 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], RewardClaimCreateManyRewardInput.prototype, "userId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateManyRewardInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateManyRewardInput.prototype, "createdAt", void 0);
 RewardClaimCreateManyRewardInput = __decorate([
     (0, graphql_4.InputType)()
@@ -44629,10 +44636,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], RewardClaimCreateManyUserInput.prototype, "rewardId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateManyUserInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateManyUserInput.prototype, "createdAt", void 0);
 RewardClaimCreateManyUserInput = __decorate([
     (0, graphql_4.InputType)()
@@ -44650,10 +44657,10 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], RewardClaimCreateManyInput.prototype, "rewardId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateManyInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateManyInput.prototype, "createdAt", void 0);
 RewardClaimCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -44734,10 +44741,10 @@ exports.RewardClaimCreateOrConnectWithoutUserInput = RewardClaimCreateOrConnectW
 let RewardClaimCreateWithoutRewardInput = class RewardClaimCreateWithoutRewardInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateWithoutRewardInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateWithoutRewardInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutClaimedRewardsInput, { nullable: false })
@@ -44749,10 +44756,10 @@ exports.RewardClaimCreateWithoutRewardInput = RewardClaimCreateWithoutRewardInpu
 let RewardClaimCreateWithoutUserInput = class RewardClaimCreateWithoutUserInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateWithoutUserInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardCreateNestedOneWithoutRewardClaimInput, { nullable: false })
@@ -44764,10 +44771,10 @@ exports.RewardClaimCreateWithoutUserInput = RewardClaimCreateWithoutUserInput;
 let RewardClaimCreateInput = class RewardClaimCreateInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimCreateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutClaimedRewardsInput, { nullable: false })
@@ -45485,7 +45492,7 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], RewardClaimUpdateManyMutationInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateManyMutationInput.prototype, "createdAt", void 0);
 RewardClaimUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -45653,10 +45660,10 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], RewardClaimUpdateWithoutRewardInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateWithoutRewardInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneRequiredWithoutClaimedRewardsNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateWithoutRewardInput.prototype, "user", void 0);
 RewardClaimUpdateWithoutRewardInput = __decorate([
     (0, graphql_4.InputType)()
@@ -45668,10 +45675,10 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], RewardClaimUpdateWithoutUserInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => RewardUpdateOneRequiredWithoutRewardClaimNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateWithoutUserInput.prototype, "reward", void 0);
 RewardClaimUpdateWithoutUserInput = __decorate([
     (0, graphql_4.InputType)()
@@ -45683,13 +45690,13 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], RewardClaimUpdateInput.prototype, "processedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneRequiredWithoutClaimedRewardsNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateInput.prototype, "user", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => RewardUpdateOneRequiredWithoutRewardClaimNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], RewardClaimUpdateInput.prototype, "reward", void 0);
 RewardClaimUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -56148,6 +56155,9 @@ __decorate([
 ], UserCount.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], UserCount.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], UserCount.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -56155,9 +56165,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], UserCount.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], UserCount.prototype, "WithdrawalRequest", void 0);
 UserCount = __decorate([
     (0, graphql_5.ObjectType)()
 ], UserCount);
@@ -57067,6 +57074,9 @@ __decorate([
 ], UserCreateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutAccountsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutAccountsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57074,9 +57084,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutAccountsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutAccountsInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutAccountsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutAccountsInput);
@@ -57183,6 +57190,9 @@ __decorate([
 ], UserCreateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutAddressInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutAddressInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57190,9 +57200,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutAddressInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutAddressInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutAddressInput);
@@ -57299,6 +57306,9 @@ __decorate([
 ], UserCreateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutCheckInsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutCheckInsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57306,9 +57316,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutCheckInsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutCheckInsInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutCheckInsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutCheckInsInput);
@@ -57415,6 +57422,9 @@ __decorate([
 ], UserCreateWithoutClaimedRewardsInput.prototype, "projectsInvestment", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutClaimedRewardsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutClaimedRewardsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57422,9 +57432,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutClaimedRewardsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutClaimedRewardsInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutClaimedRewardsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutClaimedRewardsInput);
@@ -57534,13 +57541,13 @@ __decorate([
 ], UserCreateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutFilesCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutFilesCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutFilesCreatedInput.prototype, "programsCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutFilesCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutFilesCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutFilesCreatedInput);
@@ -57647,6 +57654,9 @@ __decorate([
 ], UserCreateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutHotelsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutHotelsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57654,9 +57664,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutHotelsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutHotelsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutHotelsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutHotelsCreatedInput);
@@ -57763,6 +57770,9 @@ __decorate([
 ], UserCreateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutOrdersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutOrdersInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57770,9 +57780,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutOrdersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutOrdersInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutOrdersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutOrdersInput);
@@ -57879,6 +57886,9 @@ __decorate([
 ], UserCreateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutPointTransactionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutPointTransactionsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57886,9 +57896,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutPointTransactionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutPointTransactionsInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutPointTransactionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutPointTransactionsInput);
@@ -57998,13 +58005,13 @@ __decorate([
 ], UserCreateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutProgramsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutProgramsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutProgramsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutProgramsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutProgramsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutProgramsCreatedInput);
@@ -58111,6 +58118,9 @@ __decorate([
 ], UserCreateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutProgramsParticipationInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutProgramsParticipationInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -58118,9 +58128,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutProgramsParticipationInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutProgramsParticipationInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutProgramsParticipationInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutProgramsParticipationInput);
@@ -58227,6 +58234,9 @@ __decorate([
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutProjectsInvestmentInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -58234,9 +58244,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutProjectsInvestmentInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutProjectsInvestmentInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutProjectsInvestmentInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutProjectsInvestmentInput);
@@ -58343,6 +58350,9 @@ __decorate([
 ], UserCreateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutReferredByInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutReferredByInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -58350,9 +58360,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutReferredByInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutReferredByInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutReferredByInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutReferredByInput);
@@ -58459,6 +58466,9 @@ __decorate([
 ], UserCreateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutReferredUsersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutReferredUsersInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -58466,9 +58476,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutReferredUsersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutReferredUsersInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutReferredUsersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutReferredUsersInput);
@@ -58575,6 +58582,9 @@ __decorate([
 ], UserCreateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutSchoolInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutSchoolInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -58582,9 +58592,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutSchoolInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutSchoolInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutSchoolInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutSchoolInput);
@@ -58691,6 +58698,9 @@ __decorate([
 ], UserCreateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutSessionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutSessionsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -58698,9 +58708,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutSessionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutSessionsInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutSessionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutSessionsInput);
@@ -58810,13 +58817,13 @@ __decorate([
 ], UserCreateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateWithoutUserNotificationsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateWithoutUserNotificationsInput.prototype, "programsCreated", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateWithoutUserNotificationsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateWithoutUserNotificationsInput.prototype, "WithdrawalRequest", void 0);
 UserCreateWithoutUserNotificationsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateWithoutUserNotificationsInput);
@@ -59042,6 +59049,9 @@ __decorate([
 ], UserCreateInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserCreateInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserCreateInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -59049,9 +59059,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestCreateNestedManyWithoutUserInput, { nullable: true })
-], UserCreateInput.prototype, "WithdrawalRequest", void 0);
 UserCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserCreateInput);
@@ -59765,6 +59772,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimOrderByRelationAggregateInput, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestOrderByRelationAggregateInput, { nullable: true })
+], UserOrderByWithRelationInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserOrderByWithRelationInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -59773,9 +59783,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserOrderByWithRelationInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestOrderByRelationAggregateInput, { nullable: true })
-], UserOrderByWithRelationInput.prototype, "WithdrawalRequest", void 0);
 UserOrderByWithRelationInput = UserOrderByWithRelationInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], UserOrderByWithRelationInput);
@@ -60171,6 +60178,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutAccountsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60179,9 +60189,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutAccountsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutAccountsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutAccountsInput);
@@ -60287,6 +60294,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutAddressInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutAddressInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60295,9 +60305,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutAddressInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutAddressInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutAddressInput);
@@ -60403,6 +60410,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutCheckInsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60411,9 +60421,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutCheckInsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutCheckInsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutCheckInsInput);
@@ -60519,6 +60526,9 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "projectsInvestment", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60527,9 +60537,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutClaimedRewardsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutClaimedRewardsInput);
@@ -60638,14 +60645,14 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "programsCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutFilesCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutFilesCreatedInput);
@@ -60751,6 +60758,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60759,9 +60769,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutHotelsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutHotelsCreatedInput);
@@ -60867,6 +60874,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutOrdersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60875,9 +60885,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutOrdersInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutOrdersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutOrdersInput);
@@ -60983,6 +60990,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -60991,9 +61001,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutPointTransactionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutPointTransactionsInput);
@@ -61102,14 +61109,14 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutProgramsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutProgramsCreatedInput);
@@ -61215,6 +61222,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -61223,9 +61233,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutProgramsParticipationInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutProgramsParticipationInput);
@@ -61331,6 +61338,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -61339,9 +61349,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutProjectsInvestmentInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutProjectsInvestmentInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutProjectsInvestmentInput);
@@ -61447,6 +61454,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutReferredByInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -61455,9 +61465,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutReferredByInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutReferredByInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutReferredByInput);
@@ -61563,6 +61570,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutReferredUsersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -61571,9 +61581,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutReferredUsersInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutReferredUsersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutReferredUsersInput);
@@ -61679,6 +61686,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutSchoolInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -61687,9 +61697,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutSchoolInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutSchoolInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutSchoolInput);
@@ -61795,6 +61802,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutSessionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -61803,9 +61813,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutSessionsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutSessionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutSessionsInput);
@@ -61914,14 +61921,14 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "programsCreated", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateWithoutUserNotificationsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateWithoutUserNotificationsInput);
@@ -62146,6 +62153,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
+], UserUncheckedCreateInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -62154,9 +62164,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
-], UserUncheckedCreateInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedCreateInput);
@@ -62783,6 +62790,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutAccountsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -62791,9 +62801,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutAccountsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutAccountsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutAccountsInput);
@@ -62885,6 +62892,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutAddressInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -62893,9 +62903,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutAddressInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutAddressInput);
@@ -62987,6 +62994,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutCheckInsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -62995,9 +63005,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutCheckInsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutCheckInsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutCheckInsInput);
@@ -63089,6 +63096,9 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "projectsInvestment", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63097,9 +63107,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutClaimedRewardsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutClaimedRewardsInput);
@@ -63194,14 +63201,14 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "programsCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutFilesCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutFilesCreatedInput);
@@ -63293,6 +63300,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63301,9 +63311,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutHotelsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutHotelsCreatedInput);
@@ -63395,6 +63402,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutOrdersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63403,9 +63413,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutOrdersInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutOrdersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutOrdersInput);
@@ -63497,6 +63504,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63505,9 +63515,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutPointTransactionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutPointTransactionsInput);
@@ -63602,14 +63609,14 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutProgramsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutProgramsCreatedInput);
@@ -63701,6 +63708,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63709,9 +63719,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutProgramsParticipationInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutProgramsParticipationInput);
@@ -63803,6 +63810,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63811,9 +63821,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutProjectsInvestmentInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutProjectsInvestmentInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutProjectsInvestmentInput);
@@ -63905,6 +63912,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutReferredByInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -63913,9 +63923,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutReferredByInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutReferredByInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutReferredByInput);
@@ -64007,6 +64014,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -64015,9 +64025,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutReferredUsersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutReferredUsersInput);
@@ -64109,6 +64116,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutSchoolInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -64117,9 +64127,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutSchoolInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutSchoolInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutSchoolInput);
@@ -64211,6 +64218,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutSessionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -64219,9 +64229,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutSessionsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutSessionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutSessionsInput);
@@ -64316,14 +64323,14 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "programsCreated", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateWithoutUserNotificationsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateWithoutUserNotificationsInput);
@@ -64520,6 +64527,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
+], UserUncheckedUpdateInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -64528,9 +64538,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUncheckedUpdateInput.prototype, "WithdrawalRequest", void 0);
 UserUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUncheckedUpdateInput);
@@ -65517,6 +65524,9 @@ __decorate([
 ], UserUpdateWithoutAccountsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutAccountsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65524,9 +65534,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutAccountsInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutAccountsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutAccountsInput);
@@ -65619,6 +65626,9 @@ __decorate([
 ], UserUpdateWithoutAddressInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutAddressInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65626,9 +65636,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutAddressInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutAddressInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutAddressInput);
@@ -65721,6 +65728,9 @@ __decorate([
 ], UserUpdateWithoutCheckInsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutCheckInsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65728,9 +65738,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutCheckInsInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutCheckInsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutCheckInsInput);
@@ -65823,6 +65830,9 @@ __decorate([
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "projectsInvestment", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutClaimedRewardsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65830,9 +65840,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutClaimedRewardsInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutClaimedRewardsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutClaimedRewardsInput);
@@ -65928,13 +65935,13 @@ __decorate([
 ], UserUpdateWithoutFilesCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutFilesCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "programsCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutFilesCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutFilesCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutFilesCreatedInput);
@@ -66027,6 +66034,9 @@ __decorate([
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutHotelsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66034,9 +66044,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutHotelsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutHotelsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutHotelsCreatedInput);
@@ -66129,6 +66136,9 @@ __decorate([
 ], UserUpdateWithoutOrdersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutOrdersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66136,9 +66146,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutOrdersInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutOrdersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutOrdersInput);
@@ -66231,6 +66238,9 @@ __decorate([
 ], UserUpdateWithoutPointTransactionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutPointTransactionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66238,9 +66248,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutPointTransactionsInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutPointTransactionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutPointTransactionsInput);
@@ -66336,13 +66343,13 @@ __decorate([
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutProgramsCreatedInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutProgramsCreatedInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutProgramsCreatedInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutProgramsCreatedInput);
@@ -66435,6 +66442,9 @@ __decorate([
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutProgramsParticipationInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66442,9 +66452,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutProgramsParticipationInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutProgramsParticipationInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutProgramsParticipationInput);
@@ -66537,6 +66544,9 @@ __decorate([
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutProjectsInvestmentInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66544,9 +66554,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutProjectsInvestmentInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutProjectsInvestmentInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutProjectsInvestmentInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutProjectsInvestmentInput);
@@ -66639,6 +66646,9 @@ __decorate([
 ], UserUpdateWithoutReferredByInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutReferredByInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66646,9 +66656,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutReferredByInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutReferredByInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutReferredByInput);
@@ -66741,6 +66748,9 @@ __decorate([
 ], UserUpdateWithoutReferredUsersInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutReferredUsersInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66748,9 +66758,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutReferredUsersInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutReferredUsersInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutReferredUsersInput);
@@ -66843,6 +66850,9 @@ __decorate([
 ], UserUpdateWithoutSchoolInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutSchoolInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66850,9 +66860,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutSchoolInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutSchoolInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutSchoolInput);
@@ -66945,6 +66952,9 @@ __decorate([
 ], UserUpdateWithoutSessionsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutSessionsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66952,9 +66962,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutSessionsInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutSessionsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutSessionsInput);
@@ -67050,13 +67057,13 @@ __decorate([
 ], UserUpdateWithoutUserNotificationsInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateWithoutUserNotificationsInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "programsCreated", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateWithoutUserNotificationsInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateWithoutUserNotificationsInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateWithoutUserNotificationsInput);
@@ -67254,6 +67261,9 @@ __decorate([
 ], UserUpdateInput.prototype, "claimedRewards", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], UserUpdateInput.prototype, "withdrawalRequest", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], UserUpdateInput.prototype, "userNotifications", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -67261,9 +67271,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestUpdateManyWithoutUserNestedInput, { nullable: true })
-], UserUpdateInput.prototype, "WithdrawalRequest", void 0);
 UserUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserUpdateInput);
@@ -67684,6 +67691,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimListRelationFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestListRelationFilter, { nullable: true })
+], UserWhereUniqueInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserWhereUniqueInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -67692,9 +67702,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserWhereUniqueInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestListRelationFilter, { nullable: true })
-], UserWhereUniqueInput.prototype, "WithdrawalRequest", void 0);
 UserWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
 ], UserWhereUniqueInput);
@@ -67807,6 +67814,9 @@ __decorate([
     (0, graphql_1.Field)(() => RewardClaimListRelationFilter, { nullable: true })
 ], UserWhereInput.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => WithdrawalRequestListRelationFilter, { nullable: true })
+], UserWhereInput.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], UserWhereInput.prototype, "userNotifications", void 0);
 __decorate([
@@ -67815,9 +67825,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], UserWhereInput.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => WithdrawalRequestListRelationFilter, { nullable: true })
-], UserWhereInput.prototype, "WithdrawalRequest", void 0);
 UserWhereInput = UserWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], UserWhereInput);
@@ -67921,6 +67928,9 @@ __decorate([
     (0, graphql_1.Field)(() => [RewardClaim], { nullable: true })
 ], User.prototype, "claimedRewards", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => [WithdrawalRequest], { nullable: true })
+], User.prototype, "withdrawalRequest", void 0);
+__decorate([
     (0, graphql_1.Field)(() => [UserNotification], { nullable: true })
 ], User.prototype, "userNotifications", void 0);
 __decorate([
@@ -67929,9 +67939,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [File], { nullable: true })
 ], User.prototype, "filesCreated", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [WithdrawalRequest], { nullable: true })
-], User.prototype, "WithdrawalRequest", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserCount, { nullable: false })
 ], User.prototype, "_count", void 0);
