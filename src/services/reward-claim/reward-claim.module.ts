@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { RewardClaimService } from './reward-claim.service';
 import { RewardClaimResolver } from './reward-claim.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { PointTransactionModule } from '../point-transaction/point-transaction.module';
 import { RewardClaimController } from './reward-claim.controller';
-import { UserModule } from '../user/user.module';
+import { RewardModule } from '../reward/reward.module';
 
 @Module({
   providers: [
@@ -13,6 +12,6 @@ import { UserModule } from '../user/user.module';
     RewardClaimController,
     RewardClaimService,
   ],
-  imports: [PointTransactionModule],
+  imports: [RewardModule],
 })
 export class RewardClaimModule {}
