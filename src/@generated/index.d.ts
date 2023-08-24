@@ -353,7 +353,8 @@ export declare enum CheckInScalarFieldEnum {
 export declare enum CartScalarFieldEnum {
     id = "id",
     orderId = "orderId",
-    itemId = "itemId",
+    membershipItemId = "membershipItemId",
+    projectItemId = "projectItemId",
     quantity = "quantity",
     price = "price",
     cost = "cost",
@@ -373,7 +374,9 @@ export declare enum AddressScalarFieldEnum {
     provinceId = "provinceId",
     cityId = "cityId",
     districtId = "districtId",
-    subdistrictId = "subdistrictId"
+    subdistrictId = "subdistrictId",
+    createdAt = "createdAt",
+    updatedAt = "updatedAt"
 }
 export declare enum AccountScalarFieldEnum {
     id = "id",
@@ -1230,6 +1233,8 @@ export declare class AddressCountAggregateInput {
     cityId?: true;
     districtId?: true;
     subdistrictId?: true;
+    createdAt?: true;
+    updatedAt?: true;
     _all?: true;
 }
 export declare class AddressCountAggregate {
@@ -1239,6 +1244,8 @@ export declare class AddressCountAggregate {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt: number;
+    updatedAt: number;
     _all: number;
 }
 export declare class AddressCountOrderByAggregateInput {
@@ -1248,6 +1255,8 @@ export declare class AddressCountOrderByAggregateInput {
     cityId?: keyof typeof SortOrder;
     districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
 }
 export declare class AddressCreateManyCityInputEnvelope {
     data: Array<AddressCreateManyCityInput>;
@@ -1259,6 +1268,8 @@ export declare class AddressCreateManyCityInput {
     provinceId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressCreateManyDistrictInputEnvelope {
     data: Array<AddressCreateManyDistrictInput>;
@@ -1270,6 +1281,8 @@ export declare class AddressCreateManyDistrictInput {
     provinceId: number;
     cityId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressCreateManyProvinceInputEnvelope {
     data: Array<AddressCreateManyProvinceInput>;
@@ -1281,6 +1294,8 @@ export declare class AddressCreateManyProvinceInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressCreateManySubdistrictInputEnvelope {
     data: Array<AddressCreateManySubdistrictInput>;
@@ -1292,6 +1307,8 @@ export declare class AddressCreateManySubdistrictInput {
     provinceId: number;
     cityId: number;
     districtId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressCreateManyInput {
     id?: number;
@@ -1300,6 +1317,8 @@ export declare class AddressCreateManyInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressCreateNestedManyWithoutCityInput {
     create?: Array<AddressCreateWithoutCityInput>;
@@ -1379,6 +1398,8 @@ export declare class AddressCreateOrConnectWithoutUserInput {
 }
 export declare class AddressCreateWithoutCityInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
@@ -1389,6 +1410,8 @@ export declare class AddressCreateWithoutCityInput {
 }
 export declare class AddressCreateWithoutDistrictInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
@@ -1399,6 +1422,8 @@ export declare class AddressCreateWithoutDistrictInput {
 }
 export declare class AddressCreateWithoutHotelInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
@@ -1409,6 +1434,8 @@ export declare class AddressCreateWithoutHotelInput {
 }
 export declare class AddressCreateWithoutProvinceInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
@@ -1419,6 +1446,8 @@ export declare class AddressCreateWithoutProvinceInput {
 }
 export declare class AddressCreateWithoutSchoolInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
@@ -1429,6 +1458,8 @@ export declare class AddressCreateWithoutSchoolInput {
 }
 export declare class AddressCreateWithoutShippingInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
@@ -1439,6 +1470,8 @@ export declare class AddressCreateWithoutShippingInput {
 }
 export declare class AddressCreateWithoutSubdistrictInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
@@ -1449,6 +1482,8 @@ export declare class AddressCreateWithoutSubdistrictInput {
 }
 export declare class AddressCreateWithoutUserInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
@@ -1459,6 +1494,8 @@ export declare class AddressCreateWithoutUserInput {
 }
 export declare class AddressCreateInput {
     name: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
     city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
     district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
@@ -1488,6 +1525,8 @@ export declare class AddressGroupBy {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt: Date | string;
+    updatedAt: Date | string;
     _count?: InstanceType<typeof AddressCountAggregate>;
     _avg?: InstanceType<typeof AddressAvgAggregate>;
     _sum?: InstanceType<typeof AddressSumAggregate>;
@@ -1506,6 +1545,8 @@ export declare class AddressMaxAggregateInput {
     cityId?: true;
     districtId?: true;
     subdistrictId?: true;
+    createdAt?: true;
+    updatedAt?: true;
 }
 export declare class AddressMaxAggregate {
     id?: number;
@@ -1514,6 +1555,8 @@ export declare class AddressMaxAggregate {
     cityId?: number;
     districtId?: number;
     subdistrictId?: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -1522,6 +1565,8 @@ export declare class AddressMaxOrderByAggregateInput {
     cityId?: keyof typeof SortOrder;
     districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
 }
 export declare class AddressMinAggregateInput {
     id?: true;
@@ -1530,6 +1575,8 @@ export declare class AddressMinAggregateInput {
     cityId?: true;
     districtId?: true;
     subdistrictId?: true;
+    createdAt?: true;
+    updatedAt?: true;
 }
 export declare class AddressMinAggregate {
     id?: number;
@@ -1538,6 +1585,8 @@ export declare class AddressMinAggregate {
     cityId?: number;
     districtId?: number;
     subdistrictId?: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
 }
 export declare class AddressMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -1546,6 +1595,8 @@ export declare class AddressMinOrderByAggregateInput {
     cityId?: keyof typeof SortOrder;
     districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
 }
 export declare class AddressOrderByRelationAggregateInput {
     _count?: keyof typeof SortOrder;
@@ -1557,6 +1608,8 @@ export declare class AddressOrderByWithAggregationInput {
     cityId?: keyof typeof SortOrder;
     districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
     _count?: InstanceType<typeof AddressCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof AddressAvgOrderByAggregateInput>;
     _max?: InstanceType<typeof AddressMaxOrderByAggregateInput>;
@@ -1570,6 +1623,8 @@ export declare class AddressOrderByWithRelationInput {
     cityId?: keyof typeof SortOrder;
     districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
     province?: InstanceType<typeof ProvinceOrderByWithRelationInput>;
     city?: InstanceType<typeof CityOrderByWithRelationInput>;
     district?: InstanceType<typeof DistrictOrderByWithRelationInput>;
@@ -1593,6 +1648,8 @@ export declare class AddressScalarWhereWithAggregatesInput {
     cityId?: InstanceType<typeof IntWithAggregatesFilter>;
     districtId?: InstanceType<typeof IntWithAggregatesFilter>;
     subdistrictId?: InstanceType<typeof IntWithAggregatesFilter>;
+    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
 }
 export declare class AddressScalarWhereInput {
     AND?: Array<AddressScalarWhereInput>;
@@ -1604,6 +1661,8 @@ export declare class AddressScalarWhereInput {
     cityId?: InstanceType<typeof IntFilter>;
     districtId?: InstanceType<typeof IntFilter>;
     subdistrictId?: InstanceType<typeof IntFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class AddressSumAggregateInput {
     id?: true;
@@ -1656,6 +1715,8 @@ export declare class AddressUncheckedCreateWithoutCityInput {
     provinceId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1667,6 +1728,8 @@ export declare class AddressUncheckedCreateWithoutDistrictInput {
     provinceId: number;
     cityId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1679,6 +1742,8 @@ export declare class AddressUncheckedCreateWithoutHotelInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1689,6 +1754,8 @@ export declare class AddressUncheckedCreateWithoutProvinceInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1701,6 +1768,8 @@ export declare class AddressUncheckedCreateWithoutSchoolInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1712,6 +1781,8 @@ export declare class AddressUncheckedCreateWithoutShippingInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1722,6 +1793,8 @@ export declare class AddressUncheckedCreateWithoutSubdistrictInput {
     provinceId: number;
     cityId: number;
     districtId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1734,6 +1807,8 @@ export declare class AddressUncheckedCreateWithoutUserInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1745,6 +1820,8 @@ export declare class AddressUncheckedCreateInput {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1769,6 +1846,8 @@ export declare class AddressUncheckedUpdateManyWithoutCityInput {
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateManyWithoutDistrictNestedInput {
     create?: Array<AddressCreateWithoutDistrictInput>;
@@ -1789,6 +1868,8 @@ export declare class AddressUncheckedUpdateManyWithoutDistrictInput {
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateManyWithoutProvinceNestedInput {
     create?: Array<AddressCreateWithoutProvinceInput>;
@@ -1809,6 +1890,8 @@ export declare class AddressUncheckedUpdateManyWithoutProvinceInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateManyWithoutSubdistrictNestedInput {
     create?: Array<AddressCreateWithoutSubdistrictInput>;
@@ -1829,6 +1912,8 @@ export declare class AddressUncheckedUpdateManyWithoutSubdistrictInput {
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -1837,6 +1922,8 @@ export declare class AddressUncheckedUpdateManyInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateWithoutCityInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -1844,6 +1931,8 @@ export declare class AddressUncheckedUpdateWithoutCityInput {
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1855,6 +1944,8 @@ export declare class AddressUncheckedUpdateWithoutDistrictInput {
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1867,6 +1958,8 @@ export declare class AddressUncheckedUpdateWithoutHotelInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1877,6 +1970,8 @@ export declare class AddressUncheckedUpdateWithoutProvinceInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1889,6 +1984,8 @@ export declare class AddressUncheckedUpdateWithoutSchoolInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1900,6 +1997,8 @@ export declare class AddressUncheckedUpdateWithoutShippingInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1910,6 +2009,8 @@ export declare class AddressUncheckedUpdateWithoutSubdistrictInput {
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1922,6 +2023,8 @@ export declare class AddressUncheckedUpdateWithoutUserInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1933,6 +2036,8 @@ export declare class AddressUncheckedUpdateInput {
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -1940,6 +2045,8 @@ export declare class AddressUncheckedUpdateInput {
 }
 export declare class AddressUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUpdateManyWithWhereWithoutCityInput {
     where: InstanceType<typeof AddressScalarWhereInput>;
@@ -2071,6 +2178,8 @@ export declare class AddressUpdateWithWhereUniqueWithoutSubdistrictInput {
 }
 export declare class AddressUpdateWithoutCityInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2081,6 +2190,8 @@ export declare class AddressUpdateWithoutCityInput {
 }
 export declare class AddressUpdateWithoutDistrictInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2091,6 +2202,8 @@ export declare class AddressUpdateWithoutDistrictInput {
 }
 export declare class AddressUpdateWithoutHotelInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2101,6 +2214,8 @@ export declare class AddressUpdateWithoutHotelInput {
 }
 export declare class AddressUpdateWithoutProvinceInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2111,6 +2226,8 @@ export declare class AddressUpdateWithoutProvinceInput {
 }
 export declare class AddressUpdateWithoutSchoolInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2121,6 +2238,8 @@ export declare class AddressUpdateWithoutSchoolInput {
 }
 export declare class AddressUpdateWithoutShippingInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2131,6 +2250,8 @@ export declare class AddressUpdateWithoutShippingInput {
 }
 export declare class AddressUpdateWithoutSubdistrictInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2141,6 +2262,8 @@ export declare class AddressUpdateWithoutSubdistrictInput {
 }
 export declare class AddressUpdateWithoutUserInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2151,6 +2274,8 @@ export declare class AddressUpdateWithoutUserInput {
 }
 export declare class AddressUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
     district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
@@ -2210,6 +2335,8 @@ export declare class AddressWhereUniqueInput {
     cityId?: InstanceType<typeof IntFilter>;
     districtId?: InstanceType<typeof IntFilter>;
     subdistrictId?: InstanceType<typeof IntFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
     province?: InstanceType<typeof ProvinceRelationFilter>;
     city?: InstanceType<typeof CityRelationFilter>;
     district?: InstanceType<typeof DistrictRelationFilter>;
@@ -2229,6 +2356,8 @@ export declare class AddressWhereInput {
     cityId?: InstanceType<typeof IntFilter>;
     districtId?: InstanceType<typeof IntFilter>;
     subdistrictId?: InstanceType<typeof IntFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
     province?: InstanceType<typeof ProvinceRelationFilter>;
     city?: InstanceType<typeof CityRelationFilter>;
     district?: InstanceType<typeof DistrictRelationFilter>;
@@ -2245,6 +2374,8 @@ export declare class Address {
     cityId: number;
     districtId: number;
     subdistrictId: number;
+    createdAt: Date;
+    updatedAt: Date;
     province?: InstanceType<typeof Province>;
     city?: InstanceType<typeof City>;
     district?: InstanceType<typeof District>;
@@ -2706,7 +2837,8 @@ export declare class CartAggregateArgs {
 export declare class CartAvgAggregateInput {
     id?: true;
     orderId?: true;
-    itemId?: true;
+    membershipItemId?: true;
+    projectItemId?: true;
     quantity?: true;
     price?: true;
     cost?: true;
@@ -2714,7 +2846,8 @@ export declare class CartAvgAggregateInput {
 export declare class CartAvgAggregate {
     id?: number;
     orderId?: number;
-    itemId?: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity?: number;
     price?: number;
     cost?: number;
@@ -2722,7 +2855,8 @@ export declare class CartAvgAggregate {
 export declare class CartAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: keyof typeof SortOrder;
+    projectItemId?: keyof typeof SortOrder;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
@@ -2730,7 +2864,8 @@ export declare class CartAvgOrderByAggregateInput {
 export declare class CartCountAggregateInput {
     id?: true;
     orderId?: true;
-    itemId?: true;
+    membershipItemId?: true;
+    projectItemId?: true;
     quantity?: true;
     price?: true;
     cost?: true;
@@ -2741,7 +2876,8 @@ export declare class CartCountAggregateInput {
 export declare class CartCountAggregate {
     id: number;
     orderId: number;
-    itemId: number;
+    membershipItemId: number;
+    projectItemId: number;
     quantity: number;
     price: number;
     cost: number;
@@ -2752,20 +2888,22 @@ export declare class CartCountAggregate {
 export declare class CartCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: keyof typeof SortOrder;
+    projectItemId?: keyof typeof SortOrder;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
-export declare class CartCreateManyItemInputEnvelope {
-    data: Array<CartCreateManyItemInput>;
+export declare class CartCreateManyMembershipItemInputEnvelope {
+    data: Array<CartCreateManyMembershipItemInput>;
     skipDuplicates?: boolean;
 }
-export declare class CartCreateManyItemInput {
+export declare class CartCreateManyMembershipItemInput {
     id?: number;
     orderId: number;
+    projectItemId?: number;
     quantity: number;
     price: number;
     cost: number;
@@ -2778,7 +2916,22 @@ export declare class CartCreateManyOrderInputEnvelope {
 }
 export declare class CartCreateManyOrderInput {
     id?: number;
-    itemId: number;
+    membershipItemId?: number;
+    projectItemId?: number;
+    quantity: number;
+    price: number;
+    cost: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartCreateManyProjectItemInputEnvelope {
+    data: Array<CartCreateManyProjectItemInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CartCreateManyProjectItemInput {
+    id?: number;
+    orderId: number;
+    membershipItemId?: number;
     quantity: number;
     price: number;
     cost: number;
@@ -2788,17 +2941,18 @@ export declare class CartCreateManyOrderInput {
 export declare class CartCreateManyInput {
     id?: number;
     orderId: number;
-    itemId: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity: number;
     price: number;
     cost: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
-export declare class CartCreateNestedManyWithoutItemInput {
-    create?: Array<CartCreateWithoutItemInput>;
-    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
-    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+export declare class CartCreateNestedManyWithoutMembershipItemInput {
+    create?: Array<CartCreateWithoutMembershipItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutMembershipItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyMembershipItemInputEnvelope>;
     connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
 }
 export declare class CartCreateNestedManyWithoutOrderInput {
@@ -2807,21 +2961,32 @@ export declare class CartCreateNestedManyWithoutOrderInput {
     createMany?: InstanceType<typeof CartCreateManyOrderInputEnvelope>;
     connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
 }
-export declare class CartCreateOrConnectWithoutItemInput {
+export declare class CartCreateNestedManyWithoutProjectItemInput {
+    create?: Array<CartCreateWithoutProjectItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutProjectItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyProjectItemInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+}
+export declare class CartCreateOrConnectWithoutMembershipItemInput {
     where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof CartCreateWithoutItemInput>;
+    create: InstanceType<typeof CartCreateWithoutMembershipItemInput>;
 }
 export declare class CartCreateOrConnectWithoutOrderInput {
     where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
     create: InstanceType<typeof CartCreateWithoutOrderInput>;
 }
-export declare class CartCreateWithoutItemInput {
+export declare class CartCreateOrConnectWithoutProjectItemInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof CartCreateWithoutProjectItemInput>;
+}
+export declare class CartCreateWithoutMembershipItemInput {
     quantity: number;
     price: number;
     cost: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     order: InstanceType<typeof OrderCreateNestedOneWithoutCartInput>;
+    projectItem?: InstanceType<typeof ProjectCreateNestedOneWithoutOrderCartInput>;
 }
 export declare class CartCreateWithoutOrderInput {
     quantity: number;
@@ -2829,7 +2994,17 @@ export declare class CartCreateWithoutOrderInput {
     cost: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    item: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
+    membershipItem?: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
+    projectItem?: InstanceType<typeof ProjectCreateNestedOneWithoutOrderCartInput>;
+}
+export declare class CartCreateWithoutProjectItemInput {
+    quantity: number;
+    price: number;
+    cost: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    order: InstanceType<typeof OrderCreateNestedOneWithoutCartInput>;
+    membershipItem?: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
 }
 export declare class CartCreateInput {
     quantity: number;
@@ -2838,7 +3013,8 @@ export declare class CartCreateInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     order: InstanceType<typeof OrderCreateNestedOneWithoutCartInput>;
-    item: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
+    membershipItem?: InstanceType<typeof ItemCreateNestedOneWithoutCartInput>;
+    projectItem?: InstanceType<typeof ProjectCreateNestedOneWithoutOrderCartInput>;
 }
 export declare class CartGroupByArgs {
     where?: InstanceType<typeof CartWhereInput>;
@@ -2856,7 +3032,8 @@ export declare class CartGroupByArgs {
 export declare class CartGroupBy {
     id: number;
     orderId: number;
-    itemId: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity: number;
     price: number;
     cost: number;
@@ -2876,7 +3053,8 @@ export declare class CartListRelationFilter {
 export declare class CartMaxAggregateInput {
     id?: true;
     orderId?: true;
-    itemId?: true;
+    membershipItemId?: true;
+    projectItemId?: true;
     quantity?: true;
     price?: true;
     cost?: true;
@@ -2886,7 +3064,8 @@ export declare class CartMaxAggregateInput {
 export declare class CartMaxAggregate {
     id?: number;
     orderId?: number;
-    itemId?: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity?: number;
     price?: number;
     cost?: number;
@@ -2896,7 +3075,8 @@ export declare class CartMaxAggregate {
 export declare class CartMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: keyof typeof SortOrder;
+    projectItemId?: keyof typeof SortOrder;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
@@ -2906,7 +3086,8 @@ export declare class CartMaxOrderByAggregateInput {
 export declare class CartMinAggregateInput {
     id?: true;
     orderId?: true;
-    itemId?: true;
+    membershipItemId?: true;
+    projectItemId?: true;
     quantity?: true;
     price?: true;
     cost?: true;
@@ -2916,7 +3097,8 @@ export declare class CartMinAggregateInput {
 export declare class CartMinAggregate {
     id?: number;
     orderId?: number;
-    itemId?: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity?: number;
     price?: number;
     cost?: number;
@@ -2926,7 +3108,8 @@ export declare class CartMinAggregate {
 export declare class CartMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: keyof typeof SortOrder;
+    projectItemId?: keyof typeof SortOrder;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
@@ -2939,7 +3122,8 @@ export declare class CartOrderByRelationAggregateInput {
 export declare class CartOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: InstanceType<typeof SortOrderInput>;
+    projectItemId?: InstanceType<typeof SortOrderInput>;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
@@ -2954,14 +3138,16 @@ export declare class CartOrderByWithAggregationInput {
 export declare class CartOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: InstanceType<typeof SortOrderInput>;
+    projectItemId?: InstanceType<typeof SortOrderInput>;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     order?: InstanceType<typeof OrderOrderByWithRelationInput>;
-    item?: InstanceType<typeof ItemOrderByWithRelationInput>;
+    membershipItem?: InstanceType<typeof ItemOrderByWithRelationInput>;
+    projectItem?: InstanceType<typeof ProjectOrderByWithRelationInput>;
 }
 export declare class CartScalarWhereWithAggregatesInput {
     AND?: Array<CartScalarWhereWithAggregatesInput>;
@@ -2969,7 +3155,8 @@ export declare class CartScalarWhereWithAggregatesInput {
     NOT?: Array<CartScalarWhereWithAggregatesInput>;
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     orderId?: InstanceType<typeof IntWithAggregatesFilter>;
-    itemId?: InstanceType<typeof IntWithAggregatesFilter>;
+    membershipItemId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    projectItemId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     quantity?: InstanceType<typeof IntWithAggregatesFilter>;
     price?: InstanceType<typeof FloatWithAggregatesFilter>;
     cost?: InstanceType<typeof FloatWithAggregatesFilter>;
@@ -2982,7 +3169,8 @@ export declare class CartScalarWhereInput {
     NOT?: Array<CartScalarWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     orderId?: InstanceType<typeof IntFilter>;
-    itemId?: InstanceType<typeof IntFilter>;
+    membershipItemId?: InstanceType<typeof IntNullableFilter>;
+    projectItemId?: InstanceType<typeof IntNullableFilter>;
     quantity?: InstanceType<typeof IntFilter>;
     price?: InstanceType<typeof FloatFilter>;
     cost?: InstanceType<typeof FloatFilter>;
@@ -2992,7 +3180,8 @@ export declare class CartScalarWhereInput {
 export declare class CartSumAggregateInput {
     id?: true;
     orderId?: true;
-    itemId?: true;
+    membershipItemId?: true;
+    projectItemId?: true;
     quantity?: true;
     price?: true;
     cost?: true;
@@ -3000,7 +3189,8 @@ export declare class CartSumAggregateInput {
 export declare class CartSumAggregate {
     id?: number;
     orderId?: number;
-    itemId?: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity?: number;
     price?: number;
     cost?: number;
@@ -3008,15 +3198,16 @@ export declare class CartSumAggregate {
 export declare class CartSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     orderId?: keyof typeof SortOrder;
-    itemId?: keyof typeof SortOrder;
+    membershipItemId?: keyof typeof SortOrder;
+    projectItemId?: keyof typeof SortOrder;
     quantity?: keyof typeof SortOrder;
     price?: keyof typeof SortOrder;
     cost?: keyof typeof SortOrder;
 }
-export declare class CartUncheckedCreateNestedManyWithoutItemInput {
-    create?: Array<CartCreateWithoutItemInput>;
-    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
-    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+export declare class CartUncheckedCreateNestedManyWithoutMembershipItemInput {
+    create?: Array<CartCreateWithoutMembershipItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutMembershipItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyMembershipItemInputEnvelope>;
     connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
 }
 export declare class CartUncheckedCreateNestedManyWithoutOrderInput {
@@ -3025,9 +3216,16 @@ export declare class CartUncheckedCreateNestedManyWithoutOrderInput {
     createMany?: InstanceType<typeof CartCreateManyOrderInputEnvelope>;
     connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
 }
-export declare class CartUncheckedCreateWithoutItemInput {
+export declare class CartUncheckedCreateNestedManyWithoutProjectItemInput {
+    create?: Array<CartCreateWithoutProjectItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutProjectItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyProjectItemInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+}
+export declare class CartUncheckedCreateWithoutMembershipItemInput {
     id?: number;
     orderId: number;
+    projectItemId?: number;
     quantity: number;
     price: number;
     cost: number;
@@ -3036,7 +3234,18 @@ export declare class CartUncheckedCreateWithoutItemInput {
 }
 export declare class CartUncheckedCreateWithoutOrderInput {
     id?: number;
-    itemId: number;
+    membershipItemId?: number;
+    projectItemId?: number;
+    quantity: number;
+    price: number;
+    cost: number;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class CartUncheckedCreateWithoutProjectItemInput {
+    id?: number;
+    orderId: number;
+    membershipItemId?: number;
     quantity: number;
     price: number;
     cost: number;
@@ -3046,29 +3255,31 @@ export declare class CartUncheckedCreateWithoutOrderInput {
 export declare class CartUncheckedCreateInput {
     id?: number;
     orderId: number;
-    itemId: number;
+    membershipItemId?: number;
+    projectItemId?: number;
     quantity: number;
     price: number;
     cost: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
-export declare class CartUncheckedUpdateManyWithoutItemNestedInput {
-    create?: Array<CartCreateWithoutItemInput>;
-    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
-    upsert?: Array<CartUpsertWithWhereUniqueWithoutItemInput>;
-    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+export declare class CartUncheckedUpdateManyWithoutMembershipItemNestedInput {
+    create?: Array<CartCreateWithoutMembershipItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutMembershipItemInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutMembershipItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyMembershipItemInputEnvelope>;
     set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
     disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
     delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
     connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
-    update?: Array<CartUpdateWithWhereUniqueWithoutItemInput>;
-    updateMany?: Array<CartUpdateManyWithWhereWithoutItemInput>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutMembershipItemInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutMembershipItemInput>;
     deleteMany?: Array<CartScalarWhereInput>;
 }
-export declare class CartUncheckedUpdateManyWithoutItemInput {
+export declare class CartUncheckedUpdateManyWithoutMembershipItemInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    projectItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
@@ -3090,7 +3301,31 @@ export declare class CartUncheckedUpdateManyWithoutOrderNestedInput {
 }
 export declare class CartUncheckedUpdateManyWithoutOrderInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    membershipItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    projectItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateManyWithoutProjectItemNestedInput {
+    create?: Array<CartCreateWithoutProjectItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutProjectItemInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutProjectItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyProjectItemInputEnvelope>;
+    set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutProjectItemInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutProjectItemInput>;
+    deleteMany?: Array<CartScalarWhereInput>;
+}
+export declare class CartUncheckedUpdateManyWithoutProjectItemInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    membershipItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
@@ -3100,16 +3335,18 @@ export declare class CartUncheckedUpdateManyWithoutOrderInput {
 export declare class CartUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    membershipItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    projectItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class CartUncheckedUpdateWithoutItemInput {
+export declare class CartUncheckedUpdateWithoutMembershipItemInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    projectItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
@@ -3118,7 +3355,18 @@ export declare class CartUncheckedUpdateWithoutItemInput {
 }
 export declare class CartUncheckedUpdateWithoutOrderInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    membershipItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    projectItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class CartUncheckedUpdateWithoutProjectItemInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    membershipItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
@@ -3128,7 +3376,8 @@ export declare class CartUncheckedUpdateWithoutOrderInput {
 export declare class CartUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     orderId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    itemId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    membershipItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    projectItemId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
@@ -3142,7 +3391,7 @@ export declare class CartUpdateManyMutationInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class CartUpdateManyWithWhereWithoutItemInput {
+export declare class CartUpdateManyWithWhereWithoutMembershipItemInput {
     where: InstanceType<typeof CartScalarWhereInput>;
     data: InstanceType<typeof CartUpdateManyMutationInput>;
 }
@@ -3150,17 +3399,21 @@ export declare class CartUpdateManyWithWhereWithoutOrderInput {
     where: InstanceType<typeof CartScalarWhereInput>;
     data: InstanceType<typeof CartUpdateManyMutationInput>;
 }
-export declare class CartUpdateManyWithoutItemNestedInput {
-    create?: Array<CartCreateWithoutItemInput>;
-    connectOrCreate?: Array<CartCreateOrConnectWithoutItemInput>;
-    upsert?: Array<CartUpsertWithWhereUniqueWithoutItemInput>;
-    createMany?: InstanceType<typeof CartCreateManyItemInputEnvelope>;
+export declare class CartUpdateManyWithWhereWithoutProjectItemInput {
+    where: InstanceType<typeof CartScalarWhereInput>;
+    data: InstanceType<typeof CartUpdateManyMutationInput>;
+}
+export declare class CartUpdateManyWithoutMembershipItemNestedInput {
+    create?: Array<CartCreateWithoutMembershipItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutMembershipItemInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutMembershipItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyMembershipItemInputEnvelope>;
     set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
     disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
     delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
     connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
-    update?: Array<CartUpdateWithWhereUniqueWithoutItemInput>;
-    updateMany?: Array<CartUpdateManyWithWhereWithoutItemInput>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutMembershipItemInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutMembershipItemInput>;
     deleteMany?: Array<CartScalarWhereInput>;
 }
 export declare class CartUpdateManyWithoutOrderNestedInput {
@@ -3176,21 +3429,39 @@ export declare class CartUpdateManyWithoutOrderNestedInput {
     updateMany?: Array<CartUpdateManyWithWhereWithoutOrderInput>;
     deleteMany?: Array<CartScalarWhereInput>;
 }
-export declare class CartUpdateWithWhereUniqueWithoutItemInput {
+export declare class CartUpdateManyWithoutProjectItemNestedInput {
+    create?: Array<CartCreateWithoutProjectItemInput>;
+    connectOrCreate?: Array<CartCreateOrConnectWithoutProjectItemInput>;
+    upsert?: Array<CartUpsertWithWhereUniqueWithoutProjectItemInput>;
+    createMany?: InstanceType<typeof CartCreateManyProjectItemInputEnvelope>;
+    set?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<CartWhereUniqueInput, 'id'>>;
+    update?: Array<CartUpdateWithWhereUniqueWithoutProjectItemInput>;
+    updateMany?: Array<CartUpdateManyWithWhereWithoutProjectItemInput>;
+    deleteMany?: Array<CartScalarWhereInput>;
+}
+export declare class CartUpdateWithWhereUniqueWithoutMembershipItemInput {
     where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
-    data: InstanceType<typeof CartUpdateWithoutItemInput>;
+    data: InstanceType<typeof CartUpdateWithoutMembershipItemInput>;
 }
 export declare class CartUpdateWithWhereUniqueWithoutOrderInput {
     where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
     data: InstanceType<typeof CartUpdateWithoutOrderInput>;
 }
-export declare class CartUpdateWithoutItemInput {
+export declare class CartUpdateWithWhereUniqueWithoutProjectItemInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
+    data: InstanceType<typeof CartUpdateWithoutProjectItemInput>;
+}
+export declare class CartUpdateWithoutMembershipItemInput {
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     order?: InstanceType<typeof OrderUpdateOneRequiredWithoutCartNestedInput>;
+    projectItem?: InstanceType<typeof ProjectUpdateOneWithoutOrderCartNestedInput>;
 }
 export declare class CartUpdateWithoutOrderInput {
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3198,7 +3469,17 @@ export declare class CartUpdateWithoutOrderInput {
     cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    item?: InstanceType<typeof ItemUpdateOneRequiredWithoutCartNestedInput>;
+    membershipItem?: InstanceType<typeof ItemUpdateOneWithoutCartNestedInput>;
+    projectItem?: InstanceType<typeof ProjectUpdateOneWithoutOrderCartNestedInput>;
+}
+export declare class CartUpdateWithoutProjectItemInput {
+    quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    price?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    cost?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    order?: InstanceType<typeof OrderUpdateOneRequiredWithoutCartNestedInput>;
+    membershipItem?: InstanceType<typeof ItemUpdateOneWithoutCartNestedInput>;
 }
 export declare class CartUpdateInput {
     quantity?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3207,17 +3488,23 @@ export declare class CartUpdateInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     order?: InstanceType<typeof OrderUpdateOneRequiredWithoutCartNestedInput>;
-    item?: InstanceType<typeof ItemUpdateOneRequiredWithoutCartNestedInput>;
+    membershipItem?: InstanceType<typeof ItemUpdateOneWithoutCartNestedInput>;
+    projectItem?: InstanceType<typeof ProjectUpdateOneWithoutOrderCartNestedInput>;
 }
-export declare class CartUpsertWithWhereUniqueWithoutItemInput {
+export declare class CartUpsertWithWhereUniqueWithoutMembershipItemInput {
     where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
-    update: InstanceType<typeof CartUpdateWithoutItemInput>;
-    create: InstanceType<typeof CartCreateWithoutItemInput>;
+    update: InstanceType<typeof CartUpdateWithoutMembershipItemInput>;
+    create: InstanceType<typeof CartCreateWithoutMembershipItemInput>;
 }
 export declare class CartUpsertWithWhereUniqueWithoutOrderInput {
     where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
     update: InstanceType<typeof CartUpdateWithoutOrderInput>;
     create: InstanceType<typeof CartCreateWithoutOrderInput>;
+}
+export declare class CartUpsertWithWhereUniqueWithoutProjectItemInput {
+    where: Prisma.AtLeast<CartWhereUniqueInput, 'id'>;
+    update: InstanceType<typeof CartUpdateWithoutProjectItemInput>;
+    create: InstanceType<typeof CartCreateWithoutProjectItemInput>;
 }
 export declare class CartWhereUniqueInput {
     id?: number;
@@ -3225,14 +3512,16 @@ export declare class CartWhereUniqueInput {
     OR?: Array<CartWhereInput>;
     NOT?: Array<CartWhereInput>;
     orderId?: InstanceType<typeof IntFilter>;
-    itemId?: InstanceType<typeof IntFilter>;
+    membershipItemId?: InstanceType<typeof IntNullableFilter>;
+    projectItemId?: InstanceType<typeof IntNullableFilter>;
     quantity?: InstanceType<typeof IntFilter>;
     price?: InstanceType<typeof FloatFilter>;
     cost?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     order?: InstanceType<typeof OrderRelationFilter>;
-    item?: InstanceType<typeof ItemRelationFilter>;
+    membershipItem?: InstanceType<typeof ItemNullableRelationFilter>;
+    projectItem?: InstanceType<typeof ProjectNullableRelationFilter>;
 }
 export declare class CartWhereInput {
     AND?: Array<CartWhereInput>;
@@ -3240,26 +3529,30 @@ export declare class CartWhereInput {
     NOT?: Array<CartWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     orderId?: InstanceType<typeof IntFilter>;
-    itemId?: InstanceType<typeof IntFilter>;
+    membershipItemId?: InstanceType<typeof IntNullableFilter>;
+    projectItemId?: InstanceType<typeof IntNullableFilter>;
     quantity?: InstanceType<typeof IntFilter>;
     price?: InstanceType<typeof FloatFilter>;
     cost?: InstanceType<typeof FloatFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     order?: InstanceType<typeof OrderRelationFilter>;
-    item?: InstanceType<typeof ItemRelationFilter>;
+    membershipItem?: InstanceType<typeof ItemNullableRelationFilter>;
+    projectItem?: InstanceType<typeof ProjectNullableRelationFilter>;
 }
 export declare class Cart {
     id: number;
     orderId: number;
-    itemId: number;
+    membershipItemId: number | null;
+    projectItemId: number | null;
     quantity: number;
     price: number;
     cost: number;
     createdAt: Date;
     updatedAt: Date;
     order?: InstanceType<typeof Order>;
-    item?: InstanceType<typeof Item>;
+    membershipItem?: InstanceType<typeof Item> | null;
+    projectItem?: InstanceType<typeof Project> | null;
 }
 export declare class CreateManyCartArgs {
     data: Array<CartCreateManyInput>;
@@ -8657,7 +8950,7 @@ export declare class ItemCreateInput {
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    cart?: InstanceType<typeof CartCreateNestedManyWithoutItemInput>;
+    cart?: InstanceType<typeof CartCreateNestedManyWithoutMembershipItemInput>;
 }
 export declare class ItemGroupByArgs {
     where?: InstanceType<typeof ItemWhereInput>;
@@ -8747,6 +9040,10 @@ export declare class ItemMinOrderByAggregateInput {
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
+export declare class ItemNullableRelationFilter {
+    is?: InstanceType<typeof ItemWhereInput>;
+    isNot?: InstanceType<typeof ItemWhereInput>;
+}
 export declare class ItemOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
@@ -8772,10 +9069,6 @@ export declare class ItemOrderByWithRelationInput {
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     cart?: InstanceType<typeof CartOrderByRelationAggregateInput>;
-}
-export declare class ItemRelationFilter {
-    is?: InstanceType<typeof ItemWhereInput>;
-    isNot?: InstanceType<typeof ItemWhereInput>;
 }
 export declare class ItemScalarWhereWithAggregatesInput {
     AND?: Array<ItemScalarWhereWithAggregatesInput>;
@@ -8824,7 +9117,7 @@ export declare class ItemUncheckedCreateInput {
     userRole: keyof typeof UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutItemInput>;
+    cart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutMembershipItemInput>;
 }
 export declare class ItemUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -8855,7 +9148,7 @@ export declare class ItemUncheckedUpdateInput {
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutItemNestedInput>;
+    cart?: InstanceType<typeof CartUncheckedUpdateManyWithoutMembershipItemNestedInput>;
 }
 export declare class ItemUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -8866,10 +9159,12 @@ export declare class ItemUpdateManyMutationInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class ItemUpdateOneRequiredWithoutCartNestedInput {
+export declare class ItemUpdateOneWithoutCartNestedInput {
     create?: InstanceType<typeof ItemCreateWithoutCartInput>;
     connectOrCreate?: InstanceType<typeof ItemCreateOrConnectWithoutCartInput>;
     upsert?: InstanceType<typeof ItemUpsertWithoutCartInput>;
+    disconnect?: InstanceType<typeof ItemWhereInput>;
+    delete?: InstanceType<typeof ItemWhereInput>;
     connect?: Prisma.AtLeast<ItemWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof ItemUpdateToOneWithWhereWithoutCartInput>;
 }
@@ -8894,7 +9189,7 @@ export declare class ItemUpdateInput {
     userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    cart?: InstanceType<typeof CartUpdateManyWithoutItemNestedInput>;
+    cart?: InstanceType<typeof CartUpdateManyWithoutMembershipItemNestedInput>;
 }
 export declare class ItemUpsertWithoutCartInput {
     update: InstanceType<typeof ItemUpdateWithoutCartInput>;
@@ -12538,7 +12833,7 @@ export declare class ProjectCountOrderByAggregateInput {
 }
 export declare class ProjectCount {
     images?: number;
-    investors?: number;
+    orderCart?: number;
 }
 export declare class ProjectCreateManyInput {
     id?: number;
@@ -12555,11 +12850,6 @@ export declare class ProjectCreateManyInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
-export declare class ProjectCreateNestedManyWithoutInvestorsInput {
-    create?: Array<ProjectCreateWithoutInvestorsInput>;
-    connectOrCreate?: Array<ProjectCreateOrConnectWithoutInvestorsInput>;
-    connect?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-}
 export declare class ProjectCreateNestedOneWithoutAccountInput {
     create?: InstanceType<typeof ProjectCreateWithoutAccountInput>;
     connectOrCreate?: InstanceType<typeof ProjectCreateOrConnectWithoutAccountInput>;
@@ -12570,6 +12860,11 @@ export declare class ProjectCreateNestedOneWithoutImagesInput {
     connectOrCreate?: InstanceType<typeof ProjectCreateOrConnectWithoutImagesInput>;
     connect?: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
 }
+export declare class ProjectCreateNestedOneWithoutOrderCartInput {
+    create?: InstanceType<typeof ProjectCreateWithoutOrderCartInput>;
+    connectOrCreate?: InstanceType<typeof ProjectCreateOrConnectWithoutOrderCartInput>;
+    connect?: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
+}
 export declare class ProjectCreateOrConnectWithoutAccountInput {
     where: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
     create: InstanceType<typeof ProjectCreateWithoutAccountInput>;
@@ -12578,9 +12873,9 @@ export declare class ProjectCreateOrConnectWithoutImagesInput {
     where: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
     create: InstanceType<typeof ProjectCreateWithoutImagesInput>;
 }
-export declare class ProjectCreateOrConnectWithoutInvestorsInput {
+export declare class ProjectCreateOrConnectWithoutOrderCartInput {
     where: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
-    create: InstanceType<typeof ProjectCreateWithoutInvestorsInput>;
+    create: InstanceType<typeof ProjectCreateWithoutOrderCartInput>;
 }
 export declare class ProjectCreateWithoutAccountInput {
     name: string;
@@ -12595,7 +12890,7 @@ export declare class ProjectCreateWithoutAccountInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutProjectImageInput>;
-    investors?: InstanceType<typeof UserCreateNestedManyWithoutProjectsInvestmentInput>;
+    orderCart?: InstanceType<typeof CartCreateNestedManyWithoutProjectItemInput>;
 }
 export declare class ProjectCreateWithoutImagesInput {
     name: string;
@@ -12609,10 +12904,10 @@ export declare class ProjectCreateWithoutImagesInput {
     maxInvestor: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    investors?: InstanceType<typeof UserCreateNestedManyWithoutProjectsInvestmentInput>;
+    orderCart?: InstanceType<typeof CartCreateNestedManyWithoutProjectItemInput>;
     account: InstanceType<typeof AccountCreateNestedOneWithoutProjectInput>;
 }
-export declare class ProjectCreateWithoutInvestorsInput {
+export declare class ProjectCreateWithoutOrderCartInput {
     name: string;
     description: string;
     projectCategory: keyof typeof ProjectCategory;
@@ -12640,7 +12935,7 @@ export declare class ProjectCreateInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutProjectImageInput>;
-    investors?: InstanceType<typeof UserCreateNestedManyWithoutProjectsInvestmentInput>;
+    orderCart?: InstanceType<typeof CartCreateNestedManyWithoutProjectItemInput>;
     account: InstanceType<typeof AccountCreateNestedOneWithoutProjectInput>;
 }
 export declare class ProjectGroupByArgs {
@@ -12675,11 +12970,6 @@ export declare class ProjectGroupBy {
     _sum?: InstanceType<typeof ProjectSumAggregate>;
     _min?: InstanceType<typeof ProjectMinAggregate>;
     _max?: InstanceType<typeof ProjectMaxAggregate>;
-}
-export declare class ProjectListRelationFilter {
-    every?: InstanceType<typeof ProjectWhereInput>;
-    some?: InstanceType<typeof ProjectWhereInput>;
-    none?: InstanceType<typeof ProjectWhereInput>;
 }
 export declare class ProjectMaxAggregateInput {
     id?: true;
@@ -12775,9 +13065,6 @@ export declare class ProjectNullableRelationFilter {
     is?: InstanceType<typeof ProjectWhereInput>;
     isNot?: InstanceType<typeof ProjectWhereInput>;
 }
-export declare class ProjectOrderByRelationAggregateInput {
-    _count?: keyof typeof SortOrder;
-}
 export declare class ProjectOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
@@ -12813,7 +13100,7 @@ export declare class ProjectOrderByWithRelationInput {
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     images?: InstanceType<typeof ImagesOrderByRelationAggregateInput>;
-    investors?: InstanceType<typeof UserOrderByRelationAggregateInput>;
+    orderCart?: InstanceType<typeof CartOrderByRelationAggregateInput>;
     account?: InstanceType<typeof AccountOrderByWithRelationInput>;
 }
 export declare class ProjectScalarWhereWithAggregatesInput {
@@ -12833,24 +13120,6 @@ export declare class ProjectScalarWhereWithAggregatesInput {
     accountId?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
-}
-export declare class ProjectScalarWhereInput {
-    AND?: Array<ProjectScalarWhereInput>;
-    OR?: Array<ProjectScalarWhereInput>;
-    NOT?: Array<ProjectScalarWhereInput>;
-    id?: InstanceType<typeof IntFilter>;
-    name?: InstanceType<typeof StringFilter>;
-    description?: InstanceType<typeof StringFilter>;
-    projectCategory?: InstanceType<typeof EnumProjectCategoryFilter>;
-    startDate?: InstanceType<typeof DateTimeFilter>;
-    endDate?: InstanceType<typeof DateTimeFilter>;
-    returnRate?: InstanceType<typeof FloatFilter>;
-    goalAmount?: InstanceType<typeof FloatFilter>;
-    minimumInvestment?: InstanceType<typeof FloatFilter>;
-    maxInvestor?: InstanceType<typeof IntFilter>;
-    accountId?: InstanceType<typeof IntFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class ProjectSumAggregateInput {
     id?: true;
@@ -12876,11 +13145,6 @@ export declare class ProjectSumOrderByAggregateInput {
     maxInvestor?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
 }
-export declare class ProjectUncheckedCreateNestedManyWithoutInvestorsInput {
-    create?: Array<ProjectCreateWithoutInvestorsInput>;
-    connectOrCreate?: Array<ProjectCreateOrConnectWithoutInvestorsInput>;
-    connect?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-}
 export declare class ProjectUncheckedCreateNestedOneWithoutAccountInput {
     create?: InstanceType<typeof ProjectCreateWithoutAccountInput>;
     connectOrCreate?: InstanceType<typeof ProjectCreateOrConnectWithoutAccountInput>;
@@ -12900,7 +13164,7 @@ export declare class ProjectUncheckedCreateWithoutAccountInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutProjectImageInput>;
-    investors?: InstanceType<typeof UserUncheckedCreateNestedManyWithoutProjectsInvestmentInput>;
+    orderCart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutProjectItemInput>;
 }
 export declare class ProjectUncheckedCreateWithoutImagesInput {
     id?: number;
@@ -12916,9 +13180,9 @@ export declare class ProjectUncheckedCreateWithoutImagesInput {
     accountId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    investors?: InstanceType<typeof UserUncheckedCreateNestedManyWithoutProjectsInvestmentInput>;
+    orderCart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutProjectItemInput>;
 }
-export declare class ProjectUncheckedCreateWithoutInvestorsInput {
+export declare class ProjectUncheckedCreateWithoutOrderCartInput {
     id?: number;
     name: string;
     description: string;
@@ -12949,34 +13213,7 @@ export declare class ProjectUncheckedCreateInput {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutProjectImageInput>;
-    investors?: InstanceType<typeof UserUncheckedCreateNestedManyWithoutProjectsInvestmentInput>;
-}
-export declare class ProjectUncheckedUpdateManyWithoutInvestorsNestedInput {
-    create?: Array<ProjectCreateWithoutInvestorsInput>;
-    connectOrCreate?: Array<ProjectCreateOrConnectWithoutInvestorsInput>;
-    upsert?: Array<ProjectUpsertWithWhereUniqueWithoutInvestorsInput>;
-    set?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    disconnect?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    delete?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    connect?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    update?: Array<ProjectUpdateWithWhereUniqueWithoutInvestorsInput>;
-    updateMany?: Array<ProjectUpdateManyWithWhereWithoutInvestorsInput>;
-    deleteMany?: Array<ProjectScalarWhereInput>;
-}
-export declare class ProjectUncheckedUpdateManyWithoutInvestorsInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    projectCategory?: InstanceType<typeof EnumProjectCategoryFieldUpdateOperationsInput>;
-    startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    orderCart?: InstanceType<typeof CartUncheckedCreateNestedManyWithoutProjectItemInput>;
 }
 export declare class ProjectUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -13016,7 +13253,7 @@ export declare class ProjectUncheckedUpdateWithoutAccountInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutProjectImageNestedInput>;
-    investors?: InstanceType<typeof UserUncheckedUpdateManyWithoutProjectsInvestmentNestedInput>;
+    orderCart?: InstanceType<typeof CartUncheckedUpdateManyWithoutProjectItemNestedInput>;
 }
 export declare class ProjectUncheckedUpdateWithoutImagesInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -13032,9 +13269,9 @@ export declare class ProjectUncheckedUpdateWithoutImagesInput {
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    investors?: InstanceType<typeof UserUncheckedUpdateManyWithoutProjectsInvestmentNestedInput>;
+    orderCart?: InstanceType<typeof CartUncheckedUpdateManyWithoutProjectItemNestedInput>;
 }
-export declare class ProjectUncheckedUpdateWithoutInvestorsInput {
+export declare class ProjectUncheckedUpdateWithoutOrderCartInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -13065,7 +13302,7 @@ export declare class ProjectUncheckedUpdateInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutProjectImageNestedInput>;
-    investors?: InstanceType<typeof UserUncheckedUpdateManyWithoutProjectsInvestmentNestedInput>;
+    orderCart?: InstanceType<typeof CartUncheckedUpdateManyWithoutProjectItemNestedInput>;
 }
 export declare class ProjectUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -13079,22 +13316,6 @@ export declare class ProjectUpdateManyMutationInput {
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class ProjectUpdateManyWithWhereWithoutInvestorsInput {
-    where: InstanceType<typeof ProjectScalarWhereInput>;
-    data: InstanceType<typeof ProjectUpdateManyMutationInput>;
-}
-export declare class ProjectUpdateManyWithoutInvestorsNestedInput {
-    create?: Array<ProjectCreateWithoutInvestorsInput>;
-    connectOrCreate?: Array<ProjectCreateOrConnectWithoutInvestorsInput>;
-    upsert?: Array<ProjectUpsertWithWhereUniqueWithoutInvestorsInput>;
-    set?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    disconnect?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    delete?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    connect?: Array<Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>>;
-    update?: Array<ProjectUpdateWithWhereUniqueWithoutInvestorsInput>;
-    updateMany?: Array<ProjectUpdateManyWithWhereWithoutInvestorsInput>;
-    deleteMany?: Array<ProjectScalarWhereInput>;
 }
 export declare class ProjectUpdateOneWithoutAccountNestedInput {
     create?: InstanceType<typeof ProjectCreateWithoutAccountInput>;
@@ -13114,6 +13335,15 @@ export declare class ProjectUpdateOneWithoutImagesNestedInput {
     connect?: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
     update?: InstanceType<typeof ProjectUpdateToOneWithWhereWithoutImagesInput>;
 }
+export declare class ProjectUpdateOneWithoutOrderCartNestedInput {
+    create?: InstanceType<typeof ProjectCreateWithoutOrderCartInput>;
+    connectOrCreate?: InstanceType<typeof ProjectCreateOrConnectWithoutOrderCartInput>;
+    upsert?: InstanceType<typeof ProjectUpsertWithoutOrderCartInput>;
+    disconnect?: InstanceType<typeof ProjectWhereInput>;
+    delete?: InstanceType<typeof ProjectWhereInput>;
+    connect?: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
+    update?: InstanceType<typeof ProjectUpdateToOneWithWhereWithoutOrderCartInput>;
+}
 export declare class ProjectUpdateToOneWithWhereWithoutAccountInput {
     where?: InstanceType<typeof ProjectWhereInput>;
     data: InstanceType<typeof ProjectUpdateWithoutAccountInput>;
@@ -13122,9 +13352,9 @@ export declare class ProjectUpdateToOneWithWhereWithoutImagesInput {
     where?: InstanceType<typeof ProjectWhereInput>;
     data: InstanceType<typeof ProjectUpdateWithoutImagesInput>;
 }
-export declare class ProjectUpdateWithWhereUniqueWithoutInvestorsInput {
-    where: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
-    data: InstanceType<typeof ProjectUpdateWithoutInvestorsInput>;
+export declare class ProjectUpdateToOneWithWhereWithoutOrderCartInput {
+    where?: InstanceType<typeof ProjectWhereInput>;
+    data: InstanceType<typeof ProjectUpdateWithoutOrderCartInput>;
 }
 export declare class ProjectUpdateWithoutAccountInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -13139,7 +13369,7 @@ export declare class ProjectUpdateWithoutAccountInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutProjectImageNestedInput>;
-    investors?: InstanceType<typeof UserUpdateManyWithoutProjectsInvestmentNestedInput>;
+    orderCart?: InstanceType<typeof CartUpdateManyWithoutProjectItemNestedInput>;
 }
 export declare class ProjectUpdateWithoutImagesInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -13153,10 +13383,10 @@ export declare class ProjectUpdateWithoutImagesInput {
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    investors?: InstanceType<typeof UserUpdateManyWithoutProjectsInvestmentNestedInput>;
+    orderCart?: InstanceType<typeof CartUpdateManyWithoutProjectItemNestedInput>;
     account?: InstanceType<typeof AccountUpdateOneRequiredWithoutProjectNestedInput>;
 }
-export declare class ProjectUpdateWithoutInvestorsInput {
+export declare class ProjectUpdateWithoutOrderCartInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     description?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     projectCategory?: InstanceType<typeof EnumProjectCategoryFieldUpdateOperationsInput>;
@@ -13184,13 +13414,8 @@ export declare class ProjectUpdateInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutProjectImageNestedInput>;
-    investors?: InstanceType<typeof UserUpdateManyWithoutProjectsInvestmentNestedInput>;
+    orderCart?: InstanceType<typeof CartUpdateManyWithoutProjectItemNestedInput>;
     account?: InstanceType<typeof AccountUpdateOneRequiredWithoutProjectNestedInput>;
-}
-export declare class ProjectUpsertWithWhereUniqueWithoutInvestorsInput {
-    where: Prisma.AtLeast<ProjectWhereUniqueInput, 'id' | 'accountId'>;
-    update: InstanceType<typeof ProjectUpdateWithoutInvestorsInput>;
-    create: InstanceType<typeof ProjectCreateWithoutInvestorsInput>;
 }
 export declare class ProjectUpsertWithoutAccountInput {
     update: InstanceType<typeof ProjectUpdateWithoutAccountInput>;
@@ -13200,6 +13425,11 @@ export declare class ProjectUpsertWithoutAccountInput {
 export declare class ProjectUpsertWithoutImagesInput {
     update: InstanceType<typeof ProjectUpdateWithoutImagesInput>;
     create: InstanceType<typeof ProjectCreateWithoutImagesInput>;
+    where?: InstanceType<typeof ProjectWhereInput>;
+}
+export declare class ProjectUpsertWithoutOrderCartInput {
+    update: InstanceType<typeof ProjectUpdateWithoutOrderCartInput>;
+    create: InstanceType<typeof ProjectCreateWithoutOrderCartInput>;
     where?: InstanceType<typeof ProjectWhereInput>;
 }
 export declare class ProjectWhereUniqueInput {
@@ -13220,7 +13450,7 @@ export declare class ProjectWhereUniqueInput {
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     images?: InstanceType<typeof ImagesListRelationFilter>;
-    investors?: InstanceType<typeof UserListRelationFilter>;
+    orderCart?: InstanceType<typeof CartListRelationFilter>;
     account?: InstanceType<typeof AccountRelationFilter>;
 }
 export declare class ProjectWhereInput {
@@ -13241,7 +13471,7 @@ export declare class ProjectWhereInput {
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     images?: InstanceType<typeof ImagesListRelationFilter>;
-    investors?: InstanceType<typeof UserListRelationFilter>;
+    orderCart?: InstanceType<typeof CartListRelationFilter>;
     account?: InstanceType<typeof AccountRelationFilter>;
 }
 export declare class Project {
@@ -13259,7 +13489,7 @@ export declare class Project {
     createdAt: Date;
     updatedAt: Date;
     images?: Array<Images>;
-    investors?: Array<User>;
+    orderCart?: Array<Cart>;
     account?: InstanceType<typeof Account>;
     _count?: InstanceType<typeof ProjectCount>;
 }
@@ -17803,7 +18033,6 @@ export declare class UserCount {
     sessions?: number;
     hotelsCreated?: number;
     programsParticipation?: number;
-    projectsInvestment?: number;
     claimedRewards?: number;
     withdrawalRequest?: number;
     userNotifications?: number;
@@ -17882,11 +18111,6 @@ export declare class UserCreateManyInput {
 export declare class UserCreateNestedManyWithoutProgramsParticipationInput {
     create?: Array<UserCreateWithoutProgramsParticipationInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutProgramsParticipationInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-}
-export declare class UserCreateNestedManyWithoutProjectsInvestmentInput {
-    create?: Array<UserCreateWithoutProjectsInvestmentInput>;
-    connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
     connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
 export declare class UserCreateNestedManyWithoutReferredByInput {
@@ -18006,10 +18230,6 @@ export declare class UserCreateOrConnectWithoutProgramsParticipationInput {
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutProgramsParticipationInput>;
 }
-export declare class UserCreateOrConnectWithoutProjectsInvestmentInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
-    create: InstanceType<typeof UserCreateWithoutProjectsInvestmentInput>;
-}
 export declare class UserCreateOrConnectWithoutReferredByInput {
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     create: InstanceType<typeof UserCreateWithoutReferredByInput>;
@@ -18061,7 +18281,6 @@ export declare class UserCreateWithoutAccountsInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18095,7 +18314,6 @@ export declare class UserCreateWithoutAddressInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18129,7 +18347,6 @@ export declare class UserCreateWithoutCheckInsInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18164,7 +18381,6 @@ export declare class UserCreateWithoutClaimedRewardsInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
@@ -18198,7 +18414,6 @@ export declare class UserCreateWithoutFilesCreatedInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18231,7 +18446,6 @@ export declare class UserCreateWithoutHotelsCreatedInput {
     orders?: InstanceType<typeof OrderCreateNestedManyWithoutOrderByInput>;
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18265,7 +18479,6 @@ export declare class UserCreateWithoutOrdersInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18299,7 +18512,6 @@ export declare class UserCreateWithoutPointTransactionsInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18334,7 +18546,6 @@ export declare class UserCreateWithoutProgramsCreatedInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18367,41 +18578,6 @@ export declare class UserCreateWithoutProgramsParticipationInput {
     orders?: InstanceType<typeof OrderCreateNestedManyWithoutOrderByInput>;
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
-    claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
-    withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
-    userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
-    programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
-    filesCreated?: InstanceType<typeof FileCreateNestedManyWithoutCreatedByInput>;
-}
-export declare class UserCreateWithoutProjectsInvestmentInput {
-    id?: string;
-    firstName: string;
-    lastName?: string;
-    email: string;
-    userRole?: keyof typeof UserRole;
-    userType: keyof typeof UserType;
-    avatarUrl?: string;
-    whatsappNumber: string;
-    whatsappVerifiedAt?: Date | string;
-    password: string;
-    referralCode: string;
-    status?: keyof typeof UserStatus;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    deletedAt?: Date | string;
-    theme?: keyof typeof Theme;
-    address: InstanceType<typeof AddressCreateNestedOneWithoutUserInput>;
-    referredBy?: InstanceType<typeof UserCreateNestedOneWithoutReferredUsersInput>;
-    referredUsers?: InstanceType<typeof UserCreateNestedManyWithoutReferredByInput>;
-    checkIns?: InstanceType<typeof CheckInCreateNestedManyWithoutUserInput>;
-    school?: InstanceType<typeof SchoolCreateNestedOneWithoutStudentsInput>;
-    accounts?: InstanceType<typeof AccountCreateNestedManyWithoutUserInput>;
-    PointTransactions?: InstanceType<typeof PointTransactionCreateNestedManyWithoutUserInput>;
-    orders?: InstanceType<typeof OrderCreateNestedManyWithoutOrderByInput>;
-    sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
-    hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
-    programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18435,7 +18611,6 @@ export declare class UserCreateWithoutReferredByInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18469,7 +18644,6 @@ export declare class UserCreateWithoutReferredUsersInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18503,7 +18677,6 @@ export declare class UserCreateWithoutSchoolInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18537,7 +18710,6 @@ export declare class UserCreateWithoutSessionsInput {
     orders?: InstanceType<typeof OrderCreateNestedManyWithoutOrderByInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18572,7 +18744,6 @@ export declare class UserCreateWithoutUserNotificationsInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
@@ -18606,7 +18777,6 @@ export declare class UserCreateWithoutWithdrawalRequestInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramCreateNestedManyWithoutCreatedByInput>;
@@ -18640,7 +18810,6 @@ export declare class UserCreateInput {
     sessions?: InstanceType<typeof SessionCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationCreateNestedManyWithoutUserInput>;
@@ -18881,7 +19050,6 @@ export declare class UserOrderByWithRelationInput {
     sessions?: InstanceType<typeof SessionOrderByRelationAggregateInput>;
     hotelsCreated?: InstanceType<typeof HotelOrderByRelationAggregateInput>;
     programsParticipation?: InstanceType<typeof ProgramOrderByRelationAggregateInput>;
-    projectsInvestment?: InstanceType<typeof ProjectOrderByRelationAggregateInput>;
     claimedRewards?: InstanceType<typeof RewardClaimOrderByRelationAggregateInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestOrderByRelationAggregateInput>;
     userNotifications?: InstanceType<typeof UserNotificationOrderByRelationAggregateInput>;
@@ -18957,11 +19125,6 @@ export declare class UserUncheckedCreateNestedManyWithoutProgramsParticipationIn
     connectOrCreate?: Array<UserCreateOrConnectWithoutProgramsParticipationInput>;
     connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
 }
-export declare class UserUncheckedCreateNestedManyWithoutProjectsInvestmentInput {
-    create?: Array<UserCreateWithoutProjectsInvestmentInput>;
-    connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-}
 export declare class UserUncheckedCreateNestedManyWithoutReferredByInput {
     create?: Array<UserCreateWithoutReferredByInput>;
     connectOrCreate?: Array<UserCreateOrConnectWithoutReferredByInput>;
@@ -19006,7 +19169,6 @@ export declare class UserUncheckedCreateWithoutAccountsInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19040,7 +19202,6 @@ export declare class UserUncheckedCreateWithoutAddressInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19074,7 +19235,6 @@ export declare class UserUncheckedCreateWithoutCheckInsInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19109,7 +19269,6 @@ export declare class UserUncheckedCreateWithoutClaimedRewardsInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
@@ -19143,7 +19302,6 @@ export declare class UserUncheckedCreateWithoutFilesCreatedInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19176,7 +19334,6 @@ export declare class UserUncheckedCreateWithoutHotelsCreatedInput {
     orders?: InstanceType<typeof OrderUncheckedCreateNestedManyWithoutOrderByInput>;
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19210,7 +19367,6 @@ export declare class UserUncheckedCreateWithoutOrdersInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19244,7 +19400,6 @@ export declare class UserUncheckedCreateWithoutPointTransactionsInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19279,7 +19434,6 @@ export declare class UserUncheckedCreateWithoutProgramsCreatedInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19312,41 +19466,6 @@ export declare class UserUncheckedCreateWithoutProgramsParticipationInput {
     orders?: InstanceType<typeof OrderUncheckedCreateNestedManyWithoutOrderByInput>;
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
-    claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
-    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
-    userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
-    programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
-    filesCreated?: InstanceType<typeof FileUncheckedCreateNestedManyWithoutCreatedByInput>;
-}
-export declare class UserUncheckedCreateWithoutProjectsInvestmentInput {
-    id?: string;
-    firstName: string;
-    lastName?: string;
-    email: string;
-    addressId: number;
-    userRole?: keyof typeof UserRole;
-    userType: keyof typeof UserType;
-    avatarUrl?: string;
-    whatsappNumber: string;
-    whatsappVerifiedAt?: Date | string;
-    password: string;
-    referralCode: string;
-    referredById?: string;
-    status?: keyof typeof UserStatus;
-    schoolId?: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    deletedAt?: Date | string;
-    theme?: keyof typeof Theme;
-    referredUsers?: InstanceType<typeof UserUncheckedCreateNestedManyWithoutReferredByInput>;
-    checkIns?: InstanceType<typeof CheckInUncheckedCreateNestedManyWithoutUserInput>;
-    accounts?: InstanceType<typeof AccountUncheckedCreateNestedManyWithoutUserInput>;
-    PointTransactions?: InstanceType<typeof PointTransactionUncheckedCreateNestedManyWithoutUserInput>;
-    orders?: InstanceType<typeof OrderUncheckedCreateNestedManyWithoutOrderByInput>;
-    sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
-    hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
-    programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19380,7 +19499,6 @@ export declare class UserUncheckedCreateWithoutReferredByInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19414,7 +19532,6 @@ export declare class UserUncheckedCreateWithoutReferredUsersInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19448,7 +19565,6 @@ export declare class UserUncheckedCreateWithoutSchoolInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19482,7 +19598,6 @@ export declare class UserUncheckedCreateWithoutSessionsInput {
     orders?: InstanceType<typeof OrderUncheckedCreateNestedManyWithoutOrderByInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19517,7 +19632,6 @@ export declare class UserUncheckedCreateWithoutUserNotificationsInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
@@ -19551,7 +19665,6 @@ export declare class UserUncheckedCreateWithoutWithdrawalRequestInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutCreatedByInput>;
@@ -19585,7 +19698,6 @@ export declare class UserUncheckedCreateInput {
     sessions?: InstanceType<typeof SessionUncheckedCreateNestedManyWithoutUserInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedCreateNestedManyWithoutCreatedByInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedCreateNestedManyWithoutParticipantInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedCreateNestedManyWithoutInvestorsInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedCreateNestedManyWithoutUserInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedCreateNestedManyWithoutUserInput>;
@@ -19605,39 +19717,6 @@ export declare class UserUncheckedUpdateManyWithoutProgramsParticipationNestedIn
     deleteMany?: Array<UserScalarWhereInput>;
 }
 export declare class UserUncheckedUpdateManyWithoutProgramsParticipationInput {
-    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    firstName?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    lastName?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    addressId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
-    userType?: InstanceType<typeof EnumUserTypeFieldUpdateOperationsInput>;
-    avatarUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
-    password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
-    schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    deletedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
-    theme?: InstanceType<typeof EnumThemeFieldUpdateOperationsInput>;
-}
-export declare class UserUncheckedUpdateManyWithoutProjectsInvestmentNestedInput {
-    create?: Array<UserCreateWithoutProjectsInvestmentInput>;
-    connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
-    upsert?: Array<UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    update?: Array<UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput>;
-    updateMany?: Array<UserUpdateManyWithWhereWithoutProjectsInvestmentInput>;
-    deleteMany?: Array<UserScalarWhereInput>;
-}
-export declare class UserUncheckedUpdateManyWithoutProjectsInvestmentInput {
     id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     firstName?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     lastName?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
@@ -19781,7 +19860,6 @@ export declare class UserUncheckedUpdateWithoutAccountsInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -19815,7 +19893,6 @@ export declare class UserUncheckedUpdateWithoutAddressInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -19849,7 +19926,6 @@ export declare class UserUncheckedUpdateWithoutCheckInsInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -19884,7 +19960,6 @@ export declare class UserUncheckedUpdateWithoutClaimedRewardsInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
@@ -19918,7 +19993,6 @@ export declare class UserUncheckedUpdateWithoutFilesCreatedInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -19951,7 +20025,6 @@ export declare class UserUncheckedUpdateWithoutHotelsCreatedInput {
     orders?: InstanceType<typeof OrderUncheckedUpdateManyWithoutOrderByNestedInput>;
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -19985,7 +20058,6 @@ export declare class UserUncheckedUpdateWithoutOrdersInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20019,7 +20091,6 @@ export declare class UserUncheckedUpdateWithoutPointTransactionsInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20054,7 +20125,6 @@ export declare class UserUncheckedUpdateWithoutProgramsCreatedInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20087,41 +20157,6 @@ export declare class UserUncheckedUpdateWithoutProgramsParticipationInput {
     orders?: InstanceType<typeof OrderUncheckedUpdateManyWithoutOrderByNestedInput>;
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
-    claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
-    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
-    userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
-    programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    filesCreated?: InstanceType<typeof FileUncheckedUpdateManyWithoutCreatedByNestedInput>;
-}
-export declare class UserUncheckedUpdateWithoutProjectsInvestmentInput {
-    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    firstName?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    lastName?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    addressId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
-    userType?: InstanceType<typeof EnumUserTypeFieldUpdateOperationsInput>;
-    avatarUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
-    password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    referredById?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
-    schoolId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    deletedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
-    theme?: InstanceType<typeof EnumThemeFieldUpdateOperationsInput>;
-    referredUsers?: InstanceType<typeof UserUncheckedUpdateManyWithoutReferredByNestedInput>;
-    checkIns?: InstanceType<typeof CheckInUncheckedUpdateManyWithoutUserNestedInput>;
-    accounts?: InstanceType<typeof AccountUncheckedUpdateManyWithoutUserNestedInput>;
-    PointTransactions?: InstanceType<typeof PointTransactionUncheckedUpdateManyWithoutUserNestedInput>;
-    orders?: InstanceType<typeof OrderUncheckedUpdateManyWithoutOrderByNestedInput>;
-    sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
-    hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
-    programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20155,7 +20190,6 @@ export declare class UserUncheckedUpdateWithoutReferredByInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20189,7 +20223,6 @@ export declare class UserUncheckedUpdateWithoutReferredUsersInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20223,7 +20256,6 @@ export declare class UserUncheckedUpdateWithoutSchoolInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20257,7 +20289,6 @@ export declare class UserUncheckedUpdateWithoutSessionsInput {
     orders?: InstanceType<typeof OrderUncheckedUpdateManyWithoutOrderByNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20292,7 +20323,6 @@ export declare class UserUncheckedUpdateWithoutUserNotificationsInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
@@ -20326,7 +20356,6 @@ export declare class UserUncheckedUpdateWithoutWithdrawalRequestInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutCreatedByNestedInput>;
@@ -20360,7 +20389,6 @@ export declare class UserUncheckedUpdateInput {
     sessions?: InstanceType<typeof SessionUncheckedUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUncheckedUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUncheckedUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUncheckedUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUncheckedUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUncheckedUpdateManyWithoutUserNestedInput>;
@@ -20389,10 +20417,6 @@ export declare class UserUpdateManyWithWhereWithoutProgramsParticipationInput {
     where: InstanceType<typeof UserScalarWhereInput>;
     data: InstanceType<typeof UserUpdateManyMutationInput>;
 }
-export declare class UserUpdateManyWithWhereWithoutProjectsInvestmentInput {
-    where: InstanceType<typeof UserScalarWhereInput>;
-    data: InstanceType<typeof UserUpdateManyMutationInput>;
-}
 export declare class UserUpdateManyWithWhereWithoutReferredByInput {
     where: InstanceType<typeof UserScalarWhereInput>;
     data: InstanceType<typeof UserUpdateManyMutationInput>;
@@ -20411,18 +20435,6 @@ export declare class UserUpdateManyWithoutProgramsParticipationNestedInput {
     connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
     update?: Array<UserUpdateWithWhereUniqueWithoutProgramsParticipationInput>;
     updateMany?: Array<UserUpdateManyWithWhereWithoutProgramsParticipationInput>;
-    deleteMany?: Array<UserScalarWhereInput>;
-}
-export declare class UserUpdateManyWithoutProjectsInvestmentNestedInput {
-    create?: Array<UserCreateWithoutProjectsInvestmentInput>;
-    connectOrCreate?: Array<UserCreateOrConnectWithoutProjectsInvestmentInput>;
-    upsert?: Array<UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput>;
-    set?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    disconnect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    delete?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    connect?: Array<Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>>;
-    update?: Array<UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput>;
-    updateMany?: Array<UserUpdateManyWithWhereWithoutProjectsInvestmentInput>;
     deleteMany?: Array<UserScalarWhereInput>;
 }
 export declare class UserUpdateManyWithoutReferredByNestedInput {
@@ -20602,10 +20614,6 @@ export declare class UserUpdateWithWhereUniqueWithoutProgramsParticipationInput 
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutProgramsParticipationInput>;
 }
-export declare class UserUpdateWithWhereUniqueWithoutProjectsInvestmentInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
-    data: InstanceType<typeof UserUpdateWithoutProjectsInvestmentInput>;
-}
 export declare class UserUpdateWithWhereUniqueWithoutReferredByInput {
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     data: InstanceType<typeof UserUpdateWithoutReferredByInput>;
@@ -20641,7 +20649,6 @@ export declare class UserUpdateWithoutAccountsInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20675,7 +20682,6 @@ export declare class UserUpdateWithoutAddressInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20709,7 +20715,6 @@ export declare class UserUpdateWithoutCheckInsInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20744,7 +20749,6 @@ export declare class UserUpdateWithoutClaimedRewardsInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
@@ -20778,7 +20782,6 @@ export declare class UserUpdateWithoutFilesCreatedInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20811,7 +20814,6 @@ export declare class UserUpdateWithoutHotelsCreatedInput {
     orders?: InstanceType<typeof OrderUpdateManyWithoutOrderByNestedInput>;
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20845,7 +20847,6 @@ export declare class UserUpdateWithoutOrdersInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20879,7 +20880,6 @@ export declare class UserUpdateWithoutPointTransactionsInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20914,7 +20914,6 @@ export declare class UserUpdateWithoutProgramsCreatedInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -20947,41 +20946,6 @@ export declare class UserUpdateWithoutProgramsParticipationInput {
     orders?: InstanceType<typeof OrderUpdateManyWithoutOrderByNestedInput>;
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
-    claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
-    withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
-    userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
-    programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
-    filesCreated?: InstanceType<typeof FileUpdateManyWithoutCreatedByNestedInput>;
-}
-export declare class UserUpdateWithoutProjectsInvestmentInput {
-    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    firstName?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    lastName?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    userRole?: InstanceType<typeof EnumUserRoleFieldUpdateOperationsInput>;
-    userType?: InstanceType<typeof EnumUserTypeFieldUpdateOperationsInput>;
-    avatarUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    whatsappNumber?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    whatsappVerifiedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
-    password?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    referralCode?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    status?: InstanceType<typeof EnumUserStatusFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    deletedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
-    theme?: InstanceType<typeof EnumThemeFieldUpdateOperationsInput>;
-    address?: InstanceType<typeof AddressUpdateOneRequiredWithoutUserNestedInput>;
-    referredBy?: InstanceType<typeof UserUpdateOneWithoutReferredUsersNestedInput>;
-    referredUsers?: InstanceType<typeof UserUpdateManyWithoutReferredByNestedInput>;
-    checkIns?: InstanceType<typeof CheckInUpdateManyWithoutUserNestedInput>;
-    school?: InstanceType<typeof SchoolUpdateOneWithoutStudentsNestedInput>;
-    accounts?: InstanceType<typeof AccountUpdateManyWithoutUserNestedInput>;
-    PointTransactions?: InstanceType<typeof PointTransactionUpdateManyWithoutUserNestedInput>;
-    orders?: InstanceType<typeof OrderUpdateManyWithoutOrderByNestedInput>;
-    sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
-    hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
-    programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -21015,7 +20979,6 @@ export declare class UserUpdateWithoutReferredByInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -21049,7 +21012,6 @@ export declare class UserUpdateWithoutReferredUsersInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -21083,7 +21045,6 @@ export declare class UserUpdateWithoutSchoolInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -21117,7 +21078,6 @@ export declare class UserUpdateWithoutSessionsInput {
     orders?: InstanceType<typeof OrderUpdateManyWithoutOrderByNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -21152,7 +21112,6 @@ export declare class UserUpdateWithoutUserNotificationsInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
@@ -21186,7 +21145,6 @@ export declare class UserUpdateWithoutWithdrawalRequestInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
     programsCreated?: InstanceType<typeof ProgramUpdateManyWithoutCreatedByNestedInput>;
@@ -21220,7 +21178,6 @@ export declare class UserUpdateInput {
     sessions?: InstanceType<typeof SessionUpdateManyWithoutUserNestedInput>;
     hotelsCreated?: InstanceType<typeof HotelUpdateManyWithoutCreatedByNestedInput>;
     programsParticipation?: InstanceType<typeof ProgramUpdateManyWithoutParticipantNestedInput>;
-    projectsInvestment?: InstanceType<typeof ProjectUpdateManyWithoutInvestorsNestedInput>;
     claimedRewards?: InstanceType<typeof RewardClaimUpdateManyWithoutUserNestedInput>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestUpdateManyWithoutUserNestedInput>;
     userNotifications?: InstanceType<typeof UserNotificationUpdateManyWithoutUserNestedInput>;
@@ -21231,11 +21188,6 @@ export declare class UserUpsertWithWhereUniqueWithoutProgramsParticipationInput 
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
     update: InstanceType<typeof UserUpdateWithoutProgramsParticipationInput>;
     create: InstanceType<typeof UserCreateWithoutProgramsParticipationInput>;
-}
-export declare class UserUpsertWithWhereUniqueWithoutProjectsInvestmentInput {
-    where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
-    update: InstanceType<typeof UserUpdateWithoutProjectsInvestmentInput>;
-    create: InstanceType<typeof UserCreateWithoutProjectsInvestmentInput>;
 }
 export declare class UserUpsertWithWhereUniqueWithoutReferredByInput {
     where: Prisma.AtLeast<UserWhereUniqueInput, 'id' | 'email' | 'addressId' | 'whatsappNumber' | 'referralCode'>;
@@ -21346,7 +21298,6 @@ export declare class UserWhereUniqueInput {
     sessions?: InstanceType<typeof SessionListRelationFilter>;
     hotelsCreated?: InstanceType<typeof HotelListRelationFilter>;
     programsParticipation?: InstanceType<typeof ProgramListRelationFilter>;
-    projectsInvestment?: InstanceType<typeof ProjectListRelationFilter>;
     claimedRewards?: InstanceType<typeof RewardClaimListRelationFilter>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestListRelationFilter>;
     userNotifications?: InstanceType<typeof UserNotificationListRelationFilter>;
@@ -21387,7 +21338,6 @@ export declare class UserWhereInput {
     sessions?: InstanceType<typeof SessionListRelationFilter>;
     hotelsCreated?: InstanceType<typeof HotelListRelationFilter>;
     programsParticipation?: InstanceType<typeof ProgramListRelationFilter>;
-    projectsInvestment?: InstanceType<typeof ProjectListRelationFilter>;
     claimedRewards?: InstanceType<typeof RewardClaimListRelationFilter>;
     withdrawalRequest?: InstanceType<typeof WithdrawalRequestListRelationFilter>;
     userNotifications?: InstanceType<typeof UserNotificationListRelationFilter>;
@@ -21425,7 +21375,6 @@ export declare class User {
     sessions?: Array<Session>;
     hotelsCreated?: Array<Hotel>;
     programsParticipation?: Array<Program>;
-    projectsInvestment?: Array<Project>;
     claimedRewards?: Array<RewardClaim>;
     withdrawalRequest?: Array<WithdrawalRequest>;
     userNotifications?: Array<UserNotification>;

@@ -6,8 +6,6 @@ import { WithdrawalRequestFindUniqueArgs } from './dto/withdrawal-request-find-o
 import { WithdrawalRequestUpdateOneArgs } from './dto/withdrawal-request-update-one.args';
 
 import { Injectable } from '@nestjs/common';
-import { AccountCategory, Prisma, UserRole } from '@prisma/client';
-import { UserService } from '../user/user.service';
 
 @Injectable()
 export class WithdrawalRequestController {

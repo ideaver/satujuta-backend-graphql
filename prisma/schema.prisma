@@ -207,9 +207,7 @@ model User {
   status                UserStatus          @default(PENDING)
   /// @HideField({ match: 'UserCreate*Input' })
   checkIns              CheckIn[]
-  /// @HideField({ match: 'UserUpdate*Input' }) 
   school                School?             @relation("StudentSchool", fields: [schoolId], references: [id])
-  /// @HideField({ output: false, input: true })   
   schoolId              Int?
   /// @HideField({ match: 'UserUpdate*Input' })
   accounts              Account[]

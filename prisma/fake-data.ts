@@ -55,6 +55,7 @@ export function fakeSubdistrictComplete() {
 export function fakeAddress() {
   return {
     name: faker.name.fullName(),
+    updatedAt: faker.datatype.datetime(),
   };
 }
 export function fakeAddressComplete() {
@@ -65,6 +66,8 @@ export function fakeAddressComplete() {
     cityId: faker.datatype.number(),
     districtId: faker.datatype.number(),
     subdistrictId: faker.datatype.number(),
+    createdAt: new Date(),
+    updatedAt: faker.datatype.datetime(),
   };
 }
 export function fakeSchool() {
@@ -334,7 +337,8 @@ export function fakeCartComplete() {
   return {
     id: faker.datatype.number(),
     orderId: faker.datatype.number(),
-    itemId: faker.datatype.number(),
+    membershipItemId: undefined,
+    projectItemId: undefined,
     quantity: faker.datatype.number(),
     price: faker.datatype.float(),
     cost: faker.datatype.float(),
