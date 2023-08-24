@@ -37,41 +37,43 @@ async function main() {
   // console.log(await prisma.pointTransaction.deleteMany());
   // await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
 
-  const query = Prisma.sql`
-  WITH LatestBalances AS (
-    SELECT
-      userId,
-      MAX(createdAt) AS latestTransactionDate
-    FROM PointTransaction
-    GROUP BY userId
-  )
-  
-  SELECT
-    pointGroup,
-    COALESCE(userCount, 0) AS userCount,
-    (COALESCE(userCount, 0) * 100.0 / NULLIF((SELECT COUNT(*) FROM User), 0)) AS percentage
-  FROM (
-    SELECT
-      CASE
-        WHEN currentBalance <= 0 THEN '0 point'
-        WHEN currentBalance > 0 AND currentBalance <= 30 THEN '>0<=30 points'
-        WHEN currentBalance > 30 AND currentBalance <= 50 THEN '>30<=50 points'
-        WHEN currentBalance > 50 AND currentBalance <= 100 THEN '>50<=100 points'
-        WHEN currentBalance > 100 AND currentBalance <= 1000 THEN '>100<=1000 points'
-        ELSE '>1000 points'
-      END AS pointGroup,
-      COUNT(*) AS userCount
-    FROM User
-    LEFT JOIN LatestBalances ON User.id = LatestBalances.userId
-    LEFT JOIN PointTransaction ON User.id = PointTransaction.userId AND LatestBalances.latestTransactionDate = PointTransaction.createdAt
-    GROUP BY pointGroup
-  ) AS grouped
-  ORDER BY pointGroup;
-  
-    `;
+  // const query = Prisma.sql`
+  // WITH LatestBalances AS (
+  //   SELECT
+  //     userId,
+  //     MAX(createdAt) AS latestTransactionDate
+  //   FROM PointTransaction
+  //   GROUP BY userId
+  // )
 
-  const result = await prisma.$queryRaw(query);
-  console.log(result);
+  // SELECT
+  //   pointGroup,
+  //   COALESCE(userCount, 0) AS userCount,
+  //   (COALESCE(userCount, 0) * 100.0 / NULLIF((SELECT COUNT(*) FROM User), 0)) AS percentage
+  // FROM (
+  //   SELECT
+  //     CASE
+  //       WHEN currentBalance <= 0 THEN '0 point'
+  //       WHEN currentBalance > 0 AND currentBalance <= 30 THEN '>0<=30 points'
+  //       WHEN currentBalance > 30 AND currentBalance <= 50 THEN '>30<=50 points'
+  //       WHEN currentBalance > 50 AND currentBalance <= 100 THEN '>50<=100 points'
+  //       WHEN currentBalance > 100 AND currentBalance <= 1000 THEN '>100<=1000 points'
+  //       ELSE '>1000 points'
+  //     END AS pointGroup,
+  //     COUNT(*) AS userCount
+  //   FROM User
+  //   LEFT JOIN LatestBalances ON User.id = LatestBalances.userId
+  //   LEFT JOIN PointTransaction ON User.id = PointTransaction.userId AND LatestBalances.latestTransactionDate = PointTransaction.createdAt
+  //   GROUP BY pointGroup
+  // ) AS grouped
+  // ORDER BY pointGroup;
+
+  //   `;
+
+  // const result = await prisma.$queryRaw(query);
+  // console.log(result);
+
+  calculatePointGroupPercentages();
 
   // await createCityDistrictPostalCode();
 
@@ -118,6 +120,63 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+async function calculatePointGroupPercentages() {
+  const users = await prisma.user.findMany({
+    include: {
+      PointTransactions: {
+        orderBy: {
+          createdAt: 'desc',
+        },
+        take: 1,
+      },
+    },
+  });
+
+  const userCount = users.length;
+
+  const grouped = users.reduce((accumulator, user) => {
+    const latestTransaction = user.PointTransactions[0];
+    const currentBalance = latestTransaction
+      ? latestTransaction.currentBalance
+      : 0;
+
+    let pointGroup = '';
+    if (currentBalance <= 0) {
+      pointGroup = '0 point';
+    } else if (currentBalance <= 30) {
+      pointGroup = 'above 0 point and up to 30 points';
+    } else if (currentBalance <= 50) {
+      pointGroup = 'above 30 points and up to 50 points';
+    } else if (currentBalance <= 100) {
+      pointGroup = 'above 50 points and up to 100 points';
+    } else if (currentBalance <= 1000) {
+      pointGroup = 'above 100 points and up to 1000 points';
+    } else {
+      pointGroup = 'above 1000 points';
+    }
+
+    if (!accumulator[pointGroup]) {
+      accumulator[pointGroup] = 0;
+    }
+    accumulator[pointGroup]++;
+
+    return accumulator;
+  }, {});
+
+  const pointGroups = Object.keys(grouped).map((pointGroup) => {
+    const userCountInGroup = grouped[pointGroup];
+    const percentage = (userCountInGroup * 100) / userCount;
+
+    return {
+      pointGroup,
+      userCount: userCountInGroup,
+      percentage,
+    };
+  });
+
+  console.log(pointGroups);
+}
 
 // async function createSuperUser() {
 //   await prisma.user.create({
