@@ -4986,9 +4986,6 @@ type Mutation {
   userNotificationRemove(userNotificationId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  pointTransactionCreateOne(pointTransactionCreateArgs: PointTransactionCreateArgs!): PointTransaction
-
-  """Deskripsinya ada disini loh"""
   transactionCreateOne(transactionCreateArgs: TransactionCreateArgs!): Transaction
 
   """Deskripsinya ada disini loh"""
@@ -8658,47 +8655,6 @@ input UserUpdateWithoutUserNotificationsInput {
 input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
   where: UserWhereInput
   data: UserUpdateWithoutUserNotificationsInput!
-}
-
-input PointTransactionCreateArgs {
-  data: PointTransactionCreateInput!
-}
-
-input PointTransactionCreateInput {
-  amount: Float!
-  pointType: PointType!
-  transactionType: TransactionType!
-  currentBalance: Float
-  createdAt: DateTime
-  User: UserCreateNestedOneWithoutPointTransactionsInput!
-}
-
-input UserCreateNestedOneWithoutPointTransactionsInput {
-  create: UserCreateWithoutPointTransactionsInput
-  connectOrCreate: UserCreateOrConnectWithoutPointTransactionsInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutPointTransactionsInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-  orders: OrderCreateNestedManyWithoutOrderByInput
-}
-
-input UserCreateOrConnectWithoutPointTransactionsInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutPointTransactionsInput!
 }
 
 input TransactionCreateArgs {

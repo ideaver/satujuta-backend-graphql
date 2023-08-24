@@ -19,20 +19,20 @@ export class PointTransactionResolver {
     private readonly pointTransactionController: PointTransactionController,
   ) {}
 
-  @Mutation(() => PointTransaction, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async pointTransactionCreateOne(
-    @Args('pointTransactionCreateArgs')
-    pointTransactionCreateArgs: PointTransactionCreateArgs,
-    @Relations() relations: PointTransactionSelect,
-  ): Promise<PointTransaction | void> {
-    pointTransactionCreateArgs.select = relations.select;
-    return await this.pointTransactionController.createOne(
-      pointTransactionCreateArgs,
-    );
-  }
+  // @Mutation(() => PointTransaction, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async pointTransactionCreateOne(
+  //   @Args('pointTransactionCreateArgs')
+  //   pointTransactionCreateArgs: PointTransactionCreateArgs,
+  //   @Relations() relations: PointTransactionSelect,
+  // ): Promise<PointTransaction | void> {
+  //   pointTransactionCreateArgs.select = relations.select;
+  //   return await this.pointTransactionController.createOne(
+  //     pointTransactionCreateArgs,
+  //   );
+  // }
 
   @Query(() => [PointTransaction], {
     nullable: true,

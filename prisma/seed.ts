@@ -34,30 +34,44 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  console.log(await prisma.pointTransaction.deleteMany());
-  await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
+  // console.log(await prisma.pointTransaction.deleteMany());
+  // await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
 
-  //   const query = Prisma.sql`
-  //     SELECT
-  //   CASE
-  //     WHEN currentBalance = 0 THEN '0 point'
-  //     WHEN currentBalance > 0 AND currentBalance <= 30 THEN 'above 0 point and up to 30 points'
-  //     WHEN currentBalance > 30 AND currentBalance <= 50 THEN 'above 30 points and up to 50 points'
-  //     WHEN currentBalance > 50 AND currentBalance <= 100 THEN 'above 50 points and up to 100 points'
-  //     WHEN currentBalance > 100 AND currentBalance <= 1000 THEN 'above 100 points and up to 1000 points'
-  //     ELSE 'above 1000 points'
-  //   END AS pointGroup,
-  //   COUNT(*) AS userCount,
-  //   (COUNT(*) * 100.0 / (SELECT COUNT(*) FROM User)) AS percentage
-  // FROM User
-  // JOIN PointTransaction ON User.id = PointTransaction.userId
-  // GROUP BY pointGroup
-  // ORDER BY pointGroup;
+  const query = Prisma.sql`
+  WITH LatestBalances AS (
+    SELECT
+      userId,
+      MAX(createdAt) AS latestTransactionDate
+    FROM PointTransaction
+    GROUP BY userId
+  )
+  
+  SELECT
+    pointGroup,
+    COALESCE(userCount, 0) AS userCount,
+    (COALESCE(userCount, 0) * 100.0 / NULLIF((SELECT COUNT(*) FROM User), 0)) AS percentage
+  FROM (
+    SELECT
+      CASE
+        WHEN currentBalance <= 0 THEN '0 point'
+        WHEN currentBalance > 0 AND currentBalance <= 30 THEN '>0<=30 points'
+        WHEN currentBalance > 30 AND currentBalance <= 50 THEN '>30<=50 points'
+        WHEN currentBalance > 50 AND currentBalance <= 100 THEN '>50<=100 points'
+        WHEN currentBalance > 100 AND currentBalance <= 1000 THEN '>100<=1000 points'
+        ELSE '>1000 points'
+      END AS pointGroup,
+      COUNT(*) AS userCount
+    FROM User
+    LEFT JOIN LatestBalances ON User.id = LatestBalances.userId
+    LEFT JOIN PointTransaction ON User.id = PointTransaction.userId AND LatestBalances.latestTransactionDate = PointTransaction.createdAt
+    GROUP BY pointGroup
+  ) AS grouped
+  ORDER BY pointGroup;
+  
+    `;
 
-  //   `;
-
-  //   const result = await prisma.$queryRaw(query);
-  //   console.log(result);
+  const result = await prisma.$queryRaw(query);
+  console.log(result);
 
   // await createCityDistrictPostalCode();
 
