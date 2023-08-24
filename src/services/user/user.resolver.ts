@@ -7,6 +7,7 @@ import { User } from 'src/model/user.model';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { UserController } from './user.controller';
+import { UserTypePercentage } from './dto/user-type-percentage.output';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -84,5 +85,13 @@ export class UserResolver {
     userFindManyArgs: UserFindManyArgs,
   ) {
     return this.userController.count(userFindManyArgs);
+  }
+
+  @Query(() => [UserTypePercentage], {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  countUserTypePercentage() {
+    return this.userController.countUserTypePercentage();
   }
 }

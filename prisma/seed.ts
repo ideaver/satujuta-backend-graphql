@@ -30,6 +30,20 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
+  const query = Prisma.sql`
+    SELECT
+      userType AS userCountType,
+      COUNT(*) AS userCount,
+      ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS userPercentage
+    FROM
+      User
+    GROUP BY
+      userType;
+  `;
+
+  const result = await prisma.$queryRaw(query);
+  console.log(result);
+
   // await createCityDistrictPostalCode();
 
   //   await seedBank();

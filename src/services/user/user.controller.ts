@@ -150,6 +150,10 @@ export class UserController {
   count(userFindManyArgs: UserFindManyArgs) {
     return this.userService.count(userFindManyArgs);
   }
+
+  countUserTypePercentage() {
+    return this.userService.countUserTypePercentage();
+  }
 }
 
 async function orderCreate(

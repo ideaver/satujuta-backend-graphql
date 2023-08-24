@@ -7,6 +7,7 @@ import { User } from 'src/model/user.model';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 import { FindManyUserArgs } from 'src/@generated';
 import { Prisma } from '@prisma/client';
+import { UserTypePercentage } from './dto/user-type-percentage.output';
 
 @Injectable()
 export class UserService {
@@ -87,6 +88,27 @@ export class UserService {
       .count(findManyUserArgs)
       .then((user) => {
         return user;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async countUserTypePercentage(): Promise<UserTypePercentage[] | void> {
+    const query = Prisma.sql`
+    SELECT
+      userType AS userCountType,
+      COUNT(*) AS userCount,
+      ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS userPercentage
+    FROM
+      User
+    GROUP BY
+      userType;
+  `;
+    return await this.prisma
+      .$queryRaw(query)
+      .then((res: UserTypePercentage[]) => {
+        return res;
       })
       .catch((err) => {
         throwPrismaError(err);
