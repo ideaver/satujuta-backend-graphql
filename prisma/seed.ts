@@ -1,10 +1,13 @@
 import {
   Account,
   AccountCategory,
+  PointType,
   Prisma,
   PrismaClient,
   Transaction,
   TransactionStatus,
+  TransactionType,
+  User,
   UserRole,
 } from '@prisma/client';
 import { CreateOneAccountArgs } from 'src/@generated';
@@ -13,6 +16,7 @@ import {
   fakeFaq,
   fakeTransaction,
   fakeTransactionComplete,
+  fakePointTransaction,
 } from './fake-data';
 import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
@@ -30,19 +34,29 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  const query = Prisma.sql`
-    SELECT
-      userType AS userCountType,
-      COUNT(*) AS userCount,
-      ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS userPercentage
-    FROM
-      User
-    GROUP BY
-      userType;
-  `;
+  await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
 
-  const result = await prisma.$queryRaw(query);
-  console.log(result);
+  //   const query = Prisma.sql`
+  //     SELECT
+  //   CASE
+  //     WHEN currentBalance = 0 THEN '0 point'
+  //     WHEN currentBalance > 0 AND currentBalance <= 30 THEN 'above 0 point and up to 30 points'
+  //     WHEN currentBalance > 30 AND currentBalance <= 50 THEN 'above 30 points and up to 50 points'
+  //     WHEN currentBalance > 50 AND currentBalance <= 100 THEN 'above 50 points and up to 100 points'
+  //     WHEN currentBalance > 100 AND currentBalance <= 1000 THEN 'above 100 points and up to 1000 points'
+  //     ELSE 'above 1000 points'
+  //   END AS pointGroup,
+  //   COUNT(*) AS userCount,
+  //   (COUNT(*) * 100.0 / (SELECT COUNT(*) FROM User)) AS percentage
+  // FROM User
+  // JOIN PointTransaction ON User.id = PointTransaction.userId
+  // GROUP BY pointGroup
+  // ORDER BY pointGroup;
+
+  //   `;
+
+  //   const result = await prisma.$queryRaw(query);
+  //   console.log(result);
 
   // await createCityDistrictPostalCode();
 
@@ -569,6 +583,45 @@ async function transactionCreateManySeed({
 //     console.error(err);
 //   }
 // }
+
+async function pointTransactionCreateManySeed({
+  numberOfBanks: numberOfPointTransaction,
+}): Promise<void> {
+  const pointTransactionToCreate: Prisma.PointTransactionCreateManyInput[] = [];
+
+  const users: Promise<User[]> = prisma.user.findMany();
+
+  for (let i = 0; i < numberOfPointTransaction; i++) {
+    const getUserId: string = users[i].pointTransactionToCreate.push({
+      amount: faker.datatype.number({ min: 1, max: 500 }),
+      pointType: faker.helpers.arrayElement([
+        PointType.REFERRING,
+        PointType.REDEEMING,
+      ] as const),
+      userId: '5bfa338c-dd73-4435-b9b9-701ad364a355',
+      transactionType: faker.helpers.arrayElement([
+        TransactionType.DEBIT,
+        TransactionType.CREDIT,
+      ] as const),
+    });
+  }
+
+  const pointTransactionCreateManyArgs: Prisma.PointTransactionCreateManyArgs =
+    {
+      data: pointTransactionToCreate,
+    };
+
+  try {
+    const createdPointTransaction = await prisma.pointTransaction.createMany(
+      pointTransactionCreateManyArgs,
+    );
+    console.log(
+      'pointTransactions created: ' + JSON.stringify(createdPointTransaction),
+    );
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 async function accountCreateOneSeed(
   accountCreateArgs: CreateOneAccountArgs,
