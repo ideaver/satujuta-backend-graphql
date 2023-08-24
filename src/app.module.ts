@@ -32,6 +32,8 @@ import { CityModule } from './services/city/city.module';
 import { DistrictModule } from './services/district/district.module';
 import { SubdistrictModule } from './services/subdistrict/subdistrict.module';
 import { CartModule } from './services/cart/cart.module';
+import { RewardClaimModule } from './services/reward-claim/reward-claim.module';
+import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawal-request.module';
 
 @Module({
   imports: [
@@ -68,6 +70,8 @@ import { CartModule } from './services/cart/cart.module';
     DistrictModule,
     SubdistrictModule,
     CartModule,
+    RewardClaimModule,
+    WithdrawalRequestModule,
   ],
   controllers: [],
   providers: [PrismaService],
