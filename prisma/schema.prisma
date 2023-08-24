@@ -161,7 +161,7 @@ model School {
 /// @ObjectType('UserAbstract', { isAbstract: true })
 model User {
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
-  id                    String             @id @default(uuid())
+  id                    String              @id @default(uuid())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()
@@ -173,17 +173,17 @@ model User {
   /// @Validator.IsNotEmpty()
   lastName              String?
   /// @Validator.IsEmail()
-  email                 String             @unique
-  /// @Validator.IsNotEmpty()
-  address               Address            @relation(fields: [addressId], references: [id])
-  addressId             Int                @unique
+  email                 String              @unique
+  /// @Validator.IsNotEmpty(g
+  address               Address             @relation(fields: [addressId], references: [id])
+  addressId             Int                 @unique
   /// @HideField({ match: 'UserUpdate*Input' })
-  userRole              UserRole           @default(MEMBER)
+  userRole              UserRole            @default(MEMBER)
   userType              UserType
   /// @Validator.IsUrl({ require_protocol: true })
   avatarUrl             String?
   /// @Validator.IsNotEmpty()
-  whatsappNumber        String             @unique
+  whatsappNumber        String              @unique
   /// @HideField({ match: 'UserCreate*Input' })      
   whatsappVerifiedAt    DateTime?
   /// @Validator.MinLength(6)
@@ -192,19 +192,19 @@ model User {
   /// @HideField({ output: true, input: false })
   password              String
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
-  referralCode          String             @unique
+  referralCode          String              @unique
   /// @HideField({ match: 'UserUpdate*Input' }) 
-  referredBy            User?              @relation("UserReferral", fields: [referredById], references: [id])
+  referredBy            User?               @relation("UserReferral", fields: [referredById], references: [id])
   /// @HideField({ output: false, input: true })   
   referredById          String?
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
-  referredUsers         User[]             @relation("UserReferral")
+  referredUsers         User[]              @relation("UserReferral")
   /// @HideField({ match: 'UserCreate*Input' })
-  status                UserStatus         @default(PENDING)
+  status                UserStatus          @default(PENDING)
   /// @HideField({ match: 'UserCreate*Input' })
   checkIns              CheckIn[]
   /// @HideField({ match: 'UserUpdate*Input' }) 
-  school                School?            @relation("StudentSchool", fields: [schoolId], references: [id])
+  school                School?             @relation("StudentSchool", fields: [schoolId], references: [id])
   /// @HideField({ output: false, input: true })   
   schoolId              Int?
   /// @HideField({ match: 'UserUpdate*Input' })
@@ -212,9 +212,9 @@ model User {
   /// @HideField({ output: false, input: true })   
   PointTransactions     PointTransaction[]
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
-  createdAt             DateTime           @default(now())
+  createdAt             DateTime            @default(now())
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
-  updatedAt             DateTime           @updatedAt
+  updatedAt             DateTime            @updatedAt
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   deletedAt             DateTime?
   /// @HideField({ match: 'UserUpdate*Input' })
@@ -224,18 +224,19 @@ model User {
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   hotelsCreated         Hotel[]
   /// @HideField({ output: false, input: true })   
-  programsParticipation Program[]          @relation("participant")
+  programsParticipation Program[]           @relation("participant")
   /// @HideField({ output: false, input: true })   
-  projectsInvestment    Project[]          @relation("project Investment")
+  projectsInvestment    Project[]           @relation("project Investment")
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
-  claimedRewards        Reward[]           @relation("reward claimer")
+  claimedRewards        RewardClaim[]
   /// @HideField({ output: false, input: true })   
   userNotifications     UserNotification[]
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
   programsCreated       Program[]
   /// @HideField({ output: false, input: true })   
   filesCreated          File[]
-  theme                 Theme              @default(LIGHT)
+  theme                 Theme               @default(LIGHT)
+  WithdrawalRequest     WithdrawalRequest[]
 }
 
 enum UserStatus {
@@ -305,6 +306,10 @@ model Transaction {
   Installment         Installment?        @relation(fields: [installmentId], references: [id])
   /// @HideField({ match: 'TransactionUpdate*Input' })
   installmentId       Int?                @unique
+  /// @HideField({ match: 'TransactionUpdate*Input' })
+  withdrawalRequest   WithdrawalRequest?  @relation(fields: [withdrawalRequestId], references: [id])
+  /// @HideField({ match: 'TransactionUpdate*Input' })
+  withdrawalRequestId Int?                @unique
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   uniqueCode          Int
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
@@ -355,6 +360,18 @@ enum TransactionStatus {
   FAILED
   CANCELLED
   COMPLETED
+}
+
+model WithdrawalRequest {
+  id            Int               @id @default(autoincrement())
+  user          User              @relation(fields: [userId], references: [id])
+  userId        String
+  amount        Float
+  status        TransactionStatus
+  transaction   Transaction?
+  transactionId Int?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
 }
 
 //Make Read only without update, delete
@@ -644,7 +661,7 @@ model ProgramCategory {
 //Make CRUD Available
 model Reward {
   /// @HideField({ match: ['RewardCreate*Input','RewardUpdate*Input']})
-  id          Int      @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsNotEmpty()
@@ -657,12 +674,23 @@ model Reward {
   /// @Validator.IsNotEmpty()
   description String
   images      Images[]
+  /// @HideField({ match: ['RewardCreate*Input','RewardUpdate*Input']})
+  RewardClaim RewardClaim[]
   /// @HideField({ output: false, input: true })  
-  claimers    User[]   @relation("reward claimer")
+  createdAt   DateTime      @default(now())
   /// @HideField({ output: false, input: true })  
+  updatedAt   DateTime      @updatedAt
+}
+
+//create model rewardclaim below
+model RewardClaim {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  reward      Reward   @relation(fields: [rewardId], references: [id])
+  rewardId    Int
+  processedAt DateTime
   createdAt   DateTime @default(now())
-  /// @HideField({ output: false, input: true })  
-  updatedAt   DateTime @updatedAt
 }
 
 //Make CRUD Available

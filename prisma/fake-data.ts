@@ -159,6 +159,7 @@ export function fakeTransactionComplete() {
     toAccountId: faker.datatype.number(),
     invoiceId: undefined,
     installmentId: undefined,
+    withdrawalRequestId: undefined,
     uniqueCode: faker.datatype.number(),
     createdAt: new Date(),
   };
@@ -179,6 +180,25 @@ export function fakePointTransactionComplete() {
     currentBalance: 0,
     userId: faker.datatype.uuid(),
     createdAt: new Date(),
+  };
+}
+export function fakeWithdrawalRequest() {
+  return {
+    amount: faker.datatype.float(),
+    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    transactionId: undefined,
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeWithdrawalRequestComplete() {
+  return {
+    id: faker.datatype.number(),
+    userId: faker.datatype.uuid(),
+    amount: faker.datatype.float(),
+    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    transactionId: undefined,
+    createdAt: new Date(),
+    updatedAt: faker.datatype.datetime(),
   };
 }
 export function fakeSession() {
@@ -460,6 +480,20 @@ export function fakeRewardComplete() {
     description: faker.lorem.words(5),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeRewardClaim() {
+  return {
+    processedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeRewardClaimComplete() {
+  return {
+    id: faker.datatype.number(),
+    userId: faker.datatype.uuid(),
+    rewardId: faker.datatype.number(),
+    processedAt: faker.datatype.datetime(),
+    createdAt: new Date(),
   };
 }
 export function fakeFile() {
