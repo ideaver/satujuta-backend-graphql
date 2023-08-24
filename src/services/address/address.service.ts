@@ -10,8 +10,9 @@ import { AddressUpdateOneArgs } from './dto/address-update-one.args';
 export class AddressService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(addressCreateArgs: CreateOneAddressArgs): Promise<Address | void> {
-
+  async createOne(
+    addressCreateArgs: CreateOneAddressArgs,
+  ): Promise<Address | void> {
     return await this.prisma.address
       .create(addressCreateArgs)
       .then((address) => {
@@ -33,7 +34,9 @@ export class AddressService {
       });
   }
 
-  async findOne(addressFindUniqueArgs: AddressFindUniqueArgs): Promise<Address | void> {
+  async findOne(
+    addressFindUniqueArgs: AddressFindUniqueArgs,
+  ): Promise<Address | void> {
     return await this.prisma.address
       .findUnique(addressFindUniqueArgs)
       .then((address) => {
@@ -44,7 +47,9 @@ export class AddressService {
       });
   }
 
-  async update(addressUpdateOneArgs: AddressUpdateOneArgs): Promise<Address | void> {
+  async update(
+    addressUpdateOneArgs: AddressUpdateOneArgs,
+  ): Promise<Address | void> {
     return this.prisma.address
       .update(addressUpdateOneArgs)
       .then((address) => {
@@ -55,7 +60,7 @@ export class AddressService {
       });
   }
 
-  async remove(addressId: number): Promise<boolean | void>{
+  async remove(addressId: number): Promise<boolean | void> {
     return await this.prisma.address
       .delete({
         where: { id: addressId },

@@ -175,9 +175,7 @@ model User {
   /// @Validator.IsEmail()
   email                 String             @unique
   /// @Validator.IsNotEmpty()
-  /// @HideField({ match: 'UserUpdate*Input' })
   address               Address            @relation(fields: [addressId], references: [id])
-  /// @HideField({ output: false, input: true })   
   addressId             Int                @unique
   /// @HideField({ match: 'UserUpdate*Input' })
   userRole              UserRole           @default(MEMBER)

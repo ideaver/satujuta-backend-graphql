@@ -14,17 +14,17 @@ export class AddressFindManyArgs {
   // @Field(() => AddressSelect, { nullable: true })
   select?: Prisma.AddressSelect;
 
-  @Field(() => AddressWhereInput, {nullable:true})
+  @Field(() => AddressWhereInput, { nullable: true })
   @Type(() => AddressWhereInput)
   where?: InstanceType<typeof AddressWhereInput>;
-  @Field(() => [AddressOrderByWithRelationInput], {nullable:true})
+  @Field(() => [AddressOrderByWithRelationInput], { nullable: true })
   orderBy?: Array<AddressOrderByWithRelationInput>;
   // @Field(() => AddressWhereUniqueInput, {nullable:true})
   // cursor?: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-  @Field(() => Int, {nullable:true})
+  @Field(() => Int, { nullable: true })
   take?: number;
-  @Field(() => Int, {nullable:true})
+  @Field(() => Int, { nullable: true })
   skip?: number;
-  @Field(() => [AddressScalarFieldEnum], {nullable:true})
+  @Field(() => [AddressScalarFieldEnum], { nullable: true })
   distinct?: Array<keyof typeof AddressScalarFieldEnum>;
 }

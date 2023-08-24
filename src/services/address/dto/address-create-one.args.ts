@@ -11,6 +11,4 @@ export class AddressCreateArgs {
   @Field(() => AddressCreateInput, { nullable: false })
   @Type(() => AddressCreateInput)
   data!: AddressCreateInput;
-  //TODO: terapkan Case sensitive @Transform(({name}) => name.toUpperCase())
-  //maybe use field middleware
 }

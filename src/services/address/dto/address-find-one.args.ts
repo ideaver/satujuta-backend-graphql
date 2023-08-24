@@ -7,7 +7,7 @@ import { AddressWhereUniqueInput } from 'src/@generated';
 export class AddressFindUniqueArgs {
   select?: Prisma.AddressSelect;
 
-    @Field(() => AddressWhereUniqueInput, {nullable:false})
-    @Type(() => AddressWhereUniqueInput)
-    where!: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
+  @Field(() => AddressWhereUniqueInput, { nullable: false })
+  @Type(() => AddressWhereUniqueInput)
+  where!: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
 }

@@ -77,6 +77,7 @@ export class UserController {
       userRole,
       userType,
       avatarUrl,
+      address,
     } = userUpdateOneArgs.data;
 
     if (firstName?.set === null) {
@@ -117,6 +118,26 @@ export class UserController {
 
     if (avatarUrl?.set === null) {
       userUpdateOneArgs.data.avatarUrl = undefined;
+    }
+
+    if (address?.update?.data?.name?.set === null) {
+      userUpdateOneArgs.data.address.update.data.name = undefined;
+    }
+
+    if (address?.update?.data?.province?.connect?.id === null) {
+      userUpdateOneArgs.data.address.update.data.province = undefined;
+    }
+
+    if (address?.update?.data?.city?.connect?.id === null) {
+      userUpdateOneArgs.data.address.update.data.city = undefined;
+    }
+
+    if (address?.update?.data?.district?.connect?.id === null) {
+      userUpdateOneArgs.data.address.update.data.district = undefined;
+    }
+
+    if (address?.update?.data?.subdistrict?.connect?.id === null) {
+      userUpdateOneArgs.data.address.update.data.subdistrict = undefined;
     }
 
     return this.userService.update(userUpdateOneArgs);
