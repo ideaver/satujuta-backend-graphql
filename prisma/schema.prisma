@@ -229,6 +229,8 @@ model User {
   projectsInvestment    Project[]           @relation("project Investment")
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   claimedRewards        RewardClaim[]
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
+  withdrawalRequest     WithdrawalRequest[]
   /// @HideField({ output: false, input: true })   
   userNotifications     UserNotification[]
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
@@ -236,7 +238,6 @@ model User {
   /// @HideField({ output: false, input: true })   
   filesCreated          File[]
   theme                 Theme               @default(LIGHT)
-  WithdrawalRequest     WithdrawalRequest[]
 }
 
 enum UserStatus {
