@@ -137,6 +137,10 @@ model Address {
   school        School?
   /// @HideField({ match: 'AddressCreate*Input' })
   Shipping      Shipping?
+  /// @HideField({ match: 'AddressCreate*Input' })
+  createdAt     DateTime    @default(now())
+  /// @HideField({ match: 'AddressCreate*Input' })
+  updatedAt     DateTime    @updatedAt
 }
 
 //Make CRUD Available
@@ -217,7 +221,7 @@ model User {
   updatedAt             DateTime            @updatedAt
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   deletedAt             DateTime?
-  /// @HideField({ match: 'UserUpdate*Input' })
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   orders                Order[]
   /// @HideField({ output: false, input: true })   
   sessions              Session[]
@@ -225,8 +229,6 @@ model User {
   hotelsCreated         Hotel[]
   /// @HideField({ output: false, input: true })   
   programsParticipation Program[]           @relation("participant")
-  /// @HideField({ output: false, input: true })   
-  projectsInvestment    Project[]           @relation("project Investment")
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   claimedRewards        RewardClaim[]
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
@@ -507,22 +509,24 @@ model Order {
 }
 
 model Cart {
-  id        Int      @id @default(autoincrement())
-  order     Order    @relation(fields: [orderId], references: [id])
-  orderId   Int
-  item      Item     @relation(fields: [itemId], references: [id])
-  itemId    Int
-  quantity  Int
+  id               Int      @id @default(autoincrement())
+  order            Order    @relation(fields: [orderId], references: [id])
+  orderId          Int
+  membershipItem   Item?    @relation(fields: [membershipItemId], references: [id])
+  membershipItemId Int?
+  projectItem      Project? @relation(fields: [projectItemId], references: [id])
+  projectItemId    Int?
+  quantity         Int
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  price     Float
+  price            Float
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  cost      Float
+  cost             Float
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  createdAt DateTime @default(now())
+  createdAt        DateTime @default(now())
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  updatedAt DateTime @updatedAt
+  updatedAt        DateTime @updatedAt
 }
 
 //Make CRUD Available
@@ -802,7 +806,7 @@ model Project {
   /// @Validator.IsNotEmpty()
   maxInvestor       Int
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
-  investors         User[]          @relation("project Investment")
+  orderCart         Cart[]
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
   account           Account         @relation(fields: [accountId], references: [id])
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
