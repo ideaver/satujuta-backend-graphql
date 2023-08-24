@@ -73,7 +73,7 @@ async function main() {
   // const result = await prisma.$queryRaw(query);
   // console.log(result);
 
-  calculatePointGroupPercentages();
+  calculateAverageLatestCurrentBalance();
 
   // await createCityDistrictPostalCode();
 
@@ -176,6 +176,31 @@ async function calculatePointGroupPercentages() {
   });
 
   console.log(pointGroups);
+}
+
+async function calculateAverageLatestCurrentBalance() {
+  const users = await prisma.user.findMany({
+    include: {
+      PointTransactions: {
+        orderBy: {
+          createdAt: 'desc',
+        },
+        take: 1,
+      },
+    },
+  });
+
+  const totalCurrentBalance = users.reduce((accumulator, user) => {
+    const latestTransaction = user.PointTransactions[0];
+    const currentBalance = latestTransaction
+      ? latestTransaction.currentBalance
+      : 0;
+    return accumulator + currentBalance;
+  }, 0);
+
+  const averageCurrentBalance = totalCurrentBalance / users.length;
+
+  console.log('Average Latest Current Balance:', averageCurrentBalance);
 }
 
 // async function createSuperUser() {
