@@ -96,6 +96,11 @@ export class AccountResolver {
     return await this.accountController.getAccountTotalBalance(accountId);
   }
 
+  @Query(() => String)
+  async userFindManyOrderByAccountOfComission() {
+    return await this.accountController.userFindManyOrderByAccountOfComission();
+  }
+
   @Query(() => [AccountBalanceByCustomPeriodQuery])
   async getAccountBalanceByCustomPeriod(
     @Args('accountBalanceByCustomPeriodArgs')

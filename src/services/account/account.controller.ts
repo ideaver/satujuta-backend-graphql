@@ -1,5 +1,9 @@
 import { AccountService } from './account.service';
-import { Transaction, TransactionStatus } from '@prisma/client';
+import {
+  AccountCategory,
+  Transaction,
+  TransactionStatus,
+} from '@prisma/client';
 import { AccountFindManyArgs } from './dto/account-find-many.args';
 import { AccountFindUniqueArgs } from './dto/account-find-one.args';
 import { AccountUpdateOneArgs } from './dto/account-update-one.args';
@@ -10,14 +14,19 @@ import {
 } from './dto/get-account-balance-by-custom-period.args';
 import { Period } from 'src/model/period.enum';
 import { TransactionService } from '../transaction/transaction.service';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { UserController } from '../user/user.controller';
+import { User } from 'src/@generated';
 
 @Injectable()
 export class AccountController {
   constructor(
     private readonly accountService: AccountService,
     private readonly transactionService: TransactionService,
+    private readonly userController: UserController,
   ) {}
+
+  private readonly logger = new Logger(AccountController.name);
 
   // @Mutation(() => Account, {
   //   nullable: true,
@@ -64,6 +73,57 @@ export class AccountController {
   // accountRemove(@Args('accountId') accountId: number) {
   //   return this.accountService.remove(accountId);
   // }
+
+  async userFindManyOrderByAccountOfComission() {
+    const Users: User[] | void = await this.userController.findMany({
+      select: { accounts: { select: { id: true, accountCategory: true } } },
+      where: {
+        accounts: {
+          some: {
+            AND: [
+              { accountCategory: { equals: AccountCategory.COMISSION } },
+              {
+                OR: [
+                  { transactionOrigins: { some: {} } },
+                  { transactionDestination: { some: {} } },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    });
+
+    // this.logger.log(Users);
+
+    if (Users) {
+      const userBalances: { user: User; totalComissionBalance: number }[] = [];
+
+      for (const user of Users) {
+        const commissionAccount = user.accounts.find(
+          (account) => account.accountCategory === AccountCategory.COMISSION,
+        );
+
+        if (commissionAccount) {
+          const totalBalance = await this.getAccountTotalBalance(
+            commissionAccount.id,
+          );
+          userBalances.push({ user, totalComissionBalance: totalBalance });
+        }
+      }
+
+      // Sort the userBalances array in descending order based on balance
+      userBalances.sort(
+        (a, b) => b.totalComissionBalance - a.totalComissionBalance,
+      );
+
+      this.logger.log(userBalances);
+
+      return userBalances.toString();
+    }
+
+    return 'well';
+  }
 
   async getAccountTotalBalance(accountId: number) {
     const transactions = await this.transactionService.findMany({

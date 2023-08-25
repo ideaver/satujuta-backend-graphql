@@ -75,7 +75,7 @@ async function main() {
 
   //   await seedBank();
   // await prisma.transaction.deleteMany();
-  // await transactionCreateManySeed({ numberOfTransactions: 500 });
+  await transactionCreateManySeed({ numberOfTransactions: 500 });
   // await bankCreateManySeed({ numberOfBanks: 5 });
 
   // const accountId = 2; // Replace with the actual account ID
@@ -101,7 +101,7 @@ async function main() {
 
   // console.log(await prisma.invoice.deleteMany());
   // await populateProvinceCityDistricSubdistric();
-  await createItem();
+  // await createItem();
 
   // await createSuperUser();
   // await createAdmin();

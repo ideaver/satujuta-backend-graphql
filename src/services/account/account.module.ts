@@ -4,6 +4,7 @@ import { AccountResolver } from './account.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 import { TransactionModule } from '../transaction/transaction.module';
 import { AccountController } from './account.controller';
+import { UserModule } from '../user/user.module';
 
 @Module({
   providers: [
@@ -12,6 +13,6 @@ import { AccountController } from './account.controller';
     AccountController,
     AccountService,
   ],
-  imports: [TransactionModule],
+  imports: [TransactionModule, UserModule],
 })
 export class AccountModule {}
