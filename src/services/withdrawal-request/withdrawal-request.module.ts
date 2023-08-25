@@ -5,6 +5,7 @@ import { PrismaService } from 'prisma/prisma.service';
 import { PointTransactionModule } from '../point-transaction/point-transaction.module';
 import { WithdrawalRequestController } from './withdrawal-request.controller';
 import { UserModule } from '../user/user.module';
+import { AccountModule } from '../account/account.module';
 
 @Module({
   providers: [
@@ -13,5 +14,6 @@ import { UserModule } from '../user/user.module';
     WithdrawalRequestController,
     WithdrawalRequestService,
   ],
+  imports: [AccountModule],
 })
 export class WithdrawalRequestModule {}

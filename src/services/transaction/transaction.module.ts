@@ -14,6 +14,6 @@ import { InvoiceModule } from '../invoice/invoice.module';
     TransactionService,
   ],
   imports: [InvoiceModule],
-  exports: [TransactionService],
+  exports: [TransactionController],
 })
 export class TransactionModule {}

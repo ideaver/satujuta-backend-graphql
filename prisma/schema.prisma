@@ -368,10 +368,15 @@ model WithdrawalRequest {
   user          User              @relation(fields: [userId], references: [id])
   userId        String
   amount        Float
+  /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
   status        TransactionStatus
+  /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
   transaction   Transaction?
+  /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
   transactionId Int?
+  /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
   createdAt     DateTime          @default(now())
+  /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
   updatedAt     DateTime          @updatedAt
 }
 

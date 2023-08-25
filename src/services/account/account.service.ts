@@ -43,7 +43,14 @@ export class AccountService {
   async findFirst(
     accountFindFirstArgs: AccountFindFirstArgs,
   ): Promise<Account | void> {
-    return await this.prisma.account.findFirst(accountFindFirstArgs);
+    return await this.prisma.account
+      .findFirst(accountFindFirstArgs)
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
   }
 
   async findOne(

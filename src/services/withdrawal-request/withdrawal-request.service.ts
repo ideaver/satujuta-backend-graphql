@@ -8,6 +8,7 @@ import {
 import { WithdrawalRequestFindManyArgs } from './dto/withdrawal-request-find-many.args';
 import { WithdrawalRequestFindUniqueArgs } from './dto/withdrawal-request-find-one.args';
 import { WithdrawalRequestUpdateOneArgs } from './dto/withdrawal-request-update-one.args';
+import { WithdrawalRequestFindFirstArgs } from './dto/withdrawal-request-find-first.args';
 
 @Injectable()
 export class WithdrawalRequestService {
@@ -42,6 +43,19 @@ export class WithdrawalRequestService {
   ): Promise<WithdrawalRequest | void> {
     return await this.prisma.withdrawalRequest
       .findUnique(withdrawalRequestFindUniqueArgs)
+      .then((withdrawalRequest) => {
+        return withdrawalRequest;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async findFirst(
+    withdrawalRequestFindFirstArgs: WithdrawalRequestFindFirstArgs,
+  ): Promise<WithdrawalRequest | void> {
+    return await this.prisma.withdrawalRequest
+      .findFirst(withdrawalRequestFindFirstArgs)
       .then((withdrawalRequest) => {
         return withdrawalRequest;
       })

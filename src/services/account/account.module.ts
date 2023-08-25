@@ -14,5 +14,6 @@ import { UserModule } from '../user/user.module';
     AccountService,
   ],
   imports: [TransactionModule, UserModule],
+  exports: [AccountController],
 })
 export class AccountModule {}

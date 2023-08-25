@@ -9,20 +9,19 @@ import {
   AccountBalanceByCustomPeriodQuery,
 } from './dto/get-account-balance-by-custom-period.args';
 import { Period } from 'src/model/period.enum';
-import { TransactionService } from '../transaction/transaction.service';
 import { Injectable, Logger } from '@nestjs/common';
-import { UserController } from '../user/user.controller';
-import { Account, AccountCategory, User } from 'src/@generated';
+import { Account, AccountCategory } from 'src/@generated';
 import {
   UserFindManyOrderByAccountBalance,
   UserFindManyOrderByAccountBalanceArgs,
 } from './dto/user-find-many-order-by-account-balance.args';
+import { TransactionController } from '../transaction/transaction.controller';
 
 @Injectable()
 export class AccountController {
   constructor(
     private readonly accountService: AccountService,
-    private readonly transactionService: TransactionService,
+    private readonly transactionController: TransactionController,
   ) {}
 
   private readonly logger = new Logger(AccountController.name);
@@ -76,7 +75,7 @@ export class AccountController {
   async userFindManyOrderByAccountBalance(
     userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs,
   ) {
-    const accounts: Account[] | void = await this.accountService.findMany({
+    const accounts: Account[] | void = await this.findMany({
       select: {
         id: true,
         accountCategory: true,
@@ -104,7 +103,9 @@ export class AccountController {
       const userBalances: UserFindManyOrderByAccountBalance[] = [];
 
       for (const account of accounts) {
-        const totalBalance = await this.getAccountTotalBalance(account.id);
+        const totalBalance = await this.getAccountTotalBalance({
+          accountId: account.id,
+        });
         userBalances.push({
           user: account.user,
           totalBalance: totalBalance,
@@ -120,8 +121,30 @@ export class AccountController {
     return [];
   }
 
-  async getAccountTotalBalance(accountId: number) {
-    const transactions = await this.transactionService.findMany({
+  async getAccountTotalBalanceByCategoryAndUserId({
+    userId,
+    accountCategory,
+  }: {
+    userId: string;
+    accountCategory: AccountCategory;
+  }): Promise<number> {
+    const accounts = await this.findFirst({
+      where: {
+        userId: { equals: userId },
+        accountCategory: { equals: accountCategory },
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (accounts) {
+      return this.getAccountTotalBalance({ accountId: accounts.id });
+    }
+  }
+
+  async getAccountTotalBalance({ accountId }: { accountId: number }) {
+    const transactions = await this.transactionController.findMany({
       where: {
         OR: [
           {
@@ -195,7 +218,7 @@ export class AccountController {
   }
 
   async getTransactions(accountId: number, startDate: Date, endDate: Date) {
-    return await this.transactionService.findMany({
+    return await this.transactionController.findMany({
       where: {
         OR: [
           {

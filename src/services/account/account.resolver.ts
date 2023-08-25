@@ -97,7 +97,9 @@ export class AccountResolver {
 
   @Query(() => Float)
   async getAccountTotalBalance(@Args('accountId') accountId: number) {
-    return await this.accountController.getAccountTotalBalance(accountId);
+    return await this.accountController.getAccountTotalBalance({
+      accountId: accountId,
+    });
   }
 
   @Query(() => [UserFindManyOrderByAccountBalance])
