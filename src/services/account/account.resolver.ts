@@ -11,6 +11,10 @@ import {
   AccountBalanceByCustomPeriodQuery,
 } from './dto/get-account-balance-by-custom-period.args';
 import { AccountController } from './account.controller';
+import {
+  UserFindManyOrderByAccountBalance,
+  UserFindManyOrderByAccountBalanceArgs,
+} from './dto/user-find-many-order-by-account-balance.args';
 
 interface AccountSelect {
   select: Prisma.AccountSelect;
@@ -96,9 +100,14 @@ export class AccountResolver {
     return await this.accountController.getAccountTotalBalance(accountId);
   }
 
-  @Query(() => String)
-  async userFindManyOrderByAccountOfComission() {
-    return await this.accountController.userFindManyOrderByAccountOfComission();
+  @Query(() => [UserFindManyOrderByAccountBalance])
+  async userFindManyOrderByAccountBalance(
+    @Args('userFindManyOrderByAccountBalanceArgs')
+    userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs,
+  ) {
+    return await this.accountController.userFindManyOrderByAccountBalance(
+      userFindManyOrderByAccountBalanceArgs,
+    );
   }
 
   @Query(() => [AccountBalanceByCustomPeriodQuery])

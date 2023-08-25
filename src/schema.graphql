@@ -2033,6 +2033,11 @@ type AccountBalanceByCustomPeriodQuery {
   totalBalance: Float
 }
 
+type UserFindManyOrderByAccountBalance {
+  user: UserAbstract!
+  totalBalance: Float!
+}
+
 type Query {
   """Deskripsinya ada disini loh"""
   userFindMany(userFindManyArgs: UserFindManyArgs!): [User!]
@@ -2167,7 +2172,7 @@ type Query {
   """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
   accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
   getAccountTotalBalance(accountId: Float!): Float!
-  userFindManyOrderByAccountOfComission: String!
+  userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""
@@ -4478,6 +4483,10 @@ input AccountFindFirstArgs {
   take: Int
   skip: Int
   distinct: [AccountScalarFieldEnum!]
+}
+
+input UserFindManyOrderByAccountBalanceArgs {
+  accountCategory: AccountCategory!
 }
 
 input AccountBalanceByCustomPeriodArgs {
