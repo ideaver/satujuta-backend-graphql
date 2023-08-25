@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { CreateOneSchoolArgs, School } from 'src/@generated';
+import {
+  CreateOneSchoolArgs,
+  FindManySchoolArgs,
+  School,
+} from 'src/@generated';
 import { SchoolFindManyArgs } from './dto/school-find-many.args';
 import { SchoolFindUniqueArgs } from './dto/school-find-one.args';
 import { SchoolUpdateOneArgs } from './dto/school-update-one.args';
@@ -10,8 +14,9 @@ import { SchoolUpdateOneArgs } from './dto/school-update-one.args';
 export class SchoolService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(schoolCreateArgs: CreateOneSchoolArgs): Promise<School | void> {
-
+  async createOne(
+    schoolCreateArgs: CreateOneSchoolArgs,
+  ): Promise<School | void> {
     return await this.prisma.school
       .create(schoolCreateArgs)
       .then((school) => {
@@ -33,7 +38,9 @@ export class SchoolService {
       });
   }
 
-  async findOne(schoolFindUniqueArgs: SchoolFindUniqueArgs): Promise<School | void> {
+  async findOne(
+    schoolFindUniqueArgs: SchoolFindUniqueArgs,
+  ): Promise<School | void> {
     return await this.prisma.school
       .findUnique(schoolFindUniqueArgs)
       .then((school) => {
@@ -44,7 +51,9 @@ export class SchoolService {
       });
   }
 
-  async update(schoolUpdateOneArgs: SchoolUpdateOneArgs): Promise<School | void> {
+  async update(
+    schoolUpdateOneArgs: SchoolUpdateOneArgs,
+  ): Promise<School | void> {
     return this.prisma.school
       .update(schoolUpdateOneArgs)
       .then((school) => {
@@ -55,13 +64,24 @@ export class SchoolService {
       });
   }
 
-  async remove(schoolId: number): Promise<boolean | void>{
+  async remove(schoolId: number): Promise<boolean | void> {
     return await this.prisma.school
       .delete({
         where: { id: schoolId },
       })
       .then(() => {
         return true;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async count(findManySchoolArgs: FindManySchoolArgs): Promise<number | void> {
+    return await this.prisma.school
+      .count(findManySchoolArgs)
+      .then((count) => {
+        return count;
       })
       .catch((err) => {
         throwPrismaError(err);

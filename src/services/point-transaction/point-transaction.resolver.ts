@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info, Float } from '@nestjs/graphql';
 
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
@@ -8,6 +8,7 @@ import { PointTransactionFindManyArgs } from './dto/point-transaction-find-many.
 import { PointTransactionFindUniqueArgs } from './dto/point-transaction-find-one.args';
 import { PointTransactionFindFirstArgs } from './dto/point-transaction-find-first.args';
 import { PointTransactionController } from './point-transaction.controller';
+import { PointTransactionGroupPercentage } from './dto/point-transaction-percentage-group.object';
 
 interface PointTransactionSelect {
   select: Prisma.PointTransactionSelect;
@@ -80,5 +81,21 @@ export class PointTransactionResolver {
     return this.pointTransactionController.findFirst(
       pointTransactionFindFirstArgs,
     );
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  getAverageUserPointBalance() {
+    return this.pointTransactionController.getAverageUserPointBalance();
+  }
+
+  @Query(() => [PointTransactionGroupPercentage], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  getPointGroupPercentages() {
+    return this.pointTransactionController.getPointGroupPercentages();
   }
 }

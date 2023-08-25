@@ -56,7 +56,12 @@ export class UserController {
     return await this.userService.createOne(userCreateArgsPrisma);
   }
 
-  findMany(userFindManyArgs: UserFindManyArgs) {
+  findMany(userFindManyArgs: Prisma.UserFindManyArgs) {
+    //handling graphql null value of UserFindManyByName (lastname)
+    if (userFindManyArgs.where?.AND?.[1].lastName?.contains === null) {
+      userFindManyArgs.where.AND[1] = undefined;
+    }
+
     return this.userService.findMany(userFindManyArgs);
   }
 

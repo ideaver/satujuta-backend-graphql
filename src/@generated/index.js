@@ -46841,10 +46841,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolCountAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolCountAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolCountAggregateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -46889,10 +46889,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolCountOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolCountOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolCountOrderByAggregateInput.prototype, "updatedAt", void 0);
 SchoolCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47145,10 +47145,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolMaxAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolMaxAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolMaxAggregateInput.prototype, "updatedAt", void 0);
 SchoolMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47187,10 +47187,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolMaxOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolMaxOrderByAggregateInput.prototype, "updatedAt", void 0);
 SchoolMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47208,10 +47208,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolMinAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolMinAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], SchoolMinAggregateInput.prototype, "updatedAt", void 0);
 SchoolMinAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47250,10 +47250,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolMinOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolMinOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolMinOrderByAggregateInput.prototype, "updatedAt", void 0);
 SchoolMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47283,10 +47283,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolOrderByWithAggregationInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolOrderByWithAggregationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolOrderByWithAggregationInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SchoolCountOrderByAggregateInput, { nullable: true })
@@ -47319,10 +47319,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolOrderByWithRelationInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolOrderByWithRelationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], SchoolOrderByWithRelationInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressOrderByWithRelationInput, { nullable: true })
@@ -47355,10 +47355,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolScalarWhereWithAggregatesInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], SchoolScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], SchoolScalarWhereWithAggregatesInput.prototype, "updatedAt", void 0);
 SchoolScalarWhereWithAggregatesInput = SchoolScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
@@ -47429,10 +47429,10 @@ __decorate([
     Validator.IsAlphanumeric()
 ], SchoolUncheckedCreateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], SchoolUncheckedCreateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], SchoolUncheckedCreateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedCreateNestedManyWithoutSchoolInput, { nullable: true })
@@ -47455,10 +47455,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], SchoolUncheckedCreateWithoutStudentsInput.prototype, "updatedAt", void 0);
 SchoolUncheckedCreateWithoutStudentsInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47478,10 +47478,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolUncheckedCreateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], SchoolUncheckedCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], SchoolUncheckedCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedCreateNestedManyWithoutSchoolInput, { nullable: true })
@@ -47502,10 +47502,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolUncheckedUpdateManyInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateManyInput.prototype, "updatedAt", void 0);
 SchoolUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47554,10 +47554,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutAddressInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedUpdateManyWithoutSchoolNestedInput, { nullable: true })
@@ -47578,10 +47578,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateWithoutStudentsInput.prototype, "updatedAt", void 0);
 SchoolUncheckedUpdateWithoutStudentsInput = __decorate([
     (0, graphql_4.InputType)()
@@ -47599,10 +47599,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolUncheckedUpdateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], SchoolUncheckedUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUncheckedUpdateManyWithoutSchoolNestedInput, { nullable: true })
@@ -47836,10 +47836,10 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], SchoolWhereUniqueInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], SchoolWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], SchoolWhereUniqueInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressRelationFilter, { nullable: true })
@@ -47872,10 +47872,10 @@ __decorate([
     (0, graphql_7.HideField)()
 ], SchoolWhereInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], SchoolWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], SchoolWhereInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => AddressRelationFilter, { nullable: true })
@@ -56610,7 +56610,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserAvgAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserAvgAggregateInput.prototype, "schoolId", void 0);
 UserAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -56634,7 +56634,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserAvgOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserAvgOrderByAggregateInput.prototype, "schoolId", void 0);
 UserAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -56685,7 +56685,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserCountAggregateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserCountAggregateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -56817,7 +56817,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserCountOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserCountOrderByAggregateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -56949,7 +56949,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateManyReferredByInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserCreateManyReferredByInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -57113,7 +57113,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserCreateManyInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserCreateManyInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -59753,7 +59753,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMaxAggregateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMaxAggregateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -59879,7 +59879,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMaxOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMaxOrderByAggregateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -59942,7 +59942,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMinAggregateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserMinAggregateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -60068,7 +60068,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMinOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserMinOrderByAggregateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -60152,7 +60152,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserOrderByWithAggregationInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], UserOrderByWithAggregationInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -60230,7 +60230,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -60275,7 +60275,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelOrderByRelationAggregateInput, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramOrderByRelationAggregateInput, { nullable: true })
 ], UserOrderByWithRelationInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimOrderByRelationAggregateInput, { nullable: true })
@@ -60362,7 +60362,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusWithAggregatesFilter, { nullable: true })
 ], UserScalarWhereWithAggregatesInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
 ], UserScalarWhereWithAggregatesInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
@@ -60434,7 +60434,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFilter, { nullable: true })
 ], UserScalarWhereInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], UserScalarWhereInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
@@ -60458,7 +60458,7 @@ __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserSumAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], UserSumAggregateInput.prototype, "schoolId", void 0);
 UserSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -60482,7 +60482,7 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserSumOrderByAggregateInput.prototype, "addressId", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], UserSumOrderByAggregateInput.prototype, "schoolId", void 0);
 UserSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -60627,7 +60627,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -60660,7 +60660,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutAccountsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -60737,7 +60737,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -60773,7 +60773,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutAddressInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -60853,7 +60853,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -60886,7 +60886,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutCheckInsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -60966,7 +60966,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61002,7 +61002,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutClaimedRewardsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61079,7 +61079,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61115,7 +61115,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutFilesCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61192,7 +61192,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61225,7 +61225,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "sessions", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutHotelsCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61305,7 +61305,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61338,7 +61338,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutOrdersInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61418,7 +61418,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61451,7 +61451,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutPointTransactionsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61531,7 +61531,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61567,7 +61567,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61644,7 +61644,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutProgramsParticipationInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61754,7 +61754,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61790,7 +61790,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredByInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -61870,7 +61870,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -61903,7 +61903,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutReferredUsersInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -62016,7 +62016,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutSchoolInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -62096,7 +62096,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -62129,7 +62129,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutSessionsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -62209,7 +62209,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -62245,7 +62245,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutUserNotificationsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -62322,7 +62322,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateWithoutWithdrawalRequestInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateWithoutWithdrawalRequestInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -62358,7 +62358,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateWithoutWithdrawalRequestInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateWithoutWithdrawalRequestInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -62435,7 +62435,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserStatus, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -62471,7 +62471,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedCreateNestedManyWithoutCreatedByInput, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedCreateNestedManyWithoutParticipantInput, { nullable: true })
 ], UserUncheckedCreateInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedCreateNestedManyWithoutUserInput, { nullable: true })
@@ -62583,7 +62583,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutProgramsParticipationInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutProgramsParticipationInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -62693,7 +62693,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutReferredByInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyWithoutReferredByInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -62866,7 +62866,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateManyInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -62963,7 +62963,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -62996,7 +62996,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAccountsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63059,7 +63059,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63095,7 +63095,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutAddressInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63161,7 +63161,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63194,7 +63194,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutCheckInsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63260,7 +63260,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63296,7 +63296,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutClaimedRewardsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63359,7 +63359,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63395,7 +63395,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutFilesCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63458,7 +63458,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63491,7 +63491,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "sessions", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutHotelsCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63557,7 +63557,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63590,7 +63590,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutOrdersInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63656,7 +63656,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63689,7 +63689,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutPointTransactionsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63755,7 +63755,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63791,7 +63791,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -63854,7 +63854,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutProgramsParticipationInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63950,7 +63950,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -63986,7 +63986,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredByInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -64052,7 +64052,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -64085,7 +64085,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutReferredUsersInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -64184,7 +64184,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSchoolInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -64250,7 +64250,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -64283,7 +64283,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutSessionsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -64349,7 +64349,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -64385,7 +64385,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutUserNotificationsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -64448,7 +64448,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutWithdrawalRequestInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateWithoutWithdrawalRequestInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -64484,7 +64484,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutWithdrawalRequestInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateWithoutWithdrawalRequestInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -64547,7 +64547,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -64583,7 +64583,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelUncheckedUpdateManyWithoutCreatedByNestedInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUncheckedUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUncheckedUpdateInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimUncheckedUpdateManyWithoutUserNestedInput, { nullable: true })
@@ -65502,7 +65502,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutAccountsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65601,7 +65601,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutAddressInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65700,7 +65700,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutCheckInsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65802,7 +65802,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65901,7 +65901,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutFilesCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65997,7 +65997,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "sessions", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66096,7 +66096,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutOrdersInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66195,7 +66195,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutPointTransactionsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66297,7 +66297,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66492,7 +66492,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutReferredByInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66591,7 +66591,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutReferredUsersInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66690,7 +66690,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutSchoolInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66789,7 +66789,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutSessionsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66891,7 +66891,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutUserNotificationsInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -66990,7 +66990,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutWithdrawalRequestInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateWithoutWithdrawalRequestInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -67089,7 +67089,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramUpdateManyWithoutParticipantNestedInput, { nullable: true })
 ], UserUpdateInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -67454,7 +67454,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
@@ -67499,7 +67499,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelListRelationFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramListRelationFilter, { nullable: true })
 ], UserWhereUniqueInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimListRelationFilter, { nullable: true })
@@ -67574,7 +67574,7 @@ __decorate([
     (0, graphql_1.Field)(() => EnumUserStatusFilter, { nullable: true })
 ], UserWhereInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], UserWhereInput.prototype, "schoolId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
@@ -67619,7 +67619,7 @@ __decorate([
     (0, graphql_1.Field)(() => HotelListRelationFilter, { nullable: true })
 ], UserWhereInput.prototype, "hotelsCreated", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => ProgramListRelationFilter, { nullable: true })
 ], UserWhereInput.prototype, "programsParticipation", void 0);
 __decorate([
     (0, graphql_1.Field)(() => RewardClaimListRelationFilter, { nullable: true })

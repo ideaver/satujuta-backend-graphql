@@ -24,7 +24,7 @@ export class UserService {
       });
   }
 
-  async findMany(userFindManyArgs: UserFindManyArgs) {
+  async findMany(userFindManyArgs: Prisma.UserFindManyArgs) {
     return this.prisma.user
       .findMany(userFindManyArgs)
       .then((users) => {

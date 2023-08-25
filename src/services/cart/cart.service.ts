@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { CreateOneCartArgs, Cart } from 'src/@generated';
+import { CreateOneCartArgs, Cart, FindManyCartArgs } from 'src/@generated';
 import { CartFindManyArgs } from './dto/cart-find-many.args';
 import { CartFindUniqueArgs } from './dto/cart-find-one.args';
 import { CartUpdateOneArgs } from './dto/cart-update-one.args';
@@ -61,6 +61,17 @@ export class CartService {
       })
       .then(() => {
         return true;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async count(findManyCartArgs: FindManyCartArgs): Promise<number | void> {
+    return await this.prisma.cart
+      .count()
+      .then((count) => {
+        return count;
       })
       .catch((err) => {
         throwPrismaError(err);

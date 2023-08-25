@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { RewardClaim } from 'src/@generated';
@@ -81,5 +81,16 @@ export class RewardClaimResolver {
   })
   rewardClaimRemove(@Args('rewardClaimId') rewardClaimId: number) {
     return this.rewardClaimController.remove(rewardClaimId);
+  }
+
+  @Query(() => Int, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  rewardClaimCount(
+    @Args('rewardClaimFindManyArgs', { nullable: true })
+    rewardClaimFindManyArgs: RewardClaimFindManyArgs,
+  ) {
+    return this.rewardClaimController.count(rewardClaimFindManyArgs);
   }
 }

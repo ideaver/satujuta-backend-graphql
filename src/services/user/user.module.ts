@@ -8,6 +8,6 @@ import { ItemModule } from '../item/item.module';
 @Module({
   providers: [PrismaService, UserResolver, UserService, UserController],
   imports: [ItemModule],
-  exports: [UserService],
+  exports: [UserService, UserController],
 })
 export class UserModule {}

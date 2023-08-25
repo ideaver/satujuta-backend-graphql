@@ -48,6 +48,10 @@ export class CartController {
   //   return this.cartService.update(cartUpdateOneArgs);
   // }
 
+  count(cartFindManyArgs: CartFindManyArgs) {
+    return this.cartService.count(cartFindManyArgs);
+  }
+
   // remove(cartId: number) {
   //   return this.cartService.remove(cartId);
   // }

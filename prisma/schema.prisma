@@ -153,9 +153,9 @@ model School {
   address   Address  @relation(fields: [addressId], references: [id])
   /// @HideField({ output: false, input: true })  
   addressId Int      @unique
-  /// @HideField({ output: false, input: true })  
+  /// @HideField({ match: ['SchoolCreate*Input','SchoolUpdate*Input']})
   createdAt DateTime @default(now())
-  /// @HideField({ output: false, input: true })  
+  /// @HideField({ match: ['SchoolCreate*Input','SchoolUpdate*Input']})
   updatedAt DateTime @updatedAt
   /// @HideField({ match: ['SchoolCreate*Input','SchoolUpdate*Input']})
   students  User[]   @relation("StudentSchool")
@@ -225,7 +225,7 @@ model User {
   sessions              Session[]
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
   hotelsCreated         Hotel[]
-  /// @HideField({ output: false, input: true })   
+  /// @HideField({ match: 'UserCreate*Input' })  
   programsParticipation Program[]           @relation("participant")
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   claimedRewards        RewardClaim[]

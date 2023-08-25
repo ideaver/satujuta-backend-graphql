@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
-import { CreateOneRewardClaimArgs, RewardClaim } from 'src/@generated';
+import {
+  CreateOneRewardClaimArgs,
+  FindManyRewardClaimArgs,
+  RewardClaim,
+} from 'src/@generated';
 import { RewardClaimFindManyArgs } from './dto/reward-claim-find-many.args';
 import { RewardClaimFindUniqueArgs } from './dto/reward-claim-find-one.args';
 import { RewardClaimUpdateOneArgs } from './dto/reward-claim-update-one.args';
@@ -67,6 +71,19 @@ export class RewardClaimService {
       })
       .then(() => {
         return true;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async count(
+    findManyRewardClaimArgs: FindManyRewardClaimArgs,
+  ): Promise<number | void> {
+    return await this.prisma.rewardClaim
+      .count(findManyRewardClaimArgs)
+      .then((count) => {
+        return count;
       })
       .catch((err) => {
         throwPrismaError(err);

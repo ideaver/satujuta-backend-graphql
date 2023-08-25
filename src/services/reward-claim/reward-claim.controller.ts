@@ -45,6 +45,10 @@ export class RewardClaimController {
     return this.rewardClaimService.remove(rewardClaimId);
   }
 
+  count(rewardClaimFindManyArgs: RewardClaimFindManyArgs) {
+    return this.rewardClaimService.count(rewardClaimFindManyArgs);
+  }
+
   private async IsUserPointEnough(
     rewardClaimCreateArgs: RewardClaimCreateArgs,
   ) {

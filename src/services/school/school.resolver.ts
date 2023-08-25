@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
 import { SchoolService } from './school.service';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
@@ -22,7 +22,7 @@ export class SchoolResolver {
   })
   async schoolCreateOne(
     @Args('schoolCreateArgs') schoolCreateArgs: SchoolCreateArgs,
-    @Relations() relations: SchoolSelect
+    @Relations() relations: SchoolSelect,
   ): Promise<School | void> {
     schoolCreateArgs.select = relations.select;
     return await this.schoolService.createOne(schoolCreateArgs);
@@ -66,10 +66,20 @@ export class SchoolResolver {
 
   @Mutation(() => Boolean, {
     nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
+    description: 'Datanya benar2 terhapus dari db',
   })
   schoolRemove(@Args('schoolId') schoolId: number) {
     return this.schoolService.remove(schoolId);
+  }
+
+  @Query(() => Int, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  schoolCount(
+    @Args('schoolFindManyArgs', { nullable: true })
+    schoolFindManyArgs: SchoolFindManyArgs,
+  ) {
+    return this.schoolService.count(schoolFindManyArgs);
   }
 }

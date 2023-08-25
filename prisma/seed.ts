@@ -73,8 +73,6 @@ async function main() {
   // const result = await prisma.$queryRaw(query);
   // console.log(result);
 
-  calculateAverageLatestCurrentBalance();
-
   // await createCityDistrictPostalCode();
 
   //   await seedBank();
@@ -120,88 +118,6 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
-
-async function calculatePointGroupPercentages() {
-  const users = await prisma.user.findMany({
-    include: {
-      PointTransactions: {
-        orderBy: {
-          createdAt: 'desc',
-        },
-        take: 1,
-      },
-    },
-  });
-
-  const userCount = users.length;
-
-  const grouped = users.reduce((accumulator, user) => {
-    const latestTransaction = user.PointTransactions[0];
-    const currentBalance = latestTransaction
-      ? latestTransaction.currentBalance
-      : 0;
-
-    let pointGroup = '';
-    if (currentBalance <= 0) {
-      pointGroup = '0 point';
-    } else if (currentBalance <= 30) {
-      pointGroup = 'above 0 point and up to 30 points';
-    } else if (currentBalance <= 50) {
-      pointGroup = 'above 30 points and up to 50 points';
-    } else if (currentBalance <= 100) {
-      pointGroup = 'above 50 points and up to 100 points';
-    } else if (currentBalance <= 1000) {
-      pointGroup = 'above 100 points and up to 1000 points';
-    } else {
-      pointGroup = 'above 1000 points';
-    }
-
-    if (!accumulator[pointGroup]) {
-      accumulator[pointGroup] = 0;
-    }
-    accumulator[pointGroup]++;
-
-    return accumulator;
-  }, {});
-
-  const pointGroups = Object.keys(grouped).map((pointGroup) => {
-    const userCountInGroup = grouped[pointGroup];
-    const percentage = (userCountInGroup * 100) / userCount;
-
-    return {
-      pointGroup,
-      userCount: userCountInGroup,
-      percentage,
-    };
-  });
-
-  console.log(pointGroups);
-}
-
-async function calculateAverageLatestCurrentBalance() {
-  const users = await prisma.user.findMany({
-    include: {
-      PointTransactions: {
-        orderBy: {
-          createdAt: 'desc',
-        },
-        take: 1,
-      },
-    },
-  });
-
-  const totalCurrentBalance = users.reduce((accumulator, user) => {
-    const latestTransaction = user.PointTransactions[0];
-    const currentBalance = latestTransaction
-      ? latestTransaction.currentBalance
-      : 0;
-    return accumulator + currentBalance;
-  }, 0);
-
-  const averageCurrentBalance = totalCurrentBalance / users.length;
-
-  console.log('Average Latest Current Balance:', averageCurrentBalance);
-}
 
 // async function createSuperUser() {
 //   await prisma.user.create({

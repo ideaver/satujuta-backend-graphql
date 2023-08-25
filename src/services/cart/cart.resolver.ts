@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { Cart } from 'src/@generated';
@@ -62,7 +62,7 @@ export class CartResolver {
 
   // @Mutation(() => Cart, {
   //   description:
-  //     'Deskripsinya ada disini loh, Jika tentang mutasi klaim cart, backend akan cek apakah saldo point user cukup untuk claim',
+  //     'Deskripsinya ada disini loh, Jika tentang mutasi klaim cart, backend akan cek apakah saldo point cart cukup untuk claim',
   // })
   // async cartUpdateOne(
   //   @Args('cartUpdateOneArgs') cartUpdateOneArgs: CartUpdateOneArgs,
@@ -81,4 +81,15 @@ export class CartResolver {
   // cartRemove(@Args('cartId') cartId: number) {
   //   return this.cartController.remove(cartId);
   // }
+
+  @Query(() => Int, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cartCount(
+    @Args('cartFindManyArgs', { nullable: true })
+    cartFindManyArgs: CartFindManyArgs,
+  ) {
+    return this.cartController.count(cartFindManyArgs);
+  }
 }
