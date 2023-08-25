@@ -268,6 +268,14 @@ type Bank {
   account: Account!
 }
 
+type AggregateCart {
+  _count: CartCountAggregate
+  _avg: CartAvgAggregate
+  _sum: CartSumAggregate
+  _min: CartMinAggregate
+  _max: CartMaxAggregate
+}
+
 type CartAvgAggregate {
   id: Float
   orderId: Float
@@ -2220,6 +2228,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   cartCount(cartFindManyArgs: CartFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
+  cartAggregate(cartAggregateArgs: CartAggregateArgs!): AggregateCart!
 
   """Deskripsinya ada disini loh"""
   rewardClaimFindMany(rewardClaimFindManyArgs: RewardClaimFindManyArgs): [RewardClaim!]
@@ -4841,6 +4852,75 @@ input CartWhereUniqueInput {
   order: OrderRelationFilter
   membershipItem: ItemNullableRelationFilter
   projectItem: ProjectNullableRelationFilter
+}
+
+input CartAggregateArgs {
+  where: CartWhereInput
+  orderBy: [CartOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  _count: CartCountAggregateInput
+  _avg: CartAvgAggregateInput
+  _sum: CartSumAggregateInput
+  _min: CartMinAggregateInput
+  _max: CartMaxAggregateInput
+}
+
+input CartCountAggregateInput {
+  id: Boolean
+  orderId: Boolean
+  membershipItemId: Boolean
+  projectItemId: Boolean
+  quantity: Boolean
+  price: Boolean
+  cost: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input CartAvgAggregateInput {
+  id: Boolean
+  orderId: Boolean
+  membershipItemId: Boolean
+  projectItemId: Boolean
+  quantity: Boolean
+  price: Boolean
+  cost: Boolean
+}
+
+input CartSumAggregateInput {
+  id: Boolean
+  orderId: Boolean
+  membershipItemId: Boolean
+  projectItemId: Boolean
+  quantity: Boolean
+  price: Boolean
+  cost: Boolean
+}
+
+input CartMinAggregateInput {
+  id: Boolean
+  orderId: Boolean
+  membershipItemId: Boolean
+  projectItemId: Boolean
+  quantity: Boolean
+  price: Boolean
+  cost: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input CartMaxAggregateInput {
+  id: Boolean
+  orderId: Boolean
+  membershipItemId: Boolean
+  projectItemId: Boolean
+  quantity: Boolean
+  price: Boolean
+  cost: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input RewardClaimFindManyArgs {

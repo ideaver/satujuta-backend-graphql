@@ -41,17 +41,16 @@ export class UserController {
     //Generate Random Referral Code
     userCreateArgsPrisma.data.referralCode = generateRandomReferralCode();
 
-    if (
-      userCreateArgsPrisma.data.userRole !== UserRole.SUPERUSER &&
-      userCreateArgsPrisma.data.userRole !== UserRole.ADMIN
-    ) {
+    const { userRole } = userCreateArgsPrisma.data;
+
+    if (userRole !== UserRole.SUPERUSER && userRole !== UserRole.ADMIN) {
       //Auto Create User Accounts
       accountCreateManyUserInput(userCreateArgsPrisma);
       // Auto Create Order
-      await orderCreate(userCreateArgsPrisma, this.itemService);
+      await orderCreate(userCreateArgsPrisma, this.itemService, userRole);
     }
 
-    console.log(userCreateArgsPrisma);
+    //TODO: Record Sessions
 
     return await this.userService.createOne(userCreateArgsPrisma);
   }
@@ -164,46 +163,47 @@ export class UserController {
 async function orderCreate(
   userCreateArgsPrisma: Prisma.UserCreateArgs,
   itemService: ItemService,
+  userRole: UserRole,
 ) {
   const platformFee = 2000;
   const adminFee = 3000;
   //get Items
   const items: Item[] | void = await itemService.findMany({
-    where: { userRole: { equals: userCreateArgsPrisma.data.userRole } },
+    where: { userRole: { equals: userRole } },
   });
 
-  // Calculate the sum of item prices
-  const totalPrice = items
-    ? items.reduce((total, item) => total + item.price, 0)
-    : 0;
+  if (items) {
+    // Calculate the sum of item prices
+    const totalPrice = items.reduce((total, item) => total + item.price, 0);
 
-  userCreateArgsPrisma.data.orders = {
-    create: {
-      status: TransactionStatus.PENDING,
-      platformFee: platformFee,
-      total: totalPrice + platformFee,
-      cart: {
-        //TODO: Jika student didaftarkan member gimana?
-        createMany: {
-          data: items
-            ? items.map((item) => ({
-                itemId: item.id,
-                quantity: 1,
-                cost: item.cost,
-                price: item.price,
-              }))
-            : undefined,
+    userCreateArgsPrisma.data.orders = {
+      create: {
+        status: TransactionStatus.PENDING,
+        platformFee: platformFee,
+        total: totalPrice + platformFee,
+        cart: {
+          //TODO: Jika student didaftarkan member gimana?
+          createMany: {
+            data: items.map((item) => ({
+              membershipItemId: item.id,
+              quantity: 1,
+              cost: item.cost,
+              price: item.price,
+            })),
+          },
+        },
+        invoice: {
+          create: {
+            amount: totalPrice + platformFee + adminFee,
+            adminFee: adminFee,
+            uniqueCode: generateUniqueCode(),
+          },
         },
       },
-      invoice: {
-        create: {
-          amount: totalPrice + platformFee + adminFee,
-          adminFee: adminFee,
-          uniqueCode: generateUniqueCode(),
-        },
-      },
-    },
-  };
+    };
+  } else {
+    console.log('items is null');
+  }
 }
 
 function accountCreateManyUserInput(

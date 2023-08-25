@@ -1,5 +1,5 @@
 import { CartService } from './cart.service';
-import { Cart } from 'src/@generated';
+import { Cart, CartAggregateArgs } from 'src/@generated';
 import { CartCreateArgs } from './dto/cart-create-one.args';
 import { CartFindManyArgs } from './dto/cart-find-many.args';
 import { CartFindUniqueArgs } from './dto/cart-find-one.args';
@@ -55,4 +55,8 @@ export class CartController {
   // remove(cartId: number) {
   //   return this.cartService.remove(cartId);
   // }
+
+  aggregate(cartAggregateArgs: CartAggregateArgs) {
+    return this.cartService.aggregate(cartAggregateArgs);
+  }
 }

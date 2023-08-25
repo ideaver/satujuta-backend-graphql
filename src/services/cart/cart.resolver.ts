@@ -1,13 +1,14 @@
 import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Cart } from 'src/@generated';
+import { AggregateCart, Cart } from 'src/@generated';
 import { CartCreateArgs } from './dto/cart-create-one.args';
 import { CartFindManyArgs } from './dto/cart-find-many.args';
 import { CartFindUniqueArgs } from './dto/cart-find-one.args';
 import { CartUpdateOneArgs } from './dto/cart-update-one.args';
 import { CartController } from './cart.controller';
 import { Logger } from '@nestjs/common';
+import { CartAggregateArgs } from './dto/cart-aggregate.args';
 
 interface CartSelect {
   select: Prisma.CartSelect;
@@ -91,5 +92,16 @@ export class CartResolver {
     cartFindManyArgs: CartFindManyArgs,
   ) {
     return this.cartController.count(cartFindManyArgs);
+  }
+
+  @Query(() => AggregateCart, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cartAggregate(
+    @Args('cartAggregateArgs', { nullable: false })
+    cartAggregateArgs: CartAggregateArgs,
+  ) {
+    return this.cartController.aggregate(cartAggregateArgs);
   }
 }

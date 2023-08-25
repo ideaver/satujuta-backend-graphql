@@ -5,6 +5,7 @@ import { CreateOneCartArgs, Cart, FindManyCartArgs } from 'src/@generated';
 import { CartFindManyArgs } from './dto/cart-find-many.args';
 import { CartFindUniqueArgs } from './dto/cart-find-one.args';
 import { CartUpdateOneArgs } from './dto/cart-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class CartService {
@@ -72,6 +73,17 @@ export class CartService {
       .count()
       .then((count) => {
         return count;
+      })
+      .catch((err) => {
+        throwPrismaError(err);
+      });
+  }
+
+  async aggregate(cartAggregateArgs: Prisma.CartAggregateArgs) {
+    return await this.prisma.cart
+      .aggregate(cartAggregateArgs)
+      .then((order) => {
+        return order;
       })
       .catch((err) => {
         throwPrismaError(err);

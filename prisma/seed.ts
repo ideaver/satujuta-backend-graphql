@@ -73,8 +73,6 @@ async function main() {
   // const result = await prisma.$queryRaw(query);
   // console.log(result);
 
-  // await createCityDistrictPostalCode();
-
   //   await seedBank();
   // await prisma.transaction.deleteMany();
   // await transactionCreateManySeed({ numberOfTransactions: 500 });
@@ -100,10 +98,10 @@ async function main() {
 
   // const totalBalance = await getAccountTotalBalance(accountId);
   // await faqCreateManyInput();
-  // await createItem();
 
   // console.log(await prisma.invoice.deleteMany());
   // await populateProvinceCityDistricSubdistric();
+  await createItem();
 
   // await createSuperUser();
   // await createAdmin();
@@ -331,14 +329,23 @@ async function populateProvinceCityDistricSubdistric() {
 
 async function createItem() {
   console.log(
-    await prisma.item.create({
-      data: {
-        name: 'Paket PREMIUM SatuJuta Membership',
-        description: 'Berlisensi PT. SatuJuta Kampung Inggris',
-        price: 1000000,
-        cost: 300000,
-        userRole: UserRole.MEMBER,
-      },
+    await prisma.item.createMany({
+      data: [
+        {
+          name: 'Paket PREMIUM SatuJuta Membership',
+          description: 'Berlisensi PT. SatuJuta Kampung Inggris',
+          price: 1000000,
+          cost: 300000,
+          userRole: UserRole.MEMBER,
+        },
+        {
+          name: 'Registrasi Siswa',
+          description: '',
+          price: 1000000,
+          cost: 300000,
+          userRole: UserRole.STUDENT,
+        },
+      ],
     }),
   );
 }
