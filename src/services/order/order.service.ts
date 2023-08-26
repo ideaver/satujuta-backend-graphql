@@ -4,7 +4,7 @@ import { PrismaService } from 'prisma/prisma.service';
 import { OrderFindManyArgs as OrderFindManyArgs } from './dto/order-find-many.args';
 import { OrderFindUniqueArgs } from './dto/order-find-one.args';
 import { OrderUpdateOneArgs } from './dto/order-update-one.args';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { FindManyOrderArgs, Order } from 'src/@generated';
 import { Prisma } from '@prisma/client';
 
@@ -21,7 +21,7 @@ export class OrderService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -32,7 +32,7 @@ export class OrderService {
         return orders;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -45,7 +45,7 @@ export class OrderService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -56,7 +56,7 @@ export class OrderService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -69,7 +69,7 @@ export class OrderService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -80,7 +80,7 @@ export class OrderService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -91,7 +91,7 @@ export class OrderService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

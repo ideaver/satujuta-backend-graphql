@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 import {
   CreateOneProgramArgs,
   FindManyProgramArgs,
@@ -9,6 +8,7 @@ import {
 import { ProgramFindManyArgs } from './dto/program-find-many.args';
 import { ProgramFindUniqueArgs } from './dto/program-find-one.args';
 import { ProgramUpdateOneArgs } from './dto/program-update-one.args';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class ProgramService {
@@ -23,7 +23,7 @@ export class ProgramService {
         return program;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -34,7 +34,7 @@ export class ProgramService {
         return programs;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -47,7 +47,7 @@ export class ProgramService {
         return program;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -60,7 +60,7 @@ export class ProgramService {
         return program;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -73,7 +73,7 @@ export class ProgramService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -84,7 +84,7 @@ export class ProgramService {
         return program;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

@@ -6581,10 +6581,6 @@ input WithdrawalRequestCreateNestedOneWithoutTransactionInput {
 
 input WithdrawalRequestCreateWithoutTransactionInput {
   amount: Float!
-  status: TransactionStatus!
-  transactionId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
   user: UserCreateNestedOneWithoutWithdrawalRequestInput!
 }
 
@@ -9399,30 +9395,7 @@ input WithdrawalRequestCreateArgs {
 
 input WithdrawalRequestCreateInput {
   amount: Float!
-  status: TransactionStatus!
-  transactionId: Int
-  createdAt: DateTime
-  updatedAt: DateTime
   user: UserCreateNestedOneWithoutWithdrawalRequestInput!
-  transaction: TransactionCreateNestedOneWithoutWithdrawalRequestInput
-}
-
-input TransactionCreateNestedOneWithoutWithdrawalRequestInput {
-  create: TransactionCreateWithoutWithdrawalRequestInput
-  connectOrCreate: TransactionCreateOrConnectWithoutWithdrawalRequestInput
-  connect: TransactionWhereUniqueInput
-}
-
-input TransactionCreateWithoutWithdrawalRequestInput {
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
-}
-
-input TransactionCreateOrConnectWithoutWithdrawalRequestInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutWithdrawalRequestInput!
 }
 
 input WithdrawalRequestUpdateOneArgs {
@@ -9432,12 +9405,7 @@ input WithdrawalRequestUpdateOneArgs {
 
 input WithdrawalRequestUpdateInput {
   amount: FloatFieldUpdateOperationsInput
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  transactionId: NullableIntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
   user: UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput
-  transaction: TransactionUpdateOneWithoutWithdrawalRequestNestedInput
 }
 
 input UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput {
@@ -9474,32 +9442,4 @@ input UserUpdateWithoutWithdrawalRequestInput {
 input UserUpdateToOneWithWhereWithoutWithdrawalRequestInput {
   where: UserWhereInput
   data: UserUpdateWithoutWithdrawalRequestInput!
-}
-
-input TransactionUpdateOneWithoutWithdrawalRequestNestedInput {
-  create: TransactionCreateWithoutWithdrawalRequestInput
-  connectOrCreate: TransactionCreateOrConnectWithoutWithdrawalRequestInput
-  upsert: TransactionUpsertWithoutWithdrawalRequestInput
-  disconnect: TransactionWhereInput
-  delete: TransactionWhereInput
-  connect: TransactionWhereUniqueInput
-  update: TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput
-}
-
-input TransactionUpsertWithoutWithdrawalRequestInput {
-  update: TransactionUpdateWithoutWithdrawalRequestInput!
-  create: TransactionCreateWithoutWithdrawalRequestInput!
-  where: TransactionWhereInput
-}
-
-input TransactionUpdateWithoutWithdrawalRequestInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
-}
-
-input TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput {
-  where: TransactionWhereInput
-  data: TransactionUpdateWithoutWithdrawalRequestInput!
 }

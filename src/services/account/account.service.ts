@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 import { CreateOneAccountArgs, Account } from 'src/@generated';
 import { AccountFindManyArgs } from './dto/account-find-many.args';
 import { AccountFindUniqueArgs } from './dto/account-find-one.args';
@@ -10,6 +9,7 @@ import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
 } from './dto/get-account-balance-by-custom-period.args';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class AccountService {
@@ -24,7 +24,7 @@ export class AccountService {
         return account;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -35,7 +35,7 @@ export class AccountService {
         return accounts;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -49,7 +49,7 @@ export class AccountService {
         return res;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -62,7 +62,7 @@ export class AccountService {
         return account;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -75,7 +75,7 @@ export class AccountService {
         return account;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -88,7 +88,7 @@ export class AccountService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateOneCartArgs, Cart, FindManyCartArgs } from 'src/@generated';
 import { CartFindManyArgs } from './dto/cart-find-many.args';
 import { CartFindUniqueArgs } from './dto/cart-find-one.args';
@@ -18,7 +18,7 @@ export class CartService {
         return cart;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -29,7 +29,7 @@ export class CartService {
         return carts;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -40,7 +40,7 @@ export class CartService {
         return cart;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -51,7 +51,7 @@ export class CartService {
         return cart;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -64,7 +64,7 @@ export class CartService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -75,7 +75,7 @@ export class CartService {
         return count;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -86,7 +86,7 @@ export class CartService {
         return order;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

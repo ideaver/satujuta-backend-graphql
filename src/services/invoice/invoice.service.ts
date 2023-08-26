@@ -6,7 +6,7 @@ import { InvoiceUpdateOneArgs } from './dto/invoice-update-one.args';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
 import { FindManyInvoiceArgs, Invoice } from 'src/@generated';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class InvoiceService {
@@ -21,7 +21,7 @@ export class InvoiceService {
         return invoice;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -32,7 +32,7 @@ export class InvoiceService {
         return invoices;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -45,7 +45,7 @@ export class InvoiceService {
         return invoice;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -58,7 +58,7 @@ export class InvoiceService {
         return invoice;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -71,7 +71,7 @@ export class InvoiceService {
         return invoice;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -82,7 +82,7 @@ export class InvoiceService {
         return invoice;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

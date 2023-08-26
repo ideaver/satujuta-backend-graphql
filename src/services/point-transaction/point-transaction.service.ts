@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 import {
   CreateOnePointTransactionArgs,
   PointTransaction,
@@ -9,6 +8,7 @@ import { PointTransactionFindManyArgs } from './dto/point-transaction-find-many.
 import { PointTransactionFindUniqueArgs } from './dto/point-transaction-find-one.args';
 import { PointTransactionUpdateOneArgs } from './dto/point-transaction-update-one.args';
 import { PointTransactionFindFirstArgs } from './dto/point-transaction-find-first.args';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class PointTransactionService {
@@ -23,7 +23,7 @@ export class PointTransactionService {
         return pointTransaction;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -34,7 +34,7 @@ export class PointTransactionService {
         return pointTransactions;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -47,7 +47,7 @@ export class PointTransactionService {
         return pointTransaction;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -69,7 +69,7 @@ export class PointTransactionService {
         return pointTransaction;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -82,7 +82,7 @@ export class PointTransactionService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

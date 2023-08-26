@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateOneFileArgs, File } from 'src/@generated';
 import { FileFindManyArgs } from './dto/file-find-many.args';
 import { FileFindUniqueArgs } from './dto/file-find-one.args';
@@ -11,14 +11,13 @@ export class FileService {
   constructor(private prisma: PrismaService) {}
 
   async createOne(fileCreateArgs: CreateOneFileArgs): Promise<File | void> {
-
     return await this.prisma.file
       .create(fileCreateArgs)
       .then((file) => {
         return file;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -29,7 +28,7 @@ export class FileService {
         return files;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -40,7 +39,7 @@ export class FileService {
         return file;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -51,11 +50,11 @@ export class FileService {
         return file;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
-  async remove(fileId: number): Promise<boolean | void>{
+  async remove(fileId: number): Promise<boolean | void> {
     return await this.prisma.file
       .delete({
         where: { id: fileId },
@@ -64,7 +63,7 @@ export class FileService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

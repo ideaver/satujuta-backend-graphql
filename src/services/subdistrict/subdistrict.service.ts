@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateOneSubdistrictArgs, Subdistrict } from 'src/@generated';
 import { SubdistrictFindManyArgs } from './dto/subdistrict-find-many.args';
 import { SubdistrictFindUniqueArgs } from './dto/subdistrict-find-one.args';
@@ -19,7 +19,7 @@ export class SubdistrictService {
   //       return subdistrict;
   //     })
   //     .catch((err) => {
-  //       throwPrismaError(err);
+  //       throw new IGraphQLError({ code: 123456, err: err });
   //     });
   // }
 
@@ -30,7 +30,7 @@ export class SubdistrictService {
         return subdistricts;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -43,7 +43,7 @@ export class SubdistrictService {
         return subdistrict;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -56,7 +56,7 @@ export class SubdistrictService {
         return subdistrict;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -69,7 +69,7 @@ export class SubdistrictService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

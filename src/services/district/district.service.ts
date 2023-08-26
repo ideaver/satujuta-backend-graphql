@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateOneDistrictArgs, District } from 'src/@generated';
 import { DistrictFindManyArgs } from './dto/district-find-many.args';
 import { DistrictFindUniqueArgs } from './dto/district-find-one.args';
@@ -19,7 +19,7 @@ export class DistrictService {
   //       return district;
   //     })
   //     .catch((err) => {
-  //       throwPrismaError(err);
+  //       throw new IGraphQLError({ code: 123456, err: err });
   //     });
   // }
 
@@ -30,7 +30,7 @@ export class DistrictService {
         return districts;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -43,7 +43,7 @@ export class DistrictService {
         return district;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -56,7 +56,7 @@ export class DistrictService {
         return district;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -69,7 +69,7 @@ export class DistrictService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

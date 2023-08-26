@@ -13,6 +13,7 @@ import { Injectable } from '@nestjs/common';
 import { AccountController } from '../account/account.controller';
 import { GraphQLError } from 'graphql';
 import { WithdrawalRequestFindFirstArgs } from './dto/withdrawal-request-find-first.args';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class WithdrawalRequestController {
@@ -34,33 +35,22 @@ export class WithdrawalRequestController {
       });
 
     if (accountBalance < withdrawalRequestCreateArgs.data.amount) {
-      throw new GraphQLError('Saldo tidak mencukupi ', {
-        extensions: {
-          code: 434654,
-        },
-      });
+      throw new IGraphQLError({ code: 140001 });
     }
 
     //check if user has pending withdrawal request
-    await this.findFirst({
+    const findPending = await this.findFirst({
       where: {
         user: {
           is: { id: { equals: userId } },
         },
         status: { equals: TransactionStatus.PENDING },
       },
-    }).then(() => {
-      throw new GraphQLError(
-        'Masih ada request withdrawal yang pending terdahulu ',
-        {
-          extensions: {
-            code: 453544,
-          },
-        },
-      );
     });
 
-    //
+    if (findPending) {
+      throw new IGraphQLError({ code: 140002 });
+    }
 
     return await this.withdrawalRequestService.createOne(
       withdrawalRequestCreateArgs,

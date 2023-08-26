@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateOneTransactionArgs, Transaction } from 'src/@generated';
 import { TransactionFindManyArgs } from './dto/transaction-find-many.args';
 import { TransactionFindUniqueArgs } from './dto/transaction-find-one.args';
@@ -24,7 +24,7 @@ export class TransactionService {
         return transaction;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -37,7 +37,7 @@ export class TransactionService {
         return transactions;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -50,7 +50,7 @@ export class TransactionService {
         return transaction;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -63,7 +63,7 @@ export class TransactionService {
         return transaction;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -76,7 +76,7 @@ export class TransactionService {
   //       return true;
   //     })
   //     .catch((err) => {
-  //       throwPrismaError(err);
+  //       throw new IGraphQLError({ code: 123456, err: err });
   //     });
   // }
 }

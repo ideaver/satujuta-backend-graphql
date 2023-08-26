@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateOneFaqArgs, Faq } from 'src/@generated';
 import { FaqFindManyArgs } from './dto/faq-find-many.args';
 import { FaqFindUniqueArgs } from './dto/faq-find-one.args';
@@ -11,14 +11,13 @@ export class FaqService {
   constructor(private prisma: PrismaService) {}
 
   async createOne(faqCreateArgs: CreateOneFaqArgs): Promise<Faq | void> {
-
     return await this.prisma.faq
       .create(faqCreateArgs)
       .then((faq) => {
         return faq;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -29,7 +28,7 @@ export class FaqService {
         return faqs;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -40,7 +39,7 @@ export class FaqService {
         return faq;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -51,11 +50,11 @@ export class FaqService {
         return faq;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
-  async remove(faqId: number): Promise<boolean | void>{
+  async remove(faqId: number): Promise<boolean | void> {
     return await this.prisma.faq
       .delete({
         where: { id: faqId },
@@ -64,7 +63,7 @@ export class FaqService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

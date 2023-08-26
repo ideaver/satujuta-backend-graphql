@@ -4,10 +4,10 @@ import { UserFindManyArgs as UserFindManyArgs } from './dto/user-find-many.args'
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
 import { User } from 'src/model/user.model';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
 import { FindManyUserArgs } from 'src/@generated';
 import { Prisma } from '@prisma/client';
 import { UserTypePercentage } from './dto/user-type-percentage.output';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class UserService {
@@ -20,7 +20,7 @@ export class UserService {
         return user;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -31,7 +31,7 @@ export class UserService {
         return users;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -42,7 +42,7 @@ export class UserService {
         return user;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -53,7 +53,7 @@ export class UserService {
         return user;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -64,7 +64,7 @@ export class UserService {
         return user;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -79,7 +79,7 @@ export class UserService {
         return user;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -90,7 +90,7 @@ export class UserService {
         return user;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -111,7 +111,7 @@ export class UserService {
         return res;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }

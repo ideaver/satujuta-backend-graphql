@@ -69957,16 +69957,16 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], WithdrawalRequestCreateManyUserInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyUserInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyUserInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyUserInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyUserInput.prototype, "updatedAt", void 0);
 WithdrawalRequestCreateManyUserInput = __decorate([
     (0, graphql_4.InputType)()
@@ -69984,16 +69984,16 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], WithdrawalRequestCreateManyInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyInput.prototype, "updatedAt", void 0);
 WithdrawalRequestCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
@@ -70073,16 +70073,16 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutWithdrawalRequestInput, { nullable: false })
@@ -70097,19 +70097,19 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionCreateNestedOneWithoutWithdrawalRequestInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "transaction", void 0);
 WithdrawalRequestCreateWithoutUserInput = __decorate([
     (0, graphql_4.InputType)()
@@ -70121,22 +70121,22 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], WithdrawalRequestCreateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserCreateNestedOneWithoutWithdrawalRequestInput, { nullable: false })
 ], WithdrawalRequestCreateInput.prototype, "user", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionCreateNestedOneWithoutWithdrawalRequestInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "transaction", void 0);
 WithdrawalRequestCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -70911,16 +70911,16 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "updatedAt", void 0);
 WithdrawalRequestUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -71058,16 +71058,16 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput, { nullable: true })
@@ -71082,19 +71082,19 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionUpdateOneWithoutWithdrawalRequestNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "transaction", void 0);
 WithdrawalRequestUpdateWithoutUserInput = __decorate([
     (0, graphql_4.InputType)()
@@ -71106,22 +71106,22 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "status", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "transactionId", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput, { nullable: true })
 ], WithdrawalRequestUpdateInput.prototype, "user", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => TransactionUpdateOneWithoutWithdrawalRequestNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "transaction", void 0);
 WithdrawalRequestUpdateInput = __decorate([
     (0, graphql_4.InputType)()

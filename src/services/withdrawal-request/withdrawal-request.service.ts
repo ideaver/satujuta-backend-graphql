@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { throwPrismaError } from 'src/utils/throw-prisma-error.function';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import {
   CreateOneWithdrawalRequestArgs,
   WithdrawalRequest,
@@ -23,7 +23,7 @@ export class WithdrawalRequestService {
         return withdrawalRequest;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -34,7 +34,7 @@ export class WithdrawalRequestService {
         return withdrawalRequests;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -47,7 +47,7 @@ export class WithdrawalRequestService {
         return withdrawalRequest;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -60,7 +60,7 @@ export class WithdrawalRequestService {
         return withdrawalRequest;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -73,7 +73,7 @@ export class WithdrawalRequestService {
         return withdrawalRequest;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 
@@ -86,7 +86,7 @@ export class WithdrawalRequestService {
         return true;
       })
       .catch((err) => {
-        throwPrismaError(err);
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
 }
