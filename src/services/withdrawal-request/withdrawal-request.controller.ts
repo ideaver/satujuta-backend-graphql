@@ -11,7 +11,6 @@ import { WithdrawalRequestUpdateOneArgs } from './dto/withdrawal-request-update-
 
 import { Injectable } from '@nestjs/common';
 import { AccountController } from '../account/account.controller';
-import { GraphQLError } from 'graphql';
 import { WithdrawalRequestFindFirstArgs } from './dto/withdrawal-request-find-first.args';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { HotelCreateArgs } from './dto/hotel-create-one.args';
-import { GraphQLError } from 'graphql';
 import { HotelFindManyArgs } from './dto/hotel-find-many.args';
 import { HotelFindUniqueArgs } from './dto/hotel-find-one.args';
 import { HotelUpdateOneArgs } from './dto/hotel-update-one.args';
@@ -22,20 +21,49 @@ export class HotelService {
       });
   }
   findMany(hotelFindManyArgs: HotelFindManyArgs) {
-    return this.prisma.hotel.findMany(hotelFindManyArgs).then((hotels) => {
-      return hotels;
-    });
+    return this.prisma.hotel
+      .findMany(hotelFindManyArgs)
+      .then((hotels) => {
+        return hotels;
+      })
+      .then((hotel) => {
+        return hotel;
+      })
+      .catch((err) => {
+        throw new IGraphQLError({ code: 123456, err: err });
+      });
   }
 
   findOne(hotelFindUniqueArgs: HotelFindUniqueArgs) {
-    return this.prisma.hotel.findUnique(hotelFindUniqueArgs);
+    return this.prisma.hotel
+      .findUnique(hotelFindUniqueArgs)
+      .then((hotel) => {
+        return hotel;
+      })
+      .catch((err) => {
+        throw new IGraphQLError({ code: 123456, err: err });
+      });
   }
 
   update(hotelUpdateOneArgs: HotelUpdateOneArgs) {
-    return this.prisma.hotel.update(hotelUpdateOneArgs);
+    return this.prisma.hotel
+      .update(hotelUpdateOneArgs)
+      .then((hotel) => {
+        return hotel;
+      })
+      .catch((err) => {
+        throw new IGraphQLError({ code: 123456, err: err });
+      });
   }
 
   remove(id: number) {
-    return this.prisma.hotel.delete({ where: { id } });
+    return this.prisma.hotel
+      .delete({ where: { id } })
+      .then((hotel) => {
+        return hotel;
+      })
+      .catch((err) => {
+        throw new IGraphQLError({ code: 123456, err: err });
+      });
   }
 }
