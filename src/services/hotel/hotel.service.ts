@@ -5,6 +5,7 @@ import { GraphQLError } from 'graphql';
 import { HotelFindManyArgs } from './dto/hotel-find-many.args';
 import { HotelFindUniqueArgs } from './dto/hotel-find-one.args';
 import { HotelUpdateOneArgs } from './dto/hotel-update-one.args';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class HotelService {
@@ -17,11 +18,7 @@ export class HotelService {
         return hotel;
       })
       .catch((err) => {
-        throw new GraphQLError('waduh' + err, {
-          extensions: {
-            code: 23525,
-          },
-        });
+        throw new IGraphQLError({ code: 123456, err: err });
       });
   }
   findMany(hotelFindManyArgs: HotelFindManyArgs) {

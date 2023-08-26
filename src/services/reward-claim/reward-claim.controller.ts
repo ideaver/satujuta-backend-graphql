@@ -5,10 +5,10 @@ import { RewardClaimFindManyArgs } from './dto/reward-claim-find-many.args';
 import { RewardClaimFindUniqueArgs } from './dto/reward-claim-find-one.args';
 import { RewardClaimUpdateOneArgs } from './dto/reward-claim-update-one.args';
 import { Injectable } from '@nestjs/common';
-import { GraphQLError } from 'graphql';
 import { PointTransactionController } from '../point-transaction/point-transaction.controller';
 import { RewardController } from '../reward/reward.controller';
 import { Reward } from '@prisma/client';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class RewardClaimController {
@@ -67,20 +67,12 @@ export class RewardClaimController {
 
     // Check if user has any point
     if (currentBalance === null) {
-      throw new GraphQLError('Empty Balance', {
-        extensions: {
-          code: 23505,
-        },
-      });
+      throw new IGraphQLError({ code: 150001 });
     }
 
     // Check user's points
     if (currentBalance < rewardPointCost) {
-      throw new GraphQLError('Insufficient Points', {
-        extensions: {
-          code: 23525,
-        },
-      });
+      throw new IGraphQLError({ code: 150002 });
     }
   }
 }

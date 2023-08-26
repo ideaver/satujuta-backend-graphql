@@ -3,8 +3,8 @@ import { CreateAuthInput } from './dto/create-auth.input';
 import { UpdateAuthInput } from './dto/update-auth.input';
 import { PrismaService } from 'prisma/prisma.service';
 import { generateRandomReferralCode } from 'src/utils/generate-random.function';
-import { GraphQLError } from 'graphql';
 import { Auth } from './entities/auth.entity';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class AuthService {
@@ -33,11 +33,7 @@ export class AuthService {
       })
       .catch((err) => {
         //Todo: handle prisma error code
-        return new GraphQLError("Email doesn't exist", {
-          extensions: {
-            code: 23525,
-          },
-        });
+        throw new IGraphQLError({ code: 10004 });
       });
   }
 
