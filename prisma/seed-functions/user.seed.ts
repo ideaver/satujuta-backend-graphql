@@ -14,6 +14,30 @@ export async function userCreateManySeed({ numberOfUsers }): Promise<void> {
   const usersToCreate: Prisma.UserCreateManyInput[] = [];
 
   for (let i = 0; i < numberOfUsers; i++) {
+    const userRoleHelper = faker.helpers.arrayElement([
+      UserRole.MEMBER,
+      UserRole.STUDENT,
+    ] as const);
+    const schoolHelper = await prisma.school.create({
+      select: { id: true },
+      data: {
+        name: faker.name.jobArea(),
+        addressId: (
+          await prisma.address.create({
+            select: { id: true },
+            data: {
+              name: faker.address.streetAddress(),
+              subdistrict: {
+                connect: {
+                  id: faker.datatype.number({ min: 2000, max: 80000 }),
+                },
+              },
+            },
+          })
+        ).id,
+      },
+    });
+
     usersToCreate.push({
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
@@ -23,22 +47,13 @@ export async function userCreateManySeed({ numberOfUsers }): Promise<void> {
           select: { id: true },
           data: {
             name: faker.address.streetAddress(),
-            province: {
-              connect: { id: faker.datatype.number({ min: 1, max: 34 }) },
-            },
-            city: {
-              connect: { id: faker.datatype.number({ min: 1, max: 450 }) },
-            },
-            district: {
-              connect: { id: faker.datatype.number({ min: 1, max: 6500 }) },
-            },
             subdistrict: {
               connect: { id: faker.datatype.number({ min: 1, max: 80000 }) },
             },
           },
         })
       ).id,
-      userRole: UserRole.MEMBER,
+      userRole: userRoleHelper,
       userType: faker.helpers.arrayElement([
         UserType.PARENT,
         UserType.SCHOOL_HEAD,
@@ -49,19 +64,22 @@ export async function userCreateManySeed({ numberOfUsers }): Promise<void> {
         UserType.WORKER,
         UserType.OTHER,
       ] as const),
-      avatarUrl: undefined,
-      whatsappNumber: faker.lorem.words(5),
-      whatsappVerifiedAt: undefined,
-      password: faker.lorem.words(5),
-      referralCode: faker.lorem.words(5),
-      referredById: undefined,
-      status: UserStatus.PENDING,
-      schoolId: undefined,
-      createdAt: new Date(),
-      updatedAt: faker.datatype.datetime(),
-      deletedAt: undefined,
+      avatarUrl: faker.image.avatar(),
+      whatsappNumber: faker.phone.number('628##########'),
+      password: faker.lorem.word(5),
+      referralCode: generateRandomReferralCode(),
+      status: faker.helpers.arrayElement([
+        UserStatus.PENDING,
+        UserStatus.INACTIVE,
+        UserStatus.PENDING,
+      ] as const),
+      schoolId:
+        userRoleHelper === UserRole.STUDENT ? schoolHelper.id : undefined,
       theme: Theme.LIGHT,
     });
+
+    //console log the iteration below
+    console.log('User ' + i + ' pushed to array');
   }
 
   const userCreateManyArgs: Prisma.UserCreateManyArgs = {
@@ -74,6 +92,55 @@ export async function userCreateManySeed({ numberOfUsers }): Promise<void> {
   } catch (err) {
     console.error(err);
   }
+}
+
+export async function conenctReferralCodeToReferralId() {
+  const users = await prisma.user.findMany({
+    select: { id: true, _count: { select: { referredUsers: true } } },
+    orderBy: {
+      referredUsers: { _count: 'desc' },
+      // where: { referredUsers: { every: {re} } },
+    },
+  });
+
+  console.log(users.length);
+
+  if (users.length > 10) {
+    for (let i = 0; i < users.length; i++) {
+      await prisma.user.update({
+        data: {
+          referredUsers: {
+            connect: {
+              id: faker.helpers.arrayElement(users.map((user) => user.id)),
+            },
+          },
+        },
+        where: { id: users[i].id },
+      });
+
+      console.log('User ' + i + ' of ' + users.length + ' user connected');
+    }
+
+    conenctReferralCodeToReferralId();
+  }
+}
+
+export function generateRandomReferralCode(): string {
+  const codeLength = 5;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let referralCode = '';
+
+  // Generate the first part of the referral code using random characters
+  for (let i = 0; i < codeLength - 1; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    referralCode += characters[randomIndex];
+  }
+
+  // Generate the second part of the referral code using the last digit of the current timestamp
+  const timestampPart = Date.now().toString();
+  referralCode += timestampPart[timestampPart.length - 1];
+
+  return referralCode.toLowerCase();
 }
 
 // async function createSuperUser() {

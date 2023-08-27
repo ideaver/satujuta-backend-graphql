@@ -22,7 +22,10 @@ import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
 
 import { join } from 'node:path';
-import { userCreateManySeed } from './seed-functions/user.seed';
+import {
+  conenctReferralCodeToReferralId,
+  userCreateManySeed,
+} from './seed-functions/user.seed';
 
 const prisma = new PrismaClient();
 
@@ -35,7 +38,16 @@ enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  await userCreateManySeed({ numberOfUsers: 10 });
+  // await prisma.user.deleteMany({
+  //   where: {
+  //     userRole: { not: { equals: UserRole.SUPERUSER } },
+  //     accounts: { none: {} },
+  //   },
+  // });
+
+  // await userCreateManySeed({ numberOfUsers: 200 });
+
+  conenctReferralCodeToReferralId();
 
   // console.log(await prisma.pointTransaction.deleteMany());
   // await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
