@@ -7,8 +7,87 @@ import {
   UserType,
 } from '@prisma/client';
 import { faker } from '@faker-js/faker';
+import {
+  UserCreatedByCustomPeriodArgs,
+  UserCreatedByCustomPeriodQuery,
+} from 'src/services/user/dto/get-user-created-by-custom-period.args';
 
 const prisma = new PrismaClient();
+
+export enum Period {
+  WEEKLY = 'weekly',
+  MONTHLY = 'monthly',
+  YEARLY = 'yearly',
+}
+
+export async function getUserGrowthByCustomPeriod(
+  args: UserCreatedByCustomPeriodArgs,
+) {
+  const { start, end, period, where } = args;
+
+  const users = await prisma.user.findMany({
+    orderBy: { createdAt: 'asc' },
+    where: {
+      createdAt: {
+        gte: start,
+        lt: end,
+      },
+      ...where,
+    },
+  });
+
+  const userCounts = [];
+
+  let currentDate = new Date(start);
+
+  while (currentDate <= end) {
+    const userCount = calculateUserCount(users, currentDate, period);
+
+    userCounts.push({
+      period: currentDate.toISOString(), // Convert date to string for consistent grouping
+      totalUser: userCount,
+    });
+
+    currentDate = getNextPeriodDate(currentDate, period);
+  }
+
+  console.log(userCounts);
+}
+
+function getNextPeriodDate(currentDate, period) {
+  const nextDate = new Date(currentDate);
+
+  if (period === Period.WEEKLY) {
+    nextDate.setDate(currentDate.getDate() + 7);
+  } else if (period === Period.MONTHLY) {
+    nextDate.setMonth(currentDate.getMonth() + 1);
+  } else if (period === Period.YEARLY) {
+    nextDate.setFullYear(currentDate.getFullYear() + 1);
+  }
+
+  return nextDate;
+}
+
+function calculateUserCount(users, currentDate, period) {
+  const filteredUsers = users.filter((user) => {
+    const userCreatedAt = new Date(user.createdAt);
+
+    if (period === Period.WEEKLY) {
+      const nextWeekDate = getNextPeriodDate(currentDate, period);
+      return userCreatedAt >= currentDate && userCreatedAt < nextWeekDate;
+    } else if (period === Period.MONTHLY) {
+      const nextMonthDate = getNextPeriodDate(currentDate, period);
+      return userCreatedAt >= currentDate && userCreatedAt < nextMonthDate;
+    } else if (period === Period.YEARLY) {
+      const nextYearDate = getNextPeriodDate(currentDate, period);
+      return userCreatedAt >= currentDate && userCreatedAt < nextYearDate;
+    }
+
+    return false;
+  });
+
+  return filteredUsers.length;
+}
 
 export async function userCreateManySeed({ numberOfUsers }): Promise<void> {
   const usersToCreate: Prisma.UserCreateManyInput[] = [];
@@ -75,6 +154,7 @@ export async function userCreateManySeed({ numberOfUsers }): Promise<void> {
       ] as const),
       schoolId:
         userRoleHelper === UserRole.STUDENT ? schoolHelper.id : undefined,
+      createdAt: faker.date.past(5),
       theme: Theme.LIGHT,
     });
 

@@ -24,12 +24,13 @@ import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-
 import { join } from 'node:path';
 import {
   conenctReferralCodeToReferralId,
+  getUserGrowthByCustomPeriod,
   userCreateManySeed,
 } from './seed-functions/user.seed';
 
 const prisma = new PrismaClient();
 
-enum Period {
+export enum Period {
   WEEKLY = 'weekly',
   MONTHLY = 'monthly',
   YEARLY = 'yearly',
@@ -45,9 +46,16 @@ async function main() {
   //   },
   // });
 
-  // await userCreateManySeed({ numberOfUsers: 200 });
+  getUserGrowthByCustomPeriod({
+    period: Period.YEARLY,
+    start: new Date('2017-01-01'),
+    end: new Date('2023-12-31'),
+    where: { userRole: { equals: UserRole.STUDENT } },
+  });
 
-  conenctReferralCodeToReferralId();
+  // await userCreateManySeed({ numberOfUsers: 100 });
+
+  // conenctReferralCodeToReferralId();
 
   // console.log(await prisma.pointTransaction.deleteMany());
   // await pointTransactionCreateManySeed({ numberOfPointTransaction: 500 });
