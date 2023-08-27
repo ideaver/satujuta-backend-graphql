@@ -3,7 +3,7 @@ import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { User } from 'src/model/user.model';
+// import { User } from 'src/model/user.model';
 import { Item, Prisma, TransactionStatus, UserRole } from '@prisma/client';
 import {
   generateRandomReferralCode,
@@ -11,6 +11,7 @@ import {
 } from 'src/utils/generate-random.function';
 import { Injectable, Logger } from '@nestjs/common';
 import { ItemService } from '../item/item.service';
+import { User } from 'src/@generated';
 
 @Injectable()
 export class UserController {

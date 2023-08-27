@@ -79,10 +79,25 @@ export class WithdrawalRequestController {
   async updateOne(
     withdrawalRequestUpdateOneArgs: WithdrawalRequestUpdateOneArgs,
   ) {
+    const { status, proofUrl, proofDescription } =
+      withdrawalRequestUpdateOneArgs.data;
     //TODO:
     //check if approved/rejected
 
     //reduce balance if approved
+
+    //handle graphql null value to prisma
+    if (status === null || status === undefined) {
+      withdrawalRequestUpdateOneArgs.data.status = undefined;
+    }
+
+    if (proofUrl === null || proofUrl === undefined) {
+      withdrawalRequestUpdateOneArgs.data.proofUrl = undefined;
+    }
+
+    if (proofDescription === null || proofDescription === undefined) {
+      withdrawalRequestUpdateOneArgs.data.proofDescription = undefined;
+    }
 
     return this.withdrawalRequestService.update(withdrawalRequestUpdateOneArgs);
   }

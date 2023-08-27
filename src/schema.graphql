@@ -76,81 +76,12 @@ type Account {
   updatedAt: DateTime!
   userId: String!
   accountCategory: AccountCategory!
-  user: UserAbstract!
+  user: User!
   transactionOrigins: [Transaction!]
   transactionDestination: [Transaction!]
   project: Project
   bankAccount: Bank
   _count: AccountCount!
-}
-
-type UserAbstract {
-  id: String!
-  firstName: String!
-  lastName: String
-  email: String!
-  addressId: Int!
-  userRole: UserRole!
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  whatsappVerifiedAt: DateTime
-  referralCode: String!
-  referredById: String
-  status: UserStatus!
-  schoolId: Int
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  deletedAt: DateTime
-  theme: Theme!
-
-  """@Validator.IsNotEmpty(g"""
-  address: Address!
-  referredBy: UserAbstract
-  referredUsers: [UserAbstract!]
-  checkIns: [CheckIn!]
-  school: School
-  accounts: [Account!]
-  PointTransactions: [PointTransaction!]
-  orders: [Order!]
-  sessions: [Session!]
-  hotelsCreated: [Hotel!]
-  programsParticipation: [Program!]
-  claimedRewards: [RewardClaim!]
-  withdrawalRequest: [WithdrawalRequest!]
-  userNotifications: [UserNotification!]
-  programsCreated: [Program!]
-  filesCreated: [File!]
-  _count: UserCount!
-}
-
-enum UserRole {
-  MEMBER
-  ADMIN
-  SUPERUSER
-  STUDENT
-}
-
-enum UserType {
-  PARENT
-  SCHOOL_HEAD
-  STUDENT
-  TEACHER
-  HOUSEWIFE
-  ENTREPRENEUR
-  WORKER
-  OTHER
-}
-
-enum UserStatus {
-  ACTIVE
-  PENDING
-  INACTIVE
-}
-
-enum Theme {
-  LIGHT
-  DARK
 }
 
 type AddressAvgAggregate {
@@ -216,7 +147,7 @@ type Address {
   city: City!
   district: District!
   subdistrict: Subdistrict!
-  user: UserAbstract
+  user: User
   hotel: Hotel
   school: School
   Shipping: Shipping
@@ -393,7 +324,7 @@ type CheckIn {
   checkInAt: DateTime!
   createdAt: DateTime!
   updatedAt: DateTime!
-  user: UserAbstract!
+  user: User!
   hotel: Hotel!
 }
 
@@ -599,7 +530,7 @@ type File {
   createdById: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  createdBy: UserAbstract!
+  createdBy: User!
 }
 
 type HotelAvgAggregate {
@@ -675,7 +606,7 @@ type Hotel {
   address: Address!
   images: [Images!]
   checkIns: [CheckIn!]
-  createdBy: UserAbstract!
+  createdBy: User!
   _count: HotelCount!
 }
 
@@ -909,6 +840,13 @@ type ItemMaxAggregate {
   updatedAt: DateTime
 }
 
+enum UserRole {
+  MEMBER
+  ADMIN
+  SUPERUSER
+  STUDENT
+}
+
 type ItemMinAggregate {
   id: Int
   name: String
@@ -1022,7 +960,7 @@ type Order {
   total: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
-  orderBy: UserAbstract!
+  orderBy: User!
   cart: [Cart!]
   shipping: Shipping
   invoice: Invoice!
@@ -1090,7 +1028,7 @@ type PointTransaction {
   currentBalance: Float!
   userId: String!
   createdAt: DateTime!
-  User: UserAbstract!
+  User: User!
 }
 
 type ProgramAvgAggregate {
@@ -1156,8 +1094,8 @@ type Program {
   createdAt: DateTime!
   updatedAt: DateTime!
   Images: [Images!]
-  createdBy: UserAbstract!
-  participant: [UserAbstract!]
+  createdBy: User!
+  participant: [User!]
   category: ProgramCategory!
   _count: ProgramCount!
 }
@@ -1433,7 +1371,7 @@ type RewardClaim {
   rewardId: Int!
   processedAt: DateTime!
   createdAt: DateTime!
-  user: UserAbstract!
+  user: User!
   reward: Reward!
 }
 
@@ -1483,7 +1421,7 @@ type School {
   createdAt: DateTime!
   updatedAt: DateTime!
   address: Address!
-  students: [UserAbstract!]
+  students: [User!]
   _count: SchoolCount!
 }
 
@@ -1536,7 +1474,7 @@ type Session {
   userId: String!
   device: String!
   ipAddress: Float!
-  user: UserAbstract!
+  user: User!
 }
 
 type ShippingAvgAggregate {
@@ -1822,6 +1760,28 @@ type UserMaxAggregate {
   theme: Theme
 }
 
+enum UserType {
+  PARENT
+  SCHOOL_HEAD
+  STUDENT
+  TEACHER
+  HOUSEWIFE
+  ENTREPRENEUR
+  WORKER
+  OTHER
+}
+
+enum UserStatus {
+  ACTIVE
+  PENDING
+  INACTIVE
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
 type UserMinAggregate {
   id: String
   firstName: String
@@ -1846,6 +1806,47 @@ type UserMinAggregate {
 type UserSumAggregate {
   addressId: Int
   schoolId: Int
+}
+
+"""@/O/b/j/e/c/t/T/y/p/e('UserAbstract', { isAbstract: true })"""
+type User {
+  id: String!
+  firstName: String!
+  lastName: String
+  email: String!
+  addressId: Int!
+  userRole: UserRole!
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  whatsappVerifiedAt: DateTime
+  referralCode: String!
+  referredById: String
+  status: UserStatus!
+  schoolId: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+  theme: Theme!
+
+  """@Validator.IsNotEmpty(g"""
+  address: Address!
+  referredBy: User
+  referredUsers: [User!]
+  checkIns: [CheckIn!]
+  school: School
+  accounts: [Account!]
+  PointTransactions: [PointTransaction!]
+  orders: [Order!]
+  sessions: [Session!]
+  hotelsCreated: [Hotel!]
+  programsParticipation: [Program!]
+  claimedRewards: [RewardClaim!]
+  withdrawalRequest: [WithdrawalRequest!]
+  userNotifications: [UserNotification!]
+  programsCreated: [Program!]
+  filesCreated: [File!]
+  _count: UserCount!
 }
 
 type UserNotificationAvgAggregate {
@@ -1917,7 +1918,7 @@ type UserNotification {
   userId: String!
   deepLink: String
   fcmToken: String
-  user: UserAbstract!
+  user: User!
 }
 
 type WithdrawalRequestAvgAggregate {
@@ -1931,6 +1932,8 @@ type WithdrawalRequestCountAggregate {
   userId: Int!
   amount: Int!
   status: Int!
+  proofUrl: Int!
+  proofDescription: Int!
   transactionId: Int!
   createdAt: Int!
   updatedAt: Int!
@@ -1942,6 +1945,8 @@ type WithdrawalRequestMaxAggregate {
   userId: String
   amount: Float
   status: TransactionStatus
+  proofUrl: String
+  proofDescription: String
   transactionId: Int
   createdAt: DateTime
   updatedAt: DateTime
@@ -1952,6 +1957,8 @@ type WithdrawalRequestMinAggregate {
   userId: String
   amount: Float
   status: TransactionStatus
+  proofUrl: String
+  proofDescription: String
   transactionId: Int
   createdAt: DateTime
   updatedAt: DateTime
@@ -1968,52 +1975,13 @@ type WithdrawalRequest {
   userId: String!
   amount: Float!
   status: TransactionStatus!
+  proofUrl: String
+  proofDescription: String
   transactionId: Int
   createdAt: DateTime!
   updatedAt: DateTime!
-  user: UserAbstract!
+  user: User!
   transaction: Transaction
-}
-
-type User {
-  """Dwadidaw"""
-  id: String!
-  firstName: String!
-  lastName: String
-  email: String!
-  addressId: Int!
-  userRole: UserRole!
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  whatsappVerifiedAt: DateTime
-  referralCode: String!
-  referredById: String
-  status: UserStatus!
-  schoolId: Int
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  deletedAt: DateTime
-  theme: Theme!
-
-  """@Validator.IsNotEmpty(g"""
-  address: Address!
-  referredBy: UserAbstract
-  referredUsers: [UserAbstract!]
-  checkIns: [CheckIn!]
-  school: School
-  accounts: [Account!]
-  PointTransactions: [PointTransaction!]
-  orders: [Order!]
-  sessions: [Session!]
-  hotelsCreated: [Hotel!]
-  programsParticipation: [Program!]
-  claimedRewards: [RewardClaim!]
-  withdrawalRequest: [WithdrawalRequest!]
-  userNotifications: [UserNotification!]
-  programsCreated: [Program!]
-  filesCreated: [File!]
-  _count: UserCount!
 }
 
 type UserTypePercentage {
@@ -2034,7 +2002,7 @@ type AccountBalanceByCustomPeriodQuery {
 }
 
 type UserFindManyOrderByAccountBalance {
-  user: UserAbstract!
+  user: User!
   totalBalance: Float!
 }
 
@@ -3065,6 +3033,8 @@ input WithdrawalRequestWhereInput {
   userId: StringFilter
   amount: FloatFilter
   status: EnumTransactionStatusFilter
+  proofUrl: StringNullableFilter
+  proofDescription: StringNullableFilter
   transactionId: IntNullableFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -4360,6 +4330,8 @@ input WithdrawalRequestOrderByWithRelationInput {
   userId: SortOrder
   amount: SortOrder
   status: SortOrder
+  proofUrl: SortOrderInput
+  proofDescription: SortOrderInput
   transactionId: SortOrderInput
   createdAt: SortOrder
   updatedAt: SortOrder
@@ -4989,6 +4961,8 @@ enum WithdrawalRequestScalarFieldEnum {
   userId
   amount
   status
+  proofUrl
+  proofDescription
   transactionId
   createdAt
   updatedAt
@@ -5006,6 +4980,8 @@ input WithdrawalRequestWhereUniqueInput {
   userId: StringFilter
   amount: FloatFilter
   status: EnumTransactionStatusFilter
+  proofUrl: StringNullableFilter
+  proofDescription: StringNullableFilter
   transactionId: IntNullableFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -9404,42 +9380,7 @@ input WithdrawalRequestUpdateOneArgs {
 }
 
 input WithdrawalRequestUpdateInput {
-  amount: FloatFieldUpdateOperationsInput
-  user: UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput
-}
-
-input UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput {
-  create: UserCreateWithoutWithdrawalRequestInput
-  connectOrCreate: UserCreateOrConnectWithoutWithdrawalRequestInput
-  upsert: UserUpsertWithoutWithdrawalRequestInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutWithdrawalRequestInput
-}
-
-input UserUpsertWithoutWithdrawalRequestInput {
-  update: UserUpdateWithoutWithdrawalRequestInput!
-  create: UserCreateWithoutWithdrawalRequestInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutWithdrawalRequestInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  programsParticipation: ProgramUpdateManyWithoutParticipantNestedInput
-}
-
-input UserUpdateToOneWithWhereWithoutWithdrawalRequestInput {
-  where: UserWhereInput
-  data: UserUpdateWithoutWithdrawalRequestInput!
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  proofDescription: NullableStringFieldUpdateOperationsInput
 }

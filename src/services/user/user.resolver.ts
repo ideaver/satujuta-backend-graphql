@@ -3,11 +3,12 @@ import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
 import { UserFindUniqueArgs } from './dto/user-find-one.args';
 import { UserUpdateOneArgs } from './dto/user-update-one.args';
-import { User } from 'src/model/user.model';
+// import { User } from 'src/model/user.model';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import { UserController } from './user.controller';
 import { UserTypePercentage } from './dto/user-type-percentage.output';
+import { User } from 'src/@generated';
 
 interface UserSelect {
   select: Prisma.UserSelect;

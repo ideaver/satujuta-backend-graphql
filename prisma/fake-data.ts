@@ -189,6 +189,8 @@ export function fakeWithdrawalRequest() {
   return {
     amount: faker.datatype.float(),
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    proofUrl: undefined,
+    proofDescription: undefined,
     transactionId: undefined,
     updatedAt: faker.datatype.datetime(),
   };
@@ -199,6 +201,8 @@ export function fakeWithdrawalRequestComplete() {
     userId: faker.datatype.uuid(),
     amount: faker.datatype.float(),
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    proofUrl: undefined,
+    proofDescription: undefined,
     transactionId: undefined,
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),

@@ -4,6 +4,8 @@ export declare enum WithdrawalRequestScalarFieldEnum {
     userId = "userId",
     amount = "amount",
     status = "status",
+    proofUrl = "proofUrl",
+    proofDescription = "proofDescription",
     transactionId = "transactionId",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
@@ -22056,6 +22058,8 @@ export declare class WithdrawalRequestCountAggregateInput {
     userId?: true;
     amount?: true;
     status?: true;
+    proofUrl?: true;
+    proofDescription?: true;
     transactionId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -22066,6 +22070,8 @@ export declare class WithdrawalRequestCountAggregate {
     userId: number;
     amount: number;
     status: number;
+    proofUrl: number;
+    proofDescription: number;
     transactionId: number;
     createdAt: number;
     updatedAt: number;
@@ -22076,6 +22082,8 @@ export declare class WithdrawalRequestCountOrderByAggregateInput {
     userId?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
+    proofUrl?: keyof typeof SortOrder;
+    proofDescription?: keyof typeof SortOrder;
     transactionId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -22088,6 +22096,8 @@ export declare class WithdrawalRequestCreateManyUserInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22097,6 +22107,8 @@ export declare class WithdrawalRequestCreateManyInput {
     userId: string;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22123,6 +22135,8 @@ export declare class WithdrawalRequestCreateOrConnectWithoutUserInput {
 export declare class WithdrawalRequestCreateWithoutTransactionInput {
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22131,6 +22145,8 @@ export declare class WithdrawalRequestCreateWithoutTransactionInput {
 export declare class WithdrawalRequestCreateWithoutUserInput {
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22139,6 +22155,8 @@ export declare class WithdrawalRequestCreateWithoutUserInput {
 export declare class WithdrawalRequestCreateInput {
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22163,6 +22181,8 @@ export declare class WithdrawalRequestGroupBy {
     userId: string;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt: Date | string;
     updatedAt: Date | string;
@@ -22182,6 +22202,8 @@ export declare class WithdrawalRequestMaxAggregateInput {
     userId?: true;
     amount?: true;
     status?: true;
+    proofUrl?: true;
+    proofDescription?: true;
     transactionId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -22191,6 +22213,8 @@ export declare class WithdrawalRequestMaxAggregate {
     userId?: string;
     amount?: number;
     status?: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22200,6 +22224,8 @@ export declare class WithdrawalRequestMaxOrderByAggregateInput {
     userId?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
+    proofUrl?: keyof typeof SortOrder;
+    proofDescription?: keyof typeof SortOrder;
     transactionId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -22209,6 +22235,8 @@ export declare class WithdrawalRequestMinAggregateInput {
     userId?: true;
     amount?: true;
     status?: true;
+    proofUrl?: true;
+    proofDescription?: true;
     transactionId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -22218,6 +22246,8 @@ export declare class WithdrawalRequestMinAggregate {
     userId?: string;
     amount?: number;
     status?: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22227,6 +22257,8 @@ export declare class WithdrawalRequestMinOrderByAggregateInput {
     userId?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
+    proofUrl?: keyof typeof SortOrder;
+    proofDescription?: keyof typeof SortOrder;
     transactionId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -22243,6 +22275,8 @@ export declare class WithdrawalRequestOrderByWithAggregationInput {
     userId?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
+    proofUrl?: InstanceType<typeof SortOrderInput>;
+    proofDescription?: InstanceType<typeof SortOrderInput>;
     transactionId?: InstanceType<typeof SortOrderInput>;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -22257,6 +22291,8 @@ export declare class WithdrawalRequestOrderByWithRelationInput {
     userId?: keyof typeof SortOrder;
     amount?: keyof typeof SortOrder;
     status?: keyof typeof SortOrder;
+    proofUrl?: InstanceType<typeof SortOrderInput>;
+    proofDescription?: InstanceType<typeof SortOrderInput>;
     transactionId?: InstanceType<typeof SortOrderInput>;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -22271,6 +22307,8 @@ export declare class WithdrawalRequestScalarWhereWithAggregatesInput {
     userId?: InstanceType<typeof StringWithAggregatesFilter>;
     amount?: InstanceType<typeof FloatWithAggregatesFilter>;
     status?: InstanceType<typeof EnumTransactionStatusWithAggregatesFilter>;
+    proofUrl?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    proofDescription?: InstanceType<typeof StringNullableWithAggregatesFilter>;
     transactionId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -22283,6 +22321,8 @@ export declare class WithdrawalRequestScalarWhereInput {
     userId?: InstanceType<typeof StringFilter>;
     amount?: InstanceType<typeof FloatFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
+    proofUrl?: InstanceType<typeof StringNullableFilter>;
+    proofDescription?: InstanceType<typeof StringNullableFilter>;
     transactionId?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -22313,6 +22353,8 @@ export declare class WithdrawalRequestUncheckedCreateWithoutTransactionInput {
     userId: string;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22321,6 +22363,8 @@ export declare class WithdrawalRequestUncheckedCreateWithoutUserInput {
     id?: number;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22331,6 +22375,8 @@ export declare class WithdrawalRequestUncheckedCreateInput {
     userId: string;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl?: string;
+    proofDescription?: string;
     transactionId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -22353,6 +22399,8 @@ export declare class WithdrawalRequestUncheckedUpdateManyWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22362,6 +22410,8 @@ export declare class WithdrawalRequestUncheckedUpdateManyInput {
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22371,6 +22421,8 @@ export declare class WithdrawalRequestUncheckedUpdateWithoutTransactionInput {
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22379,6 +22431,8 @@ export declare class WithdrawalRequestUncheckedUpdateWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22389,6 +22443,8 @@ export declare class WithdrawalRequestUncheckedUpdateInput {
     userId?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22397,6 +22453,8 @@ export declare class WithdrawalRequestUncheckedUpdateInput {
 export declare class WithdrawalRequestUpdateManyMutationInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22438,6 +22496,8 @@ export declare class WithdrawalRequestUpdateWithWhereUniqueWithoutUserInput {
 export declare class WithdrawalRequestUpdateWithoutTransactionInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22446,6 +22506,8 @@ export declare class WithdrawalRequestUpdateWithoutTransactionInput {
 export declare class WithdrawalRequestUpdateWithoutUserInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22454,6 +22516,8 @@ export declare class WithdrawalRequestUpdateWithoutUserInput {
 export declare class WithdrawalRequestUpdateInput {
     amount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     status?: InstanceType<typeof EnumTransactionStatusFieldUpdateOperationsInput>;
+    proofUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    proofDescription?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     transactionId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -22478,6 +22542,8 @@ export declare class WithdrawalRequestWhereUniqueInput {
     userId?: InstanceType<typeof StringFilter>;
     amount?: InstanceType<typeof FloatFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
+    proofUrl?: InstanceType<typeof StringNullableFilter>;
+    proofDescription?: InstanceType<typeof StringNullableFilter>;
     transactionId?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -22492,6 +22558,8 @@ export declare class WithdrawalRequestWhereInput {
     userId?: InstanceType<typeof StringFilter>;
     amount?: InstanceType<typeof FloatFilter>;
     status?: InstanceType<typeof EnumTransactionStatusFilter>;
+    proofUrl?: InstanceType<typeof StringNullableFilter>;
+    proofDescription?: InstanceType<typeof StringNullableFilter>;
     transactionId?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -22503,6 +22571,8 @@ export declare class WithdrawalRequest {
     userId: string;
     amount: number;
     status: keyof typeof TransactionStatus;
+    proofUrl: string | null;
+    proofDescription: string | null;
     transactionId: number | null;
     createdAt: Date;
     updatedAt: Date;

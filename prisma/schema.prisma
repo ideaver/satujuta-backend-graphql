@@ -162,7 +162,7 @@ model School {
 }
 
 //Make CRU Available, implement soft delete
-/// @ObjectType('UserAbstract', { isAbstract: true })
+/// @/O/b/j/e/c/t/T/y/p/e('UserAbstract', { isAbstract: true })
 model User {
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   id                    String              @id @default(uuid())
@@ -364,20 +364,27 @@ enum TransactionStatus {
 }
 
 model WithdrawalRequest {
-  id            Int               @id @default(autoincrement())
-  user          User              @relation(fields: [userId], references: [id])
-  userId        String
-  amount        Float
+  id               Int               @id @default(autoincrement())
+  /// @HideField({ match: 'WithdrawalRequestUpdate*Input' })
+  user             User              @relation(fields: [userId], references: [id])
+  /// @HideField({ match: 'WithdrawalRequestUpdate*Input' })
+  userId           String
+  /// @HideField({ match: 'WithdrawalRequestUpdate*Input' })
+  amount           Float
+  /// @HideField({ match: 'WithdrawalRequestCreate*Input' })
+  status           TransactionStatus
+  /// @HideField({ match: 'WithdrawalRequestCreate*Input' })
+  proofUrl         String?
+  /// @HideField({ match: 'WithdrawalRequestCreate*Input' })
+  proofDescription String?
   /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
-  status        TransactionStatus
+  transaction      Transaction?
   /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
-  transaction   Transaction?
+  transactionId    Int?
   /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
-  transactionId Int?
+  createdAt        DateTime          @default(now())
   /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
-  createdAt     DateTime          @default(now())
-  /// @HideField({ match: ['WithdrawalRequestCreate*Input','WithdrawalRequestUpdate*Input']})  
-  updatedAt     DateTime          @updatedAt
+  updatedAt        DateTime          @updatedAt
 }
 
 //Make Read only without update, delete

@@ -76,6 +76,8 @@ var WithdrawalRequestScalarFieldEnum;
     WithdrawalRequestScalarFieldEnum["userId"] = "userId";
     WithdrawalRequestScalarFieldEnum["amount"] = "amount";
     WithdrawalRequestScalarFieldEnum["status"] = "status";
+    WithdrawalRequestScalarFieldEnum["proofUrl"] = "proofUrl";
+    WithdrawalRequestScalarFieldEnum["proofDescription"] = "proofDescription";
     WithdrawalRequestScalarFieldEnum["transactionId"] = "transactionId";
     WithdrawalRequestScalarFieldEnum["createdAt"] = "createdAt";
     WithdrawalRequestScalarFieldEnum["updatedAt"] = "updatedAt";
@@ -67751,7 +67753,7 @@ __decorate([
     (0, graphql_1.Field)(() => UserCount, { nullable: false })
 ], User.prototype, "_count", void 0);
 User = User_1 = __decorate([
-    (0, graphql_5.ObjectType)('UserAbstract', { isAbstract: true })
+    (0, graphql_5.ObjectType)({ description: "@/O/b/j/e/c/t/T/y/p/e('UserAbstract', { isAbstract: true })" })
 ], User);
 exports.User = User;
 let AggregateUserNotification = class AggregateUserNotification {
@@ -69864,6 +69866,12 @@ __decorate([
 ], WithdrawalRequestCountAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], WithdrawalRequestCountAggregateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], WithdrawalRequestCountAggregateInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], WithdrawalRequestCountAggregateInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -69894,6 +69902,12 @@ __decorate([
 ], WithdrawalRequestCountAggregate.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], WithdrawalRequestCountAggregate.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], WithdrawalRequestCountAggregate.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], WithdrawalRequestCountAggregate.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -69922,6 +69936,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], WithdrawalRequestCountOrderByAggregateInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], WithdrawalRequestCountOrderByAggregateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], WithdrawalRequestCountOrderByAggregateInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], WithdrawalRequestCountOrderByAggregateInput.prototype, "transactionId", void 0);
@@ -69961,6 +69981,12 @@ __decorate([
 ], WithdrawalRequestCreateManyUserInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], WithdrawalRequestCreateManyUserInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateManyUserInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyUserInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -69986,6 +70012,12 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateManyInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateManyInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateManyInput.prototype, "transactionId", void 0);
@@ -70077,6 +70109,12 @@ __decorate([
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], WithdrawalRequestCreateWithoutTransactionInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateWithoutTransactionInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutTransactionInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -70101,6 +70139,12 @@ __decorate([
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], WithdrawalRequestCreateWithoutUserInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateWithoutUserInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateWithoutUserInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -70123,6 +70167,12 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], WithdrawalRequestCreateInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestCreateInput.prototype, "transactionId", void 0);
@@ -70197,6 +70247,12 @@ __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], WithdrawalRequestGroupBy.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestGroupBy.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestGroupBy.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequestGroupBy.prototype, "transactionId", void 0);
 __decorate([
@@ -70255,6 +70311,12 @@ __decorate([
 ], WithdrawalRequestMaxAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], WithdrawalRequestMaxAggregateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], WithdrawalRequestMaxAggregateInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], WithdrawalRequestMaxAggregateInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -70280,6 +70342,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: true })
 ], WithdrawalRequestMaxAggregate.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestMaxAggregate.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestMaxAggregate.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequestMaxAggregate.prototype, "transactionId", void 0);
@@ -70309,6 +70377,12 @@ __decorate([
 ], WithdrawalRequestMaxOrderByAggregateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], WithdrawalRequestMaxOrderByAggregateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], WithdrawalRequestMaxOrderByAggregateInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], WithdrawalRequestMaxOrderByAggregateInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -70334,6 +70408,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], WithdrawalRequestMinAggregateInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], WithdrawalRequestMinAggregateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], WithdrawalRequestMinAggregateInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], WithdrawalRequestMinAggregateInput.prototype, "transactionId", void 0);
@@ -70362,6 +70442,12 @@ __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: true })
 ], WithdrawalRequestMinAggregate.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestMinAggregate.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestMinAggregate.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequestMinAggregate.prototype, "transactionId", void 0);
 __decorate([
@@ -70388,6 +70474,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], WithdrawalRequestMinOrderByAggregateInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], WithdrawalRequestMinOrderByAggregateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], WithdrawalRequestMinOrderByAggregateInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], WithdrawalRequestMinOrderByAggregateInput.prototype, "transactionId", void 0);
@@ -70438,6 +70530,12 @@ __decorate([
 ], WithdrawalRequestOrderByWithAggregationInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], WithdrawalRequestOrderByWithAggregationInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], WithdrawalRequestOrderByWithAggregationInput.prototype, "proofDescription", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], WithdrawalRequestOrderByWithAggregationInput.prototype, "transactionId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -70478,6 +70576,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], WithdrawalRequestOrderByWithRelationInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], WithdrawalRequestOrderByWithRelationInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], WithdrawalRequestOrderByWithRelationInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], WithdrawalRequestOrderByWithRelationInput.prototype, "transactionId", void 0);
@@ -70521,6 +70625,12 @@ __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusWithAggregatesFilter, { nullable: true })
 ], WithdrawalRequestScalarWhereWithAggregatesInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => StringNullableWithAggregatesFilter, { nullable: true })
+], WithdrawalRequestScalarWhereWithAggregatesInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringNullableWithAggregatesFilter, { nullable: true })
+], WithdrawalRequestScalarWhereWithAggregatesInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
 ], WithdrawalRequestScalarWhereWithAggregatesInput.prototype, "transactionId", void 0);
 __decorate([
@@ -70556,6 +70666,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFilter, { nullable: true })
 ], WithdrawalRequestScalarWhereInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
+], WithdrawalRequestScalarWhereInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
+], WithdrawalRequestScalarWhereInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], WithdrawalRequestScalarWhereInput.prototype, "transactionId", void 0);
@@ -70651,6 +70767,12 @@ __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], WithdrawalRequestUncheckedCreateWithoutTransactionInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestUncheckedCreateWithoutTransactionInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestUncheckedCreateWithoutTransactionInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequestUncheckedCreateWithoutTransactionInput.prototype, "transactionId", void 0);
 __decorate([
@@ -70674,6 +70796,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], WithdrawalRequestUncheckedCreateWithoutUserInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestUncheckedCreateWithoutUserInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestUncheckedCreateWithoutUserInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequestUncheckedCreateWithoutUserInput.prototype, "transactionId", void 0);
@@ -70704,6 +70832,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], WithdrawalRequestUncheckedCreateInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestUncheckedCreateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequestUncheckedCreateInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequestUncheckedCreateInput.prototype, "transactionId", void 0);
@@ -70782,6 +70916,12 @@ __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateManyWithoutUserInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateManyWithoutUserInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateManyWithoutUserInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateManyWithoutUserInput.prototype, "transactionId", void 0);
 __decorate([
@@ -70808,6 +70948,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateManyInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateManyInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateManyInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateManyInput.prototype, "transactionId", void 0);
@@ -70836,6 +70982,12 @@ __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateWithoutTransactionInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateWithoutTransactionInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateWithoutTransactionInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateWithoutTransactionInput.prototype, "transactionId", void 0);
 __decorate([
@@ -70859,6 +71011,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateWithoutUserInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateWithoutUserInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateWithoutUserInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateWithoutUserInput.prototype, "transactionId", void 0);
@@ -70890,6 +71048,12 @@ __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUncheckedUpdateInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUncheckedUpdateInput.prototype, "transactionId", void 0);
 __decorate([
@@ -70908,11 +71072,17 @@ exports.WithdrawalRequestUncheckedUpdateInput = WithdrawalRequestUncheckedUpdate
 let WithdrawalRequestUpdateManyMutationInput = class WithdrawalRequestUpdateManyMutationInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateManyMutationInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateManyMutationInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateManyMutationInput.prototype, "transactionId", void 0);
@@ -71055,11 +71225,17 @@ exports.WithdrawalRequestUpdateWithWhereUniqueWithoutUserInput = WithdrawalReque
 let WithdrawalRequestUpdateWithoutTransactionInput = class WithdrawalRequestUpdateWithoutTransactionInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "transactionId", void 0);
@@ -71070,7 +71246,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutTransactionInput.prototype, "user", void 0);
 WithdrawalRequestUpdateWithoutTransactionInput = __decorate([
     (0, graphql_4.InputType)()
@@ -71079,11 +71255,17 @@ exports.WithdrawalRequestUpdateWithoutTransactionInput = WithdrawalRequestUpdate
 let WithdrawalRequestUpdateWithoutUserInput = class WithdrawalRequestUpdateWithoutUserInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateWithoutUserInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateWithoutUserInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateWithoutUserInput.prototype, "transactionId", void 0);
@@ -71103,11 +71285,17 @@ exports.WithdrawalRequestUpdateWithoutUserInput = WithdrawalRequestUpdateWithout
 let WithdrawalRequestUpdateInput = class WithdrawalRequestUpdateInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "amount", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => EnumTransactionStatusFieldUpdateOperationsInput, { nullable: true })
 ], WithdrawalRequestUpdateInput.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
+], WithdrawalRequestUpdateInput.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "transactionId", void 0);
@@ -71118,7 +71306,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], WithdrawalRequestUpdateInput.prototype, "user", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -71187,6 +71375,12 @@ __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFilter, { nullable: true })
 ], WithdrawalRequestWhereUniqueInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
+], WithdrawalRequestWhereUniqueInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
+], WithdrawalRequestWhereUniqueInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], WithdrawalRequestWhereUniqueInput.prototype, "transactionId", void 0);
 __decorate([
@@ -71229,6 +71423,12 @@ __decorate([
     (0, graphql_1.Field)(() => EnumTransactionStatusFilter, { nullable: true })
 ], WithdrawalRequestWhereInput.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
+], WithdrawalRequestWhereInput.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
+], WithdrawalRequestWhereInput.prototype, "proofDescription", void 0);
+__decorate([
     (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
 ], WithdrawalRequestWhereInput.prototype, "transactionId", void 0);
 __decorate([
@@ -71261,6 +71461,12 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => TransactionStatus, { nullable: false })
 ], WithdrawalRequest.prototype, "status", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequest.prototype, "proofUrl", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true })
+], WithdrawalRequest.prototype, "proofDescription", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], WithdrawalRequest.prototype, "transactionId", void 0);
