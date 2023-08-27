@@ -26,6 +26,7 @@ import {
   conenctReferralCodeToReferralId,
   userCreateManySeed,
 } from './seed-functions/user.seed';
+import { getTopCitiesWithMostUsers } from './seed-functions/city.seed';
 
 const prisma = new PrismaClient();
 
@@ -37,6 +38,9 @@ export enum Period {
 
 async function main() {
   console.log('Start seeding ...');
+
+  const topCitiesWithStudents = await getTopCitiesWithMostUsers();
+  console.log('Top cities with most student users:', topCitiesWithStudents);
 
   // await prisma.user.deleteMany({
   //   where: {
