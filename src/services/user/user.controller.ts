@@ -12,6 +12,12 @@ import {
 import { Injectable, Logger } from '@nestjs/common';
 import { ItemService } from '../item/item.service';
 import { User } from 'src/@generated';
+import {
+  UserCreatedByCustomPeriodArgs,
+  UserCreatedByCustomPeriodQuery,
+} from './dto/get-user-created-by-custom-period.args';
+import { getNextPeriodDate } from 'src/utils/get-next-period.function';
+import { Period } from 'src/model/period.enum';
 
 @Injectable()
 export class UserController {
@@ -129,18 +135,6 @@ export class UserController {
       userUpdateOneArgs.data.address.update.data.name = undefined;
     }
 
-    if (address?.update?.data?.province?.connect?.id === null) {
-      userUpdateOneArgs.data.address.update.data.province = undefined;
-    }
-
-    if (address?.update?.data?.city?.connect?.id === null) {
-      userUpdateOneArgs.data.address.update.data.city = undefined;
-    }
-
-    if (address?.update?.data?.district?.connect?.id === null) {
-      userUpdateOneArgs.data.address.update.data.district = undefined;
-    }
-
     if (address?.update?.data?.subdistrict?.connect?.id === null) {
       userUpdateOneArgs.data.address.update.data.subdistrict = undefined;
     }
@@ -158,6 +152,61 @@ export class UserController {
 
   countUserTypePercentage() {
     return this.userService.countUserTypePercentage();
+  }
+
+  async getUserGrowthByCustomPeriod(
+    args: UserCreatedByCustomPeriodArgs,
+  ): Promise<UserCreatedByCustomPeriodQuery[]> {
+    const { start, end, period, where } = args;
+
+    const users = await this.findMany({
+      orderBy: { createdAt: 'asc' },
+      where: {
+        createdAt: {
+          gte: start,
+          lt: end,
+        },
+        ...where,
+      },
+    });
+
+    const userCounts: UserCreatedByCustomPeriodQuery[] = [];
+
+    let currentDate = new Date(start);
+
+    while (currentDate <= end) {
+      const userCount = this.calculateUserCount(users, currentDate, period);
+
+      userCounts.push({
+        period: currentDate.toISOString(), // Convert date to string for consistent grouping
+        totalUser: userCount,
+      });
+
+      currentDate = getNextPeriodDate(currentDate, period);
+    }
+
+    return userCounts;
+  }
+
+  calculateUserCount(users, currentDate, period) {
+    const filteredUsers = users.filter((user) => {
+      const userCreatedAt = new Date(user.createdAt);
+
+      if (period === Period.WEEKLY) {
+        const nextWeekDate = getNextPeriodDate(currentDate, period);
+        return userCreatedAt >= currentDate && userCreatedAt < nextWeekDate;
+      } else if (period === Period.MONTHLY) {
+        const nextMonthDate = getNextPeriodDate(currentDate, period);
+        return userCreatedAt >= currentDate && userCreatedAt < nextMonthDate;
+      } else if (period === Period.YEARLY) {
+        const nextYearDate = getNextPeriodDate(currentDate, period);
+        return userCreatedAt >= currentDate && userCreatedAt < nextYearDate;
+      }
+
+      return false;
+    });
+
+    return filteredUsers.length;
   }
 }
 

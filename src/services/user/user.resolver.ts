@@ -9,6 +9,10 @@ import { Relations } from 'src/utils/relations.decorator';
 import { UserController } from './user.controller';
 import { UserTypePercentage } from './dto/user-type-percentage.output';
 import { User } from 'src/@generated';
+import {
+  UserCreatedByCustomPeriodArgs,
+  UserCreatedByCustomPeriodQuery,
+} from './dto/get-user-created-by-custom-period.args';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -94,5 +98,18 @@ export class UserResolver {
   })
   countUserTypePercentage() {
     return this.userController.countUserTypePercentage();
+  }
+
+  @Query(() => [UserCreatedByCustomPeriodQuery], {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  getUserGrowthByCustomPeriod(
+    @Args('userCreatedByCustomPeriodArgs', { nullable: false })
+    userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs,
+  ) {
+    return this.userController.getUserGrowthByCustomPeriod(
+      userCreatedByCustomPeriodArgs,
+    );
   }
 }

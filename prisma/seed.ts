@@ -24,7 +24,6 @@ import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-
 import { join } from 'node:path';
 import {
   conenctReferralCodeToReferralId,
-  getUserGrowthByCustomPeriod,
   userCreateManySeed,
 } from './seed-functions/user.seed';
 
@@ -46,12 +45,12 @@ async function main() {
   //   },
   // });
 
-  getUserGrowthByCustomPeriod({
-    period: Period.YEARLY,
-    start: new Date('2017-01-01'),
-    end: new Date('2023-12-31'),
-    where: { userRole: { equals: UserRole.STUDENT } },
-  });
+  // getUserGrowthByCustomPeriod({
+  //   period: Period.YEARLY,
+  //   start: new Date('2017-01-01'),
+  //   end: new Date('2023-12-31'),
+  //   where: { userRole: { equals: UserRole.STUDENT } },
+  // });
 
   // await userCreateManySeed({ numberOfUsers: 100 });
 

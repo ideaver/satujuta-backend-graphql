@@ -30,23 +30,10 @@ export class AddressController {
   }
 
   async updateOne(addressUpdateOneArgs: AddressUpdateOneArgs) {
-    const { name, province, city, district, subdistrict } =
-      addressUpdateOneArgs.data;
+    const { name, subdistrict } = addressUpdateOneArgs.data;
 
     if (name?.set === null) {
       addressUpdateOneArgs.data.name = undefined;
-    }
-
-    if (province?.connect?.id === null) {
-      addressUpdateOneArgs.data.province = undefined;
-    }
-
-    if (city?.connect?.id === null) {
-      addressUpdateOneArgs.data.city = undefined;
-    }
-
-    if (district?.connect?.id === null) {
-      addressUpdateOneArgs.data.district = undefined;
     }
 
     if (subdistrict?.connect?.id === null) {
