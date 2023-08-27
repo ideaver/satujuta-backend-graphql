@@ -10,56 +10,55 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountAvgAggregateInput = exports.AccountAggregateArgs = exports.AccountScalarFieldEnum = exports.AddressScalarFieldEnum = exports.BankScalarFieldEnum = exports.CartScalarFieldEnum = exports.CheckInScalarFieldEnum = exports.CityScalarFieldEnum = exports.DistrictScalarFieldEnum = exports.FaqScalarFieldEnum = exports.FileScalarFieldEnum = exports.HotelScalarFieldEnum = exports.ImagesScalarFieldEnum = exports.InstallmentScalarFieldEnum = exports.InvoiceScalarFieldEnum = exports.ItemScalarFieldEnum = exports.OrderScalarFieldEnum = exports.PointTransactionScalarFieldEnum = exports.AccountCategory = exports.FaqType = exports.FileType = exports.InstallmentStatus = exports.NullsOrder = exports.PointType = exports.ProjectCategory = exports.ShippingStatus = exports.SortOrder = exports.Theme = exports.TransactionCategory = exports.TransactionIsolationLevel = exports.TransactionStatus = exports.TransactionType = exports.UserNotificationCategory = exports.UserRole = exports.UserStatus = exports.UserType = exports.ProgramScalarFieldEnum = exports.ProgramCategoryScalarFieldEnum = exports.ProjectScalarFieldEnum = exports.ProvinceScalarFieldEnum = exports.RewardScalarFieldEnum = exports.RewardClaimScalarFieldEnum = exports.SchoolScalarFieldEnum = exports.SessionScalarFieldEnum = exports.ShippingScalarFieldEnum = exports.SubdistrictScalarFieldEnum = exports.TransactionScalarFieldEnum = exports.UserScalarFieldEnum = exports.UserNotificationScalarFieldEnum = exports.WithdrawalRequestScalarFieldEnum = void 0;
 exports.AccountUncheckedCreateInput = exports.AccountUncheckedCreateWithoutUserInput = exports.AccountUncheckedCreateWithoutTransactionOriginsInput = exports.AccountUncheckedCreateWithoutTransactionDestinationInput = exports.AccountUncheckedCreateWithoutProjectInput = exports.AccountUncheckedCreateWithoutBankAccountInput = exports.AccountUncheckedCreateNestedManyWithoutUserInput = exports.AccountSumOrderByAggregateInput = exports.AccountSumAggregate = exports.AccountSumAggregateInput = exports.AccountScalarWhereInput = exports.AccountScalarWhereWithAggregatesInput = exports.AccountRelationFilter = exports.AccountOrderByWithRelationInput = exports.AccountOrderByWithAggregationInput = exports.AccountOrderByRelationAggregateInput = exports.AccountMinOrderByAggregateInput = exports.AccountMinAggregate = exports.AccountMinAggregateInput = exports.AccountMaxOrderByAggregateInput = exports.AccountMaxAggregate = exports.AccountMaxAggregateInput = exports.AccountListRelationFilter = exports.AccountGroupBy = exports.AccountGroupByArgs = exports.AccountCreateInput = exports.AccountCreateWithoutUserInput = exports.AccountCreateWithoutTransactionOriginsInput = exports.AccountCreateWithoutTransactionDestinationInput = exports.AccountCreateWithoutProjectInput = exports.AccountCreateWithoutBankAccountInput = exports.AccountCreateOrConnectWithoutUserInput = exports.AccountCreateOrConnectWithoutTransactionOriginsInput = exports.AccountCreateOrConnectWithoutTransactionDestinationInput = exports.AccountCreateOrConnectWithoutProjectInput = exports.AccountCreateOrConnectWithoutBankAccountInput = exports.AccountCreateNestedOneWithoutTransactionOriginsInput = exports.AccountCreateNestedOneWithoutTransactionDestinationInput = exports.AccountCreateNestedOneWithoutProjectInput = exports.AccountCreateNestedOneWithoutBankAccountInput = exports.AccountCreateNestedManyWithoutUserInput = exports.AccountCreateManyInput = exports.AccountCreateManyUserInput = exports.AccountCreateManyUserInputEnvelope = exports.AccountCount = exports.AccountCountOrderByAggregateInput = exports.AccountCountAggregate = exports.AccountCountAggregateInput = exports.AccountAvgOrderByAggregateInput = exports.AccountAvgAggregate = void 0;
 exports.AddressAvgAggregateInput = exports.AddressAggregateArgs = exports.UpsertOneAccountArgs = exports.UpdateOneAccountArgs = exports.UpdateManyAccountArgs = exports.FindUniqueAccountArgs = exports.FindUniqueAccountOrThrowArgs = exports.FindManyAccountArgs = exports.FindFirstAccountArgs = exports.FindFirstAccountOrThrowArgs = exports.DeleteOneAccountArgs = exports.DeleteManyAccountArgs = exports.CreateOneAccountArgs = exports.CreateManyAccountArgs = exports.AggregateAccount = exports.Account = exports.AccountWhereInput = exports.AccountWhereUniqueInput = exports.AccountUpsertWithoutTransactionOriginsInput = exports.AccountUpsertWithoutTransactionDestinationInput = exports.AccountUpsertWithoutProjectInput = exports.AccountUpsertWithoutBankAccountInput = exports.AccountUpsertWithWhereUniqueWithoutUserInput = exports.AccountUpdateInput = exports.AccountUpdateWithoutUserInput = exports.AccountUpdateWithoutTransactionOriginsInput = exports.AccountUpdateWithoutTransactionDestinationInput = exports.AccountUpdateWithoutProjectInput = exports.AccountUpdateWithoutBankAccountInput = exports.AccountUpdateWithWhereUniqueWithoutUserInput = exports.AccountUpdateToOneWithWhereWithoutTransactionOriginsInput = exports.AccountUpdateToOneWithWhereWithoutTransactionDestinationInput = exports.AccountUpdateToOneWithWhereWithoutProjectInput = exports.AccountUpdateToOneWithWhereWithoutBankAccountInput = exports.AccountUpdateOneRequiredWithoutTransactionOriginsNestedInput = exports.AccountUpdateOneRequiredWithoutTransactionDestinationNestedInput = exports.AccountUpdateOneRequiredWithoutProjectNestedInput = exports.AccountUpdateOneRequiredWithoutBankAccountNestedInput = exports.AccountUpdateManyWithoutUserNestedInput = exports.AccountUpdateManyWithWhereWithoutUserInput = exports.AccountUpdateManyMutationInput = exports.AccountUncheckedUpdateInput = exports.AccountUncheckedUpdateWithoutUserInput = exports.AccountUncheckedUpdateWithoutTransactionOriginsInput = exports.AccountUncheckedUpdateWithoutTransactionDestinationInput = exports.AccountUncheckedUpdateWithoutProjectInput = exports.AccountUncheckedUpdateWithoutBankAccountInput = exports.AccountUncheckedUpdateManyInput = exports.AccountUncheckedUpdateManyWithoutUserInput = exports.AccountUncheckedUpdateManyWithoutUserNestedInput = void 0;
-exports.AddressOrderByWithAggregationInput = exports.AddressOrderByRelationAggregateInput = exports.AddressMinOrderByAggregateInput = exports.AddressMinAggregate = exports.AddressMinAggregateInput = exports.AddressMaxOrderByAggregateInput = exports.AddressMaxAggregate = exports.AddressMaxAggregateInput = exports.AddressListRelationFilter = exports.AddressGroupBy = exports.AddressGroupByArgs = exports.AddressCreateInput = exports.AddressCreateWithoutUserInput = exports.AddressCreateWithoutSubdistrictInput = exports.AddressCreateWithoutShippingInput = exports.AddressCreateWithoutSchoolInput = exports.AddressCreateWithoutProvinceInput = exports.AddressCreateWithoutHotelInput = exports.AddressCreateWithoutDistrictInput = exports.AddressCreateWithoutCityInput = exports.AddressCreateOrConnectWithoutUserInput = exports.AddressCreateOrConnectWithoutSubdistrictInput = exports.AddressCreateOrConnectWithoutShippingInput = exports.AddressCreateOrConnectWithoutSchoolInput = exports.AddressCreateOrConnectWithoutProvinceInput = exports.AddressCreateOrConnectWithoutHotelInput = exports.AddressCreateOrConnectWithoutDistrictInput = exports.AddressCreateOrConnectWithoutCityInput = exports.AddressCreateNestedOneWithoutUserInput = exports.AddressCreateNestedOneWithoutShippingInput = exports.AddressCreateNestedOneWithoutSchoolInput = exports.AddressCreateNestedOneWithoutHotelInput = exports.AddressCreateNestedManyWithoutSubdistrictInput = exports.AddressCreateNestedManyWithoutProvinceInput = exports.AddressCreateNestedManyWithoutDistrictInput = exports.AddressCreateNestedManyWithoutCityInput = exports.AddressCreateManyInput = exports.AddressCreateManySubdistrictInput = exports.AddressCreateManySubdistrictInputEnvelope = exports.AddressCreateManyProvinceInput = exports.AddressCreateManyProvinceInputEnvelope = exports.AddressCreateManyDistrictInput = exports.AddressCreateManyDistrictInputEnvelope = exports.AddressCreateManyCityInput = exports.AddressCreateManyCityInputEnvelope = exports.AddressCountOrderByAggregateInput = exports.AddressCountAggregate = exports.AddressCountAggregateInput = exports.AddressAvgOrderByAggregateInput = exports.AddressAvgAggregate = void 0;
-exports.AddressUpdateOneRequiredWithoutShippingNestedInput = exports.AddressUpdateOneRequiredWithoutSchoolNestedInput = exports.AddressUpdateOneRequiredWithoutHotelNestedInput = exports.AddressUpdateManyWithoutSubdistrictNestedInput = exports.AddressUpdateManyWithoutProvinceNestedInput = exports.AddressUpdateManyWithoutDistrictNestedInput = exports.AddressUpdateManyWithoutCityNestedInput = exports.AddressUpdateManyWithWhereWithoutSubdistrictInput = exports.AddressUpdateManyWithWhereWithoutProvinceInput = exports.AddressUpdateManyWithWhereWithoutDistrictInput = exports.AddressUpdateManyWithWhereWithoutCityInput = exports.AddressUpdateManyMutationInput = exports.AddressUncheckedUpdateInput = exports.AddressUncheckedUpdateWithoutUserInput = exports.AddressUncheckedUpdateWithoutSubdistrictInput = exports.AddressUncheckedUpdateWithoutShippingInput = exports.AddressUncheckedUpdateWithoutSchoolInput = exports.AddressUncheckedUpdateWithoutProvinceInput = exports.AddressUncheckedUpdateWithoutHotelInput = exports.AddressUncheckedUpdateWithoutDistrictInput = exports.AddressUncheckedUpdateWithoutCityInput = exports.AddressUncheckedUpdateManyInput = exports.AddressUncheckedUpdateManyWithoutSubdistrictInput = exports.AddressUncheckedUpdateManyWithoutSubdistrictNestedInput = exports.AddressUncheckedUpdateManyWithoutProvinceInput = exports.AddressUncheckedUpdateManyWithoutProvinceNestedInput = exports.AddressUncheckedUpdateManyWithoutDistrictInput = exports.AddressUncheckedUpdateManyWithoutDistrictNestedInput = exports.AddressUncheckedUpdateManyWithoutCityInput = exports.AddressUncheckedUpdateManyWithoutCityNestedInput = exports.AddressUncheckedCreateInput = exports.AddressUncheckedCreateWithoutUserInput = exports.AddressUncheckedCreateWithoutSubdistrictInput = exports.AddressUncheckedCreateWithoutShippingInput = exports.AddressUncheckedCreateWithoutSchoolInput = exports.AddressUncheckedCreateWithoutProvinceInput = exports.AddressUncheckedCreateWithoutHotelInput = exports.AddressUncheckedCreateWithoutDistrictInput = exports.AddressUncheckedCreateWithoutCityInput = exports.AddressUncheckedCreateNestedManyWithoutSubdistrictInput = exports.AddressUncheckedCreateNestedManyWithoutProvinceInput = exports.AddressUncheckedCreateNestedManyWithoutDistrictInput = exports.AddressUncheckedCreateNestedManyWithoutCityInput = exports.AddressSumOrderByAggregateInput = exports.AddressSumAggregate = exports.AddressSumAggregateInput = exports.AddressScalarWhereInput = exports.AddressScalarWhereWithAggregatesInput = exports.AddressRelationFilter = exports.AddressOrderByWithRelationInput = void 0;
-exports.BankCountOrderByAggregateInput = exports.BankCountAggregate = exports.BankCountAggregateInput = exports.BankAvgOrderByAggregateInput = exports.BankAvgAggregate = exports.BankAvgAggregateInput = exports.BankAggregateArgs = exports.AggregateBank = exports.UpsertOneAddressArgs = exports.UpdateOneAddressArgs = exports.UpdateManyAddressArgs = exports.FindUniqueAddressArgs = exports.FindUniqueAddressOrThrowArgs = exports.FindManyAddressArgs = exports.FindFirstAddressArgs = exports.FindFirstAddressOrThrowArgs = exports.DeleteOneAddressArgs = exports.DeleteManyAddressArgs = exports.CreateOneAddressArgs = exports.CreateManyAddressArgs = exports.AggregateAddress = exports.Address = exports.AddressWhereInput = exports.AddressWhereUniqueInput = exports.AddressUpsertWithoutUserInput = exports.AddressUpsertWithoutShippingInput = exports.AddressUpsertWithoutSchoolInput = exports.AddressUpsertWithoutHotelInput = exports.AddressUpsertWithWhereUniqueWithoutSubdistrictInput = exports.AddressUpsertWithWhereUniqueWithoutProvinceInput = exports.AddressUpsertWithWhereUniqueWithoutDistrictInput = exports.AddressUpsertWithWhereUniqueWithoutCityInput = exports.AddressUpdateInput = exports.AddressUpdateWithoutUserInput = exports.AddressUpdateWithoutSubdistrictInput = exports.AddressUpdateWithoutShippingInput = exports.AddressUpdateWithoutSchoolInput = exports.AddressUpdateWithoutProvinceInput = exports.AddressUpdateWithoutHotelInput = exports.AddressUpdateWithoutDistrictInput = exports.AddressUpdateWithoutCityInput = exports.AddressUpdateWithWhereUniqueWithoutSubdistrictInput = exports.AddressUpdateWithWhereUniqueWithoutProvinceInput = exports.AddressUpdateWithWhereUniqueWithoutDistrictInput = exports.AddressUpdateWithWhereUniqueWithoutCityInput = exports.AddressUpdateToOneWithWhereWithoutUserInput = exports.AddressUpdateToOneWithWhereWithoutShippingInput = exports.AddressUpdateToOneWithWhereWithoutSchoolInput = exports.AddressUpdateToOneWithWhereWithoutHotelInput = exports.AddressUpdateOneRequiredWithoutUserNestedInput = void 0;
-exports.CartAggregateArgs = exports.AggregateCart = exports.UpsertOneBankArgs = exports.UpdateOneBankArgs = exports.UpdateManyBankArgs = exports.FindUniqueBankArgs = exports.FindUniqueBankOrThrowArgs = exports.FindManyBankArgs = exports.FindFirstBankArgs = exports.FindFirstBankOrThrowArgs = exports.DeleteOneBankArgs = exports.DeleteManyBankArgs = exports.CreateOneBankArgs = exports.CreateManyBankArgs = exports.Bank = exports.BankWhereInput = exports.BankWhereUniqueInput = exports.BankUpsertWithoutAccountInput = exports.BankUpdateInput = exports.BankUpdateWithoutAccountInput = exports.BankUpdateToOneWithWhereWithoutAccountInput = exports.BankUpdateOneWithoutAccountNestedInput = exports.BankUpdateManyMutationInput = exports.BankUncheckedUpdateInput = exports.BankUncheckedUpdateWithoutAccountInput = exports.BankUncheckedUpdateOneWithoutAccountNestedInput = exports.BankUncheckedUpdateManyInput = exports.BankUncheckedCreateInput = exports.BankUncheckedCreateWithoutAccountInput = exports.BankUncheckedCreateNestedOneWithoutAccountInput = exports.BankSumOrderByAggregateInput = exports.BankSumAggregate = exports.BankSumAggregateInput = exports.BankScalarWhereWithAggregatesInput = exports.BankOrderByWithRelationInput = exports.BankOrderByWithAggregationInput = exports.BankNullableRelationFilter = exports.BankMinOrderByAggregateInput = exports.BankMinAggregate = exports.BankMinAggregateInput = exports.BankMaxOrderByAggregateInput = exports.BankMaxAggregate = exports.BankMaxAggregateInput = exports.BankGroupBy = exports.BankGroupByArgs = exports.BankCreateInput = exports.BankCreateWithoutAccountInput = exports.BankCreateOrConnectWithoutAccountInput = exports.BankCreateNestedOneWithoutAccountInput = exports.BankCreateManyInput = void 0;
-exports.CartUncheckedUpdateManyWithoutOrderNestedInput = exports.CartUncheckedUpdateManyWithoutMembershipItemInput = exports.CartUncheckedUpdateManyWithoutMembershipItemNestedInput = exports.CartUncheckedCreateInput = exports.CartUncheckedCreateWithoutProjectItemInput = exports.CartUncheckedCreateWithoutOrderInput = exports.CartUncheckedCreateWithoutMembershipItemInput = exports.CartUncheckedCreateNestedManyWithoutProjectItemInput = exports.CartUncheckedCreateNestedManyWithoutOrderInput = exports.CartUncheckedCreateNestedManyWithoutMembershipItemInput = exports.CartSumOrderByAggregateInput = exports.CartSumAggregate = exports.CartSumAggregateInput = exports.CartScalarWhereInput = exports.CartScalarWhereWithAggregatesInput = exports.CartOrderByWithRelationInput = exports.CartOrderByWithAggregationInput = exports.CartOrderByRelationAggregateInput = exports.CartMinOrderByAggregateInput = exports.CartMinAggregate = exports.CartMinAggregateInput = exports.CartMaxOrderByAggregateInput = exports.CartMaxAggregate = exports.CartMaxAggregateInput = exports.CartListRelationFilter = exports.CartGroupBy = exports.CartGroupByArgs = exports.CartCreateInput = exports.CartCreateWithoutProjectItemInput = exports.CartCreateWithoutOrderInput = exports.CartCreateWithoutMembershipItemInput = exports.CartCreateOrConnectWithoutProjectItemInput = exports.CartCreateOrConnectWithoutOrderInput = exports.CartCreateOrConnectWithoutMembershipItemInput = exports.CartCreateNestedManyWithoutProjectItemInput = exports.CartCreateNestedManyWithoutOrderInput = exports.CartCreateNestedManyWithoutMembershipItemInput = exports.CartCreateManyInput = exports.CartCreateManyProjectItemInput = exports.CartCreateManyProjectItemInputEnvelope = exports.CartCreateManyOrderInput = exports.CartCreateManyOrderInputEnvelope = exports.CartCreateManyMembershipItemInput = exports.CartCreateManyMembershipItemInputEnvelope = exports.CartCountOrderByAggregateInput = exports.CartCountAggregate = exports.CartCountAggregateInput = exports.CartAvgOrderByAggregateInput = exports.CartAvgAggregate = exports.CartAvgAggregateInput = void 0;
-exports.CheckInCreateManyHotelInput = exports.CheckInCreateManyHotelInputEnvelope = exports.CheckInCountOrderByAggregateInput = exports.CheckInCountAggregate = exports.CheckInCountAggregateInput = exports.CheckInAvgOrderByAggregateInput = exports.CheckInAvgAggregate = exports.CheckInAvgAggregateInput = exports.CheckInAggregateArgs = exports.AggregateCheckIn = exports.UpsertOneCartArgs = exports.UpdateOneCartArgs = exports.UpdateManyCartArgs = exports.FindUniqueCartArgs = exports.FindUniqueCartOrThrowArgs = exports.FindManyCartArgs = exports.FindFirstCartArgs = exports.FindFirstCartOrThrowArgs = exports.DeleteOneCartArgs = exports.DeleteManyCartArgs = exports.CreateOneCartArgs = exports.CreateManyCartArgs = exports.Cart = exports.CartWhereInput = exports.CartWhereUniqueInput = exports.CartUpsertWithWhereUniqueWithoutProjectItemInput = exports.CartUpsertWithWhereUniqueWithoutOrderInput = exports.CartUpsertWithWhereUniqueWithoutMembershipItemInput = exports.CartUpdateInput = exports.CartUpdateWithoutProjectItemInput = exports.CartUpdateWithoutOrderInput = exports.CartUpdateWithoutMembershipItemInput = exports.CartUpdateWithWhereUniqueWithoutProjectItemInput = exports.CartUpdateWithWhereUniqueWithoutOrderInput = exports.CartUpdateWithWhereUniqueWithoutMembershipItemInput = exports.CartUpdateManyWithoutProjectItemNestedInput = exports.CartUpdateManyWithoutOrderNestedInput = exports.CartUpdateManyWithoutMembershipItemNestedInput = exports.CartUpdateManyWithWhereWithoutProjectItemInput = exports.CartUpdateManyWithWhereWithoutOrderInput = exports.CartUpdateManyWithWhereWithoutMembershipItemInput = exports.CartUpdateManyMutationInput = exports.CartUncheckedUpdateInput = exports.CartUncheckedUpdateWithoutProjectItemInput = exports.CartUncheckedUpdateWithoutOrderInput = exports.CartUncheckedUpdateWithoutMembershipItemInput = exports.CartUncheckedUpdateManyInput = exports.CartUncheckedUpdateManyWithoutProjectItemInput = exports.CartUncheckedUpdateManyWithoutProjectItemNestedInput = exports.CartUncheckedUpdateManyWithoutOrderInput = void 0;
-exports.CheckInUpdateInput = exports.CheckInUpdateWithoutUserInput = exports.CheckInUpdateWithoutHotelInput = exports.CheckInUpdateWithWhereUniqueWithoutUserInput = exports.CheckInUpdateWithWhereUniqueWithoutHotelInput = exports.CheckInUpdateManyWithoutUserNestedInput = exports.CheckInUpdateManyWithoutHotelNestedInput = exports.CheckInUpdateManyWithWhereWithoutUserInput = exports.CheckInUpdateManyWithWhereWithoutHotelInput = exports.CheckInUpdateManyMutationInput = exports.CheckInUncheckedUpdateInput = exports.CheckInUncheckedUpdateWithoutUserInput = exports.CheckInUncheckedUpdateWithoutHotelInput = exports.CheckInUncheckedUpdateManyInput = exports.CheckInUncheckedUpdateManyWithoutUserInput = exports.CheckInUncheckedUpdateManyWithoutUserNestedInput = exports.CheckInUncheckedUpdateManyWithoutHotelInput = exports.CheckInUncheckedUpdateManyWithoutHotelNestedInput = exports.CheckInUncheckedCreateInput = exports.CheckInUncheckedCreateWithoutUserInput = exports.CheckInUncheckedCreateWithoutHotelInput = exports.CheckInUncheckedCreateNestedManyWithoutUserInput = exports.CheckInUncheckedCreateNestedManyWithoutHotelInput = exports.CheckInSumOrderByAggregateInput = exports.CheckInSumAggregate = exports.CheckInSumAggregateInput = exports.CheckInScalarWhereInput = exports.CheckInScalarWhereWithAggregatesInput = exports.CheckInOrderByWithRelationInput = exports.CheckInOrderByWithAggregationInput = exports.CheckInOrderByRelationAggregateInput = exports.CheckInMinOrderByAggregateInput = exports.CheckInMinAggregate = exports.CheckInMinAggregateInput = exports.CheckInMaxOrderByAggregateInput = exports.CheckInMaxAggregate = exports.CheckInMaxAggregateInput = exports.CheckInListRelationFilter = exports.CheckInGroupBy = exports.CheckInGroupByArgs = exports.CheckInCreateInput = exports.CheckInCreateWithoutUserInput = exports.CheckInCreateWithoutHotelInput = exports.CheckInCreateOrConnectWithoutUserInput = exports.CheckInCreateOrConnectWithoutHotelInput = exports.CheckInCreateNestedManyWithoutUserInput = exports.CheckInCreateNestedManyWithoutHotelInput = exports.CheckInCreateManyInput = exports.CheckInCreateManyUserInput = exports.CheckInCreateManyUserInputEnvelope = void 0;
-exports.CityOrderByWithAggregationInput = exports.CityOrderByRelationAggregateInput = exports.CityMinOrderByAggregateInput = exports.CityMinAggregate = exports.CityMinAggregateInput = exports.CityMaxOrderByAggregateInput = exports.CityMaxAggregate = exports.CityMaxAggregateInput = exports.CityListRelationFilter = exports.CityGroupBy = exports.CityGroupByArgs = exports.CityCreateInput = exports.CityCreateWithoutProvinceInput = exports.CityCreateWithoutDistrictsInput = exports.CityCreateWithoutAddressInput = exports.CityCreateOrConnectWithoutProvinceInput = exports.CityCreateOrConnectWithoutDistrictsInput = exports.CityCreateOrConnectWithoutAddressInput = exports.CityCreateNestedOneWithoutDistrictsInput = exports.CityCreateNestedOneWithoutAddressInput = exports.CityCreateNestedManyWithoutProvinceInput = exports.CityCreateManyInput = exports.CityCreateManyProvinceInput = exports.CityCreateManyProvinceInputEnvelope = exports.CityCount = exports.CityCountOrderByAggregateInput = exports.CityCountAggregate = exports.CityCountAggregateInput = exports.CityAvgOrderByAggregateInput = exports.CityAvgAggregate = exports.CityAvgAggregateInput = exports.CityAggregateArgs = exports.AggregateCity = exports.UpsertOneCheckInArgs = exports.UpdateOneCheckInArgs = exports.UpdateManyCheckInArgs = exports.FindUniqueCheckInArgs = exports.FindUniqueCheckInOrThrowArgs = exports.FindManyCheckInArgs = exports.FindFirstCheckInArgs = exports.FindFirstCheckInOrThrowArgs = exports.DeleteOneCheckInArgs = exports.DeleteManyCheckInArgs = exports.CreateOneCheckInArgs = exports.CreateManyCheckInArgs = exports.CheckIn = exports.CheckInWhereInput = exports.CheckInWhereUniqueInput = exports.CheckInUpsertWithWhereUniqueWithoutUserInput = exports.CheckInUpsertWithWhereUniqueWithoutHotelInput = void 0;
-exports.AggregateDistrict = exports.UpsertOneCityArgs = exports.UpdateOneCityArgs = exports.UpdateManyCityArgs = exports.FindUniqueCityArgs = exports.FindUniqueCityOrThrowArgs = exports.FindManyCityArgs = exports.FindFirstCityArgs = exports.FindFirstCityOrThrowArgs = exports.DeleteOneCityArgs = exports.DeleteManyCityArgs = exports.CreateOneCityArgs = exports.CreateManyCityArgs = exports.City = exports.CityWhereInput = exports.CityWhereUniqueInput = exports.CityUpsertWithoutDistrictsInput = exports.CityUpsertWithoutAddressInput = exports.CityUpsertWithWhereUniqueWithoutProvinceInput = exports.CityUpdateInput = exports.CityUpdateWithoutProvinceInput = exports.CityUpdateWithoutDistrictsInput = exports.CityUpdateWithoutAddressInput = exports.CityUpdateWithWhereUniqueWithoutProvinceInput = exports.CityUpdateToOneWithWhereWithoutDistrictsInput = exports.CityUpdateToOneWithWhereWithoutAddressInput = exports.CityUpdateOneRequiredWithoutDistrictsNestedInput = exports.CityUpdateOneRequiredWithoutAddressNestedInput = exports.CityUpdateManyWithoutProvinceNestedInput = exports.CityUpdateManyWithWhereWithoutProvinceInput = exports.CityUpdateManyMutationInput = exports.CityUncheckedUpdateInput = exports.CityUncheckedUpdateWithoutProvinceInput = exports.CityUncheckedUpdateWithoutDistrictsInput = exports.CityUncheckedUpdateWithoutAddressInput = exports.CityUncheckedUpdateManyInput = exports.CityUncheckedUpdateManyWithoutProvinceInput = exports.CityUncheckedUpdateManyWithoutProvinceNestedInput = exports.CityUncheckedCreateInput = exports.CityUncheckedCreateWithoutProvinceInput = exports.CityUncheckedCreateWithoutDistrictsInput = exports.CityUncheckedCreateWithoutAddressInput = exports.CityUncheckedCreateNestedManyWithoutProvinceInput = exports.CitySumOrderByAggregateInput = exports.CitySumAggregate = exports.CitySumAggregateInput = exports.CityScalarWhereInput = exports.CityScalarWhereWithAggregatesInput = exports.CityRelationFilter = exports.CityOrderByWithRelationInput = void 0;
-exports.DistrictUncheckedUpdateManyWithoutCityInput = exports.DistrictUncheckedUpdateManyWithoutCityNestedInput = exports.DistrictUncheckedCreateInput = exports.DistrictUncheckedCreateWithoutSubdistrictsInput = exports.DistrictUncheckedCreateWithoutCityInput = exports.DistrictUncheckedCreateWithoutAddressInput = exports.DistrictUncheckedCreateNestedManyWithoutCityInput = exports.DistrictSumOrderByAggregateInput = exports.DistrictSumAggregate = exports.DistrictSumAggregateInput = exports.DistrictScalarWhereInput = exports.DistrictScalarWhereWithAggregatesInput = exports.DistrictRelationFilter = exports.DistrictOrderByWithRelationInput = exports.DistrictOrderByWithAggregationInput = exports.DistrictOrderByRelationAggregateInput = exports.DistrictMinOrderByAggregateInput = exports.DistrictMinAggregate = exports.DistrictMinAggregateInput = exports.DistrictMaxOrderByAggregateInput = exports.DistrictMaxAggregate = exports.DistrictMaxAggregateInput = exports.DistrictListRelationFilter = exports.DistrictGroupBy = exports.DistrictGroupByArgs = exports.DistrictCreateInput = exports.DistrictCreateWithoutSubdistrictsInput = exports.DistrictCreateWithoutCityInput = exports.DistrictCreateWithoutAddressInput = exports.DistrictCreateOrConnectWithoutSubdistrictsInput = exports.DistrictCreateOrConnectWithoutCityInput = exports.DistrictCreateOrConnectWithoutAddressInput = exports.DistrictCreateNestedOneWithoutSubdistrictsInput = exports.DistrictCreateNestedOneWithoutAddressInput = exports.DistrictCreateNestedManyWithoutCityInput = exports.DistrictCreateManyInput = exports.DistrictCreateManyCityInput = exports.DistrictCreateManyCityInputEnvelope = exports.DistrictCount = exports.DistrictCountOrderByAggregateInput = exports.DistrictCountAggregate = exports.DistrictCountAggregateInput = exports.DistrictAvgOrderByAggregateInput = exports.DistrictAvgAggregate = exports.DistrictAvgAggregateInput = exports.DistrictAggregateArgs = exports.DeleteOneDistrictArgs = exports.DeleteManyDistrictArgs = exports.CreateOneDistrictArgs = exports.CreateManyDistrictArgs = void 0;
-exports.FaqMaxOrderByAggregateInput = exports.FaqMaxAggregate = exports.FaqMaxAggregateInput = exports.FaqGroupBy = exports.FaqGroupByArgs = exports.FaqCreateInput = exports.FaqCreateManyInput = exports.FaqCountOrderByAggregateInput = exports.FaqCountAggregate = exports.FaqCountAggregateInput = exports.FaqAvgOrderByAggregateInput = exports.FaqAvgAggregate = exports.FaqAvgAggregateInput = exports.FaqAggregateArgs = exports.DeleteOneFaqArgs = exports.DeleteManyFaqArgs = exports.CreateOneFaqArgs = exports.CreateManyFaqArgs = exports.AggregateFaq = exports.UpsertOneDistrictArgs = exports.UpdateOneDistrictArgs = exports.UpdateManyDistrictArgs = exports.FindUniqueDistrictArgs = exports.FindUniqueDistrictOrThrowArgs = exports.FindManyDistrictArgs = exports.FindFirstDistrictArgs = exports.FindFirstDistrictOrThrowArgs = exports.District = exports.DistrictWhereInput = exports.DistrictWhereUniqueInput = exports.DistrictUpsertWithoutSubdistrictsInput = exports.DistrictUpsertWithoutAddressInput = exports.DistrictUpsertWithWhereUniqueWithoutCityInput = exports.DistrictUpdateInput = exports.DistrictUpdateWithoutSubdistrictsInput = exports.DistrictUpdateWithoutCityInput = exports.DistrictUpdateWithoutAddressInput = exports.DistrictUpdateWithWhereUniqueWithoutCityInput = exports.DistrictUpdateToOneWithWhereWithoutSubdistrictsInput = exports.DistrictUpdateToOneWithWhereWithoutAddressInput = exports.DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput = exports.DistrictUpdateOneRequiredWithoutAddressNestedInput = exports.DistrictUpdateManyWithoutCityNestedInput = exports.DistrictUpdateManyWithWhereWithoutCityInput = exports.DistrictUpdateManyMutationInput = exports.DistrictUncheckedUpdateInput = exports.DistrictUncheckedUpdateWithoutSubdistrictsInput = exports.DistrictUncheckedUpdateWithoutCityInput = exports.DistrictUncheckedUpdateWithoutAddressInput = exports.DistrictUncheckedUpdateManyInput = void 0;
-exports.FileMaxOrderByAggregateInput = exports.FileMaxAggregate = exports.FileMaxAggregateInput = exports.FileListRelationFilter = exports.FileGroupBy = exports.FileGroupByArgs = exports.FileCreateInput = exports.FileCreateWithoutCreatedByInput = exports.FileCreateOrConnectWithoutCreatedByInput = exports.FileCreateNestedManyWithoutCreatedByInput = exports.FileCreateManyInput = exports.FileCreateManyCreatedByInput = exports.FileCreateManyCreatedByInputEnvelope = exports.FileCountOrderByAggregateInput = exports.FileCountAggregate = exports.FileCountAggregateInput = exports.FileAvgOrderByAggregateInput = exports.FileAvgAggregate = exports.FileAvgAggregateInput = exports.FileAggregateArgs = exports.DeleteOneFileArgs = exports.DeleteManyFileArgs = exports.CreateOneFileArgs = exports.CreateManyFileArgs = exports.AggregateFile = exports.UpsertOneFaqArgs = exports.UpdateOneFaqArgs = exports.UpdateManyFaqArgs = exports.FindUniqueFaqArgs = exports.FindUniqueFaqOrThrowArgs = exports.FindManyFaqArgs = exports.FindFirstFaqArgs = exports.FindFirstFaqOrThrowArgs = exports.Faq = exports.FaqWhereInput = exports.FaqWhereUniqueInput = exports.FaqUpdateInput = exports.FaqUpdateManyMutationInput = exports.FaqUncheckedUpdateInput = exports.FaqUncheckedUpdateManyInput = exports.FaqUncheckedCreateInput = exports.FaqSumOrderByAggregateInput = exports.FaqSumAggregate = exports.FaqSumAggregateInput = exports.FaqScalarWhereWithAggregatesInput = exports.FaqOrderByWithRelationInput = exports.FaqOrderByWithAggregationInput = exports.FaqMinOrderByAggregateInput = exports.FaqMinAggregate = exports.FaqMinAggregateInput = void 0;
-exports.HotelAvgAggregate = exports.HotelAvgAggregateInput = exports.HotelAggregateArgs = exports.FindUniqueHotelArgs = exports.FindUniqueHotelOrThrowArgs = exports.FindManyHotelArgs = exports.FindFirstHotelArgs = exports.FindFirstHotelOrThrowArgs = exports.DeleteOneHotelArgs = exports.DeleteManyHotelArgs = exports.CreateOneHotelArgs = exports.CreateManyHotelArgs = exports.AggregateHotel = exports.UpsertOneFileArgs = exports.UpdateOneFileArgs = exports.UpdateManyFileArgs = exports.FindUniqueFileArgs = exports.FindUniqueFileOrThrowArgs = exports.FindManyFileArgs = exports.FindFirstFileArgs = exports.FindFirstFileOrThrowArgs = exports.File = exports.FileWhereInput = exports.FileWhereUniqueInput = exports.FileUpsertWithWhereUniqueWithoutCreatedByInput = exports.FileUpdateInput = exports.FileUpdateWithoutCreatedByInput = exports.FileUpdateWithWhereUniqueWithoutCreatedByInput = exports.FileUpdateManyWithoutCreatedByNestedInput = exports.FileUpdateManyWithWhereWithoutCreatedByInput = exports.FileUpdateManyMutationInput = exports.FileUncheckedUpdateInput = exports.FileUncheckedUpdateWithoutCreatedByInput = exports.FileUncheckedUpdateManyInput = exports.FileUncheckedUpdateManyWithoutCreatedByInput = exports.FileUncheckedUpdateManyWithoutCreatedByNestedInput = exports.FileUncheckedCreateInput = exports.FileUncheckedCreateWithoutCreatedByInput = exports.FileUncheckedCreateNestedManyWithoutCreatedByInput = exports.FileSumOrderByAggregateInput = exports.FileSumAggregate = exports.FileSumAggregateInput = exports.FileScalarWhereInput = exports.FileScalarWhereWithAggregatesInput = exports.FileOrderByWithRelationInput = exports.FileOrderByWithAggregationInput = exports.FileOrderByRelationAggregateInput = exports.FileMinOrderByAggregateInput = exports.FileMinAggregate = exports.FileMinAggregateInput = void 0;
-exports.HotelUncheckedUpdateManyInput = exports.HotelUncheckedUpdateManyWithoutCreatedByInput = exports.HotelUncheckedUpdateManyWithoutCreatedByNestedInput = exports.HotelUncheckedCreateInput = exports.HotelUncheckedCreateWithoutImagesInput = exports.HotelUncheckedCreateWithoutCreatedByInput = exports.HotelUncheckedCreateWithoutCheckInsInput = exports.HotelUncheckedCreateWithoutAddressInput = exports.HotelUncheckedCreateNestedOneWithoutAddressInput = exports.HotelUncheckedCreateNestedManyWithoutCreatedByInput = exports.HotelSumOrderByAggregateInput = exports.HotelSumAggregate = exports.HotelSumAggregateInput = exports.HotelScalarWhereInput = exports.HotelScalarWhereWithAggregatesInput = exports.HotelRelationFilter = exports.HotelOrderByWithRelationInput = exports.HotelOrderByWithAggregationInput = exports.HotelOrderByRelationAggregateInput = exports.HotelNullableRelationFilter = exports.HotelMinOrderByAggregateInput = exports.HotelMinAggregate = exports.HotelMinAggregateInput = exports.HotelMaxOrderByAggregateInput = exports.HotelMaxAggregate = exports.HotelMaxAggregateInput = exports.HotelListRelationFilter = exports.HotelGroupBy = exports.HotelGroupByArgs = exports.HotelCreateInput = exports.HotelCreateWithoutImagesInput = exports.HotelCreateWithoutCreatedByInput = exports.HotelCreateWithoutCheckInsInput = exports.HotelCreateWithoutAddressInput = exports.HotelCreateOrConnectWithoutImagesInput = exports.HotelCreateOrConnectWithoutCreatedByInput = exports.HotelCreateOrConnectWithoutCheckInsInput = exports.HotelCreateOrConnectWithoutAddressInput = exports.HotelCreateNestedOneWithoutImagesInput = exports.HotelCreateNestedOneWithoutCheckInsInput = exports.HotelCreateNestedOneWithoutAddressInput = exports.HotelCreateNestedManyWithoutCreatedByInput = exports.HotelCreateManyInput = exports.HotelCreateManyCreatedByInput = exports.HotelCreateManyCreatedByInputEnvelope = exports.HotelCount = exports.HotelCountOrderByAggregateInput = exports.HotelCountAggregate = exports.HotelCountAggregateInput = exports.HotelAvgOrderByAggregateInput = void 0;
-exports.ImagesCreateManyHotelImageInput = exports.ImagesCreateManyHotelImageInputEnvelope = exports.ImagesCountOrderByAggregateInput = exports.ImagesCountAggregate = exports.ImagesCountAggregateInput = exports.ImagesAvgOrderByAggregateInput = exports.ImagesAvgAggregate = exports.ImagesAvgAggregateInput = exports.ImagesAggregateArgs = exports.FindUniqueImagesArgs = exports.FindUniqueImagesOrThrowArgs = exports.FindManyImagesArgs = exports.FindFirstImagesArgs = exports.FindFirstImagesOrThrowArgs = exports.DeleteOneImagesArgs = exports.DeleteManyImagesArgs = exports.CreateOneImagesArgs = exports.CreateManyImagesArgs = exports.AggregateImages = exports.UpsertOneHotelArgs = exports.UpdateOneHotelArgs = exports.UpdateManyHotelArgs = exports.Hotel = exports.HotelWhereInput = exports.HotelWhereUniqueInput = exports.HotelUpsertWithoutImagesInput = exports.HotelUpsertWithoutCheckInsInput = exports.HotelUpsertWithoutAddressInput = exports.HotelUpsertWithWhereUniqueWithoutCreatedByInput = exports.HotelUpdateInput = exports.HotelUpdateWithoutImagesInput = exports.HotelUpdateWithoutCreatedByInput = exports.HotelUpdateWithoutCheckInsInput = exports.HotelUpdateWithoutAddressInput = exports.HotelUpdateWithWhereUniqueWithoutCreatedByInput = exports.HotelUpdateToOneWithWhereWithoutImagesInput = exports.HotelUpdateToOneWithWhereWithoutCheckInsInput = exports.HotelUpdateToOneWithWhereWithoutAddressInput = exports.HotelUpdateOneWithoutImagesNestedInput = exports.HotelUpdateOneWithoutAddressNestedInput = exports.HotelUpdateOneRequiredWithoutCheckInsNestedInput = exports.HotelUpdateManyWithoutCreatedByNestedInput = exports.HotelUpdateManyWithWhereWithoutCreatedByInput = exports.HotelUpdateManyMutationInput = exports.HotelUncheckedUpdateInput = exports.HotelUncheckedUpdateWithoutImagesInput = exports.HotelUncheckedUpdateWithoutCreatedByInput = exports.HotelUncheckedUpdateWithoutCheckInsInput = exports.HotelUncheckedUpdateWithoutAddressInput = exports.HotelUncheckedUpdateOneWithoutAddressNestedInput = void 0;
-exports.ImagesUncheckedUpdateManyWithoutProgramImageInput = exports.ImagesUncheckedUpdateManyWithoutProgramImageNestedInput = exports.ImagesUncheckedUpdateManyWithoutHotelImageInput = exports.ImagesUncheckedUpdateManyWithoutHotelImageNestedInput = exports.ImagesUncheckedCreateInput = exports.ImagesUncheckedCreateWithoutRewardImageInput = exports.ImagesUncheckedCreateWithoutProjectImageInput = exports.ImagesUncheckedCreateWithoutProgramImageInput = exports.ImagesUncheckedCreateWithoutHotelImageInput = exports.ImagesUncheckedCreateNestedManyWithoutRewardImageInput = exports.ImagesUncheckedCreateNestedManyWithoutProjectImageInput = exports.ImagesUncheckedCreateNestedManyWithoutProgramImageInput = exports.ImagesUncheckedCreateNestedManyWithoutHotelImageInput = exports.ImagesSumOrderByAggregateInput = exports.ImagesSumAggregate = exports.ImagesSumAggregateInput = exports.ImagesScalarWhereInput = exports.ImagesScalarWhereWithAggregatesInput = exports.ImagesOrderByWithRelationInput = exports.ImagesOrderByWithAggregationInput = exports.ImagesOrderByRelationAggregateInput = exports.ImagesMinOrderByAggregateInput = exports.ImagesMinAggregate = exports.ImagesMinAggregateInput = exports.ImagesMaxOrderByAggregateInput = exports.ImagesMaxAggregate = exports.ImagesMaxAggregateInput = exports.ImagesListRelationFilter = exports.ImagesGroupBy = exports.ImagesGroupByArgs = exports.ImagesCreateInput = exports.ImagesCreateWithoutRewardImageInput = exports.ImagesCreateWithoutProjectImageInput = exports.ImagesCreateWithoutProgramImageInput = exports.ImagesCreateWithoutHotelImageInput = exports.ImagesCreateOrConnectWithoutRewardImageInput = exports.ImagesCreateOrConnectWithoutProjectImageInput = exports.ImagesCreateOrConnectWithoutProgramImageInput = exports.ImagesCreateOrConnectWithoutHotelImageInput = exports.ImagesCreateNestedManyWithoutRewardImageInput = exports.ImagesCreateNestedManyWithoutProjectImageInput = exports.ImagesCreateNestedManyWithoutProgramImageInput = exports.ImagesCreateNestedManyWithoutHotelImageInput = exports.ImagesCreateManyInput = exports.ImagesCreateManyRewardImageInput = exports.ImagesCreateManyRewardImageInputEnvelope = exports.ImagesCreateManyProjectImageInput = exports.ImagesCreateManyProjectImageInputEnvelope = exports.ImagesCreateManyProgramImageInput = exports.ImagesCreateManyProgramImageInputEnvelope = void 0;
-exports.InstallmentAvgAggregateInput = exports.InstallmentAggregateArgs = exports.FindUniqueInstallmentArgs = exports.FindUniqueInstallmentOrThrowArgs = exports.FindManyInstallmentArgs = exports.FindFirstInstallmentArgs = exports.FindFirstInstallmentOrThrowArgs = exports.DeleteOneInstallmentArgs = exports.DeleteManyInstallmentArgs = exports.CreateOneInstallmentArgs = exports.CreateManyInstallmentArgs = exports.AggregateInstallment = exports.UpsertOneImagesArgs = exports.UpdateOneImagesArgs = exports.UpdateManyImagesArgs = exports.Images = exports.ImagesWhereInput = exports.ImagesWhereUniqueInput = exports.ImagesUpsertWithWhereUniqueWithoutRewardImageInput = exports.ImagesUpsertWithWhereUniqueWithoutProjectImageInput = exports.ImagesUpsertWithWhereUniqueWithoutProgramImageInput = exports.ImagesUpsertWithWhereUniqueWithoutHotelImageInput = exports.ImagesUpdateInput = exports.ImagesUpdateWithoutRewardImageInput = exports.ImagesUpdateWithoutProjectImageInput = exports.ImagesUpdateWithoutProgramImageInput = exports.ImagesUpdateWithoutHotelImageInput = exports.ImagesUpdateWithWhereUniqueWithoutRewardImageInput = exports.ImagesUpdateWithWhereUniqueWithoutProjectImageInput = exports.ImagesUpdateWithWhereUniqueWithoutProgramImageInput = exports.ImagesUpdateWithWhereUniqueWithoutHotelImageInput = exports.ImagesUpdateManyWithoutRewardImageNestedInput = exports.ImagesUpdateManyWithoutProjectImageNestedInput = exports.ImagesUpdateManyWithoutProgramImageNestedInput = exports.ImagesUpdateManyWithoutHotelImageNestedInput = exports.ImagesUpdateManyWithWhereWithoutRewardImageInput = exports.ImagesUpdateManyWithWhereWithoutProjectImageInput = exports.ImagesUpdateManyWithWhereWithoutProgramImageInput = exports.ImagesUpdateManyWithWhereWithoutHotelImageInput = exports.ImagesUpdateManyMutationInput = exports.ImagesUncheckedUpdateInput = exports.ImagesUncheckedUpdateWithoutRewardImageInput = exports.ImagesUncheckedUpdateWithoutProjectImageInput = exports.ImagesUncheckedUpdateWithoutProgramImageInput = exports.ImagesUncheckedUpdateWithoutHotelImageInput = exports.ImagesUncheckedUpdateManyInput = exports.ImagesUncheckedUpdateManyWithoutRewardImageInput = exports.ImagesUncheckedUpdateManyWithoutRewardImageNestedInput = exports.ImagesUncheckedUpdateManyWithoutProjectImageInput = exports.ImagesUncheckedUpdateManyWithoutProjectImageNestedInput = void 0;
-exports.InstallmentUpdateWithoutInvoiceInput = exports.InstallmentUpdateWithWhereUniqueWithoutInvoiceInput = exports.InstallmentUpdateToOneWithWhereWithoutTransactionInput = exports.InstallmentUpdateOneWithoutTransactionNestedInput = exports.InstallmentUpdateManyWithoutInvoiceNestedInput = exports.InstallmentUpdateManyWithWhereWithoutInvoiceInput = exports.InstallmentUpdateManyMutationInput = exports.InstallmentUncheckedUpdateInput = exports.InstallmentUncheckedUpdateWithoutTransactionInput = exports.InstallmentUncheckedUpdateWithoutInvoiceInput = exports.InstallmentUncheckedUpdateManyInput = exports.InstallmentUncheckedUpdateManyWithoutInvoiceInput = exports.InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput = exports.InstallmentUncheckedCreateInput = exports.InstallmentUncheckedCreateWithoutTransactionInput = exports.InstallmentUncheckedCreateWithoutInvoiceInput = exports.InstallmentUncheckedCreateNestedManyWithoutInvoiceInput = exports.InstallmentSumOrderByAggregateInput = exports.InstallmentSumAggregate = exports.InstallmentSumAggregateInput = exports.InstallmentScalarWhereInput = exports.InstallmentScalarWhereWithAggregatesInput = exports.InstallmentOrderByWithRelationInput = exports.InstallmentOrderByWithAggregationInput = exports.InstallmentOrderByRelationAggregateInput = exports.InstallmentNullableRelationFilter = exports.InstallmentMinOrderByAggregateInput = exports.InstallmentMinAggregate = exports.InstallmentMinAggregateInput = exports.InstallmentMaxOrderByAggregateInput = exports.InstallmentMaxAggregate = exports.InstallmentMaxAggregateInput = exports.InstallmentListRelationFilter = exports.InstallmentGroupBy = exports.InstallmentGroupByArgs = exports.InstallmentCreateInput = exports.InstallmentCreateWithoutTransactionInput = exports.InstallmentCreateWithoutInvoiceInput = exports.InstallmentCreateOrConnectWithoutTransactionInput = exports.InstallmentCreateOrConnectWithoutInvoiceInput = exports.InstallmentCreateNestedOneWithoutTransactionInput = exports.InstallmentCreateNestedManyWithoutInvoiceInput = exports.InstallmentCreateManyInput = exports.InstallmentCreateManyInvoiceInput = exports.InstallmentCreateManyInvoiceInputEnvelope = exports.InstallmentCountOrderByAggregateInput = exports.InstallmentCountAggregate = exports.InstallmentCountAggregateInput = exports.InstallmentAvgOrderByAggregateInput = exports.InstallmentAvgAggregate = void 0;
-exports.InvoiceOrderByWithRelationInput = exports.InvoiceOrderByWithAggregationInput = exports.InvoiceNullableRelationFilter = exports.InvoiceMinOrderByAggregateInput = exports.InvoiceMinAggregate = exports.InvoiceMinAggregateInput = exports.InvoiceMaxOrderByAggregateInput = exports.InvoiceMaxAggregate = exports.InvoiceMaxAggregateInput = exports.InvoiceGroupBy = exports.InvoiceGroupByArgs = exports.InvoiceCreateInput = exports.InvoiceCreateWithoutTransactionsInput = exports.InvoiceCreateWithoutOrderInput = exports.InvoiceCreateWithoutInstallmentsInput = exports.InvoiceCreateOrConnectWithoutTransactionsInput = exports.InvoiceCreateOrConnectWithoutOrderInput = exports.InvoiceCreateOrConnectWithoutInstallmentsInput = exports.InvoiceCreateNestedOneWithoutTransactionsInput = exports.InvoiceCreateNestedOneWithoutOrderInput = exports.InvoiceCreateNestedOneWithoutInstallmentsInput = exports.InvoiceCreateManyInput = exports.InvoiceCount = exports.InvoiceCountOrderByAggregateInput = exports.InvoiceCountAggregate = exports.InvoiceCountAggregateInput = exports.InvoiceAvgOrderByAggregateInput = exports.InvoiceAvgAggregate = exports.InvoiceAvgAggregateInput = exports.InvoiceAggregateArgs = exports.FindUniqueInvoiceArgs = exports.FindUniqueInvoiceOrThrowArgs = exports.FindManyInvoiceArgs = exports.FindFirstInvoiceArgs = exports.FindFirstInvoiceOrThrowArgs = exports.DeleteOneInvoiceArgs = exports.DeleteManyInvoiceArgs = exports.CreateOneInvoiceArgs = exports.CreateManyInvoiceArgs = exports.AggregateInvoice = exports.UpsertOneInstallmentArgs = exports.UpdateOneInstallmentArgs = exports.UpdateManyInstallmentArgs = exports.Installment = exports.InstallmentWhereInput = exports.InstallmentWhereUniqueInput = exports.InstallmentUpsertWithoutTransactionInput = exports.InstallmentUpsertWithWhereUniqueWithoutInvoiceInput = exports.InstallmentUpdateInput = exports.InstallmentUpdateWithoutTransactionInput = void 0;
-exports.ItemCountAggregate = exports.ItemCountAggregateInput = exports.ItemAvgOrderByAggregateInput = exports.ItemAvgAggregate = exports.ItemAvgAggregateInput = exports.ItemAggregateArgs = exports.FindUniqueItemArgs = exports.FindUniqueItemOrThrowArgs = exports.FindManyItemArgs = exports.FindFirstItemArgs = exports.FindFirstItemOrThrowArgs = exports.DeleteOneItemArgs = exports.DeleteManyItemArgs = exports.CreateOneItemArgs = exports.CreateManyItemArgs = exports.AggregateItem = exports.UpsertOneInvoiceArgs = exports.UpdateOneInvoiceArgs = exports.UpdateManyInvoiceArgs = exports.Invoice = exports.InvoiceWhereInput = exports.InvoiceWhereUniqueInput = exports.InvoiceUpsertWithoutTransactionsInput = exports.InvoiceUpsertWithoutOrderInput = exports.InvoiceUpsertWithoutInstallmentsInput = exports.InvoiceUpdateInput = exports.InvoiceUpdateWithoutTransactionsInput = exports.InvoiceUpdateWithoutOrderInput = exports.InvoiceUpdateWithoutInstallmentsInput = exports.InvoiceUpdateToOneWithWhereWithoutTransactionsInput = exports.InvoiceUpdateToOneWithWhereWithoutOrderInput = exports.InvoiceUpdateToOneWithWhereWithoutInstallmentsInput = exports.InvoiceUpdateOneWithoutTransactionsNestedInput = exports.InvoiceUpdateOneRequiredWithoutOrderNestedInput = exports.InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput = exports.InvoiceUpdateManyMutationInput = exports.InvoiceUncheckedUpdateInput = exports.InvoiceUncheckedUpdateWithoutTransactionsInput = exports.InvoiceUncheckedUpdateWithoutOrderInput = exports.InvoiceUncheckedUpdateWithoutInstallmentsInput = exports.InvoiceUncheckedUpdateManyInput = exports.InvoiceUncheckedCreateInput = exports.InvoiceUncheckedCreateWithoutTransactionsInput = exports.InvoiceUncheckedCreateWithoutOrderInput = exports.InvoiceUncheckedCreateWithoutInstallmentsInput = exports.InvoiceSumOrderByAggregateInput = exports.InvoiceSumAggregate = exports.InvoiceSumAggregateInput = exports.InvoiceScalarWhereWithAggregatesInput = exports.InvoiceRelationFilter = void 0;
-exports.OrderAggregateArgs = exports.FindUniqueOrderArgs = exports.FindUniqueOrderOrThrowArgs = exports.FindManyOrderArgs = exports.FindFirstOrderArgs = exports.FindFirstOrderOrThrowArgs = exports.DeleteOneOrderArgs = exports.DeleteManyOrderArgs = exports.CreateOneOrderArgs = exports.CreateManyOrderArgs = exports.AggregateOrder = exports.UpsertOneItemArgs = exports.UpdateOneItemArgs = exports.UpdateManyItemArgs = exports.Item = exports.ItemWhereInput = exports.ItemWhereUniqueInput = exports.ItemUpsertWithoutCartInput = exports.ItemUpdateInput = exports.ItemUpdateWithoutCartInput = exports.ItemUpdateToOneWithWhereWithoutCartInput = exports.ItemUpdateOneWithoutCartNestedInput = exports.ItemUpdateManyMutationInput = exports.ItemUncheckedUpdateInput = exports.ItemUncheckedUpdateWithoutCartInput = exports.ItemUncheckedUpdateManyInput = exports.ItemUncheckedCreateInput = exports.ItemUncheckedCreateWithoutCartInput = exports.ItemSumOrderByAggregateInput = exports.ItemSumAggregate = exports.ItemSumAggregateInput = exports.ItemScalarWhereWithAggregatesInput = exports.ItemOrderByWithRelationInput = exports.ItemOrderByWithAggregationInput = exports.ItemNullableRelationFilter = exports.ItemMinOrderByAggregateInput = exports.ItemMinAggregate = exports.ItemMinAggregateInput = exports.ItemMaxOrderByAggregateInput = exports.ItemMaxAggregate = exports.ItemMaxAggregateInput = exports.ItemGroupBy = exports.ItemGroupByArgs = exports.ItemCreateInput = exports.ItemCreateWithoutCartInput = exports.ItemCreateOrConnectWithoutCartInput = exports.ItemCreateNestedOneWithoutCartInput = exports.ItemCreateManyInput = exports.ItemCount = exports.ItemCountOrderByAggregateInput = void 0;
-exports.OrderUncheckedUpdateManyWithoutOrderByNestedInput = exports.OrderUncheckedCreateInput = exports.OrderUncheckedCreateWithoutShippingInput = exports.OrderUncheckedCreateWithoutOrderByInput = exports.OrderUncheckedCreateWithoutInvoiceInput = exports.OrderUncheckedCreateWithoutCartInput = exports.OrderUncheckedCreateNestedOneWithoutInvoiceInput = exports.OrderUncheckedCreateNestedManyWithoutOrderByInput = exports.OrderSumOrderByAggregateInput = exports.OrderSumAggregate = exports.OrderSumAggregateInput = exports.OrderScalarWhereInput = exports.OrderScalarWhereWithAggregatesInput = exports.OrderRelationFilter = exports.OrderOrderByWithRelationInput = exports.OrderOrderByWithAggregationInput = exports.OrderOrderByRelationAggregateInput = exports.OrderNullableRelationFilter = exports.OrderMinOrderByAggregateInput = exports.OrderMinAggregate = exports.OrderMinAggregateInput = exports.OrderMaxOrderByAggregateInput = exports.OrderMaxAggregate = exports.OrderMaxAggregateInput = exports.OrderListRelationFilter = exports.OrderGroupBy = exports.OrderGroupByArgs = exports.OrderCreateInput = exports.OrderCreateWithoutShippingInput = exports.OrderCreateWithoutOrderByInput = exports.OrderCreateWithoutInvoiceInput = exports.OrderCreateWithoutCartInput = exports.OrderCreateOrConnectWithoutShippingInput = exports.OrderCreateOrConnectWithoutOrderByInput = exports.OrderCreateOrConnectWithoutInvoiceInput = exports.OrderCreateOrConnectWithoutCartInput = exports.OrderCreateNestedOneWithoutShippingInput = exports.OrderCreateNestedOneWithoutInvoiceInput = exports.OrderCreateNestedOneWithoutCartInput = exports.OrderCreateNestedManyWithoutOrderByInput = exports.OrderCreateManyInput = exports.OrderCreateManyOrderByInput = exports.OrderCreateManyOrderByInputEnvelope = exports.OrderCount = exports.OrderCountOrderByAggregateInput = exports.OrderCountAggregate = exports.OrderCountAggregateInput = exports.OrderAvgOrderByAggregateInput = exports.OrderAvgAggregate = exports.OrderAvgAggregateInput = void 0;
-exports.PointTransactionCountOrderByAggregateInput = exports.PointTransactionCountAggregate = exports.PointTransactionCountAggregateInput = exports.PointTransactionAvgOrderByAggregateInput = exports.PointTransactionAvgAggregate = exports.PointTransactionAvgAggregateInput = exports.PointTransactionAggregateArgs = exports.FindUniquePointTransactionArgs = exports.FindUniquePointTransactionOrThrowArgs = exports.FindManyPointTransactionArgs = exports.FindFirstPointTransactionArgs = exports.FindFirstPointTransactionOrThrowArgs = exports.DeleteOnePointTransactionArgs = exports.DeleteManyPointTransactionArgs = exports.CreateOnePointTransactionArgs = exports.CreateManyPointTransactionArgs = exports.AggregatePointTransaction = exports.UpsertOneOrderArgs = exports.UpdateOneOrderArgs = exports.UpdateManyOrderArgs = exports.Order = exports.OrderWhereInput = exports.OrderWhereUniqueInput = exports.OrderUpsertWithoutShippingInput = exports.OrderUpsertWithoutInvoiceInput = exports.OrderUpsertWithoutCartInput = exports.OrderUpsertWithWhereUniqueWithoutOrderByInput = exports.OrderUpdateInput = exports.OrderUpdateWithoutShippingInput = exports.OrderUpdateWithoutOrderByInput = exports.OrderUpdateWithoutInvoiceInput = exports.OrderUpdateWithoutCartInput = exports.OrderUpdateWithWhereUniqueWithoutOrderByInput = exports.OrderUpdateToOneWithWhereWithoutShippingInput = exports.OrderUpdateToOneWithWhereWithoutInvoiceInput = exports.OrderUpdateToOneWithWhereWithoutCartInput = exports.OrderUpdateOneWithoutInvoiceNestedInput = exports.OrderUpdateOneRequiredWithoutShippingNestedInput = exports.OrderUpdateOneRequiredWithoutCartNestedInput = exports.OrderUpdateManyWithoutOrderByNestedInput = exports.OrderUpdateManyWithWhereWithoutOrderByInput = exports.OrderUpdateManyMutationInput = exports.OrderUncheckedUpdateInput = exports.OrderUncheckedUpdateWithoutShippingInput = exports.OrderUncheckedUpdateWithoutOrderByInput = exports.OrderUncheckedUpdateWithoutInvoiceInput = exports.OrderUncheckedUpdateWithoutCartInput = exports.OrderUncheckedUpdateOneWithoutInvoiceNestedInput = exports.OrderUncheckedUpdateManyInput = exports.OrderUncheckedUpdateManyWithoutOrderByInput = void 0;
-exports.DateTimeFieldUpdateOperationsInput = exports.BoolWithAggregatesFilter = exports.BoolFilter = exports.BoolFieldUpdateOperationsInput = exports.AffectedRows = exports.UpsertOnePointTransactionArgs = exports.UpdateOnePointTransactionArgs = exports.UpdateManyPointTransactionArgs = exports.PointTransaction = exports.PointTransactionWhereInput = exports.PointTransactionWhereUniqueInput = exports.PointTransactionUpsertWithWhereUniqueWithoutUserInput = exports.PointTransactionUpdateInput = exports.PointTransactionUpdateWithoutUserInput = exports.PointTransactionUpdateWithWhereUniqueWithoutUserInput = exports.PointTransactionUpdateManyWithoutUserNestedInput = exports.PointTransactionUpdateManyWithWhereWithoutUserInput = exports.PointTransactionUpdateManyMutationInput = exports.PointTransactionUncheckedUpdateInput = exports.PointTransactionUncheckedUpdateWithoutUserInput = exports.PointTransactionUncheckedUpdateManyInput = exports.PointTransactionUncheckedUpdateManyWithoutUserInput = exports.PointTransactionUncheckedUpdateManyWithoutUserNestedInput = exports.PointTransactionUncheckedCreateInput = exports.PointTransactionUncheckedCreateWithoutUserInput = exports.PointTransactionUncheckedCreateNestedManyWithoutUserInput = exports.PointTransactionSumOrderByAggregateInput = exports.PointTransactionSumAggregate = exports.PointTransactionSumAggregateInput = exports.PointTransactionScalarWhereInput = exports.PointTransactionScalarWhereWithAggregatesInput = exports.PointTransactionOrderByWithRelationInput = exports.PointTransactionOrderByWithAggregationInput = exports.PointTransactionOrderByRelationAggregateInput = exports.PointTransactionMinOrderByAggregateInput = exports.PointTransactionMinAggregate = exports.PointTransactionMinAggregateInput = exports.PointTransactionMaxOrderByAggregateInput = exports.PointTransactionMaxAggregate = exports.PointTransactionMaxAggregateInput = exports.PointTransactionListRelationFilter = exports.PointTransactionGroupBy = exports.PointTransactionGroupByArgs = exports.PointTransactionCreateInput = exports.PointTransactionCreateWithoutUserInput = exports.PointTransactionCreateOrConnectWithoutUserInput = exports.PointTransactionCreateNestedManyWithoutUserInput = exports.PointTransactionCreateManyInput = exports.PointTransactionCreateManyUserInput = exports.PointTransactionCreateManyUserInputEnvelope = void 0;
-exports.FloatFieldUpdateOperationsInput = exports.EnumUserTypeWithAggregatesFilter = exports.EnumUserTypeFilter = exports.EnumUserTypeFieldUpdateOperationsInput = exports.EnumUserStatusWithAggregatesFilter = exports.EnumUserStatusFilter = exports.EnumUserStatusFieldUpdateOperationsInput = exports.EnumUserRoleWithAggregatesFilter = exports.EnumUserRoleFilter = exports.EnumUserRoleFieldUpdateOperationsInput = exports.EnumUserNotificationCategoryWithAggregatesFilter = exports.EnumUserNotificationCategoryFilter = exports.EnumUserNotificationCategoryFieldUpdateOperationsInput = exports.EnumTransactionTypeWithAggregatesFilter = exports.EnumTransactionTypeFilter = exports.EnumTransactionTypeFieldUpdateOperationsInput = exports.EnumTransactionStatusWithAggregatesFilter = exports.EnumTransactionStatusFilter = exports.EnumTransactionStatusFieldUpdateOperationsInput = exports.EnumTransactionCategoryWithAggregatesFilter = exports.EnumTransactionCategoryFilter = exports.EnumTransactionCategoryFieldUpdateOperationsInput = exports.EnumThemeWithAggregatesFilter = exports.EnumThemeFilter = exports.EnumThemeFieldUpdateOperationsInput = exports.EnumShippingStatusWithAggregatesFilter = exports.EnumShippingStatusFilter = exports.EnumShippingStatusFieldUpdateOperationsInput = exports.EnumProjectCategoryWithAggregatesFilter = exports.EnumProjectCategoryFilter = exports.EnumProjectCategoryFieldUpdateOperationsInput = exports.EnumPointTypeWithAggregatesFilter = exports.EnumPointTypeFilter = exports.EnumPointTypeFieldUpdateOperationsInput = exports.EnumInstallmentStatusWithAggregatesFilter = exports.EnumInstallmentStatusFilter = exports.EnumInstallmentStatusFieldUpdateOperationsInput = exports.EnumFileTypeWithAggregatesFilter = exports.EnumFileTypeFilter = exports.EnumFileTypeFieldUpdateOperationsInput = exports.EnumFaqTypeWithAggregatesFilter = exports.EnumFaqTypeFilter = exports.EnumFaqTypeFieldUpdateOperationsInput = exports.EnumAccountCategoryWithAggregatesFilter = exports.EnumAccountCategoryFilter = exports.EnumAccountCategoryFieldUpdateOperationsInput = exports.DateTimeWithAggregatesFilter = exports.DateTimeNullableWithAggregatesFilter = exports.DateTimeNullableFilter = exports.DateTimeFilter = void 0;
-exports.NestedIntFilter = exports.NestedFloatWithAggregatesFilter = exports.NestedFloatNullableWithAggregatesFilter = exports.NestedFloatNullableFilter = exports.NestedFloatFilter = exports.NestedEnumUserTypeWithAggregatesFilter = exports.NestedEnumUserTypeFilter = exports.NestedEnumUserStatusWithAggregatesFilter = exports.NestedEnumUserStatusFilter = exports.NestedEnumUserRoleWithAggregatesFilter = exports.NestedEnumUserRoleFilter = exports.NestedEnumUserNotificationCategoryWithAggregatesFilter = exports.NestedEnumUserNotificationCategoryFilter = exports.NestedEnumTransactionTypeWithAggregatesFilter = exports.NestedEnumTransactionTypeFilter = exports.NestedEnumTransactionStatusWithAggregatesFilter = exports.NestedEnumTransactionStatusFilter = exports.NestedEnumTransactionCategoryWithAggregatesFilter = exports.NestedEnumTransactionCategoryFilter = exports.NestedEnumThemeWithAggregatesFilter = exports.NestedEnumThemeFilter = exports.NestedEnumShippingStatusWithAggregatesFilter = exports.NestedEnumShippingStatusFilter = exports.NestedEnumProjectCategoryWithAggregatesFilter = exports.NestedEnumProjectCategoryFilter = exports.NestedEnumPointTypeWithAggregatesFilter = exports.NestedEnumPointTypeFilter = exports.NestedEnumInstallmentStatusWithAggregatesFilter = exports.NestedEnumInstallmentStatusFilter = exports.NestedEnumFileTypeWithAggregatesFilter = exports.NestedEnumFileTypeFilter = exports.NestedEnumFaqTypeWithAggregatesFilter = exports.NestedEnumFaqTypeFilter = exports.NestedEnumAccountCategoryWithAggregatesFilter = exports.NestedEnumAccountCategoryFilter = exports.NestedDateTimeWithAggregatesFilter = exports.NestedDateTimeNullableWithAggregatesFilter = exports.NestedDateTimeNullableFilter = exports.NestedDateTimeFilter = exports.NestedBoolWithAggregatesFilter = exports.NestedBoolFilter = exports.IntWithAggregatesFilter = exports.IntNullableWithAggregatesFilter = exports.IntNullableFilter = exports.IntFilter = exports.IntFieldUpdateOperationsInput = exports.FloatWithAggregatesFilter = exports.FloatNullableWithAggregatesFilter = exports.FloatNullableFilter = exports.FloatFilter = void 0;
-exports.ProgramCreateWithoutCreatedByInput = exports.ProgramCreateWithoutCategoryInput = exports.ProgramCreateOrConnectWithoutParticipantInput = exports.ProgramCreateOrConnectWithoutImagesInput = exports.ProgramCreateOrConnectWithoutCreatedByInput = exports.ProgramCreateOrConnectWithoutCategoryInput = exports.ProgramCreateNestedOneWithoutImagesInput = exports.ProgramCreateNestedManyWithoutParticipantInput = exports.ProgramCreateNestedManyWithoutCreatedByInput = exports.ProgramCreateNestedManyWithoutCategoryInput = exports.ProgramCreateManyInput = exports.ProgramCreateManyCreatedByInput = exports.ProgramCreateManyCreatedByInputEnvelope = exports.ProgramCreateManyCategoryInput = exports.ProgramCreateManyCategoryInputEnvelope = exports.ProgramCount = exports.ProgramCountOrderByAggregateInput = exports.ProgramCountAggregate = exports.ProgramCountAggregateInput = exports.ProgramAvgOrderByAggregateInput = exports.ProgramAvgAggregate = exports.ProgramAvgAggregateInput = exports.ProgramAggregateArgs = exports.FindUniqueProgramArgs = exports.FindUniqueProgramOrThrowArgs = exports.FindManyProgramArgs = exports.FindFirstProgramArgs = exports.FindFirstProgramOrThrowArgs = exports.DeleteOneProgramArgs = exports.DeleteManyProgramArgs = exports.CreateOneProgramArgs = exports.CreateManyProgramArgs = exports.AggregateProgram = exports.StringWithAggregatesFilter = exports.StringNullableWithAggregatesFilter = exports.StringNullableFilter = exports.StringFilter = exports.StringFieldUpdateOperationsInput = exports.SortOrderInput = exports.NullableStringFieldUpdateOperationsInput = exports.NullableIntFieldUpdateOperationsInput = exports.NullableFloatFieldUpdateOperationsInput = exports.NullableDateTimeFieldUpdateOperationsInput = exports.NestedStringWithAggregatesFilter = exports.NestedStringNullableWithAggregatesFilter = exports.NestedStringNullableFilter = exports.NestedStringFilter = exports.NestedIntWithAggregatesFilter = exports.NestedIntNullableWithAggregatesFilter = exports.NestedIntNullableFilter = void 0;
-exports.ProgramUpdateToOneWithWhereWithoutImagesInput = exports.ProgramUpdateOneWithoutImagesNestedInput = exports.ProgramUpdateManyWithoutParticipantNestedInput = exports.ProgramUpdateManyWithoutCreatedByNestedInput = exports.ProgramUpdateManyWithoutCategoryNestedInput = exports.ProgramUpdateManyWithWhereWithoutParticipantInput = exports.ProgramUpdateManyWithWhereWithoutCreatedByInput = exports.ProgramUpdateManyWithWhereWithoutCategoryInput = exports.ProgramUpdateManyMutationInput = exports.ProgramUncheckedUpdateInput = exports.ProgramUncheckedUpdateWithoutParticipantInput = exports.ProgramUncheckedUpdateWithoutImagesInput = exports.ProgramUncheckedUpdateWithoutCreatedByInput = exports.ProgramUncheckedUpdateWithoutCategoryInput = exports.ProgramUncheckedUpdateManyInput = exports.ProgramUncheckedUpdateManyWithoutParticipantInput = exports.ProgramUncheckedUpdateManyWithoutParticipantNestedInput = exports.ProgramUncheckedUpdateManyWithoutCreatedByInput = exports.ProgramUncheckedUpdateManyWithoutCreatedByNestedInput = exports.ProgramUncheckedUpdateManyWithoutCategoryInput = exports.ProgramUncheckedUpdateManyWithoutCategoryNestedInput = exports.ProgramUncheckedCreateInput = exports.ProgramUncheckedCreateWithoutParticipantInput = exports.ProgramUncheckedCreateWithoutImagesInput = exports.ProgramUncheckedCreateWithoutCreatedByInput = exports.ProgramUncheckedCreateWithoutCategoryInput = exports.ProgramUncheckedCreateNestedManyWithoutParticipantInput = exports.ProgramUncheckedCreateNestedManyWithoutCreatedByInput = exports.ProgramUncheckedCreateNestedManyWithoutCategoryInput = exports.ProgramSumOrderByAggregateInput = exports.ProgramSumAggregate = exports.ProgramSumAggregateInput = exports.ProgramScalarWhereInput = exports.ProgramScalarWhereWithAggregatesInput = exports.ProgramOrderByWithRelationInput = exports.ProgramOrderByWithAggregationInput = exports.ProgramOrderByRelationAggregateInput = exports.ProgramNullableRelationFilter = exports.ProgramMinOrderByAggregateInput = exports.ProgramMinAggregate = exports.ProgramMinAggregateInput = exports.ProgramMaxOrderByAggregateInput = exports.ProgramMaxAggregate = exports.ProgramMaxAggregateInput = exports.ProgramListRelationFilter = exports.ProgramGroupBy = exports.ProgramGroupByArgs = exports.ProgramCreateInput = exports.ProgramCreateWithoutParticipantInput = exports.ProgramCreateWithoutImagesInput = void 0;
-exports.ProgramCategoryOrderByWithAggregationInput = exports.ProgramCategoryMinOrderByAggregateInput = exports.ProgramCategoryMinAggregate = exports.ProgramCategoryMinAggregateInput = exports.ProgramCategoryMaxOrderByAggregateInput = exports.ProgramCategoryMaxAggregate = exports.ProgramCategoryMaxAggregateInput = exports.ProgramCategoryGroupBy = exports.ProgramCategoryGroupByArgs = exports.ProgramCategoryCreateInput = exports.ProgramCategoryCreateWithoutProgramsInput = exports.ProgramCategoryCreateOrConnectWithoutProgramsInput = exports.ProgramCategoryCreateNestedOneWithoutProgramsInput = exports.ProgramCategoryCreateManyInput = exports.ProgramCategoryCount = exports.ProgramCategoryCountOrderByAggregateInput = exports.ProgramCategoryCountAggregate = exports.ProgramCategoryCountAggregateInput = exports.ProgramCategoryAvgOrderByAggregateInput = exports.ProgramCategoryAvgAggregate = exports.ProgramCategoryAvgAggregateInput = exports.ProgramCategoryAggregateArgs = exports.FindUniqueProgramCategoryArgs = exports.FindUniqueProgramCategoryOrThrowArgs = exports.FindManyProgramCategoryArgs = exports.FindFirstProgramCategoryArgs = exports.FindFirstProgramCategoryOrThrowArgs = exports.DeleteOneProgramCategoryArgs = exports.DeleteManyProgramCategoryArgs = exports.CreateOneProgramCategoryArgs = exports.CreateManyProgramCategoryArgs = exports.AggregateProgramCategory = exports.UpsertOneProgramArgs = exports.UpdateOneProgramArgs = exports.UpdateManyProgramArgs = exports.Program = exports.ProgramWhereInput = exports.ProgramWhereUniqueInput = exports.ProgramUpsertWithoutImagesInput = exports.ProgramUpsertWithWhereUniqueWithoutParticipantInput = exports.ProgramUpsertWithWhereUniqueWithoutCreatedByInput = exports.ProgramUpsertWithWhereUniqueWithoutCategoryInput = exports.ProgramUpdateInput = exports.ProgramUpdateWithoutParticipantInput = exports.ProgramUpdateWithoutImagesInput = exports.ProgramUpdateWithoutCreatedByInput = exports.ProgramUpdateWithoutCategoryInput = exports.ProgramUpdateWithWhereUniqueWithoutParticipantInput = exports.ProgramUpdateWithWhereUniqueWithoutCreatedByInput = exports.ProgramUpdateWithWhereUniqueWithoutCategoryInput = void 0;
-exports.ProjectCreateWithoutImagesInput = exports.ProjectCreateWithoutAccountInput = exports.ProjectCreateOrConnectWithoutOrderCartInput = exports.ProjectCreateOrConnectWithoutImagesInput = exports.ProjectCreateOrConnectWithoutAccountInput = exports.ProjectCreateNestedOneWithoutOrderCartInput = exports.ProjectCreateNestedOneWithoutImagesInput = exports.ProjectCreateNestedOneWithoutAccountInput = exports.ProjectCreateManyInput = exports.ProjectCount = exports.ProjectCountOrderByAggregateInput = exports.ProjectCountAggregate = exports.ProjectCountAggregateInput = exports.ProjectAvgOrderByAggregateInput = exports.ProjectAvgAggregate = exports.ProjectAvgAggregateInput = exports.ProjectAggregateArgs = exports.FindUniqueProjectArgs = exports.FindUniqueProjectOrThrowArgs = exports.FindManyProjectArgs = exports.FindFirstProjectArgs = exports.FindFirstProjectOrThrowArgs = exports.DeleteOneProjectArgs = exports.DeleteManyProjectArgs = exports.CreateOneProjectArgs = exports.CreateManyProjectArgs = exports.AggregateProject = exports.UpsertOneProgramCategoryArgs = exports.UpdateOneProgramCategoryArgs = exports.UpdateManyProgramCategoryArgs = exports.ProgramCategory = exports.ProgramCategoryWhereInput = exports.ProgramCategoryWhereUniqueInput = exports.ProgramCategoryUpsertWithoutProgramsInput = exports.ProgramCategoryUpdateInput = exports.ProgramCategoryUpdateWithoutProgramsInput = exports.ProgramCategoryUpdateToOneWithWhereWithoutProgramsInput = exports.ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput = exports.ProgramCategoryUpdateManyMutationInput = exports.ProgramCategoryUncheckedUpdateInput = exports.ProgramCategoryUncheckedUpdateWithoutProgramsInput = exports.ProgramCategoryUncheckedUpdateManyInput = exports.ProgramCategoryUncheckedCreateInput = exports.ProgramCategoryUncheckedCreateWithoutProgramsInput = exports.ProgramCategorySumOrderByAggregateInput = exports.ProgramCategorySumAggregate = exports.ProgramCategorySumAggregateInput = exports.ProgramCategoryScalarWhereWithAggregatesInput = exports.ProgramCategoryRelationFilter = exports.ProgramCategoryOrderByWithRelationInput = void 0;
-exports.CreateManyProvinceArgs = exports.AggregateProvince = exports.UpsertOneProjectArgs = exports.UpdateOneProjectArgs = exports.UpdateManyProjectArgs = exports.Project = exports.ProjectWhereInput = exports.ProjectWhereUniqueInput = exports.ProjectUpsertWithoutOrderCartInput = exports.ProjectUpsertWithoutImagesInput = exports.ProjectUpsertWithoutAccountInput = exports.ProjectUpdateInput = exports.ProjectUpdateWithoutOrderCartInput = exports.ProjectUpdateWithoutImagesInput = exports.ProjectUpdateWithoutAccountInput = exports.ProjectUpdateToOneWithWhereWithoutOrderCartInput = exports.ProjectUpdateToOneWithWhereWithoutImagesInput = exports.ProjectUpdateToOneWithWhereWithoutAccountInput = exports.ProjectUpdateOneWithoutOrderCartNestedInput = exports.ProjectUpdateOneWithoutImagesNestedInput = exports.ProjectUpdateOneWithoutAccountNestedInput = exports.ProjectUpdateManyMutationInput = exports.ProjectUncheckedUpdateInput = exports.ProjectUncheckedUpdateWithoutOrderCartInput = exports.ProjectUncheckedUpdateWithoutImagesInput = exports.ProjectUncheckedUpdateWithoutAccountInput = exports.ProjectUncheckedUpdateOneWithoutAccountNestedInput = exports.ProjectUncheckedUpdateManyInput = exports.ProjectUncheckedCreateInput = exports.ProjectUncheckedCreateWithoutOrderCartInput = exports.ProjectUncheckedCreateWithoutImagesInput = exports.ProjectUncheckedCreateWithoutAccountInput = exports.ProjectUncheckedCreateNestedOneWithoutAccountInput = exports.ProjectSumOrderByAggregateInput = exports.ProjectSumAggregate = exports.ProjectSumAggregateInput = exports.ProjectScalarWhereWithAggregatesInput = exports.ProjectOrderByWithRelationInput = exports.ProjectOrderByWithAggregationInput = exports.ProjectNullableRelationFilter = exports.ProjectMinOrderByAggregateInput = exports.ProjectMinAggregate = exports.ProjectMinAggregateInput = exports.ProjectMaxOrderByAggregateInput = exports.ProjectMaxAggregate = exports.ProjectMaxAggregateInput = exports.ProjectGroupBy = exports.ProjectGroupByArgs = exports.ProjectCreateInput = exports.ProjectCreateWithoutOrderCartInput = void 0;
-exports.ProvinceUpdateToOneWithWhereWithoutAddressInput = exports.ProvinceUpdateOneRequiredWithoutCitiesNestedInput = exports.ProvinceUpdateOneRequiredWithoutAddressNestedInput = exports.ProvinceUpdateManyMutationInput = exports.ProvinceUncheckedUpdateInput = exports.ProvinceUncheckedUpdateWithoutCitiesInput = exports.ProvinceUncheckedUpdateWithoutAddressInput = exports.ProvinceUncheckedUpdateManyInput = exports.ProvinceUncheckedCreateInput = exports.ProvinceUncheckedCreateWithoutCitiesInput = exports.ProvinceUncheckedCreateWithoutAddressInput = exports.ProvinceSumOrderByAggregateInput = exports.ProvinceSumAggregate = exports.ProvinceSumAggregateInput = exports.ProvinceScalarWhereWithAggregatesInput = exports.ProvinceRelationFilter = exports.ProvinceOrderByWithRelationInput = exports.ProvinceOrderByWithAggregationInput = exports.ProvinceMinOrderByAggregateInput = exports.ProvinceMinAggregate = exports.ProvinceMinAggregateInput = exports.ProvinceMaxOrderByAggregateInput = exports.ProvinceMaxAggregate = exports.ProvinceMaxAggregateInput = exports.ProvinceGroupBy = exports.ProvinceGroupByArgs = exports.ProvinceCreateInput = exports.ProvinceCreateWithoutCitiesInput = exports.ProvinceCreateWithoutAddressInput = exports.ProvinceCreateOrConnectWithoutCitiesInput = exports.ProvinceCreateOrConnectWithoutAddressInput = exports.ProvinceCreateNestedOneWithoutCitiesInput = exports.ProvinceCreateNestedOneWithoutAddressInput = exports.ProvinceCreateManyInput = exports.ProvinceCount = exports.ProvinceCountOrderByAggregateInput = exports.ProvinceCountAggregate = exports.ProvinceCountAggregateInput = exports.ProvinceAvgOrderByAggregateInput = exports.ProvinceAvgAggregate = exports.ProvinceAvgAggregateInput = exports.ProvinceAggregateArgs = exports.FindUniqueProvinceArgs = exports.FindUniqueProvinceOrThrowArgs = exports.FindManyProvinceArgs = exports.FindFirstProvinceArgs = exports.FindFirstProvinceOrThrowArgs = exports.DeleteOneProvinceArgs = exports.DeleteManyProvinceArgs = exports.CreateOneProvinceArgs = void 0;
-exports.RewardRelationFilter = exports.RewardOrderByWithRelationInput = exports.RewardOrderByWithAggregationInput = exports.RewardNullableRelationFilter = exports.RewardMinOrderByAggregateInput = exports.RewardMinAggregate = exports.RewardMinAggregateInput = exports.RewardMaxOrderByAggregateInput = exports.RewardMaxAggregate = exports.RewardMaxAggregateInput = exports.RewardGroupBy = exports.RewardGroupByArgs = exports.RewardCreateInput = exports.RewardCreateWithoutRewardClaimInput = exports.RewardCreateWithoutImagesInput = exports.RewardCreateOrConnectWithoutRewardClaimInput = exports.RewardCreateOrConnectWithoutImagesInput = exports.RewardCreateNestedOneWithoutRewardClaimInput = exports.RewardCreateNestedOneWithoutImagesInput = exports.RewardCreateManyInput = exports.RewardCount = exports.RewardCountOrderByAggregateInput = exports.RewardCountAggregate = exports.RewardCountAggregateInput = exports.RewardAvgOrderByAggregateInput = exports.RewardAvgAggregate = exports.RewardAvgAggregateInput = exports.RewardAggregateArgs = exports.FindUniqueRewardArgs = exports.FindUniqueRewardOrThrowArgs = exports.FindManyRewardArgs = exports.FindFirstRewardArgs = exports.FindFirstRewardOrThrowArgs = exports.DeleteOneRewardArgs = exports.DeleteManyRewardArgs = exports.CreateOneRewardArgs = exports.CreateManyRewardArgs = exports.AggregateReward = exports.UpsertOneProvinceArgs = exports.UpdateOneProvinceArgs = exports.UpdateManyProvinceArgs = exports.Province = exports.ProvinceWhereInput = exports.ProvinceWhereUniqueInput = exports.ProvinceUpsertWithoutCitiesInput = exports.ProvinceUpsertWithoutAddressInput = exports.ProvinceUpdateInput = exports.ProvinceUpdateWithoutCitiesInput = exports.ProvinceUpdateWithoutAddressInput = exports.ProvinceUpdateToOneWithWhereWithoutCitiesInput = void 0;
-exports.RewardClaimCreateNestedManyWithoutRewardInput = exports.RewardClaimCreateManyInput = exports.RewardClaimCreateManyUserInput = exports.RewardClaimCreateManyUserInputEnvelope = exports.RewardClaimCreateManyRewardInput = exports.RewardClaimCreateManyRewardInputEnvelope = exports.RewardClaimCountOrderByAggregateInput = exports.RewardClaimCountAggregate = exports.RewardClaimCountAggregateInput = exports.RewardClaimAvgOrderByAggregateInput = exports.RewardClaimAvgAggregate = exports.RewardClaimAvgAggregateInput = exports.RewardClaimAggregateArgs = exports.FindUniqueRewardClaimArgs = exports.FindUniqueRewardClaimOrThrowArgs = exports.FindManyRewardClaimArgs = exports.FindFirstRewardClaimArgs = exports.FindFirstRewardClaimOrThrowArgs = exports.DeleteOneRewardClaimArgs = exports.DeleteManyRewardClaimArgs = exports.CreateOneRewardClaimArgs = exports.CreateManyRewardClaimArgs = exports.AggregateRewardClaim = exports.UpsertOneRewardArgs = exports.UpdateOneRewardArgs = exports.UpdateManyRewardArgs = exports.Reward = exports.RewardWhereInput = exports.RewardWhereUniqueInput = exports.RewardUpsertWithoutRewardClaimInput = exports.RewardUpsertWithoutImagesInput = exports.RewardUpdateInput = exports.RewardUpdateWithoutRewardClaimInput = exports.RewardUpdateWithoutImagesInput = exports.RewardUpdateToOneWithWhereWithoutRewardClaimInput = exports.RewardUpdateToOneWithWhereWithoutImagesInput = exports.RewardUpdateOneWithoutImagesNestedInput = exports.RewardUpdateOneRequiredWithoutRewardClaimNestedInput = exports.RewardUpdateManyMutationInput = exports.RewardUncheckedUpdateInput = exports.RewardUncheckedUpdateWithoutRewardClaimInput = exports.RewardUncheckedUpdateWithoutImagesInput = exports.RewardUncheckedUpdateManyInput = exports.RewardUncheckedCreateInput = exports.RewardUncheckedCreateWithoutRewardClaimInput = exports.RewardUncheckedCreateWithoutImagesInput = exports.RewardSumOrderByAggregateInput = exports.RewardSumAggregate = exports.RewardSumAggregateInput = exports.RewardScalarWhereWithAggregatesInput = void 0;
-exports.RewardClaimWhereInput = exports.RewardClaimWhereUniqueInput = exports.RewardClaimUpsertWithWhereUniqueWithoutUserInput = exports.RewardClaimUpsertWithWhereUniqueWithoutRewardInput = exports.RewardClaimUpdateInput = exports.RewardClaimUpdateWithoutUserInput = exports.RewardClaimUpdateWithoutRewardInput = exports.RewardClaimUpdateWithWhereUniqueWithoutUserInput = exports.RewardClaimUpdateWithWhereUniqueWithoutRewardInput = exports.RewardClaimUpdateManyWithoutUserNestedInput = exports.RewardClaimUpdateManyWithoutRewardNestedInput = exports.RewardClaimUpdateManyWithWhereWithoutUserInput = exports.RewardClaimUpdateManyWithWhereWithoutRewardInput = exports.RewardClaimUpdateManyMutationInput = exports.RewardClaimUncheckedUpdateInput = exports.RewardClaimUncheckedUpdateWithoutUserInput = exports.RewardClaimUncheckedUpdateWithoutRewardInput = exports.RewardClaimUncheckedUpdateManyInput = exports.RewardClaimUncheckedUpdateManyWithoutUserInput = exports.RewardClaimUncheckedUpdateManyWithoutUserNestedInput = exports.RewardClaimUncheckedUpdateManyWithoutRewardInput = exports.RewardClaimUncheckedUpdateManyWithoutRewardNestedInput = exports.RewardClaimUncheckedCreateInput = exports.RewardClaimUncheckedCreateWithoutUserInput = exports.RewardClaimUncheckedCreateWithoutRewardInput = exports.RewardClaimUncheckedCreateNestedManyWithoutUserInput = exports.RewardClaimUncheckedCreateNestedManyWithoutRewardInput = exports.RewardClaimSumOrderByAggregateInput = exports.RewardClaimSumAggregate = exports.RewardClaimSumAggregateInput = exports.RewardClaimScalarWhereInput = exports.RewardClaimScalarWhereWithAggregatesInput = exports.RewardClaimOrderByWithRelationInput = exports.RewardClaimOrderByWithAggregationInput = exports.RewardClaimOrderByRelationAggregateInput = exports.RewardClaimMinOrderByAggregateInput = exports.RewardClaimMinAggregate = exports.RewardClaimMinAggregateInput = exports.RewardClaimMaxOrderByAggregateInput = exports.RewardClaimMaxAggregate = exports.RewardClaimMaxAggregateInput = exports.RewardClaimListRelationFilter = exports.RewardClaimGroupBy = exports.RewardClaimGroupByArgs = exports.RewardClaimCreateInput = exports.RewardClaimCreateWithoutUserInput = exports.RewardClaimCreateWithoutRewardInput = exports.RewardClaimCreateOrConnectWithoutUserInput = exports.RewardClaimCreateOrConnectWithoutRewardInput = exports.RewardClaimCreateNestedManyWithoutUserInput = void 0;
-exports.SchoolUncheckedUpdateManyInput = exports.SchoolUncheckedCreateInput = exports.SchoolUncheckedCreateWithoutStudentsInput = exports.SchoolUncheckedCreateWithoutAddressInput = exports.SchoolUncheckedCreateNestedOneWithoutAddressInput = exports.SchoolSumOrderByAggregateInput = exports.SchoolSumAggregate = exports.SchoolSumAggregateInput = exports.SchoolScalarWhereWithAggregatesInput = exports.SchoolOrderByWithRelationInput = exports.SchoolOrderByWithAggregationInput = exports.SchoolNullableRelationFilter = exports.SchoolMinOrderByAggregateInput = exports.SchoolMinAggregate = exports.SchoolMinAggregateInput = exports.SchoolMaxOrderByAggregateInput = exports.SchoolMaxAggregate = exports.SchoolMaxAggregateInput = exports.SchoolGroupBy = exports.SchoolGroupByArgs = exports.SchoolCreateInput = exports.SchoolCreateWithoutStudentsInput = exports.SchoolCreateWithoutAddressInput = exports.SchoolCreateOrConnectWithoutStudentsInput = exports.SchoolCreateOrConnectWithoutAddressInput = exports.SchoolCreateNestedOneWithoutStudentsInput = exports.SchoolCreateNestedOneWithoutAddressInput = exports.SchoolCreateManyInput = exports.SchoolCount = exports.SchoolCountOrderByAggregateInput = exports.SchoolCountAggregate = exports.SchoolCountAggregateInput = exports.SchoolAvgOrderByAggregateInput = exports.SchoolAvgAggregate = exports.SchoolAvgAggregateInput = exports.SchoolAggregateArgs = exports.FindUniqueSchoolArgs = exports.FindUniqueSchoolOrThrowArgs = exports.FindManySchoolArgs = exports.FindFirstSchoolArgs = exports.FindFirstSchoolOrThrowArgs = exports.DeleteOneSchoolArgs = exports.DeleteManySchoolArgs = exports.CreateOneSchoolArgs = exports.CreateManySchoolArgs = exports.AggregateSchool = exports.UpsertOneRewardClaimArgs = exports.UpdateOneRewardClaimArgs = exports.UpdateManyRewardClaimArgs = exports.RewardClaim = void 0;
-exports.SessionMaxOrderByAggregateInput = exports.SessionMaxAggregate = exports.SessionMaxAggregateInput = exports.SessionListRelationFilter = exports.SessionGroupBy = exports.SessionGroupByArgs = exports.SessionCreateInput = exports.SessionCreateWithoutUserInput = exports.SessionCreateOrConnectWithoutUserInput = exports.SessionCreateNestedManyWithoutUserInput = exports.SessionCreateManyInput = exports.SessionCreateManyUserInput = exports.SessionCreateManyUserInputEnvelope = exports.SessionCountOrderByAggregateInput = exports.SessionCountAggregate = exports.SessionCountAggregateInput = exports.SessionAvgOrderByAggregateInput = exports.SessionAvgAggregate = exports.SessionAvgAggregateInput = exports.SessionAggregateArgs = exports.FindUniqueSessionArgs = exports.FindUniqueSessionOrThrowArgs = exports.FindManySessionArgs = exports.FindFirstSessionArgs = exports.FindFirstSessionOrThrowArgs = exports.DeleteOneSessionArgs = exports.DeleteManySessionArgs = exports.CreateOneSessionArgs = exports.CreateManySessionArgs = exports.AggregateSession = exports.UpsertOneSchoolArgs = exports.UpdateOneSchoolArgs = exports.UpdateManySchoolArgs = exports.School = exports.SchoolWhereInput = exports.SchoolWhereUniqueInput = exports.SchoolUpsertWithoutStudentsInput = exports.SchoolUpsertWithoutAddressInput = exports.SchoolUpdateInput = exports.SchoolUpdateWithoutStudentsInput = exports.SchoolUpdateWithoutAddressInput = exports.SchoolUpdateToOneWithWhereWithoutStudentsInput = exports.SchoolUpdateToOneWithWhereWithoutAddressInput = exports.SchoolUpdateOneWithoutStudentsNestedInput = exports.SchoolUpdateOneWithoutAddressNestedInput = exports.SchoolUpdateManyMutationInput = exports.SchoolUncheckedUpdateInput = exports.SchoolUncheckedUpdateWithoutStudentsInput = exports.SchoolUncheckedUpdateWithoutAddressInput = exports.SchoolUncheckedUpdateOneWithoutAddressNestedInput = void 0;
-exports.ShippingCreateManyInput = exports.ShippingCountOrderByAggregateInput = exports.ShippingCountAggregate = exports.ShippingCountAggregateInput = exports.ShippingAvgOrderByAggregateInput = exports.ShippingAvgAggregate = exports.ShippingAvgAggregateInput = exports.ShippingAggregateArgs = exports.FindUniqueShippingArgs = exports.FindUniqueShippingOrThrowArgs = exports.FindManyShippingArgs = exports.FindFirstShippingArgs = exports.FindFirstShippingOrThrowArgs = exports.DeleteOneShippingArgs = exports.DeleteManyShippingArgs = exports.CreateOneShippingArgs = exports.CreateManyShippingArgs = exports.AggregateShipping = exports.UpsertOneSessionArgs = exports.UpdateOneSessionArgs = exports.UpdateManySessionArgs = exports.Session = exports.SessionWhereInput = exports.SessionWhereUniqueInput = exports.SessionUpsertWithWhereUniqueWithoutUserInput = exports.SessionUpdateInput = exports.SessionUpdateWithoutUserInput = exports.SessionUpdateWithWhereUniqueWithoutUserInput = exports.SessionUpdateManyWithoutUserNestedInput = exports.SessionUpdateManyWithWhereWithoutUserInput = exports.SessionUpdateManyMutationInput = exports.SessionUncheckedUpdateInput = exports.SessionUncheckedUpdateWithoutUserInput = exports.SessionUncheckedUpdateManyInput = exports.SessionUncheckedUpdateManyWithoutUserInput = exports.SessionUncheckedUpdateManyWithoutUserNestedInput = exports.SessionUncheckedCreateInput = exports.SessionUncheckedCreateWithoutUserInput = exports.SessionUncheckedCreateNestedManyWithoutUserInput = exports.SessionSumOrderByAggregateInput = exports.SessionSumAggregate = exports.SessionSumAggregateInput = exports.SessionScalarWhereInput = exports.SessionScalarWhereWithAggregatesInput = exports.SessionOrderByWithRelationInput = exports.SessionOrderByWithAggregationInput = exports.SessionOrderByRelationAggregateInput = exports.SessionMinOrderByAggregateInput = exports.SessionMinAggregate = exports.SessionMinAggregateInput = void 0;
-exports.AggregateSubdistrict = exports.UpsertOneShippingArgs = exports.UpdateOneShippingArgs = exports.UpdateManyShippingArgs = exports.Shipping = exports.ShippingWhereInput = exports.ShippingWhereUniqueInput = exports.ShippingUpsertWithoutOrderInput = exports.ShippingUpsertWithoutAddressInput = exports.ShippingUpdateInput = exports.ShippingUpdateWithoutOrderInput = exports.ShippingUpdateWithoutAddressInput = exports.ShippingUpdateToOneWithWhereWithoutOrderInput = exports.ShippingUpdateToOneWithWhereWithoutAddressInput = exports.ShippingUpdateOneWithoutOrderNestedInput = exports.ShippingUpdateOneWithoutAddressNestedInput = exports.ShippingUpdateManyMutationInput = exports.ShippingUncheckedUpdateInput = exports.ShippingUncheckedUpdateWithoutOrderInput = exports.ShippingUncheckedUpdateWithoutAddressInput = exports.ShippingUncheckedUpdateOneWithoutOrderNestedInput = exports.ShippingUncheckedUpdateOneWithoutAddressNestedInput = exports.ShippingUncheckedUpdateManyInput = exports.ShippingUncheckedCreateInput = exports.ShippingUncheckedCreateWithoutOrderInput = exports.ShippingUncheckedCreateWithoutAddressInput = exports.ShippingUncheckedCreateNestedOneWithoutOrderInput = exports.ShippingUncheckedCreateNestedOneWithoutAddressInput = exports.ShippingSumOrderByAggregateInput = exports.ShippingSumAggregate = exports.ShippingSumAggregateInput = exports.ShippingScalarWhereWithAggregatesInput = exports.ShippingOrderByWithRelationInput = exports.ShippingOrderByWithAggregationInput = exports.ShippingNullableRelationFilter = exports.ShippingMinOrderByAggregateInput = exports.ShippingMinAggregate = exports.ShippingMinAggregateInput = exports.ShippingMaxOrderByAggregateInput = exports.ShippingMaxAggregate = exports.ShippingMaxAggregateInput = exports.ShippingGroupBy = exports.ShippingGroupByArgs = exports.ShippingCreateInput = exports.ShippingCreateWithoutOrderInput = exports.ShippingCreateWithoutAddressInput = exports.ShippingCreateOrConnectWithoutOrderInput = exports.ShippingCreateOrConnectWithoutAddressInput = exports.ShippingCreateNestedOneWithoutOrderInput = exports.ShippingCreateNestedOneWithoutAddressInput = void 0;
-exports.SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput = exports.SubdistrictUncheckedCreateInput = exports.SubdistrictUncheckedCreateWithoutDistrictInput = exports.SubdistrictUncheckedCreateWithoutAddressInput = exports.SubdistrictUncheckedCreateNestedManyWithoutDistrictInput = exports.SubdistrictSumOrderByAggregateInput = exports.SubdistrictSumAggregate = exports.SubdistrictSumAggregateInput = exports.SubdistrictScalarWhereInput = exports.SubdistrictScalarWhereWithAggregatesInput = exports.SubdistrictRelationFilter = exports.SubdistrictOrderByWithRelationInput = exports.SubdistrictOrderByWithAggregationInput = exports.SubdistrictOrderByRelationAggregateInput = exports.SubdistrictMinOrderByAggregateInput = exports.SubdistrictMinAggregate = exports.SubdistrictMinAggregateInput = exports.SubdistrictMaxOrderByAggregateInput = exports.SubdistrictMaxAggregate = exports.SubdistrictMaxAggregateInput = exports.SubdistrictListRelationFilter = exports.SubdistrictGroupBy = exports.SubdistrictGroupByArgs = exports.SubdistrictCreateInput = exports.SubdistrictCreateWithoutDistrictInput = exports.SubdistrictCreateWithoutAddressInput = exports.SubdistrictCreateOrConnectWithoutDistrictInput = exports.SubdistrictCreateOrConnectWithoutAddressInput = exports.SubdistrictCreateNestedOneWithoutAddressInput = exports.SubdistrictCreateNestedManyWithoutDistrictInput = exports.SubdistrictCreateManyInput = exports.SubdistrictCreateManyDistrictInput = exports.SubdistrictCreateManyDistrictInputEnvelope = exports.SubdistrictCount = exports.SubdistrictCountOrderByAggregateInput = exports.SubdistrictCountAggregate = exports.SubdistrictCountAggregateInput = exports.SubdistrictAvgOrderByAggregateInput = exports.SubdistrictAvgAggregate = exports.SubdistrictAvgAggregateInput = exports.SubdistrictAggregateArgs = exports.FindUniqueSubdistrictArgs = exports.FindUniqueSubdistrictOrThrowArgs = exports.FindManySubdistrictArgs = exports.FindFirstSubdistrictArgs = exports.FindFirstSubdistrictOrThrowArgs = exports.DeleteOneSubdistrictArgs = exports.DeleteManySubdistrictArgs = exports.CreateOneSubdistrictArgs = exports.CreateManySubdistrictArgs = void 0;
-exports.TransactionCreateNestedOneWithoutInstallmentInput = exports.TransactionCreateNestedManyWithoutToAccountInput = exports.TransactionCreateNestedManyWithoutInvoiceInput = exports.TransactionCreateNestedManyWithoutFromAccountInput = exports.TransactionCreateManyInput = exports.TransactionCreateManyToAccountInput = exports.TransactionCreateManyToAccountInputEnvelope = exports.TransactionCreateManyInvoiceInput = exports.TransactionCreateManyInvoiceInputEnvelope = exports.TransactionCreateManyFromAccountInput = exports.TransactionCreateManyFromAccountInputEnvelope = exports.TransactionCountOrderByAggregateInput = exports.TransactionCountAggregate = exports.TransactionCountAggregateInput = exports.TransactionAvgOrderByAggregateInput = exports.TransactionAvgAggregate = exports.TransactionAvgAggregateInput = exports.TransactionAggregateArgs = exports.FindUniqueTransactionArgs = exports.FindUniqueTransactionOrThrowArgs = exports.FindManyTransactionArgs = exports.FindFirstTransactionArgs = exports.FindFirstTransactionOrThrowArgs = exports.DeleteOneTransactionArgs = exports.DeleteManyTransactionArgs = exports.CreateOneTransactionArgs = exports.CreateManyTransactionArgs = exports.AggregateTransaction = exports.UpsertOneSubdistrictArgs = exports.UpdateOneSubdistrictArgs = exports.UpdateManySubdistrictArgs = exports.Subdistrict = exports.SubdistrictWhereInput = exports.SubdistrictWhereUniqueInput = exports.SubdistrictUpsertWithoutAddressInput = exports.SubdistrictUpsertWithWhereUniqueWithoutDistrictInput = exports.SubdistrictUpdateInput = exports.SubdistrictUpdateWithoutDistrictInput = exports.SubdistrictUpdateWithoutAddressInput = exports.SubdistrictUpdateWithWhereUniqueWithoutDistrictInput = exports.SubdistrictUpdateToOneWithWhereWithoutAddressInput = exports.SubdistrictUpdateOneRequiredWithoutAddressNestedInput = exports.SubdistrictUpdateManyWithoutDistrictNestedInput = exports.SubdistrictUpdateManyWithWhereWithoutDistrictInput = exports.SubdistrictUpdateManyMutationInput = exports.SubdistrictUncheckedUpdateInput = exports.SubdistrictUncheckedUpdateWithoutDistrictInput = exports.SubdistrictUncheckedUpdateWithoutAddressInput = exports.SubdistrictUncheckedUpdateManyInput = exports.SubdistrictUncheckedUpdateManyWithoutDistrictInput = void 0;
-exports.TransactionUncheckedUpdateOneWithoutWithdrawalRequestNestedInput = exports.TransactionUncheckedUpdateOneWithoutInstallmentNestedInput = exports.TransactionUncheckedUpdateManyInput = exports.TransactionUncheckedUpdateManyWithoutToAccountInput = exports.TransactionUncheckedUpdateManyWithoutToAccountNestedInput = exports.TransactionUncheckedUpdateManyWithoutInvoiceInput = exports.TransactionUncheckedUpdateManyWithoutInvoiceNestedInput = exports.TransactionUncheckedUpdateManyWithoutFromAccountInput = exports.TransactionUncheckedUpdateManyWithoutFromAccountNestedInput = exports.TransactionUncheckedCreateInput = exports.TransactionUncheckedCreateWithoutWithdrawalRequestInput = exports.TransactionUncheckedCreateWithoutToAccountInput = exports.TransactionUncheckedCreateWithoutInvoiceInput = exports.TransactionUncheckedCreateWithoutInstallmentInput = exports.TransactionUncheckedCreateWithoutFromAccountInput = exports.TransactionUncheckedCreateNestedOneWithoutWithdrawalRequestInput = exports.TransactionUncheckedCreateNestedOneWithoutInstallmentInput = exports.TransactionUncheckedCreateNestedManyWithoutToAccountInput = exports.TransactionUncheckedCreateNestedManyWithoutInvoiceInput = exports.TransactionUncheckedCreateNestedManyWithoutFromAccountInput = exports.TransactionSumOrderByAggregateInput = exports.TransactionSumAggregate = exports.TransactionSumAggregateInput = exports.TransactionScalarWhereInput = exports.TransactionScalarWhereWithAggregatesInput = exports.TransactionOrderByWithRelationInput = exports.TransactionOrderByWithAggregationInput = exports.TransactionOrderByRelationAggregateInput = exports.TransactionNullableRelationFilter = exports.TransactionMinOrderByAggregateInput = exports.TransactionMinAggregate = exports.TransactionMinAggregateInput = exports.TransactionMaxOrderByAggregateInput = exports.TransactionMaxAggregate = exports.TransactionMaxAggregateInput = exports.TransactionListRelationFilter = exports.TransactionGroupBy = exports.TransactionGroupByArgs = exports.TransactionCreateInput = exports.TransactionCreateWithoutWithdrawalRequestInput = exports.TransactionCreateWithoutToAccountInput = exports.TransactionCreateWithoutInvoiceInput = exports.TransactionCreateWithoutInstallmentInput = exports.TransactionCreateWithoutFromAccountInput = exports.TransactionCreateOrConnectWithoutWithdrawalRequestInput = exports.TransactionCreateOrConnectWithoutToAccountInput = exports.TransactionCreateOrConnectWithoutInvoiceInput = exports.TransactionCreateOrConnectWithoutInstallmentInput = exports.TransactionCreateOrConnectWithoutFromAccountInput = exports.TransactionCreateNestedOneWithoutWithdrawalRequestInput = void 0;
-exports.UpsertOneUserArgs = exports.UpdateOneUserArgs = exports.UpdateManyUserArgs = exports.FindUniqueUserArgs = exports.FindUniqueUserOrThrowArgs = exports.FindManyUserArgs = exports.FindFirstUserArgs = exports.FindFirstUserOrThrowArgs = exports.DeleteOneUserArgs = exports.DeleteManyUserArgs = exports.CreateOneUserArgs = exports.CreateManyUserArgs = exports.AggregateUser = exports.UpsertOneTransactionArgs = exports.UpdateOneTransactionArgs = exports.UpdateManyTransactionArgs = exports.Transaction = exports.TransactionWhereInput = exports.TransactionWhereUniqueInput = exports.TransactionUpsertWithoutWithdrawalRequestInput = exports.TransactionUpsertWithoutInstallmentInput = exports.TransactionUpsertWithWhereUniqueWithoutToAccountInput = exports.TransactionUpsertWithWhereUniqueWithoutInvoiceInput = exports.TransactionUpsertWithWhereUniqueWithoutFromAccountInput = exports.TransactionUpdateInput = exports.TransactionUpdateWithoutWithdrawalRequestInput = exports.TransactionUpdateWithoutToAccountInput = exports.TransactionUpdateWithoutInvoiceInput = exports.TransactionUpdateWithoutInstallmentInput = exports.TransactionUpdateWithoutFromAccountInput = exports.TransactionUpdateWithWhereUniqueWithoutToAccountInput = exports.TransactionUpdateWithWhereUniqueWithoutInvoiceInput = exports.TransactionUpdateWithWhereUniqueWithoutFromAccountInput = exports.TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput = exports.TransactionUpdateToOneWithWhereWithoutInstallmentInput = exports.TransactionUpdateOneWithoutWithdrawalRequestNestedInput = exports.TransactionUpdateOneWithoutInstallmentNestedInput = exports.TransactionUpdateManyWithoutToAccountNestedInput = exports.TransactionUpdateManyWithoutInvoiceNestedInput = exports.TransactionUpdateManyWithoutFromAccountNestedInput = exports.TransactionUpdateManyWithWhereWithoutToAccountInput = exports.TransactionUpdateManyWithWhereWithoutInvoiceInput = exports.TransactionUpdateManyWithWhereWithoutFromAccountInput = exports.TransactionUpdateManyMutationInput = exports.TransactionUncheckedUpdateInput = exports.TransactionUncheckedUpdateWithoutWithdrawalRequestInput = exports.TransactionUncheckedUpdateWithoutToAccountInput = exports.TransactionUncheckedUpdateWithoutInvoiceInput = exports.TransactionUncheckedUpdateWithoutInstallmentInput = exports.TransactionUncheckedUpdateWithoutFromAccountInput = void 0;
-exports.UserCreateWithoutFilesCreatedInput = exports.UserCreateWithoutClaimedRewardsInput = exports.UserCreateWithoutCheckInsInput = exports.UserCreateWithoutAddressInput = exports.UserCreateWithoutAccountsInput = exports.UserCreateOrConnectWithoutWithdrawalRequestInput = exports.UserCreateOrConnectWithoutUserNotificationsInput = exports.UserCreateOrConnectWithoutSessionsInput = exports.UserCreateOrConnectWithoutSchoolInput = exports.UserCreateOrConnectWithoutReferredUsersInput = exports.UserCreateOrConnectWithoutReferredByInput = exports.UserCreateOrConnectWithoutProgramsParticipationInput = exports.UserCreateOrConnectWithoutProgramsCreatedInput = exports.UserCreateOrConnectWithoutPointTransactionsInput = exports.UserCreateOrConnectWithoutOrdersInput = exports.UserCreateOrConnectWithoutHotelsCreatedInput = exports.UserCreateOrConnectWithoutFilesCreatedInput = exports.UserCreateOrConnectWithoutClaimedRewardsInput = exports.UserCreateOrConnectWithoutCheckInsInput = exports.UserCreateOrConnectWithoutAddressInput = exports.UserCreateOrConnectWithoutAccountsInput = exports.UserCreateNestedOneWithoutWithdrawalRequestInput = exports.UserCreateNestedOneWithoutUserNotificationsInput = exports.UserCreateNestedOneWithoutSessionsInput = exports.UserCreateNestedOneWithoutReferredUsersInput = exports.UserCreateNestedOneWithoutProgramsCreatedInput = exports.UserCreateNestedOneWithoutPointTransactionsInput = exports.UserCreateNestedOneWithoutOrdersInput = exports.UserCreateNestedOneWithoutHotelsCreatedInput = exports.UserCreateNestedOneWithoutFilesCreatedInput = exports.UserCreateNestedOneWithoutClaimedRewardsInput = exports.UserCreateNestedOneWithoutCheckInsInput = exports.UserCreateNestedOneWithoutAddressInput = exports.UserCreateNestedOneWithoutAccountsInput = exports.UserCreateNestedManyWithoutSchoolInput = exports.UserCreateNestedManyWithoutReferredByInput = exports.UserCreateNestedManyWithoutProgramsParticipationInput = exports.UserCreateManyInput = exports.UserCreateManySchoolInput = exports.UserCreateManySchoolInputEnvelope = exports.UserCreateManyReferredByInput = exports.UserCreateManyReferredByInputEnvelope = exports.UserCount = exports.UserCountOrderByAggregateInput = exports.UserCountAggregate = exports.UserCountAggregateInput = exports.UserAvgOrderByAggregateInput = exports.UserAvgAggregate = exports.UserAvgAggregateInput = exports.UserAggregateArgs = void 0;
-exports.UserUncheckedCreateWithoutUserNotificationsInput = exports.UserUncheckedCreateWithoutSessionsInput = exports.UserUncheckedCreateWithoutSchoolInput = exports.UserUncheckedCreateWithoutReferredUsersInput = exports.UserUncheckedCreateWithoutReferredByInput = exports.UserUncheckedCreateWithoutProgramsParticipationInput = exports.UserUncheckedCreateWithoutProgramsCreatedInput = exports.UserUncheckedCreateWithoutPointTransactionsInput = exports.UserUncheckedCreateWithoutOrdersInput = exports.UserUncheckedCreateWithoutHotelsCreatedInput = exports.UserUncheckedCreateWithoutFilesCreatedInput = exports.UserUncheckedCreateWithoutClaimedRewardsInput = exports.UserUncheckedCreateWithoutCheckInsInput = exports.UserUncheckedCreateWithoutAddressInput = exports.UserUncheckedCreateWithoutAccountsInput = exports.UserUncheckedCreateNestedOneWithoutAddressInput = exports.UserUncheckedCreateNestedManyWithoutSchoolInput = exports.UserUncheckedCreateNestedManyWithoutReferredByInput = exports.UserUncheckedCreateNestedManyWithoutProgramsParticipationInput = exports.UserSumOrderByAggregateInput = exports.UserSumAggregate = exports.UserSumAggregateInput = exports.UserScalarWhereInput = exports.UserScalarWhereWithAggregatesInput = exports.UserRelationFilter = exports.UserOrderByWithRelationInput = exports.UserOrderByWithAggregationInput = exports.UserOrderByRelationAggregateInput = exports.UserNullableRelationFilter = exports.UserMinOrderByAggregateInput = exports.UserMinAggregate = exports.UserMinAggregateInput = exports.UserMaxOrderByAggregateInput = exports.UserMaxAggregate = exports.UserMaxAggregateInput = exports.UserListRelationFilter = exports.UserGroupBy = exports.UserGroupByArgs = exports.UserCreateInput = exports.UserCreateWithoutWithdrawalRequestInput = exports.UserCreateWithoutUserNotificationsInput = exports.UserCreateWithoutSessionsInput = exports.UserCreateWithoutSchoolInput = exports.UserCreateWithoutReferredUsersInput = exports.UserCreateWithoutReferredByInput = exports.UserCreateWithoutProgramsParticipationInput = exports.UserCreateWithoutProgramsCreatedInput = exports.UserCreateWithoutPointTransactionsInput = exports.UserCreateWithoutOrdersInput = exports.UserCreateWithoutHotelsCreatedInput = void 0;
-exports.UserUpdateToOneWithWhereWithoutCheckInsInput = exports.UserUpdateToOneWithWhereWithoutAddressInput = exports.UserUpdateToOneWithWhereWithoutAccountsInput = exports.UserUpdateOneWithoutReferredUsersNestedInput = exports.UserUpdateOneWithoutAddressNestedInput = exports.UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput = exports.UserUpdateOneRequiredWithoutUserNotificationsNestedInput = exports.UserUpdateOneRequiredWithoutSessionsNestedInput = exports.UserUpdateOneRequiredWithoutProgramsCreatedNestedInput = exports.UserUpdateOneRequiredWithoutPointTransactionsNestedInput = exports.UserUpdateOneRequiredWithoutOrdersNestedInput = exports.UserUpdateOneRequiredWithoutHotelsCreatedNestedInput = exports.UserUpdateOneRequiredWithoutFilesCreatedNestedInput = exports.UserUpdateOneRequiredWithoutClaimedRewardsNestedInput = exports.UserUpdateOneRequiredWithoutCheckInsNestedInput = exports.UserUpdateOneRequiredWithoutAccountsNestedInput = exports.UserUpdateManyWithoutSchoolNestedInput = exports.UserUpdateManyWithoutReferredByNestedInput = exports.UserUpdateManyWithoutProgramsParticipationNestedInput = exports.UserUpdateManyWithWhereWithoutSchoolInput = exports.UserUpdateManyWithWhereWithoutReferredByInput = exports.UserUpdateManyWithWhereWithoutProgramsParticipationInput = exports.UserUpdateManyMutationInput = exports.UserUncheckedUpdateInput = exports.UserUncheckedUpdateWithoutWithdrawalRequestInput = exports.UserUncheckedUpdateWithoutUserNotificationsInput = exports.UserUncheckedUpdateWithoutSessionsInput = exports.UserUncheckedUpdateWithoutSchoolInput = exports.UserUncheckedUpdateWithoutReferredUsersInput = exports.UserUncheckedUpdateWithoutReferredByInput = exports.UserUncheckedUpdateWithoutProgramsParticipationInput = exports.UserUncheckedUpdateWithoutProgramsCreatedInput = exports.UserUncheckedUpdateWithoutPointTransactionsInput = exports.UserUncheckedUpdateWithoutOrdersInput = exports.UserUncheckedUpdateWithoutHotelsCreatedInput = exports.UserUncheckedUpdateWithoutFilesCreatedInput = exports.UserUncheckedUpdateWithoutClaimedRewardsInput = exports.UserUncheckedUpdateWithoutCheckInsInput = exports.UserUncheckedUpdateWithoutAddressInput = exports.UserUncheckedUpdateWithoutAccountsInput = exports.UserUncheckedUpdateOneWithoutAddressNestedInput = exports.UserUncheckedUpdateManyInput = exports.UserUncheckedUpdateManyWithoutSchoolInput = exports.UserUncheckedUpdateManyWithoutSchoolNestedInput = exports.UserUncheckedUpdateManyWithoutReferredByInput = exports.UserUncheckedUpdateManyWithoutReferredByNestedInput = exports.UserUncheckedUpdateManyWithoutProgramsParticipationInput = exports.UserUncheckedUpdateManyWithoutProgramsParticipationNestedInput = exports.UserUncheckedCreateInput = exports.UserUncheckedCreateWithoutWithdrawalRequestInput = void 0;
-exports.AggregateUserNotification = exports.User = exports.UserWhereInput = exports.UserWhereUniqueInput = exports.UserUpsertWithoutWithdrawalRequestInput = exports.UserUpsertWithoutUserNotificationsInput = exports.UserUpsertWithoutSessionsInput = exports.UserUpsertWithoutReferredUsersInput = exports.UserUpsertWithoutProgramsCreatedInput = exports.UserUpsertWithoutPointTransactionsInput = exports.UserUpsertWithoutOrdersInput = exports.UserUpsertWithoutHotelsCreatedInput = exports.UserUpsertWithoutFilesCreatedInput = exports.UserUpsertWithoutClaimedRewardsInput = exports.UserUpsertWithoutCheckInsInput = exports.UserUpsertWithoutAddressInput = exports.UserUpsertWithoutAccountsInput = exports.UserUpsertWithWhereUniqueWithoutSchoolInput = exports.UserUpsertWithWhereUniqueWithoutReferredByInput = exports.UserUpsertWithWhereUniqueWithoutProgramsParticipationInput = exports.UserUpdateInput = exports.UserUpdateWithoutWithdrawalRequestInput = exports.UserUpdateWithoutUserNotificationsInput = exports.UserUpdateWithoutSessionsInput = exports.UserUpdateWithoutSchoolInput = exports.UserUpdateWithoutReferredUsersInput = exports.UserUpdateWithoutReferredByInput = exports.UserUpdateWithoutProgramsParticipationInput = exports.UserUpdateWithoutProgramsCreatedInput = exports.UserUpdateWithoutPointTransactionsInput = exports.UserUpdateWithoutOrdersInput = exports.UserUpdateWithoutHotelsCreatedInput = exports.UserUpdateWithoutFilesCreatedInput = exports.UserUpdateWithoutClaimedRewardsInput = exports.UserUpdateWithoutCheckInsInput = exports.UserUpdateWithoutAddressInput = exports.UserUpdateWithoutAccountsInput = exports.UserUpdateWithWhereUniqueWithoutSchoolInput = exports.UserUpdateWithWhereUniqueWithoutReferredByInput = exports.UserUpdateWithWhereUniqueWithoutProgramsParticipationInput = exports.UserUpdateToOneWithWhereWithoutWithdrawalRequestInput = exports.UserUpdateToOneWithWhereWithoutUserNotificationsInput = exports.UserUpdateToOneWithWhereWithoutSessionsInput = exports.UserUpdateToOneWithWhereWithoutReferredUsersInput = exports.UserUpdateToOneWithWhereWithoutProgramsCreatedInput = exports.UserUpdateToOneWithWhereWithoutPointTransactionsInput = exports.UserUpdateToOneWithWhereWithoutOrdersInput = exports.UserUpdateToOneWithWhereWithoutHotelsCreatedInput = exports.UserUpdateToOneWithWhereWithoutFilesCreatedInput = exports.UserUpdateToOneWithWhereWithoutClaimedRewardsInput = void 0;
-exports.UserNotificationUncheckedUpdateWithoutUserInput = exports.UserNotificationUncheckedUpdateManyInput = exports.UserNotificationUncheckedUpdateManyWithoutUserInput = exports.UserNotificationUncheckedUpdateManyWithoutUserNestedInput = exports.UserNotificationUncheckedCreateInput = exports.UserNotificationUncheckedCreateWithoutUserInput = exports.UserNotificationUncheckedCreateNestedManyWithoutUserInput = exports.UserNotificationSumOrderByAggregateInput = exports.UserNotificationSumAggregate = exports.UserNotificationSumAggregateInput = exports.UserNotificationScalarWhereInput = exports.UserNotificationScalarWhereWithAggregatesInput = exports.UserNotificationOrderByWithRelationInput = exports.UserNotificationOrderByWithAggregationInput = exports.UserNotificationOrderByRelationAggregateInput = exports.UserNotificationMinOrderByAggregateInput = exports.UserNotificationMinAggregate = exports.UserNotificationMinAggregateInput = exports.UserNotificationMaxOrderByAggregateInput = exports.UserNotificationMaxAggregate = exports.UserNotificationMaxAggregateInput = exports.UserNotificationListRelationFilter = exports.UserNotificationGroupBy = exports.UserNotificationGroupByArgs = exports.UserNotificationCreateInput = exports.UserNotificationCreateWithoutUserInput = exports.UserNotificationCreateOrConnectWithoutUserInput = exports.UserNotificationCreateNestedManyWithoutUserInput = exports.UserNotificationCreateManyInput = exports.UserNotificationCreateManyUserInput = exports.UserNotificationCreateManyUserInputEnvelope = exports.UserNotificationCountOrderByAggregateInput = exports.UserNotificationCountAggregate = exports.UserNotificationCountAggregateInput = exports.UserNotificationAvgOrderByAggregateInput = exports.UserNotificationAvgAggregate = exports.UserNotificationAvgAggregateInput = exports.UserNotificationAggregateArgs = exports.UpsertOneUserNotificationArgs = exports.UpdateOneUserNotificationArgs = exports.UpdateManyUserNotificationArgs = exports.FindUniqueUserNotificationArgs = exports.FindUniqueUserNotificationOrThrowArgs = exports.FindManyUserNotificationArgs = exports.FindFirstUserNotificationArgs = exports.FindFirstUserNotificationOrThrowArgs = exports.DeleteOneUserNotificationArgs = exports.DeleteManyUserNotificationArgs = exports.CreateOneUserNotificationArgs = exports.CreateManyUserNotificationArgs = void 0;
-exports.WithdrawalRequestMinOrderByAggregateInput = exports.WithdrawalRequestMinAggregate = exports.WithdrawalRequestMinAggregateInput = exports.WithdrawalRequestMaxOrderByAggregateInput = exports.WithdrawalRequestMaxAggregate = exports.WithdrawalRequestMaxAggregateInput = exports.WithdrawalRequestListRelationFilter = exports.WithdrawalRequestGroupBy = exports.WithdrawalRequestGroupByArgs = exports.WithdrawalRequestCreateInput = exports.WithdrawalRequestCreateWithoutUserInput = exports.WithdrawalRequestCreateWithoutTransactionInput = exports.WithdrawalRequestCreateOrConnectWithoutUserInput = exports.WithdrawalRequestCreateOrConnectWithoutTransactionInput = exports.WithdrawalRequestCreateNestedOneWithoutTransactionInput = exports.WithdrawalRequestCreateNestedManyWithoutUserInput = exports.WithdrawalRequestCreateManyInput = exports.WithdrawalRequestCreateManyUserInput = exports.WithdrawalRequestCreateManyUserInputEnvelope = exports.WithdrawalRequestCountOrderByAggregateInput = exports.WithdrawalRequestCountAggregate = exports.WithdrawalRequestCountAggregateInput = exports.WithdrawalRequestAvgOrderByAggregateInput = exports.WithdrawalRequestAvgAggregate = exports.WithdrawalRequestAvgAggregateInput = exports.WithdrawalRequestAggregateArgs = exports.UpsertOneWithdrawalRequestArgs = exports.UpdateOneWithdrawalRequestArgs = exports.UpdateManyWithdrawalRequestArgs = exports.FindUniqueWithdrawalRequestArgs = exports.FindUniqueWithdrawalRequestOrThrowArgs = exports.FindManyWithdrawalRequestArgs = exports.FindFirstWithdrawalRequestArgs = exports.FindFirstWithdrawalRequestOrThrowArgs = exports.DeleteOneWithdrawalRequestArgs = exports.DeleteManyWithdrawalRequestArgs = exports.CreateOneWithdrawalRequestArgs = exports.CreateManyWithdrawalRequestArgs = exports.AggregateWithdrawalRequest = exports.UserNotification = exports.UserNotificationWhereInput = exports.UserNotificationWhereUniqueInput = exports.UserNotificationUpsertWithWhereUniqueWithoutUserInput = exports.UserNotificationUpdateInput = exports.UserNotificationUpdateWithoutUserInput = exports.UserNotificationUpdateWithWhereUniqueWithoutUserInput = exports.UserNotificationUpdateManyWithoutUserNestedInput = exports.UserNotificationUpdateManyWithWhereWithoutUserInput = exports.UserNotificationUpdateManyMutationInput = exports.UserNotificationUncheckedUpdateInput = void 0;
-exports.WithdrawalRequest = exports.WithdrawalRequestWhereInput = exports.WithdrawalRequestWhereUniqueInput = exports.WithdrawalRequestUpsertWithoutTransactionInput = exports.WithdrawalRequestUpsertWithWhereUniqueWithoutUserInput = exports.WithdrawalRequestUpdateInput = exports.WithdrawalRequestUpdateWithoutUserInput = exports.WithdrawalRequestUpdateWithoutTransactionInput = exports.WithdrawalRequestUpdateWithWhereUniqueWithoutUserInput = exports.WithdrawalRequestUpdateToOneWithWhereWithoutTransactionInput = exports.WithdrawalRequestUpdateOneWithoutTransactionNestedInput = exports.WithdrawalRequestUpdateManyWithoutUserNestedInput = exports.WithdrawalRequestUpdateManyWithWhereWithoutUserInput = exports.WithdrawalRequestUpdateManyMutationInput = exports.WithdrawalRequestUncheckedUpdateInput = exports.WithdrawalRequestUncheckedUpdateWithoutUserInput = exports.WithdrawalRequestUncheckedUpdateWithoutTransactionInput = exports.WithdrawalRequestUncheckedUpdateManyInput = exports.WithdrawalRequestUncheckedUpdateManyWithoutUserInput = exports.WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput = exports.WithdrawalRequestUncheckedCreateInput = exports.WithdrawalRequestUncheckedCreateWithoutUserInput = exports.WithdrawalRequestUncheckedCreateWithoutTransactionInput = exports.WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput = exports.WithdrawalRequestSumOrderByAggregateInput = exports.WithdrawalRequestSumAggregate = exports.WithdrawalRequestSumAggregateInput = exports.WithdrawalRequestScalarWhereInput = exports.WithdrawalRequestScalarWhereWithAggregatesInput = exports.WithdrawalRequestOrderByWithRelationInput = exports.WithdrawalRequestOrderByWithAggregationInput = exports.WithdrawalRequestOrderByRelationAggregateInput = exports.WithdrawalRequestNullableRelationFilter = void 0;
+exports.AddressUncheckedUpdateManyWithoutSubdistrictNestedInput = exports.AddressUncheckedCreateInput = exports.AddressUncheckedCreateWithoutUserInput = exports.AddressUncheckedCreateWithoutSubdistrictInput = exports.AddressUncheckedCreateWithoutShippingInput = exports.AddressUncheckedCreateWithoutSchoolInput = exports.AddressUncheckedCreateWithoutHotelInput = exports.AddressUncheckedCreateNestedManyWithoutSubdistrictInput = exports.AddressSumOrderByAggregateInput = exports.AddressSumAggregate = exports.AddressSumAggregateInput = exports.AddressScalarWhereInput = exports.AddressScalarWhereWithAggregatesInput = exports.AddressRelationFilter = exports.AddressOrderByWithRelationInput = exports.AddressOrderByWithAggregationInput = exports.AddressOrderByRelationAggregateInput = exports.AddressMinOrderByAggregateInput = exports.AddressMinAggregate = exports.AddressMinAggregateInput = exports.AddressMaxOrderByAggregateInput = exports.AddressMaxAggregate = exports.AddressMaxAggregateInput = exports.AddressListRelationFilter = exports.AddressGroupBy = exports.AddressGroupByArgs = exports.AddressCreateInput = exports.AddressCreateWithoutUserInput = exports.AddressCreateWithoutSubdistrictInput = exports.AddressCreateWithoutShippingInput = exports.AddressCreateWithoutSchoolInput = exports.AddressCreateWithoutHotelInput = exports.AddressCreateOrConnectWithoutUserInput = exports.AddressCreateOrConnectWithoutSubdistrictInput = exports.AddressCreateOrConnectWithoutShippingInput = exports.AddressCreateOrConnectWithoutSchoolInput = exports.AddressCreateOrConnectWithoutHotelInput = exports.AddressCreateNestedOneWithoutUserInput = exports.AddressCreateNestedOneWithoutShippingInput = exports.AddressCreateNestedOneWithoutSchoolInput = exports.AddressCreateNestedOneWithoutHotelInput = exports.AddressCreateNestedManyWithoutSubdistrictInput = exports.AddressCreateManyInput = exports.AddressCreateManySubdistrictInput = exports.AddressCreateManySubdistrictInputEnvelope = exports.AddressCountOrderByAggregateInput = exports.AddressCountAggregate = exports.AddressCountAggregateInput = exports.AddressAvgOrderByAggregateInput = exports.AddressAvgAggregate = void 0;
+exports.BankAvgAggregateInput = exports.BankAggregateArgs = exports.AggregateBank = exports.UpsertOneAddressArgs = exports.UpdateOneAddressArgs = exports.UpdateManyAddressArgs = exports.FindUniqueAddressArgs = exports.FindUniqueAddressOrThrowArgs = exports.FindManyAddressArgs = exports.FindFirstAddressArgs = exports.FindFirstAddressOrThrowArgs = exports.DeleteOneAddressArgs = exports.DeleteManyAddressArgs = exports.CreateOneAddressArgs = exports.CreateManyAddressArgs = exports.AggregateAddress = exports.Address = exports.AddressWhereInput = exports.AddressWhereUniqueInput = exports.AddressUpsertWithoutUserInput = exports.AddressUpsertWithoutShippingInput = exports.AddressUpsertWithoutSchoolInput = exports.AddressUpsertWithoutHotelInput = exports.AddressUpsertWithWhereUniqueWithoutSubdistrictInput = exports.AddressUpdateInput = exports.AddressUpdateWithoutUserInput = exports.AddressUpdateWithoutSubdistrictInput = exports.AddressUpdateWithoutShippingInput = exports.AddressUpdateWithoutSchoolInput = exports.AddressUpdateWithoutHotelInput = exports.AddressUpdateWithWhereUniqueWithoutSubdistrictInput = exports.AddressUpdateToOneWithWhereWithoutUserInput = exports.AddressUpdateToOneWithWhereWithoutShippingInput = exports.AddressUpdateToOneWithWhereWithoutSchoolInput = exports.AddressUpdateToOneWithWhereWithoutHotelInput = exports.AddressUpdateOneRequiredWithoutUserNestedInput = exports.AddressUpdateOneRequiredWithoutShippingNestedInput = exports.AddressUpdateOneRequiredWithoutSchoolNestedInput = exports.AddressUpdateOneRequiredWithoutHotelNestedInput = exports.AddressUpdateManyWithoutSubdistrictNestedInput = exports.AddressUpdateManyWithWhereWithoutSubdistrictInput = exports.AddressUpdateManyMutationInput = exports.AddressUncheckedUpdateInput = exports.AddressUncheckedUpdateWithoutUserInput = exports.AddressUncheckedUpdateWithoutSubdistrictInput = exports.AddressUncheckedUpdateWithoutShippingInput = exports.AddressUncheckedUpdateWithoutSchoolInput = exports.AddressUncheckedUpdateWithoutHotelInput = exports.AddressUncheckedUpdateManyInput = exports.AddressUncheckedUpdateManyWithoutSubdistrictInput = void 0;
+exports.FindUniqueBankArgs = exports.FindUniqueBankOrThrowArgs = exports.FindManyBankArgs = exports.FindFirstBankArgs = exports.FindFirstBankOrThrowArgs = exports.DeleteOneBankArgs = exports.DeleteManyBankArgs = exports.CreateOneBankArgs = exports.CreateManyBankArgs = exports.Bank = exports.BankWhereInput = exports.BankWhereUniqueInput = exports.BankUpsertWithoutAccountInput = exports.BankUpdateInput = exports.BankUpdateWithoutAccountInput = exports.BankUpdateToOneWithWhereWithoutAccountInput = exports.BankUpdateOneWithoutAccountNestedInput = exports.BankUpdateManyMutationInput = exports.BankUncheckedUpdateInput = exports.BankUncheckedUpdateWithoutAccountInput = exports.BankUncheckedUpdateOneWithoutAccountNestedInput = exports.BankUncheckedUpdateManyInput = exports.BankUncheckedCreateInput = exports.BankUncheckedCreateWithoutAccountInput = exports.BankUncheckedCreateNestedOneWithoutAccountInput = exports.BankSumOrderByAggregateInput = exports.BankSumAggregate = exports.BankSumAggregateInput = exports.BankScalarWhereWithAggregatesInput = exports.BankOrderByWithRelationInput = exports.BankOrderByWithAggregationInput = exports.BankNullableRelationFilter = exports.BankMinOrderByAggregateInput = exports.BankMinAggregate = exports.BankMinAggregateInput = exports.BankMaxOrderByAggregateInput = exports.BankMaxAggregate = exports.BankMaxAggregateInput = exports.BankGroupBy = exports.BankGroupByArgs = exports.BankCreateInput = exports.BankCreateWithoutAccountInput = exports.BankCreateOrConnectWithoutAccountInput = exports.BankCreateNestedOneWithoutAccountInput = exports.BankCreateManyInput = exports.BankCountOrderByAggregateInput = exports.BankCountAggregate = exports.BankCountAggregateInput = exports.BankAvgOrderByAggregateInput = exports.BankAvgAggregate = void 0;
+exports.CartUncheckedCreateWithoutOrderInput = exports.CartUncheckedCreateWithoutMembershipItemInput = exports.CartUncheckedCreateNestedManyWithoutProjectItemInput = exports.CartUncheckedCreateNestedManyWithoutOrderInput = exports.CartUncheckedCreateNestedManyWithoutMembershipItemInput = exports.CartSumOrderByAggregateInput = exports.CartSumAggregate = exports.CartSumAggregateInput = exports.CartScalarWhereInput = exports.CartScalarWhereWithAggregatesInput = exports.CartOrderByWithRelationInput = exports.CartOrderByWithAggregationInput = exports.CartOrderByRelationAggregateInput = exports.CartMinOrderByAggregateInput = exports.CartMinAggregate = exports.CartMinAggregateInput = exports.CartMaxOrderByAggregateInput = exports.CartMaxAggregate = exports.CartMaxAggregateInput = exports.CartListRelationFilter = exports.CartGroupBy = exports.CartGroupByArgs = exports.CartCreateInput = exports.CartCreateWithoutProjectItemInput = exports.CartCreateWithoutOrderInput = exports.CartCreateWithoutMembershipItemInput = exports.CartCreateOrConnectWithoutProjectItemInput = exports.CartCreateOrConnectWithoutOrderInput = exports.CartCreateOrConnectWithoutMembershipItemInput = exports.CartCreateNestedManyWithoutProjectItemInput = exports.CartCreateNestedManyWithoutOrderInput = exports.CartCreateNestedManyWithoutMembershipItemInput = exports.CartCreateManyInput = exports.CartCreateManyProjectItemInput = exports.CartCreateManyProjectItemInputEnvelope = exports.CartCreateManyOrderInput = exports.CartCreateManyOrderInputEnvelope = exports.CartCreateManyMembershipItemInput = exports.CartCreateManyMembershipItemInputEnvelope = exports.CartCountOrderByAggregateInput = exports.CartCountAggregate = exports.CartCountAggregateInput = exports.CartAvgOrderByAggregateInput = exports.CartAvgAggregate = exports.CartAvgAggregateInput = exports.CartAggregateArgs = exports.AggregateCart = exports.UpsertOneBankArgs = exports.UpdateOneBankArgs = exports.UpdateManyBankArgs = void 0;
+exports.CheckInAvgOrderByAggregateInput = exports.CheckInAvgAggregate = exports.CheckInAvgAggregateInput = exports.CheckInAggregateArgs = exports.AggregateCheckIn = exports.UpsertOneCartArgs = exports.UpdateOneCartArgs = exports.UpdateManyCartArgs = exports.FindUniqueCartArgs = exports.FindUniqueCartOrThrowArgs = exports.FindManyCartArgs = exports.FindFirstCartArgs = exports.FindFirstCartOrThrowArgs = exports.DeleteOneCartArgs = exports.DeleteManyCartArgs = exports.CreateOneCartArgs = exports.CreateManyCartArgs = exports.Cart = exports.CartWhereInput = exports.CartWhereUniqueInput = exports.CartUpsertWithWhereUniqueWithoutProjectItemInput = exports.CartUpsertWithWhereUniqueWithoutOrderInput = exports.CartUpsertWithWhereUniqueWithoutMembershipItemInput = exports.CartUpdateInput = exports.CartUpdateWithoutProjectItemInput = exports.CartUpdateWithoutOrderInput = exports.CartUpdateWithoutMembershipItemInput = exports.CartUpdateWithWhereUniqueWithoutProjectItemInput = exports.CartUpdateWithWhereUniqueWithoutOrderInput = exports.CartUpdateWithWhereUniqueWithoutMembershipItemInput = exports.CartUpdateManyWithoutProjectItemNestedInput = exports.CartUpdateManyWithoutOrderNestedInput = exports.CartUpdateManyWithoutMembershipItemNestedInput = exports.CartUpdateManyWithWhereWithoutProjectItemInput = exports.CartUpdateManyWithWhereWithoutOrderInput = exports.CartUpdateManyWithWhereWithoutMembershipItemInput = exports.CartUpdateManyMutationInput = exports.CartUncheckedUpdateInput = exports.CartUncheckedUpdateWithoutProjectItemInput = exports.CartUncheckedUpdateWithoutOrderInput = exports.CartUncheckedUpdateWithoutMembershipItemInput = exports.CartUncheckedUpdateManyInput = exports.CartUncheckedUpdateManyWithoutProjectItemInput = exports.CartUncheckedUpdateManyWithoutProjectItemNestedInput = exports.CartUncheckedUpdateManyWithoutOrderInput = exports.CartUncheckedUpdateManyWithoutOrderNestedInput = exports.CartUncheckedUpdateManyWithoutMembershipItemInput = exports.CartUncheckedUpdateManyWithoutMembershipItemNestedInput = exports.CartUncheckedCreateInput = exports.CartUncheckedCreateWithoutProjectItemInput = void 0;
+exports.CheckInUpdateManyWithoutUserNestedInput = exports.CheckInUpdateManyWithoutHotelNestedInput = exports.CheckInUpdateManyWithWhereWithoutUserInput = exports.CheckInUpdateManyWithWhereWithoutHotelInput = exports.CheckInUpdateManyMutationInput = exports.CheckInUncheckedUpdateInput = exports.CheckInUncheckedUpdateWithoutUserInput = exports.CheckInUncheckedUpdateWithoutHotelInput = exports.CheckInUncheckedUpdateManyInput = exports.CheckInUncheckedUpdateManyWithoutUserInput = exports.CheckInUncheckedUpdateManyWithoutUserNestedInput = exports.CheckInUncheckedUpdateManyWithoutHotelInput = exports.CheckInUncheckedUpdateManyWithoutHotelNestedInput = exports.CheckInUncheckedCreateInput = exports.CheckInUncheckedCreateWithoutUserInput = exports.CheckInUncheckedCreateWithoutHotelInput = exports.CheckInUncheckedCreateNestedManyWithoutUserInput = exports.CheckInUncheckedCreateNestedManyWithoutHotelInput = exports.CheckInSumOrderByAggregateInput = exports.CheckInSumAggregate = exports.CheckInSumAggregateInput = exports.CheckInScalarWhereInput = exports.CheckInScalarWhereWithAggregatesInput = exports.CheckInOrderByWithRelationInput = exports.CheckInOrderByWithAggregationInput = exports.CheckInOrderByRelationAggregateInput = exports.CheckInMinOrderByAggregateInput = exports.CheckInMinAggregate = exports.CheckInMinAggregateInput = exports.CheckInMaxOrderByAggregateInput = exports.CheckInMaxAggregate = exports.CheckInMaxAggregateInput = exports.CheckInListRelationFilter = exports.CheckInGroupBy = exports.CheckInGroupByArgs = exports.CheckInCreateInput = exports.CheckInCreateWithoutUserInput = exports.CheckInCreateWithoutHotelInput = exports.CheckInCreateOrConnectWithoutUserInput = exports.CheckInCreateOrConnectWithoutHotelInput = exports.CheckInCreateNestedManyWithoutUserInput = exports.CheckInCreateNestedManyWithoutHotelInput = exports.CheckInCreateManyInput = exports.CheckInCreateManyUserInput = exports.CheckInCreateManyUserInputEnvelope = exports.CheckInCreateManyHotelInput = exports.CheckInCreateManyHotelInputEnvelope = exports.CheckInCountOrderByAggregateInput = exports.CheckInCountAggregate = exports.CheckInCountAggregateInput = void 0;
+exports.CityMinOrderByAggregateInput = exports.CityMinAggregate = exports.CityMinAggregateInput = exports.CityMaxOrderByAggregateInput = exports.CityMaxAggregate = exports.CityMaxAggregateInput = exports.CityListRelationFilter = exports.CityGroupBy = exports.CityGroupByArgs = exports.CityCreateInput = exports.CityCreateWithoutProvinceInput = exports.CityCreateWithoutDistrictsInput = exports.CityCreateOrConnectWithoutProvinceInput = exports.CityCreateOrConnectWithoutDistrictsInput = exports.CityCreateNestedOneWithoutDistrictsInput = exports.CityCreateNestedManyWithoutProvinceInput = exports.CityCreateManyInput = exports.CityCreateManyProvinceInput = exports.CityCreateManyProvinceInputEnvelope = exports.CityCount = exports.CityCountOrderByAggregateInput = exports.CityCountAggregate = exports.CityCountAggregateInput = exports.CityAvgOrderByAggregateInput = exports.CityAvgAggregate = exports.CityAvgAggregateInput = exports.CityAggregateArgs = exports.AggregateCity = exports.UpsertOneCheckInArgs = exports.UpdateOneCheckInArgs = exports.UpdateManyCheckInArgs = exports.FindUniqueCheckInArgs = exports.FindUniqueCheckInOrThrowArgs = exports.FindManyCheckInArgs = exports.FindFirstCheckInArgs = exports.FindFirstCheckInOrThrowArgs = exports.DeleteOneCheckInArgs = exports.DeleteManyCheckInArgs = exports.CreateOneCheckInArgs = exports.CreateManyCheckInArgs = exports.CheckIn = exports.CheckInWhereInput = exports.CheckInWhereUniqueInput = exports.CheckInUpsertWithWhereUniqueWithoutUserInput = exports.CheckInUpsertWithWhereUniqueWithoutHotelInput = exports.CheckInUpdateInput = exports.CheckInUpdateWithoutUserInput = exports.CheckInUpdateWithoutHotelInput = exports.CheckInUpdateWithWhereUniqueWithoutUserInput = exports.CheckInUpdateWithWhereUniqueWithoutHotelInput = void 0;
+exports.DeleteOneDistrictArgs = exports.DeleteManyDistrictArgs = exports.CreateOneDistrictArgs = exports.CreateManyDistrictArgs = exports.AggregateDistrict = exports.UpsertOneCityArgs = exports.UpdateOneCityArgs = exports.UpdateManyCityArgs = exports.FindUniqueCityArgs = exports.FindUniqueCityOrThrowArgs = exports.FindManyCityArgs = exports.FindFirstCityArgs = exports.FindFirstCityOrThrowArgs = exports.DeleteOneCityArgs = exports.DeleteManyCityArgs = exports.CreateOneCityArgs = exports.CreateManyCityArgs = exports.City = exports.CityWhereInput = exports.CityWhereUniqueInput = exports.CityUpsertWithoutDistrictsInput = exports.CityUpsertWithWhereUniqueWithoutProvinceInput = exports.CityUpdateInput = exports.CityUpdateWithoutProvinceInput = exports.CityUpdateWithoutDistrictsInput = exports.CityUpdateWithWhereUniqueWithoutProvinceInput = exports.CityUpdateToOneWithWhereWithoutDistrictsInput = exports.CityUpdateOneRequiredWithoutDistrictsNestedInput = exports.CityUpdateManyWithoutProvinceNestedInput = exports.CityUpdateManyWithWhereWithoutProvinceInput = exports.CityUpdateManyMutationInput = exports.CityUncheckedUpdateInput = exports.CityUncheckedUpdateWithoutProvinceInput = exports.CityUncheckedUpdateWithoutDistrictsInput = exports.CityUncheckedUpdateManyInput = exports.CityUncheckedUpdateManyWithoutProvinceInput = exports.CityUncheckedUpdateManyWithoutProvinceNestedInput = exports.CityUncheckedCreateInput = exports.CityUncheckedCreateWithoutProvinceInput = exports.CityUncheckedCreateWithoutDistrictsInput = exports.CityUncheckedCreateNestedManyWithoutProvinceInput = exports.CitySumOrderByAggregateInput = exports.CitySumAggregate = exports.CitySumAggregateInput = exports.CityScalarWhereInput = exports.CityScalarWhereWithAggregatesInput = exports.CityRelationFilter = exports.CityOrderByWithRelationInput = exports.CityOrderByWithAggregationInput = exports.CityOrderByRelationAggregateInput = void 0;
+exports.DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput = exports.DistrictUpdateManyWithoutCityNestedInput = exports.DistrictUpdateManyWithWhereWithoutCityInput = exports.DistrictUpdateManyMutationInput = exports.DistrictUncheckedUpdateInput = exports.DistrictUncheckedUpdateWithoutSubdistrictsInput = exports.DistrictUncheckedUpdateWithoutCityInput = exports.DistrictUncheckedUpdateManyInput = exports.DistrictUncheckedUpdateManyWithoutCityInput = exports.DistrictUncheckedUpdateManyWithoutCityNestedInput = exports.DistrictUncheckedCreateInput = exports.DistrictUncheckedCreateWithoutSubdistrictsInput = exports.DistrictUncheckedCreateWithoutCityInput = exports.DistrictUncheckedCreateNestedManyWithoutCityInput = exports.DistrictSumOrderByAggregateInput = exports.DistrictSumAggregate = exports.DistrictSumAggregateInput = exports.DistrictScalarWhereInput = exports.DistrictScalarWhereWithAggregatesInput = exports.DistrictRelationFilter = exports.DistrictOrderByWithRelationInput = exports.DistrictOrderByWithAggregationInput = exports.DistrictOrderByRelationAggregateInput = exports.DistrictMinOrderByAggregateInput = exports.DistrictMinAggregate = exports.DistrictMinAggregateInput = exports.DistrictMaxOrderByAggregateInput = exports.DistrictMaxAggregate = exports.DistrictMaxAggregateInput = exports.DistrictListRelationFilter = exports.DistrictGroupBy = exports.DistrictGroupByArgs = exports.DistrictCreateInput = exports.DistrictCreateWithoutSubdistrictsInput = exports.DistrictCreateWithoutCityInput = exports.DistrictCreateOrConnectWithoutSubdistrictsInput = exports.DistrictCreateOrConnectWithoutCityInput = exports.DistrictCreateNestedOneWithoutSubdistrictsInput = exports.DistrictCreateNestedManyWithoutCityInput = exports.DistrictCreateManyInput = exports.DistrictCreateManyCityInput = exports.DistrictCreateManyCityInputEnvelope = exports.DistrictCount = exports.DistrictCountOrderByAggregateInput = exports.DistrictCountAggregate = exports.DistrictCountAggregateInput = exports.DistrictAvgOrderByAggregateInput = exports.DistrictAvgAggregate = exports.DistrictAvgAggregateInput = exports.DistrictAggregateArgs = void 0;
+exports.FaqUpdateManyMutationInput = exports.FaqUncheckedUpdateInput = exports.FaqUncheckedUpdateManyInput = exports.FaqUncheckedCreateInput = exports.FaqSumOrderByAggregateInput = exports.FaqSumAggregate = exports.FaqSumAggregateInput = exports.FaqScalarWhereWithAggregatesInput = exports.FaqOrderByWithRelationInput = exports.FaqOrderByWithAggregationInput = exports.FaqMinOrderByAggregateInput = exports.FaqMinAggregate = exports.FaqMinAggregateInput = exports.FaqMaxOrderByAggregateInput = exports.FaqMaxAggregate = exports.FaqMaxAggregateInput = exports.FaqGroupBy = exports.FaqGroupByArgs = exports.FaqCreateInput = exports.FaqCreateManyInput = exports.FaqCountOrderByAggregateInput = exports.FaqCountAggregate = exports.FaqCountAggregateInput = exports.FaqAvgOrderByAggregateInput = exports.FaqAvgAggregate = exports.FaqAvgAggregateInput = exports.FaqAggregateArgs = exports.DeleteOneFaqArgs = exports.DeleteManyFaqArgs = exports.CreateOneFaqArgs = exports.CreateManyFaqArgs = exports.AggregateFaq = exports.UpsertOneDistrictArgs = exports.UpdateOneDistrictArgs = exports.UpdateManyDistrictArgs = exports.FindUniqueDistrictArgs = exports.FindUniqueDistrictOrThrowArgs = exports.FindManyDistrictArgs = exports.FindFirstDistrictArgs = exports.FindFirstDistrictOrThrowArgs = exports.District = exports.DistrictWhereInput = exports.DistrictWhereUniqueInput = exports.DistrictUpsertWithoutSubdistrictsInput = exports.DistrictUpsertWithWhereUniqueWithoutCityInput = exports.DistrictUpdateInput = exports.DistrictUpdateWithoutSubdistrictsInput = exports.DistrictUpdateWithoutCityInput = exports.DistrictUpdateWithWhereUniqueWithoutCityInput = exports.DistrictUpdateToOneWithWhereWithoutSubdistrictsInput = void 0;
+exports.FileUncheckedCreateWithoutCreatedByInput = exports.FileUncheckedCreateNestedManyWithoutCreatedByInput = exports.FileSumOrderByAggregateInput = exports.FileSumAggregate = exports.FileSumAggregateInput = exports.FileScalarWhereInput = exports.FileScalarWhereWithAggregatesInput = exports.FileOrderByWithRelationInput = exports.FileOrderByWithAggregationInput = exports.FileOrderByRelationAggregateInput = exports.FileMinOrderByAggregateInput = exports.FileMinAggregate = exports.FileMinAggregateInput = exports.FileMaxOrderByAggregateInput = exports.FileMaxAggregate = exports.FileMaxAggregateInput = exports.FileListRelationFilter = exports.FileGroupBy = exports.FileGroupByArgs = exports.FileCreateInput = exports.FileCreateWithoutCreatedByInput = exports.FileCreateOrConnectWithoutCreatedByInput = exports.FileCreateNestedManyWithoutCreatedByInput = exports.FileCreateManyInput = exports.FileCreateManyCreatedByInput = exports.FileCreateManyCreatedByInputEnvelope = exports.FileCountOrderByAggregateInput = exports.FileCountAggregate = exports.FileCountAggregateInput = exports.FileAvgOrderByAggregateInput = exports.FileAvgAggregate = exports.FileAvgAggregateInput = exports.FileAggregateArgs = exports.DeleteOneFileArgs = exports.DeleteManyFileArgs = exports.CreateOneFileArgs = exports.CreateManyFileArgs = exports.AggregateFile = exports.UpsertOneFaqArgs = exports.UpdateOneFaqArgs = exports.UpdateManyFaqArgs = exports.FindUniqueFaqArgs = exports.FindUniqueFaqOrThrowArgs = exports.FindManyFaqArgs = exports.FindFirstFaqArgs = exports.FindFirstFaqOrThrowArgs = exports.Faq = exports.FaqWhereInput = exports.FaqWhereUniqueInput = exports.FaqUpdateInput = void 0;
+exports.HotelCreateOrConnectWithoutAddressInput = exports.HotelCreateNestedOneWithoutImagesInput = exports.HotelCreateNestedOneWithoutCheckInsInput = exports.HotelCreateNestedOneWithoutAddressInput = exports.HotelCreateNestedManyWithoutCreatedByInput = exports.HotelCreateManyInput = exports.HotelCreateManyCreatedByInput = exports.HotelCreateManyCreatedByInputEnvelope = exports.HotelCount = exports.HotelCountOrderByAggregateInput = exports.HotelCountAggregate = exports.HotelCountAggregateInput = exports.HotelAvgOrderByAggregateInput = exports.HotelAvgAggregate = exports.HotelAvgAggregateInput = exports.HotelAggregateArgs = exports.FindUniqueHotelArgs = exports.FindUniqueHotelOrThrowArgs = exports.FindManyHotelArgs = exports.FindFirstHotelArgs = exports.FindFirstHotelOrThrowArgs = exports.DeleteOneHotelArgs = exports.DeleteManyHotelArgs = exports.CreateOneHotelArgs = exports.CreateManyHotelArgs = exports.AggregateHotel = exports.UpsertOneFileArgs = exports.UpdateOneFileArgs = exports.UpdateManyFileArgs = exports.FindUniqueFileArgs = exports.FindUniqueFileOrThrowArgs = exports.FindManyFileArgs = exports.FindFirstFileArgs = exports.FindFirstFileOrThrowArgs = exports.File = exports.FileWhereInput = exports.FileWhereUniqueInput = exports.FileUpsertWithWhereUniqueWithoutCreatedByInput = exports.FileUpdateInput = exports.FileUpdateWithoutCreatedByInput = exports.FileUpdateWithWhereUniqueWithoutCreatedByInput = exports.FileUpdateManyWithoutCreatedByNestedInput = exports.FileUpdateManyWithWhereWithoutCreatedByInput = exports.FileUpdateManyMutationInput = exports.FileUncheckedUpdateInput = exports.FileUncheckedUpdateWithoutCreatedByInput = exports.FileUncheckedUpdateManyInput = exports.FileUncheckedUpdateManyWithoutCreatedByInput = exports.FileUncheckedUpdateManyWithoutCreatedByNestedInput = exports.FileUncheckedCreateInput = void 0;
+exports.HotelUpdateToOneWithWhereWithoutAddressInput = exports.HotelUpdateOneWithoutImagesNestedInput = exports.HotelUpdateOneWithoutAddressNestedInput = exports.HotelUpdateOneRequiredWithoutCheckInsNestedInput = exports.HotelUpdateManyWithoutCreatedByNestedInput = exports.HotelUpdateManyWithWhereWithoutCreatedByInput = exports.HotelUpdateManyMutationInput = exports.HotelUncheckedUpdateInput = exports.HotelUncheckedUpdateWithoutImagesInput = exports.HotelUncheckedUpdateWithoutCreatedByInput = exports.HotelUncheckedUpdateWithoutCheckInsInput = exports.HotelUncheckedUpdateWithoutAddressInput = exports.HotelUncheckedUpdateOneWithoutAddressNestedInput = exports.HotelUncheckedUpdateManyInput = exports.HotelUncheckedUpdateManyWithoutCreatedByInput = exports.HotelUncheckedUpdateManyWithoutCreatedByNestedInput = exports.HotelUncheckedCreateInput = exports.HotelUncheckedCreateWithoutImagesInput = exports.HotelUncheckedCreateWithoutCreatedByInput = exports.HotelUncheckedCreateWithoutCheckInsInput = exports.HotelUncheckedCreateWithoutAddressInput = exports.HotelUncheckedCreateNestedOneWithoutAddressInput = exports.HotelUncheckedCreateNestedManyWithoutCreatedByInput = exports.HotelSumOrderByAggregateInput = exports.HotelSumAggregate = exports.HotelSumAggregateInput = exports.HotelScalarWhereInput = exports.HotelScalarWhereWithAggregatesInput = exports.HotelRelationFilter = exports.HotelOrderByWithRelationInput = exports.HotelOrderByWithAggregationInput = exports.HotelOrderByRelationAggregateInput = exports.HotelNullableRelationFilter = exports.HotelMinOrderByAggregateInput = exports.HotelMinAggregate = exports.HotelMinAggregateInput = exports.HotelMaxOrderByAggregateInput = exports.HotelMaxAggregate = exports.HotelMaxAggregateInput = exports.HotelListRelationFilter = exports.HotelGroupBy = exports.HotelGroupByArgs = exports.HotelCreateInput = exports.HotelCreateWithoutImagesInput = exports.HotelCreateWithoutCreatedByInput = exports.HotelCreateWithoutCheckInsInput = exports.HotelCreateWithoutAddressInput = exports.HotelCreateOrConnectWithoutImagesInput = exports.HotelCreateOrConnectWithoutCreatedByInput = exports.HotelCreateOrConnectWithoutCheckInsInput = void 0;
+exports.ImagesCreateOrConnectWithoutProgramImageInput = exports.ImagesCreateOrConnectWithoutHotelImageInput = exports.ImagesCreateNestedManyWithoutRewardImageInput = exports.ImagesCreateNestedManyWithoutProjectImageInput = exports.ImagesCreateNestedManyWithoutProgramImageInput = exports.ImagesCreateNestedManyWithoutHotelImageInput = exports.ImagesCreateManyInput = exports.ImagesCreateManyRewardImageInput = exports.ImagesCreateManyRewardImageInputEnvelope = exports.ImagesCreateManyProjectImageInput = exports.ImagesCreateManyProjectImageInputEnvelope = exports.ImagesCreateManyProgramImageInput = exports.ImagesCreateManyProgramImageInputEnvelope = exports.ImagesCreateManyHotelImageInput = exports.ImagesCreateManyHotelImageInputEnvelope = exports.ImagesCountOrderByAggregateInput = exports.ImagesCountAggregate = exports.ImagesCountAggregateInput = exports.ImagesAvgOrderByAggregateInput = exports.ImagesAvgAggregate = exports.ImagesAvgAggregateInput = exports.ImagesAggregateArgs = exports.FindUniqueImagesArgs = exports.FindUniqueImagesOrThrowArgs = exports.FindManyImagesArgs = exports.FindFirstImagesArgs = exports.FindFirstImagesOrThrowArgs = exports.DeleteOneImagesArgs = exports.DeleteManyImagesArgs = exports.CreateOneImagesArgs = exports.CreateManyImagesArgs = exports.AggregateImages = exports.UpsertOneHotelArgs = exports.UpdateOneHotelArgs = exports.UpdateManyHotelArgs = exports.Hotel = exports.HotelWhereInput = exports.HotelWhereUniqueInput = exports.HotelUpsertWithoutImagesInput = exports.HotelUpsertWithoutCheckInsInput = exports.HotelUpsertWithoutAddressInput = exports.HotelUpsertWithWhereUniqueWithoutCreatedByInput = exports.HotelUpdateInput = exports.HotelUpdateWithoutImagesInput = exports.HotelUpdateWithoutCreatedByInput = exports.HotelUpdateWithoutCheckInsInput = exports.HotelUpdateWithoutAddressInput = exports.HotelUpdateWithWhereUniqueWithoutCreatedByInput = exports.HotelUpdateToOneWithWhereWithoutImagesInput = exports.HotelUpdateToOneWithWhereWithoutCheckInsInput = void 0;
+exports.ImagesUpdateManyWithWhereWithoutProgramImageInput = exports.ImagesUpdateManyWithWhereWithoutHotelImageInput = exports.ImagesUpdateManyMutationInput = exports.ImagesUncheckedUpdateInput = exports.ImagesUncheckedUpdateWithoutRewardImageInput = exports.ImagesUncheckedUpdateWithoutProjectImageInput = exports.ImagesUncheckedUpdateWithoutProgramImageInput = exports.ImagesUncheckedUpdateWithoutHotelImageInput = exports.ImagesUncheckedUpdateManyInput = exports.ImagesUncheckedUpdateManyWithoutRewardImageInput = exports.ImagesUncheckedUpdateManyWithoutRewardImageNestedInput = exports.ImagesUncheckedUpdateManyWithoutProjectImageInput = exports.ImagesUncheckedUpdateManyWithoutProjectImageNestedInput = exports.ImagesUncheckedUpdateManyWithoutProgramImageInput = exports.ImagesUncheckedUpdateManyWithoutProgramImageNestedInput = exports.ImagesUncheckedUpdateManyWithoutHotelImageInput = exports.ImagesUncheckedUpdateManyWithoutHotelImageNestedInput = exports.ImagesUncheckedCreateInput = exports.ImagesUncheckedCreateWithoutRewardImageInput = exports.ImagesUncheckedCreateWithoutProjectImageInput = exports.ImagesUncheckedCreateWithoutProgramImageInput = exports.ImagesUncheckedCreateWithoutHotelImageInput = exports.ImagesUncheckedCreateNestedManyWithoutRewardImageInput = exports.ImagesUncheckedCreateNestedManyWithoutProjectImageInput = exports.ImagesUncheckedCreateNestedManyWithoutProgramImageInput = exports.ImagesUncheckedCreateNestedManyWithoutHotelImageInput = exports.ImagesSumOrderByAggregateInput = exports.ImagesSumAggregate = exports.ImagesSumAggregateInput = exports.ImagesScalarWhereInput = exports.ImagesScalarWhereWithAggregatesInput = exports.ImagesOrderByWithRelationInput = exports.ImagesOrderByWithAggregationInput = exports.ImagesOrderByRelationAggregateInput = exports.ImagesMinOrderByAggregateInput = exports.ImagesMinAggregate = exports.ImagesMinAggregateInput = exports.ImagesMaxOrderByAggregateInput = exports.ImagesMaxAggregate = exports.ImagesMaxAggregateInput = exports.ImagesListRelationFilter = exports.ImagesGroupBy = exports.ImagesGroupByArgs = exports.ImagesCreateInput = exports.ImagesCreateWithoutRewardImageInput = exports.ImagesCreateWithoutProjectImageInput = exports.ImagesCreateWithoutProgramImageInput = exports.ImagesCreateWithoutHotelImageInput = exports.ImagesCreateOrConnectWithoutRewardImageInput = exports.ImagesCreateOrConnectWithoutProjectImageInput = void 0;
+exports.InstallmentCreateWithoutInvoiceInput = exports.InstallmentCreateOrConnectWithoutTransactionInput = exports.InstallmentCreateOrConnectWithoutInvoiceInput = exports.InstallmentCreateNestedOneWithoutTransactionInput = exports.InstallmentCreateNestedManyWithoutInvoiceInput = exports.InstallmentCreateManyInput = exports.InstallmentCreateManyInvoiceInput = exports.InstallmentCreateManyInvoiceInputEnvelope = exports.InstallmentCountOrderByAggregateInput = exports.InstallmentCountAggregate = exports.InstallmentCountAggregateInput = exports.InstallmentAvgOrderByAggregateInput = exports.InstallmentAvgAggregate = exports.InstallmentAvgAggregateInput = exports.InstallmentAggregateArgs = exports.FindUniqueInstallmentArgs = exports.FindUniqueInstallmentOrThrowArgs = exports.FindManyInstallmentArgs = exports.FindFirstInstallmentArgs = exports.FindFirstInstallmentOrThrowArgs = exports.DeleteOneInstallmentArgs = exports.DeleteManyInstallmentArgs = exports.CreateOneInstallmentArgs = exports.CreateManyInstallmentArgs = exports.AggregateInstallment = exports.UpsertOneImagesArgs = exports.UpdateOneImagesArgs = exports.UpdateManyImagesArgs = exports.Images = exports.ImagesWhereInput = exports.ImagesWhereUniqueInput = exports.ImagesUpsertWithWhereUniqueWithoutRewardImageInput = exports.ImagesUpsertWithWhereUniqueWithoutProjectImageInput = exports.ImagesUpsertWithWhereUniqueWithoutProgramImageInput = exports.ImagesUpsertWithWhereUniqueWithoutHotelImageInput = exports.ImagesUpdateInput = exports.ImagesUpdateWithoutRewardImageInput = exports.ImagesUpdateWithoutProjectImageInput = exports.ImagesUpdateWithoutProgramImageInput = exports.ImagesUpdateWithoutHotelImageInput = exports.ImagesUpdateWithWhereUniqueWithoutRewardImageInput = exports.ImagesUpdateWithWhereUniqueWithoutProjectImageInput = exports.ImagesUpdateWithWhereUniqueWithoutProgramImageInput = exports.ImagesUpdateWithWhereUniqueWithoutHotelImageInput = exports.ImagesUpdateManyWithoutRewardImageNestedInput = exports.ImagesUpdateManyWithoutProjectImageNestedInput = exports.ImagesUpdateManyWithoutProgramImageNestedInput = exports.ImagesUpdateManyWithoutHotelImageNestedInput = exports.ImagesUpdateManyWithWhereWithoutRewardImageInput = exports.ImagesUpdateManyWithWhereWithoutProjectImageInput = void 0;
+exports.CreateOneInvoiceArgs = exports.CreateManyInvoiceArgs = exports.AggregateInvoice = exports.UpsertOneInstallmentArgs = exports.UpdateOneInstallmentArgs = exports.UpdateManyInstallmentArgs = exports.Installment = exports.InstallmentWhereInput = exports.InstallmentWhereUniqueInput = exports.InstallmentUpsertWithoutTransactionInput = exports.InstallmentUpsertWithWhereUniqueWithoutInvoiceInput = exports.InstallmentUpdateInput = exports.InstallmentUpdateWithoutTransactionInput = exports.InstallmentUpdateWithoutInvoiceInput = exports.InstallmentUpdateWithWhereUniqueWithoutInvoiceInput = exports.InstallmentUpdateToOneWithWhereWithoutTransactionInput = exports.InstallmentUpdateOneWithoutTransactionNestedInput = exports.InstallmentUpdateManyWithoutInvoiceNestedInput = exports.InstallmentUpdateManyWithWhereWithoutInvoiceInput = exports.InstallmentUpdateManyMutationInput = exports.InstallmentUncheckedUpdateInput = exports.InstallmentUncheckedUpdateWithoutTransactionInput = exports.InstallmentUncheckedUpdateWithoutInvoiceInput = exports.InstallmentUncheckedUpdateManyInput = exports.InstallmentUncheckedUpdateManyWithoutInvoiceInput = exports.InstallmentUncheckedUpdateManyWithoutInvoiceNestedInput = exports.InstallmentUncheckedCreateInput = exports.InstallmentUncheckedCreateWithoutTransactionInput = exports.InstallmentUncheckedCreateWithoutInvoiceInput = exports.InstallmentUncheckedCreateNestedManyWithoutInvoiceInput = exports.InstallmentSumOrderByAggregateInput = exports.InstallmentSumAggregate = exports.InstallmentSumAggregateInput = exports.InstallmentScalarWhereInput = exports.InstallmentScalarWhereWithAggregatesInput = exports.InstallmentOrderByWithRelationInput = exports.InstallmentOrderByWithAggregationInput = exports.InstallmentOrderByRelationAggregateInput = exports.InstallmentNullableRelationFilter = exports.InstallmentMinOrderByAggregateInput = exports.InstallmentMinAggregate = exports.InstallmentMinAggregateInput = exports.InstallmentMaxOrderByAggregateInput = exports.InstallmentMaxAggregate = exports.InstallmentMaxAggregateInput = exports.InstallmentListRelationFilter = exports.InstallmentGroupBy = exports.InstallmentGroupByArgs = exports.InstallmentCreateInput = exports.InstallmentCreateWithoutTransactionInput = void 0;
+exports.InvoiceUncheckedUpdateWithoutTransactionsInput = exports.InvoiceUncheckedUpdateWithoutOrderInput = exports.InvoiceUncheckedUpdateWithoutInstallmentsInput = exports.InvoiceUncheckedUpdateManyInput = exports.InvoiceUncheckedCreateInput = exports.InvoiceUncheckedCreateWithoutTransactionsInput = exports.InvoiceUncheckedCreateWithoutOrderInput = exports.InvoiceUncheckedCreateWithoutInstallmentsInput = exports.InvoiceSumOrderByAggregateInput = exports.InvoiceSumAggregate = exports.InvoiceSumAggregateInput = exports.InvoiceScalarWhereWithAggregatesInput = exports.InvoiceRelationFilter = exports.InvoiceOrderByWithRelationInput = exports.InvoiceOrderByWithAggregationInput = exports.InvoiceNullableRelationFilter = exports.InvoiceMinOrderByAggregateInput = exports.InvoiceMinAggregate = exports.InvoiceMinAggregateInput = exports.InvoiceMaxOrderByAggregateInput = exports.InvoiceMaxAggregate = exports.InvoiceMaxAggregateInput = exports.InvoiceGroupBy = exports.InvoiceGroupByArgs = exports.InvoiceCreateInput = exports.InvoiceCreateWithoutTransactionsInput = exports.InvoiceCreateWithoutOrderInput = exports.InvoiceCreateWithoutInstallmentsInput = exports.InvoiceCreateOrConnectWithoutTransactionsInput = exports.InvoiceCreateOrConnectWithoutOrderInput = exports.InvoiceCreateOrConnectWithoutInstallmentsInput = exports.InvoiceCreateNestedOneWithoutTransactionsInput = exports.InvoiceCreateNestedOneWithoutOrderInput = exports.InvoiceCreateNestedOneWithoutInstallmentsInput = exports.InvoiceCreateManyInput = exports.InvoiceCount = exports.InvoiceCountOrderByAggregateInput = exports.InvoiceCountAggregate = exports.InvoiceCountAggregateInput = exports.InvoiceAvgOrderByAggregateInput = exports.InvoiceAvgAggregate = exports.InvoiceAvgAggregateInput = exports.InvoiceAggregateArgs = exports.FindUniqueInvoiceArgs = exports.FindUniqueInvoiceOrThrowArgs = exports.FindManyInvoiceArgs = exports.FindFirstInvoiceArgs = exports.FindFirstInvoiceOrThrowArgs = exports.DeleteOneInvoiceArgs = exports.DeleteManyInvoiceArgs = void 0;
+exports.ItemMinAggregateInput = exports.ItemMaxOrderByAggregateInput = exports.ItemMaxAggregate = exports.ItemMaxAggregateInput = exports.ItemGroupBy = exports.ItemGroupByArgs = exports.ItemCreateInput = exports.ItemCreateWithoutCartInput = exports.ItemCreateOrConnectWithoutCartInput = exports.ItemCreateNestedOneWithoutCartInput = exports.ItemCreateManyInput = exports.ItemCount = exports.ItemCountOrderByAggregateInput = exports.ItemCountAggregate = exports.ItemCountAggregateInput = exports.ItemAvgOrderByAggregateInput = exports.ItemAvgAggregate = exports.ItemAvgAggregateInput = exports.ItemAggregateArgs = exports.FindUniqueItemArgs = exports.FindUniqueItemOrThrowArgs = exports.FindManyItemArgs = exports.FindFirstItemArgs = exports.FindFirstItemOrThrowArgs = exports.DeleteOneItemArgs = exports.DeleteManyItemArgs = exports.CreateOneItemArgs = exports.CreateManyItemArgs = exports.AggregateItem = exports.UpsertOneInvoiceArgs = exports.UpdateOneInvoiceArgs = exports.UpdateManyInvoiceArgs = exports.Invoice = exports.InvoiceWhereInput = exports.InvoiceWhereUniqueInput = exports.InvoiceUpsertWithoutTransactionsInput = exports.InvoiceUpsertWithoutOrderInput = exports.InvoiceUpsertWithoutInstallmentsInput = exports.InvoiceUpdateInput = exports.InvoiceUpdateWithoutTransactionsInput = exports.InvoiceUpdateWithoutOrderInput = exports.InvoiceUpdateWithoutInstallmentsInput = exports.InvoiceUpdateToOneWithWhereWithoutTransactionsInput = exports.InvoiceUpdateToOneWithWhereWithoutOrderInput = exports.InvoiceUpdateToOneWithWhereWithoutInstallmentsInput = exports.InvoiceUpdateOneWithoutTransactionsNestedInput = exports.InvoiceUpdateOneRequiredWithoutOrderNestedInput = exports.InvoiceUpdateOneRequiredWithoutInstallmentsNestedInput = exports.InvoiceUpdateManyMutationInput = exports.InvoiceUncheckedUpdateInput = void 0;
+exports.OrderCreateNestedOneWithoutInvoiceInput = exports.OrderCreateNestedOneWithoutCartInput = exports.OrderCreateNestedManyWithoutOrderByInput = exports.OrderCreateManyInput = exports.OrderCreateManyOrderByInput = exports.OrderCreateManyOrderByInputEnvelope = exports.OrderCount = exports.OrderCountOrderByAggregateInput = exports.OrderCountAggregate = exports.OrderCountAggregateInput = exports.OrderAvgOrderByAggregateInput = exports.OrderAvgAggregate = exports.OrderAvgAggregateInput = exports.OrderAggregateArgs = exports.FindUniqueOrderArgs = exports.FindUniqueOrderOrThrowArgs = exports.FindManyOrderArgs = exports.FindFirstOrderArgs = exports.FindFirstOrderOrThrowArgs = exports.DeleteOneOrderArgs = exports.DeleteManyOrderArgs = exports.CreateOneOrderArgs = exports.CreateManyOrderArgs = exports.AggregateOrder = exports.UpsertOneItemArgs = exports.UpdateOneItemArgs = exports.UpdateManyItemArgs = exports.Item = exports.ItemWhereInput = exports.ItemWhereUniqueInput = exports.ItemUpsertWithoutCartInput = exports.ItemUpdateInput = exports.ItemUpdateWithoutCartInput = exports.ItemUpdateToOneWithWhereWithoutCartInput = exports.ItemUpdateOneWithoutCartNestedInput = exports.ItemUpdateManyMutationInput = exports.ItemUncheckedUpdateInput = exports.ItemUncheckedUpdateWithoutCartInput = exports.ItemUncheckedUpdateManyInput = exports.ItemUncheckedCreateInput = exports.ItemUncheckedCreateWithoutCartInput = exports.ItemSumOrderByAggregateInput = exports.ItemSumAggregate = exports.ItemSumAggregateInput = exports.ItemScalarWhereWithAggregatesInput = exports.ItemOrderByWithRelationInput = exports.ItemOrderByWithAggregationInput = exports.ItemNullableRelationFilter = exports.ItemMinOrderByAggregateInput = exports.ItemMinAggregate = void 0;
+exports.OrderUpdateOneRequiredWithoutShippingNestedInput = exports.OrderUpdateOneRequiredWithoutCartNestedInput = exports.OrderUpdateManyWithoutOrderByNestedInput = exports.OrderUpdateManyWithWhereWithoutOrderByInput = exports.OrderUpdateManyMutationInput = exports.OrderUncheckedUpdateInput = exports.OrderUncheckedUpdateWithoutShippingInput = exports.OrderUncheckedUpdateWithoutOrderByInput = exports.OrderUncheckedUpdateWithoutInvoiceInput = exports.OrderUncheckedUpdateWithoutCartInput = exports.OrderUncheckedUpdateOneWithoutInvoiceNestedInput = exports.OrderUncheckedUpdateManyInput = exports.OrderUncheckedUpdateManyWithoutOrderByInput = exports.OrderUncheckedUpdateManyWithoutOrderByNestedInput = exports.OrderUncheckedCreateInput = exports.OrderUncheckedCreateWithoutShippingInput = exports.OrderUncheckedCreateWithoutOrderByInput = exports.OrderUncheckedCreateWithoutInvoiceInput = exports.OrderUncheckedCreateWithoutCartInput = exports.OrderUncheckedCreateNestedOneWithoutInvoiceInput = exports.OrderUncheckedCreateNestedManyWithoutOrderByInput = exports.OrderSumOrderByAggregateInput = exports.OrderSumAggregate = exports.OrderSumAggregateInput = exports.OrderScalarWhereInput = exports.OrderScalarWhereWithAggregatesInput = exports.OrderRelationFilter = exports.OrderOrderByWithRelationInput = exports.OrderOrderByWithAggregationInput = exports.OrderOrderByRelationAggregateInput = exports.OrderNullableRelationFilter = exports.OrderMinOrderByAggregateInput = exports.OrderMinAggregate = exports.OrderMinAggregateInput = exports.OrderMaxOrderByAggregateInput = exports.OrderMaxAggregate = exports.OrderMaxAggregateInput = exports.OrderListRelationFilter = exports.OrderGroupBy = exports.OrderGroupByArgs = exports.OrderCreateInput = exports.OrderCreateWithoutShippingInput = exports.OrderCreateWithoutOrderByInput = exports.OrderCreateWithoutInvoiceInput = exports.OrderCreateWithoutCartInput = exports.OrderCreateOrConnectWithoutShippingInput = exports.OrderCreateOrConnectWithoutOrderByInput = exports.OrderCreateOrConnectWithoutInvoiceInput = exports.OrderCreateOrConnectWithoutCartInput = exports.OrderCreateNestedOneWithoutShippingInput = void 0;
+exports.PointTransactionMaxOrderByAggregateInput = exports.PointTransactionMaxAggregate = exports.PointTransactionMaxAggregateInput = exports.PointTransactionListRelationFilter = exports.PointTransactionGroupBy = exports.PointTransactionGroupByArgs = exports.PointTransactionCreateInput = exports.PointTransactionCreateWithoutUserInput = exports.PointTransactionCreateOrConnectWithoutUserInput = exports.PointTransactionCreateNestedManyWithoutUserInput = exports.PointTransactionCreateManyInput = exports.PointTransactionCreateManyUserInput = exports.PointTransactionCreateManyUserInputEnvelope = exports.PointTransactionCountOrderByAggregateInput = exports.PointTransactionCountAggregate = exports.PointTransactionCountAggregateInput = exports.PointTransactionAvgOrderByAggregateInput = exports.PointTransactionAvgAggregate = exports.PointTransactionAvgAggregateInput = exports.PointTransactionAggregateArgs = exports.FindUniquePointTransactionArgs = exports.FindUniquePointTransactionOrThrowArgs = exports.FindManyPointTransactionArgs = exports.FindFirstPointTransactionArgs = exports.FindFirstPointTransactionOrThrowArgs = exports.DeleteOnePointTransactionArgs = exports.DeleteManyPointTransactionArgs = exports.CreateOnePointTransactionArgs = exports.CreateManyPointTransactionArgs = exports.AggregatePointTransaction = exports.UpsertOneOrderArgs = exports.UpdateOneOrderArgs = exports.UpdateManyOrderArgs = exports.Order = exports.OrderWhereInput = exports.OrderWhereUniqueInput = exports.OrderUpsertWithoutShippingInput = exports.OrderUpsertWithoutInvoiceInput = exports.OrderUpsertWithoutCartInput = exports.OrderUpsertWithWhereUniqueWithoutOrderByInput = exports.OrderUpdateInput = exports.OrderUpdateWithoutShippingInput = exports.OrderUpdateWithoutOrderByInput = exports.OrderUpdateWithoutInvoiceInput = exports.OrderUpdateWithoutCartInput = exports.OrderUpdateWithWhereUniqueWithoutOrderByInput = exports.OrderUpdateToOneWithWhereWithoutShippingInput = exports.OrderUpdateToOneWithWhereWithoutInvoiceInput = exports.OrderUpdateToOneWithWhereWithoutCartInput = exports.OrderUpdateOneWithoutInvoiceNestedInput = void 0;
+exports.EnumFileTypeWithAggregatesFilter = exports.EnumFileTypeFilter = exports.EnumFileTypeFieldUpdateOperationsInput = exports.EnumFaqTypeWithAggregatesFilter = exports.EnumFaqTypeFilter = exports.EnumFaqTypeFieldUpdateOperationsInput = exports.EnumAccountCategoryWithAggregatesFilter = exports.EnumAccountCategoryFilter = exports.EnumAccountCategoryFieldUpdateOperationsInput = exports.DateTimeWithAggregatesFilter = exports.DateTimeNullableWithAggregatesFilter = exports.DateTimeNullableFilter = exports.DateTimeFilter = exports.DateTimeFieldUpdateOperationsInput = exports.BoolWithAggregatesFilter = exports.BoolFilter = exports.BoolFieldUpdateOperationsInput = exports.AffectedRows = exports.UpsertOnePointTransactionArgs = exports.UpdateOnePointTransactionArgs = exports.UpdateManyPointTransactionArgs = exports.PointTransaction = exports.PointTransactionWhereInput = exports.PointTransactionWhereUniqueInput = exports.PointTransactionUpsertWithWhereUniqueWithoutUserInput = exports.PointTransactionUpdateInput = exports.PointTransactionUpdateWithoutUserInput = exports.PointTransactionUpdateWithWhereUniqueWithoutUserInput = exports.PointTransactionUpdateManyWithoutUserNestedInput = exports.PointTransactionUpdateManyWithWhereWithoutUserInput = exports.PointTransactionUpdateManyMutationInput = exports.PointTransactionUncheckedUpdateInput = exports.PointTransactionUncheckedUpdateWithoutUserInput = exports.PointTransactionUncheckedUpdateManyInput = exports.PointTransactionUncheckedUpdateManyWithoutUserInput = exports.PointTransactionUncheckedUpdateManyWithoutUserNestedInput = exports.PointTransactionUncheckedCreateInput = exports.PointTransactionUncheckedCreateWithoutUserInput = exports.PointTransactionUncheckedCreateNestedManyWithoutUserInput = exports.PointTransactionSumOrderByAggregateInput = exports.PointTransactionSumAggregate = exports.PointTransactionSumAggregateInput = exports.PointTransactionScalarWhereInput = exports.PointTransactionScalarWhereWithAggregatesInput = exports.PointTransactionOrderByWithRelationInput = exports.PointTransactionOrderByWithAggregationInput = exports.PointTransactionOrderByRelationAggregateInput = exports.PointTransactionMinOrderByAggregateInput = exports.PointTransactionMinAggregate = exports.PointTransactionMinAggregateInput = void 0;
+exports.NestedDateTimeNullableFilter = exports.NestedDateTimeFilter = exports.NestedBoolWithAggregatesFilter = exports.NestedBoolFilter = exports.IntWithAggregatesFilter = exports.IntNullableWithAggregatesFilter = exports.IntNullableFilter = exports.IntFilter = exports.IntFieldUpdateOperationsInput = exports.FloatWithAggregatesFilter = exports.FloatNullableWithAggregatesFilter = exports.FloatNullableFilter = exports.FloatFilter = exports.FloatFieldUpdateOperationsInput = exports.EnumUserTypeWithAggregatesFilter = exports.EnumUserTypeFilter = exports.EnumUserTypeFieldUpdateOperationsInput = exports.EnumUserStatusWithAggregatesFilter = exports.EnumUserStatusFilter = exports.EnumUserStatusFieldUpdateOperationsInput = exports.EnumUserRoleWithAggregatesFilter = exports.EnumUserRoleFilter = exports.EnumUserRoleFieldUpdateOperationsInput = exports.EnumUserNotificationCategoryWithAggregatesFilter = exports.EnumUserNotificationCategoryFilter = exports.EnumUserNotificationCategoryFieldUpdateOperationsInput = exports.EnumTransactionTypeWithAggregatesFilter = exports.EnumTransactionTypeFilter = exports.EnumTransactionTypeFieldUpdateOperationsInput = exports.EnumTransactionStatusWithAggregatesFilter = exports.EnumTransactionStatusFilter = exports.EnumTransactionStatusFieldUpdateOperationsInput = exports.EnumTransactionCategoryWithAggregatesFilter = exports.EnumTransactionCategoryFilter = exports.EnumTransactionCategoryFieldUpdateOperationsInput = exports.EnumThemeWithAggregatesFilter = exports.EnumThemeFilter = exports.EnumThemeFieldUpdateOperationsInput = exports.EnumShippingStatusWithAggregatesFilter = exports.EnumShippingStatusFilter = exports.EnumShippingStatusFieldUpdateOperationsInput = exports.EnumProjectCategoryWithAggregatesFilter = exports.EnumProjectCategoryFilter = exports.EnumProjectCategoryFieldUpdateOperationsInput = exports.EnumPointTypeWithAggregatesFilter = exports.EnumPointTypeFilter = exports.EnumPointTypeFieldUpdateOperationsInput = exports.EnumInstallmentStatusWithAggregatesFilter = exports.EnumInstallmentStatusFilter = exports.EnumInstallmentStatusFieldUpdateOperationsInput = void 0;
+exports.StringFieldUpdateOperationsInput = exports.SortOrderInput = exports.NullableStringFieldUpdateOperationsInput = exports.NullableIntFieldUpdateOperationsInput = exports.NullableFloatFieldUpdateOperationsInput = exports.NullableDateTimeFieldUpdateOperationsInput = exports.NestedStringWithAggregatesFilter = exports.NestedStringNullableWithAggregatesFilter = exports.NestedStringNullableFilter = exports.NestedStringFilter = exports.NestedIntWithAggregatesFilter = exports.NestedIntNullableWithAggregatesFilter = exports.NestedIntNullableFilter = exports.NestedIntFilter = exports.NestedFloatWithAggregatesFilter = exports.NestedFloatNullableWithAggregatesFilter = exports.NestedFloatNullableFilter = exports.NestedFloatFilter = exports.NestedEnumUserTypeWithAggregatesFilter = exports.NestedEnumUserTypeFilter = exports.NestedEnumUserStatusWithAggregatesFilter = exports.NestedEnumUserStatusFilter = exports.NestedEnumUserRoleWithAggregatesFilter = exports.NestedEnumUserRoleFilter = exports.NestedEnumUserNotificationCategoryWithAggregatesFilter = exports.NestedEnumUserNotificationCategoryFilter = exports.NestedEnumTransactionTypeWithAggregatesFilter = exports.NestedEnumTransactionTypeFilter = exports.NestedEnumTransactionStatusWithAggregatesFilter = exports.NestedEnumTransactionStatusFilter = exports.NestedEnumTransactionCategoryWithAggregatesFilter = exports.NestedEnumTransactionCategoryFilter = exports.NestedEnumThemeWithAggregatesFilter = exports.NestedEnumThemeFilter = exports.NestedEnumShippingStatusWithAggregatesFilter = exports.NestedEnumShippingStatusFilter = exports.NestedEnumProjectCategoryWithAggregatesFilter = exports.NestedEnumProjectCategoryFilter = exports.NestedEnumPointTypeWithAggregatesFilter = exports.NestedEnumPointTypeFilter = exports.NestedEnumInstallmentStatusWithAggregatesFilter = exports.NestedEnumInstallmentStatusFilter = exports.NestedEnumFileTypeWithAggregatesFilter = exports.NestedEnumFileTypeFilter = exports.NestedEnumFaqTypeWithAggregatesFilter = exports.NestedEnumFaqTypeFilter = exports.NestedEnumAccountCategoryWithAggregatesFilter = exports.NestedEnumAccountCategoryFilter = exports.NestedDateTimeWithAggregatesFilter = exports.NestedDateTimeNullableWithAggregatesFilter = void 0;
+exports.ProgramNullableRelationFilter = exports.ProgramMinOrderByAggregateInput = exports.ProgramMinAggregate = exports.ProgramMinAggregateInput = exports.ProgramMaxOrderByAggregateInput = exports.ProgramMaxAggregate = exports.ProgramMaxAggregateInput = exports.ProgramListRelationFilter = exports.ProgramGroupBy = exports.ProgramGroupByArgs = exports.ProgramCreateInput = exports.ProgramCreateWithoutParticipantInput = exports.ProgramCreateWithoutImagesInput = exports.ProgramCreateWithoutCreatedByInput = exports.ProgramCreateWithoutCategoryInput = exports.ProgramCreateOrConnectWithoutParticipantInput = exports.ProgramCreateOrConnectWithoutImagesInput = exports.ProgramCreateOrConnectWithoutCreatedByInput = exports.ProgramCreateOrConnectWithoutCategoryInput = exports.ProgramCreateNestedOneWithoutImagesInput = exports.ProgramCreateNestedManyWithoutParticipantInput = exports.ProgramCreateNestedManyWithoutCreatedByInput = exports.ProgramCreateNestedManyWithoutCategoryInput = exports.ProgramCreateManyInput = exports.ProgramCreateManyCreatedByInput = exports.ProgramCreateManyCreatedByInputEnvelope = exports.ProgramCreateManyCategoryInput = exports.ProgramCreateManyCategoryInputEnvelope = exports.ProgramCount = exports.ProgramCountOrderByAggregateInput = exports.ProgramCountAggregate = exports.ProgramCountAggregateInput = exports.ProgramAvgOrderByAggregateInput = exports.ProgramAvgAggregate = exports.ProgramAvgAggregateInput = exports.ProgramAggregateArgs = exports.FindUniqueProgramArgs = exports.FindUniqueProgramOrThrowArgs = exports.FindManyProgramArgs = exports.FindFirstProgramArgs = exports.FindFirstProgramOrThrowArgs = exports.DeleteOneProgramArgs = exports.DeleteManyProgramArgs = exports.CreateOneProgramArgs = exports.CreateManyProgramArgs = exports.AggregateProgram = exports.StringWithAggregatesFilter = exports.StringNullableWithAggregatesFilter = exports.StringNullableFilter = exports.StringFilter = void 0;
+exports.ProgramWhereUniqueInput = exports.ProgramUpsertWithoutImagesInput = exports.ProgramUpsertWithWhereUniqueWithoutParticipantInput = exports.ProgramUpsertWithWhereUniqueWithoutCreatedByInput = exports.ProgramUpsertWithWhereUniqueWithoutCategoryInput = exports.ProgramUpdateInput = exports.ProgramUpdateWithoutParticipantInput = exports.ProgramUpdateWithoutImagesInput = exports.ProgramUpdateWithoutCreatedByInput = exports.ProgramUpdateWithoutCategoryInput = exports.ProgramUpdateWithWhereUniqueWithoutParticipantInput = exports.ProgramUpdateWithWhereUniqueWithoutCreatedByInput = exports.ProgramUpdateWithWhereUniqueWithoutCategoryInput = exports.ProgramUpdateToOneWithWhereWithoutImagesInput = exports.ProgramUpdateOneWithoutImagesNestedInput = exports.ProgramUpdateManyWithoutParticipantNestedInput = exports.ProgramUpdateManyWithoutCreatedByNestedInput = exports.ProgramUpdateManyWithoutCategoryNestedInput = exports.ProgramUpdateManyWithWhereWithoutParticipantInput = exports.ProgramUpdateManyWithWhereWithoutCreatedByInput = exports.ProgramUpdateManyWithWhereWithoutCategoryInput = exports.ProgramUpdateManyMutationInput = exports.ProgramUncheckedUpdateInput = exports.ProgramUncheckedUpdateWithoutParticipantInput = exports.ProgramUncheckedUpdateWithoutImagesInput = exports.ProgramUncheckedUpdateWithoutCreatedByInput = exports.ProgramUncheckedUpdateWithoutCategoryInput = exports.ProgramUncheckedUpdateManyInput = exports.ProgramUncheckedUpdateManyWithoutParticipantInput = exports.ProgramUncheckedUpdateManyWithoutParticipantNestedInput = exports.ProgramUncheckedUpdateManyWithoutCreatedByInput = exports.ProgramUncheckedUpdateManyWithoutCreatedByNestedInput = exports.ProgramUncheckedUpdateManyWithoutCategoryInput = exports.ProgramUncheckedUpdateManyWithoutCategoryNestedInput = exports.ProgramUncheckedCreateInput = exports.ProgramUncheckedCreateWithoutParticipantInput = exports.ProgramUncheckedCreateWithoutImagesInput = exports.ProgramUncheckedCreateWithoutCreatedByInput = exports.ProgramUncheckedCreateWithoutCategoryInput = exports.ProgramUncheckedCreateNestedManyWithoutParticipantInput = exports.ProgramUncheckedCreateNestedManyWithoutCreatedByInput = exports.ProgramUncheckedCreateNestedManyWithoutCategoryInput = exports.ProgramSumOrderByAggregateInput = exports.ProgramSumAggregate = exports.ProgramSumAggregateInput = exports.ProgramScalarWhereInput = exports.ProgramScalarWhereWithAggregatesInput = exports.ProgramOrderByWithRelationInput = exports.ProgramOrderByWithAggregationInput = exports.ProgramOrderByRelationAggregateInput = void 0;
+exports.ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput = exports.ProgramCategoryUpdateManyMutationInput = exports.ProgramCategoryUncheckedUpdateInput = exports.ProgramCategoryUncheckedUpdateWithoutProgramsInput = exports.ProgramCategoryUncheckedUpdateManyInput = exports.ProgramCategoryUncheckedCreateInput = exports.ProgramCategoryUncheckedCreateWithoutProgramsInput = exports.ProgramCategorySumOrderByAggregateInput = exports.ProgramCategorySumAggregate = exports.ProgramCategorySumAggregateInput = exports.ProgramCategoryScalarWhereWithAggregatesInput = exports.ProgramCategoryRelationFilter = exports.ProgramCategoryOrderByWithRelationInput = exports.ProgramCategoryOrderByWithAggregationInput = exports.ProgramCategoryMinOrderByAggregateInput = exports.ProgramCategoryMinAggregate = exports.ProgramCategoryMinAggregateInput = exports.ProgramCategoryMaxOrderByAggregateInput = exports.ProgramCategoryMaxAggregate = exports.ProgramCategoryMaxAggregateInput = exports.ProgramCategoryGroupBy = exports.ProgramCategoryGroupByArgs = exports.ProgramCategoryCreateInput = exports.ProgramCategoryCreateWithoutProgramsInput = exports.ProgramCategoryCreateOrConnectWithoutProgramsInput = exports.ProgramCategoryCreateNestedOneWithoutProgramsInput = exports.ProgramCategoryCreateManyInput = exports.ProgramCategoryCount = exports.ProgramCategoryCountOrderByAggregateInput = exports.ProgramCategoryCountAggregate = exports.ProgramCategoryCountAggregateInput = exports.ProgramCategoryAvgOrderByAggregateInput = exports.ProgramCategoryAvgAggregate = exports.ProgramCategoryAvgAggregateInput = exports.ProgramCategoryAggregateArgs = exports.FindUniqueProgramCategoryArgs = exports.FindUniqueProgramCategoryOrThrowArgs = exports.FindManyProgramCategoryArgs = exports.FindFirstProgramCategoryArgs = exports.FindFirstProgramCategoryOrThrowArgs = exports.DeleteOneProgramCategoryArgs = exports.DeleteManyProgramCategoryArgs = exports.CreateOneProgramCategoryArgs = exports.CreateManyProgramCategoryArgs = exports.AggregateProgramCategory = exports.UpsertOneProgramArgs = exports.UpdateOneProgramArgs = exports.UpdateManyProgramArgs = exports.Program = exports.ProgramWhereInput = void 0;
+exports.ProjectOrderByWithRelationInput = exports.ProjectOrderByWithAggregationInput = exports.ProjectNullableRelationFilter = exports.ProjectMinOrderByAggregateInput = exports.ProjectMinAggregate = exports.ProjectMinAggregateInput = exports.ProjectMaxOrderByAggregateInput = exports.ProjectMaxAggregate = exports.ProjectMaxAggregateInput = exports.ProjectGroupBy = exports.ProjectGroupByArgs = exports.ProjectCreateInput = exports.ProjectCreateWithoutOrderCartInput = exports.ProjectCreateWithoutImagesInput = exports.ProjectCreateWithoutAccountInput = exports.ProjectCreateOrConnectWithoutOrderCartInput = exports.ProjectCreateOrConnectWithoutImagesInput = exports.ProjectCreateOrConnectWithoutAccountInput = exports.ProjectCreateNestedOneWithoutOrderCartInput = exports.ProjectCreateNestedOneWithoutImagesInput = exports.ProjectCreateNestedOneWithoutAccountInput = exports.ProjectCreateManyInput = exports.ProjectCount = exports.ProjectCountOrderByAggregateInput = exports.ProjectCountAggregate = exports.ProjectCountAggregateInput = exports.ProjectAvgOrderByAggregateInput = exports.ProjectAvgAggregate = exports.ProjectAvgAggregateInput = exports.ProjectAggregateArgs = exports.FindUniqueProjectArgs = exports.FindUniqueProjectOrThrowArgs = exports.FindManyProjectArgs = exports.FindFirstProjectArgs = exports.FindFirstProjectOrThrowArgs = exports.DeleteOneProjectArgs = exports.DeleteManyProjectArgs = exports.CreateOneProjectArgs = exports.CreateManyProjectArgs = exports.AggregateProject = exports.UpsertOneProgramCategoryArgs = exports.UpdateOneProgramCategoryArgs = exports.UpdateManyProgramCategoryArgs = exports.ProgramCategory = exports.ProgramCategoryWhereInput = exports.ProgramCategoryWhereUniqueInput = exports.ProgramCategoryUpsertWithoutProgramsInput = exports.ProgramCategoryUpdateInput = exports.ProgramCategoryUpdateWithoutProgramsInput = exports.ProgramCategoryUpdateToOneWithWhereWithoutProgramsInput = void 0;
+exports.ProvinceCountAggregateInput = exports.ProvinceAvgOrderByAggregateInput = exports.ProvinceAvgAggregate = exports.ProvinceAvgAggregateInput = exports.ProvinceAggregateArgs = exports.FindUniqueProvinceArgs = exports.FindUniqueProvinceOrThrowArgs = exports.FindManyProvinceArgs = exports.FindFirstProvinceArgs = exports.FindFirstProvinceOrThrowArgs = exports.DeleteOneProvinceArgs = exports.DeleteManyProvinceArgs = exports.CreateOneProvinceArgs = exports.CreateManyProvinceArgs = exports.AggregateProvince = exports.UpsertOneProjectArgs = exports.UpdateOneProjectArgs = exports.UpdateManyProjectArgs = exports.Project = exports.ProjectWhereInput = exports.ProjectWhereUniqueInput = exports.ProjectUpsertWithoutOrderCartInput = exports.ProjectUpsertWithoutImagesInput = exports.ProjectUpsertWithoutAccountInput = exports.ProjectUpdateInput = exports.ProjectUpdateWithoutOrderCartInput = exports.ProjectUpdateWithoutImagesInput = exports.ProjectUpdateWithoutAccountInput = exports.ProjectUpdateToOneWithWhereWithoutOrderCartInput = exports.ProjectUpdateToOneWithWhereWithoutImagesInput = exports.ProjectUpdateToOneWithWhereWithoutAccountInput = exports.ProjectUpdateOneWithoutOrderCartNestedInput = exports.ProjectUpdateOneWithoutImagesNestedInput = exports.ProjectUpdateOneWithoutAccountNestedInput = exports.ProjectUpdateManyMutationInput = exports.ProjectUncheckedUpdateInput = exports.ProjectUncheckedUpdateWithoutOrderCartInput = exports.ProjectUncheckedUpdateWithoutImagesInput = exports.ProjectUncheckedUpdateWithoutAccountInput = exports.ProjectUncheckedUpdateOneWithoutAccountNestedInput = exports.ProjectUncheckedUpdateManyInput = exports.ProjectUncheckedCreateInput = exports.ProjectUncheckedCreateWithoutOrderCartInput = exports.ProjectUncheckedCreateWithoutImagesInput = exports.ProjectUncheckedCreateWithoutAccountInput = exports.ProjectUncheckedCreateNestedOneWithoutAccountInput = exports.ProjectSumOrderByAggregateInput = exports.ProjectSumAggregate = exports.ProjectSumAggregateInput = exports.ProjectScalarWhereWithAggregatesInput = void 0;
+exports.FindUniqueRewardArgs = exports.FindUniqueRewardOrThrowArgs = exports.FindManyRewardArgs = exports.FindFirstRewardArgs = exports.FindFirstRewardOrThrowArgs = exports.DeleteOneRewardArgs = exports.DeleteManyRewardArgs = exports.CreateOneRewardArgs = exports.CreateManyRewardArgs = exports.AggregateReward = exports.UpsertOneProvinceArgs = exports.UpdateOneProvinceArgs = exports.UpdateManyProvinceArgs = exports.Province = exports.ProvinceWhereInput = exports.ProvinceWhereUniqueInput = exports.ProvinceUpsertWithoutCitiesInput = exports.ProvinceUpdateInput = exports.ProvinceUpdateWithoutCitiesInput = exports.ProvinceUpdateToOneWithWhereWithoutCitiesInput = exports.ProvinceUpdateOneRequiredWithoutCitiesNestedInput = exports.ProvinceUpdateManyMutationInput = exports.ProvinceUncheckedUpdateInput = exports.ProvinceUncheckedUpdateWithoutCitiesInput = exports.ProvinceUncheckedUpdateManyInput = exports.ProvinceUncheckedCreateInput = exports.ProvinceUncheckedCreateWithoutCitiesInput = exports.ProvinceSumOrderByAggregateInput = exports.ProvinceSumAggregate = exports.ProvinceSumAggregateInput = exports.ProvinceScalarWhereWithAggregatesInput = exports.ProvinceRelationFilter = exports.ProvinceOrderByWithRelationInput = exports.ProvinceOrderByWithAggregationInput = exports.ProvinceMinOrderByAggregateInput = exports.ProvinceMinAggregate = exports.ProvinceMinAggregateInput = exports.ProvinceMaxOrderByAggregateInput = exports.ProvinceMaxAggregate = exports.ProvinceMaxAggregateInput = exports.ProvinceGroupBy = exports.ProvinceGroupByArgs = exports.ProvinceCreateInput = exports.ProvinceCreateWithoutCitiesInput = exports.ProvinceCreateOrConnectWithoutCitiesInput = exports.ProvinceCreateNestedOneWithoutCitiesInput = exports.ProvinceCreateManyInput = exports.ProvinceCount = exports.ProvinceCountOrderByAggregateInput = exports.ProvinceCountAggregate = void 0;
+exports.RewardWhereUniqueInput = exports.RewardUpsertWithoutRewardClaimInput = exports.RewardUpsertWithoutImagesInput = exports.RewardUpdateInput = exports.RewardUpdateWithoutRewardClaimInput = exports.RewardUpdateWithoutImagesInput = exports.RewardUpdateToOneWithWhereWithoutRewardClaimInput = exports.RewardUpdateToOneWithWhereWithoutImagesInput = exports.RewardUpdateOneWithoutImagesNestedInput = exports.RewardUpdateOneRequiredWithoutRewardClaimNestedInput = exports.RewardUpdateManyMutationInput = exports.RewardUncheckedUpdateInput = exports.RewardUncheckedUpdateWithoutRewardClaimInput = exports.RewardUncheckedUpdateWithoutImagesInput = exports.RewardUncheckedUpdateManyInput = exports.RewardUncheckedCreateInput = exports.RewardUncheckedCreateWithoutRewardClaimInput = exports.RewardUncheckedCreateWithoutImagesInput = exports.RewardSumOrderByAggregateInput = exports.RewardSumAggregate = exports.RewardSumAggregateInput = exports.RewardScalarWhereWithAggregatesInput = exports.RewardRelationFilter = exports.RewardOrderByWithRelationInput = exports.RewardOrderByWithAggregationInput = exports.RewardNullableRelationFilter = exports.RewardMinOrderByAggregateInput = exports.RewardMinAggregate = exports.RewardMinAggregateInput = exports.RewardMaxOrderByAggregateInput = exports.RewardMaxAggregate = exports.RewardMaxAggregateInput = exports.RewardGroupBy = exports.RewardGroupByArgs = exports.RewardCreateInput = exports.RewardCreateWithoutRewardClaimInput = exports.RewardCreateWithoutImagesInput = exports.RewardCreateOrConnectWithoutRewardClaimInput = exports.RewardCreateOrConnectWithoutImagesInput = exports.RewardCreateNestedOneWithoutRewardClaimInput = exports.RewardCreateNestedOneWithoutImagesInput = exports.RewardCreateManyInput = exports.RewardCount = exports.RewardCountOrderByAggregateInput = exports.RewardCountAggregate = exports.RewardCountAggregateInput = exports.RewardAvgOrderByAggregateInput = exports.RewardAvgAggregate = exports.RewardAvgAggregateInput = exports.RewardAggregateArgs = void 0;
+exports.RewardClaimSumAggregate = exports.RewardClaimSumAggregateInput = exports.RewardClaimScalarWhereInput = exports.RewardClaimScalarWhereWithAggregatesInput = exports.RewardClaimOrderByWithRelationInput = exports.RewardClaimOrderByWithAggregationInput = exports.RewardClaimOrderByRelationAggregateInput = exports.RewardClaimMinOrderByAggregateInput = exports.RewardClaimMinAggregate = exports.RewardClaimMinAggregateInput = exports.RewardClaimMaxOrderByAggregateInput = exports.RewardClaimMaxAggregate = exports.RewardClaimMaxAggregateInput = exports.RewardClaimListRelationFilter = exports.RewardClaimGroupBy = exports.RewardClaimGroupByArgs = exports.RewardClaimCreateInput = exports.RewardClaimCreateWithoutUserInput = exports.RewardClaimCreateWithoutRewardInput = exports.RewardClaimCreateOrConnectWithoutUserInput = exports.RewardClaimCreateOrConnectWithoutRewardInput = exports.RewardClaimCreateNestedManyWithoutUserInput = exports.RewardClaimCreateNestedManyWithoutRewardInput = exports.RewardClaimCreateManyInput = exports.RewardClaimCreateManyUserInput = exports.RewardClaimCreateManyUserInputEnvelope = exports.RewardClaimCreateManyRewardInput = exports.RewardClaimCreateManyRewardInputEnvelope = exports.RewardClaimCountOrderByAggregateInput = exports.RewardClaimCountAggregate = exports.RewardClaimCountAggregateInput = exports.RewardClaimAvgOrderByAggregateInput = exports.RewardClaimAvgAggregate = exports.RewardClaimAvgAggregateInput = exports.RewardClaimAggregateArgs = exports.FindUniqueRewardClaimArgs = exports.FindUniqueRewardClaimOrThrowArgs = exports.FindManyRewardClaimArgs = exports.FindFirstRewardClaimArgs = exports.FindFirstRewardClaimOrThrowArgs = exports.DeleteOneRewardClaimArgs = exports.DeleteManyRewardClaimArgs = exports.CreateOneRewardClaimArgs = exports.CreateManyRewardClaimArgs = exports.AggregateRewardClaim = exports.UpsertOneRewardArgs = exports.UpdateOneRewardArgs = exports.UpdateManyRewardArgs = exports.Reward = exports.RewardWhereInput = void 0;
+exports.SchoolCount = exports.SchoolCountOrderByAggregateInput = exports.SchoolCountAggregate = exports.SchoolCountAggregateInput = exports.SchoolAvgOrderByAggregateInput = exports.SchoolAvgAggregate = exports.SchoolAvgAggregateInput = exports.SchoolAggregateArgs = exports.FindUniqueSchoolArgs = exports.FindUniqueSchoolOrThrowArgs = exports.FindManySchoolArgs = exports.FindFirstSchoolArgs = exports.FindFirstSchoolOrThrowArgs = exports.DeleteOneSchoolArgs = exports.DeleteManySchoolArgs = exports.CreateOneSchoolArgs = exports.CreateManySchoolArgs = exports.AggregateSchool = exports.UpsertOneRewardClaimArgs = exports.UpdateOneRewardClaimArgs = exports.UpdateManyRewardClaimArgs = exports.RewardClaim = exports.RewardClaimWhereInput = exports.RewardClaimWhereUniqueInput = exports.RewardClaimUpsertWithWhereUniqueWithoutUserInput = exports.RewardClaimUpsertWithWhereUniqueWithoutRewardInput = exports.RewardClaimUpdateInput = exports.RewardClaimUpdateWithoutUserInput = exports.RewardClaimUpdateWithoutRewardInput = exports.RewardClaimUpdateWithWhereUniqueWithoutUserInput = exports.RewardClaimUpdateWithWhereUniqueWithoutRewardInput = exports.RewardClaimUpdateManyWithoutUserNestedInput = exports.RewardClaimUpdateManyWithoutRewardNestedInput = exports.RewardClaimUpdateManyWithWhereWithoutUserInput = exports.RewardClaimUpdateManyWithWhereWithoutRewardInput = exports.RewardClaimUpdateManyMutationInput = exports.RewardClaimUncheckedUpdateInput = exports.RewardClaimUncheckedUpdateWithoutUserInput = exports.RewardClaimUncheckedUpdateWithoutRewardInput = exports.RewardClaimUncheckedUpdateManyInput = exports.RewardClaimUncheckedUpdateManyWithoutUserInput = exports.RewardClaimUncheckedUpdateManyWithoutUserNestedInput = exports.RewardClaimUncheckedUpdateManyWithoutRewardInput = exports.RewardClaimUncheckedUpdateManyWithoutRewardNestedInput = exports.RewardClaimUncheckedCreateInput = exports.RewardClaimUncheckedCreateWithoutUserInput = exports.RewardClaimUncheckedCreateWithoutRewardInput = exports.RewardClaimUncheckedCreateNestedManyWithoutUserInput = exports.RewardClaimUncheckedCreateNestedManyWithoutRewardInput = exports.RewardClaimSumOrderByAggregateInput = void 0;
+exports.CreateManySessionArgs = exports.AggregateSession = exports.UpsertOneSchoolArgs = exports.UpdateOneSchoolArgs = exports.UpdateManySchoolArgs = exports.School = exports.SchoolWhereInput = exports.SchoolWhereUniqueInput = exports.SchoolUpsertWithoutStudentsInput = exports.SchoolUpsertWithoutAddressInput = exports.SchoolUpdateInput = exports.SchoolUpdateWithoutStudentsInput = exports.SchoolUpdateWithoutAddressInput = exports.SchoolUpdateToOneWithWhereWithoutStudentsInput = exports.SchoolUpdateToOneWithWhereWithoutAddressInput = exports.SchoolUpdateOneWithoutStudentsNestedInput = exports.SchoolUpdateOneWithoutAddressNestedInput = exports.SchoolUpdateManyMutationInput = exports.SchoolUncheckedUpdateInput = exports.SchoolUncheckedUpdateWithoutStudentsInput = exports.SchoolUncheckedUpdateWithoutAddressInput = exports.SchoolUncheckedUpdateOneWithoutAddressNestedInput = exports.SchoolUncheckedUpdateManyInput = exports.SchoolUncheckedCreateInput = exports.SchoolUncheckedCreateWithoutStudentsInput = exports.SchoolUncheckedCreateWithoutAddressInput = exports.SchoolUncheckedCreateNestedOneWithoutAddressInput = exports.SchoolSumOrderByAggregateInput = exports.SchoolSumAggregate = exports.SchoolSumAggregateInput = exports.SchoolScalarWhereWithAggregatesInput = exports.SchoolOrderByWithRelationInput = exports.SchoolOrderByWithAggregationInput = exports.SchoolNullableRelationFilter = exports.SchoolMinOrderByAggregateInput = exports.SchoolMinAggregate = exports.SchoolMinAggregateInput = exports.SchoolMaxOrderByAggregateInput = exports.SchoolMaxAggregate = exports.SchoolMaxAggregateInput = exports.SchoolGroupBy = exports.SchoolGroupByArgs = exports.SchoolCreateInput = exports.SchoolCreateWithoutStudentsInput = exports.SchoolCreateWithoutAddressInput = exports.SchoolCreateOrConnectWithoutStudentsInput = exports.SchoolCreateOrConnectWithoutAddressInput = exports.SchoolCreateNestedOneWithoutStudentsInput = exports.SchoolCreateNestedOneWithoutAddressInput = exports.SchoolCreateManyInput = void 0;
+exports.SessionUpdateManyWithoutUserNestedInput = exports.SessionUpdateManyWithWhereWithoutUserInput = exports.SessionUpdateManyMutationInput = exports.SessionUncheckedUpdateInput = exports.SessionUncheckedUpdateWithoutUserInput = exports.SessionUncheckedUpdateManyInput = exports.SessionUncheckedUpdateManyWithoutUserInput = exports.SessionUncheckedUpdateManyWithoutUserNestedInput = exports.SessionUncheckedCreateInput = exports.SessionUncheckedCreateWithoutUserInput = exports.SessionUncheckedCreateNestedManyWithoutUserInput = exports.SessionSumOrderByAggregateInput = exports.SessionSumAggregate = exports.SessionSumAggregateInput = exports.SessionScalarWhereInput = exports.SessionScalarWhereWithAggregatesInput = exports.SessionOrderByWithRelationInput = exports.SessionOrderByWithAggregationInput = exports.SessionOrderByRelationAggregateInput = exports.SessionMinOrderByAggregateInput = exports.SessionMinAggregate = exports.SessionMinAggregateInput = exports.SessionMaxOrderByAggregateInput = exports.SessionMaxAggregate = exports.SessionMaxAggregateInput = exports.SessionListRelationFilter = exports.SessionGroupBy = exports.SessionGroupByArgs = exports.SessionCreateInput = exports.SessionCreateWithoutUserInput = exports.SessionCreateOrConnectWithoutUserInput = exports.SessionCreateNestedManyWithoutUserInput = exports.SessionCreateManyInput = exports.SessionCreateManyUserInput = exports.SessionCreateManyUserInputEnvelope = exports.SessionCountOrderByAggregateInput = exports.SessionCountAggregate = exports.SessionCountAggregateInput = exports.SessionAvgOrderByAggregateInput = exports.SessionAvgAggregate = exports.SessionAvgAggregateInput = exports.SessionAggregateArgs = exports.FindUniqueSessionArgs = exports.FindUniqueSessionOrThrowArgs = exports.FindManySessionArgs = exports.FindFirstSessionArgs = exports.FindFirstSessionOrThrowArgs = exports.DeleteOneSessionArgs = exports.DeleteManySessionArgs = exports.CreateOneSessionArgs = void 0;
+exports.ShippingSumOrderByAggregateInput = exports.ShippingSumAggregate = exports.ShippingSumAggregateInput = exports.ShippingScalarWhereWithAggregatesInput = exports.ShippingOrderByWithRelationInput = exports.ShippingOrderByWithAggregationInput = exports.ShippingNullableRelationFilter = exports.ShippingMinOrderByAggregateInput = exports.ShippingMinAggregate = exports.ShippingMinAggregateInput = exports.ShippingMaxOrderByAggregateInput = exports.ShippingMaxAggregate = exports.ShippingMaxAggregateInput = exports.ShippingGroupBy = exports.ShippingGroupByArgs = exports.ShippingCreateInput = exports.ShippingCreateWithoutOrderInput = exports.ShippingCreateWithoutAddressInput = exports.ShippingCreateOrConnectWithoutOrderInput = exports.ShippingCreateOrConnectWithoutAddressInput = exports.ShippingCreateNestedOneWithoutOrderInput = exports.ShippingCreateNestedOneWithoutAddressInput = exports.ShippingCreateManyInput = exports.ShippingCountOrderByAggregateInput = exports.ShippingCountAggregate = exports.ShippingCountAggregateInput = exports.ShippingAvgOrderByAggregateInput = exports.ShippingAvgAggregate = exports.ShippingAvgAggregateInput = exports.ShippingAggregateArgs = exports.FindUniqueShippingArgs = exports.FindUniqueShippingOrThrowArgs = exports.FindManyShippingArgs = exports.FindFirstShippingArgs = exports.FindFirstShippingOrThrowArgs = exports.DeleteOneShippingArgs = exports.DeleteManyShippingArgs = exports.CreateOneShippingArgs = exports.CreateManyShippingArgs = exports.AggregateShipping = exports.UpsertOneSessionArgs = exports.UpdateOneSessionArgs = exports.UpdateManySessionArgs = exports.Session = exports.SessionWhereInput = exports.SessionWhereUniqueInput = exports.SessionUpsertWithWhereUniqueWithoutUserInput = exports.SessionUpdateInput = exports.SessionUpdateWithoutUserInput = exports.SessionUpdateWithWhereUniqueWithoutUserInput = void 0;
+exports.SubdistrictCreateNestedOneWithoutAddressInput = exports.SubdistrictCreateNestedManyWithoutDistrictInput = exports.SubdistrictCreateManyInput = exports.SubdistrictCreateManyDistrictInput = exports.SubdistrictCreateManyDistrictInputEnvelope = exports.SubdistrictCount = exports.SubdistrictCountOrderByAggregateInput = exports.SubdistrictCountAggregate = exports.SubdistrictCountAggregateInput = exports.SubdistrictAvgOrderByAggregateInput = exports.SubdistrictAvgAggregate = exports.SubdistrictAvgAggregateInput = exports.SubdistrictAggregateArgs = exports.FindUniqueSubdistrictArgs = exports.FindUniqueSubdistrictOrThrowArgs = exports.FindManySubdistrictArgs = exports.FindFirstSubdistrictArgs = exports.FindFirstSubdistrictOrThrowArgs = exports.DeleteOneSubdistrictArgs = exports.DeleteManySubdistrictArgs = exports.CreateOneSubdistrictArgs = exports.CreateManySubdistrictArgs = exports.AggregateSubdistrict = exports.UpsertOneShippingArgs = exports.UpdateOneShippingArgs = exports.UpdateManyShippingArgs = exports.Shipping = exports.ShippingWhereInput = exports.ShippingWhereUniqueInput = exports.ShippingUpsertWithoutOrderInput = exports.ShippingUpsertWithoutAddressInput = exports.ShippingUpdateInput = exports.ShippingUpdateWithoutOrderInput = exports.ShippingUpdateWithoutAddressInput = exports.ShippingUpdateToOneWithWhereWithoutOrderInput = exports.ShippingUpdateToOneWithWhereWithoutAddressInput = exports.ShippingUpdateOneWithoutOrderNestedInput = exports.ShippingUpdateOneWithoutAddressNestedInput = exports.ShippingUpdateManyMutationInput = exports.ShippingUncheckedUpdateInput = exports.ShippingUncheckedUpdateWithoutOrderInput = exports.ShippingUncheckedUpdateWithoutAddressInput = exports.ShippingUncheckedUpdateOneWithoutOrderNestedInput = exports.ShippingUncheckedUpdateOneWithoutAddressNestedInput = exports.ShippingUncheckedUpdateManyInput = exports.ShippingUncheckedCreateInput = exports.ShippingUncheckedCreateWithoutOrderInput = exports.ShippingUncheckedCreateWithoutAddressInput = exports.ShippingUncheckedCreateNestedOneWithoutOrderInput = exports.ShippingUncheckedCreateNestedOneWithoutAddressInput = void 0;
+exports.UpsertOneSubdistrictArgs = exports.UpdateOneSubdistrictArgs = exports.UpdateManySubdistrictArgs = exports.Subdistrict = exports.SubdistrictWhereInput = exports.SubdistrictWhereUniqueInput = exports.SubdistrictUpsertWithoutAddressInput = exports.SubdistrictUpsertWithWhereUniqueWithoutDistrictInput = exports.SubdistrictUpdateInput = exports.SubdistrictUpdateWithoutDistrictInput = exports.SubdistrictUpdateWithoutAddressInput = exports.SubdistrictUpdateWithWhereUniqueWithoutDistrictInput = exports.SubdistrictUpdateToOneWithWhereWithoutAddressInput = exports.SubdistrictUpdateOneRequiredWithoutAddressNestedInput = exports.SubdistrictUpdateManyWithoutDistrictNestedInput = exports.SubdistrictUpdateManyWithWhereWithoutDistrictInput = exports.SubdistrictUpdateManyMutationInput = exports.SubdistrictUncheckedUpdateInput = exports.SubdistrictUncheckedUpdateWithoutDistrictInput = exports.SubdistrictUncheckedUpdateWithoutAddressInput = exports.SubdistrictUncheckedUpdateManyInput = exports.SubdistrictUncheckedUpdateManyWithoutDistrictInput = exports.SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput = exports.SubdistrictUncheckedCreateInput = exports.SubdistrictUncheckedCreateWithoutDistrictInput = exports.SubdistrictUncheckedCreateWithoutAddressInput = exports.SubdistrictUncheckedCreateNestedManyWithoutDistrictInput = exports.SubdistrictSumOrderByAggregateInput = exports.SubdistrictSumAggregate = exports.SubdistrictSumAggregateInput = exports.SubdistrictScalarWhereInput = exports.SubdistrictScalarWhereWithAggregatesInput = exports.SubdistrictRelationFilter = exports.SubdistrictOrderByWithRelationInput = exports.SubdistrictOrderByWithAggregationInput = exports.SubdistrictOrderByRelationAggregateInput = exports.SubdistrictMinOrderByAggregateInput = exports.SubdistrictMinAggregate = exports.SubdistrictMinAggregateInput = exports.SubdistrictMaxOrderByAggregateInput = exports.SubdistrictMaxAggregate = exports.SubdistrictMaxAggregateInput = exports.SubdistrictListRelationFilter = exports.SubdistrictGroupBy = exports.SubdistrictGroupByArgs = exports.SubdistrictCreateInput = exports.SubdistrictCreateWithoutDistrictInput = exports.SubdistrictCreateWithoutAddressInput = exports.SubdistrictCreateOrConnectWithoutDistrictInput = exports.SubdistrictCreateOrConnectWithoutAddressInput = void 0;
+exports.TransactionNullableRelationFilter = exports.TransactionMinOrderByAggregateInput = exports.TransactionMinAggregate = exports.TransactionMinAggregateInput = exports.TransactionMaxOrderByAggregateInput = exports.TransactionMaxAggregate = exports.TransactionMaxAggregateInput = exports.TransactionListRelationFilter = exports.TransactionGroupBy = exports.TransactionGroupByArgs = exports.TransactionCreateInput = exports.TransactionCreateWithoutWithdrawalRequestInput = exports.TransactionCreateWithoutToAccountInput = exports.TransactionCreateWithoutInvoiceInput = exports.TransactionCreateWithoutInstallmentInput = exports.TransactionCreateWithoutFromAccountInput = exports.TransactionCreateOrConnectWithoutWithdrawalRequestInput = exports.TransactionCreateOrConnectWithoutToAccountInput = exports.TransactionCreateOrConnectWithoutInvoiceInput = exports.TransactionCreateOrConnectWithoutInstallmentInput = exports.TransactionCreateOrConnectWithoutFromAccountInput = exports.TransactionCreateNestedOneWithoutWithdrawalRequestInput = exports.TransactionCreateNestedOneWithoutInstallmentInput = exports.TransactionCreateNestedManyWithoutToAccountInput = exports.TransactionCreateNestedManyWithoutInvoiceInput = exports.TransactionCreateNestedManyWithoutFromAccountInput = exports.TransactionCreateManyInput = exports.TransactionCreateManyToAccountInput = exports.TransactionCreateManyToAccountInputEnvelope = exports.TransactionCreateManyInvoiceInput = exports.TransactionCreateManyInvoiceInputEnvelope = exports.TransactionCreateManyFromAccountInput = exports.TransactionCreateManyFromAccountInputEnvelope = exports.TransactionCountOrderByAggregateInput = exports.TransactionCountAggregate = exports.TransactionCountAggregateInput = exports.TransactionAvgOrderByAggregateInput = exports.TransactionAvgAggregate = exports.TransactionAvgAggregateInput = exports.TransactionAggregateArgs = exports.FindUniqueTransactionArgs = exports.FindUniqueTransactionOrThrowArgs = exports.FindManyTransactionArgs = exports.FindFirstTransactionArgs = exports.FindFirstTransactionOrThrowArgs = exports.DeleteOneTransactionArgs = exports.DeleteManyTransactionArgs = exports.CreateOneTransactionArgs = exports.CreateManyTransactionArgs = exports.AggregateTransaction = void 0;
+exports.TransactionUpdateWithoutInstallmentInput = exports.TransactionUpdateWithoutFromAccountInput = exports.TransactionUpdateWithWhereUniqueWithoutToAccountInput = exports.TransactionUpdateWithWhereUniqueWithoutInvoiceInput = exports.TransactionUpdateWithWhereUniqueWithoutFromAccountInput = exports.TransactionUpdateToOneWithWhereWithoutWithdrawalRequestInput = exports.TransactionUpdateToOneWithWhereWithoutInstallmentInput = exports.TransactionUpdateOneWithoutWithdrawalRequestNestedInput = exports.TransactionUpdateOneWithoutInstallmentNestedInput = exports.TransactionUpdateManyWithoutToAccountNestedInput = exports.TransactionUpdateManyWithoutInvoiceNestedInput = exports.TransactionUpdateManyWithoutFromAccountNestedInput = exports.TransactionUpdateManyWithWhereWithoutToAccountInput = exports.TransactionUpdateManyWithWhereWithoutInvoiceInput = exports.TransactionUpdateManyWithWhereWithoutFromAccountInput = exports.TransactionUpdateManyMutationInput = exports.TransactionUncheckedUpdateInput = exports.TransactionUncheckedUpdateWithoutWithdrawalRequestInput = exports.TransactionUncheckedUpdateWithoutToAccountInput = exports.TransactionUncheckedUpdateWithoutInvoiceInput = exports.TransactionUncheckedUpdateWithoutInstallmentInput = exports.TransactionUncheckedUpdateWithoutFromAccountInput = exports.TransactionUncheckedUpdateOneWithoutWithdrawalRequestNestedInput = exports.TransactionUncheckedUpdateOneWithoutInstallmentNestedInput = exports.TransactionUncheckedUpdateManyInput = exports.TransactionUncheckedUpdateManyWithoutToAccountInput = exports.TransactionUncheckedUpdateManyWithoutToAccountNestedInput = exports.TransactionUncheckedUpdateManyWithoutInvoiceInput = exports.TransactionUncheckedUpdateManyWithoutInvoiceNestedInput = exports.TransactionUncheckedUpdateManyWithoutFromAccountInput = exports.TransactionUncheckedUpdateManyWithoutFromAccountNestedInput = exports.TransactionUncheckedCreateInput = exports.TransactionUncheckedCreateWithoutWithdrawalRequestInput = exports.TransactionUncheckedCreateWithoutToAccountInput = exports.TransactionUncheckedCreateWithoutInvoiceInput = exports.TransactionUncheckedCreateWithoutInstallmentInput = exports.TransactionUncheckedCreateWithoutFromAccountInput = exports.TransactionUncheckedCreateNestedOneWithoutWithdrawalRequestInput = exports.TransactionUncheckedCreateNestedOneWithoutInstallmentInput = exports.TransactionUncheckedCreateNestedManyWithoutToAccountInput = exports.TransactionUncheckedCreateNestedManyWithoutInvoiceInput = exports.TransactionUncheckedCreateNestedManyWithoutFromAccountInput = exports.TransactionSumOrderByAggregateInput = exports.TransactionSumAggregate = exports.TransactionSumAggregateInput = exports.TransactionScalarWhereInput = exports.TransactionScalarWhereWithAggregatesInput = exports.TransactionOrderByWithRelationInput = exports.TransactionOrderByWithAggregationInput = exports.TransactionOrderByRelationAggregateInput = void 0;
+exports.UserCreateNestedOneWithoutHotelsCreatedInput = exports.UserCreateNestedOneWithoutFilesCreatedInput = exports.UserCreateNestedOneWithoutClaimedRewardsInput = exports.UserCreateNestedOneWithoutCheckInsInput = exports.UserCreateNestedOneWithoutAddressInput = exports.UserCreateNestedOneWithoutAccountsInput = exports.UserCreateNestedManyWithoutSchoolInput = exports.UserCreateNestedManyWithoutReferredByInput = exports.UserCreateNestedManyWithoutProgramsParticipationInput = exports.UserCreateManyInput = exports.UserCreateManySchoolInput = exports.UserCreateManySchoolInputEnvelope = exports.UserCreateManyReferredByInput = exports.UserCreateManyReferredByInputEnvelope = exports.UserCount = exports.UserCountOrderByAggregateInput = exports.UserCountAggregate = exports.UserCountAggregateInput = exports.UserAvgOrderByAggregateInput = exports.UserAvgAggregate = exports.UserAvgAggregateInput = exports.UserAggregateArgs = exports.UpsertOneUserArgs = exports.UpdateOneUserArgs = exports.UpdateManyUserArgs = exports.FindUniqueUserArgs = exports.FindUniqueUserOrThrowArgs = exports.FindManyUserArgs = exports.FindFirstUserArgs = exports.FindFirstUserOrThrowArgs = exports.DeleteOneUserArgs = exports.DeleteManyUserArgs = exports.CreateOneUserArgs = exports.CreateManyUserArgs = exports.AggregateUser = exports.UpsertOneTransactionArgs = exports.UpdateOneTransactionArgs = exports.UpdateManyTransactionArgs = exports.Transaction = exports.TransactionWhereInput = exports.TransactionWhereUniqueInput = exports.TransactionUpsertWithoutWithdrawalRequestInput = exports.TransactionUpsertWithoutInstallmentInput = exports.TransactionUpsertWithWhereUniqueWithoutToAccountInput = exports.TransactionUpsertWithWhereUniqueWithoutInvoiceInput = exports.TransactionUpsertWithWhereUniqueWithoutFromAccountInput = exports.TransactionUpdateInput = exports.TransactionUpdateWithoutWithdrawalRequestInput = exports.TransactionUpdateWithoutToAccountInput = exports.TransactionUpdateWithoutInvoiceInput = void 0;
+exports.UserNullableRelationFilter = exports.UserMinOrderByAggregateInput = exports.UserMinAggregate = exports.UserMinAggregateInput = exports.UserMaxOrderByAggregateInput = exports.UserMaxAggregate = exports.UserMaxAggregateInput = exports.UserListRelationFilter = exports.UserGroupBy = exports.UserGroupByArgs = exports.UserCreateInput = exports.UserCreateWithoutWithdrawalRequestInput = exports.UserCreateWithoutUserNotificationsInput = exports.UserCreateWithoutSessionsInput = exports.UserCreateWithoutSchoolInput = exports.UserCreateWithoutReferredUsersInput = exports.UserCreateWithoutReferredByInput = exports.UserCreateWithoutProgramsParticipationInput = exports.UserCreateWithoutProgramsCreatedInput = exports.UserCreateWithoutPointTransactionsInput = exports.UserCreateWithoutOrdersInput = exports.UserCreateWithoutHotelsCreatedInput = exports.UserCreateWithoutFilesCreatedInput = exports.UserCreateWithoutClaimedRewardsInput = exports.UserCreateWithoutCheckInsInput = exports.UserCreateWithoutAddressInput = exports.UserCreateWithoutAccountsInput = exports.UserCreateOrConnectWithoutWithdrawalRequestInput = exports.UserCreateOrConnectWithoutUserNotificationsInput = exports.UserCreateOrConnectWithoutSessionsInput = exports.UserCreateOrConnectWithoutSchoolInput = exports.UserCreateOrConnectWithoutReferredUsersInput = exports.UserCreateOrConnectWithoutReferredByInput = exports.UserCreateOrConnectWithoutProgramsParticipationInput = exports.UserCreateOrConnectWithoutProgramsCreatedInput = exports.UserCreateOrConnectWithoutPointTransactionsInput = exports.UserCreateOrConnectWithoutOrdersInput = exports.UserCreateOrConnectWithoutHotelsCreatedInput = exports.UserCreateOrConnectWithoutFilesCreatedInput = exports.UserCreateOrConnectWithoutClaimedRewardsInput = exports.UserCreateOrConnectWithoutCheckInsInput = exports.UserCreateOrConnectWithoutAddressInput = exports.UserCreateOrConnectWithoutAccountsInput = exports.UserCreateNestedOneWithoutWithdrawalRequestInput = exports.UserCreateNestedOneWithoutUserNotificationsInput = exports.UserCreateNestedOneWithoutSessionsInput = exports.UserCreateNestedOneWithoutReferredUsersInput = exports.UserCreateNestedOneWithoutProgramsCreatedInput = exports.UserCreateNestedOneWithoutPointTransactionsInput = exports.UserCreateNestedOneWithoutOrdersInput = void 0;
+exports.UserUncheckedUpdateWithoutReferredUsersInput = exports.UserUncheckedUpdateWithoutReferredByInput = exports.UserUncheckedUpdateWithoutProgramsParticipationInput = exports.UserUncheckedUpdateWithoutProgramsCreatedInput = exports.UserUncheckedUpdateWithoutPointTransactionsInput = exports.UserUncheckedUpdateWithoutOrdersInput = exports.UserUncheckedUpdateWithoutHotelsCreatedInput = exports.UserUncheckedUpdateWithoutFilesCreatedInput = exports.UserUncheckedUpdateWithoutClaimedRewardsInput = exports.UserUncheckedUpdateWithoutCheckInsInput = exports.UserUncheckedUpdateWithoutAddressInput = exports.UserUncheckedUpdateWithoutAccountsInput = exports.UserUncheckedUpdateOneWithoutAddressNestedInput = exports.UserUncheckedUpdateManyInput = exports.UserUncheckedUpdateManyWithoutSchoolInput = exports.UserUncheckedUpdateManyWithoutSchoolNestedInput = exports.UserUncheckedUpdateManyWithoutReferredByInput = exports.UserUncheckedUpdateManyWithoutReferredByNestedInput = exports.UserUncheckedUpdateManyWithoutProgramsParticipationInput = exports.UserUncheckedUpdateManyWithoutProgramsParticipationNestedInput = exports.UserUncheckedCreateInput = exports.UserUncheckedCreateWithoutWithdrawalRequestInput = exports.UserUncheckedCreateWithoutUserNotificationsInput = exports.UserUncheckedCreateWithoutSessionsInput = exports.UserUncheckedCreateWithoutSchoolInput = exports.UserUncheckedCreateWithoutReferredUsersInput = exports.UserUncheckedCreateWithoutReferredByInput = exports.UserUncheckedCreateWithoutProgramsParticipationInput = exports.UserUncheckedCreateWithoutProgramsCreatedInput = exports.UserUncheckedCreateWithoutPointTransactionsInput = exports.UserUncheckedCreateWithoutOrdersInput = exports.UserUncheckedCreateWithoutHotelsCreatedInput = exports.UserUncheckedCreateWithoutFilesCreatedInput = exports.UserUncheckedCreateWithoutClaimedRewardsInput = exports.UserUncheckedCreateWithoutCheckInsInput = exports.UserUncheckedCreateWithoutAddressInput = exports.UserUncheckedCreateWithoutAccountsInput = exports.UserUncheckedCreateNestedOneWithoutAddressInput = exports.UserUncheckedCreateNestedManyWithoutSchoolInput = exports.UserUncheckedCreateNestedManyWithoutReferredByInput = exports.UserUncheckedCreateNestedManyWithoutProgramsParticipationInput = exports.UserSumOrderByAggregateInput = exports.UserSumAggregate = exports.UserSumAggregateInput = exports.UserScalarWhereInput = exports.UserScalarWhereWithAggregatesInput = exports.UserRelationFilter = exports.UserOrderByWithRelationInput = exports.UserOrderByWithAggregationInput = exports.UserOrderByRelationAggregateInput = void 0;
+exports.UserUpdateWithoutProgramsCreatedInput = exports.UserUpdateWithoutPointTransactionsInput = exports.UserUpdateWithoutOrdersInput = exports.UserUpdateWithoutHotelsCreatedInput = exports.UserUpdateWithoutFilesCreatedInput = exports.UserUpdateWithoutClaimedRewardsInput = exports.UserUpdateWithoutCheckInsInput = exports.UserUpdateWithoutAddressInput = exports.UserUpdateWithoutAccountsInput = exports.UserUpdateWithWhereUniqueWithoutSchoolInput = exports.UserUpdateWithWhereUniqueWithoutReferredByInput = exports.UserUpdateWithWhereUniqueWithoutProgramsParticipationInput = exports.UserUpdateToOneWithWhereWithoutWithdrawalRequestInput = exports.UserUpdateToOneWithWhereWithoutUserNotificationsInput = exports.UserUpdateToOneWithWhereWithoutSessionsInput = exports.UserUpdateToOneWithWhereWithoutReferredUsersInput = exports.UserUpdateToOneWithWhereWithoutProgramsCreatedInput = exports.UserUpdateToOneWithWhereWithoutPointTransactionsInput = exports.UserUpdateToOneWithWhereWithoutOrdersInput = exports.UserUpdateToOneWithWhereWithoutHotelsCreatedInput = exports.UserUpdateToOneWithWhereWithoutFilesCreatedInput = exports.UserUpdateToOneWithWhereWithoutClaimedRewardsInput = exports.UserUpdateToOneWithWhereWithoutCheckInsInput = exports.UserUpdateToOneWithWhereWithoutAddressInput = exports.UserUpdateToOneWithWhereWithoutAccountsInput = exports.UserUpdateOneWithoutReferredUsersNestedInput = exports.UserUpdateOneWithoutAddressNestedInput = exports.UserUpdateOneRequiredWithoutWithdrawalRequestNestedInput = exports.UserUpdateOneRequiredWithoutUserNotificationsNestedInput = exports.UserUpdateOneRequiredWithoutSessionsNestedInput = exports.UserUpdateOneRequiredWithoutProgramsCreatedNestedInput = exports.UserUpdateOneRequiredWithoutPointTransactionsNestedInput = exports.UserUpdateOneRequiredWithoutOrdersNestedInput = exports.UserUpdateOneRequiredWithoutHotelsCreatedNestedInput = exports.UserUpdateOneRequiredWithoutFilesCreatedNestedInput = exports.UserUpdateOneRequiredWithoutClaimedRewardsNestedInput = exports.UserUpdateOneRequiredWithoutCheckInsNestedInput = exports.UserUpdateOneRequiredWithoutAccountsNestedInput = exports.UserUpdateManyWithoutSchoolNestedInput = exports.UserUpdateManyWithoutReferredByNestedInput = exports.UserUpdateManyWithoutProgramsParticipationNestedInput = exports.UserUpdateManyWithWhereWithoutSchoolInput = exports.UserUpdateManyWithWhereWithoutReferredByInput = exports.UserUpdateManyWithWhereWithoutProgramsParticipationInput = exports.UserUpdateManyMutationInput = exports.UserUncheckedUpdateInput = exports.UserUncheckedUpdateWithoutWithdrawalRequestInput = exports.UserUncheckedUpdateWithoutUserNotificationsInput = exports.UserUncheckedUpdateWithoutSessionsInput = exports.UserUncheckedUpdateWithoutSchoolInput = void 0;
+exports.UserNotificationCreateManyInput = exports.UserNotificationCreateManyUserInput = exports.UserNotificationCreateManyUserInputEnvelope = exports.UserNotificationCountOrderByAggregateInput = exports.UserNotificationCountAggregate = exports.UserNotificationCountAggregateInput = exports.UserNotificationAvgOrderByAggregateInput = exports.UserNotificationAvgAggregate = exports.UserNotificationAvgAggregateInput = exports.UserNotificationAggregateArgs = exports.UpsertOneUserNotificationArgs = exports.UpdateOneUserNotificationArgs = exports.UpdateManyUserNotificationArgs = exports.FindUniqueUserNotificationArgs = exports.FindUniqueUserNotificationOrThrowArgs = exports.FindManyUserNotificationArgs = exports.FindFirstUserNotificationArgs = exports.FindFirstUserNotificationOrThrowArgs = exports.DeleteOneUserNotificationArgs = exports.DeleteManyUserNotificationArgs = exports.CreateOneUserNotificationArgs = exports.CreateManyUserNotificationArgs = exports.AggregateUserNotification = exports.User = exports.UserWhereInput = exports.UserWhereUniqueInput = exports.UserUpsertWithoutWithdrawalRequestInput = exports.UserUpsertWithoutUserNotificationsInput = exports.UserUpsertWithoutSessionsInput = exports.UserUpsertWithoutReferredUsersInput = exports.UserUpsertWithoutProgramsCreatedInput = exports.UserUpsertWithoutPointTransactionsInput = exports.UserUpsertWithoutOrdersInput = exports.UserUpsertWithoutHotelsCreatedInput = exports.UserUpsertWithoutFilesCreatedInput = exports.UserUpsertWithoutClaimedRewardsInput = exports.UserUpsertWithoutCheckInsInput = exports.UserUpsertWithoutAddressInput = exports.UserUpsertWithoutAccountsInput = exports.UserUpsertWithWhereUniqueWithoutSchoolInput = exports.UserUpsertWithWhereUniqueWithoutReferredByInput = exports.UserUpsertWithWhereUniqueWithoutProgramsParticipationInput = exports.UserUpdateInput = exports.UserUpdateWithoutWithdrawalRequestInput = exports.UserUpdateWithoutUserNotificationsInput = exports.UserUpdateWithoutSessionsInput = exports.UserUpdateWithoutSchoolInput = exports.UserUpdateWithoutReferredUsersInput = exports.UserUpdateWithoutReferredByInput = exports.UserUpdateWithoutProgramsParticipationInput = void 0;
+exports.UpdateManyWithdrawalRequestArgs = exports.FindUniqueWithdrawalRequestArgs = exports.FindUniqueWithdrawalRequestOrThrowArgs = exports.FindManyWithdrawalRequestArgs = exports.FindFirstWithdrawalRequestArgs = exports.FindFirstWithdrawalRequestOrThrowArgs = exports.DeleteOneWithdrawalRequestArgs = exports.DeleteManyWithdrawalRequestArgs = exports.CreateOneWithdrawalRequestArgs = exports.CreateManyWithdrawalRequestArgs = exports.AggregateWithdrawalRequest = exports.UserNotification = exports.UserNotificationWhereInput = exports.UserNotificationWhereUniqueInput = exports.UserNotificationUpsertWithWhereUniqueWithoutUserInput = exports.UserNotificationUpdateInput = exports.UserNotificationUpdateWithoutUserInput = exports.UserNotificationUpdateWithWhereUniqueWithoutUserInput = exports.UserNotificationUpdateManyWithoutUserNestedInput = exports.UserNotificationUpdateManyWithWhereWithoutUserInput = exports.UserNotificationUpdateManyMutationInput = exports.UserNotificationUncheckedUpdateInput = exports.UserNotificationUncheckedUpdateWithoutUserInput = exports.UserNotificationUncheckedUpdateManyInput = exports.UserNotificationUncheckedUpdateManyWithoutUserInput = exports.UserNotificationUncheckedUpdateManyWithoutUserNestedInput = exports.UserNotificationUncheckedCreateInput = exports.UserNotificationUncheckedCreateWithoutUserInput = exports.UserNotificationUncheckedCreateNestedManyWithoutUserInput = exports.UserNotificationSumOrderByAggregateInput = exports.UserNotificationSumAggregate = exports.UserNotificationSumAggregateInput = exports.UserNotificationScalarWhereInput = exports.UserNotificationScalarWhereWithAggregatesInput = exports.UserNotificationOrderByWithRelationInput = exports.UserNotificationOrderByWithAggregationInput = exports.UserNotificationOrderByRelationAggregateInput = exports.UserNotificationMinOrderByAggregateInput = exports.UserNotificationMinAggregate = exports.UserNotificationMinAggregateInput = exports.UserNotificationMaxOrderByAggregateInput = exports.UserNotificationMaxAggregate = exports.UserNotificationMaxAggregateInput = exports.UserNotificationListRelationFilter = exports.UserNotificationGroupBy = exports.UserNotificationGroupByArgs = exports.UserNotificationCreateInput = exports.UserNotificationCreateWithoutUserInput = exports.UserNotificationCreateOrConnectWithoutUserInput = exports.UserNotificationCreateNestedManyWithoutUserInput = void 0;
+exports.WithdrawalRequestUpdateManyWithoutUserNestedInput = exports.WithdrawalRequestUpdateManyWithWhereWithoutUserInput = exports.WithdrawalRequestUpdateManyMutationInput = exports.WithdrawalRequestUncheckedUpdateInput = exports.WithdrawalRequestUncheckedUpdateWithoutUserInput = exports.WithdrawalRequestUncheckedUpdateWithoutTransactionInput = exports.WithdrawalRequestUncheckedUpdateManyInput = exports.WithdrawalRequestUncheckedUpdateManyWithoutUserInput = exports.WithdrawalRequestUncheckedUpdateManyWithoutUserNestedInput = exports.WithdrawalRequestUncheckedCreateInput = exports.WithdrawalRequestUncheckedCreateWithoutUserInput = exports.WithdrawalRequestUncheckedCreateWithoutTransactionInput = exports.WithdrawalRequestUncheckedCreateNestedManyWithoutUserInput = exports.WithdrawalRequestSumOrderByAggregateInput = exports.WithdrawalRequestSumAggregate = exports.WithdrawalRequestSumAggregateInput = exports.WithdrawalRequestScalarWhereInput = exports.WithdrawalRequestScalarWhereWithAggregatesInput = exports.WithdrawalRequestOrderByWithRelationInput = exports.WithdrawalRequestOrderByWithAggregationInput = exports.WithdrawalRequestOrderByRelationAggregateInput = exports.WithdrawalRequestNullableRelationFilter = exports.WithdrawalRequestMinOrderByAggregateInput = exports.WithdrawalRequestMinAggregate = exports.WithdrawalRequestMinAggregateInput = exports.WithdrawalRequestMaxOrderByAggregateInput = exports.WithdrawalRequestMaxAggregate = exports.WithdrawalRequestMaxAggregateInput = exports.WithdrawalRequestListRelationFilter = exports.WithdrawalRequestGroupBy = exports.WithdrawalRequestGroupByArgs = exports.WithdrawalRequestCreateInput = exports.WithdrawalRequestCreateWithoutUserInput = exports.WithdrawalRequestCreateWithoutTransactionInput = exports.WithdrawalRequestCreateOrConnectWithoutUserInput = exports.WithdrawalRequestCreateOrConnectWithoutTransactionInput = exports.WithdrawalRequestCreateNestedOneWithoutTransactionInput = exports.WithdrawalRequestCreateNestedManyWithoutUserInput = exports.WithdrawalRequestCreateManyInput = exports.WithdrawalRequestCreateManyUserInput = exports.WithdrawalRequestCreateManyUserInputEnvelope = exports.WithdrawalRequestCountOrderByAggregateInput = exports.WithdrawalRequestCountAggregate = exports.WithdrawalRequestCountAggregateInput = exports.WithdrawalRequestAvgOrderByAggregateInput = exports.WithdrawalRequestAvgAggregate = exports.WithdrawalRequestAvgAggregateInput = exports.WithdrawalRequestAggregateArgs = exports.UpsertOneWithdrawalRequestArgs = exports.UpdateOneWithdrawalRequestArgs = void 0;
+exports.WithdrawalRequest = exports.WithdrawalRequestWhereInput = exports.WithdrawalRequestWhereUniqueInput = exports.WithdrawalRequestUpsertWithoutTransactionInput = exports.WithdrawalRequestUpsertWithWhereUniqueWithoutUserInput = exports.WithdrawalRequestUpdateInput = exports.WithdrawalRequestUpdateWithoutUserInput = exports.WithdrawalRequestUpdateWithoutTransactionInput = exports.WithdrawalRequestUpdateWithWhereUniqueWithoutUserInput = exports.WithdrawalRequestUpdateToOneWithWhereWithoutTransactionInput = exports.WithdrawalRequestUpdateOneWithoutTransactionNestedInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const graphql_2 = require("@nestjs/graphql");
 const class_transformer_1 = require("class-transformer");
@@ -491,9 +490,6 @@ var AddressScalarFieldEnum;
 (function (AddressScalarFieldEnum) {
     AddressScalarFieldEnum["id"] = "id";
     AddressScalarFieldEnum["name"] = "name";
-    AddressScalarFieldEnum["provinceId"] = "provinceId";
-    AddressScalarFieldEnum["cityId"] = "cityId";
-    AddressScalarFieldEnum["districtId"] = "districtId";
     AddressScalarFieldEnum["subdistrictId"] = "subdistrictId";
     AddressScalarFieldEnum["createdAt"] = "createdAt";
     AddressScalarFieldEnum["updatedAt"] = "updatedAt";
@@ -3178,15 +3174,6 @@ __decorate([
 ], AddressAvgAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressAvgAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressAvgAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressAvgAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressAvgAggregateInput.prototype, "subdistrictId", void 0);
 AddressAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -3199,15 +3186,6 @@ __decorate([
 ], AddressAvgAggregate.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AddressAvgAggregate.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AddressAvgAggregate.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], AddressAvgAggregate.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], AddressAvgAggregate.prototype, "subdistrictId", void 0);
 AddressAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
@@ -3218,15 +3196,6 @@ let AddressAvgOrderByAggregateInput = class AddressAvgOrderByAggregateInput {
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressAvgOrderByAggregateInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressAvgOrderByAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressAvgOrderByAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressAvgOrderByAggregateInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressAvgOrderByAggregateInput.prototype, "subdistrictId", void 0);
@@ -3242,15 +3211,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressCountAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressCountAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressCountAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressCountAggregateInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressCountAggregateInput.prototype, "subdistrictId", void 0);
@@ -3277,15 +3237,6 @@ __decorate([
 ], AddressCountAggregate.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressCountAggregate.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressCountAggregate.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressCountAggregate.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressCountAggregate.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -3310,15 +3261,6 @@ __decorate([
 ], AddressCountOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressCountOrderByAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressCountOrderByAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressCountOrderByAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressCountOrderByAggregateInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -3330,132 +3272,6 @@ AddressCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressCountOrderByAggregateInput);
 exports.AddressCountOrderByAggregateInput = AddressCountOrderByAggregateInput;
-let AddressCreateManyCityInputEnvelope = class AddressCreateManyCityInputEnvelope {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateManyCityInput], { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyCityInput)
-], AddressCreateManyCityInputEnvelope.prototype, "data", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressCreateManyCityInputEnvelope.prototype, "skipDuplicates", void 0);
-AddressCreateManyCityInputEnvelope = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateManyCityInputEnvelope);
-exports.AddressCreateManyCityInputEnvelope = AddressCreateManyCityInputEnvelope;
-let AddressCreateManyCityInput = class AddressCreateManyCityInput {
-};
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyCityInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressCreateManyCityInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyCityInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyCityInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressCreateManyCityInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyCityInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyCityInput.prototype, "updatedAt", void 0);
-AddressCreateManyCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateManyCityInput);
-exports.AddressCreateManyCityInput = AddressCreateManyCityInput;
-let AddressCreateManyDistrictInputEnvelope = class AddressCreateManyDistrictInputEnvelope {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateManyDistrictInput], { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyDistrictInput)
-], AddressCreateManyDistrictInputEnvelope.prototype, "data", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressCreateManyDistrictInputEnvelope.prototype, "skipDuplicates", void 0);
-AddressCreateManyDistrictInputEnvelope = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateManyDistrictInputEnvelope);
-exports.AddressCreateManyDistrictInputEnvelope = AddressCreateManyDistrictInputEnvelope;
-let AddressCreateManyDistrictInput = class AddressCreateManyDistrictInput {
-};
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyDistrictInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressCreateManyDistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyDistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyDistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressCreateManyDistrictInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyDistrictInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyDistrictInput.prototype, "updatedAt", void 0);
-AddressCreateManyDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateManyDistrictInput);
-exports.AddressCreateManyDistrictInput = AddressCreateManyDistrictInput;
-let AddressCreateManyProvinceInputEnvelope = class AddressCreateManyProvinceInputEnvelope {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateManyProvinceInput], { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyProvinceInput)
-], AddressCreateManyProvinceInputEnvelope.prototype, "data", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressCreateManyProvinceInputEnvelope.prototype, "skipDuplicates", void 0);
-AddressCreateManyProvinceInputEnvelope = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateManyProvinceInputEnvelope);
-exports.AddressCreateManyProvinceInputEnvelope = AddressCreateManyProvinceInputEnvelope;
-let AddressCreateManyProvinceInput = class AddressCreateManyProvinceInput {
-};
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyProvinceInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressCreateManyProvinceInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyProvinceInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyProvinceInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressCreateManyProvinceInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyProvinceInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyProvinceInput.prototype, "updatedAt", void 0);
-AddressCreateManyProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateManyProvinceInput);
-exports.AddressCreateManyProvinceInput = AddressCreateManyProvinceInput;
 let AddressCreateManySubdistrictInputEnvelope = class AddressCreateManySubdistrictInputEnvelope {
 };
 __decorate([
@@ -3481,15 +3297,6 @@ __decorate([
 ], AddressCreateManySubdistrictInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], AddressCreateManySubdistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManySubdistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManySubdistrictInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
 ], AddressCreateManySubdistrictInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -3509,15 +3316,6 @@ __decorate([
     Validator.IsNotEmpty()
 ], AddressCreateManyInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateManyInput.prototype, "districtId", void 0);
-__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressCreateManyInput.prototype, "subdistrictId", void 0);
 __decorate([
@@ -3530,72 +3328,6 @@ AddressCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressCreateManyInput);
 exports.AddressCreateManyInput = AddressCreateManyInput;
-let AddressCreateNestedManyWithoutCityInput = class AddressCreateNestedManyWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutCityInput)
-], AddressCreateNestedManyWithoutCityInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutCityInput)
-], AddressCreateNestedManyWithoutCityInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyCityInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyCityInputEnvelope)
-], AddressCreateNestedManyWithoutCityInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressCreateNestedManyWithoutCityInput.prototype, "connect", void 0);
-AddressCreateNestedManyWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateNestedManyWithoutCityInput);
-exports.AddressCreateNestedManyWithoutCityInput = AddressCreateNestedManyWithoutCityInput;
-let AddressCreateNestedManyWithoutDistrictInput = class AddressCreateNestedManyWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutDistrictInput)
-], AddressCreateNestedManyWithoutDistrictInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutDistrictInput)
-], AddressCreateNestedManyWithoutDistrictInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyDistrictInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyDistrictInputEnvelope)
-], AddressCreateNestedManyWithoutDistrictInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressCreateNestedManyWithoutDistrictInput.prototype, "connect", void 0);
-AddressCreateNestedManyWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateNestedManyWithoutDistrictInput);
-exports.AddressCreateNestedManyWithoutDistrictInput = AddressCreateNestedManyWithoutDistrictInput;
-let AddressCreateNestedManyWithoutProvinceInput = class AddressCreateNestedManyWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutProvinceInput)
-], AddressCreateNestedManyWithoutProvinceInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutProvinceInput)
-], AddressCreateNestedManyWithoutProvinceInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyProvinceInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyProvinceInputEnvelope)
-], AddressCreateNestedManyWithoutProvinceInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressCreateNestedManyWithoutProvinceInput.prototype, "connect", void 0);
-AddressCreateNestedManyWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateNestedManyWithoutProvinceInput);
-exports.AddressCreateNestedManyWithoutProvinceInput = AddressCreateNestedManyWithoutProvinceInput;
 let AddressCreateNestedManyWithoutSubdistrictInput = class AddressCreateNestedManyWithoutSubdistrictInput {
 };
 __decorate([
@@ -3690,34 +3422,6 @@ AddressCreateNestedOneWithoutUserInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressCreateNestedOneWithoutUserInput);
 exports.AddressCreateNestedOneWithoutUserInput = AddressCreateNestedOneWithoutUserInput;
-let AddressCreateOrConnectWithoutCityInput = class AddressCreateOrConnectWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressCreateOrConnectWithoutCityInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateWithoutCityInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutCityInput)
-], AddressCreateOrConnectWithoutCityInput.prototype, "create", void 0);
-AddressCreateOrConnectWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateOrConnectWithoutCityInput);
-exports.AddressCreateOrConnectWithoutCityInput = AddressCreateOrConnectWithoutCityInput;
-let AddressCreateOrConnectWithoutDistrictInput = class AddressCreateOrConnectWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressCreateOrConnectWithoutDistrictInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateWithoutDistrictInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutDistrictInput)
-], AddressCreateOrConnectWithoutDistrictInput.prototype, "create", void 0);
-AddressCreateOrConnectWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateOrConnectWithoutDistrictInput);
-exports.AddressCreateOrConnectWithoutDistrictInput = AddressCreateOrConnectWithoutDistrictInput;
 let AddressCreateOrConnectWithoutHotelInput = class AddressCreateOrConnectWithoutHotelInput {
 };
 __decorate([
@@ -3732,20 +3436,6 @@ AddressCreateOrConnectWithoutHotelInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressCreateOrConnectWithoutHotelInput);
 exports.AddressCreateOrConnectWithoutHotelInput = AddressCreateOrConnectWithoutHotelInput;
-let AddressCreateOrConnectWithoutProvinceInput = class AddressCreateOrConnectWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressCreateOrConnectWithoutProvinceInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateWithoutProvinceInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutProvinceInput)
-], AddressCreateOrConnectWithoutProvinceInput.prototype, "create", void 0);
-AddressCreateOrConnectWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateOrConnectWithoutProvinceInput);
-exports.AddressCreateOrConnectWithoutProvinceInput = AddressCreateOrConnectWithoutProvinceInput;
 let AddressCreateOrConnectWithoutSchoolInput = class AddressCreateOrConnectWithoutSchoolInput {
 };
 __decorate([
@@ -3802,82 +3492,6 @@ AddressCreateOrConnectWithoutUserInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressCreateOrConnectWithoutUserInput);
 exports.AddressCreateOrConnectWithoutUserInput = AddressCreateOrConnectWithoutUserInput;
-let AddressCreateWithoutCityInput = class AddressCreateWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressCreateWithoutCityInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutCityInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutCityInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutCityInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutCityInput.prototype, "district", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutCityInput.prototype, "subdistrict", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutCityInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutCityInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutCityInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutCityInput.prototype, "Shipping", void 0);
-AddressCreateWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateWithoutCityInput);
-exports.AddressCreateWithoutCityInput = AddressCreateWithoutCityInput;
-let AddressCreateWithoutDistrictInput = class AddressCreateWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressCreateWithoutDistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutDistrictInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutDistrictInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutDistrictInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutDistrictInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutDistrictInput.prototype, "subdistrict", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutDistrictInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutDistrictInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutDistrictInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutDistrictInput.prototype, "Shipping", void 0);
-AddressCreateWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateWithoutDistrictInput);
-exports.AddressCreateWithoutDistrictInput = AddressCreateWithoutDistrictInput;
 let AddressCreateWithoutHotelInput = class AddressCreateWithoutHotelInput {
 };
 __decorate([
@@ -3891,15 +3505,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateWithoutHotelInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutHotelInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutHotelInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutHotelInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
 ], AddressCreateWithoutHotelInput.prototype, "subdistrict", void 0);
@@ -3916,44 +3521,6 @@ AddressCreateWithoutHotelInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressCreateWithoutHotelInput);
 exports.AddressCreateWithoutHotelInput = AddressCreateWithoutHotelInput;
-let AddressCreateWithoutProvinceInput = class AddressCreateWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressCreateWithoutProvinceInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutProvinceInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutProvinceInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutProvinceInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutProvinceInput.prototype, "district", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutProvinceInput.prototype, "subdistrict", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutProvinceInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutProvinceInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutProvinceInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], AddressCreateWithoutProvinceInput.prototype, "Shipping", void 0);
-AddressCreateWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressCreateWithoutProvinceInput);
-exports.AddressCreateWithoutProvinceInput = AddressCreateWithoutProvinceInput;
 let AddressCreateWithoutSchoolInput = class AddressCreateWithoutSchoolInput {
 };
 __decorate([
@@ -3967,15 +3534,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateWithoutSchoolInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutSchoolInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutSchoolInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutSchoolInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
 ], AddressCreateWithoutSchoolInput.prototype, "subdistrict", void 0);
@@ -4006,15 +3564,6 @@ __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateWithoutShippingInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutShippingInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutShippingInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutShippingInput.prototype, "district", void 0);
-__decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
 ], AddressCreateWithoutShippingInput.prototype, "subdistrict", void 0);
 __decorate([
@@ -4043,15 +3592,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateWithoutSubdistrictInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutSubdistrictInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutSubdistrictInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutSubdistrictInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateWithoutSubdistrictInput.prototype, "user", void 0);
@@ -4082,15 +3622,6 @@ __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateWithoutUserInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutUserInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutUserInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateWithoutUserInput.prototype, "district", void 0);
-__decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
 ], AddressCreateWithoutUserInput.prototype, "subdistrict", void 0);
 __decorate([
@@ -4119,15 +3650,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], AddressCreateInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedOneWithoutAddressInput, { nullable: false })
-], AddressCreateInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedOneWithoutAddressInput, { nullable: false })
 ], AddressCreateInput.prototype, "subdistrict", void 0);
@@ -4197,15 +3719,6 @@ __decorate([
 ], AddressGroupBy.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressGroupBy.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressGroupBy.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressGroupBy.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressGroupBy.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
@@ -4257,15 +3770,6 @@ __decorate([
 ], AddressMaxAggregateInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressMaxAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressMaxAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressMaxAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressMaxAggregateInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -4285,15 +3789,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], AddressMaxAggregate.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressMaxAggregate.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressMaxAggregate.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressMaxAggregate.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], AddressMaxAggregate.prototype, "subdistrictId", void 0);
@@ -4317,15 +3812,6 @@ __decorate([
 ], AddressMaxOrderByAggregateInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressMaxOrderByAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressMaxOrderByAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressMaxOrderByAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressMaxOrderByAggregateInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -4345,15 +3831,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressMinAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressMinAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressMinAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressMinAggregateInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressMinAggregateInput.prototype, "subdistrictId", void 0);
@@ -4377,15 +3854,6 @@ __decorate([
 ], AddressMinAggregate.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressMinAggregate.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressMinAggregate.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressMinAggregate.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], AddressMinAggregate.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -4405,15 +3873,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressMinOrderByAggregateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressMinOrderByAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressMinOrderByAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressMinOrderByAggregateInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressMinOrderByAggregateInput.prototype, "subdistrictId", void 0);
@@ -4444,15 +3903,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressOrderByWithAggregationInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressOrderByWithAggregationInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressOrderByWithAggregationInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressOrderByWithAggregationInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressOrderByWithAggregationInput.prototype, "subdistrictId", void 0);
@@ -4491,15 +3941,6 @@ __decorate([
 ], AddressOrderByWithRelationInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressOrderByWithRelationInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressOrderByWithRelationInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressOrderByWithRelationInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressOrderByWithRelationInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
@@ -4507,15 +3948,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressOrderByWithRelationInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceOrderByWithRelationInput, { nullable: true })
-], AddressOrderByWithRelationInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityOrderByWithRelationInput, { nullable: true })
-], AddressOrderByWithRelationInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictOrderByWithRelationInput, { nullable: true })
-], AddressOrderByWithRelationInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictOrderByWithRelationInput, { nullable: true })
 ], AddressOrderByWithRelationInput.prototype, "subdistrict", void 0);
@@ -4566,15 +3998,6 @@ __decorate([
 ], AddressScalarWhereWithAggregatesInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
-], AddressScalarWhereWithAggregatesInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
-], AddressScalarWhereWithAggregatesInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
-], AddressScalarWhereWithAggregatesInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], AddressScalarWhereWithAggregatesInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
@@ -4605,15 +4028,6 @@ __decorate([
 ], AddressScalarWhereInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressScalarWhereInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressScalarWhereInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressScalarWhereInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], AddressScalarWhereInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
@@ -4632,15 +4046,6 @@ __decorate([
 ], AddressSumAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressSumAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressSumAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], AddressSumAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], AddressSumAggregateInput.prototype, "subdistrictId", void 0);
 AddressSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -4651,15 +4056,6 @@ let AddressSumAggregate = class AddressSumAggregate {
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], AddressSumAggregate.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressSumAggregate.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressSumAggregate.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressSumAggregate.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], AddressSumAggregate.prototype, "subdistrictId", void 0);
@@ -4674,86 +4070,11 @@ __decorate([
 ], AddressSumOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressSumOrderByAggregateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressSumOrderByAggregateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], AddressSumOrderByAggregateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], AddressSumOrderByAggregateInput.prototype, "subdistrictId", void 0);
 AddressSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressSumOrderByAggregateInput);
 exports.AddressSumOrderByAggregateInput = AddressSumOrderByAggregateInput;
-let AddressUncheckedCreateNestedManyWithoutCityInput = class AddressUncheckedCreateNestedManyWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutCityInput)
-], AddressUncheckedCreateNestedManyWithoutCityInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutCityInput)
-], AddressUncheckedCreateNestedManyWithoutCityInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyCityInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyCityInputEnvelope)
-], AddressUncheckedCreateNestedManyWithoutCityInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedCreateNestedManyWithoutCityInput.prototype, "connect", void 0);
-AddressUncheckedCreateNestedManyWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedCreateNestedManyWithoutCityInput);
-exports.AddressUncheckedCreateNestedManyWithoutCityInput = AddressUncheckedCreateNestedManyWithoutCityInput;
-let AddressUncheckedCreateNestedManyWithoutDistrictInput = class AddressUncheckedCreateNestedManyWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutDistrictInput)
-], AddressUncheckedCreateNestedManyWithoutDistrictInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutDistrictInput)
-], AddressUncheckedCreateNestedManyWithoutDistrictInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyDistrictInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyDistrictInputEnvelope)
-], AddressUncheckedCreateNestedManyWithoutDistrictInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedCreateNestedManyWithoutDistrictInput.prototype, "connect", void 0);
-AddressUncheckedCreateNestedManyWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedCreateNestedManyWithoutDistrictInput);
-exports.AddressUncheckedCreateNestedManyWithoutDistrictInput = AddressUncheckedCreateNestedManyWithoutDistrictInput;
-let AddressUncheckedCreateNestedManyWithoutProvinceInput = class AddressUncheckedCreateNestedManyWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutProvinceInput)
-], AddressUncheckedCreateNestedManyWithoutProvinceInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutProvinceInput)
-], AddressUncheckedCreateNestedManyWithoutProvinceInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyProvinceInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyProvinceInputEnvelope)
-], AddressUncheckedCreateNestedManyWithoutProvinceInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedCreateNestedManyWithoutProvinceInput.prototype, "connect", void 0);
-AddressUncheckedCreateNestedManyWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedCreateNestedManyWithoutProvinceInput);
-exports.AddressUncheckedCreateNestedManyWithoutProvinceInput = AddressUncheckedCreateNestedManyWithoutProvinceInput;
 let AddressUncheckedCreateNestedManyWithoutSubdistrictInput = class AddressUncheckedCreateNestedManyWithoutSubdistrictInput {
 };
 __decorate([
@@ -4776,88 +4097,6 @@ AddressUncheckedCreateNestedManyWithoutSubdistrictInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUncheckedCreateNestedManyWithoutSubdistrictInput);
 exports.AddressUncheckedCreateNestedManyWithoutSubdistrictInput = AddressUncheckedCreateNestedManyWithoutSubdistrictInput;
-let AddressUncheckedCreateWithoutCityInput = class AddressUncheckedCreateWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressUncheckedCreateWithoutCityInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutCityInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutCityInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutCityInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutCityInput.prototype, "Shipping", void 0);
-AddressUncheckedCreateWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedCreateWithoutCityInput);
-exports.AddressUncheckedCreateWithoutCityInput = AddressUncheckedCreateWithoutCityInput;
-let AddressUncheckedCreateWithoutDistrictInput = class AddressUncheckedCreateWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutDistrictInput.prototype, "Shipping", void 0);
-AddressUncheckedCreateWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedCreateWithoutDistrictInput);
-exports.AddressUncheckedCreateWithoutDistrictInput = AddressUncheckedCreateWithoutDistrictInput;
 let AddressUncheckedCreateWithoutHotelInput = class AddressUncheckedCreateWithoutHotelInput {
 };
 __decorate([
@@ -4868,15 +4107,6 @@ __decorate([
     Validator.MinLength(5),
     Validator.IsNotEmpty()
 ], AddressUncheckedCreateWithoutHotelInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutHotelInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutHotelInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutHotelInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressUncheckedCreateWithoutHotelInput.prototype, "subdistrictId", void 0);
@@ -4899,47 +4129,6 @@ AddressUncheckedCreateWithoutHotelInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUncheckedCreateWithoutHotelInput);
 exports.AddressUncheckedCreateWithoutHotelInput = AddressUncheckedCreateWithoutHotelInput;
-let AddressUncheckedCreateWithoutProvinceInput = class AddressUncheckedCreateWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(5),
-    Validator.IsNotEmpty()
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUncheckedCreateNestedOneWithoutAddressInput, { nullable: true })
-], AddressUncheckedCreateWithoutProvinceInput.prototype, "Shipping", void 0);
-AddressUncheckedCreateWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedCreateWithoutProvinceInput);
-exports.AddressUncheckedCreateWithoutProvinceInput = AddressUncheckedCreateWithoutProvinceInput;
 let AddressUncheckedCreateWithoutSchoolInput = class AddressUncheckedCreateWithoutSchoolInput {
 };
 __decorate([
@@ -4950,15 +4139,6 @@ __decorate([
     Validator.MinLength(5),
     Validator.IsNotEmpty()
 ], AddressUncheckedCreateWithoutSchoolInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutSchoolInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutSchoolInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutSchoolInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressUncheckedCreateWithoutSchoolInput.prototype, "subdistrictId", void 0);
@@ -4993,15 +4173,6 @@ __decorate([
 ], AddressUncheckedCreateWithoutShippingInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutShippingInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutShippingInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutShippingInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressUncheckedCreateWithoutShippingInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -5032,15 +4203,6 @@ __decorate([
     Validator.MinLength(5),
     Validator.IsNotEmpty()
 ], AddressUncheckedCreateWithoutSubdistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutSubdistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutSubdistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutSubdistrictInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], AddressUncheckedCreateWithoutSubdistrictInput.prototype, "createdAt", void 0);
@@ -5075,15 +4237,6 @@ __decorate([
 ], AddressUncheckedCreateWithoutUserInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutUserInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutUserInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateWithoutUserInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressUncheckedCreateWithoutUserInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -5116,15 +4269,6 @@ __decorate([
 ], AddressUncheckedCreateInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], AddressUncheckedCreateInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], AddressUncheckedCreateInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -5148,237 +4292,6 @@ AddressUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUncheckedCreateInput);
 exports.AddressUncheckedCreateInput = AddressUncheckedCreateInput;
-let AddressUncheckedUpdateManyWithoutCityNestedInput = class AddressUncheckedUpdateManyWithoutCityNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutCityInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutCityInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpsertWithWhereUniqueWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpsertWithWhereUniqueWithoutCityInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyCityInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyCityInputEnvelope)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "set", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "disconnect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "delete", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateWithWhereUniqueWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithWhereUniqueWithoutCityInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateManyWithWhereWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyWithWhereWithoutCityInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "updateMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressScalarWhereInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUncheckedUpdateManyWithoutCityNestedInput.prototype, "deleteMany", void 0);
-AddressUncheckedUpdateManyWithoutCityNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateManyWithoutCityNestedInput);
-exports.AddressUncheckedUpdateManyWithoutCityNestedInput = AddressUncheckedUpdateManyWithoutCityNestedInput;
-let AddressUncheckedUpdateManyWithoutCityInput = class AddressUncheckedUpdateManyWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutCityInput.prototype, "updatedAt", void 0);
-AddressUncheckedUpdateManyWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateManyWithoutCityInput);
-exports.AddressUncheckedUpdateManyWithoutCityInput = AddressUncheckedUpdateManyWithoutCityInput;
-let AddressUncheckedUpdateManyWithoutDistrictNestedInput = class AddressUncheckedUpdateManyWithoutDistrictNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutDistrictInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutDistrictInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpsertWithWhereUniqueWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpsertWithWhereUniqueWithoutDistrictInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyDistrictInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyDistrictInputEnvelope)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "set", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "disconnect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "delete", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateWithWhereUniqueWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithWhereUniqueWithoutDistrictInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateManyWithWhereWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyWithWhereWithoutDistrictInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "updateMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressScalarWhereInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput.prototype, "deleteMany", void 0);
-AddressUncheckedUpdateManyWithoutDistrictNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateManyWithoutDistrictNestedInput);
-exports.AddressUncheckedUpdateManyWithoutDistrictNestedInput = AddressUncheckedUpdateManyWithoutDistrictNestedInput;
-let AddressUncheckedUpdateManyWithoutDistrictInput = class AddressUncheckedUpdateManyWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutDistrictInput.prototype, "updatedAt", void 0);
-AddressUncheckedUpdateManyWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateManyWithoutDistrictInput);
-exports.AddressUncheckedUpdateManyWithoutDistrictInput = AddressUncheckedUpdateManyWithoutDistrictInput;
-let AddressUncheckedUpdateManyWithoutProvinceNestedInput = class AddressUncheckedUpdateManyWithoutProvinceNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutProvinceInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutProvinceInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpsertWithWhereUniqueWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpsertWithWhereUniqueWithoutProvinceInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyProvinceInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyProvinceInputEnvelope)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "set", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "disconnect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "delete", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateWithWhereUniqueWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithWhereUniqueWithoutProvinceInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateManyWithWhereWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyWithWhereWithoutProvinceInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "updateMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressScalarWhereInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput.prototype, "deleteMany", void 0);
-AddressUncheckedUpdateManyWithoutProvinceNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateManyWithoutProvinceNestedInput);
-exports.AddressUncheckedUpdateManyWithoutProvinceNestedInput = AddressUncheckedUpdateManyWithoutProvinceNestedInput;
-let AddressUncheckedUpdateManyWithoutProvinceInput = class AddressUncheckedUpdateManyWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutProvinceInput.prototype, "updatedAt", void 0);
-AddressUncheckedUpdateManyWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateManyWithoutProvinceInput);
-exports.AddressUncheckedUpdateManyWithoutProvinceInput = AddressUncheckedUpdateManyWithoutProvinceInput;
 let AddressUncheckedUpdateManyWithoutSubdistrictNestedInput = class AddressUncheckedUpdateManyWithoutSubdistrictNestedInput {
 };
 __decorate([
@@ -5438,15 +4351,6 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateManyWithoutSubdistrictInput.prototype, "name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutSubdistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutSubdistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyWithoutSubdistrictInput.prototype, "districtId", void 0);
-__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateManyWithoutSubdistrictInput.prototype, "createdAt", void 0);
 __decorate([
@@ -5466,15 +4370,6 @@ __decorate([
 ], AddressUncheckedUpdateManyInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateManyInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateManyInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -5486,84 +4381,6 @@ AddressUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUncheckedUpdateManyInput);
 exports.AddressUncheckedUpdateManyInput = AddressUncheckedUpdateManyInput;
-let AddressUncheckedUpdateWithoutCityInput = class AddressUncheckedUpdateWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutCityInput.prototype, "Shipping", void 0);
-AddressUncheckedUpdateWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateWithoutCityInput);
-exports.AddressUncheckedUpdateWithoutCityInput = AddressUncheckedUpdateWithoutCityInput;
-let AddressUncheckedUpdateWithoutDistrictInput = class AddressUncheckedUpdateWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutDistrictInput.prototype, "Shipping", void 0);
-AddressUncheckedUpdateWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateWithoutDistrictInput);
-exports.AddressUncheckedUpdateWithoutDistrictInput = AddressUncheckedUpdateWithoutDistrictInput;
 let AddressUncheckedUpdateWithoutHotelInput = class AddressUncheckedUpdateWithoutHotelInput {
 };
 __decorate([
@@ -5572,15 +4389,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutHotelInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutHotelInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutHotelInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutHotelInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutHotelInput.prototype, "subdistrictId", void 0);
@@ -5603,45 +4411,6 @@ AddressUncheckedUpdateWithoutHotelInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUncheckedUpdateWithoutHotelInput);
 exports.AddressUncheckedUpdateWithoutHotelInput = AddressUncheckedUpdateWithoutHotelInput;
-let AddressUncheckedUpdateWithoutProvinceInput = class AddressUncheckedUpdateWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "subdistrictId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUncheckedUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUncheckedUpdateWithoutProvinceInput.prototype, "Shipping", void 0);
-AddressUncheckedUpdateWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUncheckedUpdateWithoutProvinceInput);
-exports.AddressUncheckedUpdateWithoutProvinceInput = AddressUncheckedUpdateWithoutProvinceInput;
 let AddressUncheckedUpdateWithoutSchoolInput = class AddressUncheckedUpdateWithoutSchoolInput {
 };
 __decorate([
@@ -5650,15 +4419,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutSchoolInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutSchoolInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutSchoolInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutSchoolInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutSchoolInput.prototype, "subdistrictId", void 0);
@@ -5691,15 +4451,6 @@ __decorate([
 ], AddressUncheckedUpdateWithoutShippingInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutShippingInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutShippingInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutShippingInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutShippingInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -5728,15 +4479,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutSubdistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutSubdistrictInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutSubdistrictInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutSubdistrictInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutSubdistrictInput.prototype, "createdAt", void 0);
@@ -5769,15 +4511,6 @@ __decorate([
 ], AddressUncheckedUpdateWithoutUserInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutUserInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutUserInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateWithoutUserInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateWithoutUserInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
@@ -5806,15 +4539,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], AddressUncheckedUpdateInput.prototype, "districtId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], AddressUncheckedUpdateInput.prototype, "subdistrictId", void 0);
@@ -5855,48 +4579,6 @@ AddressUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUpdateManyMutationInput);
 exports.AddressUpdateManyMutationInput = AddressUpdateManyMutationInput;
-let AddressUpdateManyWithWhereWithoutCityInput = class AddressUpdateManyWithWhereWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressScalarWhereInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUpdateManyWithWhereWithoutCityInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyMutationInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyMutationInput)
-], AddressUpdateManyWithWhereWithoutCityInput.prototype, "data", void 0);
-AddressUpdateManyWithWhereWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateManyWithWhereWithoutCityInput);
-exports.AddressUpdateManyWithWhereWithoutCityInput = AddressUpdateManyWithWhereWithoutCityInput;
-let AddressUpdateManyWithWhereWithoutDistrictInput = class AddressUpdateManyWithWhereWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressScalarWhereInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUpdateManyWithWhereWithoutDistrictInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyMutationInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyMutationInput)
-], AddressUpdateManyWithWhereWithoutDistrictInput.prototype, "data", void 0);
-AddressUpdateManyWithWhereWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateManyWithWhereWithoutDistrictInput);
-exports.AddressUpdateManyWithWhereWithoutDistrictInput = AddressUpdateManyWithWhereWithoutDistrictInput;
-let AddressUpdateManyWithWhereWithoutProvinceInput = class AddressUpdateManyWithWhereWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressScalarWhereInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUpdateManyWithWhereWithoutProvinceInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyMutationInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyMutationInput)
-], AddressUpdateManyWithWhereWithoutProvinceInput.prototype, "data", void 0);
-AddressUpdateManyWithWhereWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateManyWithWhereWithoutProvinceInput);
-exports.AddressUpdateManyWithWhereWithoutProvinceInput = AddressUpdateManyWithWhereWithoutProvinceInput;
 let AddressUpdateManyWithWhereWithoutSubdistrictInput = class AddressUpdateManyWithWhereWithoutSubdistrictInput {
 };
 __decorate([
@@ -5911,156 +4593,6 @@ AddressUpdateManyWithWhereWithoutSubdistrictInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUpdateManyWithWhereWithoutSubdistrictInput);
 exports.AddressUpdateManyWithWhereWithoutSubdistrictInput = AddressUpdateManyWithWhereWithoutSubdistrictInput;
-let AddressUpdateManyWithoutCityNestedInput = class AddressUpdateManyWithoutCityNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutCityInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutCityInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpsertWithWhereUniqueWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpsertWithWhereUniqueWithoutCityInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyCityInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyCityInputEnvelope)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "set", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "disconnect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "delete", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateWithWhereUniqueWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithWhereUniqueWithoutCityInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateManyWithWhereWithoutCityInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyWithWhereWithoutCityInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "updateMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressScalarWhereInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUpdateManyWithoutCityNestedInput.prototype, "deleteMany", void 0);
-AddressUpdateManyWithoutCityNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateManyWithoutCityNestedInput);
-exports.AddressUpdateManyWithoutCityNestedInput = AddressUpdateManyWithoutCityNestedInput;
-let AddressUpdateManyWithoutDistrictNestedInput = class AddressUpdateManyWithoutDistrictNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutDistrictInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutDistrictInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpsertWithWhereUniqueWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpsertWithWhereUniqueWithoutDistrictInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyDistrictInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyDistrictInputEnvelope)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "set", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "disconnect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "delete", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateWithWhereUniqueWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithWhereUniqueWithoutDistrictInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateManyWithWhereWithoutDistrictInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyWithWhereWithoutDistrictInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "updateMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressScalarWhereInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUpdateManyWithoutDistrictNestedInput.prototype, "deleteMany", void 0);
-AddressUpdateManyWithoutDistrictNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateManyWithoutDistrictNestedInput);
-exports.AddressUpdateManyWithoutDistrictNestedInput = AddressUpdateManyWithoutDistrictNestedInput;
-let AddressUpdateManyWithoutProvinceNestedInput = class AddressUpdateManyWithoutProvinceNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutProvinceInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressCreateOrConnectWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateOrConnectWithoutProvinceInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpsertWithWhereUniqueWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpsertWithWhereUniqueWithoutProvinceInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateManyProvinceInputEnvelope, { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressCreateManyProvinceInputEnvelope)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "createMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "set", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "disconnect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "delete", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressWhereUniqueInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateWithWhereUniqueWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithWhereUniqueWithoutProvinceInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressUpdateManyWithWhereWithoutProvinceInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressUpdateManyWithWhereWithoutProvinceInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "updateMany", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => [AddressScalarWhereInput], { nullable: true }),
-    (0, class_transformer_1.Type)(() => AddressScalarWhereInput)
-], AddressUpdateManyWithoutProvinceNestedInput.prototype, "deleteMany", void 0);
-AddressUpdateManyWithoutProvinceNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateManyWithoutProvinceNestedInput);
-exports.AddressUpdateManyWithoutProvinceNestedInput = AddressUpdateManyWithoutProvinceNestedInput;
 let AddressUpdateManyWithoutSubdistrictNestedInput = class AddressUpdateManyWithoutSubdistrictNestedInput {
 };
 __decorate([
@@ -6271,48 +4803,6 @@ AddressUpdateToOneWithWhereWithoutUserInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUpdateToOneWithWhereWithoutUserInput);
 exports.AddressUpdateToOneWithWhereWithoutUserInput = AddressUpdateToOneWithWhereWithoutUserInput;
-let AddressUpdateWithWhereUniqueWithoutCityInput = class AddressUpdateWithWhereUniqueWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateWithWhereUniqueWithoutCityInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateWithoutCityInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithoutCityInput)
-], AddressUpdateWithWhereUniqueWithoutCityInput.prototype, "data", void 0);
-AddressUpdateWithWhereUniqueWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateWithWhereUniqueWithoutCityInput);
-exports.AddressUpdateWithWhereUniqueWithoutCityInput = AddressUpdateWithWhereUniqueWithoutCityInput;
-let AddressUpdateWithWhereUniqueWithoutDistrictInput = class AddressUpdateWithWhereUniqueWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateWithWhereUniqueWithoutDistrictInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateWithoutDistrictInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithoutDistrictInput)
-], AddressUpdateWithWhereUniqueWithoutDistrictInput.prototype, "data", void 0);
-AddressUpdateWithWhereUniqueWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateWithWhereUniqueWithoutDistrictInput);
-exports.AddressUpdateWithWhereUniqueWithoutDistrictInput = AddressUpdateWithWhereUniqueWithoutDistrictInput;
-let AddressUpdateWithWhereUniqueWithoutProvinceInput = class AddressUpdateWithWhereUniqueWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpdateWithWhereUniqueWithoutProvinceInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateWithoutProvinceInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithoutProvinceInput)
-], AddressUpdateWithWhereUniqueWithoutProvinceInput.prototype, "data", void 0);
-AddressUpdateWithWhereUniqueWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateWithWhereUniqueWithoutProvinceInput);
-exports.AddressUpdateWithWhereUniqueWithoutProvinceInput = AddressUpdateWithWhereUniqueWithoutProvinceInput;
 let AddressUpdateWithWhereUniqueWithoutSubdistrictInput = class AddressUpdateWithWhereUniqueWithoutSubdistrictInput {
 };
 __decorate([
@@ -6327,78 +4817,6 @@ AddressUpdateWithWhereUniqueWithoutSubdistrictInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUpdateWithWhereUniqueWithoutSubdistrictInput);
 exports.AddressUpdateWithWhereUniqueWithoutSubdistrictInput = AddressUpdateWithWhereUniqueWithoutSubdistrictInput;
-let AddressUpdateWithoutCityInput = class AddressUpdateWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "district", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "subdistrict", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutCityInput.prototype, "Shipping", void 0);
-AddressUpdateWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateWithoutCityInput);
-exports.AddressUpdateWithoutCityInput = AddressUpdateWithoutCityInput;
-let AddressUpdateWithoutDistrictInput = class AddressUpdateWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "subdistrict", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutDistrictInput.prototype, "Shipping", void 0);
-AddressUpdateWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateWithoutDistrictInput);
-exports.AddressUpdateWithoutDistrictInput = AddressUpdateWithoutDistrictInput;
 let AddressUpdateWithoutHotelInput = class AddressUpdateWithoutHotelInput {
 };
 __decorate([
@@ -6410,15 +4828,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUpdateWithoutHotelInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutHotelInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutHotelInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutHotelInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
 ], AddressUpdateWithoutHotelInput.prototype, "subdistrict", void 0);
@@ -6435,42 +4844,6 @@ AddressUpdateWithoutHotelInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUpdateWithoutHotelInput);
 exports.AddressUpdateWithoutHotelInput = AddressUpdateWithoutHotelInput;
-let AddressUpdateWithoutProvinceInput = class AddressUpdateWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "createdAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "district", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "subdistrict", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => UserUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "user", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => HotelUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "hotel", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SchoolUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "school", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ShippingUpdateOneWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutProvinceInput.prototype, "Shipping", void 0);
-AddressUpdateWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpdateWithoutProvinceInput);
-exports.AddressUpdateWithoutProvinceInput = AddressUpdateWithoutProvinceInput;
 let AddressUpdateWithoutSchoolInput = class AddressUpdateWithoutSchoolInput {
 };
 __decorate([
@@ -6482,15 +4855,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUpdateWithoutSchoolInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutSchoolInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutSchoolInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutSchoolInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
 ], AddressUpdateWithoutSchoolInput.prototype, "subdistrict", void 0);
@@ -6519,15 +4883,6 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUpdateWithoutShippingInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutShippingInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutShippingInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutShippingInput.prototype, "district", void 0);
-__decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
 ], AddressUpdateWithoutShippingInput.prototype, "subdistrict", void 0);
 __decorate([
@@ -6554,15 +4909,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUpdateWithoutSubdistrictInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutSubdistrictInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutSubdistrictInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutSubdistrictInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => UserUpdateOneWithoutAddressNestedInput, { nullable: true })
 ], AddressUpdateWithoutSubdistrictInput.prototype, "user", void 0);
@@ -6591,15 +4937,6 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUpdateWithoutUserInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutUserInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutUserInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateWithoutUserInput.prototype, "district", void 0);
-__decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
 ], AddressUpdateWithoutUserInput.prototype, "subdistrict", void 0);
 __decorate([
@@ -6627,15 +4964,6 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], AddressUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
-], AddressUpdateInput.prototype, "district", void 0);
-__decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateOneRequiredWithoutAddressNestedInput, { nullable: true })
 ], AddressUpdateInput.prototype, "subdistrict", void 0);
 __decorate([
@@ -6654,60 +4982,6 @@ AddressUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], AddressUpdateInput);
 exports.AddressUpdateInput = AddressUpdateInput;
-let AddressUpsertWithWhereUniqueWithoutCityInput = class AddressUpsertWithWhereUniqueWithoutCityInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpsertWithWhereUniqueWithoutCityInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateWithoutCityInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithoutCityInput)
-], AddressUpsertWithWhereUniqueWithoutCityInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateWithoutCityInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutCityInput)
-], AddressUpsertWithWhereUniqueWithoutCityInput.prototype, "create", void 0);
-AddressUpsertWithWhereUniqueWithoutCityInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpsertWithWhereUniqueWithoutCityInput);
-exports.AddressUpsertWithWhereUniqueWithoutCityInput = AddressUpsertWithWhereUniqueWithoutCityInput;
-let AddressUpsertWithWhereUniqueWithoutDistrictInput = class AddressUpsertWithWhereUniqueWithoutDistrictInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpsertWithWhereUniqueWithoutDistrictInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateWithoutDistrictInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithoutDistrictInput)
-], AddressUpsertWithWhereUniqueWithoutDistrictInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateWithoutDistrictInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutDistrictInput)
-], AddressUpsertWithWhereUniqueWithoutDistrictInput.prototype, "create", void 0);
-AddressUpsertWithWhereUniqueWithoutDistrictInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpsertWithWhereUniqueWithoutDistrictInput);
-exports.AddressUpsertWithWhereUniqueWithoutDistrictInput = AddressUpsertWithWhereUniqueWithoutDistrictInput;
-let AddressUpsertWithWhereUniqueWithoutProvinceInput = class AddressUpsertWithWhereUniqueWithoutProvinceInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => AddressWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressWhereUniqueInput)
-], AddressUpsertWithWhereUniqueWithoutProvinceInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateWithoutProvinceInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressUpdateWithoutProvinceInput)
-], AddressUpsertWithWhereUniqueWithoutProvinceInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateWithoutProvinceInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => AddressCreateWithoutProvinceInput)
-], AddressUpsertWithWhereUniqueWithoutProvinceInput.prototype, "create", void 0);
-AddressUpsertWithWhereUniqueWithoutProvinceInput = __decorate([
-    (0, graphql_4.InputType)()
-], AddressUpsertWithWhereUniqueWithoutProvinceInput);
-exports.AddressUpsertWithWhereUniqueWithoutProvinceInput = AddressUpsertWithWhereUniqueWithoutProvinceInput;
 let AddressUpsertWithWhereUniqueWithoutSubdistrictInput = class AddressUpsertWithWhereUniqueWithoutSubdistrictInput {
 };
 __decorate([
@@ -6817,15 +5091,6 @@ __decorate([
 ], AddressWhereUniqueInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressWhereUniqueInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressWhereUniqueInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressWhereUniqueInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], AddressWhereUniqueInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
@@ -6833,15 +5098,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], AddressWhereUniqueInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceRelationFilter, { nullable: true })
-], AddressWhereUniqueInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityRelationFilter, { nullable: true })
-], AddressWhereUniqueInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictRelationFilter, { nullable: true })
-], AddressWhereUniqueInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictRelationFilter, { nullable: true })
 ], AddressWhereUniqueInput.prototype, "subdistrict", void 0);
@@ -6880,15 +5136,6 @@ __decorate([
 ], AddressWhereInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressWhereInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressWhereInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
-], AddressWhereInput.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], AddressWhereInput.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
@@ -6896,15 +5143,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], AddressWhereInput.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceRelationFilter, { nullable: true })
-], AddressWhereInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityRelationFilter, { nullable: true })
-], AddressWhereInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictRelationFilter, { nullable: true })
-], AddressWhereInput.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictRelationFilter, { nullable: true })
 ], AddressWhereInput.prototype, "subdistrict", void 0);
@@ -6934,15 +5172,6 @@ __decorate([
 ], Address.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], Address.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], Address.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], Address.prototype, "districtId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Address.prototype, "subdistrictId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
@@ -6950,15 +5179,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], Address.prototype, "updatedAt", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => Province, { nullable: false })
-], Address.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => City, { nullable: false })
-], Address.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => District, { nullable: false })
-], Address.prototype, "district", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Subdistrict, { nullable: false })
 ], Address.prototype, "subdistrict", void 0);
@@ -12775,9 +10995,6 @@ let CityCount = class CityCount {
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CityCount.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], CityCount.prototype, "address", void 0);
 CityCount = __decorate([
     (0, graphql_5.ObjectType)()
 ], CityCount);
@@ -12848,24 +11065,6 @@ CityCreateNestedManyWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityCreateNestedManyWithoutProvinceInput);
 exports.CityCreateNestedManyWithoutProvinceInput = CityCreateNestedManyWithoutProvinceInput;
-let CityCreateNestedOneWithoutAddressInput = class CityCreateNestedOneWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityCreateWithoutAddressInput)
-], CityCreateNestedOneWithoutAddressInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateOrConnectWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityCreateOrConnectWithoutAddressInput)
-], CityCreateNestedOneWithoutAddressInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityWhereUniqueInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityWhereUniqueInput)
-], CityCreateNestedOneWithoutAddressInput.prototype, "connect", void 0);
-CityCreateNestedOneWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityCreateNestedOneWithoutAddressInput);
-exports.CityCreateNestedOneWithoutAddressInput = CityCreateNestedOneWithoutAddressInput;
 let CityCreateNestedOneWithoutDistrictsInput = class CityCreateNestedOneWithoutDistrictsInput {
 };
 __decorate([
@@ -12884,20 +11083,6 @@ CityCreateNestedOneWithoutDistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityCreateNestedOneWithoutDistrictsInput);
 exports.CityCreateNestedOneWithoutDistrictsInput = CityCreateNestedOneWithoutDistrictsInput;
-let CityCreateOrConnectWithoutAddressInput = class CityCreateOrConnectWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => CityWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => CityWhereUniqueInput)
-], CityCreateOrConnectWithoutAddressInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => CityCreateWithoutAddressInput)
-], CityCreateOrConnectWithoutAddressInput.prototype, "create", void 0);
-CityCreateOrConnectWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityCreateOrConnectWithoutAddressInput);
-exports.CityCreateOrConnectWithoutAddressInput = CityCreateOrConnectWithoutAddressInput;
 let CityCreateOrConnectWithoutDistrictsInput = class CityCreateOrConnectWithoutDistrictsInput {
 };
 __decorate([
@@ -12926,23 +11111,6 @@ CityCreateOrConnectWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityCreateOrConnectWithoutProvinceInput);
 exports.CityCreateOrConnectWithoutProvinceInput = CityCreateOrConnectWithoutProvinceInput;
-let CityCreateWithoutAddressInput = class CityCreateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], CityCreateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutCitiesInput, { nullable: false })
-], CityCreateWithoutAddressInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateNestedManyWithoutCityInput, { nullable: true })
-], CityCreateWithoutAddressInput.prototype, "districts", void 0);
-CityCreateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityCreateWithoutAddressInput);
-exports.CityCreateWithoutAddressInput = CityCreateWithoutAddressInput;
 let CityCreateWithoutDistrictsInput = class CityCreateWithoutDistrictsInput {
 };
 __decorate([
@@ -12953,9 +11121,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => ProvinceCreateNestedOneWithoutCitiesInput, { nullable: false })
 ], CityCreateWithoutDistrictsInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutCityInput, { nullable: true })
-], CityCreateWithoutDistrictsInput.prototype, "address", void 0);
 CityCreateWithoutDistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityCreateWithoutDistrictsInput);
@@ -12970,9 +11135,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictCreateNestedManyWithoutCityInput, { nullable: true })
 ], CityCreateWithoutProvinceInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutCityInput, { nullable: true })
-], CityCreateWithoutProvinceInput.prototype, "address", void 0);
 CityCreateWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityCreateWithoutProvinceInput);
@@ -12990,9 +11152,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictCreateNestedManyWithoutCityInput, { nullable: true })
 ], CityCreateInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutCityInput, { nullable: true })
-], CityCreateInput.prototype, "address", void 0);
 CityCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityCreateInput);
@@ -13228,9 +11387,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictOrderByRelationAggregateInput, { nullable: true })
 ], CityOrderByWithRelationInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressOrderByRelationAggregateInput, { nullable: true })
-], CityOrderByWithRelationInput.prototype, "address", void 0);
 CityOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityOrderByWithRelationInput);
@@ -13353,26 +11509,6 @@ CityUncheckedCreateNestedManyWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedCreateNestedManyWithoutProvinceInput);
 exports.CityUncheckedCreateNestedManyWithoutProvinceInput = CityUncheckedCreateNestedManyWithoutProvinceInput;
-let CityUncheckedCreateWithoutAddressInput = class CityUncheckedCreateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], CityUncheckedCreateWithoutAddressInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], CityUncheckedCreateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], CityUncheckedCreateWithoutAddressInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUncheckedCreateNestedManyWithoutCityInput, { nullable: true })
-], CityUncheckedCreateWithoutAddressInput.prototype, "districts", void 0);
-CityUncheckedCreateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityUncheckedCreateWithoutAddressInput);
-exports.CityUncheckedCreateWithoutAddressInput = CityUncheckedCreateWithoutAddressInput;
 let CityUncheckedCreateWithoutDistrictsInput = class CityUncheckedCreateWithoutDistrictsInput {
 };
 __decorate([
@@ -13386,9 +11522,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], CityUncheckedCreateWithoutDistrictsInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutCityInput, { nullable: true })
-], CityUncheckedCreateWithoutDistrictsInput.prototype, "address", void 0);
 CityUncheckedCreateWithoutDistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedCreateWithoutDistrictsInput);
@@ -13406,9 +11539,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictUncheckedCreateNestedManyWithoutCityInput, { nullable: true })
 ], CityUncheckedCreateWithoutProvinceInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutCityInput, { nullable: true })
-], CityUncheckedCreateWithoutProvinceInput.prototype, "address", void 0);
 CityUncheckedCreateWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedCreateWithoutProvinceInput);
@@ -13429,9 +11559,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictUncheckedCreateNestedManyWithoutCityInput, { nullable: true })
 ], CityUncheckedCreateInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutCityInput, { nullable: true })
-], CityUncheckedCreateInput.prototype, "address", void 0);
 CityUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedCreateInput);
@@ -13513,24 +11640,6 @@ CityUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedUpdateManyInput);
 exports.CityUncheckedUpdateManyInput = CityUncheckedUpdateManyInput;
-let CityUncheckedUpdateWithoutAddressInput = class CityUncheckedUpdateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], CityUncheckedUpdateWithoutAddressInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], CityUncheckedUpdateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], CityUncheckedUpdateWithoutAddressInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUncheckedUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUncheckedUpdateWithoutAddressInput.prototype, "districts", void 0);
-CityUncheckedUpdateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityUncheckedUpdateWithoutAddressInput);
-exports.CityUncheckedUpdateWithoutAddressInput = CityUncheckedUpdateWithoutAddressInput;
 let CityUncheckedUpdateWithoutDistrictsInput = class CityUncheckedUpdateWithoutDistrictsInput {
 };
 __decorate([
@@ -13542,9 +11651,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], CityUncheckedUpdateWithoutDistrictsInput.prototype, "provinceId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUncheckedUpdateWithoutDistrictsInput.prototype, "address", void 0);
 CityUncheckedUpdateWithoutDistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedUpdateWithoutDistrictsInput);
@@ -13560,9 +11666,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictUncheckedUpdateManyWithoutCityNestedInput, { nullable: true })
 ], CityUncheckedUpdateWithoutProvinceInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUncheckedUpdateWithoutProvinceInput.prototype, "address", void 0);
 CityUncheckedUpdateWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedUpdateWithoutProvinceInput);
@@ -13581,9 +11684,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictUncheckedUpdateManyWithoutCityNestedInput, { nullable: true })
 ], CityUncheckedUpdateInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUncheckedUpdateInput.prototype, "address", void 0);
 CityUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUncheckedUpdateInput);
@@ -13661,32 +11761,6 @@ CityUpdateManyWithoutProvinceNestedInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpdateManyWithoutProvinceNestedInput);
 exports.CityUpdateManyWithoutProvinceNestedInput = CityUpdateManyWithoutProvinceNestedInput;
-let CityUpdateOneRequiredWithoutAddressNestedInput = class CityUpdateOneRequiredWithoutAddressNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityCreateWithoutAddressInput)
-], CityUpdateOneRequiredWithoutAddressNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateOrConnectWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityCreateOrConnectWithoutAddressInput)
-], CityUpdateOneRequiredWithoutAddressNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpsertWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityUpsertWithoutAddressInput)
-], CityUpdateOneRequiredWithoutAddressNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityWhereUniqueInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityWhereUniqueInput)
-], CityUpdateOneRequiredWithoutAddressNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateToOneWithWhereWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityUpdateToOneWithWhereWithoutAddressInput)
-], CityUpdateOneRequiredWithoutAddressNestedInput.prototype, "update", void 0);
-CityUpdateOneRequiredWithoutAddressNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityUpdateOneRequiredWithoutAddressNestedInput);
-exports.CityUpdateOneRequiredWithoutAddressNestedInput = CityUpdateOneRequiredWithoutAddressNestedInput;
 let CityUpdateOneRequiredWithoutDistrictsNestedInput = class CityUpdateOneRequiredWithoutDistrictsNestedInput {
 };
 __decorate([
@@ -13713,20 +11787,6 @@ CityUpdateOneRequiredWithoutDistrictsNestedInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpdateOneRequiredWithoutDistrictsNestedInput);
 exports.CityUpdateOneRequiredWithoutDistrictsNestedInput = CityUpdateOneRequiredWithoutDistrictsNestedInput;
-let CityUpdateToOneWithWhereWithoutAddressInput = class CityUpdateToOneWithWhereWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => CityWhereInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityWhereInput)
-], CityUpdateToOneWithWhereWithoutAddressInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => CityUpdateWithoutAddressInput)
-], CityUpdateToOneWithWhereWithoutAddressInput.prototype, "data", void 0);
-CityUpdateToOneWithWhereWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityUpdateToOneWithWhereWithoutAddressInput);
-exports.CityUpdateToOneWithWhereWithoutAddressInput = CityUpdateToOneWithWhereWithoutAddressInput;
 let CityUpdateToOneWithWhereWithoutDistrictsInput = class CityUpdateToOneWithWhereWithoutDistrictsInput {
 };
 __decorate([
@@ -13755,21 +11815,6 @@ CityUpdateWithWhereUniqueWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpdateWithWhereUniqueWithoutProvinceInput);
 exports.CityUpdateWithWhereUniqueWithoutProvinceInput = CityUpdateWithWhereUniqueWithoutProvinceInput;
-let CityUpdateWithoutAddressInput = class CityUpdateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], CityUpdateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutCitiesNestedInput, { nullable: true })
-], CityUpdateWithoutAddressInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUpdateWithoutAddressInput.prototype, "districts", void 0);
-CityUpdateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityUpdateWithoutAddressInput);
-exports.CityUpdateWithoutAddressInput = CityUpdateWithoutAddressInput;
 let CityUpdateWithoutDistrictsInput = class CityUpdateWithoutDistrictsInput {
 };
 __decorate([
@@ -13778,9 +11823,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => ProvinceUpdateOneRequiredWithoutCitiesNestedInput, { nullable: true })
 ], CityUpdateWithoutDistrictsInput.prototype, "province", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUpdateWithoutDistrictsInput.prototype, "address", void 0);
 CityUpdateWithoutDistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpdateWithoutDistrictsInput);
@@ -13793,9 +11835,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictUpdateManyWithoutCityNestedInput, { nullable: true })
 ], CityUpdateWithoutProvinceInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUpdateWithoutProvinceInput.prototype, "address", void 0);
 CityUpdateWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpdateWithoutProvinceInput);
@@ -13811,9 +11850,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictUpdateManyWithoutCityNestedInput, { nullable: true })
 ], CityUpdateInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutCityNestedInput, { nullable: true })
-], CityUpdateInput.prototype, "address", void 0);
 CityUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpdateInput);
@@ -13836,24 +11872,6 @@ CityUpsertWithWhereUniqueWithoutProvinceInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityUpsertWithWhereUniqueWithoutProvinceInput);
 exports.CityUpsertWithWhereUniqueWithoutProvinceInput = CityUpsertWithWhereUniqueWithoutProvinceInput;
-let CityUpsertWithoutAddressInput = class CityUpsertWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => CityUpdateWithoutAddressInput)
-], CityUpsertWithoutAddressInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => CityCreateWithoutAddressInput)
-], CityUpsertWithoutAddressInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityWhereInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => CityWhereInput)
-], CityUpsertWithoutAddressInput.prototype, "where", void 0);
-CityUpsertWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], CityUpsertWithoutAddressInput);
-exports.CityUpsertWithoutAddressInput = CityUpsertWithoutAddressInput;
 let CityUpsertWithoutDistrictsInput = class CityUpsertWithoutDistrictsInput {
 };
 __decorate([
@@ -13898,9 +11916,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictListRelationFilter, { nullable: true })
 ], CityWhereUniqueInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressListRelationFilter, { nullable: true })
-], CityWhereUniqueInput.prototype, "address", void 0);
 CityWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
 ], CityWhereUniqueInput);
@@ -13931,9 +11946,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DistrictListRelationFilter, { nullable: true })
 ], CityWhereInput.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressListRelationFilter, { nullable: true })
-], CityWhereInput.prototype, "address", void 0);
 CityWhereInput = CityWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], CityWhereInput);
@@ -13955,9 +11967,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [District], { nullable: true })
 ], City.prototype, "districts", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], City.prototype, "address", void 0);
 __decorate([
     (0, graphql_1.Field)(() => CityCount, { nullable: false })
 ], City.prototype, "_count", void 0);
@@ -14342,9 +12351,6 @@ let DistrictCount = class DistrictCount {
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], DistrictCount.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], DistrictCount.prototype, "address", void 0);
 DistrictCount = __decorate([
     (0, graphql_5.ObjectType)()
 ], DistrictCount);
@@ -14415,24 +12421,6 @@ DistrictCreateNestedManyWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictCreateNestedManyWithoutCityInput);
 exports.DistrictCreateNestedManyWithoutCityInput = DistrictCreateNestedManyWithoutCityInput;
-let DistrictCreateNestedOneWithoutAddressInput = class DistrictCreateNestedOneWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictCreateWithoutAddressInput)
-], DistrictCreateNestedOneWithoutAddressInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateOrConnectWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictCreateOrConnectWithoutAddressInput)
-], DistrictCreateNestedOneWithoutAddressInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictWhereUniqueInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictWhereUniqueInput)
-], DistrictCreateNestedOneWithoutAddressInput.prototype, "connect", void 0);
-DistrictCreateNestedOneWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictCreateNestedOneWithoutAddressInput);
-exports.DistrictCreateNestedOneWithoutAddressInput = DistrictCreateNestedOneWithoutAddressInput;
 let DistrictCreateNestedOneWithoutSubdistrictsInput = class DistrictCreateNestedOneWithoutSubdistrictsInput {
 };
 __decorate([
@@ -14451,20 +12439,6 @@ DistrictCreateNestedOneWithoutSubdistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictCreateNestedOneWithoutSubdistrictsInput);
 exports.DistrictCreateNestedOneWithoutSubdistrictsInput = DistrictCreateNestedOneWithoutSubdistrictsInput;
-let DistrictCreateOrConnectWithoutAddressInput = class DistrictCreateOrConnectWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => DistrictWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => DistrictWhereUniqueInput)
-], DistrictCreateOrConnectWithoutAddressInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => DistrictCreateWithoutAddressInput)
-], DistrictCreateOrConnectWithoutAddressInput.prototype, "create", void 0);
-DistrictCreateOrConnectWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictCreateOrConnectWithoutAddressInput);
-exports.DistrictCreateOrConnectWithoutAddressInput = DistrictCreateOrConnectWithoutAddressInput;
 let DistrictCreateOrConnectWithoutCityInput = class DistrictCreateOrConnectWithoutCityInput {
 };
 __decorate([
@@ -14493,23 +12467,6 @@ DistrictCreateOrConnectWithoutSubdistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictCreateOrConnectWithoutSubdistrictsInput);
 exports.DistrictCreateOrConnectWithoutSubdistrictsInput = DistrictCreateOrConnectWithoutSubdistrictsInput;
-let DistrictCreateWithoutAddressInput = class DistrictCreateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], DistrictCreateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedOneWithoutDistrictsInput, { nullable: false })
-], DistrictCreateWithoutAddressInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictCreateWithoutAddressInput.prototype, "subdistricts", void 0);
-DistrictCreateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictCreateWithoutAddressInput);
-exports.DistrictCreateWithoutAddressInput = DistrictCreateWithoutAddressInput;
 let DistrictCreateWithoutCityInput = class DistrictCreateWithoutCityInput {
 };
 __decorate([
@@ -14520,9 +12477,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedManyWithoutDistrictInput, { nullable: true })
 ], DistrictCreateWithoutCityInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictCreateWithoutCityInput.prototype, "address", void 0);
 DistrictCreateWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictCreateWithoutCityInput);
@@ -14537,9 +12491,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityCreateNestedOneWithoutDistrictsInput, { nullable: false })
 ], DistrictCreateWithoutSubdistrictsInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictCreateWithoutSubdistrictsInput.prototype, "address", void 0);
 DistrictCreateWithoutSubdistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictCreateWithoutSubdistrictsInput);
@@ -14557,9 +12508,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictCreateNestedManyWithoutDistrictInput, { nullable: true })
 ], DistrictCreateInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictCreateInput.prototype, "address", void 0);
 DistrictCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictCreateInput);
@@ -14795,9 +12743,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictOrderByRelationAggregateInput, { nullable: true })
 ], DistrictOrderByWithRelationInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressOrderByRelationAggregateInput, { nullable: true })
-], DistrictOrderByWithRelationInput.prototype, "address", void 0);
 DistrictOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictOrderByWithRelationInput);
@@ -14920,26 +12865,6 @@ DistrictUncheckedCreateNestedManyWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedCreateNestedManyWithoutCityInput);
 exports.DistrictUncheckedCreateNestedManyWithoutCityInput = DistrictUncheckedCreateNestedManyWithoutCityInput;
-let DistrictUncheckedCreateWithoutAddressInput = class DistrictUncheckedCreateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], DistrictUncheckedCreateWithoutAddressInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], DistrictUncheckedCreateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], DistrictUncheckedCreateWithoutAddressInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictUncheckedCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictUncheckedCreateWithoutAddressInput.prototype, "subdistricts", void 0);
-DistrictUncheckedCreateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictUncheckedCreateWithoutAddressInput);
-exports.DistrictUncheckedCreateWithoutAddressInput = DistrictUncheckedCreateWithoutAddressInput;
 let DistrictUncheckedCreateWithoutCityInput = class DistrictUncheckedCreateWithoutCityInput {
 };
 __decorate([
@@ -14953,9 +12878,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUncheckedCreateNestedManyWithoutDistrictInput, { nullable: true })
 ], DistrictUncheckedCreateWithoutCityInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictUncheckedCreateWithoutCityInput.prototype, "address", void 0);
 DistrictUncheckedCreateWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedCreateWithoutCityInput);
@@ -14973,9 +12895,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], DistrictUncheckedCreateWithoutSubdistrictsInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictUncheckedCreateWithoutSubdistrictsInput.prototype, "address", void 0);
 DistrictUncheckedCreateWithoutSubdistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedCreateWithoutSubdistrictsInput);
@@ -14996,9 +12915,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUncheckedCreateNestedManyWithoutDistrictInput, { nullable: true })
 ], DistrictUncheckedCreateInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutDistrictInput, { nullable: true })
-], DistrictUncheckedCreateInput.prototype, "address", void 0);
 DistrictUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedCreateInput);
@@ -15080,24 +12996,6 @@ DistrictUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedUpdateManyInput);
 exports.DistrictUncheckedUpdateManyInput = DistrictUncheckedUpdateManyInput;
-let DistrictUncheckedUpdateWithoutAddressInput = class DistrictUncheckedUpdateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], DistrictUncheckedUpdateWithoutAddressInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], DistrictUncheckedUpdateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], DistrictUncheckedUpdateWithoutAddressInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUncheckedUpdateWithoutAddressInput.prototype, "subdistricts", void 0);
-DistrictUncheckedUpdateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictUncheckedUpdateWithoutAddressInput);
-exports.DistrictUncheckedUpdateWithoutAddressInput = DistrictUncheckedUpdateWithoutAddressInput;
 let DistrictUncheckedUpdateWithoutCityInput = class DistrictUncheckedUpdateWithoutCityInput {
 };
 __decorate([
@@ -15109,9 +13007,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput, { nullable: true })
 ], DistrictUncheckedUpdateWithoutCityInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUncheckedUpdateWithoutCityInput.prototype, "address", void 0);
 DistrictUncheckedUpdateWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedUpdateWithoutCityInput);
@@ -15127,9 +13022,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], DistrictUncheckedUpdateWithoutSubdistrictsInput.prototype, "cityId", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUncheckedUpdateWithoutSubdistrictsInput.prototype, "address", void 0);
 DistrictUncheckedUpdateWithoutSubdistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedUpdateWithoutSubdistrictsInput);
@@ -15148,9 +13040,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput, { nullable: true })
 ], DistrictUncheckedUpdateInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUncheckedUpdateInput.prototype, "address", void 0);
 DistrictUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUncheckedUpdateInput);
@@ -15228,32 +13117,6 @@ DistrictUpdateManyWithoutCityNestedInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpdateManyWithoutCityNestedInput);
 exports.DistrictUpdateManyWithoutCityNestedInput = DistrictUpdateManyWithoutCityNestedInput;
-let DistrictUpdateOneRequiredWithoutAddressNestedInput = class DistrictUpdateOneRequiredWithoutAddressNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictCreateWithoutAddressInput)
-], DistrictUpdateOneRequiredWithoutAddressNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateOrConnectWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictCreateOrConnectWithoutAddressInput)
-], DistrictUpdateOneRequiredWithoutAddressNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpsertWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictUpsertWithoutAddressInput)
-], DistrictUpdateOneRequiredWithoutAddressNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictWhereUniqueInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictWhereUniqueInput)
-], DistrictUpdateOneRequiredWithoutAddressNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateToOneWithWhereWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictUpdateToOneWithWhereWithoutAddressInput)
-], DistrictUpdateOneRequiredWithoutAddressNestedInput.prototype, "update", void 0);
-DistrictUpdateOneRequiredWithoutAddressNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictUpdateOneRequiredWithoutAddressNestedInput);
-exports.DistrictUpdateOneRequiredWithoutAddressNestedInput = DistrictUpdateOneRequiredWithoutAddressNestedInput;
 let DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput = class DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput {
 };
 __decorate([
@@ -15280,20 +13143,6 @@ DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput);
 exports.DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput = DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput;
-let DistrictUpdateToOneWithWhereWithoutAddressInput = class DistrictUpdateToOneWithWhereWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => DistrictWhereInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictWhereInput)
-], DistrictUpdateToOneWithWhereWithoutAddressInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => DistrictUpdateWithoutAddressInput)
-], DistrictUpdateToOneWithWhereWithoutAddressInput.prototype, "data", void 0);
-DistrictUpdateToOneWithWhereWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictUpdateToOneWithWhereWithoutAddressInput);
-exports.DistrictUpdateToOneWithWhereWithoutAddressInput = DistrictUpdateToOneWithWhereWithoutAddressInput;
 let DistrictUpdateToOneWithWhereWithoutSubdistrictsInput = class DistrictUpdateToOneWithWhereWithoutSubdistrictsInput {
 };
 __decorate([
@@ -15322,21 +13171,6 @@ DistrictUpdateWithWhereUniqueWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpdateWithWhereUniqueWithoutCityInput);
 exports.DistrictUpdateWithWhereUniqueWithoutCityInput = DistrictUpdateWithWhereUniqueWithoutCityInput;
-let DistrictUpdateWithoutAddressInput = class DistrictUpdateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], DistrictUpdateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutDistrictsNestedInput, { nullable: true })
-], DistrictUpdateWithoutAddressInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => SubdistrictUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUpdateWithoutAddressInput.prototype, "subdistricts", void 0);
-DistrictUpdateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictUpdateWithoutAddressInput);
-exports.DistrictUpdateWithoutAddressInput = DistrictUpdateWithoutAddressInput;
 let DistrictUpdateWithoutCityInput = class DistrictUpdateWithoutCityInput {
 };
 __decorate([
@@ -15345,9 +13179,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateManyWithoutDistrictNestedInput, { nullable: true })
 ], DistrictUpdateWithoutCityInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUpdateWithoutCityInput.prototype, "address", void 0);
 DistrictUpdateWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpdateWithoutCityInput);
@@ -15360,9 +13191,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityUpdateOneRequiredWithoutDistrictsNestedInput, { nullable: true })
 ], DistrictUpdateWithoutSubdistrictsInput.prototype, "city", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUpdateWithoutSubdistrictsInput.prototype, "address", void 0);
 DistrictUpdateWithoutSubdistrictsInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpdateWithoutSubdistrictsInput);
@@ -15378,9 +13206,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictUpdateManyWithoutDistrictNestedInput, { nullable: true })
 ], DistrictUpdateInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutDistrictNestedInput, { nullable: true })
-], DistrictUpdateInput.prototype, "address", void 0);
 DistrictUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpdateInput);
@@ -15403,24 +13228,6 @@ DistrictUpsertWithWhereUniqueWithoutCityInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictUpsertWithWhereUniqueWithoutCityInput);
 exports.DistrictUpsertWithWhereUniqueWithoutCityInput = DistrictUpsertWithWhereUniqueWithoutCityInput;
-let DistrictUpsertWithoutAddressInput = class DistrictUpsertWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => DistrictUpdateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => DistrictUpdateWithoutAddressInput)
-], DistrictUpsertWithoutAddressInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictCreateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => DistrictCreateWithoutAddressInput)
-], DistrictUpsertWithoutAddressInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => DistrictWhereInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => DistrictWhereInput)
-], DistrictUpsertWithoutAddressInput.prototype, "where", void 0);
-DistrictUpsertWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], DistrictUpsertWithoutAddressInput);
-exports.DistrictUpsertWithoutAddressInput = DistrictUpsertWithoutAddressInput;
 let DistrictUpsertWithoutSubdistrictsInput = class DistrictUpsertWithoutSubdistrictsInput {
 };
 __decorate([
@@ -15465,9 +13272,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictListRelationFilter, { nullable: true })
 ], DistrictWhereUniqueInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressListRelationFilter, { nullable: true })
-], DistrictWhereUniqueInput.prototype, "address", void 0);
 DistrictWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictWhereUniqueInput);
@@ -15498,9 +13302,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SubdistrictListRelationFilter, { nullable: true })
 ], DistrictWhereInput.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressListRelationFilter, { nullable: true })
-], DistrictWhereInput.prototype, "address", void 0);
 DistrictWhereInput = DistrictWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], DistrictWhereInput);
@@ -15522,9 +13323,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => [Subdistrict], { nullable: true })
 ], District.prototype, "subdistricts", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], District.prototype, "address", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DistrictCount, { nullable: false })
 ], District.prototype, "_count", void 0);
@@ -42735,9 +40533,6 @@ let ProvinceCount = class ProvinceCount {
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProvinceCount.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], ProvinceCount.prototype, "address", void 0);
 ProvinceCount = __decorate([
     (0, graphql_5.ObjectType)()
 ], ProvinceCount);
@@ -42756,24 +40551,6 @@ ProvinceCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceCreateManyInput);
 exports.ProvinceCreateManyInput = ProvinceCreateManyInput;
-let ProvinceCreateNestedOneWithoutAddressInput = class ProvinceCreateNestedOneWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceCreateWithoutAddressInput)
-], ProvinceCreateNestedOneWithoutAddressInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateOrConnectWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceCreateOrConnectWithoutAddressInput)
-], ProvinceCreateNestedOneWithoutAddressInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceWhereUniqueInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceWhereUniqueInput)
-], ProvinceCreateNestedOneWithoutAddressInput.prototype, "connect", void 0);
-ProvinceCreateNestedOneWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceCreateNestedOneWithoutAddressInput);
-exports.ProvinceCreateNestedOneWithoutAddressInput = ProvinceCreateNestedOneWithoutAddressInput;
 let ProvinceCreateNestedOneWithoutCitiesInput = class ProvinceCreateNestedOneWithoutCitiesInput {
 };
 __decorate([
@@ -42792,20 +40569,6 @@ ProvinceCreateNestedOneWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceCreateNestedOneWithoutCitiesInput);
 exports.ProvinceCreateNestedOneWithoutCitiesInput = ProvinceCreateNestedOneWithoutCitiesInput;
-let ProvinceCreateOrConnectWithoutAddressInput = class ProvinceCreateOrConnectWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceWhereUniqueInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => ProvinceWhereUniqueInput)
-], ProvinceCreateOrConnectWithoutAddressInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => ProvinceCreateWithoutAddressInput)
-], ProvinceCreateOrConnectWithoutAddressInput.prototype, "create", void 0);
-ProvinceCreateOrConnectWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceCreateOrConnectWithoutAddressInput);
-exports.ProvinceCreateOrConnectWithoutAddressInput = ProvinceCreateOrConnectWithoutAddressInput;
 let ProvinceCreateOrConnectWithoutCitiesInput = class ProvinceCreateOrConnectWithoutCitiesInput {
 };
 __decorate([
@@ -42820,20 +40583,6 @@ ProvinceCreateOrConnectWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceCreateOrConnectWithoutCitiesInput);
 exports.ProvinceCreateOrConnectWithoutCitiesInput = ProvinceCreateOrConnectWithoutCitiesInput;
-let ProvinceCreateWithoutAddressInput = class ProvinceCreateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], ProvinceCreateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityCreateNestedManyWithoutProvinceInput, { nullable: true })
-], ProvinceCreateWithoutAddressInput.prototype, "cities", void 0);
-ProvinceCreateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceCreateWithoutAddressInput);
-exports.ProvinceCreateWithoutAddressInput = ProvinceCreateWithoutAddressInput;
 let ProvinceCreateWithoutCitiesInput = class ProvinceCreateWithoutCitiesInput {
 };
 __decorate([
@@ -42841,9 +40590,6 @@ __decorate([
     Validator.MinLength(2),
     Validator.IsNotEmpty()
 ], ProvinceCreateWithoutCitiesInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutProvinceInput, { nullable: true })
-], ProvinceCreateWithoutCitiesInput.prototype, "address", void 0);
 ProvinceCreateWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceCreateWithoutCitiesInput);
@@ -42858,9 +40604,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityCreateNestedManyWithoutProvinceInput, { nullable: true })
 ], ProvinceCreateInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressCreateNestedManyWithoutProvinceInput, { nullable: true })
-], ProvinceCreateInput.prototype, "address", void 0);
 ProvinceCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceCreateInput);
@@ -43042,9 +40785,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityOrderByRelationAggregateInput, { nullable: true })
 ], ProvinceOrderByWithRelationInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressOrderByRelationAggregateInput, { nullable: true })
-], ProvinceOrderByWithRelationInput.prototype, "address", void 0);
 ProvinceOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceOrderByWithRelationInput);
@@ -43109,23 +40849,6 @@ ProvinceSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceSumOrderByAggregateInput);
 exports.ProvinceSumOrderByAggregateInput = ProvinceSumOrderByAggregateInput;
-let ProvinceUncheckedCreateWithoutAddressInput = class ProvinceUncheckedCreateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
-], ProvinceUncheckedCreateWithoutAddressInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.MinLength(2),
-    Validator.IsNotEmpty()
-], ProvinceUncheckedCreateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUncheckedCreateNestedManyWithoutProvinceInput, { nullable: true })
-], ProvinceUncheckedCreateWithoutAddressInput.prototype, "cities", void 0);
-ProvinceUncheckedCreateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceUncheckedCreateWithoutAddressInput);
-exports.ProvinceUncheckedCreateWithoutAddressInput = ProvinceUncheckedCreateWithoutAddressInput;
 let ProvinceUncheckedCreateWithoutCitiesInput = class ProvinceUncheckedCreateWithoutCitiesInput {
 };
 __decorate([
@@ -43136,9 +40859,6 @@ __decorate([
     Validator.MinLength(2),
     Validator.IsNotEmpty()
 ], ProvinceUncheckedCreateWithoutCitiesInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutProvinceInput, { nullable: true })
-], ProvinceUncheckedCreateWithoutCitiesInput.prototype, "address", void 0);
 ProvinceUncheckedCreateWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUncheckedCreateWithoutCitiesInput);
@@ -43156,9 +40876,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityUncheckedCreateNestedManyWithoutProvinceInput, { nullable: true })
 ], ProvinceUncheckedCreateInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedCreateNestedManyWithoutProvinceInput, { nullable: true })
-], ProvinceUncheckedCreateInput.prototype, "address", void 0);
 ProvinceUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUncheckedCreateInput);
@@ -43175,21 +40892,6 @@ ProvinceUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUncheckedUpdateManyInput);
 exports.ProvinceUncheckedUpdateManyInput = ProvinceUncheckedUpdateManyInput;
-let ProvinceUncheckedUpdateWithoutAddressInput = class ProvinceUncheckedUpdateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
-], ProvinceUncheckedUpdateWithoutAddressInput.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], ProvinceUncheckedUpdateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUncheckedUpdateManyWithoutProvinceNestedInput, { nullable: true })
-], ProvinceUncheckedUpdateWithoutAddressInput.prototype, "cities", void 0);
-ProvinceUncheckedUpdateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceUncheckedUpdateWithoutAddressInput);
-exports.ProvinceUncheckedUpdateWithoutAddressInput = ProvinceUncheckedUpdateWithoutAddressInput;
 let ProvinceUncheckedUpdateWithoutCitiesInput = class ProvinceUncheckedUpdateWithoutCitiesInput {
 };
 __decorate([
@@ -43198,9 +40900,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ProvinceUncheckedUpdateWithoutCitiesInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutProvinceNestedInput, { nullable: true })
-], ProvinceUncheckedUpdateWithoutCitiesInput.prototype, "address", void 0);
 ProvinceUncheckedUpdateWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUncheckedUpdateWithoutCitiesInput);
@@ -43216,9 +40915,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityUncheckedUpdateManyWithoutProvinceNestedInput, { nullable: true })
 ], ProvinceUncheckedUpdateInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUncheckedUpdateManyWithoutProvinceNestedInput, { nullable: true })
-], ProvinceUncheckedUpdateInput.prototype, "address", void 0);
 ProvinceUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUncheckedUpdateInput);
@@ -43232,32 +40928,6 @@ ProvinceUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUpdateManyMutationInput);
 exports.ProvinceUpdateManyMutationInput = ProvinceUpdateManyMutationInput;
-let ProvinceUpdateOneRequiredWithoutAddressNestedInput = class ProvinceUpdateOneRequiredWithoutAddressNestedInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceCreateWithoutAddressInput)
-], ProvinceUpdateOneRequiredWithoutAddressNestedInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateOrConnectWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceCreateOrConnectWithoutAddressInput)
-], ProvinceUpdateOneRequiredWithoutAddressNestedInput.prototype, "connectOrCreate", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpsertWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceUpsertWithoutAddressInput)
-], ProvinceUpdateOneRequiredWithoutAddressNestedInput.prototype, "upsert", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceWhereUniqueInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceWhereUniqueInput)
-], ProvinceUpdateOneRequiredWithoutAddressNestedInput.prototype, "connect", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateToOneWithWhereWithoutAddressInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceUpdateToOneWithWhereWithoutAddressInput)
-], ProvinceUpdateOneRequiredWithoutAddressNestedInput.prototype, "update", void 0);
-ProvinceUpdateOneRequiredWithoutAddressNestedInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceUpdateOneRequiredWithoutAddressNestedInput);
-exports.ProvinceUpdateOneRequiredWithoutAddressNestedInput = ProvinceUpdateOneRequiredWithoutAddressNestedInput;
 let ProvinceUpdateOneRequiredWithoutCitiesNestedInput = class ProvinceUpdateOneRequiredWithoutCitiesNestedInput {
 };
 __decorate([
@@ -43284,20 +40954,6 @@ ProvinceUpdateOneRequiredWithoutCitiesNestedInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUpdateOneRequiredWithoutCitiesNestedInput);
 exports.ProvinceUpdateOneRequiredWithoutCitiesNestedInput = ProvinceUpdateOneRequiredWithoutCitiesNestedInput;
-let ProvinceUpdateToOneWithWhereWithoutAddressInput = class ProvinceUpdateToOneWithWhereWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceWhereInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceWhereInput)
-], ProvinceUpdateToOneWithWhereWithoutAddressInput.prototype, "where", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => ProvinceUpdateWithoutAddressInput)
-], ProvinceUpdateToOneWithWhereWithoutAddressInput.prototype, "data", void 0);
-ProvinceUpdateToOneWithWhereWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceUpdateToOneWithWhereWithoutAddressInput);
-exports.ProvinceUpdateToOneWithWhereWithoutAddressInput = ProvinceUpdateToOneWithWhereWithoutAddressInput;
 let ProvinceUpdateToOneWithWhereWithoutCitiesInput = class ProvinceUpdateToOneWithWhereWithoutCitiesInput {
 };
 __decorate([
@@ -43312,26 +40968,11 @@ ProvinceUpdateToOneWithWhereWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUpdateToOneWithWhereWithoutCitiesInput);
 exports.ProvinceUpdateToOneWithWhereWithoutCitiesInput = ProvinceUpdateToOneWithWhereWithoutCitiesInput;
-let ProvinceUpdateWithoutAddressInput = class ProvinceUpdateWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
-], ProvinceUpdateWithoutAddressInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => CityUpdateManyWithoutProvinceNestedInput, { nullable: true })
-], ProvinceUpdateWithoutAddressInput.prototype, "cities", void 0);
-ProvinceUpdateWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceUpdateWithoutAddressInput);
-exports.ProvinceUpdateWithoutAddressInput = ProvinceUpdateWithoutAddressInput;
 let ProvinceUpdateWithoutCitiesInput = class ProvinceUpdateWithoutCitiesInput {
 };
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ProvinceUpdateWithoutCitiesInput.prototype, "name", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutProvinceNestedInput, { nullable: true })
-], ProvinceUpdateWithoutCitiesInput.prototype, "address", void 0);
 ProvinceUpdateWithoutCitiesInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUpdateWithoutCitiesInput);
@@ -43344,31 +40985,10 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityUpdateManyWithoutProvinceNestedInput, { nullable: true })
 ], ProvinceUpdateInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressUpdateManyWithoutProvinceNestedInput, { nullable: true })
-], ProvinceUpdateInput.prototype, "address", void 0);
 ProvinceUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceUpdateInput);
 exports.ProvinceUpdateInput = ProvinceUpdateInput;
-let ProvinceUpsertWithoutAddressInput = class ProvinceUpsertWithoutAddressInput {
-};
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceUpdateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => ProvinceUpdateWithoutAddressInput)
-], ProvinceUpsertWithoutAddressInput.prototype, "update", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceCreateWithoutAddressInput, { nullable: false }),
-    (0, class_transformer_1.Type)(() => ProvinceCreateWithoutAddressInput)
-], ProvinceUpsertWithoutAddressInput.prototype, "create", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => ProvinceWhereInput, { nullable: true }),
-    (0, class_transformer_1.Type)(() => ProvinceWhereInput)
-], ProvinceUpsertWithoutAddressInput.prototype, "where", void 0);
-ProvinceUpsertWithoutAddressInput = __decorate([
-    (0, graphql_4.InputType)()
-], ProvinceUpsertWithoutAddressInput);
-exports.ProvinceUpsertWithoutAddressInput = ProvinceUpsertWithoutAddressInput;
 let ProvinceUpsertWithoutCitiesInput = class ProvinceUpsertWithoutCitiesInput {
 };
 __decorate([
@@ -43409,9 +41029,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityListRelationFilter, { nullable: true })
 ], ProvinceWhereUniqueInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressListRelationFilter, { nullable: true })
-], ProvinceWhereUniqueInput.prototype, "address", void 0);
 ProvinceWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceWhereUniqueInput);
@@ -43436,9 +41053,6 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => CityListRelationFilter, { nullable: true })
 ], ProvinceWhereInput.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => AddressListRelationFilter, { nullable: true })
-], ProvinceWhereInput.prototype, "address", void 0);
 ProvinceWhereInput = ProvinceWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], ProvinceWhereInput);
@@ -43454,9 +41068,6 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], Province.prototype, "cities", void 0);
-__decorate([
-    (0, graphql_7.HideField)()
-], Province.prototype, "address", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProvinceCount, { nullable: false })
 ], Province.prototype, "_count", void 0);

@@ -62,9 +62,6 @@ export function fakeAddressComplete() {
   return {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
-    provinceId: faker.datatype.number(),
-    cityId: faker.datatype.number(),
-    districtId: faker.datatype.number(),
     subdistrictId: faker.datatype.number(),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),

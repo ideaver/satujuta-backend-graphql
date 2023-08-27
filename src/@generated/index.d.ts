@@ -373,9 +373,6 @@ export declare enum BankScalarFieldEnum {
 export declare enum AddressScalarFieldEnum {
     id = "id",
     name = "name",
-    provinceId = "provinceId",
-    cityId = "cityId",
-    districtId = "districtId",
     subdistrictId = "subdistrictId",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
@@ -1209,31 +1206,19 @@ export declare class AddressAggregateArgs {
 }
 export declare class AddressAvgAggregateInput {
     id?: true;
-    provinceId?: true;
-    cityId?: true;
-    districtId?: true;
     subdistrictId?: true;
 }
 export declare class AddressAvgAggregate {
     id?: number;
-    provinceId?: number;
-    cityId?: number;
-    districtId?: number;
     subdistrictId?: number;
 }
 export declare class AddressAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
 }
 export declare class AddressCountAggregateInput {
     id?: true;
     name?: true;
-    provinceId?: true;
-    cityId?: true;
-    districtId?: true;
     subdistrictId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -1242,9 +1227,6 @@ export declare class AddressCountAggregateInput {
 export declare class AddressCountAggregate {
     id: number;
     name: number;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt: number;
     updatedAt: number;
@@ -1253,51 +1235,9 @@ export declare class AddressCountAggregate {
 export declare class AddressCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
-}
-export declare class AddressCreateManyCityInputEnvelope {
-    data: Array<AddressCreateManyCityInput>;
-    skipDuplicates?: boolean;
-}
-export declare class AddressCreateManyCityInput {
-    id?: number;
-    name: string;
-    provinceId: number;
-    districtId: number;
-    subdistrictId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class AddressCreateManyDistrictInputEnvelope {
-    data: Array<AddressCreateManyDistrictInput>;
-    skipDuplicates?: boolean;
-}
-export declare class AddressCreateManyDistrictInput {
-    id?: number;
-    name: string;
-    provinceId: number;
-    cityId: number;
-    subdistrictId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-}
-export declare class AddressCreateManyProvinceInputEnvelope {
-    data: Array<AddressCreateManyProvinceInput>;
-    skipDuplicates?: boolean;
-}
-export declare class AddressCreateManyProvinceInput {
-    id?: number;
-    name: string;
-    cityId: number;
-    districtId: number;
-    subdistrictId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
 }
 export declare class AddressCreateManySubdistrictInputEnvelope {
     data: Array<AddressCreateManySubdistrictInput>;
@@ -1306,39 +1246,15 @@ export declare class AddressCreateManySubdistrictInputEnvelope {
 export declare class AddressCreateManySubdistrictInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
 export declare class AddressCreateManyInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-}
-export declare class AddressCreateNestedManyWithoutCityInput {
-    create?: Array<AddressCreateWithoutCityInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutCityInput>;
-    createMany?: InstanceType<typeof AddressCreateManyCityInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-}
-export declare class AddressCreateNestedManyWithoutDistrictInput {
-    create?: Array<AddressCreateWithoutDistrictInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutDistrictInput>;
-    createMany?: InstanceType<typeof AddressCreateManyDistrictInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-}
-export declare class AddressCreateNestedManyWithoutProvinceInput {
-    create?: Array<AddressCreateWithoutProvinceInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutProvinceInput>;
-    createMany?: InstanceType<typeof AddressCreateManyProvinceInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
 }
 export declare class AddressCreateNestedManyWithoutSubdistrictInput {
     create?: Array<AddressCreateWithoutSubdistrictInput>;
@@ -1366,21 +1282,9 @@ export declare class AddressCreateNestedOneWithoutUserInput {
     connectOrCreate?: InstanceType<typeof AddressCreateOrConnectWithoutUserInput>;
     connect?: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
 }
-export declare class AddressCreateOrConnectWithoutCityInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof AddressCreateWithoutCityInput>;
-}
-export declare class AddressCreateOrConnectWithoutDistrictInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof AddressCreateWithoutDistrictInput>;
-}
 export declare class AddressCreateOrConnectWithoutHotelInput {
     where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
     create: InstanceType<typeof AddressCreateWithoutHotelInput>;
-}
-export declare class AddressCreateOrConnectWithoutProvinceInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof AddressCreateWithoutProvinceInput>;
 }
 export declare class AddressCreateOrConnectWithoutSchoolInput {
     where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
@@ -1398,51 +1302,12 @@ export declare class AddressCreateOrConnectWithoutUserInput {
     where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
     create: InstanceType<typeof AddressCreateWithoutUserInput>;
 }
-export declare class AddressCreateWithoutCityInput {
-    name: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
-    subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
-    user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
-    hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
-    school?: InstanceType<typeof SchoolCreateNestedOneWithoutAddressInput>;
-    Shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutAddressInput>;
-}
-export declare class AddressCreateWithoutDistrictInput {
-    name: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
-    user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
-    hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
-    school?: InstanceType<typeof SchoolCreateNestedOneWithoutAddressInput>;
-    Shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutAddressInput>;
-}
 export declare class AddressCreateWithoutHotelInput {
     name: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
     user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
-    school?: InstanceType<typeof SchoolCreateNestedOneWithoutAddressInput>;
-    Shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutAddressInput>;
-}
-export declare class AddressCreateWithoutProvinceInput {
-    name: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
-    subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
-    user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
-    hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolCreateNestedOneWithoutAddressInput>;
     Shipping?: InstanceType<typeof ShippingCreateNestedOneWithoutAddressInput>;
 }
@@ -1450,9 +1315,6 @@ export declare class AddressCreateWithoutSchoolInput {
     name: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
     user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
@@ -1462,9 +1324,6 @@ export declare class AddressCreateWithoutShippingInput {
     name: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
     user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
@@ -1474,9 +1333,6 @@ export declare class AddressCreateWithoutSubdistrictInput {
     name: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolCreateNestedOneWithoutAddressInput>;
@@ -1486,9 +1342,6 @@ export declare class AddressCreateWithoutUserInput {
     name: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolCreateNestedOneWithoutAddressInput>;
@@ -1498,9 +1351,6 @@ export declare class AddressCreateInput {
     name: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutAddressInput>;
-    city: InstanceType<typeof CityCreateNestedOneWithoutAddressInput>;
-    district: InstanceType<typeof DistrictCreateNestedOneWithoutAddressInput>;
     subdistrict: InstanceType<typeof SubdistrictCreateNestedOneWithoutAddressInput>;
     user?: InstanceType<typeof UserCreateNestedOneWithoutAddressInput>;
     hotel?: InstanceType<typeof HotelCreateNestedOneWithoutAddressInput>;
@@ -1523,9 +1373,6 @@ export declare class AddressGroupByArgs {
 export declare class AddressGroupBy {
     id: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt: Date | string;
     updatedAt: Date | string;
@@ -1543,9 +1390,6 @@ export declare class AddressListRelationFilter {
 export declare class AddressMaxAggregateInput {
     id?: true;
     name?: true;
-    provinceId?: true;
-    cityId?: true;
-    districtId?: true;
     subdistrictId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -1553,9 +1397,6 @@ export declare class AddressMaxAggregateInput {
 export declare class AddressMaxAggregate {
     id?: number;
     name?: string;
-    provinceId?: number;
-    cityId?: number;
-    districtId?: number;
     subdistrictId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -1563,9 +1404,6 @@ export declare class AddressMaxAggregate {
 export declare class AddressMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -1573,9 +1411,6 @@ export declare class AddressMaxOrderByAggregateInput {
 export declare class AddressMinAggregateInput {
     id?: true;
     name?: true;
-    provinceId?: true;
-    cityId?: true;
-    districtId?: true;
     subdistrictId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -1583,9 +1418,6 @@ export declare class AddressMinAggregateInput {
 export declare class AddressMinAggregate {
     id?: number;
     name?: string;
-    provinceId?: number;
-    cityId?: number;
-    districtId?: number;
     subdistrictId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -1593,9 +1425,6 @@ export declare class AddressMinAggregate {
 export declare class AddressMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -1606,9 +1435,6 @@ export declare class AddressOrderByRelationAggregateInput {
 export declare class AddressOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -1621,15 +1447,9 @@ export declare class AddressOrderByWithAggregationInput {
 export declare class AddressOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
-    province?: InstanceType<typeof ProvinceOrderByWithRelationInput>;
-    city?: InstanceType<typeof CityOrderByWithRelationInput>;
-    district?: InstanceType<typeof DistrictOrderByWithRelationInput>;
     subdistrict?: InstanceType<typeof SubdistrictOrderByWithRelationInput>;
     user?: InstanceType<typeof UserOrderByWithRelationInput>;
     hotel?: InstanceType<typeof HotelOrderByWithRelationInput>;
@@ -1646,9 +1466,6 @@ export declare class AddressScalarWhereWithAggregatesInput {
     NOT?: Array<AddressScalarWhereWithAggregatesInput>;
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     name?: InstanceType<typeof StringWithAggregatesFilter>;
-    provinceId?: InstanceType<typeof IntWithAggregatesFilter>;
-    cityId?: InstanceType<typeof IntWithAggregatesFilter>;
-    districtId?: InstanceType<typeof IntWithAggregatesFilter>;
     subdistrictId?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -1659,51 +1476,21 @@ export declare class AddressScalarWhereInput {
     NOT?: Array<AddressScalarWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     name?: InstanceType<typeof StringFilter>;
-    provinceId?: InstanceType<typeof IntFilter>;
-    cityId?: InstanceType<typeof IntFilter>;
-    districtId?: InstanceType<typeof IntFilter>;
     subdistrictId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class AddressSumAggregateInput {
     id?: true;
-    provinceId?: true;
-    cityId?: true;
-    districtId?: true;
     subdistrictId?: true;
 }
 export declare class AddressSumAggregate {
     id?: number;
-    provinceId?: number;
-    cityId?: number;
-    districtId?: number;
     subdistrictId?: number;
 }
 export declare class AddressSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
-    provinceId?: keyof typeof SortOrder;
-    cityId?: keyof typeof SortOrder;
-    districtId?: keyof typeof SortOrder;
     subdistrictId?: keyof typeof SortOrder;
-}
-export declare class AddressUncheckedCreateNestedManyWithoutCityInput {
-    create?: Array<AddressCreateWithoutCityInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutCityInput>;
-    createMany?: InstanceType<typeof AddressCreateManyCityInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-}
-export declare class AddressUncheckedCreateNestedManyWithoutDistrictInput {
-    create?: Array<AddressCreateWithoutDistrictInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutDistrictInput>;
-    createMany?: InstanceType<typeof AddressCreateManyDistrictInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-}
-export declare class AddressUncheckedCreateNestedManyWithoutProvinceInput {
-    create?: Array<AddressCreateWithoutProvinceInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutProvinceInput>;
-    createMany?: InstanceType<typeof AddressCreateManyProvinceInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
 }
 export declare class AddressUncheckedCreateNestedManyWithoutSubdistrictInput {
     create?: Array<AddressCreateWithoutSubdistrictInput>;
@@ -1711,64 +1498,19 @@ export declare class AddressUncheckedCreateNestedManyWithoutSubdistrictInput {
     createMany?: InstanceType<typeof AddressCreateManySubdistrictInputEnvelope>;
     connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
 }
-export declare class AddressUncheckedCreateWithoutCityInput {
-    id?: number;
-    name: string;
-    provinceId: number;
-    districtId: number;
-    subdistrictId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
-    hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
-    school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
-    Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
-}
-export declare class AddressUncheckedCreateWithoutDistrictInput {
-    id?: number;
-    name: string;
-    provinceId: number;
-    cityId: number;
-    subdistrictId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
-    hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
-    school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
-    Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
-}
 export declare class AddressUncheckedCreateWithoutHotelInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
-    school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
-    Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
-}
-export declare class AddressUncheckedCreateWithoutProvinceInput {
-    id?: number;
-    name: string;
-    cityId: number;
-    districtId: number;
-    subdistrictId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
-    hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
 }
 export declare class AddressUncheckedCreateWithoutSchoolInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -1779,9 +1521,6 @@ export declare class AddressUncheckedCreateWithoutSchoolInput {
 export declare class AddressUncheckedCreateWithoutShippingInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -1792,9 +1531,6 @@ export declare class AddressUncheckedCreateWithoutShippingInput {
 export declare class AddressUncheckedCreateWithoutSubdistrictInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     user?: InstanceType<typeof UserUncheckedCreateNestedOneWithoutAddressInput>;
@@ -1805,9 +1541,6 @@ export declare class AddressUncheckedCreateWithoutSubdistrictInput {
 export declare class AddressUncheckedCreateWithoutUserInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -1818,9 +1551,6 @@ export declare class AddressUncheckedCreateWithoutUserInput {
 export declare class AddressUncheckedCreateInput {
     id?: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -1828,72 +1558,6 @@ export declare class AddressUncheckedCreateInput {
     hotel?: InstanceType<typeof HotelUncheckedCreateNestedOneWithoutAddressInput>;
     school?: InstanceType<typeof SchoolUncheckedCreateNestedOneWithoutAddressInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedCreateNestedOneWithoutAddressInput>;
-}
-export declare class AddressUncheckedUpdateManyWithoutCityNestedInput {
-    create?: Array<AddressCreateWithoutCityInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutCityInput>;
-    upsert?: Array<AddressUpsertWithWhereUniqueWithoutCityInput>;
-    createMany?: InstanceType<typeof AddressCreateManyCityInputEnvelope>;
-    set?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    update?: Array<AddressUpdateWithWhereUniqueWithoutCityInput>;
-    updateMany?: Array<AddressUpdateManyWithWhereWithoutCityInput>;
-    deleteMany?: Array<AddressScalarWhereInput>;
-}
-export declare class AddressUncheckedUpdateManyWithoutCityInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class AddressUncheckedUpdateManyWithoutDistrictNestedInput {
-    create?: Array<AddressCreateWithoutDistrictInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutDistrictInput>;
-    upsert?: Array<AddressUpsertWithWhereUniqueWithoutDistrictInput>;
-    createMany?: InstanceType<typeof AddressCreateManyDistrictInputEnvelope>;
-    set?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    update?: Array<AddressUpdateWithWhereUniqueWithoutDistrictInput>;
-    updateMany?: Array<AddressUpdateManyWithWhereWithoutDistrictInput>;
-    deleteMany?: Array<AddressScalarWhereInput>;
-}
-export declare class AddressUncheckedUpdateManyWithoutDistrictInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class AddressUncheckedUpdateManyWithoutProvinceNestedInput {
-    create?: Array<AddressCreateWithoutProvinceInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutProvinceInput>;
-    upsert?: Array<AddressUpsertWithWhereUniqueWithoutProvinceInput>;
-    createMany?: InstanceType<typeof AddressCreateManyProvinceInputEnvelope>;
-    set?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    update?: Array<AddressUpdateWithWhereUniqueWithoutProvinceInput>;
-    updateMany?: Array<AddressUpdateManyWithWhereWithoutProvinceInput>;
-    deleteMany?: Array<AddressScalarWhereInput>;
-}
-export declare class AddressUncheckedUpdateManyWithoutProvinceInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateManyWithoutSubdistrictNestedInput {
     create?: Array<AddressCreateWithoutSubdistrictInput>;
@@ -1911,80 +1575,29 @@ export declare class AddressUncheckedUpdateManyWithoutSubdistrictNestedInput {
 export declare class AddressUncheckedUpdateManyWithoutSubdistrictInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class AddressUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-}
-export declare class AddressUncheckedUpdateWithoutCityInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
-    hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
-    school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
-    Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
-}
-export declare class AddressUncheckedUpdateWithoutDistrictInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
-    hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
-    school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
-    Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
 }
 export declare class AddressUncheckedUpdateWithoutHotelInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
-    school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
-    Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
-}
-export declare class AddressUncheckedUpdateWithoutProvinceInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
-    hotel?: InstanceType<typeof HotelUncheckedUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUncheckedUpdateOneWithoutAddressNestedInput>;
     Shipping?: InstanceType<typeof ShippingUncheckedUpdateOneWithoutAddressNestedInput>;
 }
 export declare class AddressUncheckedUpdateWithoutSchoolInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -1995,9 +1608,6 @@ export declare class AddressUncheckedUpdateWithoutSchoolInput {
 export declare class AddressUncheckedUpdateWithoutShippingInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -2008,9 +1618,6 @@ export declare class AddressUncheckedUpdateWithoutShippingInput {
 export declare class AddressUncheckedUpdateWithoutSubdistrictInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     user?: InstanceType<typeof UserUncheckedUpdateOneWithoutAddressNestedInput>;
@@ -2021,9 +1628,6 @@ export declare class AddressUncheckedUpdateWithoutSubdistrictInput {
 export declare class AddressUncheckedUpdateWithoutUserInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -2034,9 +1638,6 @@ export declare class AddressUncheckedUpdateWithoutUserInput {
 export declare class AddressUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districtId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistrictId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -2050,60 +1651,9 @@ export declare class AddressUpdateManyMutationInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class AddressUpdateManyWithWhereWithoutCityInput {
-    where: InstanceType<typeof AddressScalarWhereInput>;
-    data: InstanceType<typeof AddressUpdateManyMutationInput>;
-}
-export declare class AddressUpdateManyWithWhereWithoutDistrictInput {
-    where: InstanceType<typeof AddressScalarWhereInput>;
-    data: InstanceType<typeof AddressUpdateManyMutationInput>;
-}
-export declare class AddressUpdateManyWithWhereWithoutProvinceInput {
-    where: InstanceType<typeof AddressScalarWhereInput>;
-    data: InstanceType<typeof AddressUpdateManyMutationInput>;
-}
 export declare class AddressUpdateManyWithWhereWithoutSubdistrictInput {
     where: InstanceType<typeof AddressScalarWhereInput>;
     data: InstanceType<typeof AddressUpdateManyMutationInput>;
-}
-export declare class AddressUpdateManyWithoutCityNestedInput {
-    create?: Array<AddressCreateWithoutCityInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutCityInput>;
-    upsert?: Array<AddressUpsertWithWhereUniqueWithoutCityInput>;
-    createMany?: InstanceType<typeof AddressCreateManyCityInputEnvelope>;
-    set?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    update?: Array<AddressUpdateWithWhereUniqueWithoutCityInput>;
-    updateMany?: Array<AddressUpdateManyWithWhereWithoutCityInput>;
-    deleteMany?: Array<AddressScalarWhereInput>;
-}
-export declare class AddressUpdateManyWithoutDistrictNestedInput {
-    create?: Array<AddressCreateWithoutDistrictInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutDistrictInput>;
-    upsert?: Array<AddressUpsertWithWhereUniqueWithoutDistrictInput>;
-    createMany?: InstanceType<typeof AddressCreateManyDistrictInputEnvelope>;
-    set?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    update?: Array<AddressUpdateWithWhereUniqueWithoutDistrictInput>;
-    updateMany?: Array<AddressUpdateManyWithWhereWithoutDistrictInput>;
-    deleteMany?: Array<AddressScalarWhereInput>;
-}
-export declare class AddressUpdateManyWithoutProvinceNestedInput {
-    create?: Array<AddressCreateWithoutProvinceInput>;
-    connectOrCreate?: Array<AddressCreateOrConnectWithoutProvinceInput>;
-    upsert?: Array<AddressUpsertWithWhereUniqueWithoutProvinceInput>;
-    createMany?: InstanceType<typeof AddressCreateManyProvinceInputEnvelope>;
-    set?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    disconnect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    delete?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    connect?: Array<Prisma.AtLeast<AddressWhereUniqueInput, 'id'>>;
-    update?: Array<AddressUpdateWithWhereUniqueWithoutProvinceInput>;
-    updateMany?: Array<AddressUpdateManyWithWhereWithoutProvinceInput>;
-    deleteMany?: Array<AddressScalarWhereInput>;
 }
 export declare class AddressUpdateManyWithoutSubdistrictNestedInput {
     create?: Array<AddressCreateWithoutSubdistrictInput>;
@@ -2162,67 +1712,16 @@ export declare class AddressUpdateToOneWithWhereWithoutUserInput {
     where?: InstanceType<typeof AddressWhereInput>;
     data: InstanceType<typeof AddressUpdateWithoutUserInput>;
 }
-export declare class AddressUpdateWithWhereUniqueWithoutCityInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    data: InstanceType<typeof AddressUpdateWithoutCityInput>;
-}
-export declare class AddressUpdateWithWhereUniqueWithoutDistrictInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    data: InstanceType<typeof AddressUpdateWithoutDistrictInput>;
-}
-export declare class AddressUpdateWithWhereUniqueWithoutProvinceInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    data: InstanceType<typeof AddressUpdateWithoutProvinceInput>;
-}
 export declare class AddressUpdateWithWhereUniqueWithoutSubdistrictInput {
     where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
     data: InstanceType<typeof AddressUpdateWithoutSubdistrictInput>;
-}
-export declare class AddressUpdateWithoutCityInput {
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
-    subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
-    user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
-    hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
-    school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
-    Shipping?: InstanceType<typeof ShippingUpdateOneWithoutAddressNestedInput>;
-}
-export declare class AddressUpdateWithoutDistrictInput {
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
-    user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
-    hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
-    school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
-    Shipping?: InstanceType<typeof ShippingUpdateOneWithoutAddressNestedInput>;
 }
 export declare class AddressUpdateWithoutHotelInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
     user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
-    school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
-    Shipping?: InstanceType<typeof ShippingUpdateOneWithoutAddressNestedInput>;
-}
-export declare class AddressUpdateWithoutProvinceInput {
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
-    subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
-    user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
-    hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
     Shipping?: InstanceType<typeof ShippingUpdateOneWithoutAddressNestedInput>;
 }
@@ -2230,9 +1729,6 @@ export declare class AddressUpdateWithoutSchoolInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
     user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
@@ -2242,9 +1738,6 @@ export declare class AddressUpdateWithoutShippingInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
     user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
@@ -2254,9 +1747,6 @@ export declare class AddressUpdateWithoutSubdistrictInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
@@ -2266,9 +1756,6 @@ export declare class AddressUpdateWithoutUserInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
@@ -2278,29 +1765,11 @@ export declare class AddressUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutAddressNestedInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutAddressNestedInput>;
-    district?: InstanceType<typeof DistrictUpdateOneRequiredWithoutAddressNestedInput>;
     subdistrict?: InstanceType<typeof SubdistrictUpdateOneRequiredWithoutAddressNestedInput>;
     user?: InstanceType<typeof UserUpdateOneWithoutAddressNestedInput>;
     hotel?: InstanceType<typeof HotelUpdateOneWithoutAddressNestedInput>;
     school?: InstanceType<typeof SchoolUpdateOneWithoutAddressNestedInput>;
     Shipping?: InstanceType<typeof ShippingUpdateOneWithoutAddressNestedInput>;
-}
-export declare class AddressUpsertWithWhereUniqueWithoutCityInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    update: InstanceType<typeof AddressUpdateWithoutCityInput>;
-    create: InstanceType<typeof AddressCreateWithoutCityInput>;
-}
-export declare class AddressUpsertWithWhereUniqueWithoutDistrictInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    update: InstanceType<typeof AddressUpdateWithoutDistrictInput>;
-    create: InstanceType<typeof AddressCreateWithoutDistrictInput>;
-}
-export declare class AddressUpsertWithWhereUniqueWithoutProvinceInput {
-    where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
-    update: InstanceType<typeof AddressUpdateWithoutProvinceInput>;
-    create: InstanceType<typeof AddressCreateWithoutProvinceInput>;
 }
 export declare class AddressUpsertWithWhereUniqueWithoutSubdistrictInput {
     where: Prisma.AtLeast<AddressWhereUniqueInput, 'id'>;
@@ -2333,15 +1802,9 @@ export declare class AddressWhereUniqueInput {
     OR?: Array<AddressWhereInput>;
     NOT?: Array<AddressWhereInput>;
     name?: InstanceType<typeof StringFilter>;
-    provinceId?: InstanceType<typeof IntFilter>;
-    cityId?: InstanceType<typeof IntFilter>;
-    districtId?: InstanceType<typeof IntFilter>;
     subdistrictId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
-    province?: InstanceType<typeof ProvinceRelationFilter>;
-    city?: InstanceType<typeof CityRelationFilter>;
-    district?: InstanceType<typeof DistrictRelationFilter>;
     subdistrict?: InstanceType<typeof SubdistrictRelationFilter>;
     user?: InstanceType<typeof UserNullableRelationFilter>;
     hotel?: InstanceType<typeof HotelNullableRelationFilter>;
@@ -2354,15 +1817,9 @@ export declare class AddressWhereInput {
     NOT?: Array<AddressWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     name?: InstanceType<typeof StringFilter>;
-    provinceId?: InstanceType<typeof IntFilter>;
-    cityId?: InstanceType<typeof IntFilter>;
-    districtId?: InstanceType<typeof IntFilter>;
     subdistrictId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
-    province?: InstanceType<typeof ProvinceRelationFilter>;
-    city?: InstanceType<typeof CityRelationFilter>;
-    district?: InstanceType<typeof DistrictRelationFilter>;
     subdistrict?: InstanceType<typeof SubdistrictRelationFilter>;
     user?: InstanceType<typeof UserNullableRelationFilter>;
     hotel?: InstanceType<typeof HotelNullableRelationFilter>;
@@ -2372,15 +1829,9 @@ export declare class AddressWhereInput {
 export declare class Address {
     id: number;
     name: string;
-    provinceId: number;
-    cityId: number;
-    districtId: number;
     subdistrictId: number;
     createdAt: Date;
     updatedAt: Date;
-    province?: InstanceType<typeof Province>;
-    city?: InstanceType<typeof City>;
-    district?: InstanceType<typeof District>;
     subdistrict?: InstanceType<typeof Subdistrict>;
     user?: InstanceType<typeof User> | null;
     hotel?: InstanceType<typeof Hotel> | null;
@@ -4199,7 +3650,6 @@ export declare class CityCountOrderByAggregateInput {
 }
 export declare class CityCount {
     districts?: number;
-    address?: number;
 }
 export declare class CityCreateManyProvinceInputEnvelope {
     data: Array<CityCreateManyProvinceInput>;
@@ -4220,19 +3670,10 @@ export declare class CityCreateNestedManyWithoutProvinceInput {
     createMany?: InstanceType<typeof CityCreateManyProvinceInputEnvelope>;
     connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
 }
-export declare class CityCreateNestedOneWithoutAddressInput {
-    create?: InstanceType<typeof CityCreateWithoutAddressInput>;
-    connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
-}
 export declare class CityCreateNestedOneWithoutDistrictsInput {
     create?: InstanceType<typeof CityCreateWithoutDistrictsInput>;
     connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutDistrictsInput>;
     connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
-}
-export declare class CityCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof CityCreateWithoutAddressInput>;
 }
 export declare class CityCreateOrConnectWithoutDistrictsInput {
     where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
@@ -4242,26 +3683,18 @@ export declare class CityCreateOrConnectWithoutProvinceInput {
     where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
     create: InstanceType<typeof CityCreateWithoutProvinceInput>;
 }
-export declare class CityCreateWithoutAddressInput {
-    name: string;
-    province: InstanceType<typeof ProvinceCreateNestedOneWithoutCitiesInput>;
-    districts?: InstanceType<typeof DistrictCreateNestedManyWithoutCityInput>;
-}
 export declare class CityCreateWithoutDistrictsInput {
     name: string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutCitiesInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutCityInput>;
 }
 export declare class CityCreateWithoutProvinceInput {
     name: string;
     districts?: InstanceType<typeof DistrictCreateNestedManyWithoutCityInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutCityInput>;
 }
 export declare class CityCreateInput {
     name: string;
     province: InstanceType<typeof ProvinceCreateNestedOneWithoutCitiesInput>;
     districts?: InstanceType<typeof DistrictCreateNestedManyWithoutCityInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutCityInput>;
 }
 export declare class CityGroupByArgs {
     where?: InstanceType<typeof CityWhereInput>;
@@ -4340,7 +3773,6 @@ export declare class CityOrderByWithRelationInput {
     provinceId?: keyof typeof SortOrder;
     province?: InstanceType<typeof ProvinceOrderByWithRelationInput>;
     districts?: InstanceType<typeof DistrictOrderByRelationAggregateInput>;
-    address?: InstanceType<typeof AddressOrderByRelationAggregateInput>;
 }
 export declare class CityRelationFilter {
     is?: InstanceType<typeof CityWhereInput>;
@@ -4380,30 +3812,21 @@ export declare class CityUncheckedCreateNestedManyWithoutProvinceInput {
     createMany?: InstanceType<typeof CityCreateManyProvinceInputEnvelope>;
     connect?: Array<Prisma.AtLeast<CityWhereUniqueInput, 'id'>>;
 }
-export declare class CityUncheckedCreateWithoutAddressInput {
-    id?: number;
-    name: string;
-    provinceId: number;
-    districts?: InstanceType<typeof DistrictUncheckedCreateNestedManyWithoutCityInput>;
-}
 export declare class CityUncheckedCreateWithoutDistrictsInput {
     id?: number;
     name: string;
     provinceId: number;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutCityInput>;
 }
 export declare class CityUncheckedCreateWithoutProvinceInput {
     id?: number;
     name: string;
     districts?: InstanceType<typeof DistrictUncheckedCreateNestedManyWithoutCityInput>;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutCityInput>;
 }
 export declare class CityUncheckedCreateInput {
     id?: number;
     name: string;
     provinceId: number;
     districts?: InstanceType<typeof DistrictUncheckedCreateNestedManyWithoutCityInput>;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutCityInput>;
 }
 export declare class CityUncheckedUpdateManyWithoutProvinceNestedInput {
     create?: Array<CityCreateWithoutProvinceInput>;
@@ -4427,30 +3850,21 @@ export declare class CityUncheckedUpdateManyInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
 }
-export declare class CityUncheckedUpdateWithoutAddressInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    districts?: InstanceType<typeof DistrictUncheckedUpdateManyWithoutCityNestedInput>;
-}
 export declare class CityUncheckedUpdateWithoutDistrictsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUncheckedUpdateWithoutProvinceInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     districts?: InstanceType<typeof DistrictUncheckedUpdateManyWithoutCityNestedInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     provinceId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     districts?: InstanceType<typeof DistrictUncheckedUpdateManyWithoutCityNestedInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -4472,23 +3886,12 @@ export declare class CityUpdateManyWithoutProvinceNestedInput {
     updateMany?: Array<CityUpdateManyWithWhereWithoutProvinceInput>;
     deleteMany?: Array<CityScalarWhereInput>;
 }
-export declare class CityUpdateOneRequiredWithoutAddressNestedInput {
-    create?: InstanceType<typeof CityCreateWithoutAddressInput>;
-    connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutAddressInput>;
-    upsert?: InstanceType<typeof CityUpsertWithoutAddressInput>;
-    connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
-    update?: InstanceType<typeof CityUpdateToOneWithWhereWithoutAddressInput>;
-}
 export declare class CityUpdateOneRequiredWithoutDistrictsNestedInput {
     create?: InstanceType<typeof CityCreateWithoutDistrictsInput>;
     connectOrCreate?: InstanceType<typeof CityCreateOrConnectWithoutDistrictsInput>;
     upsert?: InstanceType<typeof CityUpsertWithoutDistrictsInput>;
     connect?: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof CityUpdateToOneWithWhereWithoutDistrictsInput>;
-}
-export declare class CityUpdateToOneWithWhereWithoutAddressInput {
-    where?: InstanceType<typeof CityWhereInput>;
-    data: InstanceType<typeof CityUpdateWithoutAddressInput>;
 }
 export declare class CityUpdateToOneWithWhereWithoutDistrictsInput {
     where?: InstanceType<typeof CityWhereInput>;
@@ -4498,36 +3901,23 @@ export declare class CityUpdateWithWhereUniqueWithoutProvinceInput {
     where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
     data: InstanceType<typeof CityUpdateWithoutProvinceInput>;
 }
-export declare class CityUpdateWithoutAddressInput {
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutCitiesNestedInput>;
-    districts?: InstanceType<typeof DistrictUpdateManyWithoutCityNestedInput>;
-}
 export declare class CityUpdateWithoutDistrictsInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutCitiesNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUpdateWithoutProvinceInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     districts?: InstanceType<typeof DistrictUpdateManyWithoutCityNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     province?: InstanceType<typeof ProvinceUpdateOneRequiredWithoutCitiesNestedInput>;
     districts?: InstanceType<typeof DistrictUpdateManyWithoutCityNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutCityNestedInput>;
 }
 export declare class CityUpsertWithWhereUniqueWithoutProvinceInput {
     where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
     update: InstanceType<typeof CityUpdateWithoutProvinceInput>;
     create: InstanceType<typeof CityCreateWithoutProvinceInput>;
-}
-export declare class CityUpsertWithoutAddressInput {
-    update: InstanceType<typeof CityUpdateWithoutAddressInput>;
-    create: InstanceType<typeof CityCreateWithoutAddressInput>;
-    where?: InstanceType<typeof CityWhereInput>;
 }
 export declare class CityUpsertWithoutDistrictsInput {
     update: InstanceType<typeof CityUpdateWithoutDistrictsInput>;
@@ -4543,7 +3933,6 @@ export declare class CityWhereUniqueInput {
     provinceId?: InstanceType<typeof IntFilter>;
     province?: InstanceType<typeof ProvinceRelationFilter>;
     districts?: InstanceType<typeof DistrictListRelationFilter>;
-    address?: InstanceType<typeof AddressListRelationFilter>;
 }
 export declare class CityWhereInput {
     AND?: Array<CityWhereInput>;
@@ -4554,7 +3943,6 @@ export declare class CityWhereInput {
     provinceId?: InstanceType<typeof IntFilter>;
     province?: InstanceType<typeof ProvinceRelationFilter>;
     districts?: InstanceType<typeof DistrictListRelationFilter>;
-    address?: InstanceType<typeof AddressListRelationFilter>;
 }
 export declare class City {
     id: number;
@@ -4562,7 +3950,6 @@ export declare class City {
     provinceId: number;
     province?: InstanceType<typeof Province>;
     districts?: Array<District>;
-    address?: Array<Address>;
     _count?: InstanceType<typeof CityCount>;
 }
 export declare class CreateManyCityArgs {
@@ -4684,7 +4071,6 @@ export declare class DistrictCountOrderByAggregateInput {
 }
 export declare class DistrictCount {
     subdistricts?: number;
-    address?: number;
 }
 export declare class DistrictCreateManyCityInputEnvelope {
     data: Array<DistrictCreateManyCityInput>;
@@ -4705,19 +4091,10 @@ export declare class DistrictCreateNestedManyWithoutCityInput {
     createMany?: InstanceType<typeof DistrictCreateManyCityInputEnvelope>;
     connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
 }
-export declare class DistrictCreateNestedOneWithoutAddressInput {
-    create?: InstanceType<typeof DistrictCreateWithoutAddressInput>;
-    connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
-}
 export declare class DistrictCreateNestedOneWithoutSubdistrictsInput {
     create?: InstanceType<typeof DistrictCreateWithoutSubdistrictsInput>;
     connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutSubdistrictsInput>;
     connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
-}
-export declare class DistrictCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
-    create: InstanceType<typeof DistrictCreateWithoutAddressInput>;
 }
 export declare class DistrictCreateOrConnectWithoutCityInput {
     where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
@@ -4727,26 +4104,18 @@ export declare class DistrictCreateOrConnectWithoutSubdistrictsInput {
     where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
     create: InstanceType<typeof DistrictCreateWithoutSubdistrictsInput>;
 }
-export declare class DistrictCreateWithoutAddressInput {
-    name: string;
-    city: InstanceType<typeof CityCreateNestedOneWithoutDistrictsInput>;
-    subdistricts?: InstanceType<typeof SubdistrictCreateNestedManyWithoutDistrictInput>;
-}
 export declare class DistrictCreateWithoutCityInput {
     name: string;
     subdistricts?: InstanceType<typeof SubdistrictCreateNestedManyWithoutDistrictInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutDistrictInput>;
 }
 export declare class DistrictCreateWithoutSubdistrictsInput {
     name: string;
     city: InstanceType<typeof CityCreateNestedOneWithoutDistrictsInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutDistrictInput>;
 }
 export declare class DistrictCreateInput {
     name: string;
     city: InstanceType<typeof CityCreateNestedOneWithoutDistrictsInput>;
     subdistricts?: InstanceType<typeof SubdistrictCreateNestedManyWithoutDistrictInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutDistrictInput>;
 }
 export declare class DistrictGroupByArgs {
     where?: InstanceType<typeof DistrictWhereInput>;
@@ -4825,7 +4194,6 @@ export declare class DistrictOrderByWithRelationInput {
     cityId?: keyof typeof SortOrder;
     city?: InstanceType<typeof CityOrderByWithRelationInput>;
     subdistricts?: InstanceType<typeof SubdistrictOrderByRelationAggregateInput>;
-    address?: InstanceType<typeof AddressOrderByRelationAggregateInput>;
 }
 export declare class DistrictRelationFilter {
     is?: InstanceType<typeof DistrictWhereInput>;
@@ -4865,30 +4233,21 @@ export declare class DistrictUncheckedCreateNestedManyWithoutCityInput {
     createMany?: InstanceType<typeof DistrictCreateManyCityInputEnvelope>;
     connect?: Array<Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>>;
 }
-export declare class DistrictUncheckedCreateWithoutAddressInput {
-    id?: number;
-    name: string;
-    cityId: number;
-    subdistricts?: InstanceType<typeof SubdistrictUncheckedCreateNestedManyWithoutDistrictInput>;
-}
 export declare class DistrictUncheckedCreateWithoutCityInput {
     id?: number;
     name: string;
     subdistricts?: InstanceType<typeof SubdistrictUncheckedCreateNestedManyWithoutDistrictInput>;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutDistrictInput>;
 }
 export declare class DistrictUncheckedCreateWithoutSubdistrictsInput {
     id?: number;
     name: string;
     cityId: number;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutDistrictInput>;
 }
 export declare class DistrictUncheckedCreateInput {
     id?: number;
     name: string;
     cityId: number;
     subdistricts?: InstanceType<typeof SubdistrictUncheckedCreateNestedManyWithoutDistrictInput>;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutDistrictInput>;
 }
 export declare class DistrictUncheckedUpdateManyWithoutCityNestedInput {
     create?: Array<DistrictCreateWithoutCityInput>;
@@ -4912,30 +4271,21 @@ export declare class DistrictUncheckedUpdateManyInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
 }
-export declare class DistrictUncheckedUpdateWithoutAddressInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    subdistricts?: InstanceType<typeof SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput>;
-}
 export declare class DistrictUncheckedUpdateWithoutCityInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     subdistricts?: InstanceType<typeof SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUncheckedUpdateWithoutSubdistrictsInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     cityId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     subdistricts?: InstanceType<typeof SubdistrictUncheckedUpdateManyWithoutDistrictNestedInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
@@ -4957,23 +4307,12 @@ export declare class DistrictUpdateManyWithoutCityNestedInput {
     updateMany?: Array<DistrictUpdateManyWithWhereWithoutCityInput>;
     deleteMany?: Array<DistrictScalarWhereInput>;
 }
-export declare class DistrictUpdateOneRequiredWithoutAddressNestedInput {
-    create?: InstanceType<typeof DistrictCreateWithoutAddressInput>;
-    connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutAddressInput>;
-    upsert?: InstanceType<typeof DistrictUpsertWithoutAddressInput>;
-    connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
-    update?: InstanceType<typeof DistrictUpdateToOneWithWhereWithoutAddressInput>;
-}
 export declare class DistrictUpdateOneRequiredWithoutSubdistrictsNestedInput {
     create?: InstanceType<typeof DistrictCreateWithoutSubdistrictsInput>;
     connectOrCreate?: InstanceType<typeof DistrictCreateOrConnectWithoutSubdistrictsInput>;
     upsert?: InstanceType<typeof DistrictUpsertWithoutSubdistrictsInput>;
     connect?: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof DistrictUpdateToOneWithWhereWithoutSubdistrictsInput>;
-}
-export declare class DistrictUpdateToOneWithWhereWithoutAddressInput {
-    where?: InstanceType<typeof DistrictWhereInput>;
-    data: InstanceType<typeof DistrictUpdateWithoutAddressInput>;
 }
 export declare class DistrictUpdateToOneWithWhereWithoutSubdistrictsInput {
     where?: InstanceType<typeof DistrictWhereInput>;
@@ -4983,36 +4322,23 @@ export declare class DistrictUpdateWithWhereUniqueWithoutCityInput {
     where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
     data: InstanceType<typeof DistrictUpdateWithoutCityInput>;
 }
-export declare class DistrictUpdateWithoutAddressInput {
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    city?: InstanceType<typeof CityUpdateOneRequiredWithoutDistrictsNestedInput>;
-    subdistricts?: InstanceType<typeof SubdistrictUpdateManyWithoutDistrictNestedInput>;
-}
 export declare class DistrictUpdateWithoutCityInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     subdistricts?: InstanceType<typeof SubdistrictUpdateManyWithoutDistrictNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUpdateWithoutSubdistrictsInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutDistrictsNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     city?: InstanceType<typeof CityUpdateOneRequiredWithoutDistrictsNestedInput>;
     subdistricts?: InstanceType<typeof SubdistrictUpdateManyWithoutDistrictNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutDistrictNestedInput>;
 }
 export declare class DistrictUpsertWithWhereUniqueWithoutCityInput {
     where: Prisma.AtLeast<DistrictWhereUniqueInput, 'id'>;
     update: InstanceType<typeof DistrictUpdateWithoutCityInput>;
     create: InstanceType<typeof DistrictCreateWithoutCityInput>;
-}
-export declare class DistrictUpsertWithoutAddressInput {
-    update: InstanceType<typeof DistrictUpdateWithoutAddressInput>;
-    create: InstanceType<typeof DistrictCreateWithoutAddressInput>;
-    where?: InstanceType<typeof DistrictWhereInput>;
 }
 export declare class DistrictUpsertWithoutSubdistrictsInput {
     update: InstanceType<typeof DistrictUpdateWithoutSubdistrictsInput>;
@@ -5028,7 +4354,6 @@ export declare class DistrictWhereUniqueInput {
     cityId?: InstanceType<typeof IntFilter>;
     city?: InstanceType<typeof CityRelationFilter>;
     subdistricts?: InstanceType<typeof SubdistrictListRelationFilter>;
-    address?: InstanceType<typeof AddressListRelationFilter>;
 }
 export declare class DistrictWhereInput {
     AND?: Array<DistrictWhereInput>;
@@ -5039,7 +4364,6 @@ export declare class DistrictWhereInput {
     cityId?: InstanceType<typeof IntFilter>;
     city?: InstanceType<typeof CityRelationFilter>;
     subdistricts?: InstanceType<typeof SubdistrictListRelationFilter>;
-    address?: InstanceType<typeof AddressListRelationFilter>;
 }
 export declare class District {
     id: number;
@@ -5047,7 +4371,6 @@ export declare class District {
     cityId: number;
     city?: InstanceType<typeof City>;
     subdistricts?: Array<Subdistrict>;
-    address?: Array<Address>;
     _count?: InstanceType<typeof DistrictCount>;
 }
 export declare class FindFirstDistrictOrThrowArgs {
@@ -13595,42 +12918,26 @@ export declare class ProvinceCountOrderByAggregateInput {
 }
 export declare class ProvinceCount {
     cities?: number;
-    address?: number;
 }
 export declare class ProvinceCreateManyInput {
     id?: number;
     name: string;
-}
-export declare class ProvinceCreateNestedOneWithoutAddressInput {
-    create?: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
-    connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutAddressInput>;
-    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
 export declare class ProvinceCreateNestedOneWithoutCitiesInput {
     create?: InstanceType<typeof ProvinceCreateWithoutCitiesInput>;
     connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutCitiesInput>;
     connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
 }
-export declare class ProvinceCreateOrConnectWithoutAddressInput {
-    where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
-    create: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
-}
 export declare class ProvinceCreateOrConnectWithoutCitiesInput {
     where: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     create: InstanceType<typeof ProvinceCreateWithoutCitiesInput>;
 }
-export declare class ProvinceCreateWithoutAddressInput {
-    name: string;
-    cities?: InstanceType<typeof CityCreateNestedManyWithoutProvinceInput>;
-}
 export declare class ProvinceCreateWithoutCitiesInput {
     name: string;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutProvinceInput>;
 }
 export declare class ProvinceCreateInput {
     name: string;
     cities?: InstanceType<typeof CityCreateNestedManyWithoutProvinceInput>;
-    address?: InstanceType<typeof AddressCreateNestedManyWithoutProvinceInput>;
 }
 export declare class ProvinceGroupByArgs {
     where?: InstanceType<typeof ProvinceWhereInput>;
@@ -13691,7 +12998,6 @@ export declare class ProvinceOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
     cities?: InstanceType<typeof CityOrderByRelationAggregateInput>;
-    address?: InstanceType<typeof AddressOrderByRelationAggregateInput>;
 }
 export declare class ProvinceRelationFilter {
     is?: InstanceType<typeof ProvinceWhereInput>;
@@ -13713,51 +13019,30 @@ export declare class ProvinceSumAggregate {
 export declare class ProvinceSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
 }
-export declare class ProvinceUncheckedCreateWithoutAddressInput {
-    id?: number;
-    name: string;
-    cities?: InstanceType<typeof CityUncheckedCreateNestedManyWithoutProvinceInput>;
-}
 export declare class ProvinceUncheckedCreateWithoutCitiesInput {
     id?: number;
     name: string;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutProvinceInput>;
 }
 export declare class ProvinceUncheckedCreateInput {
     id?: number;
     name: string;
     cities?: InstanceType<typeof CityUncheckedCreateNestedManyWithoutProvinceInput>;
-    address?: InstanceType<typeof AddressUncheckedCreateNestedManyWithoutProvinceInput>;
 }
 export declare class ProvinceUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
 }
-export declare class ProvinceUncheckedUpdateWithoutAddressInput {
-    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    cities?: InstanceType<typeof CityUncheckedUpdateManyWithoutProvinceNestedInput>;
-}
 export declare class ProvinceUncheckedUpdateWithoutCitiesInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutProvinceNestedInput>;
 }
 export declare class ProvinceUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     cities?: InstanceType<typeof CityUncheckedUpdateManyWithoutProvinceNestedInput>;
-    address?: InstanceType<typeof AddressUncheckedUpdateManyWithoutProvinceNestedInput>;
 }
 export declare class ProvinceUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-}
-export declare class ProvinceUpdateOneRequiredWithoutAddressNestedInput {
-    create?: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
-    connectOrCreate?: InstanceType<typeof ProvinceCreateOrConnectWithoutAddressInput>;
-    upsert?: InstanceType<typeof ProvinceUpsertWithoutAddressInput>;
-    connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
-    update?: InstanceType<typeof ProvinceUpdateToOneWithWhereWithoutAddressInput>;
 }
 export declare class ProvinceUpdateOneRequiredWithoutCitiesNestedInput {
     create?: InstanceType<typeof ProvinceCreateWithoutCitiesInput>;
@@ -13766,31 +13051,16 @@ export declare class ProvinceUpdateOneRequiredWithoutCitiesNestedInput {
     connect?: Prisma.AtLeast<ProvinceWhereUniqueInput, 'id' | 'name'>;
     update?: InstanceType<typeof ProvinceUpdateToOneWithWhereWithoutCitiesInput>;
 }
-export declare class ProvinceUpdateToOneWithWhereWithoutAddressInput {
-    where?: InstanceType<typeof ProvinceWhereInput>;
-    data: InstanceType<typeof ProvinceUpdateWithoutAddressInput>;
-}
 export declare class ProvinceUpdateToOneWithWhereWithoutCitiesInput {
     where?: InstanceType<typeof ProvinceWhereInput>;
     data: InstanceType<typeof ProvinceUpdateWithoutCitiesInput>;
 }
-export declare class ProvinceUpdateWithoutAddressInput {
-    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    cities?: InstanceType<typeof CityUpdateManyWithoutProvinceNestedInput>;
-}
 export declare class ProvinceUpdateWithoutCitiesInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutProvinceNestedInput>;
 }
 export declare class ProvinceUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     cities?: InstanceType<typeof CityUpdateManyWithoutProvinceNestedInput>;
-    address?: InstanceType<typeof AddressUpdateManyWithoutProvinceNestedInput>;
-}
-export declare class ProvinceUpsertWithoutAddressInput {
-    update: InstanceType<typeof ProvinceUpdateWithoutAddressInput>;
-    create: InstanceType<typeof ProvinceCreateWithoutAddressInput>;
-    where?: InstanceType<typeof ProvinceWhereInput>;
 }
 export declare class ProvinceUpsertWithoutCitiesInput {
     update: InstanceType<typeof ProvinceUpdateWithoutCitiesInput>;
@@ -13804,7 +13074,6 @@ export declare class ProvinceWhereUniqueInput {
     OR?: Array<ProvinceWhereInput>;
     NOT?: Array<ProvinceWhereInput>;
     cities?: InstanceType<typeof CityListRelationFilter>;
-    address?: InstanceType<typeof AddressListRelationFilter>;
 }
 export declare class ProvinceWhereInput {
     AND?: Array<ProvinceWhereInput>;
@@ -13813,13 +13082,11 @@ export declare class ProvinceWhereInput {
     id?: InstanceType<typeof IntFilter>;
     name?: InstanceType<typeof StringFilter>;
     cities?: InstanceType<typeof CityListRelationFilter>;
-    address?: InstanceType<typeof AddressListRelationFilter>;
 }
 export declare class Province {
     id: number;
     name: string;
     cities?: Array<City>;
-    address?: Array<Address>;
     _count?: InstanceType<typeof ProvinceCount>;
 }
 export declare class UpdateManyProvinceArgs {

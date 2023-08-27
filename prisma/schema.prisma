@@ -58,14 +58,12 @@ enum Theme {
 }
 
 model Province {
-  id      Int       @id @default(autoincrement())
+  id     Int    @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.IsNotEmpty()
-  name    String    @unique
+  name   String @unique
   /// @HideField()   
-  cities  City[]
-  /// @HideField()   
-  address Address[] @relation("ProvinceAddress")
+  cities City[]
 }
 
 //Make CRUD Available
@@ -77,8 +75,6 @@ model City {
   province   Province   @relation(fields: [provinceId], references: [id])
   provinceId Int
   districts  District[]
-  /// @HideField()   
-  address    Address[]  @relation("CityAddress")
 }
 
 //Make CRUD Available
@@ -90,8 +86,6 @@ model District {
   city         City          @relation(fields: [cityId], references: [id])
   cityId       Int
   subdistricts Subdistrict[]
-  /// @HideField()   
-  address      Address[]     @relation("DistrictAddress")
 }
 
 model Subdistrict {
@@ -113,18 +107,6 @@ model Address {
   /// @Validator.MinLength(5)
   /// @Validator.IsNotEmpty()
   name          String
-  /// @Validator.IsNotEmpty()
-  province      Province    @relation("ProvinceAddress", fields: [provinceId], references: [id])
-  /// @HideField({ match: 'AddressCreate*Input' })
-  provinceId    Int
-  /// @Validator.IsNotEmpty()
-  city          City        @relation("CityAddress", fields: [cityId], references: [id])
-  /// @HideField({ match: 'AddressCreate*Input' })
-  cityId        Int
-  /// @Validator.IsNotEmpty()
-  district      District    @relation("DistrictAddress", fields: [districtId], references: [id])
-  /// @HideField({ match: 'AddressCreate*Input' })
-  districtId    Int
   /// @Validator.IsNotEmpty()
   subdistrict   Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
   // @HideField({ match: 'AddressCreate*Input' })
