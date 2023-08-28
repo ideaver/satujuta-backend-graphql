@@ -57,9 +57,28 @@ export class UserController {
       await orderCreate(userCreateArgsPrisma, this.itemService, userRole);
     }
 
-    //TODO: Record Sessions
+    return await this.userService
+      .createOne(userCreateArgsPrisma)
+      .then(async (user) => {
+        //TODO: Record Sessions
 
-    return await this.userService.createOne(userCreateArgsPrisma);
+        //check if order created successfully
+        if (user) {
+          const getOrderAndInvoice = await this.findOne({
+            where: { id: user.id },
+            select: { orders: { include: { invoice: true }, take: 1 } },
+          });
+
+          if (getOrderAndInvoice) {
+            //TODO: Emit whatsapp OTP verification
+            //TODO: Emit notify user via email
+            //TODO: Emit notify admin via activity log
+            console.log(getOrderAndInvoice);
+          }
+        }
+
+        return user;
+      });
   }
 
   findMany(userFindManyArgs: Prisma.UserFindManyArgs) {
@@ -85,7 +104,6 @@ export class UserController {
       whatsappVerifiedAt,
       password,
       theme,
-      userRole,
       userType,
       avatarUrl,
       address,
@@ -118,10 +136,6 @@ export class UserController {
     if (theme?.set === null) {
       userUpdateOneArgs.data.theme = undefined;
     }
-
-    // if (userRole?.set === null) {
-    //   userUpdateOneArgs.data.userRole = undefined;
-    // }
 
     if (userType?.set === null) {
       userUpdateOneArgs.data.userType = undefined;
