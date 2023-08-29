@@ -18,6 +18,7 @@ import {
 } from './dto/get-user-created-by-custom-period.args';
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
 import { Period } from 'src/model/period.enum';
+import { encryptUserPassword } from 'src/utils/bcrypt.function';
 
 @Injectable()
 export class UserController {
@@ -30,25 +31,27 @@ export class UserController {
   async createOne(userCreateArgs: UserCreateArgs): Promise<User | void> {
     let userCreateArgsPrisma: Prisma.UserCreateArgs = { ...userCreateArgs };
 
+    const { password, userRole, referredBy, school, referralCode } =
+      userCreateArgsPrisma.data;
+
     //Handle null value GraphQL Capabitlity
     if (
-      userCreateArgsPrisma.data.referredBy?.connect?.referralCode === null &&
-      userCreateArgsPrisma.data.referredBy === undefined
+      referredBy?.connect?.referralCode === null &&
+      referredBy === undefined
     ) {
       userCreateArgsPrisma.data.referredBy = undefined;
     }
 
     //Check if school create query is null
-    if (
-      userCreateArgsPrisma.data.school?.connectOrCreate?.create?.name === null
-    ) {
+    if (school?.connectOrCreate?.create?.name === null) {
       userCreateArgsPrisma.data.school?.connectOrCreate?.create === undefined;
     }
 
     //Generate Random Referral Code
     userCreateArgsPrisma.data.referralCode = generateRandomReferralCode();
 
-    const { userRole } = userCreateArgsPrisma.data;
+    //encrypt user password
+    userCreateArgsPrisma.data.password = await encryptUserPassword(password);
 
     if (userRole !== UserRole.SUPERUSER && userRole !== UserRole.ADMIN) {
       //Auto Create User Accounts
@@ -90,11 +93,15 @@ export class UserController {
     return this.userService.findMany(userFindManyArgs);
   }
 
+  findFirst(userFindManyArgs: UserFindManyArgs) {
+    return this.userService.findFirst(userFindManyArgs);
+  }
+
   findOne(userFindUniqueArgs: UserFindUniqueArgs) {
     return this.userService.findOne(userFindUniqueArgs);
   }
 
-  updateOne(userUpdateOneArgs: UserUpdateOneArgs) {
+  async updateOne(userUpdateOneArgs: UserUpdateOneArgs) {
     //TODO: Implement whatsapp verification
     const {
       firstName,
@@ -151,6 +158,13 @@ export class UserController {
 
     if (address?.update?.data?.subdistrict?.connect?.id === null) {
       userUpdateOneArgs.data.address.update.data.subdistrict = undefined;
+    }
+
+    //encrypt user password
+    if (password?.set) {
+      userUpdateOneArgs.data.password.set = await encryptUserPassword(
+        password.set,
+      );
     }
 
     return this.userService.update(userUpdateOneArgs);

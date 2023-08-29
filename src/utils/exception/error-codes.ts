@@ -1,6 +1,7 @@
 export const errorCodes: Record<number, string> = {
   //Auth
-  10004: 'Email tidak ditemukan',
+  10004: 'Pengguna tidak ditemukan dengan email tersebut',
+  10005: 'Password tidak cocok',
   //WithdrawalRequest
   140001: 'Saldo belum mencukupi untuk melakukan permintaan withdrawal',
   140002: 'Terdapat permintaan withdrawal terdahulu dengan status pending',

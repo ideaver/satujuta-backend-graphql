@@ -17,7 +17,7 @@ export class IGraphQLError extends GraphQLError {
     // Call the base class constructor to create the error object
     super(message, undefined, undefined, undefined, undefined, undefined, {
       code: errorCode,
-      error: err.toString(),
+      error: err?.toString(),
     });
   }
 }

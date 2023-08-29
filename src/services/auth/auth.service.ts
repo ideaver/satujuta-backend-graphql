@@ -10,10 +10,6 @@ import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 export class AuthService {
   constructor(private prisma: PrismaService) {}
 
-  login(createAuthInput: CreateAuthInput) {
-    return 'This action adds a new auth';
-  }
-
   findAll() {
     return `This action returns all auth`;
   }

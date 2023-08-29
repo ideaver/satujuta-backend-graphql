@@ -2020,7 +2020,7 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
-  auth(id: Int!): Auth!
+  authValidate(authValidateArgs: AuthValidateArgs!): User
 
   """Deskripsinya ada disini loh"""
   bankFindMany(bankFindManyArgs: BankFindManyArgs): [Bank!]
@@ -3541,6 +3541,14 @@ input HotelWhereUniqueInput {
   createdBy: UserRelationFilter
 }
 
+input AuthValidateArgs {
+  """Masukkan email"""
+  email: String!
+
+  """Masukkan password"""
+  password: String!
+}
+
 input BankFindManyArgs {
   where: BankWhereInput
   orderBy: [BankOrderByWithRelationInput!]
@@ -4995,9 +5003,7 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   hotelRemove(hotelId: Float!): Boolean
-  createAuth(createAuthInput: CreateAuthInput!): Auth!
   resetPassword(email: String!): Auth!
-  removeAuth(id: Int!): Auth!
 
   """Deskripsinya ada disini loh"""
   bankCreateOne(bankCreateArgs: BankCreateArgs!): Bank
@@ -7693,11 +7699,6 @@ input HotelUpdateInput {
   images: ImagesUpdateManyWithoutHotelImageNestedInput
   checkIns: CheckInUpdateManyWithoutHotelNestedInput
   createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
-}
-
-input CreateAuthInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
 }
 
 input BankCreateArgs {
