@@ -8,6 +8,10 @@ import { CityFindUniqueArgs } from './dto/city-find-one.args';
 import { CityUpdateOneArgs } from './dto/city-update-one.args';
 import { CityController } from './city.controller';
 import { Logger } from '@nestjs/common';
+import {
+  CityFindManyUser,
+  CityFindManyUserArgs,
+} from './dto/city-find-many-user.args';
 
 interface CitySelect {
   select: Prisma.CitySelect;
@@ -77,4 +81,15 @@ export class CityResolver {
   // cityRemove(@Args('cityId') cityId: number) {
   //   return this.cityController.remove(cityId);
   // }
+
+  @Query(() => [CityFindManyUser], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  getTopCitiesWithMostUsers(
+    @Args('cityFindManyUserArgs')
+    cityFindManyUserArgs: CityFindManyUserArgs,
+  ) {
+    return this.cityController.getTopCitiesWithMostUsers(cityFindManyUserArgs);
+  }
 }

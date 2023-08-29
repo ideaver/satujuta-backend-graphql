@@ -1987,6 +1987,12 @@ type UserFindManyOrderByAccountBalance {
   totalBalance: Float!
 }
 
+type CityFindManyUser {
+  cityId: Int!
+  cityName: String!
+  userCount: Int!
+}
+
 type Query {
   """Deskripsinya ada disini loh"""
   userFindMany(userFindManyArgs: UserFindManyArgs!): [User!]
@@ -2165,6 +2171,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   cityFindOne(cityFindUniqueArgs: CityFindUniqueArgs!): City
+
+  """Deskripsinya ada disini loh"""
+  getTopCitiesWithMostUsers(cityFindManyUserArgs: CityFindManyUserArgs!): [CityFindManyUser!]
 
   """Deskripsinya ada disini loh"""
   districtFindMany(districtFindManyArgs: DistrictFindManyArgs!): [District!]
@@ -4678,6 +4687,11 @@ input CityWhereUniqueInput {
   provinceId: IntFilter
   province: ProvinceRelationFilter
   districts: DistrictListRelationFilter
+}
+
+input CityFindManyUserArgs {
+  userRole: UserRole
+  status: UserStatus
 }
 
 input DistrictFindManyArgs {

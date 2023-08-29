@@ -5,6 +5,7 @@ import { CreateOneCityArgs, City } from 'src/@generated';
 import { CityFindManyArgs } from './dto/city-find-many.args';
 import { CityFindUniqueArgs } from './dto/city-find-one.args';
 import { CityUpdateOneArgs } from './dto/city-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class CityService {
@@ -21,7 +22,7 @@ export class CityService {
       });
   }
 
-  async findMany(cityFindManyArgs: CityFindManyArgs) {
+  async findMany(cityFindManyArgs: Prisma.CityFindManyArgs) {
     return this.prisma.city
       .findMany(cityFindManyArgs)
       .then((citys) => {
