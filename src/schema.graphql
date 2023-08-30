@@ -2,11 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Auth {
-  """Example field (placeholder)"""
-  message: String!
-}
-
 type AccountAvgAggregate {
   id: Float
   accountNumber: Float
@@ -1960,6 +1955,12 @@ type WithdrawalRequest {
   transaction: Transaction
 }
 
+type LoginResponse {
+  """Akses token jwt"""
+  accessToken: String!
+  user: User!
+}
+
 type UserTypePercentage {
   userCountType: String!
   userCount: Float!
@@ -2020,7 +2021,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
-  authValidate(authValidateArgs: AuthValidateArgs!): User
 
   """Deskripsinya ada disini loh"""
   bankFindMany(bankFindManyArgs: BankFindManyArgs): [Bank!]
@@ -3541,14 +3541,6 @@ input HotelWhereUniqueInput {
   createdBy: UserRelationFilter
 }
 
-input AuthValidateArgs {
-  """Masukkan email"""
-  email: String!
-
-  """Masukkan password"""
-  password: String!
-}
-
 input BankFindManyArgs {
   where: BankWhereInput
   orderBy: [BankOrderByWithRelationInput!]
@@ -5003,7 +4995,7 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   hotelRemove(hotelId: Float!): Boolean
-  resetPassword(email: String!): Auth!
+  authLogin(loginArgs: LoginArgs!): LoginResponse
 
   """Deskripsinya ada disini loh"""
   bankCreateOne(bankCreateArgs: BankCreateArgs!): Bank
@@ -7699,6 +7691,14 @@ input HotelUpdateInput {
   images: ImagesUpdateManyWithoutHotelImageNestedInput
   checkIns: CheckInUpdateManyWithoutHotelNestedInput
   createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
+}
+
+input LoginArgs {
+  """Masukkan email"""
+  email: String!
+
+  """Masukkan password"""
+  password: String!
 }
 
 input BankCreateArgs {

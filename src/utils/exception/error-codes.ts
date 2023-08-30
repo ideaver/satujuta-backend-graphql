@@ -9,5 +9,6 @@ export const errorCodes: Record<number, string> = {
   150001:
     'Maaf anda belum memiliki point untuk melakukan claim reward ini. Silahkan kumpulkan point terlebih dahulu',
   150002: 'Maaf Point anda tidak mencukupi untuk melakukan claim reward ini',
-  // Add more error descriptions here
+  //Prisma
+  123456: 'Prisma Error. Segera Lapor Administrator',
 };

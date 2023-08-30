@@ -1,33 +1,40 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, Context } from '@nestjs/graphql';
 import { AuthController } from './auth.controller';
-import { Auth } from './entities/auth.entity';
 import { User } from 'src/@generated';
-import { AuthValidateArgs } from './dto/auth-validate.args';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
+import { LoginResponse } from './model/login-response.model';
+import { LoginArgs } from './dto/login.args';
+import { AuthGuard } from '@nestjs/passport';
+import { UseGuards } from '@nestjs/common';
+import { GplAuthGuard } from './gpl-auth.guard';
 
 interface UserSelect {
   select: Prisma.UserSelect;
 }
 
-@Resolver(() => Auth)
+// () => Auth
+
+@Resolver()
 export class AuthResolver {
   constructor(private readonly authController: AuthController) {}
 
-  @Query(() => User, { nullable: true })
-  authValidate(
-    @Args('authValidateArgs') authValidateArgs: AuthValidateArgs,
+  @Mutation(() => LoginResponse, { nullable: true })
+  @UseGuards(GplAuthGuard)
+  authLogin(
+    @Args('loginArgs') loginArgs: LoginArgs,
+    @Context() context,
     @Relations() relations: UserSelect,
   ) {
-    authValidateArgs.select = relations.select;
-    return this.authController.validate(authValidateArgs);
+    loginArgs.select = relations.select;
+    return this.authController.login(loginArgs);
   }
 
-  @Mutation(() => Auth)
-  async resetPassword(@Args('email') email: string) {
-    return await this.authController.resetPassword(email).then((res) => {
-      //TODO: send email
-      return res;
-    });
-  }
+  // @Mutation(() => Auth)
+  // async resetPassword(@Args('email') email: string) {
+  //   return await this.authController.resetPassword(email).then((res) => {
+  //     //TODO: send email
+  //     return res;
+  //   });
+  // }
 }

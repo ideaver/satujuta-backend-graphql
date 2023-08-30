@@ -2,7 +2,7 @@ import { InputType, Field } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 
 @InputType()
-export class AuthValidateArgs {
+export class LoginArgs {
   select?: Prisma.UserSelect;
 
   @Field(() => String, { description: 'Masukkan email' })

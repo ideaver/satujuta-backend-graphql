@@ -1,12 +1,12 @@
 import { AuthService } from './auth.service';
-import { Auth } from './entities/auth.entity';
 import { CreateAuthInput } from './dto/create-auth.input';
 import { Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { UserController } from '../user/user.controller';
-import { AuthValidateArgs } from './dto/auth-validate.args';
+import { LoginArgs } from './dto/login.args';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import * as bcrypt from 'bcrypt';
+import { LoginResponse } from './model/login-response.model';
 
 @Injectable()
 export class AuthController {
@@ -15,21 +15,17 @@ export class AuthController {
     private readonly userController: UserController,
   ) {}
 
-  async validate(authValidateArgs: AuthValidateArgs) {
+  async validate({ email, password }: LoginArgs): Promise<any> {
     //find user by email
-    const user = await this.userController.findFirst({
-      take: 1,
+    const user = await this.userController.findOne({
       where: {
-        email: { equals: authValidateArgs.email },
+        email: email,
       },
     });
 
     if (user) {
       //if found, compare password
-      const passwordValid = await bcrypt.compare(
-        authValidateArgs.password,
-        user.password,
-      );
+      const passwordValid = await bcrypt.compare(password, user.password);
 
       if (passwordValid) {
         return user;
@@ -42,10 +38,22 @@ export class AuthController {
     }
   }
 
-  async resetPassword(email: string) {
-    return await this.authService.resetPassword(email).then((res) => {
-      //TODO: send email
-      return res;
+  async login(loginArgs: LoginArgs): Promise<LoginResponse> {
+    const user = await this.userController.findFirst({
+      take: 1,
+      where: { email: { equals: loginArgs.email } },
     });
+
+    return {
+      accessToken: 'jwt',
+      user,
+    };
   }
+
+  // async resetPassword(email: string) {
+  //   return await this.authService.resetPassword(email).then((res) => {
+  //     //TODO: send email
+  //     return res;
+  //   });
+  // }
 }
