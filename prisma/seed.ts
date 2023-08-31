@@ -27,6 +27,7 @@ import {
   userCreateManySeed,
 } from './seed-functions/user.seed';
 import { getTopCitiesWithMostUsers } from './seed-functions/city.seed';
+import fs from 'fs';
 
 const prisma = new PrismaClient();
 
@@ -39,8 +40,26 @@ export enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  const topCitiesWithStudents = await getTopCitiesWithMostUsers();
-  console.log('Top cities with most student users:', topCitiesWithStudents);
+  // console.log(
+  //   await prisma.user.updateMany({
+  //     data: { password: { set: 'ad' } },
+  //     where: { id: { notIn: [] } },
+  //   }),
+  // );
+
+  try {
+    const userData = await prisma.user.findMany({
+      select: { id: true, password: true },
+    });
+
+    const jsonData = JSON.stringify(userData, null, 2);
+
+    fs.writeFileSync('user_data.json', jsonData);
+
+    console.log('User data saved to user_data.json');
+  } catch (error) {
+    console.error('Error saving user data:', error);
+  }
 
   // await prisma.user.deleteMany({
   //   where: {
