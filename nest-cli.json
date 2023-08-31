@@ -9,7 +9,11 @@
         "outDir": "dist/src/",
         "watchAssets": true
       },
-      "templates/**"
+      {
+        "include": "../src/services/email/templates/",
+        "outDir": "dist/src/services/email/",
+        "watchAssets": true
+      }
     ],
     "deleteOutDir": true
   }

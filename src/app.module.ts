@@ -36,6 +36,8 @@ import { CartModule } from './services/cart/cart.module';
 import { RewardClaimModule } from './services/reward-claim/reward-claim.module';
 import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawal-request.module';
 import { EmailModule } from './services/email/email.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 
 @Module({
   imports: [
@@ -47,7 +49,7 @@ import { EmailModule } from './services/email/email.module';
     }),
     BullModule.forRoot({
       redis: {
-        host: 'localhost',
+        host: '103.163.139.104',
         port: 6379,
       },
     }),

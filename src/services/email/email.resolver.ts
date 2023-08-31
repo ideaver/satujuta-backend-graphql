@@ -18,20 +18,8 @@ export class EmailResolver {
       text: 'Reset Password',
       from: '',
     };
-    console.log(email);
-    const job = await this.emailQueue.add('reset-password', { data });
-    // .then((job) => {
-    //   return {
-    //     message:
-    //       'Password baru anda akan dikirimkan melalui email. Silahkan periksa inbox email anda dalam beberapa menit. ',
-    //   };
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    //   throw new IGraphQLError({ code: 10006, err: err });
-    // });
+    await this.emailQueue.add('reset-password', { data });
 
-    console.log({ jobId: job });
-    return job.toJSON();
+    return 'Password baru anda akan dikirimkan melalui email. Silahkan periksa inbox email anda dalam beberapa menit. ';
   }
 }
