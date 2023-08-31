@@ -3,8 +3,6 @@ import { Prisma } from '@prisma/client';
 
 @InputType()
 export class LoginArgs {
-  select?: Prisma.UserSelect;
-
   @Field(() => String, { description: 'Masukkan email' })
   email: string;
 

@@ -16,7 +16,6 @@ export class AuthController {
 
   async validate({ email, password }: LoginArgs): Promise<any> {
     //find user by email
-    console.log('masuk validate');
     const user = await this.userController.findOne({
       where: {
         email: email,

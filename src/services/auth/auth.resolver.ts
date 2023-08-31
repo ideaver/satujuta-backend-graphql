@@ -9,24 +9,13 @@ import { AuthGuard } from '@nestjs/passport';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from './gpl-auth.guard';
 
-interface UserSelect {
-  select: Prisma.UserSelect;
-}
-
-// () => Auth
-
 @Resolver()
 export class AuthResolver {
   constructor(private readonly authController: AuthController) {}
 
   @Mutation(() => LoginResponse, { nullable: true })
   @UseGuards(GqlAuthGuard)
-  authLogin(
-    @Args('loginArgs') loginArgs: LoginArgs,
-    @Context() context,
-    @Relations() relations: UserSelect,
-  ) {
-    loginArgs.select = relations.select;
+  authLogin(@Args('loginArgs') loginArgs: LoginArgs, @Context() context) {
     return this.authController.login(context.user);
   }
 

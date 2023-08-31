@@ -1,22 +1,23 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
-import { LoginArgs } from './dto/login.args';
 import { AuthController } from './auth.controller';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authController: AuthController) {
-    super();
+    super({
+      usernameField: 'email', // Use the field name from your LoginArgs class
+      passwordField: 'password', // Use the field name from your LoginArgs class
+    });
   }
 
-  async validate(loginArgs: LoginArgs): Promise<any> {
-    console.log('masuk lokal strategi', loginArgs);
-    const user = await this.authController.validate(loginArgs);
-    if (!user) {
-      console.log('pengguna tidak valid', loginArgs);
-      // throw new UnauthorizedException();
-    }
+  async validate(email: string, password: string): Promise<any> {
+    const user = await this.authController.validate({ email, password });
+    // if (!user) {
+    //   console.log('pengguna tidak valid');
+    //   // throw new UnauthorizedException();
+    // }
 
     return user;
   }
