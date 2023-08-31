@@ -14,7 +14,6 @@ import { JwtStrategy } from './jwt.strategy';
     PrismaService,
     AuthResolver,
     AuthController,
-    AuthService,
     LocalStrategy,
     JwtStrategy,
   ],

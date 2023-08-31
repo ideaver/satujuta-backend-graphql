@@ -1,7 +1,4 @@
-import { AuthService } from './auth.service';
-import { CreateAuthInput } from './dto/create-auth.input';
 import { Injectable } from '@nestjs/common';
-import { UserService } from '../user/user.service';
 import { UserController } from '../user/user.controller';
 import { LoginArgs } from './dto/login.args';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
@@ -13,7 +10,6 @@ import { User } from 'src/@generated';
 @Injectable()
 export class AuthController {
   constructor(
-    private readonly authService: AuthService,
     private readonly userController: UserController,
     private readonly jwtService: JwtService,
   ) {}
