@@ -35,10 +35,7 @@ export class UserController {
       userCreateArgsPrisma.data;
 
     //Handle null value GraphQL Capabitlity
-    if (
-      referredBy?.connect?.referralCode === null &&
-      referredBy === undefined
-    ) {
+    if (referredBy?.connect?.referralCode === null) {
       userCreateArgsPrisma.data.referredBy = undefined;
     }
 

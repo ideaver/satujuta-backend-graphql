@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { BullModule } from '@nestjs/bull';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
@@ -34,6 +35,7 @@ import { SubdistrictModule } from './services/subdistrict/subdistrict.module';
 import { CartModule } from './services/cart/cart.module';
 import { RewardClaimModule } from './services/reward-claim/reward-claim.module';
 import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawal-request.module';
+import { EmailModule } from './services/email/email.module';
 
 @Module({
   imports: [
@@ -42,6 +44,12 @@ import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawa
       autoSchemaFile: join(process.cwd(), 'src/schema.graphql'),
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
+    }),
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+      },
     }),
     UserModule,
     HotelModule,
@@ -72,6 +80,7 @@ import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawa
     CartModule,
     RewardClaimModule,
     WithdrawalRequestModule,
+    EmailModule,
   ],
   controllers: [],
   providers: [PrismaService],
