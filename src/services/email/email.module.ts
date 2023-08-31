@@ -14,12 +14,12 @@ import { join } from 'path';
     }),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.gmail.com', // SMTP server hostname
+        host: 'smtp-relay.brevo.com', // SMTP server hostname
         port: 587, // SMTP server port
         secure: false, // Use TLS
         auth: {
-          user: process.env.EMAIL_USER, // Use environment variable for email
-          pass: process.env.EMAIL_PASS, // Use environment variable for password
+          user: 'satujuta.app@gmail.com', // Use environment variable for email
+          pass: 'TEAU4avd76JMQRKc', // Use environment variable for password
         },
       },
       defaults: {
@@ -28,6 +28,9 @@ import { join } from 'path';
       template: {
         dir: join(__dirname, 'templates'),
         adapter: new HandlebarsAdapter(),
+        // options: {
+        //   strict: true,
+        // },
       },
     }),
   ],

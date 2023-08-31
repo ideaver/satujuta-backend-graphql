@@ -16,10 +16,14 @@ export class EmailResolver {
       to: email,
       subject: 'Permintaan Reset Password',
       text: 'Reset Password',
-      from: '',
+      from: 'satujuta.app@gmail.com',
     };
-    await this.emailQueue.add('reset-password', { data });
+    await this.emailQueue.add('reset-password', data);
 
-    return 'Password baru anda akan dikirimkan melalui email. Silahkan periksa inbox email anda dalam beberapa menit. ';
+    return (
+      'Password baru anda akan dikirimkan ke email ' +
+      email +
+      ' . Silahkan periksa inbox email anda dalam beberapa menit. '
+    );
   }
 }

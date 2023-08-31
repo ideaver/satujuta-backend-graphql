@@ -11,7 +11,7 @@
       },
       {
         "include": "../src/services/email/templates/",
-        "outDir": "dist/src/services/email/",
+        "outDir": "dist/src/",
         "watchAssets": true
       }
     ],

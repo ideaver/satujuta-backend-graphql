@@ -11,16 +11,20 @@ export class EmailProcessor {
 
   @Process('reset-password')
   async sendResetPasswordEmail(job: Job<Email>) {
-    console.log('sendResetPasswordEmail called');
+    console.log('data', job.data.to);
+
     const { data } = job;
 
-    await this.mailerService.sendMail({
-      ...data,
-      subject: 'Reset password',
-      template: 'reset-password',
-      context: {
-        user: data.user,
-      },
-    });
+    try {
+      await this.mailerService.sendMail({
+        ...data,
+        template: 'reset-password',
+      });
+
+      console.log('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+      // You can handle the error here, maybe mark the job as failed or take appropriate action.
+    }
   }
 }
