@@ -21,9 +21,9 @@ export class EmailProcessor {
         template: 'reset-password',
       });
 
-      console.log('Email sent successfully');
+      console.log('sendResetPasswordEmail: Email sent successfully');
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('sendResetPasswordEmail: Error sending email:', error);
       // You can handle the error here, maybe mark the job as failed or take appropriate action.
     }
   }

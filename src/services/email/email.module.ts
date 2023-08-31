@@ -5,10 +5,12 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import { EmailProcessor } from 'src/queues/email.queue';
 import { BullModule } from '@nestjs/bull';
 import { join } from 'path';
+import { UserModule } from '../user/user.module';
 
 @Module({
   providers: [EmailResolver, EmailProcessor],
   imports: [
+    UserModule,
     BullModule.registerQueue({
       name: 'email',
     }),
