@@ -27,7 +27,8 @@ import {
   userCreateManySeed,
 } from './seed-functions/user.seed';
 import { getTopCitiesWithMostUsers } from './seed-functions/city.seed';
-import fs from 'fs';
+import * as fs from 'fs';
+import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -40,21 +41,34 @@ export enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  // console.log(
-  //   await prisma.user.updateMany({
-  //     data: { password: { set: 'ad' } },
-  //     where: { id: { notIn: [] } },
-  //   }),
-  // );
+  const users = await prisma.user.findMany({ select: { id: true } });
+  const userCredentials = [];
 
-  try {
-    const userData = await prisma.user.findMany({
-      select: { id: true, password: true },
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    const passwordFaker = faker.lorem.word(5);
+    const updatedUser = await prisma.user.update({
+      select: { id: true, password: true, email: true },
+      where: { id: user.id },
+      data: {
+        password: await encryptUserPassword(passwordFaker),
+      },
     });
 
-    const jsonData = JSON.stringify(userData, null, 2);
+    userCredentials.push({
+      id: updatedUser.id,
+      email: updatedUser.email,
+      password: passwordFaker,
+    });
 
-    fs.writeFileSync('user_data.json', jsonData);
+    // console log the iteration below
+    console.log(`Iteration: ${i + 1} of ${users.length}`);
+  }
+
+  try {
+    const jsonData = JSON.stringify(userCredentials, null, 2);
+
+    fs.writeFileSync('prisma/user_data.json', jsonData);
 
     console.log('User data saved to user_data.json');
   } catch (error) {
@@ -161,6 +175,12 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+export async function encryptUserPassword(password: string) {
+  const saltOrRounds = 10;
+  const hashedPassword = await bcrypt.hash(password, saltOrRounds);
+  return hashedPassword;
+}
 
 // async function faqCreateManyInput() {
 //   const numberOfFaq = 20;
