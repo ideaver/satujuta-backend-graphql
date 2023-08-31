@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy } from 'passport-local';
+import { Strategy } from 'passport-jwt';
 import { LoginArgs } from './dto/login.args';
 import { AuthController } from './auth.controller';
 
@@ -14,7 +14,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     console.log('masuk lokal strategi', loginArgs);
     const user = await this.authController.validate(loginArgs);
     if (!user) {
-      throw new UnauthorizedException();
+      console.log('pengguna tidak valid', loginArgs);
+      // throw new UnauthorizedException();
     }
 
     return user;

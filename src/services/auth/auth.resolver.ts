@@ -7,7 +7,7 @@ import { LoginResponse } from './model/login-response.model';
 import { LoginArgs } from './dto/login.args';
 import { AuthGuard } from '@nestjs/passport';
 import { UseGuards } from '@nestjs/common';
-import { GplAuthGuard } from './gpl-auth.guard';
+import { GqlAuthGuard } from './gpl-auth.guard';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -20,14 +20,14 @@ export class AuthResolver {
   constructor(private readonly authController: AuthController) {}
 
   @Mutation(() => LoginResponse, { nullable: true })
-  @UseGuards(GplAuthGuard)
+  @UseGuards(GqlAuthGuard)
   authLogin(
     @Args('loginArgs') loginArgs: LoginArgs,
     @Context() context,
     @Relations() relations: UserSelect,
   ) {
     loginArgs.select = relations.select;
-    return this.authController.login(loginArgs);
+    return this.authController.login(context.user);
   }
 
   // @Mutation(() => Auth)

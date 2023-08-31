@@ -7,16 +7,20 @@ import { LoginArgs } from './dto/login.args';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import * as bcrypt from 'bcrypt';
 import { LoginResponse } from './model/login-response.model';
+import { JwtService } from '@nestjs/jwt';
+import { User } from 'src/@generated';
 
 @Injectable()
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private readonly userController: UserController,
+    private readonly jwtService: JwtService,
   ) {}
 
   async validate({ email, password }: LoginArgs): Promise<any> {
     //find user by email
+    console.log('masuk validate');
     const user = await this.userController.findOne({
       where: {
         email: email,
@@ -38,14 +42,14 @@ export class AuthController {
     }
   }
 
-  async login(loginArgs: LoginArgs): Promise<LoginResponse> {
-    const user = await this.userController.findFirst({
-      take: 1,
-      where: { email: { equals: loginArgs.email } },
-    });
-
+  async login(user: User): Promise<LoginResponse> {
+    console.log('masuk login');
     return {
-      accessToken: 'jwt',
+      accessToken: this.jwtService.sign({
+        id: user.id,
+        email: user.email,
+        userRole: user.userRole,
+      }),
       user,
     };
   }
