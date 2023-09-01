@@ -38,6 +38,10 @@ export class AuthController {
   }
 
   async login(user: User): Promise<LoginResponse> {
+    //check is user deleted
+    if (user && user.deletedAt) {
+      throw new IGraphQLError({ code: 10007 });
+    }
     console.log('masuk login');
     return {
       accessToken: this.jwtService.sign({

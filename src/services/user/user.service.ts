@@ -8,6 +8,7 @@ import { FindManyUserArgs, User } from 'src/@generated';
 import { Prisma } from '@prisma/client';
 import { UserTypePercentage } from './dto/user-type-percentage.output';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { extractNumbers } from 'src/utils/extract-numbers.function';
 
 @Injectable()
 export class UserService {
@@ -71,7 +72,7 @@ export class UserService {
   async remove(userId: string) {
     return await this.prisma.user
       .update({
-        where: { id: userId },
+        where: { id: userId, deletedAt: { equals: null } },
         data: { deletedAt: new Date() },
         select: { id: true, firstName: true, deletedAt: true },
       })
