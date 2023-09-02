@@ -6,6 +6,7 @@ import { EmailProcessor } from 'src/queues/email.queue';
 import { BullModule } from '@nestjs/bull';
 import { join } from 'path';
 import { UserModule } from '../user/user.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   providers: [EmailResolver, EmailProcessor],
@@ -14,26 +15,30 @@ import { UserModule } from '../user/user.module';
     BullModule.registerQueue({
       name: 'email',
     }),
-    MailerModule.forRoot({
-      transport: {
-        host: 'smtp-relay.brevo.com', // SMTP server hostname
-        port: 587, // SMTP server port
-        secure: false, // Use TLS
-        auth: {
-          user: 'satujuta.app@gmail.com', // Use environment variable for email
-          pass: 'TEAU4avd76JMQRKc', // Use environment variable for password
+    MailerModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        transport: {
+          host: configService.get<string>('MAIL_HOST'),
+          port: configService.get<number>('MAIL_PORT'),
+          secure: false,
+          auth: {
+            user: configService.get<string>('MAIL_USERNAME'),
+            pass: configService.get<string>('MAIL_PASSWORD'),
+          },
         },
-      },
-      defaults: {
-        from: 'satujuta.app@gmail.com',
-      },
-      template: {
-        dir: join(__dirname, 'templates'),
-        adapter: new HandlebarsAdapter(),
-        // options: {
-        //   strict: true,
-        // },
-      },
+        defaults: {
+          from: configService.get<string>('MAIL_USERNAME'),
+        },
+        template: {
+          dir: join(__dirname, 'templates'),
+          adapter: new HandlebarsAdapter(),
+          // options: {
+          //   strict: true,
+          // },
+        },
+      }),
+      inject: [ConfigService],
     }),
   ],
 })

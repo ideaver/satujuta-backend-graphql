@@ -5,6 +5,7 @@ export enum ConfigKey {
   App = 'APP',
   Db = 'DB',
   Rd = 'RD',
+  Mail = 'MAIL',
 }
 
 export enum Environment {
@@ -40,4 +41,11 @@ const RDConfig = registerAs(ConfigKey.Rd, () => ({
   port: Number(process.env.REDIS_PORT),
 }));
 
-export const configurations = [APPConfig, DBConfig, RDConfig];
+const MAILConfig = registerAs(ConfigKey.Rd, () => ({
+  host: process.env.MAIL_HOST,
+  port: Number(process.env.MAIL_PORT),
+  username: process.env.MAIL_USERNAME,
+  password: process.env.MAIL_PASSWORD,
+}));
+
+export const configurations = [APPConfig, DBConfig, RDConfig, MAILConfig];
