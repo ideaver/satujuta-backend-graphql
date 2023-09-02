@@ -9,6 +9,7 @@ import { AccountFindFirstArgs } from './dto/account-find-first.args';
 import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
+  AccountBalanceOfPlatformByCustomPeriod,
 } from './dto/get-account-balance-by-custom-period.args';
 import { AccountController } from './account.controller';
 import {
@@ -119,6 +120,16 @@ export class AccountResolver {
   ): Promise<AccountBalanceByCustomPeriodQuery[] | void> {
     return await this.accountController.getAccountBalanceByCustomPeriod(
       accountBalanceByCustomPeriodArgs,
+    );
+  }
+
+  @Query(() => [AccountBalanceByCustomPeriodQuery])
+  async getAccountBalanceOfPlatformByCustomPeriod(
+    @Args('accountBalanceOfPlatformByCustomPeriod')
+    accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod,
+  ): Promise<AccountBalanceByCustomPeriodQuery[] | void> {
+    return await this.accountController.getAccountBalanceOfPlatformByCustomPeriod(
+      accountBalanceOfPlatformByCustomPeriod,
     );
   }
 }

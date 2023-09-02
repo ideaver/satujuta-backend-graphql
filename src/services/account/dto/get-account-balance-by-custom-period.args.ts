@@ -25,3 +25,15 @@ export class AccountBalanceByCustomPeriodArgs {
   @Field(() => Period)
   period: Period;
 }
+
+@InputType()
+export class AccountBalanceOfPlatformByCustomPeriod {
+  @Field(() => Date)
+  start: Date;
+
+  @Field(() => Date)
+  end: Date;
+
+  @Field(() => Period)
+  period: Period;
+}

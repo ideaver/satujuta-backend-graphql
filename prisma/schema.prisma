@@ -419,6 +419,8 @@ model Bank {
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
   accountNumber Float
+  /// @HideField({ output: false, input: true })
+  isActive      Boolean @default(true)
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()

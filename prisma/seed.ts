@@ -41,52 +41,62 @@ export enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  const users = await prisma.user.findMany({ select: { id: true } });
-  const userCredentials = [];
+  // console.log(
+  //   await prisma.bank.create({
+  //     data: {
+  //       name: 'BSI',
+  //       accountNumber: 422457842565,
+  //       logoUrl: 'https://www.google.com',
+  //       account: {
+  //         create: {
+  //           accountCategory: 'PLATFORM',
+  //           name: 'Platform Account',
+  //           user: { connect: { id: 'ea2516b4-333e-452e-b7df-a4294ead0d47' } },
+  //         },
+  //       },
+  //     },
+  //   }),
+  // );
 
-  for (let i = 0; i < users.length; i++) {
-    const user = users[i];
-    const passwordFaker = faker.lorem.word(5);
-    const updatedUser = await prisma.user.update({
-      select: { id: true, password: true, email: true },
-      where: { id: user.id },
-      data: {
-        password: await encryptUserPassword(passwordFaker),
-      },
-    });
+  // const users = await prisma.user.findMany({ select: { id: true } });
+  // const userCredentials = [];
 
-    userCredentials.push({
-      id: updatedUser.id,
-      email: updatedUser.email,
-      password: passwordFaker,
-    });
+  // for (let i = 0; i < users.length; i++) {
+  //   const user = users[i];
+  //   const passwordFaker = faker.lorem.word(5);
+  //   const updatedUser = await prisma.user.update({
+  //     select: { id: true, password: true, email: true },
+  //     where: { id: user.id },
+  //     data: {
+  //       password: await encryptUserPassword(passwordFaker),
+  //     },
+  //   });
 
-    // console log the iteration below
-    console.log(`Iteration: ${i + 1} of ${users.length}`);
-  }
+  //   userCredentials.push({
+  //     id: updatedUser.id,
+  //     email: updatedUser.email,
+  //     password: passwordFaker,
+  //   });
 
-  try {
-    const jsonData = JSON.stringify(userCredentials, null, 2);
+  //   // console log the iteration below
+  //   console.log(`Iteration: ${i + 1} of ${users.length}`);
+  // }
 
-    fs.writeFileSync('prisma/user_data.json', jsonData);
+  // try {
+  //   const jsonData = JSON.stringify(userCredentials, null, 2);
 
-    console.log('User data saved to user_data.json');
-  } catch (error) {
-    console.error('Error saving user data:', error);
-  }
+  //   fs.writeFileSync('prisma/user_data.json', jsonData);
+
+  //   console.log('User data saved to user_data.json');
+  // } catch (error) {
+  //   console.error('Error saving user data:', error);
+  // }
 
   // await prisma.user.deleteMany({
   //   where: {
   //     userRole: { not: { equals: UserRole.SUPERUSER } },
   //     accounts: { none: {} },
   //   },
-  // });
-
-  // getUserGrowthByCustomPeriod({
-  //   period: Period.YEARLY,
-  //   start: new Date('2017-01-01'),
-  //   end: new Date('2023-12-31'),
-  //   where: { userRole: { equals: UserRole.STUDENT } },
   // });
 
   // await userCreateManySeed({ numberOfUsers: 100 });
@@ -134,7 +144,7 @@ async function main() {
 
   //   await seedBank();
   // await prisma.transaction.deleteMany();
-  // await transactionCreateManySeed({ numberOfTransactions: 500 });
+  await transactionCreateManySeed({ numberOfTransactions: 500 });
   // await bankCreateManySeed({ numberOfBanks: 5 });
 
   // const accountId = 2; // Replace with the actual account ID
@@ -389,9 +399,9 @@ async function transactionCreateManySeed({
     transactionsToCreate.push({
       ...fakeTransaction(),
       amount: generateRandomRupiah(),
-      fromAccountId: faker.datatype.number({ min: 1, max: 9 }),
-      toAccountId: faker.datatype.number({ min: 1, max: 9 }),
-      createdAt: faker.date.past(),
+      fromAccountId: 191,
+      toAccountId: faker.datatype.number({ min: 1, max: 191 }),
+      createdAt: faker.date.past(7),
       uniqueCode: faker.datatype.number({ min: 100, max: 700 }),
       proofUrl: faker.image.imageUrl(),
     });

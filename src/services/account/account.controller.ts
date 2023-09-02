@@ -7,6 +7,7 @@ import { AccountFindFirstArgs } from './dto/account-find-first.args';
 import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
+  AccountBalanceOfPlatformByCustomPeriod,
 } from './dto/get-account-balance-by-custom-period.args';
 import { Period } from 'src/model/period.enum';
 import { Injectable, Logger } from '@nestjs/common';
@@ -17,6 +18,7 @@ import {
 } from './dto/user-find-many-order-by-account-balance.args';
 import { TransactionController } from '../transaction/transaction.controller';
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
+import { get } from 'node:http';
 
 @Injectable()
 export class AccountController {
@@ -176,6 +178,29 @@ export class AccountController {
       }
 
       return totalBalance;
+    }
+  }
+
+  async getAccountBalanceOfPlatformByCustomPeriod({
+    period,
+    start,
+    end,
+  }: AccountBalanceOfPlatformByCustomPeriod): Promise<
+    AccountBalanceByCustomPeriodQuery[] | void
+  > {
+    const getPlatformAccount = await this.findFirst({
+      select: { id: true },
+      take: 1,
+      where: { accountCategory: { equals: 'PLATFORM' } },
+    });
+
+    if (getPlatformAccount) {
+      return this.getAccountBalanceByCustomPeriod({
+        accountId: getPlatformAccount.id,
+        start,
+        end,
+        period,
+      });
     }
   }
 
