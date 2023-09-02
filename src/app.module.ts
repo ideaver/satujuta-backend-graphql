@@ -38,6 +38,7 @@ import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawa
 import { EmailModule } from './services/email/email.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { ConfigsModule } from './config/config.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
         port: 6379,
       },
     }),
+    ConfigsModule,
     UserModule,
     HotelModule,
     AuthModule,
