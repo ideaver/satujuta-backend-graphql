@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 export enum ConfigKey {
   App = 'APP',
   Db = 'DB',
+  Rd = 'RD',
 }
 
 export enum Environment {
@@ -34,4 +35,9 @@ const DBConfig = registerAs(ConfigKey.Db, () => ({
   database: process.env.DATABASE,
 }));
 
-export const configurations = [APPConfig, DBConfig];
+const RDConfig = registerAs(ConfigKey.Rd, () => ({
+  host: process.env.REDIS_HOST,
+  port: Number(process.env.REDIS_PORT),
+}));
+
+export const configurations = [APPConfig, DBConfig, RDConfig];

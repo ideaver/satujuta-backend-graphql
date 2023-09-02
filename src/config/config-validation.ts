@@ -52,6 +52,16 @@ class EnvironmentVariables {
   @MinLength(1)
   DATABASE: string;
 
+  /* REDIS CONFIG */
+  @IsDefined()
+  @IsString()
+  @MinLength(1)
+  REDIS_HOST: string;
+  @IsDefined()
+  @IsNumberString()
+  @MinLength(1)
+  REDIS_PORT: string;
+
   @IsDefined()
   @IsString()
   @MinLength(1)
