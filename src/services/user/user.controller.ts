@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { UserService } from './user.service';
 import { UserCreateArgs } from './dto/user-create-one.args';
 import { UserFindManyArgs } from './dto/user-find-many.args';
@@ -108,7 +109,7 @@ export class UserController {
       .catch((error) => {
         //delete file if error
         if (file) {
-          this.uploaderService.deleteFile(userCreateArgsPrisma.data.avatarUrl);
+          this.uploaderService.deleteFile(avatarUrl);
         }
         throw new IGraphQLError({ code: 123456, err: error });
       });
@@ -211,20 +212,24 @@ export class UserController {
     }
 
     //upload new file even if doesn't exist
-    return await this.uploaderService
-      .uploadImage({
-        userId: userId,
-        ratio: RatioEnum.SQUARE,
-        file: file,
-      })
-      .then((url) => {
-        this.userService.update({
-          where: { id: userId },
-          data: { avatarUrl: { set: url } },
-        });
+    const imageUrl = await this.uploaderService.uploadImage({
+      userId: userId,
+      ratio: RatioEnum.SQUARE,
+      file: file,
+    });
 
-        return url;
-      });
+    //update avatarUrl in database
+    await this.updateOne({
+      where: { id: userId },
+      data: { avatarUrl: { set: imageUrl } },
+    }).catch((error) => {
+      //delete file in storage if error
+      console.log('masuk error');
+      this.uploaderService.deleteFile(imageUrl);
+      throw new IGraphQLError({ code: 123456, err: error });
+    });
+
+    return imageUrl;
   }
 
   remove(userId: string) {

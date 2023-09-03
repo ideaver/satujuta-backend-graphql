@@ -143,7 +143,6 @@ export class UploaderService {
 
     // Extract the key (object path)
     const key = urlParts[1];
-    console.log('the key' + key);
 
     // Construct the bucket name from the first part of the URL
     const bucketName = urlParts[0].replace('https://', '').split('.s3.')[0];
