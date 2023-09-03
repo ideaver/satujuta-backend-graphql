@@ -106,7 +106,9 @@ export class UserController {
       })
       .catch((error) => {
         //delete file if error
-        this.uploaderService.deleteFile(userCreateArgsPrisma.data.avatarUrl);
+        if (file) {
+          this.uploaderService.deleteFile(userCreateArgsPrisma.data.avatarUrl);
+        }
         throw new IGraphQLError({ code: 123456, err: error });
       });
   }
