@@ -6,18 +6,14 @@ import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
 @Resolver()
 export class UploaderResolver {
-  @Mutation(() => Boolean)
-  async singleUpload(
+  @Mutation(() => String, {
+    description:
+      'Header wajib ada apollo-require-preflight = true agar tidak CSRF error',
+  })
+  async uploadSingle(
     @Args({ name: 'file', type: () => GraphQLUpload })
     { createReadStream, filename }: FileUpload,
   ) {
-    console.log('hello world');
-
-    return new Promise(async (resolve, reject) =>
-      createReadStream()
-        .pipe(createWriteStream(`./uploads/${filename}`))
-        .on('finish', () => resolve(true))
-        .on('error', () => reject(false)),
-    );
+    return filename + 'is uploaded';
   }
 }

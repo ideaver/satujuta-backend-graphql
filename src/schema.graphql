@@ -4993,7 +4993,7 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   itemRemove(itemId: Float!): Boolean
-  uploadFile(file: Upload!): String!
+  singleUpload(file: Upload!): String!
 
   """Deskripsinya ada disini loh"""
   hotelCreateOne(hotelCreateArgs: HotelCreateArgs!): Hotel
