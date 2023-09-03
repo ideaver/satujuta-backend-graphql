@@ -7,6 +7,7 @@ export enum ConfigKey {
   Db = 'DB',
   Rd = 'RD',
   Mail = 'MAIL',
+  S3 = 'S3',
 }
 
 export enum Environment {
@@ -49,32 +50,32 @@ const MAILConfig = registerAs(ConfigKey.Rd, () => ({
   password: process.env.MAIL_PASSWORD,
 }));
 
-export function config(): IConfig {
-  const bucketBase = `s3.${process.env.BUCKET_REGION}.${process.env.BUCKET_HOST}.com`;
-
-  return {
-    uploader: {
-      clientConfig: {
-        forcePathStyle: false,
-        region: process.env.BUCKET_REGION,
-        endpoint: `https://${bucketBase}`,
-        credentials: {
-          accessKeyId: process.env.BUCKET_ACCESS_KEY,
-          secretAccessKey: process.env.BUCKET_SECRET_KEY,
-        },
-      },
-      bucketData: {
-        name: process.env.BUCKET_NAME,
-        folder: process.env.FILE_FOLDER,
-        appUuid: process.env.SERVICE_ID,
-        url: `https://${process.env.BUCKET_NAME}.${bucketBase}/`,
-      },
-      middleware: {
-        maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10),
-        maxFiles: parseInt(process.env.MAX_FILES, 10),
-      },
+export const S3Config = registerAs(ConfigKey.S3, () => ({
+  clientConfig: {
+    forcePathStyle: false,
+    region: process.env.BUCKET_REGION,
+    endpoint: `https://s3.${process.env.BUCKET_REGION}.${process.env.BUCKET_HOST}`,
+    credentials: {
+      accessKeyId: process.env.BUCKET_ACCESS_KEY,
+      secretAccessKey: process.env.BUCKET_SECRET_KEY,
     },
-  };
-}
+  },
+  bucketData: {
+    name: process.env.BUCKET_NAME,
+    folder: process.env.FILE_FOLDER,
+    appUuid: process.env.SERVICE_ID,
+    url: `https://${process.env.BUCKET_NAME}.s3.${process.env.BUCKET_REGION}.${process.env.BUCKET_HOST}/`,
+  },
+  middleware: {
+    maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10),
+    maxFiles: parseInt(process.env.MAX_FILES, 10),
+  },
+}));
 
-export const configurations = [APPConfig, DBConfig, RDConfig, MAILConfig];
+export const configurations = [
+  APPConfig,
+  DBConfig,
+  RDConfig,
+  MAILConfig,
+  S3Config,
+];

@@ -6,6 +6,7 @@ import { RatioEnum } from './enums/ratio.enum';
 // Ignore the import errors
 // @ts-ignore
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
+import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
 
 @Resolver()
 export class UploaderResolver {

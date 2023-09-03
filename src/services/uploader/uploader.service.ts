@@ -26,6 +26,8 @@ import { RatioEnum } from './enums/ratio.enum';
 import { IBucketData } from './interfaces/bucket-data.interface';
 import { IOptions } from './interfaces/options.interface';
 import { ConfigService } from '@nestjs/config';
+import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
+import { S3Config } from 'src/config/s3config.model';
 
 @Injectable()
 export class UploaderService {
@@ -34,12 +36,10 @@ export class UploaderService {
   private readonly loggerService: LoggerService;
 
   constructor(private readonly configService: ConfigService) {
-    this.client = new S3Client(
-      this.configService.get<S3ClientConfig>('uploader.clientConfig'),
-    );
-    this.bucketData = this.configService.get<IBucketData>(
-      'uploader.bucketData',
-    );
+    const s3Config = this.configService.get<S3Config>('S3');
+
+    this.client = new S3Client(s3Config.clientConfig);
+    this.bucketData = s3Config.bucketData;
     this.loggerService = new Logger(UploaderService.name);
   }
 
@@ -114,11 +114,11 @@ export class UploaderService {
     file: Promise<FileUploadDto>;
     ratio?: RatioEnum;
   }): Promise<string> {
-    console.log('file', await file);
+    const { filename, createReadStream } = await file;
 
-    const { mimetype, createReadStream } = await file;
-
-    const imageType = UploaderService.validateImage(mimetype);
+    const imageType = UploaderService.validateImage(
+      detectMimeTypeFromFilename(filename),
+    );
 
     if (!imageType) {
       throw new BadRequestException('Please upload a valid image');
