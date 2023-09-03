@@ -4975,7 +4975,7 @@ type Mutation {
   authPasswordReset(email: String!): String!
 
   """Deskripsinya ada disini loh"""
-  userCreateOne(userCreateArgs: UserCreateArgs!): User
+  userCreateOne(file: Upload, userCreateArgs: UserCreateArgs!): User
 
   """Deskripsinya ada disini loh"""
   userUpdateOne(userUpdateOneArgs: UserUpdateOneArgs!): User!
@@ -5150,6 +5150,9 @@ type Mutation {
   """Datanya benar2 terhapus dari db"""
   withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 input UserCreateArgs {
   data: UserCreateInput!
@@ -7670,9 +7673,6 @@ input CartUpdateManyWithWhereWithoutMembershipItemInput {
   where: CartScalarWhereInput!
   data: CartUpdateManyMutationInput!
 }
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
 
 input HotelCreateArgs {
   data: HotelCreateInput!

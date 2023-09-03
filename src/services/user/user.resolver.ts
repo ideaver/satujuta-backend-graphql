@@ -13,6 +13,9 @@ import {
   UserCreatedByCustomPeriodArgs,
   UserCreatedByCustomPeriodQuery,
 } from './dto/get-user-created-by-custom-period.args';
+// Ignore the import errors
+// @ts-ignore
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -27,13 +30,15 @@ export class UserResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async userCreateOne(
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    file: FileUpload,
     @Args('userCreateArgs') userCreateArgs: UserCreateArgs,
     @Relations() relations: UserSelect,
   ): Promise<User | void> {
     //Auto implement prisma select from graphql query info
     userCreateArgs.select = relations.select;
 
-    return await this.userController.createOne(userCreateArgs);
+    return await this.userController.createOne(file, userCreateArgs);
   }
 
   @Query(() => [User], {

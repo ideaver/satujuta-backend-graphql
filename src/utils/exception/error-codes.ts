@@ -12,6 +12,9 @@ export const errorCodes: Record<number, string> = {
   150001:
     'Maaf anda belum memiliki point untuk melakukan claim reward ini. Silahkan kumpulkan point terlebih dahulu',
   150002: 'Maaf Point anda tidak mencukupi untuk melakukan claim reward ini',
+  //uploader
+  160001: 'Gagal Upload File. Silahkan coba lagi',
+  160002: 'Harap upload gambar dengan format .jpg, .jpeg, atau .png',
   //Prisma
   123456: 'Prisma Error. Segera Lapor Administrator',
   1000: 'Autentikasi gagal terhadap server basis data di {database_host}, kredensial basis data yang diberikan untuk {database_user} tidak valid. Pastikan untuk memberikan kredensial basis data yang valid untuk server basis data di {database_host}.',

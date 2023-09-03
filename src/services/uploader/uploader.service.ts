@@ -2,20 +2,11 @@ import {
   DeleteObjectCommand,
   PutObjectCommand,
   S3Client,
-  S3ClientConfig,
 } from '@aws-sdk/client-s3';
-import {
-  BadRequestException,
-  Inject,
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-  LoggerService,
-} from '@nestjs/common';
+import { Injectable, Logger, LoggerService } from '@nestjs/common';
 import sharp from 'sharp';
 import { Readable } from 'stream';
-import { v4 as uuidV4, v5 as uuidV5 } from 'uuid';
-import { UPLOADER_OPTIONS } from './constants/options.constant';
+import { v4 as uuidV4 } from 'uuid';
 import {
   IMAGE_SIZE,
   MAX_WIDTH,
@@ -24,10 +15,10 @@ import {
 import { FileUploadDto } from './dtos/file-upload.dto';
 import { RatioEnum } from './enums/ratio.enum';
 import { IBucketData } from './interfaces/bucket-data.interface';
-import { IOptions } from './interfaces/options.interface';
 import { ConfigService } from '@nestjs/config';
 import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
 import { S3Config } from 'src/config/s3config.model';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class UploaderService {
@@ -65,39 +56,36 @@ export class UploaderService {
     buffer: Buffer,
     ratio?: number,
   ): Promise<Buffer> {
-    let compressBuffer: sharp.Sharp | Buffer = sharp(buffer).jpeg({
+    let compressBuffer: sharp.Sharp = sharp(buffer).jpeg({
       mozjpeg: true,
       chromaSubsampling: '4:4:4',
     });
 
     if (ratio) {
-      compressBuffer.resize({
+      compressBuffer = compressBuffer.resize({
         width: MAX_WIDTH,
         height: Math.round(MAX_WIDTH * ratio),
         fit: 'cover',
       });
     }
 
-    compressBuffer = await compressBuffer.toBuffer();
+    let quality = 30;
+    let smallerBuffer: Buffer;
 
-    if (compressBuffer.length > IMAGE_SIZE) {
-      for (let i = 0; i < QUALITY_ARRAY.length; i++) {
-        const quality = QUALITY_ARRAY[i];
-        const smallerBuffer = await sharp(compressBuffer)
-          .jpeg({
-            quality,
-            chromaSubsampling: '4:4:4',
-          })
-          .toBuffer();
+    do {
+      smallerBuffer = await compressBuffer
+        .jpeg({
+          quality,
+          chromaSubsampling: '4:4:4',
+        })
+        .toBuffer();
 
-        if (smallerBuffer.length <= IMAGE_SIZE || quality === 10) {
-          compressBuffer = smallerBuffer;
-          break;
-        }
+      if (smallerBuffer.length > IMAGE_SIZE) {
+        quality -= 25; // Reduce quality if the image is still too large
       }
-    }
+    } while (smallerBuffer.length > IMAGE_SIZE && quality >= 10);
 
-    return compressBuffer;
+    return smallerBuffer;
   }
 
   /**
@@ -121,7 +109,7 @@ export class UploaderService {
     );
 
     if (!imageType) {
-      throw new BadRequestException('Please upload a valid image');
+      throw new IGraphQLError({ code: 160002 });
     }
 
     try {
@@ -135,7 +123,7 @@ export class UploaderService {
       );
     } catch (error) {
       this.loggerService.error(error);
-      throw new InternalServerErrorException('Error uploading image');
+      throw new IGraphQLError({ code: 160001, err: error });
     }
   }
 
@@ -145,21 +133,41 @@ export class UploaderService {
    * Takes a file url and deletes the file from the bucket
    */
   public deleteFile(url: string): void {
-    const keyArr = url.split('.com/');
+    // Split the URL by '.com/' to get the parts
+    const urlParts = url.split('.com/');
 
-    if (keyArr.length !== 2 || !this.bucketData.url.includes(keyArr[0])) {
-      this.loggerService.error('Invalid url to delete file');
+    if (urlParts.length !== 2) {
+      this.loggerService.error('Invalid URL format for deleting file');
+      return;
     }
 
+    // Extract the key (object path)
+    const key = urlParts[1];
+    console.log('the key' + key);
+
+    // Construct the bucket name from the first part of the URL
+    const bucketName = urlParts[0].replace('https://', '').split('.s3.')[0];
+
+    // Check if the bucket name matches your expected bucket
+    if (bucketName !== this.bucketData.name) {
+      this.loggerService.error('Invalid bucket name in URL');
+      return;
+    }
+
+    // Delete the object using the extracted key and bucket name
     this.client
       .send(
         new DeleteObjectCommand({
           Bucket: this.bucketData.name,
-          Key: keyArr[1],
+          Key: key,
         }),
       )
-      .then(() => this.loggerService.log('File deleted successfully'))
-      .catch((error) => this.loggerService.error(error));
+      .then(() => {
+        this.loggerService.log('File deleted successfully');
+      })
+      .catch((error) => {
+        this.loggerService.error(error);
+      });
   }
 
   private async uploadFile(
@@ -196,7 +204,7 @@ export class UploaderService {
       );
     } catch (error) {
       this.loggerService.error(error);
-      throw new InternalServerErrorException('Error uploading file');
+      throw new IGraphQLError({ code: 160001, err: error });
     }
 
     return this.bucketData.url + key;

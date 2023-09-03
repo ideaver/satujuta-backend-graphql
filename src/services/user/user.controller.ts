@@ -19,16 +19,27 @@ import {
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
 import { Period } from 'src/model/period.enum';
 import { encryptUserPassword } from 'src/utils/bcrypt.function';
+import { UploaderService } from '../uploader/uploader.service';
+// Ignore the import errors
+// @ts-ignore
+import { FileUpload } from 'graphql-upload';
+import { RatioEnum } from '../uploader/enums';
+import { v4 as uuidV4 } from 'uuid';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class UserController {
   constructor(
     private readonly userService: UserService,
     private readonly itemService: ItemService,
+    private readonly uploaderService: UploaderService,
   ) {}
   private readonly logger = new Logger(UserController.name);
 
-  async createOne(userCreateArgs: UserCreateArgs): Promise<User | void> {
+  async createOne(
+    file: FileUpload,
+    userCreateArgs: UserCreateArgs,
+  ): Promise<User | void> {
     let userCreateArgsPrisma: Prisma.UserCreateArgs = { ...userCreateArgs };
 
     const { password, userRole, referredBy, school, referralCode } =
@@ -57,6 +68,20 @@ export class UserController {
       await orderCreate(userCreateArgsPrisma, this.itemService, userRole);
     }
 
+    const uuid = uuidV4();
+
+    // check if file is null
+    if (file) {
+      const avatarUrl = await this.uploaderService.uploadImage({
+        userId: uuid,
+        ratio: RatioEnum.SQUARE,
+        file: file,
+      });
+
+      userCreateArgsPrisma.data.id = uuid;
+      userCreateArgsPrisma.data.avatarUrl = avatarUrl;
+    }
+
     return await this.userService
       .createOne(userCreateArgsPrisma)
       .then(async (user) => {
@@ -78,6 +103,11 @@ export class UserController {
         }
 
         return user;
+      })
+      .catch((error) => {
+        //delete file if error
+        this.uploaderService.deleteFile(userCreateArgsPrisma.data.avatarUrl);
+        throw new IGraphQLError({ code: 123456, err: error });
       });
   }
 
