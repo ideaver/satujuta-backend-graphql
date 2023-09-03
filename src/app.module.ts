@@ -40,6 +40,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { ConfigsModule } from './config/config.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UploaderModule } from './services/uploader/uploader.module';
 
 @Module({
   imports: [
@@ -60,6 +61,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     ConfigsModule,
+    EmailModule,
+    UploaderModule,
     UserModule,
     HotelModule,
     AuthModule,
@@ -89,7 +92,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     CartModule,
     RewardClaimModule,
     WithdrawalRequestModule,
-    EmailModule,
   ],
   controllers: [],
   providers: [PrismaService],
