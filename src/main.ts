@@ -3,6 +3,9 @@ import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { IExceptionFilter } from './utils/exception/custom-exception-filter';
 import { ConfigService } from '@nestjs/config';
+// Ignore the import error
+// @ts-ignore
+import { graphqlUploadExpress } from 'graphql-upload';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +15,7 @@ async function bootstrap() {
 
   const port = configService.get<number>('APP_PORT');
   const environment = configService.get<string>('NODE_ENV');
+  app.use(graphqlUploadExpress({ maxFileSize: 1000000, maxFiles: 10 }));
   await app.listen(port);
   console.log(`Application is running in ${environment} mode on port ${port}`);
 }
