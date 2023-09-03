@@ -1,9 +1,32 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 var AccountScalarWhereWithAggregatesInput_1, AccountScalarWhereInput_1, AccountWhereInput_1, AddressScalarWhereWithAggregatesInput_1, AddressScalarWhereInput_1, AddressWhereInput_1, BankScalarWhereWithAggregatesInput_1, BankWhereInput_1, CartScalarWhereWithAggregatesInput_1, CartScalarWhereInput_1, CartWhereInput_1, CheckInScalarWhereWithAggregatesInput_1, CheckInScalarWhereInput_1, CheckInWhereInput_1, CityScalarWhereWithAggregatesInput_1, CityScalarWhereInput_1, CityWhereInput_1, DistrictScalarWhereWithAggregatesInput_1, DistrictScalarWhereInput_1, DistrictWhereInput_1, FaqScalarWhereWithAggregatesInput_1, FaqWhereInput_1, FileScalarWhereWithAggregatesInput_1, FileScalarWhereInput_1, FileWhereInput_1, HotelScalarWhereWithAggregatesInput_1, HotelScalarWhereInput_1, HotelWhereInput_1, ImagesScalarWhereWithAggregatesInput_1, ImagesScalarWhereInput_1, ImagesWhereInput_1, InstallmentScalarWhereWithAggregatesInput_1, InstallmentScalarWhereInput_1, InstallmentWhereInput_1, InvoiceScalarWhereWithAggregatesInput_1, InvoiceWhereInput_1, ItemScalarWhereWithAggregatesInput_1, ItemWhereInput_1, OrderScalarWhereWithAggregatesInput_1, OrderScalarWhereInput_1, OrderWhereInput_1, PointTransactionScalarWhereWithAggregatesInput_1, PointTransactionScalarWhereInput_1, PointTransactionWhereInput_1, NestedBoolFilter_1, NestedBoolWithAggregatesFilter_1, NestedDateTimeFilter_1, NestedDateTimeNullableFilter_1, NestedDateTimeNullableWithAggregatesFilter_1, NestedDateTimeWithAggregatesFilter_1, NestedEnumAccountCategoryFilter_1, NestedEnumAccountCategoryWithAggregatesFilter_1, NestedEnumFaqTypeFilter_1, NestedEnumFaqTypeWithAggregatesFilter_1, NestedEnumFileTypeFilter_1, NestedEnumFileTypeWithAggregatesFilter_1, NestedEnumInstallmentStatusFilter_1, NestedEnumInstallmentStatusWithAggregatesFilter_1, NestedEnumPointTypeFilter_1, NestedEnumPointTypeWithAggregatesFilter_1, NestedEnumProjectCategoryFilter_1, NestedEnumProjectCategoryWithAggregatesFilter_1, NestedEnumShippingStatusFilter_1, NestedEnumShippingStatusWithAggregatesFilter_1, NestedEnumThemeFilter_1, NestedEnumThemeWithAggregatesFilter_1, NestedEnumTransactionCategoryFilter_1, NestedEnumTransactionCategoryWithAggregatesFilter_1, NestedEnumTransactionStatusFilter_1, NestedEnumTransactionStatusWithAggregatesFilter_1, NestedEnumTransactionTypeFilter_1, NestedEnumTransactionTypeWithAggregatesFilter_1, NestedEnumUserNotificationCategoryFilter_1, NestedEnumUserNotificationCategoryWithAggregatesFilter_1, NestedEnumUserRoleFilter_1, NestedEnumUserRoleWithAggregatesFilter_1, NestedEnumUserStatusFilter_1, NestedEnumUserStatusWithAggregatesFilter_1, NestedEnumUserTypeFilter_1, NestedEnumUserTypeWithAggregatesFilter_1, NestedFloatFilter_1, NestedFloatNullableFilter_1, NestedFloatNullableWithAggregatesFilter_1, NestedFloatWithAggregatesFilter_1, NestedIntFilter_1, NestedIntNullableFilter_1, NestedIntNullableWithAggregatesFilter_1, NestedIntWithAggregatesFilter_1, NestedStringFilter_1, NestedStringNullableFilter_1, NestedStringNullableWithAggregatesFilter_1, NestedStringWithAggregatesFilter_1, ProgramScalarWhereWithAggregatesInput_1, ProgramScalarWhereInput_1, ProgramWhereInput_1, ProgramCategoryScalarWhereWithAggregatesInput_1, ProgramCategoryWhereInput_1, ProjectScalarWhereWithAggregatesInput_1, ProjectWhereInput_1, ProvinceScalarWhereWithAggregatesInput_1, ProvinceWhereInput_1, RewardScalarWhereWithAggregatesInput_1, RewardWhereInput_1, RewardClaimScalarWhereWithAggregatesInput_1, RewardClaimScalarWhereInput_1, RewardClaimWhereInput_1, SchoolScalarWhereWithAggregatesInput_1, SchoolWhereInput_1, SessionScalarWhereWithAggregatesInput_1, SessionScalarWhereInput_1, SessionWhereInput_1, ShippingScalarWhereWithAggregatesInput_1, ShippingWhereInput_1, SubdistrictScalarWhereWithAggregatesInput_1, SubdistrictScalarWhereInput_1, SubdistrictWhereInput_1, TransactionScalarWhereWithAggregatesInput_1, TransactionScalarWhereInput_1, TransactionWhereInput_1, UserOrderByWithRelationInput_1, UserScalarWhereWithAggregatesInput_1, UserScalarWhereInput_1, UserWhereInput_1, User_1, UserNotificationScalarWhereWithAggregatesInput_1, UserNotificationScalarWhereInput_1, UserNotificationWhereInput_1, WithdrawalRequestScalarWhereWithAggregatesInput_1, WithdrawalRequestScalarWhereInput_1, WithdrawalRequestWhereInput_1;
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -67,7 +90,7 @@ const graphql_4 = require("@nestjs/graphql");
 const graphql_5 = require("@nestjs/graphql");
 const graphql_6 = require("@nestjs/graphql");
 const graphql_7 = require("@nestjs/graphql");
-const Validator = require("class-validator");
+const Validator = __importStar(require("class-validator"));
 const graphql_8 = require("@nestjs/graphql");
 var WithdrawalRequestScalarFieldEnum;
 (function (WithdrawalRequestScalarFieldEnum) {
@@ -484,6 +507,7 @@ var BankScalarFieldEnum;
     BankScalarFieldEnum["name"] = "name";
     BankScalarFieldEnum["logoUrl"] = "logoUrl";
     BankScalarFieldEnum["accountNumber"] = "accountNumber";
+    BankScalarFieldEnum["isActive"] = "isActive";
     BankScalarFieldEnum["accountId"] = "accountId";
 })(BankScalarFieldEnum = exports.BankScalarFieldEnum || (exports.BankScalarFieldEnum = {}));
 var AddressScalarFieldEnum;
@@ -5522,6 +5546,9 @@ __decorate([
 ], BankCountAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankCountAggregateInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankCountAggregateInput.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
@@ -5546,6 +5573,9 @@ __decorate([
 ], BankCountAggregate.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], BankCountAggregate.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], BankCountAggregate.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
@@ -5568,6 +5598,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankCountOrderByAggregateInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankCountOrderByAggregateInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankCountOrderByAggregateInput.prototype, "accountId", void 0);
@@ -5597,6 +5630,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankCreateManyInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankCreateManyInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankCreateManyInput.prototype, "accountId", void 0);
@@ -5655,6 +5691,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankCreateWithoutAccountInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankCreateWithoutAccountInput.prototype, "isActive", void 0);
 BankCreateWithoutAccountInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankCreateWithoutAccountInput);
@@ -5678,6 +5717,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankCreateInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankCreateInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankCreateInput.prototype, "account", void 0);
@@ -5740,6 +5782,9 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], BankGroupBy.prototype, "accountNumber", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: false })
+], BankGroupBy.prototype, "isActive", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], BankGroupBy.prototype, "accountId", void 0);
 __decorate([
@@ -5777,6 +5822,9 @@ __decorate([
 ], BankMaxAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankMaxAggregateInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankMaxAggregateInput.prototype, "accountId", void 0);
 BankMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -5796,6 +5844,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], BankMaxAggregate.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], BankMaxAggregate.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], BankMaxAggregate.prototype, "accountId", void 0);
@@ -5819,6 +5870,9 @@ __decorate([
 ], BankMaxOrderByAggregateInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankMaxOrderByAggregateInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankMaxOrderByAggregateInput.prototype, "accountId", void 0);
 BankMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -5838,6 +5892,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], BankMinAggregateInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankMinAggregateInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankMinAggregateInput.prototype, "accountId", void 0);
@@ -5860,6 +5917,9 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], BankMinAggregate.prototype, "accountNumber", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], BankMinAggregate.prototype, "isActive", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], BankMinAggregate.prototype, "accountId", void 0);
 BankMinAggregate = __decorate([
@@ -5880,6 +5940,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankMinOrderByAggregateInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankMinOrderByAggregateInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankMinOrderByAggregateInput.prototype, "accountId", void 0);
@@ -5913,6 +5976,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], BankOrderByWithAggregationInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankOrderByWithAggregationInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankOrderByWithAggregationInput.prototype, "accountId", void 0);
@@ -5951,6 +6017,9 @@ __decorate([
 ], BankOrderByWithRelationInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankOrderByWithRelationInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankOrderByWithRelationInput.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -5982,6 +6051,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], BankScalarWhereWithAggregatesInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankScalarWhereWithAggregatesInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankScalarWhereWithAggregatesInput.prototype, "accountId", void 0);
@@ -6074,6 +6146,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], BankUncheckedCreateWithoutAccountInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankUncheckedCreateWithoutAccountInput.prototype, "isActive", void 0);
 BankUncheckedCreateWithoutAccountInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankUncheckedCreateWithoutAccountInput);
@@ -6102,6 +6177,9 @@ __decorate([
 ], BankUncheckedCreateInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankUncheckedCreateInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankUncheckedCreateInput.prototype, "accountId", void 0);
 BankUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -6121,6 +6199,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateManyInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankUncheckedUpdateManyInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankUncheckedUpdateManyInput.prototype, "accountId", void 0);
@@ -6176,6 +6257,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUncheckedUpdateWithoutAccountInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankUncheckedUpdateWithoutAccountInput.prototype, "isActive", void 0);
 BankUncheckedUpdateWithoutAccountInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankUncheckedUpdateWithoutAccountInput);
@@ -6196,6 +6280,9 @@ __decorate([
 ], BankUncheckedUpdateInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankUncheckedUpdateInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankUncheckedUpdateInput.prototype, "accountId", void 0);
 BankUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -6212,6 +6299,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateManyMutationInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankUpdateManyMutationInput.prototype, "isActive", void 0);
 BankUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankUpdateManyMutationInput);
@@ -6275,6 +6365,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateWithoutAccountInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankUpdateWithoutAccountInput.prototype, "isActive", void 0);
 BankUpdateWithoutAccountInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankUpdateWithoutAccountInput);
@@ -6290,6 +6383,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], BankUpdateInput.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], BankUpdateInput.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], BankUpdateInput.prototype, "account", void 0);
@@ -6343,6 +6439,9 @@ __decorate([
 ], BankWhereUniqueInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankWhereUniqueInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankWhereUniqueInput.prototype, "account", void 0);
 BankWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
@@ -6373,6 +6472,9 @@ __decorate([
 ], BankWhereInput.prototype, "accountNumber", void 0);
 __decorate([
     (0, graphql_7.HideField)()
+], BankWhereInput.prototype, "isActive", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
 ], BankWhereInput.prototype, "accountId", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -6395,6 +6497,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], Bank.prototype, "accountNumber", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: false, defaultValue: true })
+], Bank.prototype, "isActive", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Bank.prototype, "accountId", void 0);
@@ -19288,16 +19393,13 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyHotelImageInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyHotelImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19334,16 +19436,13 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyProgramImageInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyProgramImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19380,16 +19479,13 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyProjectImageInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyProjectImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19426,16 +19522,13 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyRewardImageInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyRewardImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19459,16 +19552,13 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyInput.prototype, "id", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateManyInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19636,16 +19726,13 @@ exports.ImagesCreateOrConnectWithoutRewardImageInput = ImagesCreateOrConnectWith
 let ImagesCreateWithoutHotelImageInput = class ImagesCreateWithoutHotelImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutHotelImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19666,16 +19753,13 @@ exports.ImagesCreateWithoutHotelImageInput = ImagesCreateWithoutHotelImageInput;
 let ImagesCreateWithoutProgramImageInput = class ImagesCreateWithoutProgramImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProgramImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19696,16 +19780,13 @@ exports.ImagesCreateWithoutProgramImageInput = ImagesCreateWithoutProgramImageIn
 let ImagesCreateWithoutProjectImageInput = class ImagesCreateWithoutProjectImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProjectImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19726,16 +19807,13 @@ exports.ImagesCreateWithoutProjectImageInput = ImagesCreateWithoutProjectImageIn
 let ImagesCreateWithoutRewardImageInput = class ImagesCreateWithoutRewardImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutRewardImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateWithoutRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19756,16 +19834,13 @@ exports.ImagesCreateWithoutRewardImageInput = ImagesCreateWithoutRewardImageInpu
 let ImagesCreateInput = class ImagesCreateInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => FileType, { nullable: false })
+    (0, graphql_7.HideField)()
 ], ImagesCreateInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
-    Validator.IsNumber()
+    (0, graphql_7.HideField)()
 ], ImagesCreateInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    (0, graphql_7.HideField)()
 ], ImagesCreateInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -20447,8 +20522,7 @@ __decorate([
 ], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    Validator.IsNotEmpty()
 ], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20480,8 +20554,7 @@ __decorate([
 ], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    Validator.IsNotEmpty()
 ], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20513,8 +20586,7 @@ __decorate([
 ], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    Validator.IsNotEmpty()
 ], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20546,8 +20618,7 @@ __decorate([
 ], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    Validator.IsNotEmpty()
 ], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20579,8 +20650,7 @@ __decorate([
 ], ImagesUncheckedCreateInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty(),
-    Validator.IsUrl({ require_protocol: true })
+    Validator.IsNotEmpty()
 ], ImagesUncheckedCreateInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -21110,16 +21180,16 @@ exports.ImagesUncheckedUpdateInput = ImagesUncheckedUpdateInput;
 let ImagesUpdateManyMutationInput = class ImagesUpdateManyMutationInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => EnumFileTypeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateManyMutationInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateManyMutationInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateManyMutationInput.prototype, "url", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateManyMutationInput.prototype, "createdAt", void 0);
 ImagesUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
@@ -21440,16 +21510,16 @@ exports.ImagesUpdateWithWhereUniqueWithoutRewardImageInput = ImagesUpdateWithWhe
 let ImagesUpdateWithoutHotelImageInput = class ImagesUpdateWithoutHotelImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => EnumFileTypeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutHotelImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutHotelImageInput.prototype, "url", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutHotelImageInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => ProgramUpdateOneWithoutImagesNestedInput, { nullable: true })
@@ -21467,16 +21537,16 @@ exports.ImagesUpdateWithoutHotelImageInput = ImagesUpdateWithoutHotelImageInput;
 let ImagesUpdateWithoutProgramImageInput = class ImagesUpdateWithoutProgramImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => EnumFileTypeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProgramImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProgramImageInput.prototype, "url", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProgramImageInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUpdateOneWithoutImagesNestedInput, { nullable: true })
@@ -21494,16 +21564,16 @@ exports.ImagesUpdateWithoutProgramImageInput = ImagesUpdateWithoutProgramImageIn
 let ImagesUpdateWithoutProjectImageInput = class ImagesUpdateWithoutProjectImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => EnumFileTypeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProjectImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProjectImageInput.prototype, "url", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProjectImageInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUpdateOneWithoutImagesNestedInput, { nullable: true })
@@ -21521,16 +21591,16 @@ exports.ImagesUpdateWithoutProjectImageInput = ImagesUpdateWithoutProjectImageIn
 let ImagesUpdateWithoutRewardImageInput = class ImagesUpdateWithoutRewardImageInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => EnumFileTypeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutRewardImageInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutRewardImageInput.prototype, "url", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutRewardImageInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUpdateOneWithoutImagesNestedInput, { nullable: true })
@@ -21548,16 +21618,16 @@ exports.ImagesUpdateWithoutRewardImageInput = ImagesUpdateWithoutRewardImageInpu
 let ImagesUpdateInput = class ImagesUpdateInput {
 };
 __decorate([
-    (0, graphql_1.Field)(() => EnumFileTypeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateInput.prototype, "url", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], ImagesUpdateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => HotelUpdateOneWithoutImagesNestedInput, { nullable: true })

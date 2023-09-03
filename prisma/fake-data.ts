@@ -262,6 +262,7 @@ export function fakeBankComplete() {
     name: faker.name.fullName(),
     logoUrl: faker.lorem.words(5),
     accountNumber: faker.datatype.float(),
+    isActive: true,
     accountId: faker.datatype.number(),
   };
 }

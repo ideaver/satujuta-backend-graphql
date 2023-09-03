@@ -723,31 +723,33 @@ enum FileType {
 }
 
 model Images {
-  /// @HideField({ match: 'ImagesCreate*Input' })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   id             Int      @id @default(autoincrement())
-  fileType       FileType //TODO: add validator hanya boleh JPG
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  fileType       FileType
   /// @Validator.IsNumber() 
-  filesize       Float //TODO: add keterangan hanya boleh KB dan maximal 1MB
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  filesize       Float
   /// @Validator.IsNotEmpty()
-  /// @Validator.IsUrl({ require_protocol: true })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   url            String
   /// @HideField({ match: 'ImagesCreate*Input' })
   hotelImage     Hotel?   @relation(fields: [hotelImageId], references: [id])
-  /// @HideField({ match: 'ImagesCreate*Input' })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   hotelImageId   Int?
   /// @HideField({ match: 'ImagesCreate*Input' })
   programImage   Program? @relation(fields: [programImageId], references: [id])
-  /// @HideField({ match: 'ImagesCreate*Input' })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   programImageId Int?
   /// @HideField({ match: 'ImagesCreate*Input' })
   rewardImage    Reward?  @relation(fields: [rewardImageId], references: [id])
-  /// @HideField({ match: 'ImagesCreate*Input' })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   rewardImageId  Int?
   /// @HideField({ match: 'ImagesCreate*Input' })
   projectImage   Project? @relation(fields: [projectImageId], references: [id])
-  /// @HideField({ match: 'ImagesCreate*Input' })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   projectImageId Int?
-  /// @HideField({ match: 'ImagesCreate*Input' })
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   createdAt      DateTime @default(now())
 }
 
