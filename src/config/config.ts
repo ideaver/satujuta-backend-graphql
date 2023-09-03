@@ -50,7 +50,7 @@ const MAILConfig = registerAs(ConfigKey.Rd, () => ({
 }));
 
 export function config(): IConfig {
-  const bucketBase = `${process.env.BUCKET_REGION}.${process.env.BUCKET_HOST}.com`;
+  const bucketBase = `s3.${process.env.BUCKET_REGION}.${process.env.BUCKET_HOST}.com`;
 
   return {
     uploader: {

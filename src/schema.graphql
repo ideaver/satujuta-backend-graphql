@@ -4993,7 +4993,9 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   itemRemove(itemId: Float!): Boolean
-  singleUpload(file: Upload!): String!
+
+  """Header wajib ada apollo-require-preflight = true agar tidak CSRF error"""
+  uploadSingle(file: Upload!, userId: String!): String!
 
   """Deskripsinya ada disini loh"""
   hotelCreateOne(hotelCreateArgs: HotelCreateArgs!): Hotel

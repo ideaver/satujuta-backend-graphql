@@ -105,12 +105,19 @@ export class UploaderService {
    *
    * Converts an image to jpeg and uploads it to the bucket
    */
-  public async uploadImage(
-    userId: string,
-    file: Promise<FileUploadDto>,
-    ratio?: RatioEnum,
-  ): Promise<string> {
+  public async uploadImage({
+    userId,
+    ratio,
+    file,
+  }: {
+    userId: string;
+    file: Promise<FileUploadDto>;
+    ratio?: RatioEnum;
+  }): Promise<string> {
+    console.log('file', await file);
+
     const { mimetype, createReadStream } = await file;
+
     const imageType = UploaderService.validateImage(mimetype);
 
     if (!imageType) {
