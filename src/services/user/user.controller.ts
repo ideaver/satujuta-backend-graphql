@@ -24,8 +24,9 @@ import { UploaderService } from '../uploader/uploader.service';
 // @ts-ignore
 import { FileUpload } from 'graphql-upload';
 import { RatioEnum } from '../uploader/enums';
-import { v4 as uuidV4 } from 'uuid';
+
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { generateUuidv4 } from 'src/utils/generate-uuid.function';
 
 @Injectable()
 export class UserController {
@@ -68,7 +69,7 @@ export class UserController {
       await orderCreate(userCreateArgsPrisma, this.itemService, userRole);
     }
 
-    const uuid = uuidV4();
+    const uuid = generateUuidv4();
 
     // check if file is null
     if (file) {
@@ -197,6 +198,33 @@ export class UserController {
     }
 
     return this.userService.update(userUpdateOneArgs);
+  }
+
+  async updateOneAvatarUrl(file: FileUpload, userId: string): Promise<string> {
+    //delete old file if exist
+    const user = await this.findOne({
+      where: { id: userId },
+      select: { avatarUrl: true },
+    });
+    if (user && user.avatarUrl) {
+      this.uploaderService.deleteFile(user.avatarUrl);
+    }
+
+    //upload new file even if doesn't exist
+    return await this.uploaderService
+      .uploadImage({
+        userId: userId,
+        ratio: RatioEnum.SQUARE,
+        file: file,
+      })
+      .then((url) => {
+        this.userService.update({
+          where: { id: userId },
+          data: { avatarUrl: { set: url } },
+        });
+
+        return url;
+      });
   }
 
   remove(userId: string) {

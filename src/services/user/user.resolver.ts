@@ -77,6 +77,18 @@ export class UserResolver {
     return this.userController.updateOne(userUpdateOneArgs);
   }
 
+  @Mutation(() => String, {
+    description: 'Dapat URL baru, gambar lama terhapus di storage',
+  })
+  userUpdateOneAvatarUrl(
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: false })
+    file: FileUpload,
+    @Args({ name: 'userId', type: () => String, nullable: false })
+    userId: string,
+  ) {
+    return this.userController.updateOneAvatarUrl(file, userId);
+  }
+
   @Mutation(() => User, {
     nullable: true,
     description:

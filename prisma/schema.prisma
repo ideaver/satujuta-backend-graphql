@@ -730,8 +730,6 @@ model Images {
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   filesize       Float
-  /// @Validator.IsNotEmpty()
-  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
   url            String
   /// @HideField({ match: 'ImagesCreate*Input' })
   hotelImage     Hotel?   @relation(fields: [hotelImageId], references: [id])

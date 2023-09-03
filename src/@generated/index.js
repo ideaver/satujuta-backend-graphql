@@ -19399,7 +19399,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19442,7 +19442,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19485,7 +19485,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19528,7 +19528,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19558,7 +19558,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateManyInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19732,7 +19732,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateWithoutHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19759,7 +19759,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19786,7 +19786,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateWithoutProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19813,7 +19813,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateWithoutRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -19840,7 +19840,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesCreateInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -20521,8 +20521,7 @@ __decorate([
     Validator.IsNumber()
 ], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20553,8 +20552,7 @@ __decorate([
     Validator.IsNumber()
 ], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20585,8 +20583,7 @@ __decorate([
     Validator.IsNumber()
 ], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20617,8 +20614,7 @@ __decorate([
     Validator.IsNumber()
 ], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -20649,8 +20645,7 @@ __decorate([
     Validator.IsNumber()
 ], ImagesUncheckedCreateInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false }),
-    Validator.IsNotEmpty()
+    (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
@@ -21186,7 +21181,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesUpdateManyMutationInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateManyMutationInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -21516,7 +21511,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutHotelImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutHotelImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -21543,7 +21538,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProgramImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutProgramImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -21570,7 +21565,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutProjectImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutProjectImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -21597,7 +21592,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesUpdateWithoutRewardImageInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutRewardImageInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -21624,7 +21619,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], ImagesUpdateInput.prototype, "filesize", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateInput.prototype, "url", void 0);
 __decorate([
     (0, graphql_7.HideField)()
