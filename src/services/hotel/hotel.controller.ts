@@ -48,7 +48,8 @@ export class HotelController {
   }
 
   async updateOne(hotelUpdateOneArgs: HotelUpdateOneArgs) {
-    const { name, description, images } = hotelUpdateOneArgs.data;
+    const { name, description, quota, rating, address, images } =
+      hotelUpdateOneArgs.data;
 
     if (name?.set === null) {
       hotelUpdateOneArgs.data.name = undefined;
@@ -58,9 +59,40 @@ export class HotelController {
       hotelUpdateOneArgs.data.description = undefined;
     }
 
-    hotelUpdateOneArgs.data.images.updateMany = [
-      { data: { url: { set: '' } }, where: { url: { equals: '' } } },
-    ];
+    if (quota?.set === null) {
+      hotelUpdateOneArgs.data.quota = undefined;
+    }
+
+    if (rating?.set === null) {
+      hotelUpdateOneArgs.data.rating = undefined;
+    }
+
+    if (address?.update?.data?.name?.set === null) {
+      hotelUpdateOneArgs.data.address.update.data.name = undefined;
+    }
+
+    if (address?.update?.data?.subdistrict?.connect?.id === null) {
+      hotelUpdateOneArgs.data.address.update.data.subdistrict = undefined;
+    }
+
+    if (address?.update?.where?.id?.equals === null) {
+      hotelUpdateOneArgs.data.address = undefined;
+    }
+
+    if (images?.updateMany?.[0]?.where?.url?.in?.length === 0) {
+      hotelUpdateOneArgs.data.images.updateMany = undefined;
+    }
+
+    if (images?.createMany?.data?.[0]?.url === null) {
+      hotelUpdateOneArgs.data.images.createMany = undefined;
+    }
+
+    if (
+      images?.updateMany?.[0]?.where?.url?.in?.length === 0 &&
+      images?.createMany?.data?.[0]?.url === null
+    ) {
+      hotelUpdateOneArgs.data.images = undefined;
+    }
 
     return this.hotelService.update(hotelUpdateOneArgs).then((hotel) => {
       return hotel;
