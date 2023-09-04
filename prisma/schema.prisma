@@ -716,6 +716,7 @@ model File {
 }
 
 enum FileType {
+  UNKNOWN
   MP4
   JPG
   PNG

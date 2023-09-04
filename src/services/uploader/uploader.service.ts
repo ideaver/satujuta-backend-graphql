@@ -1,5 +1,7 @@
 import {
   DeleteObjectCommand,
+  HeadObjectCommand,
+  HeadObjectOutput,
   PutObjectCommand,
   S3Client,
 } from '@aws-sdk/client-s3';
@@ -19,6 +21,7 @@ import { ConfigService } from '@nestjs/config';
 import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
 import { S3Config } from 'src/config/s3config.model';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { FileType } from '@prisma/client';
 
 @Injectable()
 export class UploaderService {
@@ -32,6 +35,50 @@ export class UploaderService {
     this.client = new S3Client(s3Config.clientConfig);
     this.bucketData = s3Config.bucketData;
     this.loggerService = new Logger(UploaderService.name);
+  }
+
+  public async getFileMetadata(
+    url: string,
+  ): Promise<{ size: number; mimeType: string }> {
+    // Split the URL by '.com/' to get the parts
+    const urlParts = url.split('.com/');
+
+    if (urlParts.length !== 2) {
+      this.loggerService.error('Invalid URL format for getting file metadata');
+      throw new Error('Invalid URL format');
+    }
+
+    // Extract the key (object path)
+    const key = urlParts[1];
+
+    // Construct the bucket name from the first part of the URL
+    const bucketName = urlParts[0].replace('https://', '').split('.s3.')[0];
+
+    // Check if the bucket name matches your expected bucket
+    if (bucketName !== this.bucketData.name) {
+      this.loggerService.error('Invalid bucket name in URL');
+      throw new Error('Invalid bucket name');
+    }
+
+    try {
+      const response: HeadObjectOutput = await this.client.send(
+        new HeadObjectCommand({
+          Bucket: this.bucketData.name,
+          Key: key,
+        }),
+      );
+
+      const metadata = {
+        size: response.ContentLength || 0,
+        mimeType: response.ContentType || '',
+        // Add any other desired metadata fields here
+      };
+
+      return metadata;
+    } catch (error) {
+      this.loggerService.error(error);
+      throw error;
+    }
   }
 
   private static validateImage(mimetype: string): string | false {
@@ -113,14 +160,15 @@ export class UploaderService {
     }
 
     try {
-      return await this.uploadFile(
-        userId,
-        await UploaderService.compressImage(
+      return await this.uploadFile({
+        userId: userId,
+        filename: filename,
+        fileBuffer: await UploaderService.compressImage(
           await UploaderService.streamToBuffer(createReadStream()),
           ratio,
         ),
-        '.jpg',
-      );
+        fileExt: '.' + FileType.JPG.toLocaleLowerCase(),
+      });
     } catch (error) {
       this.loggerService.error(error);
       throw new IGraphQLError({ code: 160001, err: error });
@@ -169,11 +217,17 @@ export class UploaderService {
       });
   }
 
-  private async uploadFile(
-    userId: string,
-    fileBuffer: Buffer,
-    fileExt: string,
-  ): Promise<string> {
+  private async uploadFile({
+    userId,
+    fileBuffer,
+    fileExt,
+    filename,
+  }: {
+    userId: string;
+    fileBuffer: Buffer;
+    fileExt: string;
+    filename: string;
+  }): Promise<string> {
     // const key =
     //   this.bucketData.folder +
     //   '/' +
@@ -199,6 +253,7 @@ export class UploaderService {
           Body: fileBuffer,
           Key: key,
           ACL: 'public-read',
+          ContentType: detectMimeTypeFromFilename(filename),
         }),
       );
     } catch (error) {

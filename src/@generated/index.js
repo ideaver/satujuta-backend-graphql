@@ -348,6 +348,7 @@ var InstallmentStatus;
 })(InstallmentStatus = exports.InstallmentStatus || (exports.InstallmentStatus = {}));
 var FileType;
 (function (FileType) {
+    FileType["UNKNOWN"] = "UNKNOWN";
     FileType["MP4"] = "MP4";
     FileType["JPG"] = "JPG";
     FileType["PNG"] = "PNG";

@@ -504,7 +504,7 @@ export function fakeRewardClaimComplete() {
 }
 export function fakeFile() {
   return {
-    fileType: faker.helpers.arrayElement([FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
     filesize: faker.datatype.float(),
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
@@ -515,7 +515,7 @@ export function fakeFile() {
 export function fakeFileComplete() {
   return {
     id: faker.datatype.number(),
-    fileType: faker.helpers.arrayElement([FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
     filesize: faker.datatype.float(),
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
@@ -527,7 +527,7 @@ export function fakeFileComplete() {
 }
 export function fakeImages() {
   return {
-    fileType: faker.helpers.arrayElement([FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
     filesize: faker.datatype.float(),
     url: faker.lorem.words(5),
   };
@@ -535,7 +535,7 @@ export function fakeImages() {
 export function fakeImagesComplete() {
   return {
     id: faker.datatype.number(),
-    fileType: faker.helpers.arrayElement([FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
     filesize: faker.datatype.float(),
     url: faker.lorem.words(5),
     hotelImageId: undefined,

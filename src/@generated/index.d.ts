@@ -225,6 +225,7 @@ export declare enum InstallmentStatus {
     PAID = "PAID"
 }
 export declare enum FileType {
+    UNKNOWN = "UNKNOWN",
     MP4 = "MP4",
     JPG = "JPG",
     PNG = "PNG",

@@ -473,6 +473,7 @@ type FileMaxAggregate {
 }
 
 enum FileType {
+  UNKNOWN
   MP4
   JPG
   PNG
@@ -5006,7 +5007,7 @@ type Mutation {
   uploadSingle(file: Upload!, userId: String!): String!
 
   """Deskripsinya ada disini loh"""
-  hotelCreateOne(hotelCreateArgs: HotelCreateArgs!): Hotel
+  hotelCreateOne(files: [Upload!]!, hotelCreateArgs: HotelCreateArgs!): Hotel
 
   """
   Deskripsinya ada disini loh, Jika tentang mutasi klaim hotel, backend akan cek apakah saldo point user cukup untuk claim

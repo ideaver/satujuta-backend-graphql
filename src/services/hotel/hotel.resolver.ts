@@ -8,6 +8,9 @@ import { HotelFindUniqueArgs } from './dto/hotel-find-one.args';
 import { HotelUpdateOneArgs } from './dto/hotel-update-one.args';
 import { HotelController } from './hotel.controller';
 import { Logger } from '@nestjs/common';
+// Ignore the import errors
+// @ts-ignore
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
 
 interface HotelSelect {
   select: Prisma.HotelSelect;
@@ -22,11 +25,12 @@ export class HotelResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async hotelCreateOne(
+    @Args({ name: 'files', type: () => [GraphQLUpload] }) files: FileUpload[],
     @Args('hotelCreateArgs') hotelCreateArgs: HotelCreateArgs,
     @Relations() relations: HotelSelect,
   ): Promise<Hotel | void> {
     hotelCreateArgs.select = relations.select;
-    return await this.hotelController.createOne(hotelCreateArgs);
+    return await this.hotelController.createOne(files, hotelCreateArgs);
   }
 
   @Query(() => [Hotel], {
