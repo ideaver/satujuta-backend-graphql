@@ -202,20 +202,20 @@ export class UserController {
   }
 
   async updateOneAvatarUrl(file: FileUpload, userId: string): Promise<string> {
-    try {
-      // Run both queries in parallel
-      const [oldUserData, imageUrl] = await Promise.all([
-        this.findOne({
-          where: { id: userId },
-          select: { avatarUrl: true },
-        }),
-        this.uploaderService.uploadImage({
-          userId: userId,
-          ratio: RatioEnum.SQUARE,
-          file: file,
-        }),
-      ]);
+    // Run both queries in parallel
+    const [oldUserData, imageUrl] = await Promise.all([
+      this.findOne({
+        where: { id: userId },
+        select: { avatarUrl: true },
+      }),
+      this.uploaderService.uploadImage({
+        userId: userId,
+        ratio: RatioEnum.SQUARE,
+        file: file,
+      }),
+    ]);
 
+    try {
       // Update avatarUrl in the database
       await this.updateOne({
         where: { id: userId },

@@ -8,10 +8,9 @@ import { HotelUpdateOneArgs } from '../hotel/dto/hotel-update-one.args';
 import { Injectable } from '@nestjs/common';
 // Ignore the import errors
 // @ts-ignore
-import { FileUpload, GraphQLUpload } from 'graphql-upload';
+import { FileUpload } from 'graphql-upload';
 import { UploaderService } from '../uploader/uploader.service';
 import { RatioEnum } from '../uploader/enums/ratio.enum';
-import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
 import { mimeTypeToEnum } from 'src/utils/mime-type-to-enum.function';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
@@ -59,17 +58,9 @@ export class HotelController {
       hotelUpdateOneArgs.data.description = undefined;
     }
 
-    if (images.delete?.[0]?.url.equals === null) {
-      hotelUpdateOneArgs.data.images.delete = undefined;
-    }
-
-    if (images.deleteMany?.[0]?.url.equals === null) {
-      hotelUpdateOneArgs.data.images.deleteMany = undefined;
-    }
-
-    if (images.createMany?.data?.[0]?.url === null) {
-      hotelUpdateOneArgs.data.images.createMany = undefined;
-    }
+    hotelUpdateOneArgs.data.images.updateMany = [
+      { data: { url: { set: '' } }, where: { url: { equals: '' } } },
+    ];
 
     return this.hotelService.update(hotelUpdateOneArgs).then((hotel) => {
       return hotel;
