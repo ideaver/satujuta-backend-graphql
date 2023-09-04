@@ -2597,6 +2597,7 @@ input HotelWhereInput {
   quota: IntFilter
   createdById: StringFilter
   createdAt: DateTimeFilter
+  version: IntNullableFilter
   updatedAt: DateTimeFilter
   address: AddressRelationFilter
   images: ImagesListRelationFilter
@@ -2780,8 +2781,10 @@ input ProjectWhereInput {
   endDate: DateTimeFilter
   returnRate: FloatFilter
   goalAmount: FloatFilter
+  maxGoalAmountVersion: IntNullableFilter
   minimumInvestment: FloatFilter
   maxInvestor: IntFilter
+  maxInvestorVersion: IntNullableFilter
   accountId: IntFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
@@ -3275,6 +3278,7 @@ input HotelOrderByWithRelationInput {
   quota: SortOrder
   createdById: SortOrder
   createdAt: SortOrder
+  version: SortOrderInput
   updatedAt: SortOrder
   address: AddressOrderByWithRelationInput
   images: ImagesOrderByRelationAggregateInput
@@ -3520,6 +3524,7 @@ enum HotelScalarFieldEnum {
   quota
   createdById
   createdAt
+  version
   updatedAt
 }
 
@@ -3540,6 +3545,7 @@ input HotelWhereUniqueInput {
   quota: IntFilter
   createdById: StringFilter
   createdAt: DateTimeFilter
+  version: IntNullableFilter
   updatedAt: DateTimeFilter
   address: AddressRelationFilter
   images: ImagesListRelationFilter
@@ -3889,8 +3895,10 @@ input ProjectOrderByWithRelationInput {
   endDate: SortOrder
   returnRate: SortOrder
   goalAmount: SortOrder
+  maxGoalAmountVersion: SortOrderInput
   minimumInvestment: SortOrder
   maxInvestor: SortOrder
+  maxInvestorVersion: SortOrderInput
   accountId: SortOrder
   createdAt: SortOrder
   updatedAt: SortOrder
@@ -3919,8 +3927,10 @@ enum ProjectScalarFieldEnum {
   endDate
   returnRate
   goalAmount
+  maxGoalAmountVersion
   minimumInvestment
   maxInvestor
+  maxInvestorVersion
   accountId
   createdAt
   updatedAt
@@ -3943,8 +3953,10 @@ input ProjectWhereUniqueInput {
   endDate: DateTimeFilter
   returnRate: FloatFilter
   goalAmount: FloatFilter
+  maxGoalAmountVersion: IntNullableFilter
   minimumInvestment: FloatFilter
   maxInvestor: IntFilter
+  maxInvestorVersion: IntNullableFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   images: ImagesListRelationFilter
@@ -5538,6 +5550,7 @@ input HotelCreateWithoutAddressInput {
   rating: Float!
   startDate: DateTime!
   quota: Int!
+  version: Int
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
 }
@@ -5631,6 +5644,7 @@ input HotelUpdateWithoutAddressInput {
   startDate: DateTimeFieldUpdateOperationsInput
   quota: IntFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  version: NullableIntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   images: ImagesUpdateManyWithoutHotelImageNestedInput
   checkIns: CheckInUpdateManyWithoutHotelNestedInput
@@ -5646,6 +5660,14 @@ input FloatFieldUpdateOperationsInput {
 }
 
 input IntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input NullableIntFieldUpdateOperationsInput {
   set: Int
   increment: Int
   decrement: Int
@@ -5826,6 +5848,7 @@ input HotelCreateWithoutCheckInsInput {
   rating: Float!
   startDate: DateTime!
   quota: Int!
+  version: Int
   address: AddressCreateNestedOneWithoutHotelInput!
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
@@ -5889,6 +5912,7 @@ input HotelUpdateWithoutCheckInsInput {
   startDate: DateTimeFieldUpdateOperationsInput
   quota: IntFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  version: NullableIntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutHotelNestedInput
   images: ImagesUpdateManyWithoutHotelImageNestedInput
@@ -6132,8 +6156,10 @@ input ProjectCreateWithoutOrderCartInput {
   endDate: DateTime!
   returnRate: Float!
   goalAmount: Float!
+  maxGoalAmountVersion: Int
   minimumInvestment: Float!
   maxInvestor: Int!
+  maxInvestorVersion: Int
   images: ImagesCreateNestedManyWithoutProjectImageInput
 }
 
@@ -6469,14 +6495,6 @@ input EnumTransactionStatusFieldUpdateOperationsInput {
   set: TransactionStatus
 }
 
-input NullableIntFieldUpdateOperationsInput {
-  set: Int
-  increment: Int
-  decrement: Int
-  multiply: Int
-  divide: Int
-}
-
 input UserUpdateOneRequiredWithoutOrdersNestedInput {
   create: UserCreateWithoutOrdersInput
   connectOrCreate: UserCreateOrConnectWithoutOrdersInput
@@ -6622,6 +6640,7 @@ input HotelCreateWithoutImagesInput {
   rating: Float!
   startDate: DateTime!
   quota: Int!
+  version: Int
   address: AddressCreateNestedOneWithoutHotelInput!
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
 }
@@ -6644,6 +6663,7 @@ input HotelUpdateWithoutImagesInput {
   startDate: DateTimeFieldUpdateOperationsInput
   quota: IntFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  version: NullableIntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutHotelNestedInput
   checkIns: CheckInUpdateManyWithoutHotelNestedInput
@@ -6878,8 +6898,10 @@ input ProjectCreateWithoutImagesInput {
   endDate: DateTime!
   returnRate: Float!
   goalAmount: Float!
+  maxGoalAmountVersion: Int
   minimumInvestment: Float!
   maxInvestor: Int!
+  maxInvestorVersion: Int
 }
 
 input ProjectCreateOrConnectWithoutImagesInput {
@@ -6901,8 +6923,10 @@ input ProjectUpdateWithoutImagesInput {
   endDate: DateTimeFieldUpdateOperationsInput
   returnRate: FloatFieldUpdateOperationsInput
   goalAmount: FloatFieldUpdateOperationsInput
+  maxGoalAmountVersion: NullableIntFieldUpdateOperationsInput
   minimumInvestment: FloatFieldUpdateOperationsInput
   maxInvestor: IntFieldUpdateOperationsInput
+  maxInvestorVersion: NullableIntFieldUpdateOperationsInput
 }
 
 input EnumProjectCategoryFieldUpdateOperationsInput {
@@ -7096,8 +7120,10 @@ input ProjectUpdateWithoutOrderCartInput {
   endDate: DateTimeFieldUpdateOperationsInput
   returnRate: FloatFieldUpdateOperationsInput
   goalAmount: FloatFieldUpdateOperationsInput
+  maxGoalAmountVersion: NullableIntFieldUpdateOperationsInput
   minimumInvestment: FloatFieldUpdateOperationsInput
   maxInvestor: IntFieldUpdateOperationsInput
+  maxInvestorVersion: NullableIntFieldUpdateOperationsInput
   images: ImagesUpdateManyWithoutProjectImageNestedInput
 }
 
@@ -7665,6 +7691,7 @@ input HotelCreateInput {
   rating: Float!
   startDate: DateTime!
   quota: Int!
+  version: Int
   address: AddressCreateNestedOneWithoutHotelInput!
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
@@ -7682,6 +7709,7 @@ input HotelUpdateInput {
   startDate: DateTimeFieldUpdateOperationsInput
   quota: IntFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  version: NullableIntFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutHotelNestedInput
   images: ImagesUpdateManyWithoutHotelImageNestedInput
@@ -8070,8 +8098,10 @@ input ProjectCreateInput {
   endDate: DateTime!
   returnRate: Float!
   goalAmount: Float!
+  maxGoalAmountVersion: Int
   minimumInvestment: Float!
   maxInvestor: Int!
+  maxInvestorVersion: Int
   images: ImagesCreateNestedManyWithoutProjectImageInput
 }
 
@@ -8088,8 +8118,10 @@ input ProjectUpdateInput {
   endDate: DateTimeFieldUpdateOperationsInput
   returnRate: FloatFieldUpdateOperationsInput
   goalAmount: FloatFieldUpdateOperationsInput
+  maxGoalAmountVersion: NullableIntFieldUpdateOperationsInput
   minimumInvestment: FloatFieldUpdateOperationsInput
   maxInvestor: IntFieldUpdateOperationsInput
+  maxInvestorVersion: NullableIntFieldUpdateOperationsInput
   images: ImagesUpdateManyWithoutProjectImageNestedInput
 }
 

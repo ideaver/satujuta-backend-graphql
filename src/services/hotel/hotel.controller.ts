@@ -26,27 +26,9 @@ export class HotelController {
     files: FileUpload[],
     hotelCreateArgs: HotelCreateArgs,
   ): Promise<Hotel | void> {
-    let arrayData: ImagesCreateManyHotelImageInput[] = [];
-
     //upload images
-    for (const file of files) {
-      const imageUrl = await this.uploaderService.uploadImage({
-        userId: hotelCreateArgs.data.createdBy.connect.id,
-        ratio: RatioEnum.SQUARE,
-        file: await file,
-      });
-
-      const metadata = await this.uploaderService.getFileMetadata(imageUrl);
-      console.log(metadata.mimeType);
-      arrayData.push({
-        url: imageUrl,
-        fileType: mimeTypeToEnum(metadata.mimeType),
-        filesize: metadata.size,
-      });
-    }
-
-    //add imageUrls to hotelCreateArgs
-    hotelCreateArgs.data.images = { createMany: { data: arrayData } };
+    let arrayData: ImagesCreateManyHotelImageInput[] = [];
+    await imageUploadToS3(files, hotelCreateArgs, arrayData);
 
     //create hotel
     return await this.hotelService.createOne(hotelCreateArgs).catch((err) => {
@@ -89,10 +71,35 @@ export class HotelController {
       hotelUpdateOneArgs.data.images.createMany = undefined;
     }
 
-    return this.hotelService.update(hotelUpdateOneArgs);
+    return this.hotelService.update(hotelUpdateOneArgs).then((hotel) => {
+      return hotel;
+    });
   }
 
   remove(hotelId: number) {
     return this.hotelService.remove(hotelId);
   }
+}
+async function imageUploadToS3(
+  files: FileUpload[],
+  hotelCreateArgs: HotelCreateArgs,
+  arrayData: ImagesCreateManyHotelImageInput[],
+) {
+  for (const file of files) {
+    const imageUrl = await this.uploaderService.uploadImage({
+      userId: hotelCreateArgs.data.createdBy.connect.id,
+      ratio: RatioEnum.SQUARE,
+      file: await file,
+    });
+
+    const metadata = await this.uploaderService.getFileMetadata(imageUrl);
+    arrayData.push({
+      url: imageUrl,
+      fileType: mimeTypeToEnum(metadata.mimeType),
+      filesize: metadata.size,
+    });
+  }
+
+  //add imageUrls to hotelCreateArgs
+  hotelCreateArgs.data.images = { createMany: { data: arrayData } };
 }

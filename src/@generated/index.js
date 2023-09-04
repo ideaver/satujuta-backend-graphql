@@ -226,8 +226,10 @@ var ProjectScalarFieldEnum;
     ProjectScalarFieldEnum["endDate"] = "endDate";
     ProjectScalarFieldEnum["returnRate"] = "returnRate";
     ProjectScalarFieldEnum["goalAmount"] = "goalAmount";
+    ProjectScalarFieldEnum["maxGoalAmountVersion"] = "maxGoalAmountVersion";
     ProjectScalarFieldEnum["minimumInvestment"] = "minimumInvestment";
     ProjectScalarFieldEnum["maxInvestor"] = "maxInvestor";
+    ProjectScalarFieldEnum["maxInvestorVersion"] = "maxInvestorVersion";
     ProjectScalarFieldEnum["accountId"] = "accountId";
     ProjectScalarFieldEnum["createdAt"] = "createdAt";
     ProjectScalarFieldEnum["updatedAt"] = "updatedAt";
@@ -446,6 +448,7 @@ var HotelScalarFieldEnum;
     HotelScalarFieldEnum["quota"] = "quota";
     HotelScalarFieldEnum["createdById"] = "createdById";
     HotelScalarFieldEnum["createdAt"] = "createdAt";
+    HotelScalarFieldEnum["version"] = "version";
     HotelScalarFieldEnum["updatedAt"] = "updatedAt";
 })(HotelScalarFieldEnum = exports.HotelScalarFieldEnum || (exports.HotelScalarFieldEnum = {}));
 var FileScalarFieldEnum;
@@ -16413,6 +16416,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelAvgAggregateInput.prototype, "quota", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], HotelAvgAggregateInput.prototype, "version", void 0);
 HotelAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], HotelAvgAggregateInput);
@@ -16431,6 +16437,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], HotelAvgAggregate.prototype, "quota", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], HotelAvgAggregate.prototype, "version", void 0);
 HotelAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], HotelAvgAggregate);
@@ -16449,6 +16458,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelAvgOrderByAggregateInput.prototype, "quota", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], HotelAvgOrderByAggregateInput.prototype, "version", void 0);
 HotelAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], HotelAvgOrderByAggregateInput);
@@ -16482,6 +16494,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelCountAggregateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], HotelCountAggregateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelCountAggregateInput.prototype, "updatedAt", void 0);
@@ -16522,6 +16537,9 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], HotelCountAggregate.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], HotelCountAggregate.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], HotelCountAggregate.prototype, "updatedAt", void 0);
 __decorate([
@@ -16560,6 +16578,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelCountOrderByAggregateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], HotelCountOrderByAggregateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelCountOrderByAggregateInput.prototype, "updatedAt", void 0);
@@ -16630,6 +16651,9 @@ __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateManyCreatedByInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateManyCreatedByInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateManyCreatedByInput.prototype, "updatedAt", void 0);
 HotelCreateManyCreatedByInput = __decorate([
@@ -16676,6 +16700,9 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateManyInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateManyInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateManyInput.prototype, "updatedAt", void 0);
@@ -16847,6 +16874,9 @@ __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateWithoutAddressInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -16893,6 +16923,9 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutCheckInsInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateWithoutCheckInsInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutCheckInsInput.prototype, "updatedAt", void 0);
@@ -16941,6 +16974,9 @@ __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutCreatedByInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateWithoutCreatedByInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutCreatedByInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -16988,6 +17024,9 @@ __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateWithoutImagesInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -17034,6 +17073,9 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelCreateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], HotelCreateInput.prototype, "updatedAt", void 0);
@@ -17123,6 +17165,9 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], HotelGroupBy.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], HotelGroupBy.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], HotelGroupBy.prototype, "updatedAt", void 0);
 __decorate([
@@ -17190,6 +17235,9 @@ __decorate([
 ], HotelMaxAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], HotelMaxAggregateInput.prototype, "version", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelMaxAggregateInput.prototype, "updatedAt", void 0);
 HotelMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -17224,6 +17272,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelMaxAggregate.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], HotelMaxAggregate.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelMaxAggregate.prototype, "updatedAt", void 0);
@@ -17262,6 +17313,9 @@ __decorate([
 ], HotelMaxOrderByAggregateInput.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], HotelMaxOrderByAggregateInput.prototype, "version", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelMaxOrderByAggregateInput.prototype, "updatedAt", void 0);
 HotelMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
@@ -17296,6 +17350,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelMinAggregateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], HotelMinAggregateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelMinAggregateInput.prototype, "updatedAt", void 0);
@@ -17333,6 +17390,9 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelMinAggregate.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], HotelMinAggregate.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelMinAggregate.prototype, "updatedAt", void 0);
 HotelMinAggregate = __decorate([
@@ -17368,6 +17428,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelMinOrderByAggregateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], HotelMinOrderByAggregateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelMinOrderByAggregateInput.prototype, "updatedAt", void 0);
@@ -17426,6 +17489,9 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelOrderByWithAggregationInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], HotelOrderByWithAggregationInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelOrderByWithAggregationInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -17476,6 +17542,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelOrderByWithRelationInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], HotelOrderByWithRelationInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelOrderByWithRelationInput.prototype, "updatedAt", void 0);
@@ -17546,6 +17615,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], HotelScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
+], HotelScalarWhereWithAggregatesInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
 ], HotelScalarWhereWithAggregatesInput.prototype, "updatedAt", void 0);
 HotelScalarWhereWithAggregatesInput = HotelScalarWhereWithAggregatesInput_1 = __decorate([
@@ -17591,6 +17663,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], HotelScalarWhereInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], HotelScalarWhereInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], HotelScalarWhereInput.prototype, "updatedAt", void 0);
 HotelScalarWhereInput = HotelScalarWhereInput_1 = __decorate([
@@ -17611,6 +17686,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], HotelSumAggregateInput.prototype, "quota", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], HotelSumAggregateInput.prototype, "version", void 0);
 HotelSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], HotelSumAggregateInput);
@@ -17629,6 +17707,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], HotelSumAggregate.prototype, "quota", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], HotelSumAggregate.prototype, "version", void 0);
 HotelSumAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], HotelSumAggregate);
@@ -17647,6 +17728,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], HotelSumOrderByAggregateInput.prototype, "quota", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], HotelSumOrderByAggregateInput.prototype, "version", void 0);
 HotelSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], HotelSumOrderByAggregateInput);
@@ -17729,6 +17813,9 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelUncheckedCreateWithoutAddressInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -17782,6 +17869,9 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutCheckInsInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelUncheckedCreateWithoutCheckInsInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutCheckInsInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -17828,6 +17918,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutCreatedByInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelUncheckedCreateWithoutCreatedByInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutCreatedByInput.prototype, "updatedAt", void 0);
@@ -17882,6 +17975,9 @@ __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelUncheckedCreateWithoutImagesInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -17931,6 +18027,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], HotelUncheckedCreateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], HotelUncheckedCreateInput.prototype, "updatedAt", void 0);
@@ -18021,6 +18120,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateManyWithoutCreatedByInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateManyWithoutCreatedByInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateManyWithoutCreatedByInput.prototype, "updatedAt", void 0);
 HotelUncheckedUpdateManyWithoutCreatedByInput = __decorate([
@@ -18056,6 +18158,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateManyInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateManyInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateManyInput.prototype, "updatedAt", void 0);
@@ -18124,6 +18229,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateWithoutAddressInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18166,6 +18274,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutCheckInsInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateWithoutCheckInsInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutCheckInsInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18201,6 +18312,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutCreatedByInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateWithoutCreatedByInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutCreatedByInput.prototype, "updatedAt", void 0);
@@ -18244,6 +18358,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateWithoutImagesInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18283,6 +18400,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUncheckedUpdateInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUncheckedUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18315,6 +18435,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateManyMutationInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUpdateManyMutationInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateManyMutationInput.prototype, "updatedAt", void 0);
@@ -18557,6 +18680,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutAddressInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUpdateWithoutAddressInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutAddressInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18592,6 +18718,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutCheckInsInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUpdateWithoutCheckInsInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutCheckInsInput.prototype, "updatedAt", void 0);
@@ -18629,6 +18758,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutCreatedByInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUpdateWithoutCreatedByInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutCreatedByInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18665,6 +18797,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutImagesInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUpdateWithoutImagesInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateWithoutImagesInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18700,6 +18835,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateInput.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], HotelUpdateInput.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], HotelUpdateInput.prototype, "updatedAt", void 0);
@@ -18830,6 +18968,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], HotelWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], HotelWhereUniqueInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], HotelWhereUniqueInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18887,6 +19028,9 @@ __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], HotelWhereInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], HotelWhereInput.prototype, "version", void 0);
+__decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], HotelWhereInput.prototype, "updatedAt", void 0);
 __decorate([
@@ -18934,6 +19078,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], Hotel.prototype, "createdAt", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], Hotel.prototype, "version", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: false })
 ], Hotel.prototype, "updatedAt", void 0);
@@ -37918,10 +38065,16 @@ __decorate([
 ], ProjectAvgAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectAvgAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectAvgAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectAvgAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectAvgAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectAvgAggregateInput.prototype, "accountId", void 0);
@@ -37941,11 +38094,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectAvgAggregate.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], ProjectAvgAggregate.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectAvgAggregate.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectAvgAggregate.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], ProjectAvgAggregate.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectAvgAggregate.prototype, "accountId", void 0);
@@ -37966,10 +38125,16 @@ __decorate([
 ], ProjectAvgOrderByAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectAvgOrderByAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectAvgOrderByAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectAvgOrderByAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectAvgOrderByAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectAvgOrderByAggregateInput.prototype, "accountId", void 0);
@@ -38005,10 +38170,16 @@ __decorate([
 ], ProjectCountAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectCountAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectCountAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectCountAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectCountAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectCountAggregateInput.prototype, "accountId", void 0);
@@ -38052,11 +38223,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectCountAggregate.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], ProjectCountAggregate.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectCountAggregate.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectCountAggregate.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], ProjectCountAggregate.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectCountAggregate.prototype, "accountId", void 0);
@@ -38101,10 +38278,16 @@ __decorate([
 ], ProjectCountOrderByAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectCountOrderByAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectCountOrderByAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectCountOrderByAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectCountOrderByAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectCountOrderByAggregateInput.prototype, "accountId", void 0);
@@ -38166,6 +38349,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectCreateManyInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateManyInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -38175,6 +38361,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectCreateManyInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateManyInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectCreateManyInput.prototype, "accountId", void 0);
@@ -38317,6 +38506,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectCreateWithoutAccountInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateWithoutAccountInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -38326,6 +38518,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectCreateWithoutAccountInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateWithoutAccountInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectCreateWithoutAccountInput.prototype, "createdAt", void 0);
@@ -38375,6 +38570,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectCreateWithoutImagesInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateWithoutImagesInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -38384,6 +38582,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectCreateWithoutImagesInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateWithoutImagesInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectCreateWithoutImagesInput.prototype, "createdAt", void 0);
@@ -38433,6 +38634,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectCreateWithoutOrderCartInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateWithoutOrderCartInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -38442,6 +38646,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectCreateWithoutOrderCartInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateWithoutOrderCartInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectCreateWithoutOrderCartInput.prototype, "createdAt", void 0);
@@ -38491,6 +38698,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectCreateInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -38500,6 +38710,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectCreateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectCreateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectCreateInput.prototype, "createdAt", void 0);
@@ -38586,11 +38799,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], ProjectGroupBy.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], ProjectGroupBy.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], ProjectGroupBy.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectGroupBy.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], ProjectGroupBy.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectGroupBy.prototype, "accountId", void 0);
@@ -38647,10 +38866,16 @@ __decorate([
 ], ProjectMaxAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectMaxAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectMaxAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectMaxAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectMaxAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectMaxAggregateInput.prototype, "accountId", void 0);
@@ -38691,11 +38916,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectMaxAggregate.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], ProjectMaxAggregate.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectMaxAggregate.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProjectMaxAggregate.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], ProjectMaxAggregate.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProjectMaxAggregate.prototype, "accountId", void 0);
@@ -38737,10 +38968,16 @@ __decorate([
 ], ProjectMaxOrderByAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectMaxOrderByAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectMaxOrderByAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectMaxOrderByAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectMaxOrderByAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectMaxOrderByAggregateInput.prototype, "accountId", void 0);
@@ -38782,10 +39019,16 @@ __decorate([
 ], ProjectMinAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectMinAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectMinAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectMinAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectMinAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectMinAggregateInput.prototype, "accountId", void 0);
@@ -38826,11 +39069,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectMinAggregate.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], ProjectMinAggregate.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectMinAggregate.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProjectMinAggregate.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], ProjectMinAggregate.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProjectMinAggregate.prototype, "accountId", void 0);
@@ -38872,10 +39121,16 @@ __decorate([
 ], ProjectMinOrderByAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectMinOrderByAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectMinOrderByAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectMinOrderByAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectMinOrderByAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectMinOrderByAggregateInput.prototype, "accountId", void 0);
@@ -38928,11 +39183,17 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithAggregationInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], ProjectOrderByWithAggregationInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithAggregationInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithAggregationInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], ProjectOrderByWithAggregationInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithAggregationInput.prototype, "accountId", void 0);
@@ -38988,11 +39249,17 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithRelationInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], ProjectOrderByWithRelationInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithRelationInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithRelationInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], ProjectOrderByWithRelationInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectOrderByWithRelationInput.prototype, "accountId", void 0);
@@ -39051,11 +39318,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], ProjectScalarWhereWithAggregatesInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
+], ProjectScalarWhereWithAggregatesInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
 ], ProjectScalarWhereWithAggregatesInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], ProjectScalarWhereWithAggregatesInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
+], ProjectScalarWhereWithAggregatesInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntWithAggregatesFilter, { nullable: true })
 ], ProjectScalarWhereWithAggregatesInput.prototype, "accountId", void 0);
@@ -39082,10 +39355,16 @@ __decorate([
 ], ProjectSumAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectSumAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectSumAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectSumAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], ProjectSumAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ProjectSumAggregateInput.prototype, "accountId", void 0);
@@ -39105,11 +39384,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectSumAggregate.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], ProjectSumAggregate.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ProjectSumAggregate.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProjectSumAggregate.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], ProjectSumAggregate.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ProjectSumAggregate.prototype, "accountId", void 0);
@@ -39130,10 +39415,16 @@ __decorate([
 ], ProjectSumOrderByAggregateInput.prototype, "goalAmount", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectSumOrderByAggregateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectSumOrderByAggregateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectSumOrderByAggregateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], ProjectSumOrderByAggregateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ProjectSumOrderByAggregateInput.prototype, "accountId", void 0);
@@ -39195,6 +39486,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectUncheckedCreateWithoutAccountInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateWithoutAccountInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -39204,6 +39498,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectUncheckedCreateWithoutAccountInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateWithoutAccountInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], ProjectUncheckedCreateWithoutAccountInput.prototype, "createdAt", void 0);
@@ -39256,6 +39553,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectUncheckedCreateWithoutImagesInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateWithoutImagesInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -39265,6 +39565,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectUncheckedCreateWithoutImagesInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateWithoutImagesInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectUncheckedCreateWithoutImagesInput.prototype, "accountId", void 0);
@@ -39317,6 +39620,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectUncheckedCreateWithoutOrderCartInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateWithoutOrderCartInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -39326,6 +39632,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectUncheckedCreateWithoutOrderCartInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateWithoutOrderCartInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectUncheckedCreateWithoutOrderCartInput.prototype, "accountId", void 0);
@@ -39378,6 +39687,9 @@ __decorate([
     Validator.IsNumber()
 ], ProjectUncheckedCreateInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber(),
     Validator.IsNotEmpty()
@@ -39387,6 +39699,9 @@ __decorate([
     Validator.IsNumber(),
     Validator.IsNotEmpty()
 ], ProjectUncheckedCreateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], ProjectUncheckedCreateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ProjectUncheckedCreateInput.prototype, "accountId", void 0);
@@ -39433,11 +39748,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateManyInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateManyInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateManyInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateManyInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateManyInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateManyInput.prototype, "accountId", void 0);
@@ -39512,11 +39833,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutAccountInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateWithoutAccountInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutAccountInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutAccountInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateWithoutAccountInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutAccountInput.prototype, "createdAt", void 0);
@@ -39560,11 +39887,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutImagesInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateWithoutImagesInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutImagesInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutImagesInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateWithoutImagesInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutImagesInput.prototype, "accountId", void 0);
@@ -39608,11 +39941,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutOrderCartInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateWithoutOrderCartInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutOrderCartInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutOrderCartInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateWithoutOrderCartInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateWithoutOrderCartInput.prototype, "accountId", void 0);
@@ -39656,11 +39995,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUncheckedUpdateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUncheckedUpdateInput.prototype, "accountId", void 0);
@@ -39704,11 +40049,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateManyMutationInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateManyMutationInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateManyMutationInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateManyMutationInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateManyMutationInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectUpdateManyMutationInput.prototype, "createdAt", void 0);
@@ -39887,11 +40238,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutAccountInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateWithoutAccountInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutAccountInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutAccountInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateWithoutAccountInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectUpdateWithoutAccountInput.prototype, "createdAt", void 0);
@@ -39932,11 +40289,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutImagesInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateWithoutImagesInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutImagesInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutImagesInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateWithoutImagesInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectUpdateWithoutImagesInput.prototype, "createdAt", void 0);
@@ -39977,11 +40340,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutOrderCartInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateWithoutOrderCartInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutOrderCartInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateWithoutOrderCartInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateWithoutOrderCartInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectUpdateWithoutOrderCartInput.prototype, "createdAt", void 0);
@@ -40022,11 +40391,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFieldUpdateOperationsInput, { nullable: true })
 ], ProjectUpdateInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], ProjectUpdateInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_7.HideField)()
 ], ProjectUpdateInput.prototype, "createdAt", void 0);
@@ -40139,11 +40514,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], ProjectWhereUniqueInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], ProjectWhereUniqueInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], ProjectWhereUniqueInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], ProjectWhereUniqueInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], ProjectWhereUniqueInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
 ], ProjectWhereUniqueInput.prototype, "createdAt", void 0);
@@ -40199,11 +40580,17 @@ __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], ProjectWhereInput.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], ProjectWhereInput.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
 ], ProjectWhereInput.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], ProjectWhereInput.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], ProjectWhereInput.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => IntFilter, { nullable: true })
 ], ProjectWhereInput.prototype, "accountId", void 0);
@@ -40253,11 +40640,17 @@ __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], Project.prototype, "goalAmount", void 0);
 __decorate([
+    (0, graphql_7.HideField)()
+], Project.prototype, "maxGoalAmountVersion", void 0);
+__decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
 ], Project.prototype, "minimumInvestment", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Project.prototype, "maxInvestor", void 0);
+__decorate([
+    (0, graphql_7.HideField)()
+], Project.prototype, "maxInvestorVersion", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], Project.prototype, "accountId", void 0);

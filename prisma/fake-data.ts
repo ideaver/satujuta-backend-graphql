@@ -287,6 +287,7 @@ export function fakeHotelComplete() {
     quota: faker.datatype.number(),
     createdById: faker.datatype.uuid(),
     createdAt: new Date(),
+    version: 0,
     updatedAt: faker.datatype.datetime(),
   };
 }
@@ -587,8 +588,10 @@ export function fakeProjectComplete() {
     endDate: faker.datatype.datetime(),
     returnRate: faker.datatype.float(),
     goalAmount: faker.datatype.float(),
+    maxGoalAmountVersion: 0,
     minimumInvestment: faker.datatype.float(),
     maxInvestor: faker.datatype.number(),
+    maxInvestorVersion: 0,
     accountId: faker.datatype.number(),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),

@@ -121,8 +121,10 @@ export declare enum ProjectScalarFieldEnum {
     endDate = "endDate",
     returnRate = "returnRate",
     goalAmount = "goalAmount",
+    maxGoalAmountVersion = "maxGoalAmountVersion",
     minimumInvestment = "minimumInvestment",
     maxInvestor = "maxInvestor",
+    maxInvestorVersion = "maxInvestorVersion",
     accountId = "accountId",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
@@ -314,6 +316,7 @@ export declare enum HotelScalarFieldEnum {
     quota = "quota",
     createdById = "createdById",
     createdAt = "createdAt",
+    version = "version",
     updatedAt = "updatedAt"
 }
 export declare enum FileScalarFieldEnum {
@@ -5345,18 +5348,21 @@ export declare class HotelAvgAggregateInput {
     addressId?: true;
     rating?: true;
     quota?: true;
+    version?: true;
 }
 export declare class HotelAvgAggregate {
     id?: number;
     addressId?: number;
     rating?: number;
     quota?: number;
+    version?: number;
 }
 export declare class HotelAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     addressId?: keyof typeof SortOrder;
     rating?: keyof typeof SortOrder;
     quota?: keyof typeof SortOrder;
+    version?: keyof typeof SortOrder;
 }
 export declare class HotelCountAggregateInput {
     id?: true;
@@ -5368,6 +5374,7 @@ export declare class HotelCountAggregateInput {
     quota?: true;
     createdById?: true;
     createdAt?: true;
+    version?: true;
     updatedAt?: true;
     _all?: true;
 }
@@ -5381,6 +5388,7 @@ export declare class HotelCountAggregate {
     quota: number;
     createdById: number;
     createdAt: number;
+    version: number;
     updatedAt: number;
     _all: number;
 }
@@ -5394,6 +5402,7 @@ export declare class HotelCountOrderByAggregateInput {
     quota?: keyof typeof SortOrder;
     createdById?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    version?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
 export declare class HotelCount {
@@ -5413,6 +5422,7 @@ export declare class HotelCreateManyCreatedByInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
 }
 export declare class HotelCreateManyInput {
@@ -5425,6 +5435,7 @@ export declare class HotelCreateManyInput {
     quota: number;
     createdById: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
 }
 export declare class HotelCreateNestedManyWithoutCreatedByInput {
@@ -5471,6 +5482,7 @@ export declare class HotelCreateWithoutAddressInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutHotelImageInput>;
     checkIns?: InstanceType<typeof CheckInCreateNestedManyWithoutHotelInput>;
@@ -5483,6 +5495,7 @@ export declare class HotelCreateWithoutCheckInsInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     address: InstanceType<typeof AddressCreateNestedOneWithoutHotelInput>;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutHotelImageInput>;
@@ -5495,6 +5508,7 @@ export declare class HotelCreateWithoutCreatedByInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     address: InstanceType<typeof AddressCreateNestedOneWithoutHotelInput>;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutHotelImageInput>;
@@ -5507,6 +5521,7 @@ export declare class HotelCreateWithoutImagesInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     address: InstanceType<typeof AddressCreateNestedOneWithoutHotelInput>;
     checkIns?: InstanceType<typeof CheckInCreateNestedManyWithoutHotelInput>;
@@ -5519,6 +5534,7 @@ export declare class HotelCreateInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     address: InstanceType<typeof AddressCreateNestedOneWithoutHotelInput>;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutHotelImageInput>;
@@ -5548,6 +5564,7 @@ export declare class HotelGroupBy {
     quota: number;
     createdById: string;
     createdAt: Date | string;
+    version?: number;
     updatedAt: Date | string;
     _count?: InstanceType<typeof HotelCountAggregate>;
     _avg?: InstanceType<typeof HotelAvgAggregate>;
@@ -5570,6 +5587,7 @@ export declare class HotelMaxAggregateInput {
     quota?: true;
     createdById?: true;
     createdAt?: true;
+    version?: true;
     updatedAt?: true;
 }
 export declare class HotelMaxAggregate {
@@ -5582,6 +5600,7 @@ export declare class HotelMaxAggregate {
     quota?: number;
     createdById?: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
 }
 export declare class HotelMaxOrderByAggregateInput {
@@ -5594,6 +5613,7 @@ export declare class HotelMaxOrderByAggregateInput {
     quota?: keyof typeof SortOrder;
     createdById?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    version?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
 export declare class HotelMinAggregateInput {
@@ -5606,6 +5626,7 @@ export declare class HotelMinAggregateInput {
     quota?: true;
     createdById?: true;
     createdAt?: true;
+    version?: true;
     updatedAt?: true;
 }
 export declare class HotelMinAggregate {
@@ -5618,6 +5639,7 @@ export declare class HotelMinAggregate {
     quota?: number;
     createdById?: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
 }
 export declare class HotelMinOrderByAggregateInput {
@@ -5630,6 +5652,7 @@ export declare class HotelMinOrderByAggregateInput {
     quota?: keyof typeof SortOrder;
     createdById?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    version?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
 export declare class HotelNullableRelationFilter {
@@ -5649,6 +5672,7 @@ export declare class HotelOrderByWithAggregationInput {
     quota?: keyof typeof SortOrder;
     createdById?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    version?: InstanceType<typeof SortOrderInput>;
     updatedAt?: keyof typeof SortOrder;
     _count?: InstanceType<typeof HotelCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof HotelAvgOrderByAggregateInput>;
@@ -5666,6 +5690,7 @@ export declare class HotelOrderByWithRelationInput {
     quota?: keyof typeof SortOrder;
     createdById?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
+    version?: InstanceType<typeof SortOrderInput>;
     updatedAt?: keyof typeof SortOrder;
     address?: InstanceType<typeof AddressOrderByWithRelationInput>;
     images?: InstanceType<typeof ImagesOrderByRelationAggregateInput>;
@@ -5689,6 +5714,7 @@ export declare class HotelScalarWhereWithAggregatesInput {
     quota?: InstanceType<typeof IntWithAggregatesFilter>;
     createdById?: InstanceType<typeof StringWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    version?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
 }
 export declare class HotelScalarWhereInput {
@@ -5704,6 +5730,7 @@ export declare class HotelScalarWhereInput {
     quota?: InstanceType<typeof IntFilter>;
     createdById?: InstanceType<typeof StringFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
+    version?: InstanceType<typeof IntNullableFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
 }
 export declare class HotelSumAggregateInput {
@@ -5711,18 +5738,21 @@ export declare class HotelSumAggregateInput {
     addressId?: true;
     rating?: true;
     quota?: true;
+    version?: true;
 }
 export declare class HotelSumAggregate {
     id?: number;
     addressId?: number;
     rating?: number;
     quota?: number;
+    version?: number;
 }
 export declare class HotelSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     addressId?: keyof typeof SortOrder;
     rating?: keyof typeof SortOrder;
     quota?: keyof typeof SortOrder;
+    version?: keyof typeof SortOrder;
 }
 export declare class HotelUncheckedCreateNestedManyWithoutCreatedByInput {
     create?: Array<HotelCreateWithoutCreatedByInput>;
@@ -5744,6 +5774,7 @@ export declare class HotelUncheckedCreateWithoutAddressInput {
     quota: number;
     createdById: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutHotelImageInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedCreateNestedManyWithoutHotelInput>;
@@ -5758,6 +5789,7 @@ export declare class HotelUncheckedCreateWithoutCheckInsInput {
     quota: number;
     createdById: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutHotelImageInput>;
 }
@@ -5770,6 +5802,7 @@ export declare class HotelUncheckedCreateWithoutCreatedByInput {
     startDate: Date | string;
     quota: number;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutHotelImageInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedCreateNestedManyWithoutHotelInput>;
@@ -5784,6 +5817,7 @@ export declare class HotelUncheckedCreateWithoutImagesInput {
     quota: number;
     createdById: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     checkIns?: InstanceType<typeof CheckInUncheckedCreateNestedManyWithoutHotelInput>;
 }
@@ -5797,6 +5831,7 @@ export declare class HotelUncheckedCreateInput {
     quota: number;
     createdById: string;
     createdAt?: Date | string;
+    version?: number;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutHotelImageInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedCreateNestedManyWithoutHotelInput>;
@@ -5823,6 +5858,7 @@ export declare class HotelUncheckedUpdateManyWithoutCreatedByInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class HotelUncheckedUpdateManyInput {
@@ -5835,6 +5871,7 @@ export declare class HotelUncheckedUpdateManyInput {
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class HotelUncheckedUpdateOneWithoutAddressNestedInput {
@@ -5855,6 +5892,7 @@ export declare class HotelUncheckedUpdateWithoutAddressInput {
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutHotelImageNestedInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedUpdateManyWithoutHotelNestedInput>;
@@ -5869,6 +5907,7 @@ export declare class HotelUncheckedUpdateWithoutCheckInsInput {
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutHotelImageNestedInput>;
 }
@@ -5881,6 +5920,7 @@ export declare class HotelUncheckedUpdateWithoutCreatedByInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutHotelImageNestedInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedUpdateManyWithoutHotelNestedInput>;
@@ -5895,6 +5935,7 @@ export declare class HotelUncheckedUpdateWithoutImagesInput {
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedUpdateManyWithoutHotelNestedInput>;
 }
@@ -5908,6 +5949,7 @@ export declare class HotelUncheckedUpdateInput {
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdById?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutHotelImageNestedInput>;
     checkIns?: InstanceType<typeof CheckInUncheckedUpdateManyWithoutHotelNestedInput>;
@@ -5919,6 +5961,7 @@ export declare class HotelUpdateManyMutationInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
 export declare class HotelUpdateManyWithWhereWithoutCreatedByInput {
@@ -5986,6 +6029,7 @@ export declare class HotelUpdateWithoutAddressInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutHotelImageNestedInput>;
     checkIns?: InstanceType<typeof CheckInUpdateManyWithoutHotelNestedInput>;
@@ -5998,6 +6042,7 @@ export declare class HotelUpdateWithoutCheckInsInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     address?: InstanceType<typeof AddressUpdateOneRequiredWithoutHotelNestedInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutHotelImageNestedInput>;
@@ -6010,6 +6055,7 @@ export declare class HotelUpdateWithoutCreatedByInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     address?: InstanceType<typeof AddressUpdateOneRequiredWithoutHotelNestedInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutHotelImageNestedInput>;
@@ -6022,6 +6068,7 @@ export declare class HotelUpdateWithoutImagesInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     address?: InstanceType<typeof AddressUpdateOneRequiredWithoutHotelNestedInput>;
     checkIns?: InstanceType<typeof CheckInUpdateManyWithoutHotelNestedInput>;
@@ -6034,6 +6081,7 @@ export declare class HotelUpdateInput {
     startDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     quota?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    version?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     address?: InstanceType<typeof AddressUpdateOneRequiredWithoutHotelNestedInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutHotelImageNestedInput>;
@@ -6073,6 +6121,7 @@ export declare class HotelWhereUniqueInput {
     quota?: InstanceType<typeof IntFilter>;
     createdById?: InstanceType<typeof StringFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
+    version?: InstanceType<typeof IntNullableFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     address?: InstanceType<typeof AddressRelationFilter>;
     images?: InstanceType<typeof ImagesListRelationFilter>;
@@ -6092,6 +6141,7 @@ export declare class HotelWhereInput {
     quota?: InstanceType<typeof IntFilter>;
     createdById?: InstanceType<typeof StringFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
+    version?: InstanceType<typeof IntNullableFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     address?: InstanceType<typeof AddressRelationFilter>;
     images?: InstanceType<typeof ImagesListRelationFilter>;
@@ -6108,6 +6158,7 @@ export declare class Hotel {
     quota: number;
     createdById: string;
     createdAt: Date;
+    version: number | null;
     updatedAt: Date;
     address?: InstanceType<typeof Address>;
     images?: Array<Images>;
@@ -12118,24 +12169,30 @@ export declare class ProjectAvgAggregateInput {
     id?: true;
     returnRate?: true;
     goalAmount?: true;
+    maxGoalAmountVersion?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
+    maxInvestorVersion?: true;
     accountId?: true;
 }
 export declare class ProjectAvgAggregate {
     id?: number;
     returnRate?: number;
     goalAmount?: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
+    maxInvestorVersion?: number;
     accountId?: number;
 }
 export declare class ProjectAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
 }
 export declare class ProjectCountAggregateInput {
@@ -12147,8 +12204,10 @@ export declare class ProjectCountAggregateInput {
     endDate?: true;
     returnRate?: true;
     goalAmount?: true;
+    maxGoalAmountVersion?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
+    maxInvestorVersion?: true;
     accountId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -12163,8 +12222,10 @@ export declare class ProjectCountAggregate {
     endDate: number;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion: number;
     accountId: number;
     createdAt: number;
     updatedAt: number;
@@ -12179,8 +12240,10 @@ export declare class ProjectCountOrderByAggregateInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -12198,8 +12261,10 @@ export declare class ProjectCreateManyInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     accountId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -12239,8 +12304,10 @@ export declare class ProjectCreateWithoutAccountInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutProjectImageInput>;
@@ -12254,8 +12321,10 @@ export declare class ProjectCreateWithoutImagesInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     orderCart?: InstanceType<typeof CartCreateNestedManyWithoutProjectItemInput>;
@@ -12269,8 +12338,10 @@ export declare class ProjectCreateWithoutOrderCartInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutProjectImageInput>;
@@ -12284,8 +12355,10 @@ export declare class ProjectCreateInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesCreateNestedManyWithoutProjectImageInput>;
@@ -12314,8 +12387,10 @@ export declare class ProjectGroupBy {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     accountId: number;
     createdAt: Date | string;
     updatedAt: Date | string;
@@ -12334,8 +12409,10 @@ export declare class ProjectMaxAggregateInput {
     endDate?: true;
     returnRate?: true;
     goalAmount?: true;
+    maxGoalAmountVersion?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
+    maxInvestorVersion?: true;
     accountId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -12349,8 +12426,10 @@ export declare class ProjectMaxAggregate {
     endDate?: Date | string;
     returnRate?: number;
     goalAmount?: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
+    maxInvestorVersion?: number;
     accountId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -12364,8 +12443,10 @@ export declare class ProjectMaxOrderByAggregateInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -12379,8 +12460,10 @@ export declare class ProjectMinAggregateInput {
     endDate?: true;
     returnRate?: true;
     goalAmount?: true;
+    maxGoalAmountVersion?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
+    maxInvestorVersion?: true;
     accountId?: true;
     createdAt?: true;
     updatedAt?: true;
@@ -12394,8 +12477,10 @@ export declare class ProjectMinAggregate {
     endDate?: Date | string;
     returnRate?: number;
     goalAmount?: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
+    maxInvestorVersion?: number;
     accountId?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -12409,8 +12494,10 @@ export declare class ProjectMinOrderByAggregateInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -12428,8 +12515,10 @@ export declare class ProjectOrderByWithAggregationInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: InstanceType<typeof SortOrderInput>;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: InstanceType<typeof SortOrderInput>;
     accountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -12448,8 +12537,10 @@ export declare class ProjectOrderByWithRelationInput {
     endDate?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: InstanceType<typeof SortOrderInput>;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: InstanceType<typeof SortOrderInput>;
     accountId?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
@@ -12469,8 +12560,10 @@ export declare class ProjectScalarWhereWithAggregatesInput {
     endDate?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     returnRate?: InstanceType<typeof FloatWithAggregatesFilter>;
     goalAmount?: InstanceType<typeof FloatWithAggregatesFilter>;
+    maxGoalAmountVersion?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     minimumInvestment?: InstanceType<typeof FloatWithAggregatesFilter>;
     maxInvestor?: InstanceType<typeof IntWithAggregatesFilter>;
+    maxInvestorVersion?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     accountId?: InstanceType<typeof IntWithAggregatesFilter>;
     createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
     updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
@@ -12479,24 +12572,30 @@ export declare class ProjectSumAggregateInput {
     id?: true;
     returnRate?: true;
     goalAmount?: true;
+    maxGoalAmountVersion?: true;
     minimumInvestment?: true;
     maxInvestor?: true;
+    maxInvestorVersion?: true;
     accountId?: true;
 }
 export declare class ProjectSumAggregate {
     id?: number;
     returnRate?: number;
     goalAmount?: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment?: number;
     maxInvestor?: number;
+    maxInvestorVersion?: number;
     accountId?: number;
 }
 export declare class ProjectSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     returnRate?: keyof typeof SortOrder;
     goalAmount?: keyof typeof SortOrder;
+    maxGoalAmountVersion?: keyof typeof SortOrder;
     minimumInvestment?: keyof typeof SortOrder;
     maxInvestor?: keyof typeof SortOrder;
+    maxInvestorVersion?: keyof typeof SortOrder;
     accountId?: keyof typeof SortOrder;
 }
 export declare class ProjectUncheckedCreateNestedOneWithoutAccountInput {
@@ -12513,8 +12612,10 @@ export declare class ProjectUncheckedCreateWithoutAccountInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
     images?: InstanceType<typeof ImagesUncheckedCreateNestedManyWithoutProjectImageInput>;
@@ -12529,8 +12630,10 @@ export declare class ProjectUncheckedCreateWithoutImagesInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     accountId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -12545,8 +12648,10 @@ export declare class ProjectUncheckedCreateWithoutOrderCartInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     accountId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -12561,8 +12666,10 @@ export declare class ProjectUncheckedCreateInput {
     endDate: Date | string;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion?: number;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion?: number;
     accountId: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
@@ -12578,8 +12685,10 @@ export declare class ProjectUncheckedUpdateManyInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -12602,8 +12711,10 @@ export declare class ProjectUncheckedUpdateWithoutAccountInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUncheckedUpdateManyWithoutProjectImageNestedInput>;
@@ -12618,8 +12729,10 @@ export declare class ProjectUncheckedUpdateWithoutImagesInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -12634,8 +12747,10 @@ export declare class ProjectUncheckedUpdateWithoutOrderCartInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -12650,8 +12765,10 @@ export declare class ProjectUncheckedUpdateInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
@@ -12666,8 +12783,10 @@ export declare class ProjectUpdateManyMutationInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
@@ -12718,8 +12837,10 @@ export declare class ProjectUpdateWithoutAccountInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutProjectImageNestedInput>;
@@ -12733,8 +12854,10 @@ export declare class ProjectUpdateWithoutImagesInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     orderCart?: InstanceType<typeof CartUpdateManyWithoutProjectItemNestedInput>;
@@ -12748,8 +12871,10 @@ export declare class ProjectUpdateWithoutOrderCartInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutProjectImageNestedInput>;
@@ -12763,8 +12888,10 @@ export declare class ProjectUpdateInput {
     endDate?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     returnRate?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     goalAmount?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    maxGoalAmountVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     minimumInvestment?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     maxInvestor?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    maxInvestorVersion?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     images?: InstanceType<typeof ImagesUpdateManyWithoutProjectImageNestedInput>;
@@ -12799,8 +12926,10 @@ export declare class ProjectWhereUniqueInput {
     endDate?: InstanceType<typeof DateTimeFilter>;
     returnRate?: InstanceType<typeof FloatFilter>;
     goalAmount?: InstanceType<typeof FloatFilter>;
+    maxGoalAmountVersion?: InstanceType<typeof IntNullableFilter>;
     minimumInvestment?: InstanceType<typeof FloatFilter>;
     maxInvestor?: InstanceType<typeof IntFilter>;
+    maxInvestorVersion?: InstanceType<typeof IntNullableFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     images?: InstanceType<typeof ImagesListRelationFilter>;
@@ -12819,8 +12948,10 @@ export declare class ProjectWhereInput {
     endDate?: InstanceType<typeof DateTimeFilter>;
     returnRate?: InstanceType<typeof FloatFilter>;
     goalAmount?: InstanceType<typeof FloatFilter>;
+    maxGoalAmountVersion?: InstanceType<typeof IntNullableFilter>;
     minimumInvestment?: InstanceType<typeof FloatFilter>;
     maxInvestor?: InstanceType<typeof IntFilter>;
+    maxInvestorVersion?: InstanceType<typeof IntNullableFilter>;
     accountId?: InstanceType<typeof IntFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
@@ -12837,8 +12968,10 @@ export declare class Project {
     endDate: Date;
     returnRate: number;
     goalAmount: number;
+    maxGoalAmountVersion: number | null;
     minimumInvestment: number;
     maxInvestor: number;
+    maxInvestorVersion: number | null;
     accountId: number;
     createdAt: Date;
     updatedAt: Date;

@@ -7,6 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
+  // dotenv -e .env.development -- npx prisma db push
   url      = env("DATABASE_URL")
 }
 
@@ -463,6 +464,8 @@ model Hotel {
   createdById String
   /// @HideField({ match: 'HotelCreate*Input' })
   createdAt   DateTime  @default(now())
+  /// @HideField()
+  version     Int?      @default(0)
   /// @HideField({ match: 'HotelCreate*Input' })
   updatedAt   DateTime  @updatedAt
 }
@@ -776,40 +779,44 @@ enum FaqType {
 
 //Make CRU Available, cannot be deleted
 model Project {
-  id                Int             @id @default(autoincrement())
+  id                   Int             @id @default(autoincrement())
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsNotEmpty()
-  name              String
-  description       String
-  images            Images[]
+  name                 String
+  description          String
+  images               Images[]
   /// @Validator.MinLength(10)
   /// @Validator.IsNotEmpty()
-  projectCategory   ProjectCategory
-  startDate         DateTime
-  endDate           DateTime
+  projectCategory      ProjectCategory
+  startDate            DateTime
+  endDate              DateTime
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  returnRate        Float
+  returnRate           Float
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
-  goalAmount        Float
+  goalAmount           Float
+  /// @HideField()
+  maxGoalAmountVersion Int?            @default(0)
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  minimumInvestment Float
+  minimumInvestment    Float
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  maxInvestor       Int
+  maxInvestor          Int
+  /// @HideField()
+  maxInvestorVersion   Int?            @default(0)
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
-  orderCart         Cart[]
+  orderCart            Cart[]
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
-  account           Account         @relation(fields: [accountId], references: [id])
+  account              Account         @relation(fields: [accountId], references: [id])
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
-  accountId         Int             @unique
+  accountId            Int             @unique
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
-  createdAt         DateTime        @default(now())
+  createdAt            DateTime        @default(now())
   /// @HideField({ match: ['ProjectCreate*Input','ProjectUpdate*Input']})
-  updatedAt         DateTime        @updatedAt
+  updatedAt            DateTime        @updatedAt
 }
 
 enum ProjectCategory {

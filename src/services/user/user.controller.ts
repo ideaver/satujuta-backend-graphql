@@ -202,34 +202,39 @@ export class UserController {
   }
 
   async updateOneAvatarUrl(file: FileUpload, userId: string): Promise<string> {
-    //delete old file if exist
-    const user = await this.findOne({
-      where: { id: userId },
-      select: { avatarUrl: true },
-    });
-    if (user && user.avatarUrl) {
-      this.uploaderService.deleteFile(user.avatarUrl);
-    }
+    try {
+      // Run both queries in parallel
+      const [oldUserData, imageUrl] = await Promise.all([
+        this.findOne({
+          where: { id: userId },
+          select: { avatarUrl: true },
+        }),
+        this.uploaderService.uploadImage({
+          userId: userId,
+          ratio: RatioEnum.SQUARE,
+          file: file,
+        }),
+      ]);
 
-    //upload new file even if doesn't exist
-    const imageUrl = await this.uploaderService.uploadImage({
-      userId: userId,
-      ratio: RatioEnum.SQUARE,
-      file: file,
-    });
+      // Update avatarUrl in the database
+      await this.updateOne({
+        where: { id: userId },
+        data: { avatarUrl: { set: imageUrl } },
+      });
 
-    //update avatarUrl in database
-    await this.updateOne({
-      where: { id: userId },
-      data: { avatarUrl: { set: imageUrl } },
-    }).catch((error) => {
-      //delete file in storage if error
-      console.log('masuk error');
-      this.uploaderService.deleteFile(imageUrl);
+      // Delete old file if it exists
+      if (oldUserData && oldUserData.avatarUrl) {
+        this.uploaderService.deleteFile(oldUserData.avatarUrl);
+      }
+
+      return imageUrl;
+    } catch (error) {
+      // Delete the new file in storage if there is an error
+      if (imageUrl) {
+        this.uploaderService.deleteFile(imageUrl);
+      }
       throw new IGraphQLError({ code: 123456, err: error });
-    });
-
-    return imageUrl;
+    }
   }
 
   remove(userId: string) {
