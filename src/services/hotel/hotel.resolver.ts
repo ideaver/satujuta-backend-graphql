@@ -1,16 +1,19 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ats-nocheck
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Hotel } from 'src/@generated';
-import { HotelCreateArgs } from './dto/hotel-create-one.args';
-import { HotelFindManyArgs } from './dto/hotel-find-many.args';
-import { HotelFindUniqueArgs } from './dto/hotel-find-one.args';
-import { HotelUpdateOneArgs } from './dto/hotel-update-one.args';
+import {
+  CreateOneHotelArgs,
+  FindManyHotelArgs,
+  FindUniqueHotelArgs,
+  Hotel,
+  UpdateOneHotelArgs,
+} from 'src/@generated';
 import { HotelController } from './hotel.controller';
-import { Logger } from '@nestjs/common';
 // Ignore the import errors
 // @ts-ignore
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 
 interface HotelSelect {
   select: Prisma.HotelSelect;
@@ -19,18 +22,22 @@ interface HotelSelect {
 @Resolver(() => Hotel)
 export class HotelResolver {
   constructor(private readonly hotelController: HotelController) {}
-  private readonly logger = new Logger(HotelResolver.name);
   @Mutation(() => Hotel, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async hotelCreateOne(
+    @Args()
+    hotelCreateArgs: CreateOneHotelArgs,
     @Args({ name: 'files', type: () => [GraphQLUpload] }) files: FileUpload[],
-    @Args('hotelCreateArgs') hotelCreateArgs: HotelCreateArgs,
     @Relations() relations: HotelSelect,
   ): Promise<Hotel | void> {
-    hotelCreateArgs.select = relations.select;
-    return await this.hotelController.createOne(files, hotelCreateArgs);
+    const uploadedFiles = await Promise.all(files);
+    const { data } = hotelCreateArgs;
+    return await this.hotelController.createOne(uploadedFiles, {
+      data: data,
+      select: relations.select,
+    });
   }
 
   @Query(() => [Hotel], {
@@ -38,12 +45,13 @@ export class HotelResolver {
     description: 'Deskripsinya ada disini loh',
   })
   hotelFindMany(
-    @Args('hotelFindManyArgs') hotelFindManyArgs: HotelFindManyArgs,
+    @Args() hotelFindManyArgs: FindManyHotelArgs,
     @Relations() relations: HotelSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    hotelFindManyArgs.select = relations.select;
-    return this.hotelController.findMany(hotelFindManyArgs);
+    return this.hotelController.findMany({
+      ...hotelFindManyArgs,
+      select: relations.select,
+    });
   }
 
   @Query(() => Hotel, {
@@ -51,13 +59,14 @@ export class HotelResolver {
     description: 'Deskripsinya ada disini loh',
   })
   hotelFindOne(
-    @Args('hotelFindUniqueArgs')
-    hotelFindUniqueArgs: HotelFindUniqueArgs,
+    @Args()
+    hotelFindUniqueArgs: FindUniqueHotelArgs,
     @Relations() relations: HotelSelect,
   ): Promise<Hotel | void> {
-    //Auto implement prisma select from graphql query info
-    hotelFindUniqueArgs.select = relations.select;
-    return this.hotelController.findOne(hotelFindUniqueArgs);
+    return this.hotelController.findOne({
+      ...hotelFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => Hotel, {
@@ -65,13 +74,13 @@ export class HotelResolver {
       'Deskripsinya ada disini loh, Jika tentang mutasi klaim hotel, backend akan cek apakah saldo point user cukup untuk claim',
   })
   async hotelUpdateOne(
-    @Args('hotelUpdateOneArgs') hotelUpdateOneArgs: HotelUpdateOneArgs,
+    @Args() hotelUpdateOneArgs: UpdateOneHotelArgs,
     @Relations() relations: HotelSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    hotelUpdateOneArgs.select = relations.select;
-
-    return this.hotelController.updateOne(hotelUpdateOneArgs);
+    return this.hotelController.updateOne({
+      ...replaceNullWithUndefined(hotelUpdateOneArgs),
+      select: relations.select,
+    });
   }
 
   @Mutation(() => Boolean, {

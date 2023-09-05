@@ -15,7 +15,12 @@ async function bootstrap() {
 
   const port = configService.get<number>('APP_PORT');
   const environment = configService.get<string>('NODE_ENV');
-  app.use(graphqlUploadExpress({ maxFileSize: 1000000, maxFiles: 10 }));
+  app.use(
+    graphqlUploadExpress({
+      maxFileSize: 250000000, // max is 250mb
+      maxFiles: 10,
+    }),
+  );
   await app.listen(port);
   console.log(`Application is running in ${environment} mode on port ${port}`);
 }

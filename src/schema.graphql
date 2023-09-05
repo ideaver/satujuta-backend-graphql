@@ -2022,10 +2022,10 @@ type Query {
   itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
 
   """Deskripsinya ada disini loh"""
-  hotelFindMany(hotelFindManyArgs: HotelFindManyArgs!): [Hotel!]
+  hotelFindMany(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): [Hotel!]
 
   """Deskripsinya ada disini loh"""
-  hotelFindOne(hotelFindUniqueArgs: HotelFindUniqueArgs!): Hotel
+  hotelFindOne(where: HotelWhereUniqueInput!): Hotel
 
   """Deskripsinya ada disini loh"""
   bankFindMany(bankFindManyArgs: BankFindManyArgs): [Bank!]
@@ -3506,32 +3506,6 @@ input ItemWhereUniqueInput {
   cart: CartListRelationFilter
 }
 
-input HotelFindManyArgs {
-  where: HotelWhereInput
-  orderBy: [HotelOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [HotelScalarFieldEnum!]
-}
-
-enum HotelScalarFieldEnum {
-  id
-  name
-  addressId
-  description
-  rating
-  startDate
-  quota
-  createdById
-  createdAt
-  version
-  updatedAt
-}
-
-input HotelFindUniqueArgs {
-  where: HotelWhereUniqueInput!
-}
-
 input HotelWhereUniqueInput {
   id: Int
   addressId: Int
@@ -3551,6 +3525,20 @@ input HotelWhereUniqueInput {
   images: ImagesListRelationFilter
   checkIns: CheckInListRelationFilter
   createdBy: UserRelationFilter
+}
+
+enum HotelScalarFieldEnum {
+  id
+  name
+  addressId
+  description
+  rating
+  startDate
+  quota
+  createdById
+  createdAt
+  version
+  updatedAt
 }
 
 input BankFindManyArgs {
@@ -5019,12 +5007,12 @@ type Mutation {
   uploadSingle(file: Upload!, userId: String!): String!
 
   """Deskripsinya ada disini loh"""
-  hotelCreateOne(files: [Upload!]!, hotelCreateArgs: HotelCreateArgs!): Hotel
+  hotelCreateOne(data: HotelCreateInput!, files: [Upload!]!): Hotel
 
   """
   Deskripsinya ada disini loh, Jika tentang mutasi klaim hotel, backend akan cek apakah saldo point user cukup untuk claim
   """
-  hotelUpdateOne(hotelUpdateOneArgs: HotelUpdateOneArgs!): Hotel!
+  hotelUpdateOne(data: HotelUpdateInput!, where: HotelWhereUniqueInput!): Hotel!
 
   """Datanya benar2 terhapus dari db"""
   hotelRemove(hotelId: Float!): Boolean
@@ -7681,10 +7669,6 @@ input CartUpdateManyWithWhereWithoutMembershipItemInput {
   data: CartUpdateManyMutationInput!
 }
 
-input HotelCreateArgs {
-  data: HotelCreateInput!
-}
-
 input HotelCreateInput {
   name: String!
   description: String!
@@ -7695,11 +7679,6 @@ input HotelCreateInput {
   address: AddressCreateNestedOneWithoutHotelInput!
   images: ImagesCreateNestedManyWithoutHotelImageInput
   createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
-}
-
-input HotelUpdateOneArgs {
-  data: HotelUpdateInput!
-  where: HotelWhereUniqueInput!
 }
 
 input HotelUpdateInput {

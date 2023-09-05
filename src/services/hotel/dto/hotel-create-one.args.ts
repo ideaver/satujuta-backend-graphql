@@ -1,10 +1,10 @@
-import { Field } from '@nestjs/graphql';
+import { ArgsType, Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { HotelCreateInput } from 'src/@generated';
 import { Prisma } from '@prisma/client';
 
-@InputType()
+@ArgsType()
 export class HotelCreateArgs {
   select?: Prisma.HotelSelect;
 

@@ -236,6 +236,8 @@ export class UploaderService {
     //   uuidV4() +
     //   fileExt;
 
+    //TODO: Implement maxfilesize for each enum file type
+
     const key =
       this.bucketData.folder +
       '/' +
