@@ -65,7 +65,8 @@ export class HotelService {
 
   async delete(hotelDeleteArgs: Prisma.HotelDeleteArgs) {
     try {
-      return await this.prisma.hotel.delete(hotelDeleteArgs);
+      await this.prisma.hotel.delete(hotelDeleteArgs);
+      return true;
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
@@ -73,7 +74,8 @@ export class HotelService {
 
   async deleteMany(hotelDeleteManyArgs: Prisma.HotelDeleteManyArgs) {
     try {
-      return await this.prisma.hotel.deleteMany(hotelDeleteManyArgs);
+      await this.prisma.hotel.deleteMany(hotelDeleteManyArgs);
+      return true;
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
