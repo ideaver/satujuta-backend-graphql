@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Resolver, Query, Mutation, Args, Int, Float } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import {
@@ -17,9 +17,6 @@ import {
   UpdateOneHotelArgs,
 } from 'src/@generated';
 import { HotelController } from './hotel.controller';
-// Ignore the import errors
-// @ts-ignore
-import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -42,7 +39,7 @@ export class HotelResolver {
   ): Promise<Hotel | void> {
     const { data } = hotelCreateArgs;
     return await this.hotelController.createOne({
-      data: data,
+      ...hotelCreateArgs,
       select: relations.select,
     });
   }
@@ -110,10 +107,8 @@ export class HotelResolver {
     @Args() hotelUpdateOneArgs: UpdateOneHotelArgs,
     @Relations() relations: HotelSelect,
   ) {
-    const { data, where } = hotelUpdateOneArgs;
     return this.hotelController.updateOne({
-      data: replaceNullWithUndefined(data),
-      where: replaceNullWithUndefined(where),
+      ...replaceNullWithUndefined(hotelUpdateOneArgs),
       select: relations.select,
     });
   }
