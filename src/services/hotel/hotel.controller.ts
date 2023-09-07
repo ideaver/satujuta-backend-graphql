@@ -1,30 +1,30 @@
 import { HotelService } from '../hotel/hotel.service';
 import { Hotel, ImagesCreateManyHotelImageInput } from 'src/@generated';
 import { Injectable } from '@nestjs/common';
-
-import { RatioEnum } from '../uploader/enums/ratio.enum';
-import { mimeTypeToEnum } from 'src/utils/mime-type-to-enum.function';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { Prisma } from '@prisma/client';
+import { UploaderService } from '../uploader/uploader.service';
 
 @Injectable()
 export class HotelController {
   constructor(
     private readonly hotelService: HotelService,
+    private readonly uploaderService: UploaderService,
   ) {}
 
   async createOne(
     hotelCreateArgs: Prisma.HotelCreateArgs,
   ): Promise<Hotel | void> {
-  
     try {
-    
       //create hotel
       return await this.hotelService.createOne(hotelCreateArgs);
     } catch (error) {
-      
       //delete images if error
-
+      if (hotelCreateArgs?.data?.images?.createMany?.data) {
+        const images = hotelCreateArgs.data.images.createMany
+          .data as ImagesCreateManyHotelImageInput[];
+        this.uploaderService.deleteManyFile(images.map((image) => image.url));
+      }
 
       throw new IGraphQLError({ code: 123456, err: error });
     }
@@ -48,17 +48,47 @@ export class HotelController {
     return await this.hotelService.findFirst(hotelFindFirstArgs);
   }
 
-  async updateOne(
-    hotelUpdateOneArgs: Prisma.HotelUpdateArgs,
-  ) {
-
-
+  async updateOne(hotelUpdateOneArgs: Prisma.HotelUpdateArgs) {
     try {
+      //update hotel
+      const update = await this.hotelService.updateOne(hotelUpdateOneArgs);
 
-      await this.hotelService.updateOne(hotelUpdateOneArgs);
+      //delete images on storage
+      const isDelete = hotelUpdateOneArgs?.data?.images
+        .deleteMany as Prisma.ImagesScalarWhereInput[];
+      //delete images on storage
+      if (isDelete) {
+        const deletePromises = isDelete.map(async (res) => {
+          const getUrl = res.url as Prisma.StringFilter;
+          return this.uploaderService.deleteOneFile(getUrl.equals);
+        });
+
+        //wait for all delete promises
+        await Promise.all(deletePromises);
+      }
+
+      return update;
     } catch (error) {
       //delete images if error
+      let images: string[] = [];
+      const isCreate = hotelUpdateOneArgs?.data?.images?.createMany
+        ?.data as Prisma.ImagesCreateManyHotelImageInput[];
+      const isUpdate = hotelUpdateOneArgs?.data?.images
+        ?.updateMany as Prisma.ImagesUpdateManyWithWhereWithoutHotelImageInput[];
 
+      if (isCreate) {
+        images = isCreate.map((image) => image.url);
+      }
+
+      if (isUpdate) {
+        const updatePromises = isUpdate.map(async (res) => {
+          const getUrl = res.data
+            .url as Prisma.StringFieldUpdateOperationsInput;
+          return this.uploaderService.deleteOneFile(getUrl.set);
+        });
+
+        await Promise.all(updatePromises);
+      }
 
       throw new IGraphQLError({ code: 123456, err: error });
     }
@@ -69,7 +99,16 @@ export class HotelController {
   }
 
   async delete(hotelDeleteArgs: Prisma.HotelDeleteArgs) {
-    return await this.hotelService.delete(hotelDeleteArgs);
+    //get images to delete
+    const query = await this.hotelService.delete(hotelDeleteArgs);
+    const deletePromises = isDelete.map(async (res) => {
+      const getUrl = res.url as Prisma.StringFilter;
+      return this.uploaderService.deleteOneFile(getUrl.equals);
+    });
+
+    //wait for all delete promises
+    await Promise.all(deletePromises);
+    return query;
   }
 
   async deleteMany(hotelDeleteManyArgs: Prisma.HotelDeleteManyArgs) {
@@ -82,35 +121,5 @@ export class HotelController {
 
   async count(hotelCountArgs: Prisma.HotelCountArgs) {
     return await this.hotelService.count(hotelCountArgs);
-  }
-
-  private async uploadImages(
-    hotelCreateArgs,
-    files: FileUpload[],
-    arrayData: ImagesCreateManyHotelImageInput[],
-  ) {
-    const imageUrls = await this.uploaderService.uploadMultipleImages({
-      userId: hotelCreateArgs.data.createdBy.connect.id,
-      ratio: RatioEnum.SQUARE,
-      files: files,
-    });
-
-    //extract imageUrls
-    for (const imageUrl of imageUrls) {
-      const metadata = await this.uploaderService.getFileMetadata(imageUrl);
-      arrayData.push({
-        url: imageUrl,
-        fileType: mimeTypeToEnum(metadata.mimeType),
-        filesize: metadata.size, //TODO: fix fileSize naming
-      });
-    }
-  }
-
-  private async deleteManyImages(arrayData: ImagesCreateManyHotelImageInput[]) {
-    await Promise.all(
-      arrayData.map(async (data) => {
-        await this.uploaderService.deleteFile(data.url);
-      }),
-    );
   }
 }

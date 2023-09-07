@@ -166,7 +166,7 @@ export class UploaderService {
       });
   }
 
-  public async deleteManyFile(urls: string[]): Promise<void[]> {
+  public async deleteManyFile(urls: string[]): void {
     const deletePromises = [];
 
     for (const url of urls) {
@@ -176,8 +176,7 @@ export class UploaderService {
 
     try {
       // Wait for all delete operations to complete in parallel
-      const results = await Promise.all(deletePromises);
-      return results; // Returns an array of results (success or error for each deletion)
+      await Promise.all(deletePromises);
     } catch (error) {
       throw new IGraphQLError({ code: 170003 });
     }
