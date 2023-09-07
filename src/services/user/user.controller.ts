@@ -74,7 +74,7 @@ export class UserController {
 
     // check if file is null
     if (file) {
-      const avatarUrl = await this.uploaderService.uploadImage({
+      const avatarUrl = await this.uploaderService.uploadSingleImage({
         userId: uuid,
         ratio: RatioEnum.SQUARE,
         file: file,
@@ -109,7 +109,7 @@ export class UserController {
       .catch((error) => {
         //delete file if error
         if (file) {
-          this.uploaderService.deleteFile(avatarUrl);
+          this.uploaderService.deleteOneFile(avatarUrl);
         }
         throw new IGraphQLError({ code: 123456, err: error });
       });
@@ -208,7 +208,7 @@ export class UserController {
         where: { id: userId },
         select: { avatarUrl: true },
       }),
-      this.uploaderService.uploadImage({
+      this.uploaderService.uploadSingleImage({
         userId: userId,
         ratio: RatioEnum.SQUARE,
         file: file,
@@ -224,14 +224,14 @@ export class UserController {
 
       // Delete old file if it exists
       if (oldUserData && oldUserData.avatarUrl) {
-        this.uploaderService.deleteFile(oldUserData.avatarUrl);
+        this.uploaderService.deleteOneFile(oldUserData.avatarUrl);
       }
 
       return imageUrl;
     } catch (error) {
       // Delete the new file in storage if there is an error
       if (imageUrl) {
-        this.uploaderService.deleteFile(imageUrl);
+        this.uploaderService.deleteOneFile(imageUrl);
       }
       throw new IGraphQLError({ code: 123456, err: error });
     }

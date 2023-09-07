@@ -44,8 +44,7 @@ export class UploaderService {
     const urlParts = url.split('.com/');
 
     if (urlParts.length !== 2) {
-      this.loggerService.error('Invalid URL format for getting file metadata');
-      throw new Error('Invalid URL format');
+      throw new IGraphQLError({ code: 170002 });
     }
 
     // Extract the key (object path)
@@ -56,8 +55,7 @@ export class UploaderService {
 
     // Check if the bucket name matches your expected bucket
     if (bucketName !== this.bucketData.name) {
-      this.loggerService.error('Invalid bucket name in URL');
-      throw new Error('Invalid bucket name');
+      throw new IGraphQLError({ code: 170001 });
     }
 
     try {
@@ -71,7 +69,6 @@ export class UploaderService {
       const metadata = {
         size: response.ContentLength || 0,
         mimeType: response.ContentType || '',
-        // Add any other desired metadata fields here
       };
 
       return metadata;
@@ -140,7 +137,7 @@ export class UploaderService {
    *
    * Converts an image to jpeg and uploads it to the bucket
    */
-  public async uploadImage({
+  public async uploadSingleImage({
     userId,
     ratio,
     file,
@@ -170,23 +167,63 @@ export class UploaderService {
         fileExt: '.' + FileType.JPG.toLocaleLowerCase(),
       });
     } catch (error) {
+      throw new IGraphQLError({ code: 160001, err: error });
+    }
+  }
+
+  public async uploadMultipleImages({
+    userId,
+    ratio,
+    files,
+  }: {
+    userId: string;
+    files: Promise<FileUploadDto>[];
+    ratio?: RatioEnum;
+  }): Promise<string[]> {
+    try {
+      const uploadPromises = files.map(async (filePromise) => {
+        const { filename, createReadStream } = await filePromise;
+
+        const imageType = UploaderService.validateImage(
+          detectMimeTypeFromFilename(filename),
+        );
+
+        if (!imageType) {
+          throw new IGraphQLError({ code: 160002 });
+        }
+
+        const uploadedFileName = await this.uploadFile({
+          userId: userId,
+          filename: filename,
+          fileBuffer: await UploaderService.compressImage(
+            await UploaderService.streamToBuffer(createReadStream()),
+            ratio,
+          ),
+          fileExt: '.' + FileType.JPG.toLocaleLowerCase(),
+        });
+
+        return uploadedFileName;
+      });
+
+      return Promise.all(uploadPromises);
+    } catch (error) {
       this.loggerService.error(error);
       throw new IGraphQLError({ code: 160001, err: error });
     }
   }
+
 
   /**
    * Delete File
    *
    * Takes a file url and deletes the file from the bucket
    */
-  public deleteFile(url: string): void {
+  public deleteOneFile(url: string): void {
     // Split the URL by '.com/' to get the parts
     const urlParts = url.split('.com/');
 
     if (urlParts.length !== 2) {
-      this.loggerService.error('Invalid URL format for deleting file');
-      return;
+      throw new IGraphQLError({ code: 170002 });
     }
 
     // Extract the key (object path)
@@ -197,8 +234,7 @@ export class UploaderService {
 
     // Check if the bucket name matches your expected bucket
     if (bucketName !== this.bucketData.name) {
-      this.loggerService.error('Invalid bucket name in URL');
-      return;
+      throw new IGraphQLError({ code: 170001 });
     }
 
     // Delete the object using the extracted key and bucket name
@@ -213,8 +249,25 @@ export class UploaderService {
         this.loggerService.log('File deleted successfully');
       })
       .catch((error) => {
-        this.loggerService.error(error);
+        throw new IGraphQLError({ code: 170003 });
       });
+  }
+
+  public async deleteManyFile(urls: string[]): Promise<void[]> {
+    const deletePromises: Promise<void>[] = [];
+  
+    for (const url of urls) {
+      // Use async/await to call deleteFile asynchronously
+      deletePromises.push(this.deleteOneFile(url));
+    }
+  
+    try {
+      // Wait for all delete operations to complete in parallel
+      const results = await Promise.all(deletePromises);
+      return results; // Returns an array of results (success or error for each deletion)
+    } catch (error) {
+      throw error; // You can handle errors here if needed
+    }
   }
 
   private async uploadFile({
@@ -259,7 +312,6 @@ export class UploaderService {
         }),
       );
     } catch (error) {
-      this.loggerService.error(error);
       throw new IGraphQLError({ code: 160001, err: error });
     }
 

@@ -702,7 +702,7 @@ model RewardClaim {
 model File {
   id          Int      @id @default(autoincrement())
   fileType    FileType
-  filesize    Float
+  filesize    Float    @default(0)
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsNotEmpty()
@@ -733,7 +733,7 @@ model Images {
   fileType       FileType
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  filesize       Float
+  fileSize       Float
   url            String
   /// @HideField({ match: 'ImagesCreate*Input' })
   hotelImage     Hotel?   @relation(fields: [hotelImageId], references: [id])

@@ -76,5 +76,8 @@ export const errorCodes: Record<number, string> = {
   5000: 'Permintaan ini tidak dapat dimengerti oleh server.',
   5001: 'Permintaan ini harus diulang.',
   5002: 'Sumber data yang diberikan tidak valid:',
-  // ... (lanjutan kode kesalahan Data Proxy)
+  //S3
+  170001: 'Invalid bucket name in URL',
+  170002: 'Invalid URL format for getting file metadata',
+  170003: 'Delete File on storage Failed',
 };

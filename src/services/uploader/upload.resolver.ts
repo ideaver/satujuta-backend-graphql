@@ -16,14 +16,33 @@ export class UploaderResolver {
     description:
       'Header wajib ada apollo-require-preflight = true agar tidak CSRF error',
   })
-  async uploadSingle(
+  async uploadSingleImage(
     @Args({ name: 'file', type: () => GraphQLUpload }) file: FileUpload,
     @Args('userId', { type: () => String }) userId: string,
   ) {
-    return await this.uploaderService.uploadImage({
+    
+    return await this.uploaderService.uploadSingleImage({
       userId: userId,
       ratio: RatioEnum.SQUARE,
       file: file,
     });
   }
+
+  @Mutation(() => [String], {
+    description:
+      'Header wajib ada apollo-require-preflight = true agar tidak CSRF error',
+  })
+  async uploadMultiImage(
+    @Args({ name: 'files', type: () => [GraphQLUpload] }) files: FileUpload[],
+    @Args('userId', { type: () => String }) userId: string,
+  ) {
+    const uploadedFiles = await Promise.all(files);
+    return await this.uploaderService.uploadMultipleImages({
+      userId: userId,
+      ratio: RatioEnum.SQUARE,
+      files: uploadedFiles,
+    });
+  }
+
+
 }
