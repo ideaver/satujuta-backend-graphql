@@ -506,7 +506,6 @@ export function fakeRewardClaimComplete() {
 export function fakeFile() {
   return {
     fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
-    filesize: faker.datatype.float(),
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     url: faker.lorem.words(5),
@@ -517,7 +516,7 @@ export function fakeFileComplete() {
   return {
     id: faker.datatype.number(),
     fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
-    filesize: faker.datatype.float(),
+    filesize: 0,
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     url: faker.lorem.words(5),
@@ -529,7 +528,7 @@ export function fakeFileComplete() {
 export function fakeImages() {
   return {
     fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
-    filesize: faker.datatype.float(),
+    fileSize: faker.datatype.float(),
     url: faker.lorem.words(5),
   };
 }
@@ -537,7 +536,7 @@ export function fakeImagesComplete() {
   return {
     id: faker.datatype.number(),
     fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
-    filesize: faker.datatype.float(),
+    fileSize: faker.datatype.float(),
     url: faker.lorem.words(5),
     hotelImageId: undefined,
     programImageId: undefined,

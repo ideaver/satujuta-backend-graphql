@@ -12,9 +12,7 @@ export const errorCodes: Record<number, string> = {
   150001:
     'Maaf anda belum memiliki point untuk melakukan claim reward ini. Silahkan kumpulkan point terlebih dahulu',
   150002: 'Maaf Point anda tidak mencukupi untuk melakukan claim reward ini',
-  //uploader
-  160001: 'Gagal Upload File. Silahkan coba lagi',
-  160002: 'Harap upload gambar dengan format .jpg, .jpeg, atau .png',
+
   //Prisma
   123456: 'Prisma Error. Segera Lapor Administrator',
   1000: 'Autentikasi gagal terhadap server basis data di {database_host}, kredensial basis data yang diberikan untuk {database_user} tidak valid. Pastikan untuk memberikan kredensial basis data yang valid untuk server basis data di {database_host}.',
@@ -76,8 +74,13 @@ export const errorCodes: Record<number, string> = {
   5000: 'Permintaan ini tidak dapat dimengerti oleh server.',
   5001: 'Permintaan ini harus diulang.',
   5002: 'Sumber data yang diberikan tidak valid:',
-  //S3
+  //S3 & uploader
+  160001: 'Gagal Upload File. Silahkan coba lagi',
+  160002: 'Harap upload gambar dengan format .jpg, .jpeg, atau .png',
   170001: 'Invalid bucket name in URL',
   170002: 'Invalid URL format for getting file metadata',
-  170003: 'Delete File on storage Failed',
+  170003: 'Gagal hapus file di storage',
+  170004:
+    'Ukuran file tidak boleh lebih dari 10 mb untuk gambar, MP4 100 mb, PDF 30 mb',
+  170005: 'File tidak didukung',
 };

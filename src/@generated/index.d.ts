@@ -298,7 +298,7 @@ export declare enum InstallmentScalarFieldEnum {
 export declare enum ImagesScalarFieldEnum {
     id = "id",
     fileType = "fileType",
-    filesize = "filesize",
+    fileSize = "fileSize",
     url = "url",
     hotelImageId = "hotelImageId",
     programImageId = "programImageId",
@@ -4842,7 +4842,7 @@ export declare class FileCreateManyCreatedByInputEnvelope {
 export declare class FileCreateManyCreatedByInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    filesize?: number;
     name: string;
     description: string;
     url: string;
@@ -4852,7 +4852,7 @@ export declare class FileCreateManyCreatedByInput {
 export declare class FileCreateManyInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    filesize?: number;
     name: string;
     description: string;
     url: string;
@@ -4872,7 +4872,7 @@ export declare class FileCreateOrConnectWithoutCreatedByInput {
 }
 export declare class FileCreateWithoutCreatedByInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    filesize?: number;
     name: string;
     description: string;
     url: string;
@@ -4881,7 +4881,7 @@ export declare class FileCreateWithoutCreatedByInput {
 }
 export declare class FileCreateInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    filesize?: number;
     name: string;
     description: string;
     url: string;
@@ -5069,7 +5069,7 @@ export declare class FileUncheckedCreateNestedManyWithoutCreatedByInput {
 export declare class FileUncheckedCreateWithoutCreatedByInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    filesize?: number;
     name: string;
     description: string;
     url: string;
@@ -5079,7 +5079,7 @@ export declare class FileUncheckedCreateWithoutCreatedByInput {
 export declare class FileUncheckedCreateInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    filesize?: number;
     name: string;
     description: string;
     url: string;
@@ -6243,7 +6243,7 @@ export declare class ImagesAggregateArgs {
 }
 export declare class ImagesAvgAggregateInput {
     id?: true;
-    filesize?: true;
+    fileSize?: true;
     hotelImageId?: true;
     programImageId?: true;
     rewardImageId?: true;
@@ -6251,7 +6251,7 @@ export declare class ImagesAvgAggregateInput {
 }
 export declare class ImagesAvgAggregate {
     id?: number;
-    filesize?: number;
+    fileSize?: number;
     hotelImageId?: number;
     programImageId?: number;
     rewardImageId?: number;
@@ -6259,7 +6259,7 @@ export declare class ImagesAvgAggregate {
 }
 export declare class ImagesAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     hotelImageId?: keyof typeof SortOrder;
     programImageId?: keyof typeof SortOrder;
     rewardImageId?: keyof typeof SortOrder;
@@ -6268,7 +6268,7 @@ export declare class ImagesAvgOrderByAggregateInput {
 export declare class ImagesCountAggregateInput {
     id?: true;
     fileType?: true;
-    filesize?: true;
+    fileSize?: true;
     url?: true;
     hotelImageId?: true;
     programImageId?: true;
@@ -6280,7 +6280,7 @@ export declare class ImagesCountAggregateInput {
 export declare class ImagesCountAggregate {
     id: number;
     fileType: number;
-    filesize: number;
+    fileSize: number;
     url: number;
     hotelImageId: number;
     programImageId: number;
@@ -6292,7 +6292,7 @@ export declare class ImagesCountAggregate {
 export declare class ImagesCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     fileType?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     url?: keyof typeof SortOrder;
     hotelImageId?: keyof typeof SortOrder;
     programImageId?: keyof typeof SortOrder;
@@ -6307,7 +6307,7 @@ export declare class ImagesCreateManyHotelImageInputEnvelope {
 export declare class ImagesCreateManyHotelImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     programImageId?: number;
     rewardImageId?: number;
@@ -6321,7 +6321,7 @@ export declare class ImagesCreateManyProgramImageInputEnvelope {
 export declare class ImagesCreateManyProgramImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     rewardImageId?: number;
@@ -6335,7 +6335,7 @@ export declare class ImagesCreateManyProjectImageInputEnvelope {
 export declare class ImagesCreateManyProjectImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6349,7 +6349,7 @@ export declare class ImagesCreateManyRewardImageInputEnvelope {
 export declare class ImagesCreateManyRewardImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6359,7 +6359,7 @@ export declare class ImagesCreateManyRewardImageInput {
 export declare class ImagesCreateManyInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6409,7 +6409,7 @@ export declare class ImagesCreateOrConnectWithoutRewardImageInput {
 }
 export declare class ImagesCreateWithoutHotelImageInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     createdAt?: Date | string;
     programImage?: InstanceType<typeof ProgramCreateNestedOneWithoutImagesInput>;
@@ -6418,7 +6418,7 @@ export declare class ImagesCreateWithoutHotelImageInput {
 }
 export declare class ImagesCreateWithoutProgramImageInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     createdAt?: Date | string;
     hotelImage?: InstanceType<typeof HotelCreateNestedOneWithoutImagesInput>;
@@ -6427,7 +6427,7 @@ export declare class ImagesCreateWithoutProgramImageInput {
 }
 export declare class ImagesCreateWithoutProjectImageInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     createdAt?: Date | string;
     hotelImage?: InstanceType<typeof HotelCreateNestedOneWithoutImagesInput>;
@@ -6436,7 +6436,7 @@ export declare class ImagesCreateWithoutProjectImageInput {
 }
 export declare class ImagesCreateWithoutRewardImageInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     createdAt?: Date | string;
     hotelImage?: InstanceType<typeof HotelCreateNestedOneWithoutImagesInput>;
@@ -6445,7 +6445,7 @@ export declare class ImagesCreateWithoutRewardImageInput {
 }
 export declare class ImagesCreateInput {
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     createdAt?: Date | string;
     hotelImage?: InstanceType<typeof HotelCreateNestedOneWithoutImagesInput>;
@@ -6469,7 +6469,7 @@ export declare class ImagesGroupByArgs {
 export declare class ImagesGroupBy {
     id: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6490,7 +6490,7 @@ export declare class ImagesListRelationFilter {
 export declare class ImagesMaxAggregateInput {
     id?: true;
     fileType?: true;
-    filesize?: true;
+    fileSize?: true;
     url?: true;
     hotelImageId?: true;
     programImageId?: true;
@@ -6501,7 +6501,7 @@ export declare class ImagesMaxAggregateInput {
 export declare class ImagesMaxAggregate {
     id?: number;
     fileType?: keyof typeof FileType;
-    filesize?: number;
+    fileSize?: number;
     url?: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6512,7 +6512,7 @@ export declare class ImagesMaxAggregate {
 export declare class ImagesMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     fileType?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     url?: keyof typeof SortOrder;
     hotelImageId?: keyof typeof SortOrder;
     programImageId?: keyof typeof SortOrder;
@@ -6523,7 +6523,7 @@ export declare class ImagesMaxOrderByAggregateInput {
 export declare class ImagesMinAggregateInput {
     id?: true;
     fileType?: true;
-    filesize?: true;
+    fileSize?: true;
     url?: true;
     hotelImageId?: true;
     programImageId?: true;
@@ -6534,7 +6534,7 @@ export declare class ImagesMinAggregateInput {
 export declare class ImagesMinAggregate {
     id?: number;
     fileType?: keyof typeof FileType;
-    filesize?: number;
+    fileSize?: number;
     url?: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6545,7 +6545,7 @@ export declare class ImagesMinAggregate {
 export declare class ImagesMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
     fileType?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     url?: keyof typeof SortOrder;
     hotelImageId?: keyof typeof SortOrder;
     programImageId?: keyof typeof SortOrder;
@@ -6559,7 +6559,7 @@ export declare class ImagesOrderByRelationAggregateInput {
 export declare class ImagesOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     fileType?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     url?: keyof typeof SortOrder;
     hotelImageId?: InstanceType<typeof SortOrderInput>;
     programImageId?: InstanceType<typeof SortOrderInput>;
@@ -6575,7 +6575,7 @@ export declare class ImagesOrderByWithAggregationInput {
 export declare class ImagesOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     fileType?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     url?: keyof typeof SortOrder;
     hotelImageId?: InstanceType<typeof SortOrderInput>;
     programImageId?: InstanceType<typeof SortOrderInput>;
@@ -6593,7 +6593,7 @@ export declare class ImagesScalarWhereWithAggregatesInput {
     NOT?: Array<ImagesScalarWhereWithAggregatesInput>;
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     fileType?: InstanceType<typeof EnumFileTypeWithAggregatesFilter>;
-    filesize?: InstanceType<typeof FloatWithAggregatesFilter>;
+    fileSize?: InstanceType<typeof FloatWithAggregatesFilter>;
     url?: InstanceType<typeof StringWithAggregatesFilter>;
     hotelImageId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     programImageId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
@@ -6607,7 +6607,7 @@ export declare class ImagesScalarWhereInput {
     NOT?: Array<ImagesScalarWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     fileType?: InstanceType<typeof EnumFileTypeFilter>;
-    filesize?: InstanceType<typeof FloatFilter>;
+    fileSize?: InstanceType<typeof FloatFilter>;
     url?: InstanceType<typeof StringFilter>;
     hotelImageId?: InstanceType<typeof IntNullableFilter>;
     programImageId?: InstanceType<typeof IntNullableFilter>;
@@ -6617,7 +6617,7 @@ export declare class ImagesScalarWhereInput {
 }
 export declare class ImagesSumAggregateInput {
     id?: true;
-    filesize?: true;
+    fileSize?: true;
     hotelImageId?: true;
     programImageId?: true;
     rewardImageId?: true;
@@ -6625,7 +6625,7 @@ export declare class ImagesSumAggregateInput {
 }
 export declare class ImagesSumAggregate {
     id?: number;
-    filesize?: number;
+    fileSize?: number;
     hotelImageId?: number;
     programImageId?: number;
     rewardImageId?: number;
@@ -6633,7 +6633,7 @@ export declare class ImagesSumAggregate {
 }
 export declare class ImagesSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
-    filesize?: keyof typeof SortOrder;
+    fileSize?: keyof typeof SortOrder;
     hotelImageId?: keyof typeof SortOrder;
     programImageId?: keyof typeof SortOrder;
     rewardImageId?: keyof typeof SortOrder;
@@ -6666,7 +6666,7 @@ export declare class ImagesUncheckedCreateNestedManyWithoutRewardImageInput {
 export declare class ImagesUncheckedCreateWithoutHotelImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     programImageId?: number;
     rewardImageId?: number;
@@ -6676,7 +6676,7 @@ export declare class ImagesUncheckedCreateWithoutHotelImageInput {
 export declare class ImagesUncheckedCreateWithoutProgramImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     rewardImageId?: number;
@@ -6686,7 +6686,7 @@ export declare class ImagesUncheckedCreateWithoutProgramImageInput {
 export declare class ImagesUncheckedCreateWithoutProjectImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6696,7 +6696,7 @@ export declare class ImagesUncheckedCreateWithoutProjectImageInput {
 export declare class ImagesUncheckedCreateWithoutRewardImageInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6706,7 +6706,7 @@ export declare class ImagesUncheckedCreateWithoutRewardImageInput {
 export declare class ImagesUncheckedCreateInput {
     id?: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId?: number;
     programImageId?: number;
@@ -6730,7 +6730,7 @@ export declare class ImagesUncheckedUpdateManyWithoutHotelImageNestedInput {
 export declare class ImagesUncheckedUpdateManyWithoutHotelImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     rewardImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6753,7 +6753,7 @@ export declare class ImagesUncheckedUpdateManyWithoutProgramImageNestedInput {
 export declare class ImagesUncheckedUpdateManyWithoutProgramImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     rewardImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6776,7 +6776,7 @@ export declare class ImagesUncheckedUpdateManyWithoutProjectImageNestedInput {
 export declare class ImagesUncheckedUpdateManyWithoutProjectImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6799,7 +6799,7 @@ export declare class ImagesUncheckedUpdateManyWithoutRewardImageNestedInput {
 export declare class ImagesUncheckedUpdateManyWithoutRewardImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6809,7 +6809,7 @@ export declare class ImagesUncheckedUpdateManyWithoutRewardImageInput {
 export declare class ImagesUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6820,7 +6820,7 @@ export declare class ImagesUncheckedUpdateManyInput {
 export declare class ImagesUncheckedUpdateWithoutHotelImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     rewardImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6830,7 +6830,7 @@ export declare class ImagesUncheckedUpdateWithoutHotelImageInput {
 export declare class ImagesUncheckedUpdateWithoutProgramImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     rewardImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6840,7 +6840,7 @@ export declare class ImagesUncheckedUpdateWithoutProgramImageInput {
 export declare class ImagesUncheckedUpdateWithoutProjectImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6850,7 +6850,7 @@ export declare class ImagesUncheckedUpdateWithoutProjectImageInput {
 export declare class ImagesUncheckedUpdateWithoutRewardImageInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6860,7 +6860,7 @@ export declare class ImagesUncheckedUpdateWithoutRewardImageInput {
 export declare class ImagesUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     hotelImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     programImageId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
@@ -6870,7 +6870,7 @@ export declare class ImagesUncheckedUpdateInput {
 }
 export declare class ImagesUpdateManyMutationInput {
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
@@ -6960,7 +6960,7 @@ export declare class ImagesUpdateWithWhereUniqueWithoutRewardImageInput {
 }
 export declare class ImagesUpdateWithoutHotelImageInput {
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     programImage?: InstanceType<typeof ProgramUpdateOneWithoutImagesNestedInput>;
@@ -6969,7 +6969,7 @@ export declare class ImagesUpdateWithoutHotelImageInput {
 }
 export declare class ImagesUpdateWithoutProgramImageInput {
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     hotelImage?: InstanceType<typeof HotelUpdateOneWithoutImagesNestedInput>;
@@ -6978,7 +6978,7 @@ export declare class ImagesUpdateWithoutProgramImageInput {
 }
 export declare class ImagesUpdateWithoutProjectImageInput {
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     hotelImage?: InstanceType<typeof HotelUpdateOneWithoutImagesNestedInput>;
@@ -6987,7 +6987,7 @@ export declare class ImagesUpdateWithoutProjectImageInput {
 }
 export declare class ImagesUpdateWithoutRewardImageInput {
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     hotelImage?: InstanceType<typeof HotelUpdateOneWithoutImagesNestedInput>;
@@ -6996,7 +6996,7 @@ export declare class ImagesUpdateWithoutRewardImageInput {
 }
 export declare class ImagesUpdateInput {
     fileType?: InstanceType<typeof EnumFileTypeFieldUpdateOperationsInput>;
-    filesize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
+    fileSize?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
     url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     hotelImage?: InstanceType<typeof HotelUpdateOneWithoutImagesNestedInput>;
@@ -7030,7 +7030,7 @@ export declare class ImagesWhereUniqueInput {
     OR?: Array<ImagesWhereInput>;
     NOT?: Array<ImagesWhereInput>;
     fileType?: InstanceType<typeof EnumFileTypeFilter>;
-    filesize?: InstanceType<typeof FloatFilter>;
+    fileSize?: InstanceType<typeof FloatFilter>;
     url?: InstanceType<typeof StringFilter>;
     hotelImageId?: InstanceType<typeof IntNullableFilter>;
     programImageId?: InstanceType<typeof IntNullableFilter>;
@@ -7048,7 +7048,7 @@ export declare class ImagesWhereInput {
     NOT?: Array<ImagesWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     fileType?: InstanceType<typeof EnumFileTypeFilter>;
-    filesize?: InstanceType<typeof FloatFilter>;
+    fileSize?: InstanceType<typeof FloatFilter>;
     url?: InstanceType<typeof StringFilter>;
     hotelImageId?: InstanceType<typeof IntNullableFilter>;
     programImageId?: InstanceType<typeof IntNullableFilter>;
@@ -7063,7 +7063,7 @@ export declare class ImagesWhereInput {
 export declare class Images {
     id: number;
     fileType: keyof typeof FileType;
-    filesize: number;
+    fileSize: number;
     url: string;
     hotelImageId: number | null;
     programImageId: number | null;

@@ -22,6 +22,7 @@ import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
 import { S3Config } from 'src/config/s3config.model';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { FileType } from '@prisma/client';
+import { MAX_FILE_SIZES } from './constants';
 
 @Injectable()
 export class UploaderService {
@@ -37,7 +38,7 @@ export class UploaderService {
     this.loggerService = new Logger(UploaderService.name);
   }
 
-  public async getFileMetadata(
+  public async getFileMetadataFromS3(
     url: string,
   ): Promise<{ size: number; mimeType: string }> {
     // Split the URL by '.com/' to get the parts
@@ -76,13 +77,6 @@ export class UploaderService {
       this.loggerService.error(error);
       throw error;
     }
-  }
-
-  private static validateImage(mimetype: string): string | false {
-    const val = mimetype.split('/');
-    if (val[0] !== 'image') return false;
-
-    return val[1] ?? false;
   }
 
   private static async streamToBuffer(stream: Readable): Promise<Buffer> {
@@ -133,87 +127,6 @@ export class UploaderService {
   }
 
   /**
-   * Upload Image
-   *
-   * Converts an image to jpeg and uploads it to the bucket
-   */
-  public async uploadSingleImage({
-    userId,
-    ratio,
-    file,
-  }: {
-    userId: string;
-    file: Promise<FileUploadDto>;
-    ratio?: RatioEnum;
-  }): Promise<string> {
-    const { filename, createReadStream } = await file;
-
-    const imageType = UploaderService.validateImage(
-      detectMimeTypeFromFilename(filename),
-    );
-
-    if (!imageType) {
-      throw new IGraphQLError({ code: 160002 });
-    }
-
-    try {
-      return await this.uploadFile({
-        userId: userId,
-        filename: filename,
-        fileBuffer: await UploaderService.compressImage(
-          await UploaderService.streamToBuffer(createReadStream()),
-          ratio,
-        ),
-        fileExt: '.' + FileType.JPG.toLocaleLowerCase(),
-      });
-    } catch (error) {
-      throw new IGraphQLError({ code: 160001, err: error });
-    }
-  }
-
-  public async uploadMultipleImages({
-    userId,
-    ratio,
-    files,
-  }: {
-    userId: string;
-    files: Promise<FileUploadDto>[];
-    ratio?: RatioEnum;
-  }): Promise<string[]> {
-    try {
-      const uploadPromises = files.map(async (filePromise) => {
-        const { filename, createReadStream } = await filePromise;
-
-        const imageType = UploaderService.validateImage(
-          detectMimeTypeFromFilename(filename),
-        );
-
-        if (!imageType) {
-          throw new IGraphQLError({ code: 160002 });
-        }
-
-        const uploadedFileName = await this.uploadFile({
-          userId: userId,
-          filename: filename,
-          fileBuffer: await UploaderService.compressImage(
-            await UploaderService.streamToBuffer(createReadStream()),
-            ratio,
-          ),
-          fileExt: '.' + FileType.JPG.toLocaleLowerCase(),
-        });
-
-        return uploadedFileName;
-      });
-
-      return Promise.all(uploadPromises);
-    } catch (error) {
-      this.loggerService.error(error);
-      throw new IGraphQLError({ code: 160001, err: error });
-    }
-  }
-
-
-  /**
    * Delete File
    *
    * Takes a file url and deletes the file from the bucket
@@ -254,54 +167,78 @@ export class UploaderService {
   }
 
   public async deleteManyFile(urls: string[]): Promise<void[]> {
-    const deletePromises: Promise<void>[] = [];
-  
+    const deletePromises = [];
+
     for (const url of urls) {
       // Use async/await to call deleteFile asynchronously
       deletePromises.push(this.deleteOneFile(url));
     }
-  
+
     try {
       // Wait for all delete operations to complete in parallel
       const results = await Promise.all(deletePromises);
       return results; // Returns an array of results (success or error for each deletion)
     } catch (error) {
-      throw error; // You can handle errors here if needed
+      throw new IGraphQLError({ code: 170003 });
     }
   }
 
-  private async uploadFile({
+  public async uploadFile({
     userId,
-    fileBuffer,
-    fileExt,
-    filename,
+    file,
+    ratioForImage: ratio,
   }: {
     userId: string;
-    fileBuffer: Buffer;
-    fileExt: string;
-    filename: string;
+    file: Promise<FileUploadDto>;
+    ratioForImage?: RatioEnum;
   }): Promise<string> {
-    // const key =
-    //   this.bucketData.folder +
-    //   '/' +
-    //   uuidV5(userId.toString(), this.bucketData.appUuid) +
-    //   '/' +
-    //   uuidV4() +
-    //   fileExt;
-
-    //TODO: Implement maxfilesize for each enum file type
-
-    const key =
-      this.bucketData.folder +
-      '/' +
-      fileExt +
-      '/' +
-      userId.toString() +
-      '/' +
-      uuidV4() +
-      fileExt;
-
     try {
+      const { filename, createReadStream } = await file;
+
+      // Identify the file type based on the file's extension or MIME type
+      let fileExt = detectMimeTypeFromFilename(filename);
+      let fileType: FileType;
+
+      // If the file has an extension, get the file type from the extension
+      if (fileExt) {
+        fileExt = `.${fileExt.toLowerCase()}`;
+        fileType = FileType[fileExt.toLowerCase() as keyof typeof FileType];
+      } else {
+        // If the file doesn't have an extension, get the file type from the MIME type
+        fileType =
+          FileType[
+            filename.split('/')[1].toUpperCase() as keyof typeof FileType
+          ];
+      }
+
+      // If the file type is not supported, throw an error
+      if (!fileType) {
+        throw new IGraphQLError({ code: 170005 });
+      }
+
+      // Convert the file stream to a buffer
+      let fileBuffer = await UploaderService.streamToBuffer(createReadStream());
+
+      // Get the file size
+      const fileSize = fileBuffer.length;
+
+      // Check if the file size exceeds the maximum allowed size for the detected file type
+      if (fileSize > MAX_FILE_SIZES[fileType]) {
+        throw new IGraphQLError({ code: 170004 }); // You can define a custom error code for this case
+      }
+
+      // If it's an image, compress and convert it to JPEG
+      if (fileType === FileType.JPG || fileType === FileType.PNG) {
+        fileBuffer = await UploaderService.compressImage(fileBuffer, ratio);
+        fileExt = `.${FileType.JPG.toLowerCase()}`;
+      }
+
+      // Generate a unique key for the file
+      const key = `${
+        this.bucketData.folder
+      }/${fileExt}/${userId}/${uuidV4()}${fileExt}`;
+
+      // Upload the file to the bucket
       await this.client.send(
         new PutObjectCommand({
           Bucket: this.bucketData.name,
@@ -311,10 +248,31 @@ export class UploaderService {
           ContentType: detectMimeTypeFromFilename(filename),
         }),
       );
+
+      return `${this.bucketData.url}${key}`;
     } catch (error) {
       throw new IGraphQLError({ code: 160001, err: error });
     }
+  }
 
-    return this.bucketData.url + key;
+  public async uploadMultipleFiles({
+    userId,
+    files,
+    ratioForImage,
+  }: {
+    userId: string;
+    files: Promise<FileUploadDto>[];
+    ratioForImage?: RatioEnum;
+  }): Promise<string[]> {
+    try {
+      const uploadPromises = files.map(async (file) => {
+        return await this.uploadFile({ userId, file, ratioForImage });
+      });
+
+      return await Promise.all(uploadPromises);
+    } catch (error) {
+      // Handle errors as needed
+      throw new IGraphQLError({ code: 160001, err: error });
+    }
   }
 }

@@ -429,7 +429,7 @@ var ImagesScalarFieldEnum;
 (function (ImagesScalarFieldEnum) {
     ImagesScalarFieldEnum["id"] = "id";
     ImagesScalarFieldEnum["fileType"] = "fileType";
-    ImagesScalarFieldEnum["filesize"] = "filesize";
+    ImagesScalarFieldEnum["fileSize"] = "fileSize";
     ImagesScalarFieldEnum["url"] = "url";
     ImagesScalarFieldEnum["hotelImageId"] = "hotelImageId";
     ImagesScalarFieldEnum["programImageId"] = "programImageId";
@@ -14801,7 +14801,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], FileCreateManyCreatedByInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], FileCreateManyCreatedByInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -14837,7 +14837,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], FileCreateManyInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], FileCreateManyInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -14909,7 +14909,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], FileCreateWithoutCreatedByInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], FileCreateWithoutCreatedByInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -14942,7 +14942,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], FileCreateInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], FileCreateInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -15517,7 +15517,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], FileUncheckedCreateWithoutCreatedByInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], FileUncheckedCreateWithoutCreatedByInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -15553,7 +15553,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], FileUncheckedCreateInput.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], FileUncheckedCreateInput.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
@@ -16038,7 +16038,7 @@ __decorate([
     (0, graphql_1.Field)(() => FileType, { nullable: false })
 ], File.prototype, "fileType", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false, defaultValue: 0 })
 ], File.prototype, "filesize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
@@ -19352,7 +19352,7 @@ __decorate([
 ], ImagesAvgAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], ImagesAvgAggregateInput.prototype, "filesize", void 0);
+], ImagesAvgAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ImagesAvgAggregateInput.prototype, "hotelImageId", void 0);
@@ -19376,7 +19376,7 @@ __decorate([
 ], ImagesAvgAggregate.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], ImagesAvgAggregate.prototype, "filesize", void 0);
+], ImagesAvgAggregate.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], ImagesAvgAggregate.prototype, "hotelImageId", void 0);
@@ -19400,7 +19400,7 @@ __decorate([
 ], ImagesAvgOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesAvgOrderByAggregateInput.prototype, "filesize", void 0);
+], ImagesAvgOrderByAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesAvgOrderByAggregateInput.prototype, "hotelImageId", void 0);
@@ -19427,7 +19427,7 @@ __decorate([
 ], ImagesCountAggregateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], ImagesCountAggregateInput.prototype, "filesize", void 0);
+], ImagesCountAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ImagesCountAggregateInput.prototype, "url", void 0);
@@ -19463,7 +19463,7 @@ __decorate([
 ], ImagesCountAggregate.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
-], ImagesCountAggregate.prototype, "filesize", void 0);
+], ImagesCountAggregate.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], ImagesCountAggregate.prototype, "url", void 0);
@@ -19499,7 +19499,7 @@ __decorate([
 ], ImagesCountOrderByAggregateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesCountOrderByAggregateInput.prototype, "filesize", void 0);
+], ImagesCountOrderByAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesCountOrderByAggregateInput.prototype, "url", void 0);
@@ -19545,7 +19545,7 @@ __decorate([
 ], ImagesCreateManyHotelImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateManyHotelImageInput.prototype, "filesize", void 0);
+], ImagesCreateManyHotelImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyHotelImageInput.prototype, "url", void 0);
@@ -19588,7 +19588,7 @@ __decorate([
 ], ImagesCreateManyProgramImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateManyProgramImageInput.prototype, "filesize", void 0);
+], ImagesCreateManyProgramImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyProgramImageInput.prototype, "url", void 0);
@@ -19631,7 +19631,7 @@ __decorate([
 ], ImagesCreateManyProjectImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateManyProjectImageInput.prototype, "filesize", void 0);
+], ImagesCreateManyProjectImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyProjectImageInput.prototype, "url", void 0);
@@ -19674,7 +19674,7 @@ __decorate([
 ], ImagesCreateManyRewardImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateManyRewardImageInput.prototype, "filesize", void 0);
+], ImagesCreateManyRewardImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyRewardImageInput.prototype, "url", void 0);
@@ -19704,7 +19704,7 @@ __decorate([
 ], ImagesCreateManyInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateManyInput.prototype, "filesize", void 0);
+], ImagesCreateManyInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateManyInput.prototype, "url", void 0);
@@ -19878,7 +19878,7 @@ __decorate([
 ], ImagesCreateWithoutHotelImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateWithoutHotelImageInput.prototype, "filesize", void 0);
+], ImagesCreateWithoutHotelImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutHotelImageInput.prototype, "url", void 0);
@@ -19905,7 +19905,7 @@ __decorate([
 ], ImagesCreateWithoutProgramImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateWithoutProgramImageInput.prototype, "filesize", void 0);
+], ImagesCreateWithoutProgramImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutProgramImageInput.prototype, "url", void 0);
@@ -19932,7 +19932,7 @@ __decorate([
 ], ImagesCreateWithoutProjectImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateWithoutProjectImageInput.prototype, "filesize", void 0);
+], ImagesCreateWithoutProjectImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutProjectImageInput.prototype, "url", void 0);
@@ -19959,7 +19959,7 @@ __decorate([
 ], ImagesCreateWithoutRewardImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateWithoutRewardImageInput.prototype, "filesize", void 0);
+], ImagesCreateWithoutRewardImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateWithoutRewardImageInput.prototype, "url", void 0);
@@ -19986,7 +19986,7 @@ __decorate([
 ], ImagesCreateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesCreateInput.prototype, "filesize", void 0);
+], ImagesCreateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesCreateInput.prototype, "url", void 0);
@@ -20059,7 +20059,7 @@ __decorate([
 ], ImagesGroupBy.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
-], ImagesGroupBy.prototype, "filesize", void 0);
+], ImagesGroupBy.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesGroupBy.prototype, "url", void 0);
@@ -20122,7 +20122,7 @@ __decorate([
 ], ImagesMaxAggregateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], ImagesMaxAggregateInput.prototype, "filesize", void 0);
+], ImagesMaxAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ImagesMaxAggregateInput.prototype, "url", void 0);
@@ -20155,7 +20155,7 @@ __decorate([
 ], ImagesMaxAggregate.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], ImagesMaxAggregate.prototype, "filesize", void 0);
+], ImagesMaxAggregate.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], ImagesMaxAggregate.prototype, "url", void 0);
@@ -20188,7 +20188,7 @@ __decorate([
 ], ImagesMaxOrderByAggregateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesMaxOrderByAggregateInput.prototype, "filesize", void 0);
+], ImagesMaxOrderByAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesMaxOrderByAggregateInput.prototype, "url", void 0);
@@ -20221,7 +20221,7 @@ __decorate([
 ], ImagesMinAggregateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], ImagesMinAggregateInput.prototype, "filesize", void 0);
+], ImagesMinAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ImagesMinAggregateInput.prototype, "url", void 0);
@@ -20254,7 +20254,7 @@ __decorate([
 ], ImagesMinAggregate.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], ImagesMinAggregate.prototype, "filesize", void 0);
+], ImagesMinAggregate.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true })
 ], ImagesMinAggregate.prototype, "url", void 0);
@@ -20287,7 +20287,7 @@ __decorate([
 ], ImagesMinOrderByAggregateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesMinOrderByAggregateInput.prototype, "filesize", void 0);
+], ImagesMinOrderByAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesMinOrderByAggregateInput.prototype, "url", void 0);
@@ -20329,7 +20329,7 @@ __decorate([
 ], ImagesOrderByWithAggregationInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesOrderByWithAggregationInput.prototype, "filesize", void 0);
+], ImagesOrderByWithAggregationInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesOrderByWithAggregationInput.prototype, "url", void 0);
@@ -20377,7 +20377,7 @@ __decorate([
 ], ImagesOrderByWithRelationInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesOrderByWithRelationInput.prototype, "filesize", void 0);
+], ImagesOrderByWithRelationInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesOrderByWithRelationInput.prototype, "url", void 0);
@@ -20431,7 +20431,7 @@ __decorate([
 ], ImagesScalarWhereWithAggregatesInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatWithAggregatesFilter, { nullable: true })
-], ImagesScalarWhereWithAggregatesInput.prototype, "filesize", void 0);
+], ImagesScalarWhereWithAggregatesInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], ImagesScalarWhereWithAggregatesInput.prototype, "url", void 0);
@@ -20473,7 +20473,7 @@ __decorate([
 ], ImagesScalarWhereInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
-], ImagesScalarWhereInput.prototype, "filesize", void 0);
+], ImagesScalarWhereInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], ImagesScalarWhereInput.prototype, "url", void 0);
@@ -20503,7 +20503,7 @@ __decorate([
 ], ImagesSumAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
-], ImagesSumAggregateInput.prototype, "filesize", void 0);
+], ImagesSumAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], ImagesSumAggregateInput.prototype, "hotelImageId", void 0);
@@ -20527,7 +20527,7 @@ __decorate([
 ], ImagesSumAggregate.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
-], ImagesSumAggregate.prototype, "filesize", void 0);
+], ImagesSumAggregate.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], ImagesSumAggregate.prototype, "hotelImageId", void 0);
@@ -20551,7 +20551,7 @@ __decorate([
 ], ImagesSumOrderByAggregateInput.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
-], ImagesSumOrderByAggregateInput.prototype, "filesize", void 0);
+], ImagesSumOrderByAggregateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], ImagesSumOrderByAggregateInput.prototype, "hotelImageId", void 0);
@@ -20667,7 +20667,7 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber()
-], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutHotelImageInput.prototype, "url", void 0);
@@ -20698,7 +20698,7 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber()
-], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutProgramImageInput.prototype, "url", void 0);
@@ -20729,7 +20729,7 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber()
-], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutProjectImageInput.prototype, "url", void 0);
@@ -20760,7 +20760,7 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber()
-], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateWithoutRewardImageInput.prototype, "url", void 0);
@@ -20791,7 +20791,7 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false }),
     Validator.IsNumber()
-], ImagesUncheckedCreateInput.prototype, "filesize", void 0);
+], ImagesUncheckedCreateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], ImagesUncheckedCreateInput.prototype, "url", void 0);
@@ -20874,7 +20874,7 @@ __decorate([
 ], ImagesUncheckedUpdateManyWithoutHotelImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateManyWithoutHotelImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateManyWithoutHotelImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateManyWithoutHotelImageInput.prototype, "url", void 0);
@@ -20954,7 +20954,7 @@ __decorate([
 ], ImagesUncheckedUpdateManyWithoutProgramImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateManyWithoutProgramImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateManyWithoutProgramImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateManyWithoutProgramImageInput.prototype, "url", void 0);
@@ -21034,7 +21034,7 @@ __decorate([
 ], ImagesUncheckedUpdateManyWithoutProjectImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateManyWithoutProjectImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateManyWithoutProjectImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateManyWithoutProjectImageInput.prototype, "url", void 0);
@@ -21114,7 +21114,7 @@ __decorate([
 ], ImagesUncheckedUpdateManyWithoutRewardImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateManyWithoutRewardImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateManyWithoutRewardImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateManyWithoutRewardImageInput.prototype, "url", void 0);
@@ -21144,7 +21144,7 @@ __decorate([
 ], ImagesUncheckedUpdateManyInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateManyInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateManyInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateManyInput.prototype, "url", void 0);
@@ -21177,7 +21177,7 @@ __decorate([
 ], ImagesUncheckedUpdateWithoutHotelImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateWithoutHotelImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateWithoutHotelImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateWithoutHotelImageInput.prototype, "url", void 0);
@@ -21207,7 +21207,7 @@ __decorate([
 ], ImagesUncheckedUpdateWithoutProgramImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateWithoutProgramImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateWithoutProgramImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateWithoutProgramImageInput.prototype, "url", void 0);
@@ -21237,7 +21237,7 @@ __decorate([
 ], ImagesUncheckedUpdateWithoutProjectImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateWithoutProjectImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateWithoutProjectImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateWithoutProjectImageInput.prototype, "url", void 0);
@@ -21267,7 +21267,7 @@ __decorate([
 ], ImagesUncheckedUpdateWithoutRewardImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateWithoutRewardImageInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateWithoutRewardImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateWithoutRewardImageInput.prototype, "url", void 0);
@@ -21297,7 +21297,7 @@ __decorate([
 ], ImagesUncheckedUpdateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFieldUpdateOperationsInput, { nullable: true })
-], ImagesUncheckedUpdateInput.prototype, "filesize", void 0);
+], ImagesUncheckedUpdateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUncheckedUpdateInput.prototype, "url", void 0);
@@ -21327,7 +21327,7 @@ __decorate([
 ], ImagesUpdateManyMutationInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesUpdateManyMutationInput.prototype, "filesize", void 0);
+], ImagesUpdateManyMutationInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateManyMutationInput.prototype, "url", void 0);
@@ -21657,7 +21657,7 @@ __decorate([
 ], ImagesUpdateWithoutHotelImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesUpdateWithoutHotelImageInput.prototype, "filesize", void 0);
+], ImagesUpdateWithoutHotelImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutHotelImageInput.prototype, "url", void 0);
@@ -21684,7 +21684,7 @@ __decorate([
 ], ImagesUpdateWithoutProgramImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesUpdateWithoutProgramImageInput.prototype, "filesize", void 0);
+], ImagesUpdateWithoutProgramImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutProgramImageInput.prototype, "url", void 0);
@@ -21711,7 +21711,7 @@ __decorate([
 ], ImagesUpdateWithoutProjectImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesUpdateWithoutProjectImageInput.prototype, "filesize", void 0);
+], ImagesUpdateWithoutProjectImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutProjectImageInput.prototype, "url", void 0);
@@ -21738,7 +21738,7 @@ __decorate([
 ], ImagesUpdateWithoutRewardImageInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesUpdateWithoutRewardImageInput.prototype, "filesize", void 0);
+], ImagesUpdateWithoutRewardImageInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateWithoutRewardImageInput.prototype, "url", void 0);
@@ -21765,7 +21765,7 @@ __decorate([
 ], ImagesUpdateInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_7.HideField)()
-], ImagesUpdateInput.prototype, "filesize", void 0);
+], ImagesUpdateInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], ImagesUpdateInput.prototype, "url", void 0);
@@ -21879,7 +21879,7 @@ __decorate([
 ], ImagesWhereUniqueInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
-], ImagesWhereUniqueInput.prototype, "filesize", void 0);
+], ImagesWhereUniqueInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], ImagesWhereUniqueInput.prototype, "url", void 0);
@@ -21933,7 +21933,7 @@ __decorate([
 ], ImagesWhereInput.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => FloatFilter, { nullable: true })
-], ImagesWhereInput.prototype, "filesize", void 0);
+], ImagesWhereInput.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], ImagesWhereInput.prototype, "url", void 0);
@@ -21978,7 +21978,7 @@ __decorate([
 ], Images.prototype, "fileType", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: false })
-], Images.prototype, "filesize", void 0);
+], Images.prototype, "fileSize", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], Images.prototype, "url", void 0);
