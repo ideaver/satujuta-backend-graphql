@@ -9,18 +9,15 @@ export class HotelService {
 
   async createOne(hotelCreateArgs: Prisma.HotelCreateArgs) {
     try {
-      const hotel = await this.prisma.hotel.create(hotelCreateArgs);
-      return hotel;
+      return await this.prisma.hotel.create(hotelCreateArgs);
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  async findMany(hotelFindManyArgs: Prisma.HotelFindManyArgs) {
+  async createMany(hotelCreateManyArgs: Prisma.HotelCreateManyArgs) {
     try {
-      const hotels = await this.prisma.hotel.findMany(hotelFindManyArgs);
-      const hotel = hotels;
-      return hotel;
+      return await this.prisma.hotel.createMany(hotelCreateManyArgs);
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
@@ -28,26 +25,71 @@ export class HotelService {
 
   async findOne(hotelFindUniqueArgs: Prisma.HotelFindUniqueArgs) {
     try {
-      const hotel = await this.prisma.hotel.findUnique(hotelFindUniqueArgs);
-      return hotel;
+      return await this.prisma.hotel.findUnique(hotelFindUniqueArgs);
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  async update(hotelUpdateOneArgs: Prisma.HotelUpdateArgs) {
+  async findMany(hotelFindManyArgs: Prisma.HotelFindManyArgs) {
     try {
-      const hotel = await this.prisma.hotel.update(hotelUpdateOneArgs);
-      return hotel;
+      return await this.prisma.hotel.findMany(hotelFindManyArgs);
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  async remove(id: number) {
+  async findFirst(hotelFindFirstArgs: Prisma.HotelFindFirstArgs) {
     try {
-      const hotel = await this.prisma.hotel.delete({ where: { id } });
-      return hotel;
+      return await this.prisma.hotel.findFirst(hotelFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateOne(hotelUpdateOneArgs: Prisma.HotelUpdateArgs) {
+    try {
+      return await this.prisma.hotel.update(hotelUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(hotelUpdateManyArgs: Prisma.HotelUpdateManyArgs) {
+    try {
+      return await this.prisma.hotel.updateMany(hotelUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(hotelDeleteArgs: Prisma.HotelDeleteArgs) {
+    try {
+      return await this.prisma.hotel.delete(hotelDeleteArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(hotelDeleteManyArgs: Prisma.HotelDeleteManyArgs) {
+    try {
+      return await this.prisma.hotel.deleteMany(hotelDeleteManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(hotelAggregateArgs: Prisma.HotelAggregateArgs) {
+    try {
+      return await this.prisma.hotel.aggregate(hotelAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(hotelCountArgs: Prisma.HotelCountArgs) {
+    try {
+      return await this.prisma.hotel.count(hotelCountArgs);
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }

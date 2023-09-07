@@ -100,13 +100,13 @@ export class HotelController {
 
     console.log(hotelUpdateOneArgs);
 
-    return this.hotelService.update(hotelUpdateOneArgs).then((hotel) => {
+    return this.hotelService.updateOne(hotelUpdateOneArgs).then((hotel) => {
       return hotel;
     });
   }
 
   remove(hotelId: number) {
-    return this.hotelService.remove(hotelId);
+    return this.hotelService.delete(hotelId);
   }
 
   async imageUploadToS3(
