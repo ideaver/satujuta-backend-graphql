@@ -41,7 +41,7 @@ export class HotelResolver {
     @Relations() relations: HotelSelect,
   ): Promise<Hotel | void> {
     const { data } = hotelCreateArgs;
-    return await this.hotelController.createOne(uploadedFiles, {
+    return await this.hotelController.createOne({
       data: data,
       select: relations.select,
     });
@@ -107,13 +107,11 @@ export class HotelResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async hotelUpdateOne(
-    @Args({ name: 'files', type: () => [GraphQLUpload] }) files: FileUpload[],
     @Args() hotelUpdateOneArgs: UpdateOneHotelArgs,
     @Relations() relations: HotelSelect,
   ) {
-    const uploadedFiles = await Promise.all(files);
     const { data, where } = hotelUpdateOneArgs;
-    return this.hotelController.updateOne(uploadedFiles,{
+    return this.hotelController.updateOne({
       data: replaceNullWithUndefined(data),
       where: replaceNullWithUndefined(where),
       select: relations.select,

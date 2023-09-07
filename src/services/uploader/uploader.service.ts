@@ -183,7 +183,7 @@ export class UploaderService {
     }
   }
 
-  public async uploadFile({
+  public async uploadSingleFile({
     userId,
     file,
     ratioForImage: ratio,
@@ -266,7 +266,7 @@ export class UploaderService {
   }): Promise<string[]> {
     try {
       const uploadPromises = files.map(async (file) => {
-        return await this.uploadFile({ userId, file, ratioForImage });
+        return await this.uploadSingleFile({ userId, file, ratioForImage });
       });
 
       return await Promise.all(uploadPromises);

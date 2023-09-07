@@ -1,48 +1,69 @@
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
-
-import { UploadFileArgs } from './dtos/upload-file.args';
 import { UploaderService } from './uploader.service';
 import { RatioEnum } from './enums/ratio.enum';
 // Ignore the import errors
 // @ts-ignore
 import { FileUpload, GraphQLUpload } from 'graphql-upload';
-import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
+import { UserController } from '../user/user.controller';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Resolver()
 export class UploaderResolver {
-  constructor(private readonly uploaderService: UploaderService) {}
+  constructor(
+    private readonly uploaderService: UploaderService,
+    private readonly userController: UserController,
+  ) {}
 
   @Mutation(() => String, {
+    nullable: true,
     description:
-      'Header wajib ada apollo-require-preflight = true agar tidak CSRF error',
+      'Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress',
   })
-  async uploadSingleImage(
-    @Args({ name: 'file', type: () => GraphQLUpload }) file: FileUpload,
-    @Args('userId', { type: () => String }) userId: string,
+  async uploadSingleFile(
+    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
+    file: FileUpload,
+    @Args('userId', { type: () => String, nullable: false }) userId: string,
   ) {
-    
-    return await this.uploaderService.uploadSingleImage({
+    //validate user id
+    await this.validateUserId(userId);
+
+    return await this.uploaderService.uploadSingleFile({
       userId: userId,
-      ratio: RatioEnum.SQUARE,
+      ratioForImage: RatioEnum.SQUARE,
       file: file,
     });
   }
 
   @Mutation(() => [String], {
+    nullable: true,
     description:
-      'Header wajib ada apollo-require-preflight = true agar tidak CSRF error',
+      'Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress',
   })
-  async uploadMultiImage(
-    @Args({ name: 'files', type: () => [GraphQLUpload] }) files: FileUpload[],
-    @Args('userId', { type: () => String }) userId: string,
+  async uploadMultiFile(
+    @Args({ name: 'files', type: () => [GraphQLUpload], nullable: true })
+    files: FileUpload[],
+    @Args('userId', { type: () => String, nullable: false }) userId: string,
   ) {
     const uploadedFiles = await Promise.all(files);
-    return await this.uploaderService.uploadMultipleImages({
+
+    //validate user id
+    await this.validateUserId(userId);
+
+    return await this.uploaderService.uploadMultipleFiles({
       userId: userId,
-      ratio: RatioEnum.SQUARE,
+      ratioForImage: RatioEnum.SQUARE,
       files: uploadedFiles,
     });
   }
 
-
+  private async validateUserId(userId: string) {
+    if (
+      !(await this.userController.findFirst({
+        where: { id: { equals: userId } },
+        take: 1,
+      }))
+    ) {
+      throw new IGraphQLError({ code: 10004 });
+    }
+  }
 }
