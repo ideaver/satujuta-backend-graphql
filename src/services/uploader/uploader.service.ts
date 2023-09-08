@@ -21,7 +21,10 @@ import { FileUploadDto } from './dtos/file-upload.dto';
 import { RatioEnum } from './enums/ratio.enum';
 import { IBucketData } from './interfaces/bucket-data.interface';
 import { ConfigService } from '@nestjs/config';
-import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
+import {
+  detectMimeTypeFromFilename,
+  mapFileTypeEnumFromMIME,
+} from 'src/utils/mime-types.function';
 import { S3Config } from 'src/config/s3config.model';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { MAX_FILE_SIZES } from './constants';
@@ -217,21 +220,12 @@ export class UploaderService {
 
       // If the file has an extension, get the file type from the extension
       if (fileExt) {
-        fileExt = `.${fileExt.toLowerCase()}`;
-        fileType = FileType[fileExt.toLowerCase() as keyof typeof FileType];
-      } else {
-        // If the file doesn't have an extension, get the file type from the MIME type
-        fileType =
-          FileType[
-            filename.split('/')[1].toLowerCase() as keyof typeof FileType
-          ];
+        fileExt = `${fileExt.toLowerCase()}`;
+        fileType = mapFileTypeEnumFromMIME(fileExt);
       }
 
-      console.log('fileExt', fileExt);
-
       // If the file type is not supported, throw an error
-      if (!fileType) {
-        console.log('fileType', fileType);
+      if (!fileType || fileType === FileType.UNKNOWN) {
         throw new IGraphQLError({ code: 170005 });
       }
 
