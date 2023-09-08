@@ -1,55 +1,52 @@
-import { RewardService } from './reward.service';
-import { Reward } from 'src/@generated';
-import { RewardCreateArgs } from './dto/reward-create-one.args';
-import { RewardFindManyArgs } from './dto/reward-find-many.args';
-import { RewardFindUniqueArgs } from './dto/reward-find-one.args';
-import { RewardUpdateOneArgs } from './dto/reward-update-one.args';
-
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { RewardService } from './reward.service';
 
 @Injectable()
 export class RewardController {
   constructor(private readonly rewardService: RewardService) {}
 
-  async createOne(rewardCreateArgs: RewardCreateArgs): Promise<Reward | void> {
+  async createOne(rewardCreateArgs: Prisma.RewardCreateArgs) {
     return await this.rewardService.createOne(rewardCreateArgs);
   }
 
-  findMany(rewardFindManyArgs: RewardFindManyArgs) {
-    return this.rewardService.findMany(rewardFindManyArgs);
+  async createMany(rewardCreateManyArgs: Prisma.RewardCreateManyArgs) {
+    return await this.rewardService.createMany(rewardCreateManyArgs);
   }
 
-  findOne(rewardFindUniqueArgs: RewardFindUniqueArgs): Promise<Reward | void> {
-    return this.rewardService.findOne(rewardFindUniqueArgs);
+  async findOne(rewardFindUniqueArgs: Prisma.RewardFindUniqueArgs) {
+    return await this.rewardService.findOne(rewardFindUniqueArgs);
   }
 
-  async updateOne(rewardUpdateOneArgs: RewardUpdateOneArgs) {
-    const { name, description, images } = rewardUpdateOneArgs.data;
-
-    if (name?.set === null) {
-      rewardUpdateOneArgs.data.name = undefined;
-    }
-
-    if (description?.set === null) {
-      rewardUpdateOneArgs.data.description = undefined;
-    }
-
-    if (images.delete?.[0]?.url.equals === null) {
-      rewardUpdateOneArgs.data.images.delete = undefined;
-    }
-
-    if (images.deleteMany?.[0]?.url.equals === null) {
-      rewardUpdateOneArgs.data.images.deleteMany = undefined;
-    }
-
-    if (images.createMany?.data?.[0]?.url === null) {
-      rewardUpdateOneArgs.data.images.createMany = undefined;
-    }
-
-    return this.rewardService.update(rewardUpdateOneArgs);
+  async findMany(rewardFindManyArgs: Prisma.RewardFindManyArgs) {
+    return await this.rewardService.findMany(rewardFindManyArgs);
   }
 
-  remove(rewardId: number) {
-    return this.rewardService.remove(rewardId);
+  async findFirst(rewardFindFirstArgs: Prisma.RewardFindFirstArgs) {
+    return await this.rewardService.findFirst(rewardFindFirstArgs);
+  }
+
+  async updateOne(rewardUpdateOneArgs: Prisma.RewardUpdateArgs) {
+    return await this.rewardService.updateOne(rewardUpdateOneArgs);
+  }
+
+  async updateMany(rewardUpdateManyArgs: Prisma.RewardUpdateManyArgs) {
+    return await this.rewardService.updateMany(rewardUpdateManyArgs);
+  }
+
+  async delete(rewardDeleteArgs: Prisma.RewardDeleteArgs) {
+    return await this.rewardService.delete(rewardDeleteArgs);
+  }
+
+  async deleteMany(rewardDeleteManyArgs: Prisma.RewardDeleteManyArgs) {
+    return await this.rewardService.deleteMany(rewardDeleteManyArgs);
+  }
+
+  async aggregate(rewardAggregateArgs: Prisma.RewardAggregateArgs) {
+    return await this.rewardService.aggregate(rewardAggregateArgs);
+  }
+
+  async count(rewardCountArgs: Prisma.RewardCountArgs) {
+    return await this.rewardService.count(rewardCountArgs);
   }
 }

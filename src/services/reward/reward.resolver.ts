@@ -1,13 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Reward } from 'src/@generated';
-import { RewardCreateArgs } from './dto/reward-create-one.args';
-import { RewardFindManyArgs } from './dto/reward-find-many.args';
-import { RewardFindUniqueArgs } from './dto/reward-find-one.args';
-import { RewardUpdateOneArgs } from './dto/reward-update-one.args';
+import {
+  AggregateReward,
+  CreateManyRewardArgs,
+  CreateOneRewardArgs,
+  DeleteManyRewardArgs,
+  DeleteOneRewardArgs,
+  FindFirstRewardArgs,
+  FindManyRewardArgs,
+  FindUniqueRewardArgs,
+  Reward,
+  RewardAggregateArgs,
+  UpdateManyRewardArgs,
+  UpdateOneRewardArgs,
+} from 'src/@generated';
 import { RewardController } from './reward.controller';
-import { Logger } from '@nestjs/common';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface RewardSelect {
   select: Prisma.RewardSelect;
@@ -16,30 +27,31 @@ interface RewardSelect {
 @Resolver(() => Reward)
 export class RewardResolver {
   constructor(private readonly rewardController: RewardController) {}
-  private readonly logger = new Logger(RewardResolver.name);
+
   @Mutation(() => Reward, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async rewardCreateOne(
-    @Args('rewardCreateArgs') rewardCreateArgs: RewardCreateArgs,
+    @Args()
+    rewardCreateArgs: CreateOneRewardArgs,
     @Relations() relations: RewardSelect,
   ): Promise<Reward | void> {
-    rewardCreateArgs.select = relations.select;
-    return await this.rewardController.createOne(rewardCreateArgs);
+    return await this.rewardController.createOne({
+      ...rewardCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [Reward], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  rewardFindMany(
-    @Args('rewardFindManyArgs') rewardFindManyArgs: RewardFindManyArgs,
-    @Relations() relations: RewardSelect,
+  async rewardCreateMany(
+    @Args()
+    createManyRewardArgs: CreateManyRewardArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    rewardFindManyArgs.select = relations.select;
-    return this.rewardController.findMany(rewardFindManyArgs);
+    return await this.rewardController.createMany(createManyRewardArgs);
   }
 
   @Query(() => Reward, {
@@ -47,34 +59,102 @@ export class RewardResolver {
     description: 'Deskripsinya ada disini loh',
   })
   rewardFindOne(
-    @Args('rewardFindUniqueArgs')
-    rewardFindUniqueArgs: RewardFindUniqueArgs,
+    @Args()
+    rewardFindUniqueArgs: FindUniqueRewardArgs,
     @Relations() relations: RewardSelect,
   ): Promise<Reward | void> {
-    //Auto implement prisma select from graphql query info
-    rewardFindUniqueArgs.select = relations.select;
-    return this.rewardController.findOne(rewardFindUniqueArgs);
+    return this.rewardController.findOne({
+      ...rewardFindUniqueArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => [Reward], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  rewardFindMany(
+    @Args() rewardFindManyArgs: FindManyRewardArgs,
+    @Relations() relations: RewardSelect,
+  ) {
+    return this.rewardController.findMany({
+      ...rewardFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => Reward, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  rewardFindFirst(
+    @Args()
+    findFirstRewardArgs: FindFirstRewardArgs,
+    @Relations() relations: RewardSelect,
+  ): Promise<Reward | void> {
+    return this.rewardController.findFirst({
+      ...findFirstRewardArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => Reward, {
-    description:
-      'Deskripsinya ada disini loh, Jika tentang mutasi klaim reward, backend akan cek apakah saldo point user cukup untuk claim',
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
   async rewardUpdateOne(
-    @Args('rewardUpdateOneArgs') rewardUpdateOneArgs: RewardUpdateOneArgs,
+    @Args() rewardUpdateOneArgs: UpdateOneRewardArgs,
     @Relations() relations: RewardSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    rewardUpdateOneArgs.select = relations.select;
+    return this.rewardController.updateOne({
+      ...replaceNullWithUndefined(rewardUpdateOneArgs),
+      select: relations.select,
+    });
+  }
 
-    return this.rewardController.updateOne(rewardUpdateOneArgs);
+  @Mutation(() => Reward, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async rewardUpdateMany(@Args() updateManyRewardArgs: UpdateManyRewardArgs) {
+    return this.rewardController.updateMany(updateManyRewardArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  rewardRemove(@Args('rewardId') rewardId: number) {
-    return this.rewardController.remove(rewardId);
+  async rewardDelete(
+    @Args() deleteOneRewardArgs: DeleteOneRewardArgs,
+    @Relations() relations: RewardSelect,
+  ) {
+    return this.rewardController.delete({
+      ...deleteOneRewardArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async rewardDeleteMany(@Args() deleteManyRewardArgs: DeleteManyRewardArgs) {
+    return this.rewardController.deleteMany(deleteManyRewardArgs);
+  }
+
+  @Query(() => AggregateReward, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  rewardAggregate(@Args() rewardAggregateArgs: RewardAggregateArgs) {
+    return this.rewardController.aggregate(rewardAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  rewardCount(@Args() rewardCountAggregateInput: FindManyRewardArgs) {
+    return this.rewardController.count(rewardCountAggregateInput);
   }
 }

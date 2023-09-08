@@ -48,7 +48,8 @@ export class UserController {
       /*
       email verification,whatsapp verification
       notify referee & admin
-     /*
+      */
+
       return res;
     } catch (error) {
       throw new IGraphQLError({ code: 123456, err: error });
