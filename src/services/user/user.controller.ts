@@ -44,7 +44,11 @@ export class UserController {
         await orderCreate(userCreateArgs, this.itemController, userRole);
       }
       const res = await this.userService.createOne(userCreateArgs);
-      //TODO: Handle OnUserCreateEvent : email verification, whatsapp verification,
+      //TODO: Handle OnUserCreateEvent
+      /*
+      email verification,whatsapp verification
+      notify referee & admin
+     /*
       return res;
     } catch (error) {
       throw new IGraphQLError({ code: 123456, err: error });

@@ -229,7 +229,7 @@ export function fakeUserNotification() {
     title: faker.lorem.words(5),
     subtitle: faker.lorem.words(5),
     content: faker.lorem.words(5),
-    category: faker.helpers.arrayElement([UserNotificationCategory.BILLING_ALERT, UserNotificationCategory.ANNOUNCEMENT, UserNotificationCategory.CHAT_MESSAGE] as const),
+    category: faker.helpers.arrayElement([UserNotificationCategory.ANNOUNCEMENT, UserNotificationCategory.REFERRAL, UserNotificationCategory.REWARD, UserNotificationCategory.WITHDRAWAL, UserNotificationCategory.INVESTMENT, UserNotificationCategory.COMISSION, UserNotificationCategory.PROJECT, UserNotificationCategory.PROGRAM, UserNotificationCategory.CHECK_IN, UserNotificationCategory.INVOICE, UserNotificationCategory.SHIPPING, UserNotificationCategory.ORDER, UserNotificationCategory.ACCOUNT, UserNotificationCategory.TRANSACTION, UserNotificationCategory.POINT_TRANSACTION, UserNotificationCategory.INSTALLMENT, UserNotificationCategory.WITHDRAWAL_REQUEST, UserNotificationCategory.USER, UserNotificationCategory.FILE] as const),
     deepLink: undefined,
     fcmToken: undefined,
   };
@@ -241,7 +241,7 @@ export function fakeUserNotificationComplete() {
     subtitle: faker.lorem.words(5),
     content: faker.lorem.words(5),
     createdAt: new Date(),
-    category: faker.helpers.arrayElement([UserNotificationCategory.BILLING_ALERT, UserNotificationCategory.ANNOUNCEMENT, UserNotificationCategory.CHAT_MESSAGE] as const),
+    category: faker.helpers.arrayElement([UserNotificationCategory.ANNOUNCEMENT, UserNotificationCategory.REFERRAL, UserNotificationCategory.REWARD, UserNotificationCategory.WITHDRAWAL, UserNotificationCategory.INVESTMENT, UserNotificationCategory.COMISSION, UserNotificationCategory.PROJECT, UserNotificationCategory.PROGRAM, UserNotificationCategory.CHECK_IN, UserNotificationCategory.INVOICE, UserNotificationCategory.SHIPPING, UserNotificationCategory.ORDER, UserNotificationCategory.ACCOUNT, UserNotificationCategory.TRANSACTION, UserNotificationCategory.POINT_TRANSACTION, UserNotificationCategory.INSTALLMENT, UserNotificationCategory.WITHDRAWAL_REQUEST, UserNotificationCategory.USER, UserNotificationCategory.FILE] as const),
     isRead: false,
     isCleared: false,
     userId: faker.datatype.uuid(),

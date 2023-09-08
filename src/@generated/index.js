@@ -279,9 +279,25 @@ var UserRole;
 })(UserRole = exports.UserRole || (exports.UserRole = {}));
 var UserNotificationCategory;
 (function (UserNotificationCategory) {
-    UserNotificationCategory["BILLING_ALERT"] = "BILLING_ALERT";
     UserNotificationCategory["ANNOUNCEMENT"] = "ANNOUNCEMENT";
-    UserNotificationCategory["CHAT_MESSAGE"] = "CHAT_MESSAGE";
+    UserNotificationCategory["REFERRAL"] = "REFERRAL";
+    UserNotificationCategory["REWARD"] = "REWARD";
+    UserNotificationCategory["WITHDRAWAL"] = "WITHDRAWAL";
+    UserNotificationCategory["INVESTMENT"] = "INVESTMENT";
+    UserNotificationCategory["COMISSION"] = "COMISSION";
+    UserNotificationCategory["PROJECT"] = "PROJECT";
+    UserNotificationCategory["PROGRAM"] = "PROGRAM";
+    UserNotificationCategory["CHECK_IN"] = "CHECK_IN";
+    UserNotificationCategory["INVOICE"] = "INVOICE";
+    UserNotificationCategory["SHIPPING"] = "SHIPPING";
+    UserNotificationCategory["ORDER"] = "ORDER";
+    UserNotificationCategory["ACCOUNT"] = "ACCOUNT";
+    UserNotificationCategory["TRANSACTION"] = "TRANSACTION";
+    UserNotificationCategory["POINT_TRANSACTION"] = "POINT_TRANSACTION";
+    UserNotificationCategory["INSTALLMENT"] = "INSTALLMENT";
+    UserNotificationCategory["WITHDRAWAL_REQUEST"] = "WITHDRAWAL_REQUEST";
+    UserNotificationCategory["USER"] = "USER";
+    UserNotificationCategory["FILE"] = "FILE";
 })(UserNotificationCategory = exports.UserNotificationCategory || (exports.UserNotificationCategory = {}));
 var TransactionType;
 (function (TransactionType) {
