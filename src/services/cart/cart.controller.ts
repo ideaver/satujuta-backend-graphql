@@ -1,62 +1,52 @@
-import { CartService } from './cart.service';
-import { Cart, CartAggregateArgs } from 'src/@generated';
-import { CartCreateArgs } from './dto/cart-create-one.args';
-import { CartFindManyArgs } from './dto/cart-find-many.args';
-import { CartFindUniqueArgs } from './dto/cart-find-one.args';
-import { CartUpdateOneArgs } from './dto/cart-update-one.args';
-
 import { Injectable } from '@nestjs/common';
-import { AccountCategory, Prisma, UserRole } from '@prisma/client';
-import { UserService } from '../user/user.service';
+import { Prisma } from '@prisma/client';
+import { CartService } from './cart.service';
 
 @Injectable()
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
-  // async createOne(cartCreateArgs: CartCreateArgs): Promise<Cart | void> {
-  //   let cartCreateArgsPrisma: Prisma.CartCreateArgs = { ...cartCreateArgs };
-
-  //   //Create cart account
-  //   await this.createAccount(cartCreateArgsPrisma);
-
-  //   return await this.cartService.createOne(cartCreateArgs);
-  // }
-
-  findMany(cartFindManyArgs: CartFindManyArgs) {
-    return this.cartService.findMany(cartFindManyArgs);
+  async createOne(cartCreateArgs: Prisma.CartCreateArgs) {
+    return await this.cartService.createOne(cartCreateArgs);
   }
 
-  findOne(cartFindUniqueArgs: CartFindUniqueArgs): Promise<Cart | void> {
-    return this.cartService.findOne(cartFindUniqueArgs);
+  async createMany(cartCreateManyArgs: Prisma.CartCreateManyArgs) {
+    return await this.cartService.createMany(cartCreateManyArgs);
   }
 
-  // async updateOne(cartUpdateOneArgs: CartUpdateOneArgs) {
-  //   const { name, accountNumber, logoUrl } = cartUpdateOneArgs.data;
-
-  //   if (name?.set === null) {
-  //     cartUpdateOneArgs.data.name = undefined;
-  //   }
-
-  //   if (accountNumber?.set === null) {
-  //     cartUpdateOneArgs.data.accountNumber = undefined;
-  //   }
-
-  //   if (logoUrl?.set === null) {
-  //     cartUpdateOneArgs.data.logoUrl = undefined;
-  //   }
-
-  //   return this.cartService.update(cartUpdateOneArgs);
-  // }
-
-  count(cartFindManyArgs: CartFindManyArgs) {
-    return this.cartService.count(cartFindManyArgs);
+  async findOne(cartFindUniqueArgs: Prisma.CartFindUniqueArgs) {
+    return await this.cartService.findOne(cartFindUniqueArgs);
   }
 
-  // remove(cartId: number) {
-  //   return this.cartService.remove(cartId);
-  // }
+  async findMany(cartFindManyArgs: Prisma.CartFindManyArgs) {
+    return await this.cartService.findMany(cartFindManyArgs);
+  }
 
-  aggregate(cartAggregateArgs: CartAggregateArgs) {
-    return this.cartService.aggregate(cartAggregateArgs);
+  async findFirst(cartFindFirstArgs: Prisma.CartFindFirstArgs) {
+    return await this.cartService.findFirst(cartFindFirstArgs);
+  }
+
+  async updateOne(cartUpdateOneArgs: Prisma.CartUpdateArgs) {
+    return await this.cartService.updateOne(cartUpdateOneArgs);
+  }
+
+  async updateMany(cartUpdateManyArgs: Prisma.CartUpdateManyArgs) {
+    return await this.cartService.updateMany(cartUpdateManyArgs);
+  }
+
+  async delete(cartDeleteArgs: Prisma.CartDeleteArgs) {
+    return await this.cartService.delete(cartDeleteArgs);
+  }
+
+  async deleteMany(cartDeleteManyArgs: Prisma.CartDeleteManyArgs) {
+    return await this.cartService.deleteMany(cartDeleteManyArgs);
+  }
+
+  async aggregate(cartAggregateArgs: Prisma.CartAggregateArgs) {
+    return await this.cartService.aggregate(cartAggregateArgs);
+  }
+
+  async count(cartCountArgs: Prisma.CartCountArgs) {
+    return await this.cartService.count(cartCountArgs);
   }
 }

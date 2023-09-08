@@ -62712,7 +62712,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateManyMutationInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateManyMutationInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -63532,7 +63532,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutAccountsInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -63631,7 +63631,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutAddressInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -63730,7 +63730,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutCheckInsInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -63829,7 +63829,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutClaimedRewardsInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -63928,7 +63928,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutFilesCreatedInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64027,7 +64027,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutHotelsCreatedInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64126,7 +64126,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutOrdersInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64225,7 +64225,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutPointTransactionsInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64324,7 +64324,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsCreatedInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64423,7 +64423,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutProgramsParticipationInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64522,7 +64522,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredByInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64621,7 +64621,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutReferredUsersInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64720,7 +64720,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutSchoolInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64819,7 +64819,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutSessionsInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -64918,7 +64918,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutUserNotificationsInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65017,7 +65017,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateWithoutWithdrawalRequestInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateWithoutWithdrawalRequestInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -65116,7 +65116,7 @@ __decorate([
     (0, graphql_7.HideField)()
 ], UserUpdateInput.prototype, "referralCode", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => EnumUserStatusFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_7.HideField)()
 ], UserUpdateInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_7.HideField)()

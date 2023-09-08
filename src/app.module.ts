@@ -31,7 +31,6 @@ import { ProvinceModule } from './services/province/province.module';
 import { CityModule } from './services/city/city.module';
 import { DistrictModule } from './services/district/district.module';
 import { SubdistrictModule } from './services/subdistrict/subdistrict.module';
-import { CartModule } from './services/cart/cart.module';
 import { RewardClaimModule } from './services/reward-claim/reward-claim.module';
 import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawal-request.module';
 import { EmailModule } from './services/email/email.module';
@@ -41,6 +40,7 @@ import { UploaderModule } from './services/uploader/uploader.module';
 import { UploaderProcessor } from './queues/uploader.queue';
 import { SchedulerService } from './services/scheduler/scheduler.service';
 import { ScheduleModule } from '@nestjs/schedule';
+import { CartModule } from './services/cart/cart.module';
 
 @Module({
   imports: [

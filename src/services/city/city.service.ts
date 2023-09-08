@@ -1,70 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { CreateOneCityArgs, City } from 'src/@generated';
-import { CityFindManyArgs } from './dto/city-find-many.args';
-import { CityFindUniqueArgs } from './dto/city-find-one.args';
-import { CityUpdateOneArgs } from './dto/city-update-one.args';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class CityService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(cityCreateArgs: CreateOneCityArgs): Promise<City | void> {
-    return await this.prisma.city
-      .create(cityCreateArgs)
-      .then((city) => {
-        return city;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(cityCreateArgs: Prisma.CityCreateArgs) {
+    try {
+      return await this.prisma.city.create(cityCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async createMany(cityCreateManyArgs: Prisma.CityCreateManyArgs) {
+    try {
+      return await this.prisma.city.createMany(cityCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async findOne(cityFindUniqueArgs: Prisma.CityFindUniqueArgs) {
+    try {
+      return await this.prisma.city.findUnique(cityFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
   async findMany(cityFindManyArgs: Prisma.CityFindManyArgs) {
-    return this.prisma.city
-      .findMany(cityFindManyArgs)
-      .then((citys) => {
-        return citys;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+    try {
+      return await this.prisma.city.findMany(cityFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(cityFindUniqueArgs: CityFindUniqueArgs): Promise<City | void> {
-    return await this.prisma.city
-      .findUnique(cityFindUniqueArgs)
-      .then((city) => {
-        return city;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(cityFindFirstArgs: Prisma.CityFindFirstArgs) {
+    try {
+      return await this.prisma.city.findFirst(cityFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(cityUpdateOneArgs: CityUpdateOneArgs): Promise<City | void> {
-    return this.prisma.city
-      .update(cityUpdateOneArgs)
-      .then((city) => {
-        return city;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateOne(cityUpdateOneArgs: Prisma.CityUpdateArgs) {
+    try {
+      return await this.prisma.city.update(cityUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(cityId: number): Promise<boolean | void> {
-    return await this.prisma.city
-      .delete({
-        where: { id: cityId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateMany(cityUpdateManyArgs: Prisma.CityUpdateManyArgs) {
+    try {
+      return await this.prisma.city.updateMany(cityUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(cityDeleteArgs: Prisma.CityDeleteArgs) {
+    try {
+      await this.prisma.city.delete(cityDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(cityDeleteManyArgs: Prisma.CityDeleteManyArgs) {
+    try {
+      await this.prisma.city.deleteMany(cityDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(cityAggregateArgs: Prisma.CityAggregateArgs) {
+    try {
+      return await this.prisma.city.aggregate(cityAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(cityCountArgs: Prisma.CityCountArgs) {
+    try {
+      return await this.prisma.city.count(cityCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

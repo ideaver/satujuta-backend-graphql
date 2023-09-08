@@ -1,14 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { AggregateCart, Cart } from 'src/@generated';
-import { CartCreateArgs } from './dto/cart-create-one.args';
-import { CartFindManyArgs } from './dto/cart-find-many.args';
-import { CartFindUniqueArgs } from './dto/cart-find-one.args';
-import { CartUpdateOneArgs } from './dto/cart-update-one.args';
+import {
+  AggregateCart,
+  CreateManyCartArgs,
+  CreateOneCartArgs,
+  DeleteManyCartArgs,
+  DeleteOneCartArgs,
+  FindFirstCartArgs,
+  FindManyCartArgs,
+  FindUniqueCartArgs,
+  Cart,
+  CartAggregateArgs,
+  UpdateManyCartArgs,
+  UpdateOneCartArgs,
+} from 'src/@generated';
 import { CartController } from './cart.controller';
-import { Logger } from '@nestjs/common';
-import { CartAggregateArgs } from './dto/cart-aggregate.args';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface CartSelect {
   select: Prisma.CartSelect;
@@ -17,34 +27,31 @@ interface CartSelect {
 @Resolver(() => Cart)
 export class CartResolver {
   constructor(private readonly cartController: CartController) {}
-  private readonly logger = new Logger(CartResolver.name);
-  // @Mutation(() => Cart, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // async cartCreateOne(
-  //   @Args('cartCreateArgs') cartCreateArgs: CartCreateArgs,
-  //   @Relations() relations: CartSelect,
-  // ): Promise<Cart | void> {
-  //   cartCreateArgs.select = relations.select;
-  //   return await this.cartController.createOne(cartCreateArgs);
-  // }
 
-  @Query(() => [Cart], {
+  @Mutation(() => Cart, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  cartFindMany(
-    @Args('cartFindManyArgs', { nullable: true })
-    cartFindManyArgs: CartFindManyArgs,
+  async cartCreateOne(
+    @Args()
+    cartCreateArgs: CreateOneCartArgs,
     @Relations() relations: CartSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    if (cartFindManyArgs) {
-      cartFindManyArgs.select = relations.select;
-    }
+  ): Promise<Cart | void> {
+    return await this.cartController.createOne({
+      ...cartCreateArgs,
+      select: relations.select,
+    });
+  }
 
-    return this.cartController.findMany(cartFindManyArgs);
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cartCreateMany(
+    @Args()
+    createManyCartArgs: CreateManyCartArgs,
+  ) {
+    return await this.cartController.createMany(createManyCartArgs);
   }
 
   @Query(() => Cart, {
@@ -52,56 +59,102 @@ export class CartResolver {
     description: 'Deskripsinya ada disini loh',
   })
   cartFindOne(
-    @Args('cartFindUniqueArgs')
-    cartFindUniqueArgs: CartFindUniqueArgs,
+    @Args()
+    cartFindUniqueArgs: FindUniqueCartArgs,
     @Relations() relations: CartSelect,
   ): Promise<Cart | void> {
-    //Auto implement prisma select from graphql query info
-    cartFindUniqueArgs.select = relations.select;
-    return this.cartController.findOne(cartFindUniqueArgs);
+    return this.cartController.findOne({
+      ...cartFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => Cart, {
-  //   description:
-  //     'Deskripsinya ada disini loh, Jika tentang mutasi klaim cart, backend akan cek apakah saldo point cart cukup untuk claim',
-  // })
-  // async cartUpdateOne(
-  //   @Args('cartUpdateOneArgs') cartUpdateOneArgs: CartUpdateOneArgs,
-  //   @Relations() relations: CartSelect,
-  // ) {
-  //   //Auto implement prisma select from graphql query info
-  //   cartUpdateOneArgs.select = relations.select;
+  @Query(() => [Cart], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cartFindMany(
+    @Args() cartFindManyArgs: FindManyCartArgs,
+    @Relations() relations: CartSelect,
+  ) {
+    return this.cartController.findMany({
+      ...cartFindManyArgs,
+      select: relations.select,
+    });
+  }
 
-  //   return this.cartController.updateOne(cartUpdateOneArgs);
-  // }
+  @Query(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cartFindFirst(
+    @Args()
+    findFirstCartArgs: FindFirstCartArgs,
+    @Relations() relations: CartSelect,
+  ): Promise<Cart | void> {
+    return this.cartController.findFirst({
+      ...findFirstCartArgs,
+      select: relations.select,
+    });
+  }
 
-  // @Mutation(() => Boolean, {
-  //   nullable: true,
-  //   description: 'Datanya benar2 terhapus dari db',
-  // })
-  // cartRemove(@Args('cartId') cartId: number) {
-  //   return this.cartController.remove(cartId);
-  // }
+  @Mutation(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cartUpdateOne(
+    @Args() cartUpdateOneArgs: UpdateOneCartArgs,
+    @Relations() relations: CartSelect,
+  ) {
+    return this.cartController.updateOne({
+      ...replaceNullWithUndefined(cartUpdateOneArgs),
+      select: relations.select,
+    });
+  }
 
-  @Query(() => Int, {
+  @Mutation(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cartUpdateMany(@Args() updateManyCartArgs: UpdateManyCartArgs) {
+    return this.cartController.updateMany(updateManyCartArgs);
+  }
+
+  @Mutation(() => Boolean, {
     nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  cartCount(
-    @Args('cartFindManyArgs', { nullable: true })
-    cartFindManyArgs: CartFindManyArgs,
+  async cartDelete(
+    @Args() deleteOneCartArgs: DeleteOneCartArgs,
+    @Relations() relations: CartSelect,
   ) {
-    return this.cartController.count(cartFindManyArgs);
+    return this.cartController.delete({
+      ...deleteOneCartArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cartDeleteMany(@Args() deleteManyCartArgs: DeleteManyCartArgs) {
+    return this.cartController.deleteMany(deleteManyCartArgs);
   }
 
   @Query(() => AggregateCart, {
-    nullable: false,
+    nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  cartAggregate(
-    @Args('cartAggregateArgs', { nullable: false })
-    cartAggregateArgs: CartAggregateArgs,
-  ) {
+  cartAggregate(@Args() cartAggregateArgs: CartAggregateArgs) {
     return this.cartController.aggregate(cartAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cartCount(@Args() cartCountAggregateInput: FindManyCartArgs) {
+    return this.cartController.count(cartCountAggregateInput);
   }
 }

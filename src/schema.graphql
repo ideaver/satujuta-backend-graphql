@@ -281,6 +281,14 @@ type Cart {
   projectItem: Project
 }
 
+type AggregateCheckIn {
+  _count: CheckInCountAggregate
+  _avg: CheckInAvgAggregate
+  _sum: CheckInSumAggregate
+  _min: CheckInMinAggregate
+  _max: CheckInMaxAggregate
+}
+
 type CheckInAvgAggregate {
   id: Float
   hotelId: Float
@@ -328,6 +336,14 @@ type CheckIn {
   updatedAt: DateTime!
   user: User!
   hotel: Hotel!
+}
+
+type AggregateCity {
+  _count: CityCountAggregate
+  _avg: CityAvgAggregate
+  _sum: CitySumAggregate
+  _min: CityMinAggregate
+  _max: CityMaxAggregate
 }
 
 type CityAvgAggregate {
@@ -2263,10 +2279,19 @@ type Query {
   shippingFindOne(shippingFindUniqueArgs: ShippingFindUniqueArgs!): Shipping
 
   """Deskripsinya ada disini loh"""
-  checkInFindMany(checkInFindManyArgs: CheckInFindManyArgs!): [CheckIn!]
+  checkInFindOne(where: CheckInWhereUniqueInput!): CheckIn
 
   """Deskripsinya ada disini loh"""
-  checkInFindOne(checkInFindUniqueArgs: CheckInFindUniqueArgs!): CheckIn
+  checkInFindMany(where: CheckInWhereInput, orderBy: [CheckInOrderByWithRelationInput!], cursor: CheckInWhereUniqueInput, take: Int, skip: Int, distinct: [CheckInScalarFieldEnum!]): [CheckIn!]
+
+  """Deskripsinya ada disini loh"""
+  checkInFindFirst(where: CheckInWhereInput, orderBy: [CheckInOrderByWithRelationInput!], cursor: CheckInWhereUniqueInput, take: Int, skip: Int, distinct: [CheckInScalarFieldEnum!]): CheckIn
+
+  """Deskripsinya ada disini loh"""
+  checkInAggregate(where: CheckInWhereInput, orderBy: [CheckInOrderByWithRelationInput!], cursor: CheckInWhereUniqueInput, take: Int, skip: Int, _count: CheckInCountAggregateInput, _avg: CheckInAvgAggregateInput, _sum: CheckInSumAggregateInput, _min: CheckInMinAggregateInput, _max: CheckInMaxAggregateInput): AggregateCheckIn
+
+  """Deskripsinya ada disini loh"""
+  checkInCount(where: CheckInWhereInput, orderBy: [CheckInOrderByWithRelationInput!], cursor: CheckInWhereUniqueInput, take: Int, skip: Int, distinct: [CheckInScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   userNotificationFindMany(userNotificationFindManyArgs: UserNotificationFindManyArgs!): [UserNotification!]
@@ -2338,10 +2363,19 @@ type Query {
   provinceFindOne(provinceFindUniqueArgs: ProvinceFindUniqueArgs!): Province
 
   """Deskripsinya ada disini loh"""
-  cityFindMany(cityFindManyArgs: CityFindManyArgs!): [City!]
+  cityFindOne(where: CityWhereUniqueInput!): City
 
   """Deskripsinya ada disini loh"""
-  cityFindOne(cityFindUniqueArgs: CityFindUniqueArgs!): City
+  cityFindMany(where: CityWhereInput, orderBy: [CityOrderByWithRelationInput!], cursor: CityWhereUniqueInput, take: Int, skip: Int, distinct: [CityScalarFieldEnum!]): [City!]
+
+  """Deskripsinya ada disini loh"""
+  cityFindFirst(where: CityWhereInput, orderBy: [CityOrderByWithRelationInput!], cursor: CityWhereUniqueInput, take: Int, skip: Int, distinct: [CityScalarFieldEnum!]): City
+
+  """Deskripsinya ada disini loh"""
+  cityAggregate(where: CityWhereInput, orderBy: [CityOrderByWithRelationInput!], cursor: CityWhereUniqueInput, take: Int, skip: Int, _count: CityCountAggregateInput, _avg: CityAvgAggregateInput, _sum: CitySumAggregateInput, _min: CityMinAggregateInput, _max: CityMaxAggregateInput): AggregateCity
+
+  """Deskripsinya ada disini loh"""
+  cityCount(where: CityWhereInput, orderBy: [CityOrderByWithRelationInput!], cursor: CityWhereUniqueInput, take: Int, skip: Int, distinct: [CityScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   getTopCitiesWithMostUsers(cityFindManyUserArgs: CityFindManyUserArgs!): [CityFindManyUser!]
@@ -2359,16 +2393,19 @@ type Query {
   subdistrictFindOne(subdistrictFindUniqueArgs: SubdistrictFindUniqueArgs!): Subdistrict
 
   """Deskripsinya ada disini loh"""
-  cartFindMany(cartFindManyArgs: CartFindManyArgs): [Cart!]
+  cartFindOne(where: CartWhereUniqueInput!): Cart
 
   """Deskripsinya ada disini loh"""
-  cartFindOne(cartFindUniqueArgs: CartFindUniqueArgs!): Cart
+  cartFindMany(where: CartWhereInput, orderBy: [CartOrderByWithRelationInput!], cursor: CartWhereUniqueInput, take: Int, skip: Int, distinct: [CartScalarFieldEnum!]): [Cart!]
 
   """Deskripsinya ada disini loh"""
-  cartCount(cartFindManyArgs: CartFindManyArgs): Int!
+  cartFindFirst(where: CartWhereInput, orderBy: [CartOrderByWithRelationInput!], cursor: CartWhereUniqueInput, take: Int, skip: Int, distinct: [CartScalarFieldEnum!]): Cart
 
   """Deskripsinya ada disini loh"""
-  cartAggregate(cartAggregateArgs: CartAggregateArgs!): AggregateCart!
+  cartAggregate(where: CartWhereInput, orderBy: [CartOrderByWithRelationInput!], cursor: CartWhereUniqueInput, take: Int, skip: Int, _count: CartCountAggregateInput, _avg: CartAvgAggregateInput, _sum: CartSumAggregateInput, _min: CartMinAggregateInput, _max: CartMaxAggregateInput): AggregateCart
+
+  """Deskripsinya ada disini loh"""
+  cartCount(where: CartWhereInput, orderBy: [CartOrderByWithRelationInput!], cursor: CartWhereUniqueInput, take: Int, skip: Int, distinct: [CartScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   rewardClaimFindMany(rewardClaimFindManyArgs: RewardClaimFindManyArgs): [RewardClaim!]
@@ -4750,12 +4787,16 @@ input ShippingWhereUniqueInput {
   order: OrderRelationFilter
 }
 
-input CheckInFindManyArgs {
-  where: CheckInWhereInput
-  orderBy: [CheckInOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [CheckInScalarFieldEnum!]
+input CheckInWhereUniqueInput {
+  id: Int
+  AND: [CheckInWhereInput!]
+  OR: [CheckInWhereInput!]
+  NOT: [CheckInWhereInput!]
+  userId: StringFilter
+  hotelId: IntFilter
+  checkInAt: DateTimeFilter
+  user: UserRelationFilter
+  hotel: HotelRelationFilter
 }
 
 input CheckInOrderByWithRelationInput {
@@ -4776,20 +4817,36 @@ enum CheckInScalarFieldEnum {
   updatedAt
 }
 
-input CheckInFindUniqueArgs {
-  where: CheckInWhereUniqueInput!
+input CheckInCountAggregateInput {
+  id: Boolean
+  userId: Boolean
+  hotelId: Boolean
+  checkInAt: Boolean
+  _all: Boolean
 }
 
-input CheckInWhereUniqueInput {
-  id: Int
-  AND: [CheckInWhereInput!]
-  OR: [CheckInWhereInput!]
-  NOT: [CheckInWhereInput!]
-  userId: StringFilter
-  hotelId: IntFilter
-  checkInAt: DateTimeFilter
-  user: UserRelationFilter
-  hotel: HotelRelationFilter
+input CheckInAvgAggregateInput {
+  id: Boolean
+  hotelId: Boolean
+}
+
+input CheckInSumAggregateInput {
+  id: Boolean
+  hotelId: Boolean
+}
+
+input CheckInMinAggregateInput {
+  id: Boolean
+  userId: Boolean
+  hotelId: Boolean
+  checkInAt: Boolean
+}
+
+input CheckInMaxAggregateInput {
+  id: Boolean
+  userId: Boolean
+  hotelId: Boolean
+  checkInAt: Boolean
 }
 
 input UserNotificationFindManyArgs {
@@ -5277,24 +5334,6 @@ input ProvinceWhereUniqueInput {
   cities: CityListRelationFilter
 }
 
-input CityFindManyArgs {
-  where: CityWhereInput
-  orderBy: [CityOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [CityScalarFieldEnum!]
-}
-
-enum CityScalarFieldEnum {
-  id
-  name
-  provinceId
-}
-
-input CityFindUniqueArgs {
-  where: CityWhereUniqueInput!
-}
-
 input CityWhereUniqueInput {
   id: Int
   AND: [CityWhereInput!]
@@ -5304,6 +5343,41 @@ input CityWhereUniqueInput {
   provinceId: IntFilter
   province: ProvinceRelationFilter
   districts: DistrictListRelationFilter
+}
+
+enum CityScalarFieldEnum {
+  id
+  name
+  provinceId
+}
+
+input CityCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  provinceId: Boolean
+  _all: Boolean
+}
+
+input CityAvgAggregateInput {
+  id: Boolean
+  provinceId: Boolean
+}
+
+input CitySumAggregateInput {
+  id: Boolean
+  provinceId: Boolean
+}
+
+input CityMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  provinceId: Boolean
+}
+
+input CityMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  provinceId: Boolean
 }
 
 input CityFindManyUserArgs {
@@ -5371,12 +5445,22 @@ input SubdistrictWhereUniqueInput {
   address: AddressListRelationFilter
 }
 
-input CartFindManyArgs {
-  where: CartWhereInput
-  orderBy: [CartOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [CartScalarFieldEnum!]
+input CartWhereUniqueInput {
+  id: Int
+  AND: [CartWhereInput!]
+  OR: [CartWhereInput!]
+  NOT: [CartWhereInput!]
+  orderId: IntFilter
+  membershipItemId: IntNullableFilter
+  projectItemId: IntNullableFilter
+  quantity: IntFilter
+  price: FloatFilter
+  cost: FloatFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  order: OrderRelationFilter
+  membershipItem: ItemNullableRelationFilter
+  projectItem: ProjectNullableRelationFilter
 }
 
 input CartOrderByWithRelationInput {
@@ -5404,40 +5488,6 @@ enum CartScalarFieldEnum {
   cost
   createdAt
   updatedAt
-}
-
-input CartFindUniqueArgs {
-  where: CartWhereUniqueInput!
-}
-
-input CartWhereUniqueInput {
-  id: Int
-  AND: [CartWhereInput!]
-  OR: [CartWhereInput!]
-  NOT: [CartWhereInput!]
-  orderId: IntFilter
-  membershipItemId: IntNullableFilter
-  projectItemId: IntNullableFilter
-  quantity: IntFilter
-  price: FloatFilter
-  cost: FloatFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  order: OrderRelationFilter
-  membershipItem: ItemNullableRelationFilter
-  projectItem: ProjectNullableRelationFilter
-}
-
-input CartAggregateArgs {
-  where: CartWhereInput
-  orderBy: [CartOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  _count: CartCountAggregateInput
-  _avg: CartAvgAggregateInput
-  _sum: CartSumAggregateInput
-  _min: CartMinAggregateInput
-  _max: CartMaxAggregateInput
 }
 
 input CartCountAggregateInput {
@@ -5732,13 +5782,22 @@ type Mutation {
   projectRemove(projectId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  checkInCreateOne(checkInCreateArgs: CheckInCreateArgs!): CheckIn
+  checkInCreateOne(data: CheckInCreateInput!): CheckIn
 
   """Deskripsinya ada disini loh"""
-  checkInUpdateOne(checkInUpdateOneArgs: CheckInUpdateOneArgs!): CheckIn!
+  checkInCreateMany(data: [CheckInCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  checkInRemove(checkInId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  checkInUpdateOne(data: CheckInUpdateInput!, where: CheckInWhereUniqueInput!): CheckIn
+
+  """Deskripsinya ada disini loh"""
+  checkInUpdateMany(data: CheckInUpdateManyMutationInput!, where: CheckInWhereInput): CheckIn
+
+  """Deskripsinya ada disini loh"""
+  checkInDelete(where: CheckInWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  checkInDeleteMany(where: CheckInWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   userNotificationCreateOne(userNotificationCreateArgs: UserNotificationCreateArgs!): UserNotification
@@ -5778,6 +5837,42 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
+
+  """Deskripsinya ada disini loh"""
+  cityCreateOne(data: CityCreateInput!): City
+
+  """Deskripsinya ada disini loh"""
+  cityCreateMany(data: [CityCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  cityUpdateOne(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
+
+  """Deskripsinya ada disini loh"""
+  cityUpdateMany(data: CityUpdateManyMutationInput!, where: CityWhereInput): City
+
+  """Deskripsinya ada disini loh"""
+  cityDelete(where: CityWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  cityDeleteMany(where: CityWhereInput): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  cartCreateOne(data: CartCreateInput!): Cart
+
+  """Deskripsinya ada disini loh"""
+  cartCreateMany(data: [CartCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  cartUpdateOne(data: CartUpdateInput!, where: CartWhereUniqueInput!): Cart
+
+  """Deskripsinya ada disini loh"""
+  cartUpdateMany(data: CartUpdateManyMutationInput!, where: CartWhereInput): Cart
+
+  """Deskripsinya ada disini loh"""
+  cartDelete(where: CartWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  cartDeleteMany(where: CartWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   rewardClaimCreateOne(rewardClaimCreateArgs: RewardClaimCreateArgs!): RewardClaim
@@ -5999,7 +6094,6 @@ input UserUpdateInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -6021,10 +6115,6 @@ input EnumUserTypeFieldUpdateOperationsInput {
 
 input NullableDateTimeFieldUpdateOperationsInput {
   set: DateTime
-}
-
-input EnumUserStatusFieldUpdateOperationsInput {
-  set: UserStatus
 }
 
 input EnumThemeFieldUpdateOperationsInput {
@@ -6411,7 +6501,6 @@ input UserUpdateWithoutProgramsCreatedInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -6590,7 +6679,6 @@ input UserUpdateWithoutAddressInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
@@ -7120,7 +7208,6 @@ input UserUpdateWithoutOrdersInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -7357,7 +7444,6 @@ input UserUpdateWithoutCheckInsInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   school: SchoolUpdateOneWithoutStudentsNestedInput
@@ -7427,7 +7513,6 @@ input UserUpdateWithoutHotelsCreatedInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -7972,7 +8057,6 @@ input UserUpdateWithoutProgramsParticipationInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -8022,7 +8106,6 @@ input UserUpdateManyMutationInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
 }
 
@@ -8475,7 +8558,6 @@ input UserUpdateWithoutAccountsInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -8749,7 +8831,6 @@ input UserUpdateWithoutFilesCreatedInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -9108,19 +9189,17 @@ input ProjectUpdateInput {
   images: ImagesUpdateManyWithoutProjectImageNestedInput
 }
 
-input CheckInCreateArgs {
-  data: CheckInCreateInput!
-}
-
 input CheckInCreateInput {
   checkInAt: DateTime
   user: UserCreateNestedOneWithoutCheckInsInput!
   hotel: HotelCreateNestedOneWithoutCheckInsInput!
 }
 
-input CheckInUpdateOneArgs {
-  data: CheckInUpdateInput!
-  where: CheckInWhereUniqueInput!
+input CheckInCreateManyInput {
+  id: Int
+  userId: String!
+  hotelId: Int!
+  checkInAt: DateTime
 }
 
 input CheckInUpdateInput {
@@ -9222,7 +9301,6 @@ input UserUpdateWithoutUserNotificationsInput {
   whatsappNumber: StringFieldUpdateOperationsInput
   whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
   password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
   theme: EnumThemeFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutUserNestedInput
   checkIns: CheckInUpdateManyWithoutUserNestedInput
@@ -9297,6 +9375,293 @@ input OrderUpdateInput {
   cart: CartUpdateManyWithoutOrderNestedInput
   shipping: ShippingUpdateOneWithoutOrderNestedInput
   invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
+}
+
+input CityCreateInput {
+  name: String!
+  province: ProvinceCreateNestedOneWithoutCitiesInput!
+  districts: DistrictCreateNestedManyWithoutCityInput
+}
+
+input DistrictCreateNestedManyWithoutCityInput {
+  create: [DistrictCreateWithoutCityInput!]
+  connectOrCreate: [DistrictCreateOrConnectWithoutCityInput!]
+  createMany: DistrictCreateManyCityInputEnvelope
+  connect: [DistrictWhereUniqueInput!]
+}
+
+input DistrictCreateWithoutCityInput {
+  name: String!
+  subdistricts: SubdistrictCreateNestedManyWithoutDistrictInput
+}
+
+input SubdistrictCreateNestedManyWithoutDistrictInput {
+  create: [SubdistrictCreateWithoutDistrictInput!]
+  connectOrCreate: [SubdistrictCreateOrConnectWithoutDistrictInput!]
+  createMany: SubdistrictCreateManyDistrictInputEnvelope
+  connect: [SubdistrictWhereUniqueInput!]
+}
+
+input SubdistrictCreateWithoutDistrictInput {
+  name: String!
+  postalCode: String!
+  address: AddressCreateNestedManyWithoutSubdistrictInput
+}
+
+input AddressCreateNestedManyWithoutSubdistrictInput {
+  create: [AddressCreateWithoutSubdistrictInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutSubdistrictInput!]
+  createMany: AddressCreateManySubdistrictInputEnvelope
+  connect: [AddressWhereUniqueInput!]
+}
+
+input AddressCreateWithoutSubdistrictInput {
+  name: String!
+}
+
+input AddressCreateOrConnectWithoutSubdistrictInput {
+  where: AddressWhereUniqueInput!
+  create: AddressCreateWithoutSubdistrictInput!
+}
+
+input AddressCreateManySubdistrictInputEnvelope {
+  data: [AddressCreateManySubdistrictInput!]!
+  skipDuplicates: Boolean
+}
+
+input AddressCreateManySubdistrictInput {
+  name: String!
+}
+
+input SubdistrictCreateOrConnectWithoutDistrictInput {
+  where: SubdistrictWhereUniqueInput!
+  create: SubdistrictCreateWithoutDistrictInput!
+}
+
+input SubdistrictCreateManyDistrictInputEnvelope {
+  data: [SubdistrictCreateManyDistrictInput!]!
+  skipDuplicates: Boolean
+}
+
+input SubdistrictCreateManyDistrictInput {
+  id: Int
+  name: String!
+  postalCode: String!
+}
+
+input DistrictCreateOrConnectWithoutCityInput {
+  where: DistrictWhereUniqueInput!
+  create: DistrictCreateWithoutCityInput!
+}
+
+input DistrictCreateManyCityInputEnvelope {
+  data: [DistrictCreateManyCityInput!]!
+  skipDuplicates: Boolean
+}
+
+input DistrictCreateManyCityInput {
+  id: Int
+  name: String!
+}
+
+input CityCreateManyInput {
+  id: Int
+  name: String!
+  provinceId: Int!
+}
+
+input CityUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  province: ProvinceUpdateOneRequiredWithoutCitiesNestedInput
+  districts: DistrictUpdateManyWithoutCityNestedInput
+}
+
+input DistrictUpdateManyWithoutCityNestedInput {
+  create: [DistrictCreateWithoutCityInput!]
+  connectOrCreate: [DistrictCreateOrConnectWithoutCityInput!]
+  upsert: [DistrictUpsertWithWhereUniqueWithoutCityInput!]
+  createMany: DistrictCreateManyCityInputEnvelope
+  set: [DistrictWhereUniqueInput!]
+  disconnect: [DistrictWhereUniqueInput!]
+  delete: [DistrictWhereUniqueInput!]
+  connect: [DistrictWhereUniqueInput!]
+  update: [DistrictUpdateWithWhereUniqueWithoutCityInput!]
+  updateMany: [DistrictUpdateManyWithWhereWithoutCityInput!]
+  deleteMany: [DistrictScalarWhereInput!]
+}
+
+input DistrictUpsertWithWhereUniqueWithoutCityInput {
+  where: DistrictWhereUniqueInput!
+  update: DistrictUpdateWithoutCityInput!
+  create: DistrictCreateWithoutCityInput!
+}
+
+input DistrictUpdateWithoutCityInput {
+  name: StringFieldUpdateOperationsInput
+  subdistricts: SubdistrictUpdateManyWithoutDistrictNestedInput
+}
+
+input SubdistrictUpdateManyWithoutDistrictNestedInput {
+  create: [SubdistrictCreateWithoutDistrictInput!]
+  connectOrCreate: [SubdistrictCreateOrConnectWithoutDistrictInput!]
+  upsert: [SubdistrictUpsertWithWhereUniqueWithoutDistrictInput!]
+  createMany: SubdistrictCreateManyDistrictInputEnvelope
+  set: [SubdistrictWhereUniqueInput!]
+  disconnect: [SubdistrictWhereUniqueInput!]
+  delete: [SubdistrictWhereUniqueInput!]
+  connect: [SubdistrictWhereUniqueInput!]
+  update: [SubdistrictUpdateWithWhereUniqueWithoutDistrictInput!]
+  updateMany: [SubdistrictUpdateManyWithWhereWithoutDistrictInput!]
+  deleteMany: [SubdistrictScalarWhereInput!]
+}
+
+input SubdistrictUpsertWithWhereUniqueWithoutDistrictInput {
+  where: SubdistrictWhereUniqueInput!
+  update: SubdistrictUpdateWithoutDistrictInput!
+  create: SubdistrictCreateWithoutDistrictInput!
+}
+
+input SubdistrictUpdateWithoutDistrictInput {
+  name: StringFieldUpdateOperationsInput
+  postalCode: StringFieldUpdateOperationsInput
+  address: AddressUpdateManyWithoutSubdistrictNestedInput
+}
+
+input AddressUpdateManyWithoutSubdistrictNestedInput {
+  create: [AddressCreateWithoutSubdistrictInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutSubdistrictInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutSubdistrictInput!]
+  createMany: AddressCreateManySubdistrictInputEnvelope
+  set: [AddressWhereUniqueInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  delete: [AddressWhereUniqueInput!]
+  connect: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutSubdistrictInput!]
+  updateMany: [AddressUpdateManyWithWhereWithoutSubdistrictInput!]
+  deleteMany: [AddressScalarWhereInput!]
+}
+
+input AddressUpsertWithWhereUniqueWithoutSubdistrictInput {
+  where: AddressWhereUniqueInput!
+  update: AddressUpdateWithoutSubdistrictInput!
+  create: AddressCreateWithoutSubdistrictInput!
+}
+
+input AddressUpdateWithoutSubdistrictInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneWithoutAddressNestedInput
+  hotel: HotelUpdateOneWithoutAddressNestedInput
+  school: SchoolUpdateOneWithoutAddressNestedInput
+  Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input AddressUpdateWithWhereUniqueWithoutSubdistrictInput {
+  where: AddressWhereUniqueInput!
+  data: AddressUpdateWithoutSubdistrictInput!
+}
+
+input AddressUpdateManyWithWhereWithoutSubdistrictInput {
+  where: AddressScalarWhereInput!
+  data: AddressUpdateManyMutationInput!
+}
+
+input AddressScalarWhereInput {
+  AND: [AddressScalarWhereInput!]
+  OR: [AddressScalarWhereInput!]
+  NOT: [AddressScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  subdistrictId: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input SubdistrictUpdateWithWhereUniqueWithoutDistrictInput {
+  where: SubdistrictWhereUniqueInput!
+  data: SubdistrictUpdateWithoutDistrictInput!
+}
+
+input SubdistrictUpdateManyWithWhereWithoutDistrictInput {
+  where: SubdistrictScalarWhereInput!
+  data: SubdistrictUpdateManyMutationInput!
+}
+
+input SubdistrictScalarWhereInput {
+  AND: [SubdistrictScalarWhereInput!]
+  OR: [SubdistrictScalarWhereInput!]
+  NOT: [SubdistrictScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  districtId: IntFilter
+  postalCode: StringFilter
+}
+
+input SubdistrictUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  postalCode: StringFieldUpdateOperationsInput
+}
+
+input DistrictUpdateWithWhereUniqueWithoutCityInput {
+  where: DistrictWhereUniqueInput!
+  data: DistrictUpdateWithoutCityInput!
+}
+
+input DistrictUpdateManyWithWhereWithoutCityInput {
+  where: DistrictScalarWhereInput!
+  data: DistrictUpdateManyMutationInput!
+}
+
+input DistrictScalarWhereInput {
+  AND: [DistrictScalarWhereInput!]
+  OR: [DistrictScalarWhereInput!]
+  NOT: [DistrictScalarWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  cityId: IntFilter
+}
+
+input DistrictUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CityUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input CartCreateInput {
+  quantity: Int!
+  price: Float!
+  cost: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  order: OrderCreateNestedOneWithoutCartInput!
+  membershipItem: ItemCreateNestedOneWithoutCartInput
+  projectItem: ProjectCreateNestedOneWithoutOrderCartInput
+}
+
+input CartCreateManyInput {
+  id: Int
+  orderId: Int!
+  membershipItemId: Int
+  projectItemId: Int
+  quantity: Int!
+  price: Float!
+  cost: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CartUpdateInput {
+  quantity: IntFieldUpdateOperationsInput
+  price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  order: OrderUpdateOneRequiredWithoutCartNestedInput
+  membershipItem: ItemUpdateOneWithoutCartNestedInput
+  projectItem: ProjectUpdateOneWithoutOrderCartNestedInput
 }
 
 input RewardClaimCreateArgs {

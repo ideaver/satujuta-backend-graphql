@@ -1,92 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { CreateOneCartArgs, Cart, FindManyCartArgs } from 'src/@generated';
-import { CartFindManyArgs } from './dto/cart-find-many.args';
-import { CartFindUniqueArgs } from './dto/cart-find-one.args';
-import { CartUpdateOneArgs } from './dto/cart-update-one.args';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class CartService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(cartCreateArgs: CreateOneCartArgs): Promise<Cart | void> {
-    return await this.prisma.cart
-      .create(cartCreateArgs)
-      .then((cart) => {
-        return cart;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(cartCreateArgs: Prisma.CartCreateArgs) {
+    try {
+      return await this.prisma.cart.create(cartCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findMany(cartFindManyArgs: CartFindManyArgs) {
-    return this.prisma.cart
-      .findMany(cartFindManyArgs)
-      .then((carts) => {
-        return carts;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(cartCreateManyArgs: Prisma.CartCreateManyArgs) {
+    try {
+      return await this.prisma.cart.createMany(cartCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(cartFindUniqueArgs: CartFindUniqueArgs): Promise<Cart | void> {
-    return await this.prisma.cart
-      .findUnique(cartFindUniqueArgs)
-      .then((cart) => {
-        return cart;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(cartFindUniqueArgs: Prisma.CartFindUniqueArgs) {
+    try {
+      return await this.prisma.cart.findUnique(cartFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(cartUpdateOneArgs: CartUpdateOneArgs): Promise<Cart | void> {
-    return this.prisma.cart
-      .update(cartUpdateOneArgs)
-      .then((cart) => {
-        return cart;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(cartFindManyArgs: Prisma.CartFindManyArgs) {
+    try {
+      return await this.prisma.cart.findMany(cartFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(cartId: number): Promise<boolean | void> {
-    return await this.prisma.cart
-      .delete({
-        where: { id: cartId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(cartFindFirstArgs: Prisma.CartFindFirstArgs) {
+    try {
+      return await this.prisma.cart.findFirst(cartFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async count(findManyCartArgs: FindManyCartArgs): Promise<number | void> {
-    return await this.prisma.cart
-      .count()
-      .then((count) => {
-        return count;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateOne(cartUpdateOneArgs: Prisma.CartUpdateArgs) {
+    try {
+      return await this.prisma.cart.update(cartUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(cartUpdateManyArgs: Prisma.CartUpdateManyArgs) {
+    try {
+      return await this.prisma.cart.updateMany(cartUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(cartDeleteArgs: Prisma.CartDeleteArgs) {
+    try {
+      await this.prisma.cart.delete(cartDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(cartDeleteManyArgs: Prisma.CartDeleteManyArgs) {
+    try {
+      await this.prisma.cart.deleteMany(cartDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
   async aggregate(cartAggregateArgs: Prisma.CartAggregateArgs) {
-    return await this.prisma.cart
-      .aggregate(cartAggregateArgs)
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+    try {
+      return await this.prisma.cart.aggregate(cartAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(cartCountArgs: Prisma.CartCountArgs) {
+    try {
+      return await this.prisma.cart.count(cartCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

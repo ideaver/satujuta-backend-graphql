@@ -1,60 +1,76 @@
-import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
 import { CityService } from './city.service';
+import { City } from 'src/@generated';
+import { CityCreateArgs } from './dto/city-create-one.args';
+import { CityFindManyArgs } from './dto/city-find-many.args';
+import { CityFindUniqueArgs } from './dto/city-find-one.args';
+
+import { Injectable } from '@nestjs/common';
 import {
   CityFindManyUser,
   CityFindManyUserArgs,
 } from './dto/city-find-many-user.args';
-import { City } from 'src/@generated';
 
 @Injectable()
 export class CityController {
   constructor(private readonly cityService: CityService) {}
 
-  async createOne(cityCreateArgs: Prisma.CityCreateArgs) {
+  async createOne(cityCreateArgs: CityCreateArgs): Promise<City | void> {
     return await this.cityService.createOne(cityCreateArgs);
   }
 
-  async createMany(cityCreateManyArgs: Prisma.CityCreateManyArgs) {
-    return await this.cityService.createMany(cityCreateManyArgs);
+  findMany(cityFindManyArgs: CityFindManyArgs): Promise<City[]> {
+    //handle graphql null value
+    if (cityFindManyArgs.where?.OR?.[0]?.id?.equals === null) {
+      cityFindManyArgs.where.OR[0].id = undefined;
+    }
+
+    //handle graphql null value
+    if (cityFindManyArgs.where?.OR?.[1]?.name?.contains === null) {
+      cityFindManyArgs.where.OR[1].name = undefined;
+    }
+
+    //handle graphql null value
+    if (cityFindManyArgs.where?.OR?.[2]?.provinceId?.equals === null) {
+      cityFindManyArgs.where.OR[2].provinceId = undefined;
+    }
+
+    return this.cityService.findMany(cityFindManyArgs);
   }
 
-  async findOne(cityFindUniqueArgs: Prisma.CityFindUniqueArgs) {
-    return await this.cityService.findOne(cityFindUniqueArgs);
+  findOne(cityFindUniqueArgs: CityFindUniqueArgs): Promise<City | void> {
+    return this.cityService.findOne(cityFindUniqueArgs);
   }
 
-  async findMany(cityFindManyArgs: Prisma.CityFindManyArgs): Promise<City[]> {
-    return await this.cityService.findMany(cityFindManyArgs);
-  }
+  // async updateOne(cityUpdateOneArgs: CityUpdateOneArgs) {
+  //   const { name, description, images } = cityUpdateOneArgs.data;
 
-  async findFirst(cityFindFirstArgs: Prisma.CityFindFirstArgs) {
-    return await this.cityService.findFirst(cityFindFirstArgs);
-  }
+  //   if (name?.set === null) {
+  //     cityUpdateOneArgs.data.name = undefined;
+  //   }
 
-  async updateOne(cityUpdateOneArgs: Prisma.CityUpdateArgs) {
-    return await this.cityService.updateOne(cityUpdateOneArgs);
-  }
+  //   if (description?.set === null) {
+  //     cityUpdateOneArgs.data.description = undefined;
+  //   }
 
-  async updateMany(cityUpdateManyArgs: Prisma.CityUpdateManyArgs) {
-    return await this.cityService.updateMany(cityUpdateManyArgs);
-  }
+  //   if (images.delete?.[0]?.url.equals === null) {
+  //     cityUpdateOneArgs.data.images.delete = undefined;
+  //   }
 
-  async delete(cityDeleteArgs: Prisma.CityDeleteArgs) {
-    return await this.cityService.delete(cityDeleteArgs);
-  }
+  //   if (images.deleteMany?.[0]?.url.equals === null) {
+  //     cityUpdateOneArgs.data.images.deleteMany = undefined;
+  //   }
 
-  async deleteMany(cityDeleteManyArgs: Prisma.CityDeleteManyArgs) {
-    return await this.cityService.deleteMany(cityDeleteManyArgs);
-  }
+  //   if (images.createMany?.data?.[0]?.url === null) {
+  //     cityUpdateOneArgs.data.images.createMany = undefined;
+  //   }
+  //   //check for new claim and check if user has enough point
+  //   await this.isNewCityClaimEventAndIsUserPointEnough(cityUpdateOneArgs);
+  //   return this.cityService.update(cityUpdateOneArgs);
+  // }
 
-  async aggregate(cityAggregateArgs: Prisma.CityAggregateArgs) {
-    return await this.cityService.aggregate(cityAggregateArgs);
+  remove(cityId: number) {
+    return this.cityService.remove(cityId);
   }
-
-  async count(cityCountArgs: Prisma.CityCountArgs) {
-    return await this.cityService.count(cityCountArgs);
-  }
-
   async getTopCitiesWithMostUsers({
     userRole,
     status,

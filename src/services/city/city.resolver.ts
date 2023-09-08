@@ -1,13 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { City } from 'src/@generated';
-import { CityCreateArgs } from './dto/city-create-one.args';
-import { CityFindManyArgs } from './dto/city-find-many.args';
-import { CityFindUniqueArgs } from './dto/city-find-one.args';
-import { CityUpdateOneArgs } from './dto/city-update-one.args';
+import {
+  AggregateCity,
+  CreateManyCityArgs,
+  CreateOneCityArgs,
+  DeleteManyCityArgs,
+  DeleteOneCityArgs,
+  FindFirstCityArgs,
+  FindManyCityArgs,
+  FindUniqueCityArgs,
+  City,
+  CityAggregateArgs,
+  UpdateManyCityArgs,
+  UpdateOneCityArgs,
+} from 'src/@generated';
 import { CityController } from './city.controller';
-import { Logger } from '@nestjs/common';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 import {
   CityFindManyUser,
   CityFindManyUserArgs,
@@ -20,30 +31,31 @@ interface CitySelect {
 @Resolver(() => City)
 export class CityResolver {
   constructor(private readonly cityController: CityController) {}
-  private readonly logger = new Logger(CityResolver.name);
-  // @Mutation(() => City, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // async cityCreateOne(
-  //   @Args('cityCreateArgs') cityCreateArgs: CityCreateArgs,
-  //   @Relations() relations: CitySelect,
-  // ): Promise<City | void> {
-  //   cityCreateArgs.select = relations.select;
-  //   return await this.cityController.createOne(cityCreateArgs);
-  // }
 
-  @Query(() => [City], {
+  @Mutation(() => City, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  cityFindMany(
-    @Args('cityFindManyArgs') cityFindManyArgs: CityFindManyArgs,
+  async cityCreateOne(
+    @Args()
+    cityCreateArgs: CreateOneCityArgs,
     @Relations() relations: CitySelect,
+  ): Promise<City | void> {
+    return await this.cityController.createOne({
+      ...cityCreateArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cityCreateMany(
+    @Args()
+    createManyCityArgs: CreateManyCityArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    cityFindManyArgs.select = relations.select;
-    return this.cityController.findMany(cityFindManyArgs);
+    return await this.cityController.createMany(createManyCityArgs);
   }
 
   @Query(() => City, {
@@ -51,36 +63,104 @@ export class CityResolver {
     description: 'Deskripsinya ada disini loh',
   })
   cityFindOne(
-    @Args('cityFindUniqueArgs')
-    cityFindUniqueArgs: CityFindUniqueArgs,
+    @Args()
+    cityFindUniqueArgs: FindUniqueCityArgs,
     @Relations() relations: CitySelect,
   ): Promise<City | void> {
-    //Auto implement prisma select from graphql query info
-    cityFindUniqueArgs.select = relations.select;
-    return this.cityController.findOne(cityFindUniqueArgs);
+    return this.cityController.findOne({
+      ...cityFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => City, {
-  //   description:
-  //     'Deskripsinya ada disini loh, Jika tentang mutasi klaim city, backend akan cek apakah saldo point user cukup untuk claim',
-  // })
-  // async cityUpdateOne(
-  //   @Args('cityUpdateOneArgs') cityUpdateOneArgs: CityUpdateOneArgs,
-  //   @Relations() relations: CitySelect,
-  // ) {
-  //   //Auto implement prisma select from graphql query info
-  //   cityUpdateOneArgs.select = relations.select;
+  @Query(() => [City], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cityFindMany(
+    @Args() cityFindManyArgs: FindManyCityArgs,
+    @Relations() relations: CitySelect,
+  ) {
+    return this.cityController.findMany({
+      ...cityFindManyArgs,
+      select: relations.select,
+    });
+  }
 
-  //   return this.cityController.updateOne(cityUpdateOneArgs);
-  // }
+  @Query(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cityFindFirst(
+    @Args()
+    findFirstCityArgs: FindFirstCityArgs,
+    @Relations() relations: CitySelect,
+  ): Promise<City | void> {
+    return this.cityController.findFirst({
+      ...findFirstCityArgs,
+      select: relations.select,
+    });
+  }
 
-  // @Mutation(() => Boolean, {
-  //   nullable: true,
-  //   description: 'Datanya benar2 terhapus dari db',
-  // })
-  // cityRemove(@Args('cityId') cityId: number) {
-  //   return this.cityController.remove(cityId);
-  // }
+  @Mutation(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cityUpdateOne(
+    @Args() cityUpdateOneArgs: UpdateOneCityArgs,
+    @Relations() relations: CitySelect,
+  ) {
+    return this.cityController.updateOne({
+      ...replaceNullWithUndefined(cityUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cityUpdateMany(@Args() updateManyCityArgs: UpdateManyCityArgs) {
+    return this.cityController.updateMany(updateManyCityArgs);
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cityDelete(
+    @Args() deleteOneCityArgs: DeleteOneCityArgs,
+    @Relations() relations: CitySelect,
+  ) {
+    return this.cityController.delete({
+      ...deleteOneCityArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async cityDeleteMany(@Args() deleteManyCityArgs: DeleteManyCityArgs) {
+    return this.cityController.deleteMany(deleteManyCityArgs);
+  }
+
+  @Query(() => AggregateCity, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cityAggregate(@Args() cityAggregateArgs: CityAggregateArgs) {
+    return this.cityController.aggregate(cityAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  cityCount(@Args() cityCountAggregateInput: FindManyCityArgs) {
+    return this.cityController.count(cityCountAggregateInput);
+  }
 
   @Query(() => [CityFindManyUser], {
     nullable: true,
