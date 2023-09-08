@@ -1,5 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Item, Prisma, TransactionStatus, UserRole } from '@prisma/client';
+import {
+  Item,
+  Prisma,
+  TransactionStatus,
+  UserRole,
+  UserStatus,
+} from '@prisma/client';
 import { UserService } from './user.service';
 import {
   generateRandomReferralCode,
@@ -66,6 +72,16 @@ export class UserController {
 
     //TODO: if whatsapp updated: send whatsapp message
     //TODO: if email updated: send email
+
+    //from transaction
+    //TODO: if user status updated: OnRegisteredUserEvent
+    if (userUpdateOneArgs?.data?.status === UserStatus.ACTIVE) {
+      /* 
+    1. send user notification about order status
+    2. send notification to admin
+    3. send point to referee user
+    */
+    }
 
     //encrypt user password
     if (password) {
