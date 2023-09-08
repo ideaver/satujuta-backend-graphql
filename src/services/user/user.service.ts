@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { Prisma } from '@prisma/client';
+import { UserTypePercentage } from './dto/user-type-percentage.output';
 
 @Injectable()
 export class UserService {
@@ -95,5 +96,26 @@ export class UserService {
     } catch (err) {
       throw new IGraphQLError({ code: 123456, err: err });
     }
+  }
+
+  async countUserTypePercentage(): Promise<UserTypePercentage[] | void> {
+    const query = Prisma.sql`
+    SELECT
+      userType AS userCountType,
+      COUNT(*) AS userCount,
+      ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS userPercentage
+    FROM
+      User
+    GROUP BY
+      userType;
+  `;
+    return await this.prisma
+      .$queryRaw(query)
+      .then((res: UserTypePercentage[]) => {
+        return res;
+      })
+      .catch((err) => {
+        throw new IGraphQLError({ code: 123456, err: err });
+      });
   }
 }

@@ -1,12 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
-import { ItemService } from './item.service';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Item } from 'src/@generated';
-import { ItemCreateArgs } from './dto/item-create-one.args';
-import { ItemFindManyArgs } from './dto/item-find-many.args';
-import { ItemFindUniqueArgs } from './dto/item-find-one.args';
-import { ItemUpdateOneArgs } from './dto/item-update-one.args';
+import {
+  AggregateItem,
+  CreateManyItemArgs,
+  CreateOneItemArgs,
+  DeleteManyItemArgs,
+  DeleteOneItemArgs,
+  FindFirstItemArgs,
+  FindManyItemArgs,
+  FindUniqueItemArgs,
+  Item,
+  ItemAggregateArgs,
+  UpdateManyItemArgs,
+  UpdateOneItemArgs,
+} from 'src/@generated';
+import { ItemController } from './item.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface ItemSelect {
   select: Prisma.ItemSelect;
@@ -14,31 +26,32 @@ interface ItemSelect {
 
 @Resolver(() => Item)
 export class ItemResolver {
-  constructor(private readonly itemService: ItemService) {}
+  constructor(private readonly itemController: ItemController) {}
 
   @Mutation(() => Item, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async itemCreateOne(
-    @Args('itemCreateArgs') itemCreateArgs: ItemCreateArgs,
-    @Relations() relations: ItemSelect
+    @Args()
+    itemCreateArgs: CreateOneItemArgs,
+    @Relations() relations: ItemSelect,
   ): Promise<Item | void> {
-    itemCreateArgs.select = relations.select;
-    return await this.itemService.createOne(itemCreateArgs);
+    return await this.itemController.createOne({
+      ...itemCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [Item], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  itemFindMany(
-    @Args('itemFindManyArgs') itemFindManyArgs: ItemFindManyArgs,
-    @Relations() relations: ItemSelect,
+  async itemCreateMany(
+    @Args()
+    createManyItemArgs: CreateManyItemArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    itemFindManyArgs.select = relations.select;
-    return this.itemService.findMany(itemFindManyArgs);
+    return await this.itemController.createMany(createManyItemArgs);
   }
 
   @Query(() => Item, {
@@ -46,30 +59,102 @@ export class ItemResolver {
     description: 'Deskripsinya ada disini loh',
   })
   itemFindOne(
-    @Args('itemFindUniqueArgs')
-    itemFindUniqueArgs: ItemFindUniqueArgs,
+    @Args()
+    itemFindUniqueArgs: FindUniqueItemArgs,
     @Relations() relations: ItemSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    itemFindUniqueArgs.select = relations.select;
-    return this.itemService.findOne(itemFindUniqueArgs);
+  ): Promise<Item | void> {
+    return this.itemController.findOne({
+      ...itemFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => Item, { description: 'Deskripsinya ada disini loh' })
-  itemUpdateOne(
-    @Args('itemUpdateOneArgs') itemUpdateOneArgs: ItemUpdateOneArgs,
+  @Query(() => [Item], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  itemFindMany(
+    @Args() itemFindManyArgs: FindManyItemArgs,
     @Relations() relations: ItemSelect,
   ) {
-    itemUpdateOneArgs.select = relations.select;
-    return this.itemService.update(itemUpdateOneArgs);
+    return this.itemController.findMany({
+      ...itemFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => Item, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  itemFindFirst(
+    @Args()
+    findFirstItemArgs: FindFirstItemArgs,
+    @Relations() relations: ItemSelect,
+  ): Promise<Item | void> {
+    return this.itemController.findFirst({
+      ...findFirstItemArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Item, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async itemUpdateOne(
+    @Args() itemUpdateOneArgs: UpdateOneItemArgs,
+    @Relations() relations: ItemSelect,
+  ) {
+    return this.itemController.updateOne({
+      ...replaceNullWithUndefined(itemUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Item, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async itemUpdateMany(@Args() updateManyItemArgs: UpdateManyItemArgs) {
+    return this.itemController.updateMany(updateManyItemArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  itemRemove(@Args('itemId') itemId: number) {
-    return this.itemService.remove(itemId);
+  async itemDelete(
+    @Args() deleteOneItemArgs: DeleteOneItemArgs,
+    @Relations() relations: ItemSelect,
+  ) {
+    return this.itemController.delete({
+      ...deleteOneItemArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async itemDeleteMany(@Args() deleteManyItemArgs: DeleteManyItemArgs) {
+    return this.itemController.deleteMany(deleteManyItemArgs);
+  }
+
+  @Query(() => AggregateItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  itemAggregate(@Args() itemAggregateArgs: ItemAggregateArgs) {
+    return this.itemController.aggregate(itemAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  count(@Args() itemCountAggregateInput: FindManyItemArgs) {
+    return this.itemController.count(itemCountAggregateInput);
   }
 }

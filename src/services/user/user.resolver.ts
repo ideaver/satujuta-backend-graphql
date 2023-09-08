@@ -16,6 +16,10 @@ import {
   UpdateManyUserArgs,
   UpdateOneUserArgs,
 } from 'src/@generated';
+import {
+  UserCreatedByCustomPeriodArgs,
+  UserCreatedByCustomPeriodQuery,
+} from './dto/get-user-created-by-custom-period.args';
 import { UserController } from './user.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
@@ -156,5 +160,26 @@ export class UserResolver {
   })
   count(@Args() userCountAggregateInput: FindManyUserArgs) {
     return this.userController.count(userCountAggregateInput);
+  }
+
+  @Query(() => [UserTypePercentage], {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  countUserTypePercentage() {
+    return this.userController.countUserTypePercentage();
+  }
+
+  @Query(() => [UserCreatedByCustomPeriodQuery], {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  getUserGrowthByCustomPeriod(
+    @Args('userCreatedByCustomPeriodArgs', { nullable: false })
+    userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs,
+  ) {
+    return this.userController.getUserGrowthByCustomPeriod(
+      userCreatedByCustomPeriodArgs,
+    );
   }
 }

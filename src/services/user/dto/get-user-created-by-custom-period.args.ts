@@ -1,6 +1,6 @@
 import { ObjectType, Field, InputType, Int, Float } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
-import { AccountCategory, UserWhereInput } from 'src/@generated';
+import { UserWhereInput } from 'src/@generated';
 import { Period } from 'src/model/period.enum';
 
 @ObjectType()
