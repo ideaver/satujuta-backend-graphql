@@ -13,6 +13,7 @@ import {
 } from './dto/get-user-created-by-custom-period.args';
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
 import { Period } from 'src/model/period.enum';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class UserController {
@@ -22,20 +23,26 @@ export class UserController {
   ) {}
 
   async createOne(userCreateArgs: Prisma.UserCreateArgs) {
-    const { password, userRole } = userCreateArgs.data;
-    //Generate Random Referral Code
-    userCreateArgs.data.referralCode = generateRandomReferralCode();
+    try {
+      const { password, userRole } = userCreateArgs.data;
+      //Generate Random Referral Code
+      userCreateArgs.data.referralCode = generateRandomReferralCode();
 
-    //encrypt user password
-    userCreateArgs.data.password = await encryptUserPassword(password);
+      //encrypt user password
+      userCreateArgs.data.password = await encryptUserPassword(password);
 
-    if (userRole !== UserRole.SUPERUSER && userRole !== UserRole.ADMIN) {
-      //Auto Create User Accounts
-      accountCreateManyUserInput(userCreateArgs);
-      // Auto Create Order
-      await orderCreate(userCreateArgs, this.itemController, userRole);
+      if (userRole !== UserRole.SUPERUSER && userRole !== UserRole.ADMIN) {
+        //Auto Create User Accounts
+        accountCreateManyUserInput(userCreateArgs);
+        // Auto Create Order
+        await orderCreate(userCreateArgs, this.itemController, userRole);
+      }
+      const res = await this.userService.createOne(userCreateArgs);
+      //TODO: Handle OnUserCreateEvent : email verification, whatsapp verification,
+      return res;
+    } catch (error) {
+      throw new IGraphQLError({ code: 123456, err: error });
     }
-    return await this.userService.createOne(userCreateArgs);
   }
 
   async createMany(userCreateManyArgs: Prisma.UserCreateManyArgs) {
@@ -56,6 +63,9 @@ export class UserController {
 
   async updateOne(userUpdateOneArgs: Prisma.UserUpdateArgs) {
     const { password } = userUpdateOneArgs.data;
+
+    //TODO: if whatsapp updated: send whatsapp message
+    //TODO: if email updated: send email
 
     //encrypt user password
     if (password) {

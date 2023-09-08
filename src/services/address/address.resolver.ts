@@ -1,13 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Address } from 'src/@generated';
-import { AddressCreateArgs } from './dto/address-create-one.args';
-import { AddressFindManyArgs } from './dto/address-find-many.args';
-import { AddressFindUniqueArgs } from './dto/address-find-one.args';
-import { AddressUpdateOneArgs } from './dto/address-update-one.args';
+import {
+  AggregateAddress,
+  CreateManyAddressArgs,
+  CreateOneAddressArgs,
+  DeleteManyAddressArgs,
+  DeleteOneAddressArgs,
+  FindFirstAddressArgs,
+  FindManyAddressArgs,
+  FindUniqueAddressArgs,
+  Address,
+  AddressAggregateArgs,
+  UpdateManyAddressArgs,
+  UpdateOneAddressArgs,
+} from 'src/@generated';
 import { AddressController } from './address.controller';
-import { Logger } from '@nestjs/common';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface AddressSelect {
   select: Prisma.AddressSelect;
@@ -16,34 +27,31 @@ interface AddressSelect {
 @Resolver(() => Address)
 export class AddressResolver {
   constructor(private readonly addressController: AddressController) {}
-  private readonly logger = new Logger(AddressResolver.name);
+
   @Mutation(() => Address, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async addressCreateOne(
-    @Args('addressCreateArgs') addressCreateArgs: AddressCreateArgs,
+    @Args()
+    addressCreateArgs: CreateOneAddressArgs,
     @Relations() relations: AddressSelect,
   ): Promise<Address | void> {
-    addressCreateArgs.select = relations.select;
-    return await this.addressController.createOne(addressCreateArgs);
+    return await this.addressController.createOne({
+      ...addressCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [Address], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  addressFindMany(
-    @Args('addressFindManyArgs', { nullable: true })
-    addressFindManyArgs: AddressFindManyArgs,
-    @Relations() relations: AddressSelect,
+  async addressCreateMany(
+    @Args()
+    createManyAddressArgs: CreateManyAddressArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    if (addressFindManyArgs) {
-      addressFindManyArgs.select = relations.select;
-    }
-
-    return this.addressController.findMany(addressFindManyArgs);
+    return await this.addressController.createMany(createManyAddressArgs);
   }
 
   @Query(() => Address, {
@@ -51,34 +59,106 @@ export class AddressResolver {
     description: 'Deskripsinya ada disini loh',
   })
   addressFindOne(
-    @Args('addressFindUniqueArgs')
-    addressFindUniqueArgs: AddressFindUniqueArgs,
+    @Args()
+    addressFindUniqueArgs: FindUniqueAddressArgs,
     @Relations() relations: AddressSelect,
   ): Promise<Address | void> {
-    //Auto implement prisma select from graphql query info
-    addressFindUniqueArgs.select = relations.select;
-    return this.addressController.findOne(addressFindUniqueArgs);
+    return this.addressController.findOne({
+      ...addressFindUniqueArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => [Address], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  addressFindMany(
+    @Args() addressFindManyArgs: FindManyAddressArgs,
+    @Relations() relations: AddressSelect,
+  ) {
+    return this.addressController.findMany({
+      ...addressFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  addressFindFirst(
+    @Args()
+    findFirstAddressArgs: FindFirstAddressArgs,
+    @Relations() relations: AddressSelect,
+  ): Promise<Address | void> {
+    return this.addressController.findFirst({
+      ...findFirstAddressArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => Address, {
-    description:
-      'Deskripsinya ada disini loh, Jika tentang mutasi klaim address, backend akan cek apakah saldo point user cukup untuk claim',
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
   async addressUpdateOne(
-    @Args('addressUpdateOneArgs') addressUpdateOneArgs: AddressUpdateOneArgs,
+    @Args() addressUpdateOneArgs: UpdateOneAddressArgs,
     @Relations() relations: AddressSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    addressUpdateOneArgs.select = relations.select;
+    return this.addressController.updateOne({
+      ...replaceNullWithUndefined(addressUpdateOneArgs),
+      select: relations.select,
+    });
+  }
 
-    return this.addressController.updateOne(addressUpdateOneArgs);
+  @Mutation(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async addressUpdateMany(
+    @Args() updateManyAddressArgs: UpdateManyAddressArgs,
+  ) {
+    return this.addressController.updateMany(updateManyAddressArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  addressRemove(@Args('addressId') addressId: number) {
-    return this.addressController.remove(addressId);
+  async addressDelete(
+    @Args() deleteOneAddressArgs: DeleteOneAddressArgs,
+    @Relations() relations: AddressSelect,
+  ) {
+    return this.addressController.delete({
+      ...deleteOneAddressArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async addressDeleteMany(
+    @Args() deleteManyAddressArgs: DeleteManyAddressArgs,
+  ) {
+    return this.addressController.deleteMany(deleteManyAddressArgs);
+  }
+
+  @Query(() => AggregateAddress, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  addressAggregate(@Args() addressAggregateArgs: AddressAggregateArgs) {
+    return this.addressController.aggregate(addressAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  addressCount(@Args() addressCountAggregateInput: FindManyAddressArgs) {
+    return this.addressController.count(addressCountAggregateInput);
   }
 }

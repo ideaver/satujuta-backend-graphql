@@ -79,6 +79,14 @@ type Account {
   _count: AccountCount!
 }
 
+type AggregateAccount {
+  _count: AccountCountAggregate
+  _avg: AccountAvgAggregate
+  _sum: AccountSumAggregate
+  _min: AccountMinAggregate
+  _max: AccountMaxAggregate
+}
+
 type AddressAvgAggregate {
   id: Float
   subdistrictId: Float
@@ -125,6 +133,14 @@ type Address {
   hotel: Hotel
   school: School
   Shipping: Shipping
+}
+
+type AggregateAddress {
+  _count: AddressCountAggregate
+  _avg: AddressAvgAggregate
+  _sum: AddressSumAggregate
+  _min: AddressMinAggregate
+  _max: AddressMaxAggregate
 }
 
 type AggregateBank {
@@ -2043,14 +2059,14 @@ type PointTransactionGroupPercentage {
   percentage: Float!
 }
 
-type AccountBalanceByCustomPeriodQuery {
-  period: String
-  totalBalance: Float
-}
-
 type UserFindManyOrderByAccountBalance {
   user: User!
   totalBalance: Float!
+}
+
+type AccountBalanceByCustomPeriodQuery {
+  period: String
+  totalBalance: Float
 }
 
 type CityFindManyUser {
@@ -2130,14 +2146,19 @@ type Query {
   withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
 
   """Deskripsinya ada disini loh"""
-  accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
+  accountFindOne(where: AccountWhereUniqueInput!): Account
 
   """Deskripsinya ada disini loh"""
-  accountFindOne(accountFindUniqueArgs: AccountFindUniqueArgs!): Account
+  accountFindMany(where: AccountWhereInput, orderBy: [AccountOrderByWithRelationInput!], cursor: AccountWhereUniqueInput, take: Int, skip: Int, distinct: [AccountScalarFieldEnum!]): [Account!]
 
-  """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
-  accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
-  getAccountTotalBalance(accountId: Float!): Float!
+  """Deskripsinya ada disini loh"""
+  accountFindFirst(where: AccountWhereInput, orderBy: [AccountOrderByWithRelationInput!], cursor: AccountWhereUniqueInput, take: Int, skip: Int, distinct: [AccountScalarFieldEnum!]): Account
+
+  """Deskripsinya ada disini loh"""
+  accountAggregate(where: AccountWhereInput, orderBy: [AccountOrderByWithRelationInput!], cursor: AccountWhereUniqueInput, take: Int, skip: Int, _count: AccountCountAggregateInput, _avg: AccountAvgAggregateInput, _sum: AccountSumAggregateInput, _min: AccountMinAggregateInput, _max: AccountMaxAggregateInput): AggregateAccount
+
+  """Deskripsinya ada disini loh"""
+  accountCount(where: AccountWhereInput, orderBy: [AccountOrderByWithRelationInput!], cursor: AccountWhereUniqueInput, take: Int, skip: Int, distinct: [AccountScalarFieldEnum!]): Float
   userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
@@ -2284,10 +2305,19 @@ type Query {
   schoolCount(schoolFindManyArgs: SchoolFindManyArgs): Int!
 
   """Deskripsinya ada disini loh"""
-  addressFindMany(addressFindManyArgs: AddressFindManyArgs): [Address!]
+  addressFindOne(where: AddressWhereUniqueInput!): Address
 
   """Deskripsinya ada disini loh"""
-  addressFindOne(addressFindUniqueArgs: AddressFindUniqueArgs!): Address
+  addressFindMany(where: AddressWhereInput, orderBy: [AddressOrderByWithRelationInput!], cursor: AddressWhereUniqueInput, take: Int, skip: Int, distinct: [AddressScalarFieldEnum!]): [Address!]
+
+  """Deskripsinya ada disini loh"""
+  addressFindFirst(where: AddressWhereInput, orderBy: [AddressOrderByWithRelationInput!], cursor: AddressWhereUniqueInput, take: Int, skip: Int, distinct: [AddressScalarFieldEnum!]): Address
+
+  """Deskripsinya ada disini loh"""
+  addressAggregate(where: AddressWhereInput, orderBy: [AddressOrderByWithRelationInput!], cursor: AddressWhereUniqueInput, take: Int, skip: Int, _count: AddressCountAggregateInput, _avg: AddressAvgAggregateInput, _sum: AddressSumAggregateInput, _min: AddressMinAggregateInput, _max: AddressMaxAggregateInput): AggregateAddress
+
+  """Deskripsinya ada disini loh"""
+  addressCount(where: AddressWhereInput, orderBy: [AddressOrderByWithRelationInput!], cursor: AddressWhereUniqueInput, take: Int, skip: Int, distinct: [AddressScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   orderFindMany(orderFindManyArgs: OrderFindManyArgs!): [Order!]
@@ -3952,28 +3982,6 @@ input WithdrawalRequestWhereUniqueInput {
   transaction: TransactionNullableRelationFilter
 }
 
-input AccountFindManyArgs {
-  where: AccountWhereInput
-  orderBy: [AccountOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [AccountScalarFieldEnum!]
-}
-
-enum AccountScalarFieldEnum {
-  id
-  accountNumber
-  name
-  createdAt
-  updatedAt
-  userId
-  accountCategory
-}
-
-input AccountFindUniqueArgs {
-  where: AccountWhereUniqueInput!
-}
-
 input AccountWhereUniqueInput {
   id: Int
   AND: [AccountWhereInput!]
@@ -3988,13 +3996,49 @@ input AccountWhereUniqueInput {
   transactionDestination: TransactionListRelationFilter
 }
 
-input AccountFindFirstArgs {
-  where: AccountWhereInput
-  orderBy: [AccountOrderByWithRelationInput!]
-  cursor: AccountWhereUniqueInput
-  take: Int
-  skip: Int
-  distinct: [AccountScalarFieldEnum!]
+enum AccountScalarFieldEnum {
+  id
+  accountNumber
+  name
+  createdAt
+  updatedAt
+  userId
+  accountCategory
+}
+
+input AccountCountAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+  name: Boolean
+  userId: Boolean
+  accountCategory: Boolean
+  _all: Boolean
+}
+
+input AccountAvgAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+}
+
+input AccountSumAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+}
+
+input AccountMinAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+  name: Boolean
+  userId: Boolean
+  accountCategory: Boolean
+}
+
+input AccountMaxAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+  name: Boolean
+  userId: Boolean
+  accountCategory: Boolean
 }
 
 input UserFindManyOrderByAccountBalanceArgs {
@@ -5039,26 +5083,6 @@ input SchoolWhereUniqueInput {
   students: UserListRelationFilter
 }
 
-input AddressFindManyArgs {
-  where: AddressWhereInput
-  orderBy: [AddressOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [AddressScalarFieldEnum!]
-}
-
-enum AddressScalarFieldEnum {
-  id
-  name
-  subdistrictId
-  createdAt
-  updatedAt
-}
-
-input AddressFindUniqueArgs {
-  where: AddressWhereUniqueInput!
-}
-
 input AddressWhereUniqueInput {
   id: Int
   AND: [AddressWhereInput!]
@@ -5073,6 +5097,49 @@ input AddressWhereUniqueInput {
   hotel: HotelNullableRelationFilter
   school: SchoolNullableRelationFilter
   Shipping: ShippingNullableRelationFilter
+}
+
+enum AddressScalarFieldEnum {
+  id
+  name
+  subdistrictId
+  createdAt
+  updatedAt
+}
+
+input AddressCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  subdistrictId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input AddressAvgAggregateInput {
+  id: Boolean
+  subdistrictId: Boolean
+}
+
+input AddressSumAggregateInput {
+  id: Boolean
+  subdistrictId: Boolean
+}
+
+input AddressMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  subdistrictId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input AddressMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  subdistrictId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input OrderFindManyArgs {
@@ -5555,7 +5622,10 @@ type Mutation {
   withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
+  accountCreateMany(data: [AccountCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  accountUpdateOne(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
 
   """Deskripsinya ada disini loh"""
   bankCreateOne(data: BankCreateInput!): Bank
@@ -5689,15 +5759,22 @@ type Mutation {
   schoolRemove(schoolId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  addressCreateOne(addressCreateArgs: AddressCreateArgs!): Address
+  addressCreateOne(data: AddressCreateInput!): Address
 
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim address, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  addressUpdateOne(addressUpdateOneArgs: AddressUpdateOneArgs!): Address!
+  """Deskripsinya ada disini loh"""
+  addressCreateMany(data: [AddressCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  addressRemove(addressId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  addressUpdateOne(data: AddressUpdateInput!, where: AddressWhereUniqueInput!): Address
+
+  """Deskripsinya ada disini loh"""
+  addressUpdateMany(data: AddressUpdateManyMutationInput!, where: AddressWhereInput): Address
+
+  """Deskripsinya ada disini loh"""
+  addressDelete(where: AddressWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  addressDeleteMany(where: AddressWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
@@ -8326,9 +8403,12 @@ input WithdrawalRequestUpdateInput {
   proofDescription: NullableStringFieldUpdateOperationsInput
 }
 
-input AccountUpdateOneArgs {
-  data: AccountUpdateInput!
-  where: AccountWhereUniqueInput!
+input AccountCreateManyInput {
+  id: Int
+  accountNumber: Float
+  name: String!
+  userId: String!
+  accountCategory: AccountCategory!
 }
 
 input AccountUpdateInput {
@@ -9174,18 +9254,14 @@ input SchoolUpdateInput {
   address: AddressUpdateOneRequiredWithoutSchoolNestedInput
 }
 
-input AddressCreateArgs {
-  data: AddressCreateInput!
-}
-
 input AddressCreateInput {
   name: String!
   subdistrict: SubdistrictCreateNestedOneWithoutAddressInput!
 }
 
-input AddressUpdateOneArgs {
-  data: AddressUpdateInput!
-  where: AddressWhereUniqueInput!
+input AddressCreateManyInput {
+  name: String!
+  subdistrictId: Int!
 }
 
 input AddressUpdateInput {
@@ -9197,6 +9273,12 @@ input AddressUpdateInput {
   hotel: HotelUpdateOneWithoutAddressNestedInput
   school: SchoolUpdateOneWithoutAddressNestedInput
   Shipping: ShippingUpdateOneWithoutAddressNestedInput
+}
+
+input AddressUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input OrderUpdateOneArgs {

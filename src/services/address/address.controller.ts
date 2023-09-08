@@ -1,49 +1,52 @@
-import { AddressService } from './address.service';
-import { Address } from 'src/@generated';
-import { AddressCreateArgs } from './dto/address-create-one.args';
-import { AddressFindManyArgs } from './dto/address-find-many.args';
-import { AddressFindUniqueArgs } from './dto/address-find-one.args';
-import { AddressUpdateOneArgs } from './dto/address-update-one.args';
-
 import { Injectable } from '@nestjs/common';
-import { AccountCategory, Prisma, UserRole } from '@prisma/client';
-import { UserService } from '../user/user.service';
+import { Prisma } from '@prisma/client';
+import { AddressService } from './address.service';
 
 @Injectable()
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
-  async createOne(
-    addressCreateArgs: AddressCreateArgs,
-  ): Promise<Address | void> {
+  async createOne(addressCreateArgs: Prisma.AddressCreateArgs) {
     return await this.addressService.createOne(addressCreateArgs);
   }
 
-  findMany(addressFindManyArgs: AddressFindManyArgs) {
-    return this.addressService.findMany(addressFindManyArgs);
+  async createMany(addressCreateManyArgs: Prisma.AddressCreateManyArgs) {
+    return await this.addressService.createMany(addressCreateManyArgs);
   }
 
-  findOne(
-    addressFindUniqueArgs: AddressFindUniqueArgs,
-  ): Promise<Address | void> {
-    return this.addressService.findOne(addressFindUniqueArgs);
+  async findOne(addressFindUniqueArgs: Prisma.AddressFindUniqueArgs) {
+    return await this.addressService.findOne(addressFindUniqueArgs);
   }
 
-  async updateOne(addressUpdateOneArgs: AddressUpdateOneArgs) {
-    const { name, subdistrict } = addressUpdateOneArgs.data;
-
-    if (name?.set === null) {
-      addressUpdateOneArgs.data.name = undefined;
-    }
-
-    if (subdistrict?.connect?.id === null) {
-      addressUpdateOneArgs.data.subdistrict = undefined;
-    }
-
-    return this.addressService.update(addressUpdateOneArgs);
+  async findMany(addressFindManyArgs: Prisma.AddressFindManyArgs) {
+    return await this.addressService.findMany(addressFindManyArgs);
   }
 
-  remove(addressId: number) {
-    return this.addressService.remove(addressId);
+  async findFirst(addressFindFirstArgs: Prisma.AddressFindFirstArgs) {
+    return await this.addressService.findFirst(addressFindFirstArgs);
+  }
+
+  async updateOne(addressUpdateOneArgs: Prisma.AddressUpdateArgs) {
+    return await this.addressService.updateOne(addressUpdateOneArgs);
+  }
+
+  async updateMany(addressUpdateManyArgs: Prisma.AddressUpdateManyArgs) {
+    return await this.addressService.updateMany(addressUpdateManyArgs);
+  }
+
+  async delete(addressDeleteArgs: Prisma.AddressDeleteArgs) {
+    return await this.addressService.delete(addressDeleteArgs);
+  }
+
+  async deleteMany(addressDeleteManyArgs: Prisma.AddressDeleteManyArgs) {
+    return await this.addressService.deleteMany(addressDeleteManyArgs);
+  }
+
+  async aggregate(addressAggregateArgs: Prisma.AddressAggregateArgs) {
+    return await this.addressService.aggregate(addressAggregateArgs);
+  }
+
+  async count(addressCountArgs: Prisma.AddressCountArgs) {
+    return await this.addressService.count(addressCountArgs);
   }
 }
