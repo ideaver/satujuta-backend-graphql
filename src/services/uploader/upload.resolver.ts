@@ -23,13 +23,15 @@ export class UploaderResolver {
     @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
     file: FileUpload,
     @Args('userId', { type: () => String, nullable: false }) userId: string,
+    @Args('ratioForImage', { type: () => RatioEnum, nullable: true })
+    ratioForImage?: RatioEnum,
   ) {
     //validate user id
     await this.validateUserId(userId);
 
     return await this.uploaderService.uploadSingleFile({
       userId: userId,
-      ratioForImage: RatioEnum.SQUARE,
+      ratioForImage: ratioForImage ?? RatioEnum.SQUARE,
       file: file,
     });
   }
@@ -43,6 +45,8 @@ export class UploaderResolver {
     @Args({ name: 'files', type: () => [GraphQLUpload], nullable: true })
     files: FileUpload[],
     @Args('userId', { type: () => String, nullable: false }) userId: string,
+    @Args('ratioForImage', { type: () => RatioEnum, nullable: true })
+    ratioForImage?: RatioEnum,
   ) {
     const uploadedFiles = await Promise.all(files);
 
@@ -51,7 +55,7 @@ export class UploaderResolver {
 
     return await this.uploaderService.uploadMultipleFiles({
       userId: userId,
-      ratioForImage: RatioEnum.SQUARE,
+      ratioForImage: ratioForImage ?? RatioEnum.SQUARE,
       files: uploadedFiles,
     });
   }
