@@ -1,13 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Bank } from 'src/@generated';
-import { BankCreateArgs } from './dto/bank-create-one.args';
-import { BankFindManyArgs } from './dto/bank-find-many.args';
-import { BankFindUniqueArgs } from './dto/bank-find-one.args';
-import { BankUpdateOneArgs } from './dto/bank-update-one.args';
+import {
+  AggregateBank,
+  CreateManyBankArgs,
+  CreateOneBankArgs,
+  DeleteManyBankArgs,
+  DeleteOneBankArgs,
+  FindFirstBankArgs,
+  FindManyBankArgs,
+  FindUniqueBankArgs,
+  Bank,
+  BankAggregateArgs,
+  UpdateManyBankArgs,
+  UpdateOneBankArgs,
+} from 'src/@generated';
 import { BankController } from './bank.controller';
-import { Logger } from '@nestjs/common';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface BankSelect {
   select: Prisma.BankSelect;
@@ -16,34 +27,31 @@ interface BankSelect {
 @Resolver(() => Bank)
 export class BankResolver {
   constructor(private readonly bankController: BankController) {}
-  private readonly logger = new Logger(BankResolver.name);
+
   @Mutation(() => Bank, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async bankCreateOne(
-    @Args('bankCreateArgs') bankCreateArgs: BankCreateArgs,
+    @Args()
+    bankCreateArgs: CreateOneBankArgs,
     @Relations() relations: BankSelect,
   ): Promise<Bank | void> {
-    bankCreateArgs.select = relations.select;
-    return await this.bankController.createOne(bankCreateArgs);
+    return await this.bankController.createOne({
+      ...bankCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [Bank], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  bankFindMany(
-    @Args('bankFindManyArgs', { nullable: true })
-    bankFindManyArgs: BankFindManyArgs,
-    @Relations() relations: BankSelect,
+  async bankCreateMany(
+    @Args()
+    createManyBankArgs: CreateManyBankArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    if (bankFindManyArgs) {
-      bankFindManyArgs.select = relations.select;
-    }
-
-    return this.bankController.findMany(bankFindManyArgs);
+    return await this.bankController.createMany(createManyBankArgs);
   }
 
   @Query(() => Bank, {
@@ -51,34 +59,102 @@ export class BankResolver {
     description: 'Deskripsinya ada disini loh',
   })
   bankFindOne(
-    @Args('bankFindUniqueArgs')
-    bankFindUniqueArgs: BankFindUniqueArgs,
+    @Args()
+    bankFindUniqueArgs: FindUniqueBankArgs,
     @Relations() relations: BankSelect,
   ): Promise<Bank | void> {
-    //Auto implement prisma select from graphql query info
-    bankFindUniqueArgs.select = relations.select;
-    return this.bankController.findOne(bankFindUniqueArgs);
+    return this.bankController.findOne({
+      ...bankFindUniqueArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => [Bank], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  bankFindMany(
+    @Args() bankFindManyArgs: FindManyBankArgs,
+    @Relations() relations: BankSelect,
+  ) {
+    return this.bankController.findMany({
+      ...bankFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => Bank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  bankFindFirst(
+    @Args()
+    findFirstBankArgs: FindFirstBankArgs,
+    @Relations() relations: BankSelect,
+  ): Promise<Bank | void> {
+    return this.bankController.findFirst({
+      ...findFirstBankArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => Bank, {
-    description:
-      'Deskripsinya ada disini loh, Jika tentang mutasi klaim bank, backend akan cek apakah saldo point user cukup untuk claim',
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
   async bankUpdateOne(
-    @Args('bankUpdateOneArgs') bankUpdateOneArgs: BankUpdateOneArgs,
+    @Args() bankUpdateOneArgs: UpdateOneBankArgs,
     @Relations() relations: BankSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    bankUpdateOneArgs.select = relations.select;
+    return this.bankController.updateOne({
+      ...replaceNullWithUndefined(bankUpdateOneArgs),
+      select: relations.select,
+    });
+  }
 
-    return this.bankController.updateOne(bankUpdateOneArgs);
+  @Mutation(() => Bank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async bankUpdateMany(@Args() updateManyBankArgs: UpdateManyBankArgs) {
+    return this.bankController.updateMany(updateManyBankArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  bankRemove(@Args('bankId') bankId: number) {
-    return this.bankController.remove(bankId);
+  async bankDelete(
+    @Args() deleteOneBankArgs: DeleteOneBankArgs,
+    @Relations() relations: BankSelect,
+  ) {
+    return this.bankController.delete({
+      ...deleteOneBankArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async bankDeleteMany(@Args() deleteManyBankArgs: DeleteManyBankArgs) {
+    return this.bankController.deleteMany(deleteManyBankArgs);
+  }
+
+  @Query(() => AggregateBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  bankAggregate(@Args() bankAggregateArgs: BankAggregateArgs) {
+    return this.bankController.aggregate(bankAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  bankCount(@Args() bankCountAggregateInput: FindManyBankArgs) {
+    return this.bankController.count(bankCountAggregateInput);
   }
 }

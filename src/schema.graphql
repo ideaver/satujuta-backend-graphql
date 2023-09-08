@@ -127,6 +127,14 @@ type Address {
   Shipping: Shipping
 }
 
+type AggregateBank {
+  _count: BankCountAggregate
+  _avg: BankAvgAggregate
+  _sum: BankSumAggregate
+  _min: BankMinAggregate
+  _max: BankMaxAggregate
+}
+
 type BankAvgAggregate {
   id: Float
   accountNumber: Float
@@ -806,6 +814,14 @@ type Invoice {
   transactions: [Transaction!]
   Installments: [Installment!]
   _count: InvoiceCount!
+}
+
+type AggregateItem {
+  _count: ItemCountAggregate
+  _avg: ItemAvgAggregate
+  _sum: ItemSumAggregate
+  _min: ItemMinAggregate
+  _max: ItemMaxAggregate
 }
 
 type ItemAvgAggregate {
@@ -2006,6 +2022,17 @@ type LoginResponse {
   user: User!
 }
 
+type UserCreatedByCustomPeriodQuery {
+  period: String
+  totalUser: Float
+}
+
+type UserTypePercentage {
+  userCountType: String!
+  userCount: Float!
+  userPercentage: Float!
+}
+
 type BatchPayload {
   count: Float
 }
@@ -2046,13 +2073,28 @@ type Query {
   userAggregate(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, _count: UserCountAggregateInput, _avg: UserAvgAggregateInput, _sum: UserSumAggregateInput, _min: UserMinAggregateInput, _max: UserMaxAggregateInput): AggregateUser
 
   """Deskripsinya ada disini loh"""
-  count(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): Float
+  userCount(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  itemFindMany(itemFindManyArgs: ItemFindManyArgs!): [Item!]
+  countUserTypePercentage: [UserTypePercentage!]!
 
   """Deskripsinya ada disini loh"""
-  itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
+  getUserGrowthByCustomPeriod(userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs!): [UserCreatedByCustomPeriodQuery!]!
+
+  """Deskripsinya ada disini loh"""
+  itemFindOne(where: ItemWhereUniqueInput!): Item
+
+  """Deskripsinya ada disini loh"""
+  itemFindMany(where: ItemWhereInput, orderBy: [ItemOrderByWithRelationInput!], cursor: ItemWhereUniqueInput, take: Int, skip: Int, distinct: [ItemScalarFieldEnum!]): [Item!]
+
+  """Deskripsinya ada disini loh"""
+  itemFindFirst(where: ItemWhereInput, orderBy: [ItemOrderByWithRelationInput!], cursor: ItemWhereUniqueInput, take: Int, skip: Int, distinct: [ItemScalarFieldEnum!]): Item
+
+  """Deskripsinya ada disini loh"""
+  itemAggregate(where: ItemWhereInput, orderBy: [ItemOrderByWithRelationInput!], cursor: ItemWhereUniqueInput, take: Int, skip: Int, _count: ItemCountAggregateInput, _avg: ItemAvgAggregateInput, _sum: ItemSumAggregateInput, _min: ItemMinAggregateInput, _max: ItemMaxAggregateInput): AggregateItem
+
+  """Deskripsinya ada disini loh"""
+  count(where: ItemWhereInput, orderBy: [ItemOrderByWithRelationInput!], cursor: ItemWhereUniqueInput, take: Int, skip: Int, distinct: [ItemScalarFieldEnum!]): Float
 
   """Bersihkan file yang tidak terpakai di S3. Hanya untuk development"""
   deleteOrphanedS3Objects: String
@@ -2068,6 +2110,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   transactionAggregate(where: TransactionWhereInput, orderBy: [TransactionOrderByWithRelationInput!], cursor: TransactionWhereUniqueInput, take: Int, skip: Int, _count: TransactionCountAggregateInput, _avg: TransactionAvgAggregateInput, _sum: TransactionSumAggregateInput, _min: TransactionMinAggregateInput, _max: TransactionMaxAggregateInput): AggregateTransaction
+
+  """Deskripsinya ada disini loh"""
+  transactionCount(where: TransactionWhereInput, orderBy: [TransactionOrderByWithRelationInput!], cursor: TransactionWhereUniqueInput, take: Int, skip: Int, distinct: [TransactionScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   invoiceFindMany(invoiceFindManyArgs: InvoiceFindManyArgs!): [Invoice!]
@@ -2098,10 +2143,19 @@ type Query {
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""
-  bankFindMany(bankFindManyArgs: BankFindManyArgs): [Bank!]
+  bankFindOne(where: BankWhereUniqueInput!): Bank
 
   """Deskripsinya ada disini loh"""
-  bankFindOne(bankFindUniqueArgs: BankFindUniqueArgs!): Bank
+  bankFindMany(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): [Bank!]
+
+  """Deskripsinya ada disini loh"""
+  bankFindFirst(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankAggregate(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, _count: BankCountAggregateInput, _avg: BankAvgAggregateInput, _sum: BankSumAggregateInput, _min: BankMinAggregateInput, _max: BankMaxAggregateInput): AggregateBank
+
+  """Deskripsinya ada disini loh"""
+  bankCount(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   fileFindOne(where: FileWhereUniqueInput!): File
@@ -2116,6 +2170,9 @@ type Query {
   fileAggregate(where: FileWhereInput, orderBy: [FileOrderByWithRelationInput!], cursor: FileWhereUniqueInput, take: Int, skip: Int, _count: FileCountAggregateInput, _avg: FileAvgAggregateInput, _sum: FileSumAggregateInput, _min: FileMinAggregateInput, _max: FileMaxAggregateInput): AggregateFile
 
   """Deskripsinya ada disini loh"""
+  fileCount(where: FileWhereInput, orderBy: [FileOrderByWithRelationInput!], cursor: FileWhereUniqueInput, take: Int, skip: Int, distinct: [FileScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
   imagesFindOne(where: ImagesWhereUniqueInput!): Images
 
   """Deskripsinya ada disini loh"""
@@ -2128,6 +2185,9 @@ type Query {
   imagesAggregate(where: ImagesWhereInput, orderBy: [ImagesOrderByWithRelationInput!], cursor: ImagesWhereUniqueInput, take: Int, skip: Int, _count: ImagesCountAggregateInput, _avg: ImagesAvgAggregateInput, _sum: ImagesSumAggregateInput, _min: ImagesMinAggregateInput, _max: ImagesMaxAggregateInput): AggregateImages
 
   """Deskripsinya ada disini loh"""
+  imagesCount(where: ImagesWhereInput, orderBy: [ImagesOrderByWithRelationInput!], cursor: ImagesWhereUniqueInput, take: Int, skip: Int, distinct: [ImagesScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
   hotelFindOne(where: HotelWhereUniqueInput!): Hotel
 
   """Deskripsinya ada disini loh"""
@@ -2138,6 +2198,9 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   hotelAggregate(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, _count: HotelCountAggregateInput, _avg: HotelAvgAggregateInput, _sum: HotelSumAggregateInput, _min: HotelMinAggregateInput, _max: HotelMaxAggregateInput): AggregateHotel
+
+  """Deskripsinya ada disini loh"""
+  hotelCount(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   programFindMany(programFindManyArgs: ProgramFindManyArgs!): [Program!]
@@ -3569,47 +3632,33 @@ input UserMaxAggregateInput {
   theme: Boolean
 }
 
-input HotelWhereUniqueInput {
+input UserCreatedByCustomPeriodArgs {
+  start: DateTime!
+  end: DateTime!
+  period: Period!
+  where: UserWhereInput
+}
+
+"""Period options for data retrieval"""
+enum Period {
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+input ItemWhereUniqueInput {
   id: Int
-  addressId: Int
-  AND: [HotelWhereInput!]
-  OR: [HotelWhereInput!]
-  NOT: [HotelWhereInput!]
+  AND: [ItemWhereInput!]
+  OR: [ItemWhereInput!]
+  NOT: [ItemWhereInput!]
   name: StringFilter
   description: StringFilter
-  rating: FloatFilter
-  startDate: DateTimeFilter
-  quota: IntFilter
-  createdById: StringFilter
+  price: FloatFilter
+  cost: FloatFilter
+  userRole: EnumUserRoleFilter
   createdAt: DateTimeFilter
-  version: IntNullableFilter
   updatedAt: DateTimeFilter
-  address: AddressRelationFilter
-  images: ImagesListRelationFilter
-  checkIns: CheckInListRelationFilter
-  createdBy: UserRelationFilter
-}
-
-enum HotelScalarFieldEnum {
-  id
-  name
-  addressId
-  description
-  rating
-  startDate
-  quota
-  createdById
-  createdAt
-  version
-  updatedAt
-}
-
-input ItemFindManyArgs {
-  where: ItemWhereInput
-  orderBy: [ItemOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [ItemScalarFieldEnum!]
+  cart: CartListRelationFilter
 }
 
 input ItemOrderByWithRelationInput {
@@ -3635,23 +3684,50 @@ enum ItemScalarFieldEnum {
   updatedAt
 }
 
-input ItemFindUniqueArgs {
-  where: ItemWhereUniqueInput!
+input ItemCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  price: Boolean
+  cost: Boolean
+  userRole: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
 }
 
-input ItemWhereUniqueInput {
-  id: Int
-  AND: [ItemWhereInput!]
-  OR: [ItemWhereInput!]
-  NOT: [ItemWhereInput!]
-  name: StringFilter
-  description: StringFilter
-  price: FloatFilter
-  cost: FloatFilter
-  userRole: EnumUserRoleFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  cart: CartListRelationFilter
+input ItemAvgAggregateInput {
+  id: Boolean
+  price: Boolean
+  cost: Boolean
+}
+
+input ItemSumAggregateInput {
+  id: Boolean
+  price: Boolean
+  cost: Boolean
+}
+
+input ItemMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  price: Boolean
+  cost: Boolean
+  userRole: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input ItemMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  price: Boolean
+  cost: Boolean
+  userRole: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input TransactionWhereUniqueInput {
@@ -3932,25 +4008,20 @@ input AccountBalanceByCustomPeriodArgs {
   period: Period!
 }
 
-"""Period options for data retrieval"""
-enum Period {
-  WEEKLY
-  MONTHLY
-  YEARLY
-}
-
 input AccountBalanceOfPlatformByCustomPeriod {
   start: DateTime!
   end: DateTime!
   period: Period!
 }
 
-input BankFindManyArgs {
-  where: BankWhereInput
-  orderBy: [BankOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [BankScalarFieldEnum!]
+input BankWhereUniqueInput {
+  id: Int
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  name: StringFilter
+  logoUrl: StringFilter
+  accountNumber: FloatFilter
 }
 
 input BankWhereInput {
@@ -3979,18 +4050,36 @@ enum BankScalarFieldEnum {
   accountId
 }
 
-input BankFindUniqueArgs {
-  where: BankWhereUniqueInput!
+input BankCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  logoUrl: Boolean
+  accountNumber: Boolean
+  _all: Boolean
 }
 
-input BankWhereUniqueInput {
-  id: Int
-  AND: [BankWhereInput!]
-  OR: [BankWhereInput!]
-  NOT: [BankWhereInput!]
-  name: StringFilter
-  logoUrl: StringFilter
-  accountNumber: FloatFilter
+input BankAvgAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+}
+
+input BankSumAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+}
+
+input BankMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  logoUrl: Boolean
+  accountNumber: Boolean
+}
+
+input BankMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  logoUrl: Boolean
+  accountNumber: Boolean
 }
 
 input FileWhereUniqueInput {
@@ -4251,6 +4340,41 @@ input ImagesMaxAggregateInput {
   rewardImageId: Boolean
   projectImageId: Boolean
   createdAt: Boolean
+}
+
+input HotelWhereUniqueInput {
+  id: Int
+  addressId: Int
+  AND: [HotelWhereInput!]
+  OR: [HotelWhereInput!]
+  NOT: [HotelWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  rating: FloatFilter
+  startDate: DateTimeFilter
+  quota: IntFilter
+  createdById: StringFilter
+  createdAt: DateTimeFilter
+  version: IntNullableFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  images: ImagesListRelationFilter
+  checkIns: CheckInListRelationFilter
+  createdBy: UserRelationFilter
+}
+
+enum HotelScalarFieldEnum {
+  id
+  name
+  addressId
+  description
+  rating
+  startDate
+  quota
+  createdById
+  createdAt
+  version
+  updatedAt
 }
 
 input HotelCountAggregateInput {
@@ -5371,13 +5495,22 @@ type Mutation {
   userDeleteMany(where: UserWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
-  itemCreateOne(itemCreateArgs: ItemCreateArgs!): Item
+  itemCreateOne(data: ItemCreateInput!): Item
 
   """Deskripsinya ada disini loh"""
-  itemUpdateOne(itemUpdateOneArgs: ItemUpdateOneArgs!): Item!
+  itemCreateMany(data: [ItemCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  itemRemove(itemId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  itemUpdateOne(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
+
+  """Deskripsinya ada disini loh"""
+  itemUpdateMany(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): Item
+
+  """Deskripsinya ada disini loh"""
+  itemDelete(where: ItemWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  itemDeleteMany(where: ItemWhereInput): Boolean!
 
   """
   Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
@@ -5425,15 +5558,22 @@ type Mutation {
   accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
 
   """Deskripsinya ada disini loh"""
-  bankCreateOne(bankCreateArgs: BankCreateArgs!): Bank
+  bankCreateOne(data: BankCreateInput!): Bank
 
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim bank, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  bankUpdateOne(bankUpdateOneArgs: BankUpdateOneArgs!): Bank!
+  """Deskripsinya ada disini loh"""
+  bankCreateMany(data: [BankCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  bankRemove(bankId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  bankUpdateOne(data: BankUpdateInput!, where: BankWhereUniqueInput!): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankUpdateMany(data: BankUpdateManyMutationInput!, where: BankWhereInput): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankDelete(where: BankWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  bankDeleteMany(where: BankWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   fileCreateOne(data: FileCreateInput!): File
@@ -5452,24 +5592,6 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   fileDeleteMany(where: FileWhereInput): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  imagesCreateOne(data: ImagesCreateInput!): Images
-
-  """Deskripsinya ada disini loh"""
-  imagesCreateMany(data: [ImagesCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
-
-  """Deskripsinya ada disini loh"""
-  imagesUpdateOne(data: ImagesUpdateInput!, where: ImagesWhereUniqueInput!): Images
-
-  """Deskripsinya ada disini loh"""
-  imagesUpdateMany(data: ImagesUpdateManyMutationInput!, where: ImagesWhereInput): Images
-
-  """Deskripsinya ada disini loh"""
-  imagesDelete(where: ImagesWhereUniqueInput!): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  imagesDeleteMany(where: ImagesWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   hotelCreateOne(data: HotelCreateInput!): Hotel
@@ -7852,10 +7974,6 @@ input AddressUpdateToOneWithWhereWithoutUserInput {
   data: AddressUpdateWithoutUserInput!
 }
 
-input ItemCreateArgs {
-  data: ItemCreateInput!
-}
-
 input ItemCreateInput {
   name: String!
   description: String!
@@ -7928,9 +8046,15 @@ input CartCreateManyMembershipItemInput {
   updatedAt: DateTime
 }
 
-input ItemUpdateOneArgs {
-  data: ItemUpdateInput!
-  where: ItemWhereUniqueInput!
+input ItemCreateManyInput {
+  id: Int
+  name: String!
+  description: String!
+  price: Float!
+  cost: Float!
+  userRole: UserRole!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input ItemUpdateInput {
@@ -8082,6 +8206,16 @@ input CartUpdateWithWhereUniqueWithoutMembershipItemInput {
 input CartUpdateManyWithWhereWithoutMembershipItemInput {
   where: CartScalarWhereInput!
   data: CartUpdateManyMutationInput!
+}
+
+input ItemUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  price: FloatFieldUpdateOperationsInput
+  cost: FloatFieldUpdateOperationsInput
+  userRole: EnumUserRoleFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -8422,22 +8556,26 @@ input TransactionUpdateManyWithWhereWithoutToAccountInput {
   data: TransactionUpdateManyMutationInput!
 }
 
-input BankCreateArgs {
-  data: BankCreateInput!
-}
-
 input BankCreateInput {
   name: String!
   logoUrl: String!
   accountNumber: Float!
 }
 
-input BankUpdateOneArgs {
-  data: BankUpdateInput!
-  where: BankWhereUniqueInput!
+input BankCreateManyInput {
+  id: Int
+  name: String!
+  logoUrl: String!
+  accountNumber: Float!
 }
 
 input BankUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  logoUrl: StringFieldUpdateOperationsInput
+  accountNumber: FloatFieldUpdateOperationsInput
+}
+
+input BankUpdateManyMutationInput {
   name: StringFieldUpdateOperationsInput
   logoUrl: StringFieldUpdateOperationsInput
   accountNumber: FloatFieldUpdateOperationsInput
@@ -8552,22 +8690,6 @@ input FileUpdateManyMutationInput {
   url: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
-input ImagesCreateInput {
-  url: String!
-}
-
-input ImagesCreateManyInput {
-  url: String!
-}
-
-input ImagesUpdateInput {
-  url: StringFieldUpdateOperationsInput
-  hotelImage: HotelUpdateOneWithoutImagesNestedInput
-  programImage: ProgramUpdateOneWithoutImagesNestedInput
-  rewardImage: RewardUpdateOneWithoutImagesNestedInput
-  projectImage: ProjectUpdateOneWithoutImagesNestedInput
 }
 
 input HotelCreateInput {

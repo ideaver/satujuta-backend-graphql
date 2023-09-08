@@ -1,21 +1,33 @@
+// @ts-nocheck
 import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Account } from 'src/@generated';
-import { AccountFindManyArgs } from './dto/account-find-many.args';
-import { AccountFindUniqueArgs } from './dto/account-find-one.args';
-import { AccountUpdateOneArgs } from './dto/account-update-one.args';
-import { AccountFindFirstArgs } from './dto/account-find-first.args';
+import {
+  AggregateAccount,
+  CreateManyAccountArgs,
+  CreateOneAccountArgs,
+  DeleteManyAccountArgs,
+  DeleteOneAccountArgs,
+  FindFirstAccountArgs,
+  FindManyAccountArgs,
+  FindUniqueAccountArgs,
+  Account,
+  AccountAggregateArgs,
+  UpdateManyAccountArgs,
+  UpdateOneAccountArgs,
+} from 'src/@generated';
+import { AccountController } from './account.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
+import {
+  UserFindManyOrderByAccountBalance,
+  UserFindManyOrderByAccountBalanceArgs,
+} from './dto/user-find-many-order-by-account-balance.args';
 import {
   AccountBalanceByCustomPeriodArgs,
   AccountBalanceByCustomPeriodQuery,
   AccountBalanceOfPlatformByCustomPeriod,
 } from './dto/get-account-balance-by-custom-period.args';
-import { AccountController } from './account.controller';
-import {
-  UserFindManyOrderByAccountBalance,
-  UserFindManyOrderByAccountBalanceArgs,
-} from './dto/user-find-many-order-by-account-balance.args';
 
 interface AccountSelect {
   select: Prisma.AccountSelect;
@@ -30,24 +42,25 @@ export class AccountResolver {
   //   description: 'Deskripsinya ada disini loh',
   // })
   // async accountCreateOne(
-  //   @Args('accountCreateArgs') accountCreateArgs: AccountCreateArgs,
-  //   @Relations() relations: AccountSelect
+  //   @Args()
+  //   accountCreateArgs: CreateOneAccountArgs,
+  //   @Relations() relations: AccountSelect,
   // ): Promise<Account | void> {
-  //   accountCreateArgs.select = relations.select;
-  //   return await this.accountController.createOne(accountCreateArgs);
+  //   return await this.accountController.createOne({
+  //     ...accountCreateArgs,
+  //     select: relations.select,
+  //   });
   // }
 
-  @Query(() => [Account], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  accountFindMany(
-    @Args('accountFindManyArgs') accountFindManyArgs: AccountFindManyArgs,
-    @Relations() relations: AccountSelect,
+  async accountCreateMany(
+    @Args()
+    createManyAccountArgs: CreateManyAccountArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    accountFindManyArgs.select = relations.select;
-    return this.accountController.findMany(accountFindManyArgs);
+    return await this.accountController.createMany(createManyAccountArgs);
   }
 
   @Query(() => Account, {
@@ -55,52 +68,107 @@ export class AccountResolver {
     description: 'Deskripsinya ada disini loh',
   })
   accountFindOne(
-    @Args('accountFindUniqueArgs')
-    accountFindUniqueArgs: AccountFindUniqueArgs,
+    @Args()
+    accountFindUniqueArgs: FindUniqueAccountArgs,
+    @Relations() relations: AccountSelect,
+  ): Promise<Account | void> {
+    return this.accountController.findOne({
+      ...accountFindUniqueArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => [Account], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  accountFindMany(
+    @Args() accountFindManyArgs: FindManyAccountArgs,
     @Relations() relations: AccountSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    accountFindUniqueArgs.select = relations.select;
-    return this.accountController.findOne(accountFindUniqueArgs);
+    return this.accountController.findMany({
+      ...accountFindManyArgs,
+      select: relations.select,
+    });
   }
 
   @Query(() => Account, {
     nullable: true,
-    description:
-      'Bisa juga untuk ambil balance terakhir dari akun tertentu milik user',
+    description: 'Deskripsinya ada disini loh',
   })
   accountFindFirst(
-    @Args('accountFindFirstArgs')
-    accountFindFirstArgs: AccountFindFirstArgs,
+    @Args()
+    findFirstAccountArgs: FindFirstAccountArgs,
     @Relations() relations: AccountSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    accountFindFirstArgs.select = relations.select;
-    return this.accountController.findFirst(accountFindFirstArgs);
+  ): Promise<Account | void> {
+    return this.accountController.findFirst({
+      ...findFirstAccountArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => Account, { description: 'Deskripsinya ada disini loh' })
-  accountUpdateOne(
-    @Args('accountUpdateOneArgs') accountUpdateOneArgs: AccountUpdateOneArgs,
+  @Mutation(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async accountUpdateOne(
+    @Args() accountUpdateOneArgs: UpdateOneAccountArgs,
     @Relations() relations: AccountSelect,
   ) {
-    accountUpdateOneArgs.select = relations.select;
-    return this.accountController.updateOne(accountUpdateOneArgs);
+    return this.accountController.updateOne({
+      ...replaceNullWithUndefined(accountUpdateOneArgs),
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => Boolean, {
+  // @Mutation(() => Account, {
   //   nullable: true,
-  //   description: 'Datanya benar2 terhapus dari db',
+  //   description: 'Deskripsinya ada disini loh',
   // })
-  // accountRemove(@Args('accountId') accountId: number) {
-  //   return this.accountController.remove(accountId);
+  // async accountUpdateMany(
+  //   @Args() updateManyAccountArgs: UpdateManyAccountArgs,
+  // ) {
+  //   return this.accountController.updateMany(updateManyAccountArgs);
   // }
 
-  @Query(() => Float)
-  async getAccountTotalBalance(@Args('accountId') accountId: number) {
-    return await this.accountController.getAccountTotalBalance({
-      accountId: accountId,
-    });
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async accountDelete(
+  //   @Args() deleteOneAccountArgs: DeleteOneAccountArgs,
+  //   @Relations() relations: AccountSelect,
+  // ) {
+  //   return this.accountController.delete({
+  //     ...deleteOneAccountArgs,
+  //     select: relations.select,
+  //   });
+  // }
+
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async accountDeleteMany(
+  //   @Args() deleteManyAccountArgs: DeleteManyAccountArgs,
+  // ) {
+  //   return this.accountController.deleteMany(deleteManyAccountArgs);
+  // }
+
+  @Query(() => AggregateAccount, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  accountAggregate(@Args() accountAggregateArgs: AccountAggregateArgs) {
+    return this.accountController.aggregate(accountAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  accountCount(@Args() accountCountAggregateInput: FindManyAccountArgs) {
+    return this.accountController.count(accountCountAggregateInput);
   }
 
   @Query(() => [UserFindManyOrderByAccountBalance])

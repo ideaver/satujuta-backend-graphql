@@ -162,7 +162,9 @@ export class TransactionResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  count(@Args() transactionCountAggregateInput: FindManyTransactionArgs) {
+  transactionCount(
+    @Args() transactionCountAggregateInput: FindManyTransactionArgs,
+  ) {
     return this.transactionController.count(transactionCountAggregateInput);
   }
 }

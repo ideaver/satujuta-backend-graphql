@@ -1,69 +1,70 @@
-import { BankService } from './bank.service';
-import { Bank } from 'src/@generated';
-import { BankCreateArgs } from './dto/bank-create-one.args';
-import { BankFindManyArgs } from './dto/bank-find-many.args';
-import { BankFindUniqueArgs } from './dto/bank-find-one.args';
-import { BankUpdateOneArgs } from './dto/bank-update-one.args';
-
 import { Injectable } from '@nestjs/common';
 import { AccountCategory, Prisma, UserRole } from '@prisma/client';
-import { UserService } from '../user/user.service';
+import { BankService } from './bank.service';
+import { UserController } from '../user/user.controller';
 
 @Injectable()
 export class BankController {
   constructor(
     private readonly bankService: BankService,
-    private readonly userService: UserService,
+    private readonly userController: UserController,
   ) {}
 
-  async createOne(bankCreateArgs: BankCreateArgs): Promise<Bank | void> {
-    let bankCreateArgsPrisma: Prisma.BankCreateArgs = { ...bankCreateArgs };
-
+  async createOne(bankCreateArgs: Prisma.BankCreateArgs) {
     //Create bank account
-    await this.createAccount(bankCreateArgsPrisma);
-
+    await this.createAccount(bankCreateArgs);
     return await this.bankService.createOne(bankCreateArgs);
   }
 
-  findMany(bankFindManyArgs: BankFindManyArgs) {
-    return this.bankService.findMany(bankFindManyArgs);
+  async createMany(bankCreateManyArgs: Prisma.BankCreateManyArgs) {
+    return await this.bankService.createMany(bankCreateManyArgs);
   }
 
-  findOne(bankFindUniqueArgs: BankFindUniqueArgs): Promise<Bank | void> {
-    return this.bankService.findOne(bankFindUniqueArgs);
+  async findOne(bankFindUniqueArgs: Prisma.BankFindUniqueArgs) {
+    return await this.bankService.findOne(bankFindUniqueArgs);
   }
 
-  async updateOne(bankUpdateOneArgs: BankUpdateOneArgs) {
-    const { name, accountNumber, logoUrl } = bankUpdateOneArgs.data;
-
-    if (name?.set === null) {
-      bankUpdateOneArgs.data.name = undefined;
-    }
-
-    if (accountNumber?.set === null) {
-      bankUpdateOneArgs.data.accountNumber = undefined;
-    }
-
-    if (logoUrl?.set === null) {
-      bankUpdateOneArgs.data.logoUrl = undefined;
-    }
-
-    return this.bankService.update(bankUpdateOneArgs);
+  async findMany(bankFindManyArgs: Prisma.BankFindManyArgs) {
+    return await this.bankService.findMany(bankFindManyArgs);
   }
 
-  remove(bankId: number) {
-    return this.bankService.remove(bankId);
+  async findFirst(bankFindFirstArgs: Prisma.BankFindFirstArgs) {
+    return await this.bankService.findFirst(bankFindFirstArgs);
   }
 
-  private async createAccount(bankCreateArgsPrisma) {
+  async updateOne(bankUpdateOneArgs: Prisma.BankUpdateArgs) {
+    return await this.bankService.updateOne(bankUpdateOneArgs);
+  }
+
+  async updateMany(bankUpdateManyArgs: Prisma.BankUpdateManyArgs) {
+    return await this.bankService.updateMany(bankUpdateManyArgs);
+  }
+
+  async delete(bankDeleteArgs: Prisma.BankDeleteArgs) {
+    return await this.bankService.delete(bankDeleteArgs);
+  }
+
+  async deleteMany(bankDeleteManyArgs: Prisma.BankDeleteManyArgs) {
+    return await this.bankService.deleteMany(bankDeleteManyArgs);
+  }
+
+  async aggregate(bankAggregateArgs: Prisma.BankAggregateArgs) {
+    return await this.bankService.aggregate(bankAggregateArgs);
+  }
+
+  async count(bankCountArgs: Prisma.BankCountArgs) {
+    return await this.bankService.count(bankCountArgs);
+  }
+
+  private async createAccount(bankCreateArgs) {
     const getUser = //find the superuser
-      await this.userService.findFirst({
+      await this.userController.findFirst({
         where: { userRole: { equals: UserRole.SUPERUSER } },
       });
 
-    bankCreateArgsPrisma.data.account = {
+    bankCreateArgs.data.account = {
       create: {
-        name: bankCreateArgsPrisma.data.name + ' Account',
+        name: bankCreateArgs.data.name + ' Account',
         accountCategory: AccountCategory.BANK,
         user: { connect: { id: getUser ? getUser.id : undefined } },
       },

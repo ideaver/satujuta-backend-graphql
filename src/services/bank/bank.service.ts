@@ -1,69 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { CreateOneBankArgs, Bank } from 'src/@generated';
-import { BankFindManyArgs } from './dto/bank-find-many.args';
-import { BankFindUniqueArgs } from './dto/bank-find-one.args';
-import { BankUpdateOneArgs } from './dto/bank-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class BankService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(bankCreateArgs: CreateOneBankArgs): Promise<Bank | void> {
-    return await this.prisma.bank
-      .create(bankCreateArgs)
-      .then((bank) => {
-        return bank;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(bankCreateArgs: Prisma.BankCreateArgs) {
+    try {
+      return await this.prisma.bank.create(bankCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findMany(bankFindManyArgs: BankFindManyArgs) {
-    return this.prisma.bank
-      .findMany(bankFindManyArgs)
-      .then((banks) => {
-        return banks;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(bankCreateManyArgs: Prisma.BankCreateManyArgs) {
+    try {
+      return await this.prisma.bank.createMany(bankCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(bankFindUniqueArgs: BankFindUniqueArgs): Promise<Bank | void> {
-    return await this.prisma.bank
-      .findUnique(bankFindUniqueArgs)
-      .then((bank) => {
-        return bank;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(bankFindUniqueArgs: Prisma.BankFindUniqueArgs) {
+    try {
+      return await this.prisma.bank.findUnique(bankFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(bankUpdateOneArgs: BankUpdateOneArgs): Promise<Bank | void> {
-    return this.prisma.bank
-      .update(bankUpdateOneArgs)
-      .then((bank) => {
-        return bank;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(bankFindManyArgs: Prisma.BankFindManyArgs) {
+    try {
+      return await this.prisma.bank.findMany(bankFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(bankId: number): Promise<boolean | void> {
-    return await this.prisma.bank
-      .delete({
-        where: { id: bankId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(bankFindFirstArgs: Prisma.BankFindFirstArgs) {
+    try {
+      return await this.prisma.bank.findFirst(bankFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateOne(bankUpdateOneArgs: Prisma.BankUpdateArgs) {
+    try {
+      return await this.prisma.bank.update(bankUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(bankUpdateManyArgs: Prisma.BankUpdateManyArgs) {
+    try {
+      return await this.prisma.bank.updateMany(bankUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(bankDeleteArgs: Prisma.BankDeleteArgs) {
+    try {
+      await this.prisma.bank.delete(bankDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(bankDeleteManyArgs: Prisma.BankDeleteManyArgs) {
+    try {
+      await this.prisma.bank.deleteMany(bankDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(bankAggregateArgs: Prisma.BankAggregateArgs) {
+    try {
+      return await this.prisma.bank.aggregate(bankAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(bankCountArgs: Prisma.BankCountArgs) {
+    try {
+      return await this.prisma.bank.count(bankCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

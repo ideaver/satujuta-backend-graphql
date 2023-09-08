@@ -1,23 +1,24 @@
-import { Injectable } from '@nestjs/common';
-import {
-  AccountCategory,
-  Prisma,
-  Transaction,
-  TransactionStatus,
-} from '@prisma/client';
 import { AccountService } from './account.service';
+import { Transaction, TransactionStatus } from '@prisma/client';
+import { AccountFindManyArgs } from '../../src/services/account/dto/account-find-many.args';
+import { AccountFindUniqueArgs } from '../../src/services/account/dto/account-find-one.args';
+import { AccountUpdateOneArgs } from '../../src/services/account/dto/account-update-one.args';
+import { AccountFindFirstArgs } from '../../src/services/account/dto/account-find-first.args';
+import {
+  AccountBalanceByCustomPeriodArgs,
+  AccountBalanceByCustomPeriodQuery,
+  AccountBalanceOfPlatformByCustomPeriod,
+} from '../../src/services/account/dto/get-account-balance-by-custom-period.args';
+import { Period } from 'src/model/period.enum';
+import { Injectable, Logger } from '@nestjs/common';
+import { Account, AccountCategory } from 'src/@generated';
 import {
   UserFindManyOrderByAccountBalance,
   UserFindManyOrderByAccountBalanceArgs,
-} from './dto/user-find-many-order-by-account-balance.args';
-import { TransactionController } from '../transaction/transaction.controller';
+} from '../../src/services/account/dto/user-find-many-order-by-account-balance.args';
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
-import {
-  AccountBalanceOfPlatformByCustomPeriod,
-  AccountBalanceByCustomPeriodQuery,
-  AccountBalanceByCustomPeriodArgs,
-} from './dto/get-account-balance-by-custom-period.args';
-import { Account } from 'src/@generated';
+import { get } from 'node:http';
+import { TransactionController } from '../transaction/transaction.controller';
 
 @Injectable()
 export class AccountController {
@@ -26,49 +27,53 @@ export class AccountController {
     private readonly transactionController: TransactionController,
   ) {}
 
-  async createOne(accountCreateArgs: Prisma.AccountCreateArgs) {
-    return await this.accountService.createOne(accountCreateArgs);
+  private readonly logger = new Logger(AccountController.name);
+
+  // @Mutation(() => Account, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async accountCreateOne(
+  //   @Args('accountCreateArgs') accountCreateArgs: AccountCreateArgs,
+  //   @Relations() relations: AccountSelect
+  // ): Promise<Account | void> {
+  //   accountCreateArgs.select = relations.select;
+  //   return await this.accountService.createOne(accountCreateArgs);
+  // }
+
+  findMany(accountFindManyArgs: AccountFindManyArgs) {
+    return this.accountService.findMany(accountFindManyArgs);
   }
 
-  async createMany(accountCreateManyArgs: Prisma.AccountCreateManyArgs) {
-    return await this.accountService.createMany(accountCreateManyArgs);
+  findOne(accountFindUniqueArgs: AccountFindUniqueArgs) {
+    return this.accountService.findOne(accountFindUniqueArgs);
   }
 
-  async findOne(accountFindUniqueArgs: Prisma.AccountFindUniqueArgs) {
-    return await this.accountService.findOne(accountFindUniqueArgs);
+  findFirst(accountFindFirstArgs: AccountFindFirstArgs) {
+    return this.accountService.findFirst(accountFindFirstArgs);
   }
 
-  async findMany(accountFindManyArgs: Prisma.AccountFindManyArgs) {
-    return await this.accountService.findMany(accountFindManyArgs);
+  updateOne(accountUpdateOneArgs: AccountUpdateOneArgs) {
+    const { name, accountNumber } = accountUpdateOneArgs.data;
+
+    if (name?.set === null) {
+      accountUpdateOneArgs.data.name = undefined;
+    }
+
+    if (accountNumber?.set === null) {
+      accountUpdateOneArgs.data.accountNumber = undefined;
+    }
+
+    return this.accountService.update(accountUpdateOneArgs);
   }
 
-  async findFirst(accountFindFirstArgs: Prisma.AccountFindFirstArgs) {
-    return await this.accountService.findFirst(accountFindFirstArgs);
-  }
-
-  async updateOne(accountUpdateOneArgs: Prisma.AccountUpdateArgs) {
-    return await this.accountService.updateOne(accountUpdateOneArgs);
-  }
-
-  async updateMany(accountUpdateManyArgs: Prisma.AccountUpdateManyArgs) {
-    return await this.accountService.updateMany(accountUpdateManyArgs);
-  }
-
-  async delete(accountDeleteArgs: Prisma.AccountDeleteArgs) {
-    return await this.accountService.delete(accountDeleteArgs);
-  }
-
-  async deleteMany(accountDeleteManyArgs: Prisma.AccountDeleteManyArgs) {
-    return await this.accountService.deleteMany(accountDeleteManyArgs);
-  }
-
-  async aggregate(accountAggregateArgs: Prisma.AccountAggregateArgs) {
-    return await this.accountService.aggregate(accountAggregateArgs);
-  }
-
-  async count(accountCountArgs: Prisma.AccountCountArgs) {
-    return await this.accountService.count(accountCountArgs);
-  }
+  // @Mutation(() => Boolean, {
+  //   nullable: true,
+  //   description: 'Datanya benar2 terhapus dari db',
+  // })
+  // accountRemove(@Args('accountId') accountId: number) {
+  //   return this.accountService.remove(accountId);
+  // }
 
   async userFindManyOrderByAccountBalance(
     userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs,

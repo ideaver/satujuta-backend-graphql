@@ -28,31 +28,31 @@ interface ImagesSelect {
 export class ImagesResolver {
   constructor(private readonly imagesController: ImagesController) {}
 
-  @Mutation(() => Images, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async imagesCreateOne(
-    @Args()
-    imagesCreateArgs: CreateOneImagesArgs,
-    @Relations() relations: ImagesSelect,
-  ): Promise<Images | void> {
-    return await this.imagesController.createOne({
-      ...imagesCreateArgs,
-      select: relations.select,
-    });
-  }
+  // @Mutation(() => Images, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async imagesCreateOne(
+  //   @Args()
+  //   imagesCreateArgs: CreateOneImagesArgs,
+  //   @Relations() relations: ImagesSelect,
+  // ): Promise<Images | void> {
+  //   return await this.imagesController.createOne({
+  //     ...imagesCreateArgs,
+  //     select: relations.select,
+  //   });
+  // }
 
-  @Mutation(() => BatchPayload, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async imagesCreateMany(
-    @Args()
-    createManyImagesArgs: CreateManyImagesArgs,
-  ) {
-    return await this.imagesController.createMany(createManyImagesArgs);
-  }
+  // @Mutation(() => BatchPayload, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async imagesCreateMany(
+  //   @Args()
+  //   createManyImagesArgs: CreateManyImagesArgs,
+  // ) {
+  //   return await this.imagesController.createMany(createManyImagesArgs);
+  // }
 
   @Query(() => Images, {
     nullable: true,
@@ -98,49 +98,49 @@ export class ImagesResolver {
     });
   }
 
-  @Mutation(() => Images, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async imagesUpdateOne(
-    @Args() imagesUpdateOneArgs: UpdateOneImagesArgs,
-    @Relations() relations: ImagesSelect,
-  ) {
-    return this.imagesController.updateOne({
-      ...replaceNullWithUndefined(imagesUpdateOneArgs),
-      select: relations.select,
-    });
-  }
+  // @Mutation(() => Images, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async imagesUpdateOne(
+  //   @Args() imagesUpdateOneArgs: UpdateOneImagesArgs,
+  //   @Relations() relations: ImagesSelect,
+  // ) {
+  //   return this.imagesController.updateOne({
+  //     ...replaceNullWithUndefined(imagesUpdateOneArgs),
+  //     select: relations.select,
+  //   });
+  // }
 
-  @Mutation(() => Images, {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async imagesUpdateMany(@Args() updateManyImagesArgs: UpdateManyImagesArgs) {
-    return this.imagesController.updateMany(updateManyImagesArgs);
-  }
+  // @Mutation(() => Images, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async imagesUpdateMany(@Args() updateManyImagesArgs: UpdateManyImagesArgs) {
+  //   return this.imagesController.updateMany(updateManyImagesArgs);
+  // }
 
-  @Mutation(() => Boolean, {
-    nullable: false,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async imagesDelete(
-    @Args() deleteOneImagesArgs: DeleteOneImagesArgs,
-    @Relations() relations: ImagesSelect,
-  ) {
-    return this.imagesController.delete({
-      ...deleteOneImagesArgs,
-      select: relations.select,
-    });
-  }
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async imagesDelete(
+  //   @Args() deleteOneImagesArgs: DeleteOneImagesArgs,
+  //   @Relations() relations: ImagesSelect,
+  // ) {
+  //   return this.imagesController.delete({
+  //     ...deleteOneImagesArgs,
+  //     select: relations.select,
+  //   });
+  // }
 
-  @Mutation(() => Boolean, {
-    nullable: false,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async imagesDeleteMany(@Args() deleteManyImagesArgs: DeleteManyImagesArgs) {
-    return this.imagesController.deleteMany(deleteManyImagesArgs);
-  }
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async imagesDeleteMany(@Args() deleteManyImagesArgs: DeleteManyImagesArgs) {
+  //   return this.imagesController.deleteMany(deleteManyImagesArgs);
+  // }
 
   @Query(() => AggregateImages, {
     nullable: true,
@@ -154,7 +154,7 @@ export class ImagesResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  count(@Args() imagesCountAggregateInput: FindManyImagesArgs) {
+  imagesCount(@Args() imagesCountAggregateInput: FindManyImagesArgs) {
     return this.imagesController.count(imagesCountAggregateInput);
   }
 }

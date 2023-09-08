@@ -154,7 +154,7 @@ export class FileResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  count(@Args() fileCountAggregateInput: FindManyFileArgs) {
+  fileCount(@Args() fileCountAggregateInput: FindManyFileArgs) {
     return this.fileController.count(fileCountAggregateInput);
   }
 }

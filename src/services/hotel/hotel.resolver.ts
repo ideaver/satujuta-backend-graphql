@@ -154,7 +154,7 @@ export class HotelResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  count(@Args() hotelCountAggregateInput: FindManyHotelArgs) {
+  hotelCount(@Args() hotelCountAggregateInput: FindManyHotelArgs) {
     return this.hotelController.count(hotelCountAggregateInput);
   }
 }
