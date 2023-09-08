@@ -24,7 +24,6 @@ import { ConfigService } from '@nestjs/config';
 import { detectMimeTypeFromFilename } from 'src/utils/mime-types.function';
 import { S3Config } from 'src/config/s3config.model';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { FileType } from '@prisma/client';
 import { MAX_FILE_SIZES } from './constants';
 import { UserController } from '../user/user.controller';
 import { WithdrawalRequestController } from '../withdrawal-request/withdrawal-request.controller';
@@ -32,6 +31,7 @@ import { BankController } from '../bank/bank.controller';
 import { FileController } from '../file/file.controller';
 import { ImagesController } from '../images/images.controller';
 import { TransactionController } from '../transaction/transaction.controller';
+import { FileType } from 'src/@generated';
 
 @Injectable()
 export class UploaderService {
@@ -223,12 +223,15 @@ export class UploaderService {
         // If the file doesn't have an extension, get the file type from the MIME type
         fileType =
           FileType[
-            filename.split('/')[1].toUpperCase() as keyof typeof FileType
+            filename.split('/')[1].toLowerCase() as keyof typeof FileType
           ];
       }
 
+      console.log('fileExt', fileExt);
+
       // If the file type is not supported, throw an error
       if (!fileType) {
+        console.log('fileType', fileType);
         throw new IGraphQLError({ code: 170005 });
       }
 

@@ -73,6 +73,7 @@ export class UploaderResolver {
   private async validateUserId(userId: string) {
     if (
       !(await this.userController.findFirst({
+        select: { id: true },
         where: { id: { equals: userId } },
         take: 1,
       }))

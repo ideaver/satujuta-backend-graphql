@@ -15,6 +15,7 @@ async function bootstrap() {
 
   const port = configService.get<number>('APP_PORT');
   const environment = configService.get<string>('NODE_ENV');
+  app.enableCors();
   app.use(
     graphqlUploadExpress({
       maxFileSize: 250000000, // max is 250mb

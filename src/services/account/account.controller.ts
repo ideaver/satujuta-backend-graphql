@@ -16,9 +16,9 @@ import {
   UserFindManyOrderByAccountBalance,
   UserFindManyOrderByAccountBalanceArgs,
 } from './dto/user-find-many-order-by-account-balance.args';
-import { TransactionController } from '../../../test/transaction.controller';
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
 import { get } from 'node:http';
+import { TransactionController } from '../transaction/transaction.controller';
 
 @Injectable()
 export class AccountController {

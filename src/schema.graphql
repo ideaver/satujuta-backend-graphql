@@ -442,6 +442,14 @@ type Faq {
   type: FaqType!
 }
 
+type AggregateFile {
+  _count: FileCountAggregate
+  _avg: FileAvgAggregate
+  _sum: FileSumAggregate
+  _min: FileMinAggregate
+  _max: FileMaxAggregate
+}
+
 type FileAvgAggregate {
   id: Float
   filesize: Float
@@ -508,6 +516,14 @@ type File {
   createdAt: DateTime!
   updatedAt: DateTime!
   createdBy: User!
+}
+
+type AggregateHotel {
+  _count: HotelCountAggregate
+  _avg: HotelAvgAggregate
+  _sum: HotelSumAggregate
+  _min: HotelMinAggregate
+  _max: HotelMaxAggregate
 }
 
 type HotelAvgAggregate {
@@ -587,9 +603,17 @@ type Hotel {
   _count: HotelCount!
 }
 
+type AggregateImages {
+  _count: ImagesCountAggregate
+  _avg: ImagesAvgAggregate
+  _sum: ImagesSumAggregate
+  _min: ImagesMinAggregate
+  _max: ImagesMaxAggregate
+}
+
 type ImagesAvgAggregate {
   id: Float
-  filesize: Float
+  fileSize: Float
   hotelImageId: Float
   programImageId: Float
   rewardImageId: Float
@@ -599,7 +623,7 @@ type ImagesAvgAggregate {
 type ImagesCountAggregate {
   id: Int!
   fileType: Int!
-  filesize: Int!
+  fileSize: Int!
   url: Int!
   hotelImageId: Int!
   programImageId: Int!
@@ -612,7 +636,7 @@ type ImagesCountAggregate {
 type ImagesMaxAggregate {
   id: Int
   fileType: FileType
-  filesize: Float
+  fileSize: Float
   url: String
   hotelImageId: Int
   programImageId: Int
@@ -624,7 +648,7 @@ type ImagesMaxAggregate {
 type ImagesMinAggregate {
   id: Int
   fileType: FileType
-  filesize: Float
+  fileSize: Float
   url: String
   hotelImageId: Int
   programImageId: Int
@@ -635,7 +659,7 @@ type ImagesMinAggregate {
 
 type ImagesSumAggregate {
   id: Int
-  filesize: Float
+  fileSize: Float
   hotelImageId: Int
   programImageId: Int
   rewardImageId: Int
@@ -645,7 +669,7 @@ type ImagesSumAggregate {
 type Images {
   id: Int!
   fileType: FileType!
-  filesize: Float!
+  fileSize: Float!
   url: String!
   hotelImageId: Int
   programImageId: Int
@@ -1575,6 +1599,14 @@ type Subdistrict {
   _count: SubdistrictCount!
 }
 
+type AggregateTransaction {
+  _count: TransactionCountAggregate
+  _avg: TransactionAvgAggregate
+  _sum: TransactionSumAggregate
+  _min: TransactionMinAggregate
+  _max: TransactionMaxAggregate
+}
+
 type TransactionAvgAggregate {
   id: Float
   amount: Float
@@ -1670,6 +1702,14 @@ type Transaction {
   invoice: Invoice
   Installment: Installment
   withdrawalRequest: WithdrawalRequest
+}
+
+type AggregateUser {
+  _count: UserCountAggregate
+  _avg: UserAvgAggregate
+  _sum: UserSumAggregate
+  _min: UserMinAggregate
+  _max: UserMaxAggregate
 }
 
 type UserAvgAggregate {
@@ -1966,15 +2006,8 @@ type LoginResponse {
   user: User!
 }
 
-type UserTypePercentage {
-  userCountType: String!
-  userCount: Float!
-  userPercentage: Float!
-}
-
-type UserCreatedByCustomPeriodQuery {
-  period: String
-  totalUser: Float
+type BatchPayload {
+  count: Float
 }
 
 type PointTransactionGroupPercentage {
@@ -2001,19 +2034,19 @@ type CityFindManyUser {
 
 type Query {
   """Deskripsinya ada disini loh"""
-  userFindMany(userFindManyArgs: UserFindManyArgs!): [User!]
+  userFindOne(where: UserWhereUniqueInput!): User
 
   """Deskripsinya ada disini loh"""
-  userFindOne(userFindUniqueArgs: UserFindUniqueArgs!): User
+  userFindMany(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): [User!]
 
   """Deskripsinya ada disini loh"""
-  userCount(userFindManyArgs: UserFindManyArgs): Int!
+  userFindFirst(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): User
 
   """Deskripsinya ada disini loh"""
-  countUserTypePercentage: [UserTypePercentage!]!
+  userAggregate(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, _count: UserCountAggregateInput, _avg: UserAvgAggregateInput, _sum: UserSumAggregateInput, _min: UserMinAggregateInput, _max: UserMaxAggregateInput): AggregateUser
 
   """Deskripsinya ada disini loh"""
-  getUserGrowthByCustomPeriod(userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs!): [UserCreatedByCustomPeriodQuery!]!
+  count(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   itemFindMany(itemFindManyArgs: ItemFindManyArgs!): [Item!]
@@ -2021,17 +2054,90 @@ type Query {
   """Deskripsinya ada disini loh"""
   itemFindOne(itemFindUniqueArgs: ItemFindUniqueArgs!): Item
 
-  """Deskripsinya ada disini loh"""
-  hotelFindMany(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): [Hotel!]
+  """Bersihkan file yang tidak terpakai di S3. Hanya untuk development"""
+  deleteOrphanedS3Objects: String
 
   """Deskripsinya ada disini loh"""
-  hotelFindOne(where: HotelWhereUniqueInput!): Hotel
+  transactionFindOne(where: TransactionWhereUniqueInput!): Transaction
+
+  """Deskripsinya ada disini loh"""
+  transactionFindMany(where: TransactionWhereInput, orderBy: [TransactionOrderByWithRelationInput!], cursor: TransactionWhereUniqueInput, take: Int, skip: Int, distinct: [TransactionScalarFieldEnum!]): [Transaction!]
+
+  """Deskripsinya ada disini loh"""
+  transactionFindFirst(where: TransactionWhereInput, orderBy: [TransactionOrderByWithRelationInput!], cursor: TransactionWhereUniqueInput, take: Int, skip: Int, distinct: [TransactionScalarFieldEnum!]): Transaction
+
+  """Deskripsinya ada disini loh"""
+  transactionAggregate(where: TransactionWhereInput, orderBy: [TransactionOrderByWithRelationInput!], cursor: TransactionWhereUniqueInput, take: Int, skip: Int, _count: TransactionCountAggregateInput, _avg: TransactionAvgAggregateInput, _sum: TransactionSumAggregateInput, _min: TransactionMinAggregateInput, _max: TransactionMaxAggregateInput): AggregateTransaction
+
+  """Deskripsinya ada disini loh"""
+  invoiceFindMany(invoiceFindManyArgs: InvoiceFindManyArgs!): [Invoice!]
+
+  """Deskripsinya ada disini loh"""
+  invoiceFindOne(invoiceFindUniqueArgs: InvoiceFindUniqueArgs!): Invoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceCount(invoiceFindManyArgs: InvoiceFindManyArgs): Int!
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindMany(withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs): [WithdrawalRequest!]
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
+
+  """Deskripsinya ada disini loh"""
+  accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
+
+  """Deskripsinya ada disini loh"""
+  accountFindOne(accountFindUniqueArgs: AccountFindUniqueArgs!): Account
+
+  """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
+  accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
+  getAccountTotalBalance(accountId: Float!): Float!
+  userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
+  getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
+  getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""
   bankFindMany(bankFindManyArgs: BankFindManyArgs): [Bank!]
 
   """Deskripsinya ada disini loh"""
   bankFindOne(bankFindUniqueArgs: BankFindUniqueArgs!): Bank
+
+  """Deskripsinya ada disini loh"""
+  fileFindOne(where: FileWhereUniqueInput!): File
+
+  """Deskripsinya ada disini loh"""
+  fileFindMany(where: FileWhereInput, orderBy: [FileOrderByWithRelationInput!], cursor: FileWhereUniqueInput, take: Int, skip: Int, distinct: [FileScalarFieldEnum!]): [File!]
+
+  """Deskripsinya ada disini loh"""
+  fileFindFirst(where: FileWhereInput, orderBy: [FileOrderByWithRelationInput!], cursor: FileWhereUniqueInput, take: Int, skip: Int, distinct: [FileScalarFieldEnum!]): File
+
+  """Deskripsinya ada disini loh"""
+  fileAggregate(where: FileWhereInput, orderBy: [FileOrderByWithRelationInput!], cursor: FileWhereUniqueInput, take: Int, skip: Int, _count: FileCountAggregateInput, _avg: FileAvgAggregateInput, _sum: FileSumAggregateInput, _min: FileMinAggregateInput, _max: FileMaxAggregateInput): AggregateFile
+
+  """Deskripsinya ada disini loh"""
+  imagesFindOne(where: ImagesWhereUniqueInput!): Images
+
+  """Deskripsinya ada disini loh"""
+  imagesFindMany(where: ImagesWhereInput, orderBy: [ImagesOrderByWithRelationInput!], cursor: ImagesWhereUniqueInput, take: Int, skip: Int, distinct: [ImagesScalarFieldEnum!]): [Images!]
+
+  """Deskripsinya ada disini loh"""
+  imagesFindFirst(where: ImagesWhereInput, orderBy: [ImagesOrderByWithRelationInput!], cursor: ImagesWhereUniqueInput, take: Int, skip: Int, distinct: [ImagesScalarFieldEnum!]): Images
+
+  """Deskripsinya ada disini loh"""
+  imagesAggregate(where: ImagesWhereInput, orderBy: [ImagesOrderByWithRelationInput!], cursor: ImagesWhereUniqueInput, take: Int, skip: Int, _count: ImagesCountAggregateInput, _avg: ImagesAvgAggregateInput, _sum: ImagesSumAggregateInput, _min: ImagesMinAggregateInput, _max: ImagesMaxAggregateInput): AggregateImages
+
+  """Deskripsinya ada disini loh"""
+  hotelFindOne(where: HotelWhereUniqueInput!): Hotel
+
+  """Deskripsinya ada disini loh"""
+  hotelFindMany(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): [Hotel!]
+
+  """Deskripsinya ada disini loh"""
+  hotelFindFirst(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): Hotel
+
+  """Deskripsinya ada disini loh"""
+  hotelAggregate(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, _count: HotelCountAggregateInput, _avg: HotelAvgAggregateInput, _sum: HotelSumAggregateInput, _min: HotelMinAggregateInput, _max: HotelMaxAggregateInput): AggregateHotel
 
   """Deskripsinya ada disini loh"""
   programFindMany(programFindManyArgs: ProgramFindManyArgs!): [Program!]
@@ -2053,12 +2159,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   rewardFindOne(rewardFindUniqueArgs: RewardFindUniqueArgs!): Reward
-
-  """Deskripsinya ada disini loh"""
-  fileFindMany(fileFindManyArgs: FileFindManyArgs!): [File!]
-
-  """Deskripsinya ada disini loh"""
-  fileFindOne(fileFindUniqueArgs: FileFindUniqueArgs!): File
 
   """Deskripsinya ada disini loh"""
   faqFindMany(faqFindManyArgs: FaqFindManyArgs!): [Faq!]
@@ -2110,34 +2210,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   getPointGroupPercentages: [PointTransactionGroupPercentage!]
-
-  """Deskripsinya ada disini loh"""
-  transactionFindMany(transactionFindManyArgs: TransactionFindManyArgs!): [Transaction!]
-
-  """Deskripsinya ada disini loh"""
-  transactionFindOne(transactionFindUniqueArgs: TransactionFindUniqueArgs!): Transaction
-
-  """Deskripsinya ada disini loh"""
-  invoiceFindMany(invoiceFindManyArgs: InvoiceFindManyArgs!): [Invoice!]
-
-  """Deskripsinya ada disini loh"""
-  invoiceFindOne(invoiceFindUniqueArgs: InvoiceFindUniqueArgs!): Invoice
-
-  """Deskripsinya ada disini loh"""
-  invoiceCount(invoiceFindManyArgs: InvoiceFindManyArgs): Int!
-
-  """Deskripsinya ada disini loh"""
-  accountFindMany(accountFindManyArgs: AccountFindManyArgs!): [Account!]
-
-  """Deskripsinya ada disini loh"""
-  accountFindOne(accountFindUniqueArgs: AccountFindUniqueArgs!): Account
-
-  """Bisa juga untuk ambil balance terakhir dari akun tertentu milik user"""
-  accountFindFirst(accountFindFirstArgs: AccountFindFirstArgs!): Account
-  getAccountTotalBalance(accountId: Float!): Float!
-  userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
-  getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
-  getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""
   schoolFindMany(schoolFindManyArgs: SchoolFindManyArgs!): [School!]
@@ -2213,21 +2285,42 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   rewardClaimCount(rewardClaimFindManyArgs: RewardClaimFindManyArgs): Int!
-
-  """Deskripsinya ada disini loh"""
-  withdrawalRequestFindMany(withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs): [WithdrawalRequest!]
-
-  """Deskripsinya ada disini loh"""
-  withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
 }
 
-input UserFindManyArgs {
-  where: UserWhereInput
-  orderBy: [UserOrderByWithRelationInput!]
-  cursor: UserWhereUniqueInput
-  take: Int
-  skip: Int
-  distinct: [UserScalarFieldEnum!]
+input UserWhereUniqueInput {
+  id: String
+  email: String
+  addressId: Int
+  whatsappNumber: String
+  referralCode: String
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  firstName: StringFilter
+  lastName: StringNullableFilter
+  userRole: EnumUserRoleFilter
+  userType: EnumUserTypeFilter
+  avatarUrl: StringNullableFilter
+  whatsappVerifiedAt: DateTimeNullableFilter
+  password: StringFilter
+  status: EnumUserStatusFilter
+  schoolId: IntNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
+  theme: EnumThemeFilter
+  address: AddressRelationFilter
+  referredBy: UserNullableRelationFilter
+  referredUsers: UserListRelationFilter
+  checkIns: CheckInListRelationFilter
+  school: SchoolNullableRelationFilter
+  accounts: AccountListRelationFilter
+  orders: OrderListRelationFilter
+  hotelsCreated: HotelListRelationFilter
+  programsParticipation: ProgramListRelationFilter
+  claimedRewards: RewardClaimListRelationFilter
+  withdrawalRequest: WithdrawalRequestListRelationFilter
+  programsCreated: ProgramListRelationFilter
 }
 
 input UserWhereInput {
@@ -2639,7 +2732,7 @@ input ImagesWhereInput {
   NOT: [ImagesWhereInput!]
   id: IntFilter
   fileType: EnumFileTypeFilter
-  filesize: FloatFilter
+  fileSize: FloatFilter
   url: StringFilter
   hotelImageId: IntNullableFilter
   programImageId: IntNullableFilter
@@ -3380,42 +3473,6 @@ input WithdrawalRequestOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
-input UserWhereUniqueInput {
-  id: String
-  email: String
-  addressId: Int
-  whatsappNumber: String
-  referralCode: String
-  AND: [UserWhereInput!]
-  OR: [UserWhereInput!]
-  NOT: [UserWhereInput!]
-  firstName: StringFilter
-  lastName: StringNullableFilter
-  userRole: EnumUserRoleFilter
-  userType: EnumUserTypeFilter
-  avatarUrl: StringNullableFilter
-  whatsappVerifiedAt: DateTimeNullableFilter
-  password: StringFilter
-  status: EnumUserStatusFilter
-  schoolId: IntNullableFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  deletedAt: DateTimeNullableFilter
-  theme: EnumThemeFilter
-  address: AddressRelationFilter
-  referredBy: UserNullableRelationFilter
-  referredUsers: UserListRelationFilter
-  checkIns: CheckInListRelationFilter
-  school: SchoolNullableRelationFilter
-  accounts: AccountListRelationFilter
-  orders: OrderListRelationFilter
-  hotelsCreated: HotelListRelationFilter
-  programsParticipation: ProgramListRelationFilter
-  claimedRewards: RewardClaimListRelationFilter
-  withdrawalRequest: WithdrawalRequestListRelationFilter
-  programsCreated: ProgramListRelationFilter
-}
-
 enum UserScalarFieldEnum {
   id
   firstName
@@ -3438,22 +3495,113 @@ enum UserScalarFieldEnum {
   theme
 }
 
-input UserFindUniqueArgs {
-  where: UserWhereUniqueInput!
+input UserCountAggregateInput {
+  id: Boolean
+  firstName: Boolean
+  lastName: Boolean
+  email: Boolean
+  addressId: Boolean
+  userRole: Boolean
+  userType: Boolean
+  avatarUrl: Boolean
+  whatsappNumber: Boolean
+  whatsappVerifiedAt: Boolean
+  password: Boolean
+  referralCode: Boolean
+  status: Boolean
+  schoolId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  deletedAt: Boolean
+  theme: Boolean
+  _all: Boolean
 }
 
-input UserCreatedByCustomPeriodArgs {
-  start: DateTime!
-  end: DateTime!
-  period: Period!
-  where: UserWhereInput
+input UserAvgAggregateInput {
+  addressId: Boolean
+  schoolId: Boolean
 }
 
-"""Period options for data retrieval"""
-enum Period {
-  WEEKLY
-  MONTHLY
-  YEARLY
+input UserSumAggregateInput {
+  addressId: Boolean
+  schoolId: Boolean
+}
+
+input UserMinAggregateInput {
+  id: Boolean
+  firstName: Boolean
+  lastName: Boolean
+  email: Boolean
+  addressId: Boolean
+  userRole: Boolean
+  userType: Boolean
+  avatarUrl: Boolean
+  whatsappNumber: Boolean
+  whatsappVerifiedAt: Boolean
+  password: Boolean
+  referralCode: Boolean
+  status: Boolean
+  schoolId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  deletedAt: Boolean
+  theme: Boolean
+}
+
+input UserMaxAggregateInput {
+  id: Boolean
+  firstName: Boolean
+  lastName: Boolean
+  email: Boolean
+  addressId: Boolean
+  userRole: Boolean
+  userType: Boolean
+  avatarUrl: Boolean
+  whatsappNumber: Boolean
+  whatsappVerifiedAt: Boolean
+  password: Boolean
+  referralCode: Boolean
+  status: Boolean
+  schoolId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  deletedAt: Boolean
+  theme: Boolean
+}
+
+input HotelWhereUniqueInput {
+  id: Int
+  addressId: Int
+  AND: [HotelWhereInput!]
+  OR: [HotelWhereInput!]
+  NOT: [HotelWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  rating: FloatFilter
+  startDate: DateTimeFilter
+  quota: IntFilter
+  createdById: StringFilter
+  createdAt: DateTimeFilter
+  version: IntNullableFilter
+  updatedAt: DateTimeFilter
+  address: AddressRelationFilter
+  images: ImagesListRelationFilter
+  checkIns: CheckInListRelationFilter
+  createdBy: UserRelationFilter
+}
+
+enum HotelScalarFieldEnum {
+  id
+  name
+  addressId
+  description
+  rating
+  startDate
+  quota
+  createdById
+  createdAt
+  version
+  updatedAt
 }
 
 input ItemFindManyArgs {
@@ -3506,39 +3654,295 @@ input ItemWhereUniqueInput {
   cart: CartListRelationFilter
 }
 
-input HotelWhereUniqueInput {
+input TransactionWhereUniqueInput {
   id: Int
-  addressId: Int
-  AND: [HotelWhereInput!]
-  OR: [HotelWhereInput!]
-  NOT: [HotelWhereInput!]
-  name: StringFilter
-  description: StringFilter
-  rating: FloatFilter
-  startDate: DateTimeFilter
-  quota: IntFilter
-  createdById: StringFilter
+  installmentId: Int
+  withdrawalRequestId: Int
+  AND: [TransactionWhereInput!]
+  OR: [TransactionWhereInput!]
+  NOT: [TransactionWhereInput!]
+  amount: FloatFilter
+  proofUrl: StringNullableFilter
+  status: EnumTransactionStatusFilter
+  transactionCategory: EnumTransactionCategoryFilter
+  fromAccountId: IntFilter
+  toAccountId: IntFilter
+  invoiceId: IntNullableFilter
+  uniqueCode: IntFilter
   createdAt: DateTimeFilter
-  version: IntNullableFilter
-  updatedAt: DateTimeFilter
-  address: AddressRelationFilter
-  images: ImagesListRelationFilter
-  checkIns: CheckInListRelationFilter
-  createdBy: UserRelationFilter
+  fromAccount: AccountRelationFilter
+  toAccount: AccountRelationFilter
+  invoice: InvoiceNullableRelationFilter
+  withdrawalRequest: WithdrawalRequestNullableRelationFilter
 }
 
-enum HotelScalarFieldEnum {
+input TransactionOrderByWithRelationInput {
+  id: SortOrder
+  amount: SortOrder
+  proofUrl: SortOrderInput
+  status: SortOrder
+  transactionCategory: SortOrder
+  fromAccountId: SortOrder
+  toAccountId: SortOrder
+  invoiceId: SortOrderInput
+  installmentId: SortOrderInput
+  withdrawalRequestId: SortOrderInput
+  uniqueCode: SortOrder
+  createdAt: SortOrder
+  fromAccount: AccountOrderByWithRelationInput
+  toAccount: AccountOrderByWithRelationInput
+  invoice: InvoiceOrderByWithRelationInput
+  withdrawalRequest: WithdrawalRequestOrderByWithRelationInput
+}
+
+input AccountOrderByWithRelationInput {
+  id: SortOrder
+  accountNumber: SortOrderInput
+  name: SortOrder
+  userId: SortOrder
+  accountCategory: SortOrder
+  user: UserOrderByWithRelationInput
+  transactionOrigins: TransactionOrderByRelationAggregateInput
+  transactionDestination: TransactionOrderByRelationAggregateInput
+}
+
+input WithdrawalRequestOrderByWithRelationInput {
+  id: SortOrder
+  userId: SortOrder
+  amount: SortOrder
+  status: SortOrder
+  proofUrl: SortOrderInput
+  proofDescription: SortOrderInput
+  transactionId: SortOrderInput
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  user: UserOrderByWithRelationInput
+  transaction: TransactionOrderByWithRelationInput
+}
+
+enum TransactionScalarFieldEnum {
   id
-  name
-  addressId
-  description
-  rating
-  startDate
-  quota
-  createdById
+  amount
+  proofUrl
+  status
+  transactionCategory
+  fromAccountId
+  toAccountId
+  invoiceId
+  installmentId
+  withdrawalRequestId
+  uniqueCode
   createdAt
-  version
+}
+
+input TransactionCountAggregateInput {
+  id: Boolean
+  amount: Boolean
+  proofUrl: Boolean
+  status: Boolean
+  transactionCategory: Boolean
+  fromAccountId: Boolean
+  toAccountId: Boolean
+  invoiceId: Boolean
+  installmentId: Boolean
+  withdrawalRequestId: Boolean
+  uniqueCode: Boolean
+  createdAt: Boolean
+  _all: Boolean
+}
+
+input TransactionAvgAggregateInput {
+  id: Boolean
+  amount: Boolean
+  fromAccountId: Boolean
+  toAccountId: Boolean
+  invoiceId: Boolean
+  installmentId: Boolean
+  withdrawalRequestId: Boolean
+  uniqueCode: Boolean
+}
+
+input TransactionSumAggregateInput {
+  id: Boolean
+  amount: Boolean
+  fromAccountId: Boolean
+  toAccountId: Boolean
+  invoiceId: Boolean
+  installmentId: Boolean
+  withdrawalRequestId: Boolean
+  uniqueCode: Boolean
+}
+
+input TransactionMinAggregateInput {
+  id: Boolean
+  amount: Boolean
+  proofUrl: Boolean
+  status: Boolean
+  transactionCategory: Boolean
+  fromAccountId: Boolean
+  toAccountId: Boolean
+  invoiceId: Boolean
+  installmentId: Boolean
+  withdrawalRequestId: Boolean
+  uniqueCode: Boolean
+  createdAt: Boolean
+}
+
+input TransactionMaxAggregateInput {
+  id: Boolean
+  amount: Boolean
+  proofUrl: Boolean
+  status: Boolean
+  transactionCategory: Boolean
+  fromAccountId: Boolean
+  toAccountId: Boolean
+  invoiceId: Boolean
+  installmentId: Boolean
+  withdrawalRequestId: Boolean
+  uniqueCode: Boolean
+  createdAt: Boolean
+}
+
+input InvoiceFindManyArgs {
+  where: InvoiceWhereInput
+  orderBy: [InvoiceOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [InvoiceScalarFieldEnum!]
+}
+
+enum InvoiceScalarFieldEnum {
+  id
+  adminFee
+  amount
+  uniqueCode
+  createdAt
+}
+
+input InvoiceFindUniqueArgs {
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceWhereUniqueInput {
+  id: Int
+  AND: [InvoiceWhereInput!]
+  OR: [InvoiceWhereInput!]
+  NOT: [InvoiceWhereInput!]
+  adminFee: FloatFilter
+  amount: FloatFilter
+  Order: OrderNullableRelationFilter
+  transactions: TransactionListRelationFilter
+  Installments: InstallmentListRelationFilter
+}
+
+input WithdrawalRequestFindManyArgs {
+  where: WithdrawalRequestWhereInput
+  orderBy: [WithdrawalRequestOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [WithdrawalRequestScalarFieldEnum!]
+}
+
+enum WithdrawalRequestScalarFieldEnum {
+  id
+  userId
+  amount
+  status
+  proofUrl
+  proofDescription
+  transactionId
+  createdAt
   updatedAt
+}
+
+input WithdrawalRequestFindUniqueArgs {
+  where: WithdrawalRequestWhereUniqueInput!
+}
+
+input WithdrawalRequestWhereUniqueInput {
+  id: Int
+  AND: [WithdrawalRequestWhereInput!]
+  OR: [WithdrawalRequestWhereInput!]
+  NOT: [WithdrawalRequestWhereInput!]
+  userId: StringFilter
+  amount: FloatFilter
+  status: EnumTransactionStatusFilter
+  proofUrl: StringNullableFilter
+  proofDescription: StringNullableFilter
+  transactionId: IntNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  transaction: TransactionNullableRelationFilter
+}
+
+input AccountFindManyArgs {
+  where: AccountWhereInput
+  orderBy: [AccountOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [AccountScalarFieldEnum!]
+}
+
+enum AccountScalarFieldEnum {
+  id
+  accountNumber
+  name
+  createdAt
+  updatedAt
+  userId
+  accountCategory
+}
+
+input AccountFindUniqueArgs {
+  where: AccountWhereUniqueInput!
+}
+
+input AccountWhereUniqueInput {
+  id: Int
+  AND: [AccountWhereInput!]
+  OR: [AccountWhereInput!]
+  NOT: [AccountWhereInput!]
+  accountNumber: FloatNullableFilter
+  name: StringFilter
+  userId: StringFilter
+  accountCategory: EnumAccountCategoryFilter
+  user: UserRelationFilter
+  transactionOrigins: TransactionListRelationFilter
+  transactionDestination: TransactionListRelationFilter
+}
+
+input AccountFindFirstArgs {
+  where: AccountWhereInput
+  orderBy: [AccountOrderByWithRelationInput!]
+  cursor: AccountWhereUniqueInput
+  take: Int
+  skip: Int
+  distinct: [AccountScalarFieldEnum!]
+}
+
+input UserFindManyOrderByAccountBalanceArgs {
+  accountCategory: AccountCategory!
+}
+
+input AccountBalanceByCustomPeriodArgs {
+  accountId: Int!
+  start: DateTime!
+  end: DateTime!
+  period: Period!
+}
+
+"""Period options for data retrieval"""
+enum Period {
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+input AccountBalanceOfPlatformByCustomPeriod {
+  start: DateTime!
+  end: DateTime!
+  period: Period!
 }
 
 input BankFindManyArgs {
@@ -3589,13 +3993,143 @@ input BankWhereUniqueInput {
   accountNumber: FloatFilter
 }
 
-input ProgramFindManyArgs {
-  where: ProgramWhereInput
-  orderBy: [ProgramOrderByWithRelationInput!]
-  cursor: ProgramWhereUniqueInput
-  take: Int
-  skip: Int
-  distinct: [ProgramScalarFieldEnum!]
+input FileWhereUniqueInput {
+  id: Int
+  createdById: String
+  AND: [FileWhereInput!]
+  OR: [FileWhereInput!]
+  NOT: [FileWhereInput!]
+  fileType: EnumFileTypeFilter
+  filesize: FloatFilter
+  name: StringFilter
+  description: StringFilter
+  url: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  createdBy: UserRelationFilter
+}
+
+input FileWhereInput {
+  AND: [FileWhereInput!]
+  OR: [FileWhereInput!]
+  NOT: [FileWhereInput!]
+  id: IntFilter
+  fileType: EnumFileTypeFilter
+  filesize: FloatFilter
+  name: StringFilter
+  description: StringFilter
+  url: StringFilter
+  createdById: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  createdBy: UserRelationFilter
+}
+
+input FileOrderByWithRelationInput {
+  id: SortOrder
+  fileType: SortOrder
+  filesize: SortOrder
+  name: SortOrder
+  description: SortOrder
+  url: SortOrder
+  createdById: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  createdBy: UserOrderByWithRelationInput
+}
+
+enum FileScalarFieldEnum {
+  id
+  fileType
+  filesize
+  name
+  description
+  url
+  createdById
+  createdAt
+  updatedAt
+}
+
+input FileCountAggregateInput {
+  id: Boolean
+  fileType: Boolean
+  filesize: Boolean
+  name: Boolean
+  description: Boolean
+  url: Boolean
+  createdById: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input FileAvgAggregateInput {
+  id: Boolean
+  filesize: Boolean
+}
+
+input FileSumAggregateInput {
+  id: Boolean
+  filesize: Boolean
+}
+
+input FileMinAggregateInput {
+  id: Boolean
+  fileType: Boolean
+  filesize: Boolean
+  name: Boolean
+  description: Boolean
+  url: Boolean
+  createdById: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input FileMaxAggregateInput {
+  id: Boolean
+  fileType: Boolean
+  filesize: Boolean
+  name: Boolean
+  description: Boolean
+  url: Boolean
+  createdById: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input ImagesWhereUniqueInput {
+  id: Int
+  AND: [ImagesWhereInput!]
+  OR: [ImagesWhereInput!]
+  NOT: [ImagesWhereInput!]
+  fileType: EnumFileTypeFilter
+  fileSize: FloatFilter
+  url: StringFilter
+  hotelImageId: IntNullableFilter
+  programImageId: IntNullableFilter
+  rewardImageId: IntNullableFilter
+  projectImageId: IntNullableFilter
+  createdAt: DateTimeFilter
+  hotelImage: HotelNullableRelationFilter
+  programImage: ProgramNullableRelationFilter
+  rewardImage: RewardNullableRelationFilter
+  projectImage: ProjectNullableRelationFilter
+}
+
+input ImagesOrderByWithRelationInput {
+  id: SortOrder
+  fileType: SortOrder
+  fileSize: SortOrder
+  url: SortOrder
+  hotelImageId: SortOrderInput
+  programImageId: SortOrderInput
+  rewardImageId: SortOrderInput
+  projectImageId: SortOrderInput
+  createdAt: SortOrder
+  hotelImage: HotelOrderByWithRelationInput
+  programImage: ProgramOrderByWithRelationInput
+  rewardImage: RewardOrderByWithRelationInput
+  projectImage: ProjectOrderByWithRelationInput
 }
 
 input ProgramOrderByWithRelationInput {
@@ -3620,6 +4154,171 @@ input ProgramCategoryOrderByWithRelationInput {
   createdAt: SortOrder
   updatedAt: SortOrder
   programs: ProgramOrderByRelationAggregateInput
+}
+
+input RewardOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  pointCost: SortOrder
+  description: SortOrder
+  images: ImagesOrderByRelationAggregateInput
+  RewardClaim: RewardClaimOrderByRelationAggregateInput
+}
+
+input ProjectOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  description: SortOrder
+  projectCategory: SortOrder
+  startDate: SortOrder
+  endDate: SortOrder
+  returnRate: SortOrder
+  goalAmount: SortOrder
+  maxGoalAmountVersion: SortOrderInput
+  minimumInvestment: SortOrder
+  maxInvestor: SortOrder
+  maxInvestorVersion: SortOrderInput
+  accountId: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  images: ImagesOrderByRelationAggregateInput
+  orderCart: CartOrderByRelationAggregateInput
+  account: AccountOrderByWithRelationInput
+}
+
+enum ImagesScalarFieldEnum {
+  id
+  fileType
+  fileSize
+  url
+  hotelImageId
+  programImageId
+  rewardImageId
+  projectImageId
+  createdAt
+}
+
+input ImagesCountAggregateInput {
+  id: Boolean
+  fileType: Boolean
+  fileSize: Boolean
+  url: Boolean
+  hotelImageId: Boolean
+  programImageId: Boolean
+  rewardImageId: Boolean
+  projectImageId: Boolean
+  createdAt: Boolean
+  _all: Boolean
+}
+
+input ImagesAvgAggregateInput {
+  id: Boolean
+  fileSize: Boolean
+  hotelImageId: Boolean
+  programImageId: Boolean
+  rewardImageId: Boolean
+  projectImageId: Boolean
+}
+
+input ImagesSumAggregateInput {
+  id: Boolean
+  fileSize: Boolean
+  hotelImageId: Boolean
+  programImageId: Boolean
+  rewardImageId: Boolean
+  projectImageId: Boolean
+}
+
+input ImagesMinAggregateInput {
+  id: Boolean
+  fileType: Boolean
+  fileSize: Boolean
+  url: Boolean
+  hotelImageId: Boolean
+  programImageId: Boolean
+  rewardImageId: Boolean
+  projectImageId: Boolean
+  createdAt: Boolean
+}
+
+input ImagesMaxAggregateInput {
+  id: Boolean
+  fileType: Boolean
+  fileSize: Boolean
+  url: Boolean
+  hotelImageId: Boolean
+  programImageId: Boolean
+  rewardImageId: Boolean
+  projectImageId: Boolean
+  createdAt: Boolean
+}
+
+input HotelCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  addressId: Boolean
+  description: Boolean
+  rating: Boolean
+  startDate: Boolean
+  quota: Boolean
+  createdById: Boolean
+  createdAt: Boolean
+  version: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input HotelAvgAggregateInput {
+  id: Boolean
+  addressId: Boolean
+  rating: Boolean
+  quota: Boolean
+  version: Boolean
+}
+
+input HotelSumAggregateInput {
+  id: Boolean
+  addressId: Boolean
+  rating: Boolean
+  quota: Boolean
+  version: Boolean
+}
+
+input HotelMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  addressId: Boolean
+  description: Boolean
+  rating: Boolean
+  startDate: Boolean
+  quota: Boolean
+  createdById: Boolean
+  createdAt: Boolean
+  version: Boolean
+  updatedAt: Boolean
+}
+
+input HotelMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  addressId: Boolean
+  description: Boolean
+  rating: Boolean
+  startDate: Boolean
+  quota: Boolean
+  createdById: Boolean
+  createdAt: Boolean
+  version: Boolean
+  updatedAt: Boolean
+}
+
+input ProgramFindManyArgs {
+  where: ProgramWhereInput
+  orderBy: [ProgramOrderByWithRelationInput!]
+  cursor: ProgramWhereUniqueInput
+  take: Int
+  skip: Int
+  distinct: [ProgramScalarFieldEnum!]
 }
 
 input ProgramWhereUniqueInput {
@@ -3695,15 +4394,6 @@ input RewardFindManyArgs {
   distinct: [RewardScalarFieldEnum!]
 }
 
-input RewardOrderByWithRelationInput {
-  id: SortOrder
-  name: SortOrder
-  pointCost: SortOrder
-  description: SortOrder
-  images: ImagesOrderByRelationAggregateInput
-  RewardClaim: RewardClaimOrderByRelationAggregateInput
-}
-
 enum RewardScalarFieldEnum {
   id
   name
@@ -3727,75 +4417,6 @@ input RewardWhereUniqueInput {
   description: StringFilter
   images: ImagesListRelationFilter
   RewardClaim: RewardClaimListRelationFilter
-}
-
-input FileFindManyArgs {
-  where: FileWhereInput
-  orderBy: [FileOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [FileScalarFieldEnum!]
-}
-
-input FileWhereInput {
-  AND: [FileWhereInput!]
-  OR: [FileWhereInput!]
-  NOT: [FileWhereInput!]
-  id: IntFilter
-  fileType: EnumFileTypeFilter
-  filesize: FloatFilter
-  name: StringFilter
-  description: StringFilter
-  url: StringFilter
-  createdById: StringFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  createdBy: UserRelationFilter
-}
-
-input FileOrderByWithRelationInput {
-  id: SortOrder
-  fileType: SortOrder
-  filesize: SortOrder
-  name: SortOrder
-  description: SortOrder
-  url: SortOrder
-  createdById: SortOrder
-  createdAt: SortOrder
-  updatedAt: SortOrder
-  createdBy: UserOrderByWithRelationInput
-}
-
-enum FileScalarFieldEnum {
-  id
-  fileType
-  filesize
-  name
-  description
-  url
-  createdById
-  createdAt
-  updatedAt
-}
-
-input FileFindUniqueArgs {
-  where: FileWhereUniqueInput!
-}
-
-input FileWhereUniqueInput {
-  id: Int
-  createdById: String
-  AND: [FileWhereInput!]
-  OR: [FileWhereInput!]
-  NOT: [FileWhereInput!]
-  fileType: EnumFileTypeFilter
-  filesize: FloatFilter
-  name: StringFilter
-  description: StringFilter
-  url: StringFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  createdBy: UserRelationFilter
 }
 
 input FaqFindManyArgs {
@@ -3872,38 +4493,6 @@ input ProjectFindManyArgs {
   take: Int
   skip: Int
   distinct: [ProjectScalarFieldEnum!]
-}
-
-input ProjectOrderByWithRelationInput {
-  id: SortOrder
-  name: SortOrder
-  description: SortOrder
-  projectCategory: SortOrder
-  startDate: SortOrder
-  endDate: SortOrder
-  returnRate: SortOrder
-  goalAmount: SortOrder
-  maxGoalAmountVersion: SortOrderInput
-  minimumInvestment: SortOrder
-  maxInvestor: SortOrder
-  maxInvestorVersion: SortOrderInput
-  accountId: SortOrder
-  createdAt: SortOrder
-  updatedAt: SortOrder
-  images: ImagesOrderByRelationAggregateInput
-  orderCart: CartOrderByRelationAggregateInput
-  account: AccountOrderByWithRelationInput
-}
-
-input AccountOrderByWithRelationInput {
-  id: SortOrder
-  accountNumber: SortOrderInput
-  name: SortOrder
-  userId: SortOrder
-  accountCategory: SortOrder
-  user: UserOrderByWithRelationInput
-  transactionOrigins: TransactionOrderByRelationAggregateInput
-  transactionDestination: TransactionOrderByRelationAggregateInput
 }
 
 enum ProjectScalarFieldEnum {
@@ -4292,182 +4881,6 @@ input PointTransactionFindFirstArgs {
   take: Int
   skip: Int
   distinct: [PointTransactionScalarFieldEnum!]
-}
-
-input TransactionFindManyArgs {
-  where: TransactionWhereInput
-  orderBy: [TransactionOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [TransactionScalarFieldEnum!]
-}
-
-input TransactionOrderByWithRelationInput {
-  id: SortOrder
-  amount: SortOrder
-  proofUrl: SortOrderInput
-  status: SortOrder
-  transactionCategory: SortOrder
-  fromAccountId: SortOrder
-  toAccountId: SortOrder
-  invoiceId: SortOrderInput
-  installmentId: SortOrderInput
-  withdrawalRequestId: SortOrderInput
-  uniqueCode: SortOrder
-  createdAt: SortOrder
-  fromAccount: AccountOrderByWithRelationInput
-  toAccount: AccountOrderByWithRelationInput
-  invoice: InvoiceOrderByWithRelationInput
-  withdrawalRequest: WithdrawalRequestOrderByWithRelationInput
-}
-
-input WithdrawalRequestOrderByWithRelationInput {
-  id: SortOrder
-  userId: SortOrder
-  amount: SortOrder
-  status: SortOrder
-  proofUrl: SortOrderInput
-  proofDescription: SortOrderInput
-  transactionId: SortOrderInput
-  createdAt: SortOrder
-  updatedAt: SortOrder
-  user: UserOrderByWithRelationInput
-  transaction: TransactionOrderByWithRelationInput
-}
-
-enum TransactionScalarFieldEnum {
-  id
-  amount
-  proofUrl
-  status
-  transactionCategory
-  fromAccountId
-  toAccountId
-  invoiceId
-  installmentId
-  withdrawalRequestId
-  uniqueCode
-  createdAt
-}
-
-input TransactionFindUniqueArgs {
-  where: TransactionWhereUniqueInput!
-}
-
-input TransactionWhereUniqueInput {
-  id: Int
-  installmentId: Int
-  withdrawalRequestId: Int
-  AND: [TransactionWhereInput!]
-  OR: [TransactionWhereInput!]
-  NOT: [TransactionWhereInput!]
-  amount: FloatFilter
-  proofUrl: StringNullableFilter
-  status: EnumTransactionStatusFilter
-  transactionCategory: EnumTransactionCategoryFilter
-  fromAccountId: IntFilter
-  toAccountId: IntFilter
-  invoiceId: IntNullableFilter
-  uniqueCode: IntFilter
-  createdAt: DateTimeFilter
-  fromAccount: AccountRelationFilter
-  toAccount: AccountRelationFilter
-  invoice: InvoiceNullableRelationFilter
-  withdrawalRequest: WithdrawalRequestNullableRelationFilter
-}
-
-input InvoiceFindManyArgs {
-  where: InvoiceWhereInput
-  orderBy: [InvoiceOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [InvoiceScalarFieldEnum!]
-}
-
-enum InvoiceScalarFieldEnum {
-  id
-  adminFee
-  amount
-  uniqueCode
-  createdAt
-}
-
-input InvoiceFindUniqueArgs {
-  where: InvoiceWhereUniqueInput!
-}
-
-input InvoiceWhereUniqueInput {
-  id: Int
-  AND: [InvoiceWhereInput!]
-  OR: [InvoiceWhereInput!]
-  NOT: [InvoiceWhereInput!]
-  adminFee: FloatFilter
-  amount: FloatFilter
-  Order: OrderNullableRelationFilter
-  transactions: TransactionListRelationFilter
-  Installments: InstallmentListRelationFilter
-}
-
-input AccountFindManyArgs {
-  where: AccountWhereInput
-  orderBy: [AccountOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [AccountScalarFieldEnum!]
-}
-
-enum AccountScalarFieldEnum {
-  id
-  accountNumber
-  name
-  createdAt
-  updatedAt
-  userId
-  accountCategory
-}
-
-input AccountFindUniqueArgs {
-  where: AccountWhereUniqueInput!
-}
-
-input AccountWhereUniqueInput {
-  id: Int
-  AND: [AccountWhereInput!]
-  OR: [AccountWhereInput!]
-  NOT: [AccountWhereInput!]
-  accountNumber: FloatNullableFilter
-  name: StringFilter
-  userId: StringFilter
-  accountCategory: EnumAccountCategoryFilter
-  user: UserRelationFilter
-  transactionOrigins: TransactionListRelationFilter
-  transactionDestination: TransactionListRelationFilter
-}
-
-input AccountFindFirstArgs {
-  where: AccountWhereInput
-  orderBy: [AccountOrderByWithRelationInput!]
-  cursor: AccountWhereUniqueInput
-  take: Int
-  skip: Int
-  distinct: [AccountScalarFieldEnum!]
-}
-
-input UserFindManyOrderByAccountBalanceArgs {
-  accountCategory: AccountCategory!
-}
-
-input AccountBalanceByCustomPeriodArgs {
-  accountId: Int!
-  start: DateTime!
-  end: DateTime!
-  period: Period!
-}
-
-input AccountBalanceOfPlatformByCustomPeriod {
-  start: DateTime!
-  end: DateTime!
-  period: Period!
 }
 
 input SchoolFindManyArgs {
@@ -4936,63 +5349,26 @@ input RewardClaimWhereUniqueInput {
   reward: RewardRelationFilter
 }
 
-input WithdrawalRequestFindManyArgs {
-  where: WithdrawalRequestWhereInput
-  orderBy: [WithdrawalRequestOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [WithdrawalRequestScalarFieldEnum!]
-}
-
-enum WithdrawalRequestScalarFieldEnum {
-  id
-  userId
-  amount
-  status
-  proofUrl
-  proofDescription
-  transactionId
-  createdAt
-  updatedAt
-}
-
-input WithdrawalRequestFindUniqueArgs {
-  where: WithdrawalRequestWhereUniqueInput!
-}
-
-input WithdrawalRequestWhereUniqueInput {
-  id: Int
-  AND: [WithdrawalRequestWhereInput!]
-  OR: [WithdrawalRequestWhereInput!]
-  NOT: [WithdrawalRequestWhereInput!]
-  userId: StringFilter
-  amount: FloatFilter
-  status: EnumTransactionStatusFilter
-  proofUrl: StringNullableFilter
-  proofDescription: StringNullableFilter
-  transactionId: IntNullableFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  user: UserRelationFilter
-  transaction: TransactionNullableRelationFilter
-}
-
 type Mutation {
   authPasswordReset(email: String!): String!
 
   """Deskripsinya ada disini loh"""
-  userCreateOne(file: Upload, userCreateArgs: UserCreateArgs!): User
+  userCreateOne(data: UserCreateInput!): User
 
   """Deskripsinya ada disini loh"""
-  userUpdateOne(userUpdateOneArgs: UserUpdateOneArgs!): User!
+  userCreateMany(data: [UserCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Dapat URL baru, gambar lama terhapus di storage"""
-  userUpdateOneAvatarUrl(file: Upload!, userId: String!): String!
+  """Deskripsinya ada disini loh"""
+  userUpdateOne(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
 
-  """
-  Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas user akan terisi. select: { id: true, firstName: true, deletedAt: true }
-  """
-  userRemove(userId: String!): User
+  """Deskripsinya ada disini loh"""
+  userUpdateMany(data: UserUpdateManyMutationInput!, where: UserWhereInput): User
+
+  """Deskripsinya ada disini loh"""
+  userDelete(where: UserWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  userDeleteMany(where: UserWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   itemCreateOne(itemCreateArgs: ItemCreateArgs!): Item
@@ -5003,20 +5379,50 @@ type Mutation {
   """Datanya benar2 terhapus dari db"""
   itemRemove(itemId: Float!): Boolean
 
-  """Header wajib ada apollo-require-preflight = true agar tidak CSRF error"""
-  uploadSingle(file: Upload!, userId: String!): String!
+  """
+  Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
+  """
+  uploadSingleFile(file: Upload, userId: String!): String
+
+  """
+  Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
+  """
+  uploadMultiFile(files: [Upload!], userId: String!): [String!]
 
   """Deskripsinya ada disini loh"""
-  hotelCreateOne(data: HotelCreateInput!, files: [Upload!]!): Hotel
+  transactionCreateOne(data: TransactionCreateInput!): Transaction
+
+  """Deskripsinya ada disini loh"""
+  transactionCreateMany(data: [TransactionCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  transactionUpdateOne(data: TransactionUpdateInput!, where: TransactionWhereUniqueInput!): Transaction
+
+  """Deskripsinya ada disini loh"""
+  transactionUpdateMany(data: TransactionUpdateManyMutationInput!, where: TransactionWhereInput): Transaction
+
+  """Deskripsinya ada disini loh"""
+  transactionDelete(where: TransactionWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  transactionDeleteMany(where: TransactionWhereInput): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  invoiceUpdateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs!): Invoice!
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestCreateOne(withdrawalRequestCreateArgs: WithdrawalRequestCreateArgs!): WithdrawalRequest
 
   """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim hotel, backend akan cek apakah saldo point user cukup untuk claim
+  Deskripsinya ada disini loh, Jika tentang mutasi klaim withdrawalRequest, backend akan cek apakah saldo point user cukup untuk claim
   """
-  hotelUpdateOne(data: HotelUpdateInput!, where: HotelWhereUniqueInput!): Hotel!
+  withdrawalRequestUpdateOne(withdrawalRequestUpdateOneArgs: WithdrawalRequestUpdateOneArgs!): WithdrawalRequest!
 
   """Datanya benar2 terhapus dari db"""
-  hotelRemove(hotelId: Float!): Boolean
-  authLogin(loginArgs: LoginArgs!): LoginResponse
+  withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
+
+  """Deskripsinya ada disini loh"""
+  accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
 
   """Deskripsinya ada disini loh"""
   bankCreateOne(bankCreateArgs: BankCreateArgs!): Bank
@@ -5028,6 +5434,61 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   bankRemove(bankId: Float!): Boolean
+
+  """Deskripsinya ada disini loh"""
+  fileCreateOne(data: FileCreateInput!): File
+
+  """Deskripsinya ada disini loh"""
+  fileCreateMany(data: [FileCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  fileUpdateOne(data: FileUpdateInput!, where: FileWhereUniqueInput!): File
+
+  """Deskripsinya ada disini loh"""
+  fileUpdateMany(data: FileUpdateManyMutationInput!, where: FileWhereInput): File
+
+  """Deskripsinya ada disini loh"""
+  fileDelete(where: FileWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  fileDeleteMany(where: FileWhereInput): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  imagesCreateOne(data: ImagesCreateInput!): Images
+
+  """Deskripsinya ada disini loh"""
+  imagesCreateMany(data: [ImagesCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  imagesUpdateOne(data: ImagesUpdateInput!, where: ImagesWhereUniqueInput!): Images
+
+  """Deskripsinya ada disini loh"""
+  imagesUpdateMany(data: ImagesUpdateManyMutationInput!, where: ImagesWhereInput): Images
+
+  """Deskripsinya ada disini loh"""
+  imagesDelete(where: ImagesWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  imagesDeleteMany(where: ImagesWhereInput): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  hotelCreateOne(data: HotelCreateInput!): Hotel
+
+  """Deskripsinya ada disini loh"""
+  hotelCreateMany(data: [HotelCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  hotelUpdateOne(data: HotelUpdateInput!, where: HotelWhereUniqueInput!): Hotel
+
+  """Deskripsinya ada disini loh"""
+  hotelUpdateMany(data: HotelUpdateManyMutationInput!, where: HotelWhereInput): Hotel
+
+  """Deskripsinya ada disini loh"""
+  hotelDelete(where: HotelWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  hotelDeleteMany(where: HotelWhereInput): Boolean!
+  authLogin(loginArgs: LoginArgs!): LoginResponse
 
   """Deskripsinya ada disini loh"""
   programCreateOne(programCreateArgs: ProgramCreateArgs!): Program
@@ -5057,15 +5518,6 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   rewardRemove(rewardId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
-  fileCreateOne(fileCreateArgs: FileCreateArgs!): File
-
-  """Deskripsinya ada disini loh"""
-  fileUpdateOne(fileUpdateOneArgs: FileUpdateOneArgs!): File!
-
-  """Datanya benar2 terhapus dari db"""
-  fileRemove(fileId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
   faqCreateOne(faqCreateArgs: FaqCreateArgs!): Faq
@@ -5106,15 +5558,6 @@ type Mutation {
   userNotificationRemove(userNotificationId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  transactionCreateOne(transactionCreateArgs: TransactionCreateArgs!): Transaction
-
-  """Deskripsinya ada disini loh"""
-  invoiceUpdateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs!): Invoice!
-
-  """Deskripsinya ada disini loh"""
-  accountUpdateOne(accountUpdateOneArgs: AccountUpdateOneArgs!): Account!
-
-  """Deskripsinya ada disini loh"""
   schoolCreateOne(schoolCreateArgs: SchoolCreateArgs!): School
 
   """Deskripsinya ada disini loh"""
@@ -5147,24 +5590,6 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   rewardClaimRemove(rewardClaimId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
-  withdrawalRequestCreateOne(withdrawalRequestCreateArgs: WithdrawalRequestCreateArgs!): WithdrawalRequest
-
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim withdrawalRequest, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  withdrawalRequestUpdateOne(withdrawalRequestUpdateOneArgs: WithdrawalRequestUpdateOneArgs!): WithdrawalRequest!
-
-  """Datanya benar2 terhapus dari db"""
-  withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
-}
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
-
-input UserCreateArgs {
-  data: UserCreateInput!
 }
 
 input UserCreateInput {
@@ -5352,9 +5777,18 @@ input UserCreateOrConnectWithoutReferredUsersInput {
   create: UserCreateWithoutReferredUsersInput!
 }
 
-input UserUpdateOneArgs {
-  data: UserUpdateInput!
-  where: UserWhereUniqueInput!
+input UserCreateManyInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  addressId: Int!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  schoolId: Int
+  theme: Theme
 }
 
 input UserUpdateInput {
@@ -5557,25 +5991,6 @@ input ImagesCreateWithoutHotelImageInput {
 input ImagesCreateOrConnectWithoutHotelImageInput {
   where: ImagesWhereUniqueInput!
   create: ImagesCreateWithoutHotelImageInput!
-}
-
-input ImagesWhereUniqueInput {
-  id: Int
-  AND: [ImagesWhereInput!]
-  OR: [ImagesWhereInput!]
-  NOT: [ImagesWhereInput!]
-  fileType: EnumFileTypeFilter
-  filesize: FloatFilter
-  url: StringFilter
-  hotelImageId: IntNullableFilter
-  programImageId: IntNullableFilter
-  rewardImageId: IntNullableFilter
-  projectImageId: IntNullableFilter
-  createdAt: DateTimeFilter
-  hotelImage: HotelNullableRelationFilter
-  programImage: ProgramNullableRelationFilter
-  rewardImage: RewardNullableRelationFilter
-  projectImage: ProjectNullableRelationFilter
 }
 
 input ImagesCreateManyHotelImageInputEnvelope {
@@ -6942,7 +7357,7 @@ input ImagesScalarWhereInput {
   NOT: [ImagesScalarWhereInput!]
   id: IntFilter
   fileType: EnumFileTypeFilter
-  filesize: FloatFilter
+  fileSize: FloatFilter
   url: StringFilter
   hotelImageId: IntNullableFilter
   programImageId: IntNullableFilter
@@ -7669,39 +8084,328 @@ input CartUpdateManyWithWhereWithoutMembershipItemInput {
   data: CartUpdateManyMutationInput!
 }
 
-input HotelCreateInput {
-  name: String!
-  description: String!
-  rating: Float!
-  startDate: DateTime!
-  quota: Int!
-  version: Int
-  address: AddressCreateNestedOneWithoutHotelInput!
-  images: ImagesCreateNestedManyWithoutHotelImageInput
-  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input TransactionCreateInput {
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+  withdrawalRequest: WithdrawalRequestCreateNestedOneWithoutTransactionInput
 }
 
-input HotelUpdateInput {
+input TransactionCreateManyInput {
+  id: Int
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoiceId: Int
+  installmentId: Int
+  withdrawalRequestId: Int
+}
+
+input TransactionUpdateInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+}
+
+input EnumTransactionCategoryFieldUpdateOperationsInput {
+  set: TransactionCategory
+}
+
+input InvoiceUpdateOneWithoutTransactionsNestedInput {
+  create: InvoiceCreateWithoutTransactionsInput
+  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
+  upsert: InvoiceUpsertWithoutTransactionsInput
+  disconnect: InvoiceWhereInput
+  delete: InvoiceWhereInput
+  connect: InvoiceWhereUniqueInput
+  update: InvoiceUpdateToOneWithWhereWithoutTransactionsInput
+}
+
+input InvoiceUpsertWithoutTransactionsInput {
+  update: InvoiceUpdateWithoutTransactionsInput!
+  create: InvoiceCreateWithoutTransactionsInput!
+  where: InvoiceWhereInput
+}
+
+input InvoiceUpdateWithoutTransactionsInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
+  where: InvoiceWhereInput
+  data: InvoiceUpdateWithoutTransactionsInput!
+}
+
+input TransactionUpdateManyMutationInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateOneArgs {
+  data: InvoiceUpdateInput!
+  where: InvoiceWhereUniqueInput!
+}
+
+input InvoiceUpdateInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+}
+
+input WithdrawalRequestCreateArgs {
+  data: WithdrawalRequestCreateInput!
+}
+
+input WithdrawalRequestCreateInput {
+  amount: Float!
+  user: UserCreateNestedOneWithoutWithdrawalRequestInput!
+}
+
+input WithdrawalRequestUpdateOneArgs {
+  data: WithdrawalRequestUpdateInput!
+  where: WithdrawalRequestWhereUniqueInput!
+}
+
+input WithdrawalRequestUpdateInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  proofDescription: NullableStringFieldUpdateOperationsInput
+}
+
+input AccountUpdateOneArgs {
+  data: AccountUpdateInput!
+  where: AccountWhereUniqueInput!
+}
+
+input AccountUpdateInput {
+  accountNumber: NullableFloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  rating: FloatFieldUpdateOperationsInput
-  startDate: DateTimeFieldUpdateOperationsInput
-  quota: IntFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  version: NullableIntFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutHotelNestedInput
-  images: ImagesUpdateManyWithoutHotelImageNestedInput
-  checkIns: CheckInUpdateManyWithoutHotelNestedInput
-  createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
+  accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutAccountsNestedInput
+  transactionOrigins: TransactionUpdateManyWithoutFromAccountNestedInput
+  transactionDestination: TransactionUpdateManyWithoutToAccountNestedInput
 }
 
-input LoginArgs {
-  """Masukkan email"""
-  email: String!
+input NullableFloatFieldUpdateOperationsInput {
+  set: Float
+  increment: Float
+  decrement: Float
+  multiply: Float
+  divide: Float
+}
 
-  """Masukkan password"""
+input EnumAccountCategoryFieldUpdateOperationsInput {
+  set: AccountCategory
+}
+
+input UserUpdateOneRequiredWithoutAccountsNestedInput {
+  create: UserCreateWithoutAccountsInput
+  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
+  upsert: UserUpsertWithoutAccountsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutAccountsInput
+}
+
+input UserCreateWithoutAccountsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
   password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+}
+
+input UserCreateOrConnectWithoutAccountsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutAccountsInput!
+}
+
+input UserUpsertWithoutAccountsInput {
+  update: UserUpdateWithoutAccountsInput!
+  create: UserCreateWithoutAccountsInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutAccountsInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  programsParticipation: ProgramUpdateManyWithoutParticipantNestedInput
+}
+
+input UserUpdateToOneWithWhereWithoutAccountsInput {
+  where: UserWhereInput
+  data: UserUpdateWithoutAccountsInput!
+}
+
+input TransactionUpdateManyWithoutFromAccountNestedInput {
+  create: [TransactionCreateWithoutFromAccountInput!]
+  connectOrCreate: [TransactionCreateOrConnectWithoutFromAccountInput!]
+  upsert: [TransactionUpsertWithWhereUniqueWithoutFromAccountInput!]
+  createMany: TransactionCreateManyFromAccountInputEnvelope
+  set: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  delete: [TransactionWhereUniqueInput!]
+  connect: [TransactionWhereUniqueInput!]
+  update: [TransactionUpdateWithWhereUniqueWithoutFromAccountInput!]
+  updateMany: [TransactionUpdateManyWithWhereWithoutFromAccountInput!]
+  deleteMany: [TransactionScalarWhereInput!]
+}
+
+input TransactionCreateWithoutFromAccountInput {
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+  withdrawalRequest: WithdrawalRequestCreateNestedOneWithoutTransactionInput
+}
+
+input TransactionCreateOrConnectWithoutFromAccountInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutFromAccountInput!
+}
+
+input TransactionUpsertWithWhereUniqueWithoutFromAccountInput {
+  where: TransactionWhereUniqueInput!
+  update: TransactionUpdateWithoutFromAccountInput!
+  create: TransactionCreateWithoutFromAccountInput!
+}
+
+input TransactionUpdateWithoutFromAccountInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+}
+
+input TransactionCreateManyFromAccountInputEnvelope {
+  data: [TransactionCreateManyFromAccountInput!]!
+  skipDuplicates: Boolean
+}
+
+input TransactionCreateManyFromAccountInput {
+  id: Int
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoiceId: Int
+  installmentId: Int
+  withdrawalRequestId: Int
+}
+
+input TransactionUpdateWithWhereUniqueWithoutFromAccountInput {
+  where: TransactionWhereUniqueInput!
+  data: TransactionUpdateWithoutFromAccountInput!
+}
+
+input TransactionUpdateManyWithWhereWithoutFromAccountInput {
+  where: TransactionScalarWhereInput!
+  data: TransactionUpdateManyMutationInput!
+}
+
+input TransactionScalarWhereInput {
+  AND: [TransactionScalarWhereInput!]
+  OR: [TransactionScalarWhereInput!]
+  NOT: [TransactionScalarWhereInput!]
+  id: IntFilter
+  amount: FloatFilter
+  proofUrl: StringNullableFilter
+  status: EnumTransactionStatusFilter
+  transactionCategory: EnumTransactionCategoryFilter
+  fromAccountId: IntFilter
+  toAccountId: IntFilter
+  invoiceId: IntNullableFilter
+  installmentId: IntNullableFilter
+  withdrawalRequestId: IntNullableFilter
+  uniqueCode: IntFilter
+  createdAt: DateTimeFilter
+}
+
+input TransactionUpdateManyWithoutToAccountNestedInput {
+  create: [TransactionCreateWithoutToAccountInput!]
+  connectOrCreate: [TransactionCreateOrConnectWithoutToAccountInput!]
+  upsert: [TransactionUpsertWithWhereUniqueWithoutToAccountInput!]
+  createMany: TransactionCreateManyToAccountInputEnvelope
+  set: [TransactionWhereUniqueInput!]
+  disconnect: [TransactionWhereUniqueInput!]
+  delete: [TransactionWhereUniqueInput!]
+  connect: [TransactionWhereUniqueInput!]
+  update: [TransactionUpdateWithWhereUniqueWithoutToAccountInput!]
+  updateMany: [TransactionUpdateManyWithWhereWithoutToAccountInput!]
+  deleteMany: [TransactionScalarWhereInput!]
+}
+
+input TransactionCreateWithoutToAccountInput {
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
+  withdrawalRequest: WithdrawalRequestCreateNestedOneWithoutTransactionInput
+}
+
+input TransactionCreateOrConnectWithoutToAccountInput {
+  where: TransactionWhereUniqueInput!
+  create: TransactionCreateWithoutToAccountInput!
+}
+
+input TransactionUpsertWithWhereUniqueWithoutToAccountInput {
+  where: TransactionWhereUniqueInput!
+  update: TransactionUpdateWithoutToAccountInput!
+  create: TransactionCreateWithoutToAccountInput!
+}
+
+input TransactionUpdateWithoutToAccountInput {
+  amount: FloatFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
+  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
+}
+
+input TransactionCreateManyToAccountInputEnvelope {
+  data: [TransactionCreateManyToAccountInput!]!
+  skipDuplicates: Boolean
+}
+
+input TransactionCreateManyToAccountInput {
+  id: Int
+  amount: Float!
+  proofUrl: String
+  transactionCategory: TransactionCategory!
+  invoiceId: Int
+  installmentId: Int
+  withdrawalRequestId: Int
+}
+
+input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
+  where: TransactionWhereUniqueInput!
+  data: TransactionUpdateWithoutToAccountInput!
+}
+
+input TransactionUpdateManyWithWhereWithoutToAccountInput {
+  where: TransactionScalarWhereInput!
+  data: TransactionUpdateManyMutationInput!
 }
 
 input BankCreateArgs {
@@ -7723,6 +8427,188 @@ input BankUpdateInput {
   name: StringFieldUpdateOperationsInput
   logoUrl: StringFieldUpdateOperationsInput
   accountNumber: FloatFieldUpdateOperationsInput
+}
+
+input FileCreateInput {
+  fileType: FileType!
+  filesize: Float
+  name: String!
+  description: String!
+  url: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: UserCreateNestedOneWithoutFilesCreatedInput!
+}
+
+input UserCreateNestedOneWithoutFilesCreatedInput {
+  create: UserCreateWithoutFilesCreatedInput
+  connectOrCreate: UserCreateOrConnectWithoutFilesCreatedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutFilesCreatedInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutFilesCreatedInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutFilesCreatedInput!
+}
+
+input FileCreateManyInput {
+  id: Int
+  fileType: FileType!
+  filesize: Float
+  name: String!
+  description: String!
+  url: String!
+  createdById: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input FileUpdateInput {
+  fileType: EnumFileTypeFieldUpdateOperationsInput
+  filesize: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  url: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  createdBy: UserUpdateOneRequiredWithoutFilesCreatedNestedInput
+}
+
+input EnumFileTypeFieldUpdateOperationsInput {
+  set: FileType
+}
+
+input UserUpdateOneRequiredWithoutFilesCreatedNestedInput {
+  create: UserCreateWithoutFilesCreatedInput
+  connectOrCreate: UserCreateOrConnectWithoutFilesCreatedInput
+  upsert: UserUpsertWithoutFilesCreatedInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateToOneWithWhereWithoutFilesCreatedInput
+}
+
+input UserUpsertWithoutFilesCreatedInput {
+  update: UserUpdateWithoutFilesCreatedInput!
+  create: UserCreateWithoutFilesCreatedInput!
+  where: UserWhereInput
+}
+
+input UserUpdateWithoutFilesCreatedInput {
+  firstName: StringFieldUpdateOperationsInput
+  lastName: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  userType: EnumUserTypeFieldUpdateOperationsInput
+  avatarUrl: NullableStringFieldUpdateOperationsInput
+  whatsappNumber: StringFieldUpdateOperationsInput
+  whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  status: EnumUserStatusFieldUpdateOperationsInput
+  theme: EnumThemeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutUserNestedInput
+  checkIns: CheckInUpdateManyWithoutUserNestedInput
+  school: SchoolUpdateOneWithoutStudentsNestedInput
+  programsParticipation: ProgramUpdateManyWithoutParticipantNestedInput
+}
+
+input UserUpdateToOneWithWhereWithoutFilesCreatedInput {
+  where: UserWhereInput
+  data: UserUpdateWithoutFilesCreatedInput!
+}
+
+input FileUpdateManyMutationInput {
+  fileType: EnumFileTypeFieldUpdateOperationsInput
+  filesize: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  url: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ImagesCreateInput {
+  url: String!
+}
+
+input ImagesCreateManyInput {
+  url: String!
+}
+
+input ImagesUpdateInput {
+  url: StringFieldUpdateOperationsInput
+  hotelImage: HotelUpdateOneWithoutImagesNestedInput
+  programImage: ProgramUpdateOneWithoutImagesNestedInput
+  rewardImage: RewardUpdateOneWithoutImagesNestedInput
+  projectImage: ProjectUpdateOneWithoutImagesNestedInput
+}
+
+input HotelCreateInput {
+  name: String!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  version: Int
+  address: AddressCreateNestedOneWithoutHotelInput!
+  images: ImagesCreateNestedManyWithoutHotelImageInput
+  createdBy: UserCreateNestedOneWithoutHotelsCreatedInput!
+}
+
+input HotelCreateManyInput {
+  name: String!
+  description: String!
+  rating: Float!
+  startDate: DateTime!
+  quota: Int!
+  version: Int
+}
+
+input HotelUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: FloatFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  quota: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  version: NullableIntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutHotelNestedInput
+  images: ImagesUpdateManyWithoutHotelImageNestedInput
+  checkIns: CheckInUpdateManyWithoutHotelNestedInput
+  createdBy: UserUpdateOneRequiredWithoutHotelsCreatedNestedInput
+}
+
+input HotelUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  rating: FloatFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  quota: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  version: NullableIntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input LoginArgs {
+  """Masukkan email"""
+  email: String!
+
+  """Masukkan password"""
+  password: String!
 }
 
 input ProgramCreateArgs {
@@ -7938,104 +8824,6 @@ input ImagesUpdateManyWithWhereWithoutRewardImageInput {
   data: ImagesUpdateManyMutationInput!
 }
 
-input FileCreateArgs {
-  data: FileCreateInput!
-}
-
-input FileCreateInput {
-  fileType: FileType!
-  filesize: Float!
-  name: String!
-  description: String!
-  url: String!
-  createdAt: DateTime
-  updatedAt: DateTime
-  createdBy: UserCreateNestedOneWithoutFilesCreatedInput!
-}
-
-input UserCreateNestedOneWithoutFilesCreatedInput {
-  create: UserCreateWithoutFilesCreatedInput
-  connectOrCreate: UserCreateOrConnectWithoutFilesCreatedInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutFilesCreatedInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-}
-
-input UserCreateOrConnectWithoutFilesCreatedInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutFilesCreatedInput!
-}
-
-input FileUpdateOneArgs {
-  data: FileUpdateInput!
-  where: FileWhereUniqueInput!
-}
-
-input FileUpdateInput {
-  fileType: EnumFileTypeFieldUpdateOperationsInput
-  filesize: FloatFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  url: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-  createdBy: UserUpdateOneRequiredWithoutFilesCreatedNestedInput
-}
-
-input EnumFileTypeFieldUpdateOperationsInput {
-  set: FileType
-}
-
-input UserUpdateOneRequiredWithoutFilesCreatedNestedInput {
-  create: UserCreateWithoutFilesCreatedInput
-  connectOrCreate: UserCreateOrConnectWithoutFilesCreatedInput
-  upsert: UserUpsertWithoutFilesCreatedInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutFilesCreatedInput
-}
-
-input UserUpsertWithoutFilesCreatedInput {
-  update: UserUpdateWithoutFilesCreatedInput!
-  create: UserCreateWithoutFilesCreatedInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutFilesCreatedInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  programsParticipation: ProgramUpdateManyWithoutParticipantNestedInput
-}
-
-input UserUpdateToOneWithWhereWithoutFilesCreatedInput {
-  where: UserWhereInput
-  data: UserUpdateWithoutFilesCreatedInput!
-}
-
 input FaqCreateArgs {
   data: FaqCreateInput!
 }
@@ -8231,294 +9019,6 @@ input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
   data: UserUpdateWithoutUserNotificationsInput!
 }
 
-input TransactionCreateArgs {
-  data: TransactionCreateInput!
-}
-
-input TransactionCreateInput {
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
-  withdrawalRequest: WithdrawalRequestCreateNestedOneWithoutTransactionInput
-}
-
-input InvoiceUpdateOneArgs {
-  data: InvoiceUpdateInput!
-  where: InvoiceWhereUniqueInput!
-}
-
-input InvoiceUpdateInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  amount: FloatFieldUpdateOperationsInput
-}
-
-input AccountUpdateOneArgs {
-  data: AccountUpdateInput!
-  where: AccountWhereUniqueInput!
-}
-
-input AccountUpdateInput {
-  accountNumber: NullableFloatFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
-  accountCategory: EnumAccountCategoryFieldUpdateOperationsInput
-  user: UserUpdateOneRequiredWithoutAccountsNestedInput
-  transactionOrigins: TransactionUpdateManyWithoutFromAccountNestedInput
-  transactionDestination: TransactionUpdateManyWithoutToAccountNestedInput
-}
-
-input NullableFloatFieldUpdateOperationsInput {
-  set: Float
-  increment: Float
-  decrement: Float
-  multiply: Float
-  divide: Float
-}
-
-input EnumAccountCategoryFieldUpdateOperationsInput {
-  set: AccountCategory
-}
-
-input UserUpdateOneRequiredWithoutAccountsNestedInput {
-  create: UserCreateWithoutAccountsInput
-  connectOrCreate: UserCreateOrConnectWithoutAccountsInput
-  upsert: UserUpsertWithoutAccountsInput
-  connect: UserWhereUniqueInput
-  update: UserUpdateToOneWithWhereWithoutAccountsInput
-}
-
-input UserCreateWithoutAccountsInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-}
-
-input UserCreateOrConnectWithoutAccountsInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutAccountsInput!
-}
-
-input UserUpsertWithoutAccountsInput {
-  update: UserUpdateWithoutAccountsInput!
-  create: UserCreateWithoutAccountsInput!
-  where: UserWhereInput
-}
-
-input UserUpdateWithoutAccountsInput {
-  firstName: StringFieldUpdateOperationsInput
-  lastName: NullableStringFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  userType: EnumUserTypeFieldUpdateOperationsInput
-  avatarUrl: NullableStringFieldUpdateOperationsInput
-  whatsappNumber: StringFieldUpdateOperationsInput
-  whatsappVerifiedAt: NullableDateTimeFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  status: EnumUserStatusFieldUpdateOperationsInput
-  theme: EnumThemeFieldUpdateOperationsInput
-  address: AddressUpdateOneRequiredWithoutUserNestedInput
-  checkIns: CheckInUpdateManyWithoutUserNestedInput
-  school: SchoolUpdateOneWithoutStudentsNestedInput
-  programsParticipation: ProgramUpdateManyWithoutParticipantNestedInput
-}
-
-input UserUpdateToOneWithWhereWithoutAccountsInput {
-  where: UserWhereInput
-  data: UserUpdateWithoutAccountsInput!
-}
-
-input TransactionUpdateManyWithoutFromAccountNestedInput {
-  create: [TransactionCreateWithoutFromAccountInput!]
-  connectOrCreate: [TransactionCreateOrConnectWithoutFromAccountInput!]
-  upsert: [TransactionUpsertWithWhereUniqueWithoutFromAccountInput!]
-  createMany: TransactionCreateManyFromAccountInputEnvelope
-  set: [TransactionWhereUniqueInput!]
-  disconnect: [TransactionWhereUniqueInput!]
-  delete: [TransactionWhereUniqueInput!]
-  connect: [TransactionWhereUniqueInput!]
-  update: [TransactionUpdateWithWhereUniqueWithoutFromAccountInput!]
-  updateMany: [TransactionUpdateManyWithWhereWithoutFromAccountInput!]
-  deleteMany: [TransactionScalarWhereInput!]
-}
-
-input TransactionCreateWithoutFromAccountInput {
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
-  withdrawalRequest: WithdrawalRequestCreateNestedOneWithoutTransactionInput
-}
-
-input TransactionCreateOrConnectWithoutFromAccountInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutFromAccountInput!
-}
-
-input TransactionUpsertWithWhereUniqueWithoutFromAccountInput {
-  where: TransactionWhereUniqueInput!
-  update: TransactionUpdateWithoutFromAccountInput!
-  create: TransactionCreateWithoutFromAccountInput!
-}
-
-input TransactionUpdateWithoutFromAccountInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
-}
-
-input EnumTransactionCategoryFieldUpdateOperationsInput {
-  set: TransactionCategory
-}
-
-input InvoiceUpdateOneWithoutTransactionsNestedInput {
-  create: InvoiceCreateWithoutTransactionsInput
-  connectOrCreate: InvoiceCreateOrConnectWithoutTransactionsInput
-  upsert: InvoiceUpsertWithoutTransactionsInput
-  disconnect: InvoiceWhereInput
-  delete: InvoiceWhereInput
-  connect: InvoiceWhereUniqueInput
-  update: InvoiceUpdateToOneWithWhereWithoutTransactionsInput
-}
-
-input InvoiceUpsertWithoutTransactionsInput {
-  update: InvoiceUpdateWithoutTransactionsInput!
-  create: InvoiceCreateWithoutTransactionsInput!
-  where: InvoiceWhereInput
-}
-
-input InvoiceUpdateWithoutTransactionsInput {
-  adminFee: FloatFieldUpdateOperationsInput
-  amount: FloatFieldUpdateOperationsInput
-}
-
-input InvoiceUpdateToOneWithWhereWithoutTransactionsInput {
-  where: InvoiceWhereInput
-  data: InvoiceUpdateWithoutTransactionsInput!
-}
-
-input TransactionCreateManyFromAccountInputEnvelope {
-  data: [TransactionCreateManyFromAccountInput!]!
-  skipDuplicates: Boolean
-}
-
-input TransactionCreateManyFromAccountInput {
-  id: Int
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoiceId: Int
-  installmentId: Int
-  withdrawalRequestId: Int
-}
-
-input TransactionUpdateWithWhereUniqueWithoutFromAccountInput {
-  where: TransactionWhereUniqueInput!
-  data: TransactionUpdateWithoutFromAccountInput!
-}
-
-input TransactionUpdateManyWithWhereWithoutFromAccountInput {
-  where: TransactionScalarWhereInput!
-  data: TransactionUpdateManyMutationInput!
-}
-
-input TransactionScalarWhereInput {
-  AND: [TransactionScalarWhereInput!]
-  OR: [TransactionScalarWhereInput!]
-  NOT: [TransactionScalarWhereInput!]
-  id: IntFilter
-  amount: FloatFilter
-  proofUrl: StringNullableFilter
-  status: EnumTransactionStatusFilter
-  transactionCategory: EnumTransactionCategoryFilter
-  fromAccountId: IntFilter
-  toAccountId: IntFilter
-  invoiceId: IntNullableFilter
-  installmentId: IntNullableFilter
-  withdrawalRequestId: IntNullableFilter
-  uniqueCode: IntFilter
-  createdAt: DateTimeFilter
-}
-
-input TransactionUpdateManyMutationInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-}
-
-input TransactionUpdateManyWithoutToAccountNestedInput {
-  create: [TransactionCreateWithoutToAccountInput!]
-  connectOrCreate: [TransactionCreateOrConnectWithoutToAccountInput!]
-  upsert: [TransactionUpsertWithWhereUniqueWithoutToAccountInput!]
-  createMany: TransactionCreateManyToAccountInputEnvelope
-  set: [TransactionWhereUniqueInput!]
-  disconnect: [TransactionWhereUniqueInput!]
-  delete: [TransactionWhereUniqueInput!]
-  connect: [TransactionWhereUniqueInput!]
-  update: [TransactionUpdateWithWhereUniqueWithoutToAccountInput!]
-  updateMany: [TransactionUpdateManyWithWhereWithoutToAccountInput!]
-  deleteMany: [TransactionScalarWhereInput!]
-}
-
-input TransactionCreateWithoutToAccountInput {
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoice: InvoiceCreateNestedOneWithoutTransactionsInput
-  withdrawalRequest: WithdrawalRequestCreateNestedOneWithoutTransactionInput
-}
-
-input TransactionCreateOrConnectWithoutToAccountInput {
-  where: TransactionWhereUniqueInput!
-  create: TransactionCreateWithoutToAccountInput!
-}
-
-input TransactionUpsertWithWhereUniqueWithoutToAccountInput {
-  where: TransactionWhereUniqueInput!
-  update: TransactionUpdateWithoutToAccountInput!
-  create: TransactionCreateWithoutToAccountInput!
-}
-
-input TransactionUpdateWithoutToAccountInput {
-  amount: FloatFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
-  invoice: InvoiceUpdateOneWithoutTransactionsNestedInput
-}
-
-input TransactionCreateManyToAccountInputEnvelope {
-  data: [TransactionCreateManyToAccountInput!]!
-  skipDuplicates: Boolean
-}
-
-input TransactionCreateManyToAccountInput {
-  id: Int
-  amount: Float!
-  proofUrl: String
-  transactionCategory: TransactionCategory!
-  invoiceId: Int
-  installmentId: Int
-  withdrawalRequestId: Int
-}
-
-input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
-  where: TransactionWhereUniqueInput!
-  data: TransactionUpdateWithoutToAccountInput!
-}
-
-input TransactionUpdateManyWithWhereWithoutToAccountInput {
-  where: TransactionScalarWhereInput!
-  data: TransactionUpdateManyMutationInput!
-}
-
 input SchoolCreateArgs {
   data: SchoolCreateInput!
 }
@@ -8642,24 +9142,4 @@ input RewardClaimUpdateOneArgs {
 
 input RewardClaimUpdateInput {
   processedAt: DateTimeFieldUpdateOperationsInput
-}
-
-input WithdrawalRequestCreateArgs {
-  data: WithdrawalRequestCreateInput!
-}
-
-input WithdrawalRequestCreateInput {
-  amount: Float!
-  user: UserCreateNestedOneWithoutWithdrawalRequestInput!
-}
-
-input WithdrawalRequestUpdateOneArgs {
-  data: WithdrawalRequestUpdateInput!
-  where: WithdrawalRequestWhereUniqueInput!
-}
-
-input WithdrawalRequestUpdateInput {
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  proofDescription: NullableStringFieldUpdateOperationsInput
 }
