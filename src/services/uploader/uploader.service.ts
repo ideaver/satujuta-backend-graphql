@@ -326,70 +326,63 @@ export class UploaderService {
     return objectKeys;
   }
 
-  public async deleteOrphanedS3Objects(): Promise<void> {
-    const s3ObjectKeys = await this.listAllS3Objects();
-
+  public async deleteOrphanedS3Objects(): Promise<string> {
     try {
-      // Fetch URLs from the database for each model
-      const userAvatarUrls = await this.userController.findMany({
-        select: {
-          avatarUrl: true,
-        },
-      });
-
-      const transactionProofUrls = await this.transactionController.findMany({
-        select: {
-          proofUrl: true,
-        },
-      });
-
-      const withdrawalRequestProofUrls =
-        await this.withdrawalRequestController.findMany({
-          select: {
-            proofUrl: true,
-          },
-        });
-
-      const bankLogoUrls = await this.bankController.findMany({
-        select: {
-          logoUrl: true,
-        },
-      });
-
-      const fileUrls = await this.fileController.findMany({
-        select: {
-          url: true,
-        },
-      });
-
-      const imagesUrls = await this.imagesController.findMany({
-        select: {
-          url: true,
-        },
-      });
-
-      // Combine all fetched URLs into a single array
-      const urlsInDatabase = [
-        ...userAvatarUrls.map((user) => user.avatarUrl).filter(Boolean),
-        ...transactionProofUrls
-          .map((transaction) => transaction.proofUrl)
-          .filter(Boolean),
-        ...withdrawalRequestProofUrls
-          .map((request) => request.proofUrl)
-          .filter(Boolean),
-        ...bankLogoUrls.map((bank) => bank.logoUrl),
-        ...fileUrls.map((file) => file.url),
-        ...imagesUrls.map((image) => image.url),
-      ];
-
-      // Identify orphaned S3 objects (not in the database)
-      const orphanedObjectKeys = s3ObjectKeys.filter(
-        (s3ObjectKey) =>
-          !urlsInDatabase.includes(`${this.bucketData.url}${s3ObjectKey}`),
+      // List all objects in the bucket
+      const s3ObjectKeys = await this.listAllS3Objects();
+      // Filter out objects that end with '/'
+      const s3FileKeys = s3ObjectKeys.filter(
+        (s3ObjectKey) => !s3ObjectKey.endsWith('/'),
       );
 
-      // Delete orphaned S3 objects
+      // Fetch all URLs from the database
+      const fetchAndCombineUrls = async (model: any, property: string) => {
+        const data = await model.findMany({ select: { [property]: true } });
+        return data.map((item) => item[property]).filter(Boolean);
+      };
+
+      // Combine all URLs into a single array
+      const [
+        userAvatarUrls,
+        transactionProofUrls,
+        withdrawalRequestProofUrls,
+        bankLogoUrls,
+        fileUrls,
+        imagesUrls,
+      ] = await Promise.all([
+        fetchAndCombineUrls(this.userController, 'avatarUrl'),
+        fetchAndCombineUrls(this.transactionController, 'proofUrl'),
+        fetchAndCombineUrls(this.withdrawalRequestController, 'proofUrl'),
+        fetchAndCombineUrls(this.bankController, 'logoUrl'),
+        fetchAndCombineUrls(this.fileController, 'url'),
+        fetchAndCombineUrls(this.imagesController, 'url'),
+      ]);
+
+      // Combine all URLs into a single array
+      const urlsInDatabase = [
+        ...userAvatarUrls,
+        ...transactionProofUrls,
+        ...withdrawalRequestProofUrls,
+        ...bankLogoUrls,
+        ...fileUrls,
+        ...imagesUrls,
+      ].filter(Boolean);
+
+      // Filter out URLs that are not in the database
+      const fullS3ObjectUrls = s3FileKeys.map(
+        (s3ObjectKey) => `${this.bucketData.url}${s3ObjectKey}`,
+      );
+
+      // Filter out URLs that are not in the database
+      const orphanedObjectKeys = fullS3ObjectUrls.filter(
+        (fullS3ObjectUrl) => !urlsInDatabase.includes(fullS3ObjectUrl),
+      );
+
+      // Delete orphaned objects
       await this.deleteManyFile(orphanedObjectKeys);
+
+      console.log('Deleted orphaned S3 objects:', orphanedObjectKeys.length);
+      return `Deleted orphaned S3 objects ${orphanedObjectKeys.length}`;
     } catch (error) {
       this.loggerService.error(error);
       throw error;

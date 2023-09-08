@@ -67,8 +67,7 @@ export class UploaderResolver {
   })
   async deleteOrphanedS3Objects() {
     try {
-      await this.uploaderService.deleteOrphanedS3Objects();
-      return 'deleteOrphanedS3Objects: Success';
+      return await this.uploaderService.deleteOrphanedS3Objects();
     } catch (error) {
       throw new IGraphQLError({ code: 170006 });
     }

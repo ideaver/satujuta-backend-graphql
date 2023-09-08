@@ -5382,12 +5382,12 @@ type Mutation {
   """
   Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
   """
-  uploadSingleFile(file: Upload, userId: String!): String
+  uploadSingleFile(file: Upload, userId: String!, ratioForImage: RatioEnum): String
 
   """
   Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
   """
-  uploadMultiFile(files: [Upload!], userId: String!): [String!]
+  uploadMultiFile(files: [Upload!], userId: String!, ratioForImage: RatioEnum): [String!]
 
   """Deskripsinya ada disini loh"""
   transactionCreateOne(data: TransactionCreateInput!): Transaction
@@ -8086,6 +8086,20 @@ input CartUpdateManyWithWhereWithoutMembershipItemInput {
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+
+"""
+Available ratios for images, SQUARE = 192x192, MODERN = 1920X1080 MODER_PORTRAIT = 1080x1920, OLD = 1400x1050, OLD_PORTRAIT = 1050x1400, BANNER = 1128x192, ULTRA_WIDE = 2560x1080, SUPER_WIDE = 3840x1080
+"""
+enum RatioEnum {
+  SQUARE
+  MODERN
+  MODERN_PORTRAIT
+  OLD
+  OLD_PORTRAIT
+  BANNER
+  ULTRA_WIDE
+  SUPER_WIDE
+}
 
 input TransactionCreateInput {
   amount: Float!
