@@ -17,6 +17,8 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    //added by me
+    "types": ["node"],
     //to fix TypeError: (0 , sharp_1.default) is not a function
     "esModuleInterop": true
   }

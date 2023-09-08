@@ -37,7 +37,6 @@ export class HotelResolver {
     hotelCreateArgs: CreateOneHotelArgs,
     @Relations() relations: HotelSelect,
   ): Promise<Hotel | void> {
-    const { data } = hotelCreateArgs;
     return await this.hotelController.createOne({
       ...hotelCreateArgs,
       select: relations.select,

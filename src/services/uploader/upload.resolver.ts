@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
 import { UploaderService } from './uploader.service';
 import { RatioEnum } from './enums/ratio.enum';
 // Ignore the import errors
@@ -54,6 +54,20 @@ export class UploaderResolver {
       ratioForImage: RatioEnum.SQUARE,
       files: uploadedFiles,
     });
+  }
+
+  @Query(() => String, {
+    nullable: true,
+    description:
+      'Bersihkan file yang tidak terpakai di S3. Hanya untuk development',
+  })
+  async deleteOrphanedS3Objects() {
+    try {
+      await this.uploaderService.deleteOrphanedS3Objects();
+      return 'deleteOrphanedS3Objects: Success';
+    } catch (error) {
+      throw new IGraphQLError({ code: 170006 });
+    }
   }
 
   private async validateUserId(userId: string) {

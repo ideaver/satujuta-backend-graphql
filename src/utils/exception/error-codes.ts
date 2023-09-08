@@ -83,4 +83,5 @@ export const errorCodes: Record<number, string> = {
   170004:
     'Ukuran file tidak boleh lebih dari 10 mb untuk gambar, MP4 100 mb, PDF 30 mb',
   170005: 'File tidak didukung',
+  170006: 'Gagal membersihkan file di storage yang tidak terpakai',
 };

@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bull';
-
 import { PrismaService } from '../prisma/prisma.service';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { join } from 'path';
@@ -36,11 +35,12 @@ import { CartModule } from './services/cart/cart.module';
 import { RewardClaimModule } from './services/reward-claim/reward-claim.module';
 import { WithdrawalRequestModule } from './services/withdrawal-request/withdrawal-request.module';
 import { EmailModule } from './services/email/email.module';
-import { MailerModule } from '@nestjs-modules/mailer';
-import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { ConfigsModule } from './config/config.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UploaderModule } from './services/uploader/uploader.module';
+import { UploaderProcessor } from './queues/uploader.queue';
+import { SchedulerService } from './services/scheduler/scheduler.service';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -50,6 +50,7 @@ import { UploaderModule } from './services/uploader/uploader.module';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
+    //for Queue
     BullModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -60,6 +61,12 @@ import { UploaderModule } from './services/uploader/uploader.module';
       }),
       inject: [ConfigService],
     }),
+    //register uploader queue
+    BullModule.registerQueue({
+      name: 'uploader',
+    }),
+    //for shceduler
+    ScheduleModule.forRoot(),
     ConfigsModule,
     EmailModule,
     UploaderModule,
@@ -94,6 +101,6 @@ import { UploaderModule } from './services/uploader/uploader.module';
     WithdrawalRequestModule,
   ],
   controllers: [],
-  providers: [PrismaService],
+  providers: [PrismaService, UploaderProcessor, SchedulerService],
 })
 export class AppModule {}
