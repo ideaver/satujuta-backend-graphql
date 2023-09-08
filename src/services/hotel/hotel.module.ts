@@ -6,5 +6,6 @@ import { HotelController } from './hotel.controller';
 
 @Module({
   providers: [PrismaService, HotelResolver, HotelController, HotelService],
+  exports: [HotelController],
 })
 export class HotelModule {}

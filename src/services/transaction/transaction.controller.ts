@@ -1,11 +1,6 @@
-import { TransactionService } from './transaction.service';
-import { Transaction } from 'src/@generated';
-import { TransactionCreateArgs } from './dto/transaction-create-one.args';
-import { TransactionFindManyArgs } from './dto/transaction-find-many.args';
-import { TransactionFindUniqueArgs } from './dto/transaction-find-one.args';
-import { TransactionUpdateOneArgs } from './dto/transaction-update-one.args';
 import { Injectable, Logger } from '@nestjs/common';
 import { Invoice, Prisma } from '@prisma/client';
+import { TransactionService } from './transaction.service';
 import { InvoiceService } from '../invoice/invoice.service';
 
 @Injectable()
@@ -16,13 +11,7 @@ export class TransactionController {
   ) {}
   private readonly logger = new Logger(TransactionController.name);
 
-  async createOne(
-    transactionCreateArgs: TransactionCreateArgs,
-  ): Promise<Transaction | void> {
-    const TransactionCreateArgsPrisma: Prisma.TransactionCreateArgs = {
-      ...transactionCreateArgs,
-    };
-
+  async createOne(transactionCreateArgs: Prisma.TransactionCreateArgs) {
     //check intent from transaction category
 
     // check unique code
@@ -74,21 +63,52 @@ export class TransactionController {
     //if order
     // notify order status
     // process comission and point transaction
+    //return await this.transactionService.createOne(transactionCreateArgs);
   }
 
-  findMany(transactionFindManyArgs: TransactionFindManyArgs) {
-    return this.transactionService.findMany(transactionFindManyArgs);
+  async createMany(
+    transactionCreateManyArgs: Prisma.TransactionCreateManyArgs,
+  ) {
+    return await this.transactionService.createMany(transactionCreateManyArgs);
   }
 
-  findOne(transactionFindUniqueArgs: TransactionFindUniqueArgs) {
-    return this.transactionService.findOne(transactionFindUniqueArgs);
+  async findOne(transactionFindUniqueArgs: Prisma.TransactionFindUniqueArgs) {
+    return await this.transactionService.findOne(transactionFindUniqueArgs);
   }
 
-  updateOne(transactionUpdateOneArgs: TransactionUpdateOneArgs) {
-    return this.transactionService.update(transactionUpdateOneArgs);
+  async findMany(transactionFindManyArgs: Prisma.TransactionFindManyArgs) {
+    return await this.transactionService.findMany(transactionFindManyArgs);
   }
 
-  // remove(transactionId: number) {
-  //   return this.transactionService.remove(transactionId);
-  // }
+  async findFirst(transactionFindFirstArgs: Prisma.TransactionFindFirstArgs) {
+    return await this.transactionService.findFirst(transactionFindFirstArgs);
+  }
+
+  async updateOne(transactionUpdateOneArgs: Prisma.TransactionUpdateArgs) {
+    return await this.transactionService.updateOne(transactionUpdateOneArgs);
+  }
+
+  async updateMany(
+    transactionUpdateManyArgs: Prisma.TransactionUpdateManyArgs,
+  ) {
+    return await this.transactionService.updateMany(transactionUpdateManyArgs);
+  }
+
+  async delete(transactionDeleteArgs: Prisma.TransactionDeleteArgs) {
+    return await this.transactionService.delete(transactionDeleteArgs);
+  }
+
+  async deleteMany(
+    transactionDeleteManyArgs: Prisma.TransactionDeleteManyArgs,
+  ) {
+    return await this.transactionService.deleteMany(transactionDeleteManyArgs);
+  }
+
+  async aggregate(transactionAggregateArgs: Prisma.TransactionAggregateArgs) {
+    return await this.transactionService.aggregate(transactionAggregateArgs);
+  }
+
+  async count(transactionCountArgs: Prisma.TransactionCountArgs) {
+    return await this.transactionService.count(transactionCountArgs);
+  }
 }

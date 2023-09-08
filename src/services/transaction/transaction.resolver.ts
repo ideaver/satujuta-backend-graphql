@@ -1,16 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Transaction } from 'src/@generated';
-import { TransactionCreateArgs } from './dto/transaction-create-one.args';
-import { TransactionFindManyArgs } from './dto/transaction-find-many.args';
-import { TransactionFindUniqueArgs } from './dto/transaction-find-one.args';
-import { TransactionUpdateOneArgs } from './dto/transaction-update-one.args';
 import {
-  AccountBalanceByCustomPeriodArgs,
-  AccountBalanceByCustomPeriodQuery,
-} from '../account/dto/get-account-balance-by-custom-period.args';
+  AggregateTransaction,
+  CreateManyTransactionArgs,
+  CreateOneTransactionArgs,
+  DeleteManyTransactionArgs,
+  DeleteOneTransactionArgs,
+  FindFirstTransactionArgs,
+  FindManyTransactionArgs,
+  FindUniqueTransactionArgs,
+  Transaction,
+  TransactionAggregateArgs,
+  UpdateManyTransactionArgs,
+  UpdateOneTransactionArgs,
+} from 'src/@generated';
 import { TransactionController } from './transaction.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface TransactionSelect {
   select: Prisma.TransactionSelect;
@@ -25,26 +33,27 @@ export class TransactionResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async transactionCreateOne(
-    @Args('transactionCreateArgs') transactionCreateArgs: TransactionCreateArgs,
+    @Args()
+    transactionCreateArgs: CreateOneTransactionArgs,
     @Relations() relations: TransactionSelect,
   ): Promise<Transaction | void> {
-    transactionCreateArgs.select = relations.select;
-    return await this.transactionController.createOne(transactionCreateArgs);
+    return await this.transactionController.createOne({
+      ...transactionCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [Transaction], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  transactionFindMany(
-    @Args('transactionFindManyArgs')
-    transactionFindManyArgs: TransactionFindManyArgs,
-    @Relations() relations: TransactionSelect,
+  async transactionCreateMany(
+    @Args()
+    createManyTransactionArgs: CreateManyTransactionArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    transactionFindManyArgs.select = relations.select;
-
-    return this.transactionController.findMany(transactionFindManyArgs);
+    return await this.transactionController.createMany(
+      createManyTransactionArgs,
+    );
   }
 
   @Query(() => Transaction, {
@@ -52,30 +61,108 @@ export class TransactionResolver {
     description: 'Deskripsinya ada disini loh',
   })
   transactionFindOne(
-    @Args('transactionFindUniqueArgs')
-    transactionFindUniqueArgs: TransactionFindUniqueArgs,
+    @Args()
+    transactionFindUniqueArgs: FindUniqueTransactionArgs,
     @Relations() relations: TransactionSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    transactionFindUniqueArgs.select = relations.select;
-    return this.transactionController.findOne(transactionFindUniqueArgs);
+  ): Promise<Transaction | void> {
+    return this.transactionController.findOne({
+      ...transactionFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => Transaction, { description: 'Deskripsinya ada disini loh' })
-  // transactionUpdateOne(
-  //   @Args('transactionUpdateOneArgs') transactionUpdateOneArgs: TransactionUpdateOneArgs,
-  //   @Relations() relations: TransactionSelect,
-  // ) {
-  //   transactionUpdateOneArgs.select = relations.select;
-  //   return this.transactionController.update(transactionUpdateOneArgs);
-  // }
+  @Query(() => [Transaction], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  transactionFindMany(
+    @Args() transactionFindManyArgs: FindManyTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ) {
+    return this.transactionController.findMany({
+      ...transactionFindManyArgs,
+      select: relations.select,
+    });
+  }
 
-  // @Mutation(() => Boolean, {
-  //   nullable: true,
-  //   description:
-  //     'Datanya benar2 terhapus dari db',
-  // })
-  // transactionRemove(@Args('transactionId') transactionId: number) {
-  //   return this.transactionController.remove(transactionId);
-  // }
+  @Query(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  transactionFindFirst(
+    @Args()
+    findFirstTransactionArgs: FindFirstTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ): Promise<Transaction | void> {
+    return this.transactionController.findFirst({
+      ...findFirstTransactionArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async transactionUpdateOne(
+    @Args() transactionUpdateOneArgs: UpdateOneTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ) {
+    return this.transactionController.updateOne({
+      ...replaceNullWithUndefined(transactionUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async transactionUpdateMany(
+    @Args() updateManyTransactionArgs: UpdateManyTransactionArgs,
+  ) {
+    return this.transactionController.updateMany(updateManyTransactionArgs);
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async transactionDelete(
+    @Args() deleteOneTransactionArgs: DeleteOneTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ) {
+    return this.transactionController.delete({
+      ...deleteOneTransactionArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async transactionDeleteMany(
+    @Args() deleteManyTransactionArgs: DeleteManyTransactionArgs,
+  ) {
+    return this.transactionController.deleteMany(deleteManyTransactionArgs);
+  }
+
+  @Query(() => AggregateTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  transactionAggregate(
+    @Args() transactionAggregateArgs: TransactionAggregateArgs,
+  ) {
+    return this.transactionController.aggregate(transactionAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  count(@Args() transactionCountAggregateInput: FindManyTransactionArgs) {
+    return this.transactionController.count(transactionCountAggregateInput);
+  }
 }

@@ -1,5 +1,4 @@
 import { HotelService } from '../hotel/hotel.service';
-import { Hotel } from 'src/@generated';
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 
@@ -7,9 +6,7 @@ import { Prisma } from '@prisma/client';
 export class HotelController {
   constructor(private readonly hotelService: HotelService) {}
 
-  async createOne(
-    hotelCreateArgs: Prisma.HotelCreateArgs,
-  ): Promise<Hotel | void> {
+  async createOne(hotelCreateArgs: Prisma.HotelCreateArgs) {
     return await this.hotelService.createOne(hotelCreateArgs);
   }
 
@@ -17,9 +14,7 @@ export class HotelController {
     return await this.hotelService.createMany(hotelCreateManyArgs);
   }
 
-  async findOne(
-    hotelFindUniqueArgs: Prisma.HotelFindUniqueArgs,
-  ): Promise<Hotel | void> {
+  async findOne(hotelFindUniqueArgs: Prisma.HotelFindUniqueArgs) {
     return await this.hotelService.findOne(hotelFindUniqueArgs);
   }
 

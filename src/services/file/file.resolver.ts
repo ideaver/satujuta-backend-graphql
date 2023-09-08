@@ -1,12 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
-import { FileService } from './file.service';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { File } from 'src/@generated';
-import { FileCreateArgs } from './dto/file-create-one.args';
-import { FileFindManyArgs } from './dto/file-find-many.args';
-import { FileFindUniqueArgs } from './dto/file-find-one.args';
-import { FileUpdateOneArgs } from './dto/file-update-one.args';
+import {
+  AggregateFile,
+  CreateManyFileArgs,
+  CreateOneFileArgs,
+  DeleteManyFileArgs,
+  DeleteOneFileArgs,
+  FindFirstFileArgs,
+  FindManyFileArgs,
+  FindUniqueFileArgs,
+  File,
+  FileAggregateArgs,
+  UpdateManyFileArgs,
+  UpdateOneFileArgs,
+} from 'src/@generated';
+import { FileController } from './file.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface FileSelect {
   select: Prisma.FileSelect;
@@ -14,31 +26,32 @@ interface FileSelect {
 
 @Resolver(() => File)
 export class FileResolver {
-  constructor(private readonly fileService: FileService) {}
+  constructor(private readonly fileController: FileController) {}
 
   @Mutation(() => File, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async fileCreateOne(
-    @Args('fileCreateArgs') fileCreateArgs: FileCreateArgs,
-    @Relations() relations: FileSelect
+    @Args()
+    fileCreateArgs: CreateOneFileArgs,
+    @Relations() relations: FileSelect,
   ): Promise<File | void> {
-    fileCreateArgs.select = relations.select;
-    return await this.fileService.createOne(fileCreateArgs);
+    return await this.fileController.createOne({
+      ...fileCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [File], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  fileFindMany(
-    @Args('fileFindManyArgs') fileFindManyArgs: FileFindManyArgs,
-    @Relations() relations: FileSelect,
+  async fileCreateMany(
+    @Args()
+    createManyFileArgs: CreateManyFileArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    fileFindManyArgs.select = relations.select;
-    return this.fileService.findMany(fileFindManyArgs);
+    return await this.fileController.createMany(createManyFileArgs);
   }
 
   @Query(() => File, {
@@ -46,30 +59,102 @@ export class FileResolver {
     description: 'Deskripsinya ada disini loh',
   })
   fileFindOne(
-    @Args('fileFindUniqueArgs')
-    fileFindUniqueArgs: FileFindUniqueArgs,
+    @Args()
+    fileFindUniqueArgs: FindUniqueFileArgs,
     @Relations() relations: FileSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    fileFindUniqueArgs.select = relations.select;
-    return this.fileService.findOne(fileFindUniqueArgs);
+  ): Promise<File | void> {
+    return this.fileController.findOne({
+      ...fileFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => File, { description: 'Deskripsinya ada disini loh' })
-  fileUpdateOne(
-    @Args('fileUpdateOneArgs') fileUpdateOneArgs: FileUpdateOneArgs,
+  @Query(() => [File], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  fileFindMany(
+    @Args() fileFindManyArgs: FindManyFileArgs,
     @Relations() relations: FileSelect,
   ) {
-    fileUpdateOneArgs.select = relations.select;
-    return this.fileService.update(fileUpdateOneArgs);
+    return this.fileController.findMany({
+      ...fileFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  fileFindFirst(
+    @Args()
+    findFirstFileArgs: FindFirstFileArgs,
+    @Relations() relations: FileSelect,
+  ): Promise<File | void> {
+    return this.fileController.findFirst({
+      ...findFirstFileArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async fileUpdateOne(
+    @Args() fileUpdateOneArgs: UpdateOneFileArgs,
+    @Relations() relations: FileSelect,
+  ) {
+    return this.fileController.updateOne({
+      ...replaceNullWithUndefined(fileUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async fileUpdateMany(@Args() updateManyFileArgs: UpdateManyFileArgs) {
+    return this.fileController.updateMany(updateManyFileArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description:
-      'Datanya benar2 terhapus dari db',
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  fileRemove(@Args('fileId') fileId: number) {
-    return this.fileService.remove(fileId);
+  async fileDelete(
+    @Args() deleteOneFileArgs: DeleteOneFileArgs,
+    @Relations() relations: FileSelect,
+  ) {
+    return this.fileController.delete({
+      ...deleteOneFileArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async fileDeleteMany(@Args() deleteManyFileArgs: DeleteManyFileArgs) {
+    return this.fileController.deleteMany(deleteManyFileArgs);
+  }
+
+  @Query(() => AggregateFile, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  fileAggregate(@Args() fileAggregateArgs: FileAggregateArgs) {
+    return this.fileController.aggregate(fileAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  count(@Args() fileCountAggregateInput: FindManyFileArgs) {
+    return this.fileController.count(fileCountAggregateInput);
   }
 }

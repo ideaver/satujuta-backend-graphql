@@ -27,9 +27,11 @@ import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { FileType } from '@prisma/client';
 import { MAX_FILE_SIZES } from './constants';
 import { UserController } from '../user/user.controller';
-import { TransactionController } from '../transaction/transaction.controller';
 import { WithdrawalRequestController } from '../withdrawal-request/withdrawal-request.controller';
 import { BankController } from '../bank/bank.controller';
+import { FileController } from '../file/file.controller';
+import { ImagesController } from '../images/images.controller';
+import { TransactionController } from '../transaction/transaction.controller';
 
 @Injectable()
 export class UploaderService {
