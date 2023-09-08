@@ -6,7 +6,7 @@ import { UserController } from './user.controller';
 import { ItemModule } from '../item/item.module';
 
 @Module({
-  providers: [PrismaService, UserResolver, UserService, UserController],
+  providers: [PrismaService, UserResolver, UserController, UserService],
   imports: [ItemModule],
   exports: [UserService, UserController],
 })

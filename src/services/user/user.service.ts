@@ -1,118 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { UserFindManyArgs as UserFindManyArgs } from './dto/user-find-many.args';
-import { UserFindUniqueArgs } from './dto/user-find-one.args';
-import { UserUpdateOneArgs } from './dto/user-update-one.args';
-// import { User } from 'src/model/user.model';
-import { FindManyUserArgs, User } from 'src/@generated';
-import { Prisma } from '@prisma/client';
-import { UserTypePercentage } from './dto/user-type-percentage.output';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { extractNumbers } from 'src/utils/extract-numbers.function';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(userCreateArgs: Prisma.UserCreateArgs): Promise<User | void> {
-    return await this.prisma.user
-      .create(userCreateArgs)
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(userCreateArgs: Prisma.UserCreateArgs) {
+    try {
+      return await this.prisma.user.create(userCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async createMany(userCreateManyArgs: Prisma.UserCreateManyArgs) {
+    try {
+      return await this.prisma.user.createMany(userCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async findOne(userFindUniqueArgs: Prisma.UserFindUniqueArgs) {
+    try {
+      return await this.prisma.user.findUnique(userFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
   async findMany(userFindManyArgs: Prisma.UserFindManyArgs) {
-    return this.prisma.user
-      .findMany(userFindManyArgs)
-      .then((users) => {
-        return users;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+    try {
+      return await this.prisma.user.findMany(userFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findFirst(userFindManyArgs: UserFindManyArgs) {
-    return await this.prisma.user
-      .findFirst(userFindManyArgs)
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(userFindFirstArgs: Prisma.UserFindFirstArgs) {
+    try {
+      return await this.prisma.user.findFirst(userFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(userFindUniqueArgs: UserFindUniqueArgs): Promise<User | void> {
-    return await this.prisma.user
-      .findUnique(userFindUniqueArgs)
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateOne(userUpdateOneArgs: Prisma.UserUpdateArgs) {
+    try {
+      return await this.prisma.user.update(userUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(userUpdateOneArgs: UserUpdateOneArgs): Promise<User | void> {
-    return this.prisma.user
-      .update(userUpdateOneArgs)
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateMany(userUpdateManyArgs: Prisma.UserUpdateManyArgs) {
+    try {
+      return await this.prisma.user.updateMany(userUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(userId: string) {
-    return await this.prisma.user
-      .update({
-        where: { id: userId, deletedAt: { equals: null } },
-        data: { deletedAt: new Date() },
-        select: { id: true, firstName: true, deletedAt: true },
-      })
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async delete(userDeleteArgs: Prisma.UserDeleteArgs) {
+    try {
+      await this.prisma.user.delete(userDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async count(findManyUserArgs: FindManyUserArgs) {
-    return await this.prisma.user
-      .count(findManyUserArgs)
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async deleteMany(userDeleteManyArgs: Prisma.UserDeleteManyArgs) {
+    try {
+      await this.prisma.user.deleteMany(userDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async countUserTypePercentage(): Promise<UserTypePercentage[] | void> {
-    const query = Prisma.sql`
-    SELECT
-      userType AS userCountType,
-      COUNT(*) AS userCount,
-      ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS userPercentage
-    FROM
-      User
-    GROUP BY
-      userType;
-  `;
-    return await this.prisma
-      .$queryRaw(query)
-      .then((res: UserTypePercentage[]) => {
-        return res;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async aggregate(userAggregateArgs: Prisma.UserAggregateArgs) {
+    try {
+      return await this.prisma.user.aggregate(userAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(userCountArgs: Prisma.UserCountArgs) {
+    try {
+      return await this.prisma.user.count(userCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

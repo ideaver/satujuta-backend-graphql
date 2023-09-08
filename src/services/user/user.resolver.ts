@@ -1,21 +1,24 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { UserCreateArgs } from './dto/user-create-one.args';
-import { UserFindManyArgs } from './dto/user-find-many.args';
-import { UserFindUniqueArgs } from './dto/user-find-one.args';
-import { UserUpdateOneArgs } from './dto/user-update-one.args';
-// import { User } from 'src/model/user.model';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { UserController } from './user.controller';
-import { UserTypePercentage } from './dto/user-type-percentage.output';
-import { User } from 'src/@generated';
 import {
-  UserCreatedByCustomPeriodArgs,
-  UserCreatedByCustomPeriodQuery,
-} from './dto/get-user-created-by-custom-period.args';
-// Ignore the import errors
-// @ts-ignore
-import { FileUpload, GraphQLUpload } from 'graphql-upload';
+  AggregateUser,
+  CreateManyUserArgs,
+  CreateOneUserArgs,
+  DeleteManyUserArgs,
+  DeleteOneUserArgs,
+  FindFirstUserArgs,
+  FindManyUserArgs,
+  FindUniqueUserArgs,
+  User,
+  UserAggregateArgs,
+  UpdateManyUserArgs,
+  UpdateOneUserArgs,
+} from 'src/@generated';
+import { UserController } from './user.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -30,28 +33,25 @@ export class UserResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async userCreateOne(
-    @Args({ name: 'file', type: () => GraphQLUpload, nullable: true })
-    file: FileUpload,
-    @Args('userCreateArgs') userCreateArgs: UserCreateArgs,
+    @Args()
+    userCreateArgs: CreateOneUserArgs,
     @Relations() relations: UserSelect,
   ): Promise<User | void> {
-    //Auto implement prisma select from graphql query info
-    userCreateArgs.select = relations.select;
-
-    return await this.userController.createOne(file, userCreateArgs);
+    return await this.userController.createOne({
+      ...userCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [User], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  userFindMany(
-    @Args('userFindManyArgs') userFindManyArgs: UserFindManyArgs,
-    @Relations() relations: UserSelect,
+  async userCreateMany(
+    @Args()
+    createManyUserArgs: CreateManyUserArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    userFindManyArgs.select = relations.select;
-    return this.userController.findMany(userFindManyArgs);
+    return await this.userController.createMany(createManyUserArgs);
   }
 
   @Query(() => User, {
@@ -59,74 +59,102 @@ export class UserResolver {
     description: 'Deskripsinya ada disini loh',
   })
   userFindOne(
-    @Args('userFindUniqueArgs')
-    userFindUniqueArgs: UserFindUniqueArgs,
+    @Args()
+    userFindUniqueArgs: FindUniqueUserArgs,
     @Relations() relations: UserSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    userFindUniqueArgs.select = relations.select;
-    return this.userController.findOne(userFindUniqueArgs);
+  ): Promise<User | void> {
+    return this.userController.findOne({
+      ...userFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => User, { description: 'Deskripsinya ada disini loh' })
-  userUpdateOne(
-    @Args('userUpdateOneArgs') userUpdateOneArgs: UserUpdateOneArgs,
-    @Relations() relations: UserSelect,
-  ) {
-    userUpdateOneArgs.select = relations.select;
-    return this.userController.updateOne(userUpdateOneArgs);
-  }
-
-  @Mutation(() => String, {
-    description: 'Dapat URL baru, gambar lama terhapus di storage',
+  @Query(() => [User], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  userUpdateOneAvatarUrl(
-    @Args({ name: 'file', type: () => GraphQLUpload, nullable: false })
-    file: FileUpload,
-    @Args({ name: 'userId', type: () => String, nullable: false })
-    userId: string,
+  userFindMany(
+    @Args() userFindManyArgs: FindManyUserArgs,
+    @Relations() relations: UserSelect,
   ) {
-    return this.userController.updateOneAvatarUrl(file, userId);
+    return this.userController.findMany({
+      ...userFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  userFindFirst(
+    @Args()
+    findFirstUserArgs: FindFirstUserArgs,
+    @Relations() relations: UserSelect,
+  ): Promise<User | void> {
+    return this.userController.findFirst({
+      ...findFirstUserArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => User, {
     nullable: true,
-    description:
-      'Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas user akan terisi. select: { id: true, firstName: true, deletedAt: true }',
-  })
-  userRemove(@Args('userId') userId: string) {
-    return this.userController.remove(userId);
-  }
-
-  @Query(() => Int, {
-    nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  userCount(
-    @Args('userFindManyArgs', { nullable: true })
-    userFindManyArgs: UserFindManyArgs,
+  async userUpdateOne(
+    @Args() userUpdateOneArgs: UpdateOneUserArgs,
+    @Relations() relations: UserSelect,
   ) {
-    return this.userController.count(userFindManyArgs);
+    return this.userController.updateOne({
+      ...replaceNullWithUndefined(userUpdateOneArgs),
+      select: relations.select,
+    });
   }
 
-  @Query(() => [UserTypePercentage], {
+  @Mutation(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async userUpdateMany(@Args() updateManyUserArgs: UpdateManyUserArgs) {
+    return this.userController.updateMany(updateManyUserArgs);
+  }
+
+  @Mutation(() => Boolean, {
     nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  countUserTypePercentage() {
-    return this.userController.countUserTypePercentage();
-  }
-
-  @Query(() => [UserCreatedByCustomPeriodQuery], {
-    nullable: false,
-    description: 'Deskripsinya ada disini loh',
-  })
-  getUserGrowthByCustomPeriod(
-    @Args('userCreatedByCustomPeriodArgs', { nullable: false })
-    userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs,
+  async userDelete(
+    @Args() deleteOneUserArgs: DeleteOneUserArgs,
+    @Relations() relations: UserSelect,
   ) {
-    return this.userController.getUserGrowthByCustomPeriod(
-      userCreatedByCustomPeriodArgs,
-    );
+    return this.userController.delete({
+      ...deleteOneUserArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async userDeleteMany(@Args() deleteManyUserArgs: DeleteManyUserArgs) {
+    return this.userController.deleteMany(deleteManyUserArgs);
+  }
+
+  @Query(() => AggregateUser, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  userAggregate(@Args() userAggregateArgs: UserAggregateArgs) {
+    return this.userController.aggregate(userAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  count(@Args() userCountAggregateInput: FindManyUserArgs) {
+    return this.userController.count(userCountAggregateInput);
   }
 }
