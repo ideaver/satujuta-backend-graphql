@@ -41,6 +41,7 @@ import { UploaderProcessor } from './queues/uploader.queue';
 import { SchedulerService } from './services/scheduler/scheduler.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { CartModule } from './services/cart/cart.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -67,6 +68,7 @@ import { CartModule } from './services/cart/cart.module';
     }),
     //for shceduler
     ScheduleModule.forRoot(),
+    EventEmitterModule.forRoot(),
     ConfigsModule,
     EmailModule,
     UploaderModule,

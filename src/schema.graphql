@@ -1323,6 +1323,14 @@ type Province {
   _count: ProvinceCount!
 }
 
+type AggregateReward {
+  _count: RewardCountAggregate
+  _avg: RewardAvgAggregate
+  _sum: RewardSumAggregate
+  _min: RewardMinAggregate
+  _max: RewardMaxAggregate
+}
+
 type RewardAvgAggregate {
   id: Float
   pointCost: Float
@@ -1376,6 +1384,14 @@ type Reward {
   images: [Images!]
   RewardClaim: [RewardClaim!]
   _count: RewardCount!
+}
+
+type AggregateRewardClaim {
+  _count: RewardClaimCountAggregate
+  _avg: RewardClaimAvgAggregate
+  _sum: RewardClaimSumAggregate
+  _min: RewardClaimMinAggregate
+  _max: RewardClaimMaxAggregate
 }
 
 type RewardClaimAvgAggregate {
@@ -1913,6 +1929,14 @@ type User {
   _count: UserCount!
 }
 
+type AggregateUserNotification {
+  _count: UserNotificationCountAggregate
+  _avg: UserNotificationAvgAggregate
+  _sum: UserNotificationSumAggregate
+  _min: UserNotificationMinAggregate
+  _max: UserNotificationMaxAggregate
+}
+
 type UserNotificationAvgAggregate {
   id: Float
 }
@@ -1947,9 +1971,25 @@ type UserNotificationMaxAggregate {
 }
 
 enum UserNotificationCategory {
-  BILLING_ALERT
   ANNOUNCEMENT
-  CHAT_MESSAGE
+  REFERRAL
+  REWARD
+  WITHDRAWAL
+  INVESTMENT
+  COMISSION
+  PROJECT
+  PROGRAM
+  CHECK_IN
+  INVOICE
+  SHIPPING
+  ORDER
+  ACCOUNT
+  TRANSACTION
+  POINT_TRANSACTION
+  INSTALLMENT
+  WITHDRAWAL_REQUEST
+  USER
+  FILE
 }
 
 type UserNotificationMinAggregate {
@@ -2255,10 +2295,19 @@ type Query {
   programCategoryFindOne(programCategoryFindUniqueArgs: ProgramCategoryFindUniqueArgs!): ProgramCategory
 
   """Deskripsinya ada disini loh"""
-  rewardFindMany(rewardFindManyArgs: RewardFindManyArgs!): [Reward!]
+  rewardFindOne(where: RewardWhereUniqueInput!): Reward
 
   """Deskripsinya ada disini loh"""
-  rewardFindOne(rewardFindUniqueArgs: RewardFindUniqueArgs!): Reward
+  rewardFindMany(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): [Reward!]
+
+  """Deskripsinya ada disini loh"""
+  rewardFindFirst(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardAggregate(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, _count: RewardCountAggregateInput, _avg: RewardAvgAggregateInput, _sum: RewardSumAggregateInput, _min: RewardMinAggregateInput, _max: RewardMaxAggregateInput): AggregateReward
+
+  """Deskripsinya ada disini loh"""
+  rewardCount(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   faqFindMany(faqFindManyArgs: FaqFindManyArgs!): [Faq!]
@@ -2294,10 +2343,19 @@ type Query {
   checkInCount(where: CheckInWhereInput, orderBy: [CheckInOrderByWithRelationInput!], cursor: CheckInWhereUniqueInput, take: Int, skip: Int, distinct: [CheckInScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  userNotificationFindMany(userNotificationFindManyArgs: UserNotificationFindManyArgs!): [UserNotification!]
+  userNotificationFindOne(where: UserNotificationWhereUniqueInput!): UserNotification
 
   """Deskripsinya ada disini loh"""
-  userNotificationFindOne(userNotificationFindUniqueArgs: UserNotificationFindUniqueArgs!): UserNotification
+  userNotificationFindMany(where: UserNotificationWhereInput, orderBy: [UserNotificationOrderByWithRelationInput!], cursor: UserNotificationWhereUniqueInput, take: Int, skip: Int, distinct: [UserNotificationScalarFieldEnum!]): [UserNotification!]
+
+  """Deskripsinya ada disini loh"""
+  userNotificationFindFirst(where: UserNotificationWhereInput, orderBy: [UserNotificationOrderByWithRelationInput!], cursor: UserNotificationWhereUniqueInput, take: Int, skip: Int, distinct: [UserNotificationScalarFieldEnum!]): UserNotification
+
+  """Deskripsinya ada disini loh"""
+  userNotificationAggregate(where: UserNotificationWhereInput, orderBy: [UserNotificationOrderByWithRelationInput!], cursor: UserNotificationWhereUniqueInput, take: Int, skip: Int, _count: UserNotificationCountAggregateInput, _avg: UserNotificationAvgAggregateInput, _sum: UserNotificationSumAggregateInput, _min: UserNotificationMinAggregateInput, _max: UserNotificationMaxAggregateInput): AggregateUserNotification
+
+  """Deskripsinya ada disini loh"""
+  userNotificationCount(where: UserNotificationWhereInput, orderBy: [UserNotificationOrderByWithRelationInput!], cursor: UserNotificationWhereUniqueInput, take: Int, skip: Int, distinct: [UserNotificationScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   sessionFindMany(sessionFindManyArgs: SessionFindManyArgs!): [Session!]
@@ -2408,13 +2466,19 @@ type Query {
   cartCount(where: CartWhereInput, orderBy: [CartOrderByWithRelationInput!], cursor: CartWhereUniqueInput, take: Int, skip: Int, distinct: [CartScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  rewardClaimFindMany(rewardClaimFindManyArgs: RewardClaimFindManyArgs): [RewardClaim!]
+  rewardClaimFindOne(where: RewardClaimWhereUniqueInput!): RewardClaim
 
   """Deskripsinya ada disini loh"""
-  rewardClaimFindOne(rewardClaimFindUniqueArgs: RewardClaimFindUniqueArgs!): RewardClaim
+  rewardClaimFindMany(where: RewardClaimWhereInput, orderBy: [RewardClaimOrderByWithRelationInput!], cursor: RewardClaimWhereUniqueInput, take: Int, skip: Int, distinct: [RewardClaimScalarFieldEnum!]): [RewardClaim!]
 
   """Deskripsinya ada disini loh"""
-  rewardClaimCount(rewardClaimFindManyArgs: RewardClaimFindManyArgs): Int!
+  rewardClaimFindFirst(where: RewardClaimWhereInput, orderBy: [RewardClaimOrderByWithRelationInput!], cursor: RewardClaimWhereUniqueInput, take: Int, skip: Int, distinct: [RewardClaimScalarFieldEnum!]): RewardClaim
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimAggregate(where: RewardClaimWhereInput, orderBy: [RewardClaimOrderByWithRelationInput!], cursor: RewardClaimWhereUniqueInput, take: Int, skip: Int, _count: RewardClaimCountAggregateInput, _avg: RewardClaimAvgAggregateInput, _sum: RewardClaimSumAggregateInput, _min: RewardClaimMinAggregateInput, _max: RewardClaimMaxAggregateInput): AggregateRewardClaim
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimCount(where: RewardClaimWhereInput, orderBy: [RewardClaimOrderByWithRelationInput!], cursor: RewardClaimWhereUniqueInput, take: Int, skip: Int, distinct: [RewardClaimScalarFieldEnum!]): Float
 }
 
 input UserWhereUniqueInput {
@@ -4591,12 +4655,16 @@ input ProgramCategoryWhereUniqueInput {
   programs: ProgramListRelationFilter
 }
 
-input RewardFindManyArgs {
-  where: RewardWhereInput
-  orderBy: [RewardOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [RewardScalarFieldEnum!]
+input RewardWhereUniqueInput {
+  id: Int
+  AND: [RewardWhereInput!]
+  OR: [RewardWhereInput!]
+  NOT: [RewardWhereInput!]
+  name: StringFilter
+  pointCost: FloatFilter
+  description: StringFilter
+  images: ImagesListRelationFilter
+  RewardClaim: RewardClaimListRelationFilter
 }
 
 enum RewardScalarFieldEnum {
@@ -4608,20 +4676,36 @@ enum RewardScalarFieldEnum {
   updatedAt
 }
 
-input RewardFindUniqueArgs {
-  where: RewardWhereUniqueInput!
+input RewardCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  pointCost: Boolean
+  description: Boolean
+  _all: Boolean
 }
 
-input RewardWhereUniqueInput {
-  id: Int
-  AND: [RewardWhereInput!]
-  OR: [RewardWhereInput!]
-  NOT: [RewardWhereInput!]
-  name: StringFilter
-  pointCost: FloatFilter
-  description: StringFilter
-  images: ImagesListRelationFilter
-  RewardClaim: RewardClaimListRelationFilter
+input RewardAvgAggregateInput {
+  id: Boolean
+  pointCost: Boolean
+}
+
+input RewardSumAggregateInput {
+  id: Boolean
+  pointCost: Boolean
+}
+
+input RewardMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  pointCost: Boolean
+  description: Boolean
+}
+
+input RewardMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  pointCost: Boolean
+  description: Boolean
 }
 
 input FaqFindManyArgs {
@@ -4849,12 +4933,22 @@ input CheckInMaxAggregateInput {
   checkInAt: Boolean
 }
 
-input UserNotificationFindManyArgs {
-  where: UserNotificationWhereInput
-  orderBy: [UserNotificationOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [UserNotificationScalarFieldEnum!]
+input UserNotificationWhereUniqueInput {
+  id: Int
+  AND: [UserNotificationWhereInput!]
+  OR: [UserNotificationWhereInput!]
+  NOT: [UserNotificationWhereInput!]
+  title: StringFilter
+  subtitle: StringFilter
+  content: StringFilter
+  createdAt: DateTimeFilter
+  category: EnumUserNotificationCategoryFilter
+  isRead: BoolFilter
+  isCleared: BoolFilter
+  userId: StringFilter
+  deepLink: StringNullableFilter
+  fcmToken: StringNullableFilter
+  user: UserRelationFilter
 }
 
 input UserNotificationWhereInput {
@@ -4928,26 +5022,55 @@ enum UserNotificationScalarFieldEnum {
   fcmToken
 }
 
-input UserNotificationFindUniqueArgs {
-  where: UserNotificationWhereUniqueInput!
+input UserNotificationCountAggregateInput {
+  id: Boolean
+  title: Boolean
+  subtitle: Boolean
+  content: Boolean
+  createdAt: Boolean
+  category: Boolean
+  isRead: Boolean
+  isCleared: Boolean
+  userId: Boolean
+  deepLink: Boolean
+  fcmToken: Boolean
+  _all: Boolean
 }
 
-input UserNotificationWhereUniqueInput {
-  id: Int
-  AND: [UserNotificationWhereInput!]
-  OR: [UserNotificationWhereInput!]
-  NOT: [UserNotificationWhereInput!]
-  title: StringFilter
-  subtitle: StringFilter
-  content: StringFilter
-  createdAt: DateTimeFilter
-  category: EnumUserNotificationCategoryFilter
-  isRead: BoolFilter
-  isCleared: BoolFilter
-  userId: StringFilter
-  deepLink: StringNullableFilter
-  fcmToken: StringNullableFilter
-  user: UserRelationFilter
+input UserNotificationAvgAggregateInput {
+  id: Boolean
+}
+
+input UserNotificationSumAggregateInput {
+  id: Boolean
+}
+
+input UserNotificationMinAggregateInput {
+  id: Boolean
+  title: Boolean
+  subtitle: Boolean
+  content: Boolean
+  createdAt: Boolean
+  category: Boolean
+  isRead: Boolean
+  isCleared: Boolean
+  userId: Boolean
+  deepLink: Boolean
+  fcmToken: Boolean
+}
+
+input UserNotificationMaxAggregateInput {
+  id: Boolean
+  title: Boolean
+  subtitle: Boolean
+  content: Boolean
+  createdAt: Boolean
+  category: Boolean
+  isRead: Boolean
+  isCleared: Boolean
+  userId: Boolean
+  deepLink: Boolean
+  fcmToken: Boolean
 }
 
 input SessionFindManyArgs {
@@ -5547,12 +5670,17 @@ input CartMaxAggregateInput {
   updatedAt: Boolean
 }
 
-input RewardClaimFindManyArgs {
-  where: RewardClaimWhereInput
-  orderBy: [RewardClaimOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [RewardClaimScalarFieldEnum!]
+input RewardClaimWhereUniqueInput {
+  id: Int
+  AND: [RewardClaimWhereInput!]
+  OR: [RewardClaimWhereInput!]
+  NOT: [RewardClaimWhereInput!]
+  userId: StringFilter
+  rewardId: IntFilter
+  processedAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  user: UserRelationFilter
+  reward: RewardRelationFilter
 }
 
 input RewardClaimOrderByWithRelationInput {
@@ -5573,21 +5701,39 @@ enum RewardClaimScalarFieldEnum {
   createdAt
 }
 
-input RewardClaimFindUniqueArgs {
-  where: RewardClaimWhereUniqueInput!
+input RewardClaimCountAggregateInput {
+  id: Boolean
+  userId: Boolean
+  rewardId: Boolean
+  processedAt: Boolean
+  createdAt: Boolean
+  _all: Boolean
 }
 
-input RewardClaimWhereUniqueInput {
-  id: Int
-  AND: [RewardClaimWhereInput!]
-  OR: [RewardClaimWhereInput!]
-  NOT: [RewardClaimWhereInput!]
-  userId: StringFilter
-  rewardId: IntFilter
-  processedAt: DateTimeFilter
-  createdAt: DateTimeFilter
-  user: UserRelationFilter
-  reward: RewardRelationFilter
+input RewardClaimAvgAggregateInput {
+  id: Boolean
+  rewardId: Boolean
+}
+
+input RewardClaimSumAggregateInput {
+  id: Boolean
+  rewardId: Boolean
+}
+
+input RewardClaimMinAggregateInput {
+  id: Boolean
+  userId: Boolean
+  rewardId: Boolean
+  processedAt: Boolean
+  createdAt: Boolean
+}
+
+input RewardClaimMaxAggregateInput {
+  id: Boolean
+  userId: Boolean
+  rewardId: Boolean
+  processedAt: Boolean
+  createdAt: Boolean
 }
 
 type Mutation {
@@ -5751,15 +5897,22 @@ type Mutation {
   programCategoryRemove(programCategoryId: Float!): Boolean
 
   """Deskripsinya ada disini loh"""
-  rewardCreateOne(rewardCreateArgs: RewardCreateArgs!): Reward
+  rewardCreateOne(data: RewardCreateInput!): Reward
 
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim reward, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  rewardUpdateOne(rewardUpdateOneArgs: RewardUpdateOneArgs!): Reward!
+  """Deskripsinya ada disini loh"""
+  rewardCreateMany(data: [RewardCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  rewardRemove(rewardId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  rewardUpdateOne(data: RewardUpdateInput!, where: RewardWhereUniqueInput!): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardUpdateMany(data: RewardUpdateManyMutationInput!, where: RewardWhereInput): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardDelete(where: RewardWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  rewardDeleteMany(where: RewardWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   faqCreateOne(faqCreateArgs: FaqCreateArgs!): Faq
@@ -5800,13 +5953,10 @@ type Mutation {
   checkInDeleteMany(where: CheckInWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
-  userNotificationCreateOne(userNotificationCreateArgs: UserNotificationCreateArgs!): UserNotification
+  userNotificationUpdateOne(data: UserNotificationUpdateInput!, where: UserNotificationWhereUniqueInput!): UserNotification
 
   """Deskripsinya ada disini loh"""
-  userNotificationUpdateOne(userNotificationUpdateOneArgs: UserNotificationUpdateOneArgs!): UserNotification!
-
-  """Datanya benar2 terhapus dari db"""
-  userNotificationRemove(userNotificationId: Float!): Boolean
+  userNotificationUpdateMany(data: UserNotificationUpdateManyMutationInput!, where: UserNotificationWhereInput): UserNotification
 
   """Deskripsinya ada disini loh"""
   schoolCreateOne(schoolCreateArgs: SchoolCreateArgs!): School
@@ -5875,15 +6025,22 @@ type Mutation {
   cartDeleteMany(where: CartWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
-  rewardClaimCreateOne(rewardClaimCreateArgs: RewardClaimCreateArgs!): RewardClaim
+  rewardClaimCreateOne(data: RewardClaimCreateInput!): RewardClaim
 
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim rewardClaim, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  rewardClaimUpdateOne(rewardClaimUpdateOneArgs: RewardClaimUpdateOneArgs!): RewardClaim!
+  """Deskripsinya ada disini loh"""
+  rewardClaimCreateMany(data: [RewardClaimCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  rewardClaimRemove(rewardClaimId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  rewardClaimUpdateOne(data: RewardClaimUpdateInput!, where: RewardClaimWhereUniqueInput!): RewardClaim
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimUpdateMany(data: RewardClaimUpdateManyMutationInput!, where: RewardClaimWhereInput): RewardClaim
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimDelete(where: RewardClaimWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  rewardClaimDeleteMany(where: RewardClaimWhereInput): Boolean!
 }
 
 input UserCreateInput {
@@ -9037,10 +9194,6 @@ input ProgramUpdateManyWithWhereWithoutCategoryInput {
   data: ProgramUpdateManyMutationInput!
 }
 
-input RewardCreateArgs {
-  data: RewardCreateInput!
-}
-
 input RewardCreateInput {
   name: String!
   pointCost: Float!
@@ -9073,9 +9226,10 @@ input ImagesCreateManyRewardImageInput {
   url: String!
 }
 
-input RewardUpdateOneArgs {
-  data: RewardUpdateInput!
-  where: RewardWhereUniqueInput!
+input RewardCreateManyInput {
+  name: String!
+  pointCost: Float!
+  description: String!
 }
 
 input RewardUpdateInput {
@@ -9119,6 +9273,11 @@ input ImagesUpdateWithWhereUniqueWithoutRewardImageInput {
 input ImagesUpdateManyWithWhereWithoutRewardImageInput {
   where: ImagesScalarWhereInput!
   data: ImagesUpdateManyMutationInput!
+}
+
+input RewardUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
 }
 
 input FaqCreateArgs {
@@ -9208,55 +9367,6 @@ input CheckInUpdateInput {
   hotel: HotelUpdateOneRequiredWithoutCheckInsNestedInput
 }
 
-input UserNotificationCreateArgs {
-  data: UserNotificationCreateInput!
-}
-
-input UserNotificationCreateInput {
-  title: String!
-  subtitle: String!
-  content: String!
-  createdAt: DateTime
-  category: UserNotificationCategory!
-  isRead: Boolean
-  isCleared: Boolean
-  deepLink: String
-  fcmToken: String
-  user: UserCreateNestedOneWithoutUserNotificationsInput!
-}
-
-input UserCreateNestedOneWithoutUserNotificationsInput {
-  create: UserCreateWithoutUserNotificationsInput
-  connectOrCreate: UserCreateOrConnectWithoutUserNotificationsInput
-  connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutUserNotificationsInput {
-  firstName: String!
-  lastName: String
-  email: String!
-  userRole: UserRole
-  userType: UserType!
-  avatarUrl: String
-  whatsappNumber: String!
-  password: String!
-  theme: Theme
-  address: AddressCreateNestedOneWithoutUserInput!
-  referredBy: UserCreateNestedOneWithoutReferredUsersInput
-  school: SchoolCreateNestedOneWithoutStudentsInput
-  accounts: AccountCreateNestedManyWithoutUserInput
-}
-
-input UserCreateOrConnectWithoutUserNotificationsInput {
-  where: UserWhereUniqueInput!
-  create: UserCreateWithoutUserNotificationsInput!
-}
-
-input UserNotificationUpdateOneArgs {
-  data: UserNotificationUpdateInput!
-  where: UserNotificationWhereUniqueInput!
-}
-
 input UserNotificationUpdateInput {
   title: StringFieldUpdateOperationsInput
   subtitle: StringFieldUpdateOperationsInput
@@ -9286,6 +9396,27 @@ input UserUpdateOneRequiredWithoutUserNotificationsNestedInput {
   update: UserUpdateToOneWithWhereWithoutUserNotificationsInput
 }
 
+input UserCreateWithoutUserNotificationsInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  userRole: UserRole
+  userType: UserType!
+  avatarUrl: String
+  whatsappNumber: String!
+  password: String!
+  theme: Theme
+  address: AddressCreateNestedOneWithoutUserInput!
+  referredBy: UserCreateNestedOneWithoutReferredUsersInput
+  school: SchoolCreateNestedOneWithoutStudentsInput
+  accounts: AccountCreateNestedManyWithoutUserInput
+}
+
+input UserCreateOrConnectWithoutUserNotificationsInput {
+  where: UserWhereUniqueInput!
+  create: UserCreateWithoutUserNotificationsInput!
+}
+
 input UserUpsertWithoutUserNotificationsInput {
   update: UserUpdateWithoutUserNotificationsInput!
   create: UserCreateWithoutUserNotificationsInput!
@@ -9311,6 +9442,18 @@ input UserUpdateWithoutUserNotificationsInput {
 input UserUpdateToOneWithWhereWithoutUserNotificationsInput {
   where: UserWhereInput
   data: UserUpdateWithoutUserNotificationsInput!
+}
+
+input UserNotificationUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+  subtitle: StringFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  category: EnumUserNotificationCategoryFieldUpdateOperationsInput
+  isRead: BoolFieldUpdateOperationsInput
+  isCleared: BoolFieldUpdateOperationsInput
+  deepLink: NullableStringFieldUpdateOperationsInput
+  fcmToken: NullableStringFieldUpdateOperationsInput
 }
 
 input SchoolCreateArgs {
@@ -9664,10 +9807,6 @@ input CartUpdateInput {
   projectItem: ProjectUpdateOneWithoutOrderCartNestedInput
 }
 
-input RewardClaimCreateArgs {
-  data: RewardClaimCreateInput!
-}
-
 input RewardClaimCreateInput {
   user: UserCreateNestedOneWithoutClaimedRewardsInput!
   reward: RewardCreateNestedOneWithoutRewardClaimInput!
@@ -9718,11 +9857,16 @@ input RewardCreateOrConnectWithoutRewardClaimInput {
   create: RewardCreateWithoutRewardClaimInput!
 }
 
-input RewardClaimUpdateOneArgs {
-  data: RewardClaimUpdateInput!
-  where: RewardClaimWhereUniqueInput!
+input RewardClaimCreateManyInput {
+  id: Int
+  userId: String!
+  rewardId: Int!
 }
 
 input RewardClaimUpdateInput {
+  processedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input RewardClaimUpdateManyMutationInput {
   processedAt: DateTimeFieldUpdateOperationsInput
 }

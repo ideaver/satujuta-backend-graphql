@@ -20,12 +20,15 @@ import {
 import { getNextPeriodDate } from 'src/utils/get-next-period.function';
 import { Period } from 'src/model/period.enum';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { User } from 'src/@generated';
 
 @Injectable()
 export class UserController {
   constructor(
     private readonly userService: UserService,
     private readonly itemController: ItemController,
+    private eventEmitter: EventEmitter2,
   ) {}
 
   async createOne(userCreateArgs: Prisma.UserCreateArgs) {
@@ -44,11 +47,7 @@ export class UserController {
         await orderCreate(userCreateArgs, this.itemController, userRole);
       }
       const res = await this.userService.createOne(userCreateArgs);
-      //TODO: Handle OnUserCreateEvent
-      /*
-      email verification,whatsapp verification
-      notify referee & admin
-      */
+      this.eventEmitter.emit('user.created', res);
 
       return res;
     } catch (error) {
@@ -73,31 +72,41 @@ export class UserController {
   }
 
   async updateOne(userUpdateOneArgs: Prisma.UserUpdateArgs) {
-    const { password } = userUpdateOneArgs.data;
+    userUpdateOneArgs.data.status = { set: 'ACTIVE' };
+    const { password, status } = userUpdateOneArgs.data;
 
-    //TODO: if whatsapp updated: send whatsapp message
-    //TODO: if email updated: send email
+    try {
+      //encrypt user password
+      if (password) {
+        const castPassword =
+          password as Prisma.StringFieldUpdateOperationsInput;
+        if (castPassword?.set)
+          userUpdateOneArgs.data.password = {
+            set: await encryptUserPassword(castPassword.set),
+          };
+      }
 
-    //from transaction
-    //TODO: if user status updated: OnRegisteredUserEvent
-    if (userUpdateOneArgs?.data?.status === UserStatus.ACTIVE) {
-      /* 
-    1. send user notification about order status
-    2. send notification to admin
-    3. send point to referee user
-    */
+      //TODO: if whatsapp updated: send whatsapp message
+      //TODO: if email updated: send email
+      //OR FAIL
+
+      //update user
+      const res: User = await this.userService.updateOne(userUpdateOneArgs);
+
+      this.eventEmitter.emit('user.updated', res);
+
+      //from transaction
+      //TODO: if user status updated: OnActiveUserStatusEvent
+      if (userUpdateOneArgs?.data?.status) {
+        if (typeof status === 'object' && status.set === UserStatus.ACTIVE) {
+          this.eventEmitter.emit('user.status.updated.to.active', res);
+        }
+      }
+
+      return res;
+    } catch (error) {
+      throw new IGraphQLError({ code: 123456, err: error });
     }
-
-    //encrypt user password
-    if (password) {
-      const castPassword = password as Prisma.StringFieldUpdateOperationsInput;
-      if (castPassword?.set)
-        userUpdateOneArgs.data.password = {
-          set: await encryptUserPassword(castPassword.set),
-        };
-    }
-
-    return await this.userService.updateOne(userUpdateOneArgs);
   }
 
   async updateMany(userUpdateManyArgs: Prisma.UserUpdateManyArgs) {
