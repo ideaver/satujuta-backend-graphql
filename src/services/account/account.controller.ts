@@ -142,6 +142,8 @@ export class AccountController {
 
     if (accounts) {
       return this.getAccountTotalBalance({ accountId: accounts.id });
+    } else {
+      throw new IGraphQLError({ code: 120001 });
     }
   }
 

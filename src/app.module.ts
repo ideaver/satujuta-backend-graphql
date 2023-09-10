@@ -20,7 +20,6 @@ import { ItemModule } from './services/item/item.module';
 import { CheckInModule } from './services/check-in/check-in.module';
 import { UserNotificationModule } from './services/user-notification/user-notification.module';
 import { SessionModule } from './services/session/session.module';
-import { PointTransactionModule } from './services/point-transaction/point-transaction.module';
 import { TransactionModule } from './services/transaction/transaction.module';
 import { AccountModule } from './services/account/account.module';
 import { SchoolModule } from './services/school/school.module';
@@ -87,7 +86,6 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     CheckInModule,
     UserNotificationModule,
     SessionModule,
-    PointTransactionModule,
     TransactionModule,
     AccountModule,
     SchoolModule,

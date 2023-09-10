@@ -40,7 +40,6 @@ export class UserListener {
     /* 
     1. send user notification about order status
     2. send notification to admin
-    3. send point to referee user
     */
 
     //send point to referee user

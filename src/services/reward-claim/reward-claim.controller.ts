@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma, Reward } from '@prisma/client';
+import { AccountCategory, Prisma, Reward } from '@prisma/client';
 import { RewardClaimService } from './reward-claim.service';
-import { PointTransactionController } from '../point-transaction/point-transaction.controller';
 import { RewardController } from '../reward/reward.controller';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { AccountController } from '../account/account.controller';
 
 @Injectable()
 export class RewardClaimController {
   constructor(
     private readonly rewardClaimService: RewardClaimService,
-    private readonly pointTransactionController: PointTransactionController,
     private readonly rewardController: RewardController,
+    private readonly accountController: AccountController,
   ) {}
 
   async createOne(rewardClaimCreateArgs: Prisma.RewardClaimCreateArgs) {
@@ -71,9 +71,10 @@ export class RewardClaimController {
   ) {
     //Get user's point
     const currentBalance: number =
-      await this.pointTransactionController.getCurrentBalance(
-        RewardClaimCreateArgs.data.user.connect.id,
-      );
+      await this.accountController.getAccountTotalBalanceByCategoryAndUserId({
+        userId: RewardClaimCreateArgs.data.user.connect.id,
+        accountCategory: AccountCategory.POINT,
+      });
 
     //Get reward's point cost
     const rewardPointCost: number = await this.rewardController
