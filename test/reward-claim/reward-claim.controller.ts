@@ -6,9 +6,9 @@ import { RewardClaimFindUniqueArgs } from './dto/reward-claim-find-one.args';
 import { RewardClaimUpdateOneArgs } from './dto/reward-claim-update-one.args';
 import { Injectable } from '@nestjs/common';
 import { PointTransactionController } from '../point-transaction/point-transaction.controller';
-import { RewardController } from '../reward/reward.controller';
 import { Reward } from '@prisma/client';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { RewardController } from 'src/services/reward/reward.controller';
 
 @Injectable()
 export class RewardClaimController {

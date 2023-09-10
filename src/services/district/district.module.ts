@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { DistrictService } from './district.service';
 import { DistrictResolver } from './district.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { PointTransactionModule } from '../point-transaction/point-transaction.module';
 import { DistrictController } from './district.controller';
 
 @Module({
@@ -12,6 +11,6 @@ import { DistrictController } from './district.controller';
     DistrictController,
     DistrictService,
   ],
-  imports: [PointTransactionModule],
+  exports: [DistrictController],
 })
 export class DistrictModule {}

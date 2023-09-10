@@ -1,74 +1,44 @@
-import { DistrictService } from './district.service';
-import { District } from 'src/@generated';
-import { DistrictCreateArgs } from './dto/district-create-one.args';
-import { DistrictFindManyArgs } from './dto/district-find-many.args';
-import { DistrictFindUniqueArgs } from './dto/district-find-one.args';
-
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { DistrictService } from './district.service';
 
 @Injectable()
 export class DistrictController {
   constructor(private readonly districtService: DistrictService) {}
 
-  // async createOne(
-  //   districtCreateArgs: DistrictCreateArgs,
-  // ): Promise<District | void> {
-  //   return await this.districtService.createOne(districtCreateArgs);
-  // }
-
-  findMany(districtFindManyArgs: DistrictFindManyArgs) {
-    //handle graphql null value
-    if (districtFindManyArgs.where?.OR?.[0]?.id?.equals === null) {
-      districtFindManyArgs.where.OR[0].id = undefined;
-    }
-
-    //handle graphql null value
-    if (districtFindManyArgs.where?.OR?.[1]?.name?.contains === null) {
-      districtFindManyArgs.where.OR[1].name = undefined;
-    }
-
-    //handle graphql null value
-    if (districtFindManyArgs.where?.OR?.[2]?.cityId?.equals === null) {
-      districtFindManyArgs.where.OR[2].cityId = undefined;
-    }
-
-    return this.districtService.findMany(districtFindManyArgs);
+  async createOne(districtCreateArgs: Prisma.DistrictCreateArgs) {
+    return await this.districtService.createOne(districtCreateArgs);
   }
 
-  findOne(
-    districtFindUniqueArgs: DistrictFindUniqueArgs,
-  ): Promise<District | void> {
-    return this.districtService.findOne(districtFindUniqueArgs);
+  async createMany(districtCreateManyArgs: Prisma.DistrictCreateManyArgs) {
+    return await this.districtService.createMany(districtCreateManyArgs);
   }
 
-  // async updateOne(districtUpdateOneArgs: DistrictUpdateOneArgs) {
-  //   const { name, description, images } = districtUpdateOneArgs.data;
+  async findOne(districtFindUniqueArgs: Prisma.DistrictFindUniqueArgs) {
+    return await this.districtService.findOne(districtFindUniqueArgs);
+  }
 
-  //   if (name?.set === null) {
-  //     districtUpdateOneArgs.data.name = undefined;
-  //   }
+  async findMany(districtFindManyArgs: Prisma.DistrictFindManyArgs) {
+    return await this.districtService.findMany(districtFindManyArgs);
+  }
 
-  //   if (description?.set === null) {
-  //     districtUpdateOneArgs.data.description = undefined;
-  //   }
+  async findFirst(districtFindFirstArgs: Prisma.DistrictFindFirstArgs) {
+    return await this.districtService.findFirst(districtFindFirstArgs);
+  }
 
-  //   if (images.delete?.[0]?.url.equals === null) {
-  //     districtUpdateOneArgs.data.images.delete = undefined;
-  //   }
+  async updateOne(districtUpdateOneArgs: Prisma.DistrictUpdateArgs) {
+    return await this.districtService.updateOne(districtUpdateOneArgs);
+  }
 
-  //   if (images.deleteMany?.[0]?.url.equals === null) {
-  //     districtUpdateOneArgs.data.images.deleteMany = undefined;
-  //   }
+  async updateMany(districtUpdateManyArgs: Prisma.DistrictUpdateManyArgs) {
+    return await this.districtService.updateMany(districtUpdateManyArgs);
+  }
 
-  //   if (images.createMany?.data?.[0]?.url === null) {
-  //     districtUpdateOneArgs.data.images.createMany = undefined;
-  //   }
-  //   //check for new claim and check if user has enough point
-  //   await this.isNewDistrictClaimEventAndIsUserPointEnough(districtUpdateOneArgs);
-  //   return this.districtService.update(districtUpdateOneArgs);
-  // }
+  async aggregate(districtAggregateArgs: Prisma.DistrictAggregateArgs) {
+    return await this.districtService.aggregate(districtAggregateArgs);
+  }
 
-  remove(districtId: number) {
-    return this.districtService.remove(districtId);
+  async count(districtCountArgs: Prisma.DistrictCountArgs) {
+    return await this.districtService.count(districtCountArgs);
   }
 }

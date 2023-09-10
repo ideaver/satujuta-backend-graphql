@@ -1,75 +1,111 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { CreateOneSubdistrictArgs, Subdistrict } from 'src/@generated';
-import { SubdistrictFindManyArgs } from './dto/subdistrict-find-many.args';
-import { SubdistrictFindUniqueArgs } from './dto/subdistrict-find-one.args';
-import { SubdistrictUpdateOneArgs } from './dto/subdistrict-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class SubdistrictService {
   constructor(private prisma: PrismaService) {}
 
-  // async createOne(
-  //   subdistrictCreateArgs: CreateOneSubdistrictArgs,
-  // ): Promise<Subdistrict | void> {
-  //   return await this.prisma.subdistrict
-  //     .create(subdistrictCreateArgs)
-  //     .then((subdistrict) => {
-  //       return subdistrict;
-  //     })
-  //     .catch((err) => {
-  //       throw new IGraphQLError({ code: 123456, err: err });
-  //     });
-  // }
-
-  async findMany(subdistrictFindManyArgs: SubdistrictFindManyArgs) {
-    return this.prisma.subdistrict
-      .findMany(subdistrictFindManyArgs)
-      .then((subdistricts) => {
-        return subdistricts;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(subdistrictCreateArgs: Prisma.SubdistrictCreateArgs) {
+    try {
+      return await this.prisma.subdistrict.create(subdistrictCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(
-    subdistrictFindUniqueArgs: SubdistrictFindUniqueArgs,
-  ): Promise<Subdistrict | void> {
-    return await this.prisma.subdistrict
-      .findUnique(subdistrictFindUniqueArgs)
-      .then((subdistrict) => {
-        return subdistrict;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(
+    subdistrictCreateManyArgs: Prisma.SubdistrictCreateManyArgs,
+  ) {
+    try {
+      return await this.prisma.subdistrict.createMany(
+        subdistrictCreateManyArgs,
+      );
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(
-    subdistrictUpdateOneArgs: SubdistrictUpdateOneArgs,
-  ): Promise<Subdistrict | void> {
-    return this.prisma.subdistrict
-      .update(subdistrictUpdateOneArgs)
-      .then((subdistrict) => {
-        return subdistrict;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(subdistrictFindUniqueArgs: Prisma.SubdistrictFindUniqueArgs) {
+    try {
+      return await this.prisma.subdistrict.findUnique(
+        subdistrictFindUniqueArgs,
+      );
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(subdistrictId: number): Promise<boolean | void> {
-    return await this.prisma.subdistrict
-      .delete({
-        where: { id: subdistrictId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(subdistrictFindManyArgs: Prisma.SubdistrictFindManyArgs) {
+    try {
+      return await this.prisma.subdistrict.findMany(subdistrictFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async findFirst(subdistrictFindFirstArgs: Prisma.SubdistrictFindFirstArgs) {
+    try {
+      return await this.prisma.subdistrict.findFirst(subdistrictFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateOne(subdistrictUpdateOneArgs: Prisma.SubdistrictUpdateArgs) {
+    try {
+      return await this.prisma.subdistrict.update(subdistrictUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(
+    subdistrictUpdateManyArgs: Prisma.SubdistrictUpdateManyArgs,
+  ) {
+    try {
+      return await this.prisma.subdistrict.updateMany(
+        subdistrictUpdateManyArgs,
+      );
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(subdistrictDeleteArgs: Prisma.SubdistrictDeleteArgs) {
+    try {
+      await this.prisma.subdistrict.delete(subdistrictDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(
+    subdistrictDeleteManyArgs: Prisma.SubdistrictDeleteManyArgs,
+  ) {
+    try {
+      await this.prisma.subdistrict.deleteMany(subdistrictDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(subdistrictAggregateArgs: Prisma.SubdistrictAggregateArgs) {
+    try {
+      return await this.prisma.subdistrict.aggregate(subdistrictAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(subdistrictCountArgs: Prisma.SubdistrictCountArgs) {
+    try {
+      return await this.prisma.subdistrict.count(subdistrictCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

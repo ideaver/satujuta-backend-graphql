@@ -1,74 +1,58 @@
-import { SubdistrictService } from './subdistrict.service';
-import { Subdistrict } from 'src/@generated';
-import { SubdistrictCreateArgs } from './dto/subdistrict-create-one.args';
-import { SubdistrictFindManyArgs } from './dto/subdistrict-find-many.args';
-import { SubdistrictFindUniqueArgs } from './dto/subdistrict-find-one.args';
-
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { SubdistrictService } from './subdistrict.service';
 
 @Injectable()
 export class SubdistrictController {
   constructor(private readonly subdistrictService: SubdistrictService) {}
 
-  // async createOne(
-  //   subdistrictCreateArgs: SubdistrictCreateArgs,
-  // ): Promise<Subdistrict | void> {
-  //   return await this.subdistrictService.createOne(subdistrictCreateArgs);
-  // }
-
-  findMany(subdistrictFindManyArgs: SubdistrictFindManyArgs) {
-    //handle graphql null value
-    if (subdistrictFindManyArgs.where?.OR?.[0]?.id?.equals === null) {
-      subdistrictFindManyArgs.where.OR[0].id = undefined;
-    }
-
-    //handle graphql null value
-    if (subdistrictFindManyArgs.where?.OR?.[1]?.name?.contains === null) {
-      subdistrictFindManyArgs.where.OR[1].name = undefined;
-    }
-
-    //handle graphql null value
-    if (subdistrictFindManyArgs.where?.OR?.[2]?.districtId?.equals === null) {
-      subdistrictFindManyArgs.where.OR[2].districtId = undefined;
-    }
-
-    return this.subdistrictService.findMany(subdistrictFindManyArgs);
+  async createOne(subdistrictCreateArgs: Prisma.SubdistrictCreateArgs) {
+    return await this.subdistrictService.createOne(subdistrictCreateArgs);
   }
 
-  findOne(
-    subdistrictFindUniqueArgs: SubdistrictFindUniqueArgs,
-  ): Promise<Subdistrict | void> {
-    return this.subdistrictService.findOne(subdistrictFindUniqueArgs);
+  async createMany(
+    subdistrictCreateManyArgs: Prisma.SubdistrictCreateManyArgs,
+  ) {
+    return await this.subdistrictService.createMany(subdistrictCreateManyArgs);
   }
 
-  // async updateOne(subdistrictUpdateOneArgs: SubdistrictUpdateOneArgs) {
-  //   const { name, description, images } = subdistrictUpdateOneArgs.data;
+  async findOne(subdistrictFindUniqueArgs: Prisma.SubdistrictFindUniqueArgs) {
+    return await this.subdistrictService.findOne(subdistrictFindUniqueArgs);
+  }
 
-  //   if (name?.set === null) {
-  //     subdistrictUpdateOneArgs.data.name = undefined;
-  //   }
+  async findMany(subdistrictFindManyArgs: Prisma.SubdistrictFindManyArgs) {
+    return await this.subdistrictService.findMany(subdistrictFindManyArgs);
+  }
 
-  //   if (description?.set === null) {
-  //     subdistrictUpdateOneArgs.data.description = undefined;
-  //   }
+  async findFirst(subdistrictFindFirstArgs: Prisma.SubdistrictFindFirstArgs) {
+    return await this.subdistrictService.findFirst(subdistrictFindFirstArgs);
+  }
 
-  //   if (images.delete?.[0]?.url.equals === null) {
-  //     subdistrictUpdateOneArgs.data.images.delete = undefined;
-  //   }
+  async updateOne(subdistrictUpdateOneArgs: Prisma.SubdistrictUpdateArgs) {
+    return await this.subdistrictService.updateOne(subdistrictUpdateOneArgs);
+  }
 
-  //   if (images.deleteMany?.[0]?.url.equals === null) {
-  //     subdistrictUpdateOneArgs.data.images.deleteMany = undefined;
-  //   }
+  async updateMany(
+    subdistrictUpdateManyArgs: Prisma.SubdistrictUpdateManyArgs,
+  ) {
+    return await this.subdistrictService.updateMany(subdistrictUpdateManyArgs);
+  }
 
-  //   if (images.createMany?.data?.[0]?.url === null) {
-  //     subdistrictUpdateOneArgs.data.images.createMany = undefined;
-  //   }
-  //   //check for new claim and check if user has enough point
-  //   await this.isNewSubdistrictClaimEventAndIsUserPointEnough(subdistrictUpdateOneArgs);
-  //   return this.subdistrictService.update(subdistrictUpdateOneArgs);
-  // }
+  async delete(subdistrictDeleteArgs: Prisma.SubdistrictDeleteArgs) {
+    return await this.subdistrictService.delete(subdistrictDeleteArgs);
+  }
 
-  remove(subdistrictId: number) {
-    return this.subdistrictService.remove(subdistrictId);
+  async deleteMany(
+    subdistrictDeleteManyArgs: Prisma.SubdistrictDeleteManyArgs,
+  ) {
+    return await this.subdistrictService.deleteMany(subdistrictDeleteManyArgs);
+  }
+
+  async aggregate(subdistrictAggregateArgs: Prisma.SubdistrictAggregateArgs) {
+    return await this.subdistrictService.aggregate(subdistrictAggregateArgs);
+  }
+
+  async count(subdistrictCountArgs: Prisma.SubdistrictCountArgs) {
+    return await this.subdistrictService.count(subdistrictCountArgs);
   }
 }

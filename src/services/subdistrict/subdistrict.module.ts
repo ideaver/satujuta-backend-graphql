@@ -11,5 +11,6 @@ import { SubdistrictController } from './subdistrict.controller';
     SubdistrictController,
     SubdistrictService,
   ],
+  exports: [SubdistrictController],
 })
 export class SubdistrictModule {}

@@ -1,69 +1,44 @@
-import { ProvinceService } from './province.service';
-import { Province } from 'src/@generated';
-import { ProvinceCreateArgs } from './dto/province-create-one.args';
-import { ProvinceFindManyArgs } from './dto/province-find-many.args';
-import { ProvinceFindUniqueArgs } from './dto/province-find-one.args';
-
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ProvinceService } from './province.service';
 
 @Injectable()
 export class ProvinceController {
   constructor(private readonly provinceService: ProvinceService) {}
 
-  async createOne(
-    provinceCreateArgs: ProvinceCreateArgs,
-  ): Promise<Province | void> {
+  async createOne(provinceCreateArgs: Prisma.ProvinceCreateArgs) {
     return await this.provinceService.createOne(provinceCreateArgs);
   }
 
-  findMany(provinceFindManyArgs: ProvinceFindManyArgs) {
-    //handle graphql null value
-    if (provinceFindManyArgs.where?.OR?.[0]?.id?.equals === null) {
-      provinceFindManyArgs.where.OR[0].id = undefined;
-    }
-
-    //handle graphql null value
-    if (provinceFindManyArgs.where?.OR?.[1]?.name?.contains === null) {
-      provinceFindManyArgs.where.OR[1].name = undefined;
-    }
-
-    return this.provinceService.findMany(provinceFindManyArgs);
+  async createMany(provinceCreateManyArgs: Prisma.ProvinceCreateManyArgs) {
+    return await this.provinceService.createMany(provinceCreateManyArgs);
   }
 
-  findOne(
-    provinceFindUniqueArgs: ProvinceFindUniqueArgs,
-  ): Promise<Province | void> {
-    return this.provinceService.findOne(provinceFindUniqueArgs);
+  async findOne(provinceFindUniqueArgs: Prisma.ProvinceFindUniqueArgs) {
+    return await this.provinceService.findOne(provinceFindUniqueArgs);
   }
 
-  // async updateOne(provinceUpdateOneArgs: ProvinceUpdateOneArgs) {
-  //   const { name, description, images } = provinceUpdateOneArgs.data;
+  async findMany(provinceFindManyArgs: Prisma.ProvinceFindManyArgs) {
+    return await this.provinceService.findMany(provinceFindManyArgs);
+  }
 
-  //   if (name?.set === null) {
-  //     provinceUpdateOneArgs.data.name = undefined;
-  //   }
+  async findFirst(provinceFindFirstArgs: Prisma.ProvinceFindFirstArgs) {
+    return await this.provinceService.findFirst(provinceFindFirstArgs);
+  }
 
-  //   if (description?.set === null) {
-  //     provinceUpdateOneArgs.data.description = undefined;
-  //   }
+  async updateOne(provinceUpdateOneArgs: Prisma.ProvinceUpdateArgs) {
+    return await this.provinceService.updateOne(provinceUpdateOneArgs);
+  }
 
-  //   if (images.delete?.[0]?.url.equals === null) {
-  //     provinceUpdateOneArgs.data.images.delete = undefined;
-  //   }
+  async updateMany(provinceUpdateManyArgs: Prisma.ProvinceUpdateManyArgs) {
+    return await this.provinceService.updateMany(provinceUpdateManyArgs);
+  }
 
-  //   if (images.deleteMany?.[0]?.url.equals === null) {
-  //     provinceUpdateOneArgs.data.images.deleteMany = undefined;
-  //   }
+  async aggregate(provinceAggregateArgs: Prisma.ProvinceAggregateArgs) {
+    return await this.provinceService.aggregate(provinceAggregateArgs);
+  }
 
-  //   if (images.createMany?.data?.[0]?.url === null) {
-  //     provinceUpdateOneArgs.data.images.createMany = undefined;
-  //   }
-  //   //check for new claim and check if user has enough point
-  //   await this.isNewProvinceClaimEventAndIsUserPointEnough(provinceUpdateOneArgs);
-  //   return this.provinceService.update(provinceUpdateOneArgs);
-  // }
-
-  remove(provinceId: number) {
-    return this.provinceService.remove(provinceId);
+  async count(provinceCountArgs: Prisma.ProvinceCountArgs) {
+    return await this.provinceService.count(provinceCountArgs);
   }
 }
