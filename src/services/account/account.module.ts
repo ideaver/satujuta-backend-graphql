@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { AccountService } from './account.service';
 import { AccountResolver } from './account.resolver';
 import { PrismaService } from 'prisma/prisma.service';
@@ -13,7 +13,7 @@ import { UserModule } from '../user/user.module';
     AccountController,
     AccountService,
   ],
-  imports: [TransactionModule, UserModule],
+  imports: [forwardRef(() => TransactionModule), UserModule],
   exports: [AccountController],
 })
 export class AccountModule {}

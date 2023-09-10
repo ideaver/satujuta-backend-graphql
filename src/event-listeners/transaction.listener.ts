@@ -1,6 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
-import { User } from 'src/@generated';
 import { TransactionController } from 'src/services/transaction/transaction.controller';
 import { TransactionCategory, TransactionStatus } from '@prisma/client';
 import { AccountController } from 'src/services/account/account.controller';
@@ -9,8 +8,8 @@ import { TransactionEvents } from './enum/transaction-event.enum';
 @Injectable()
 export class TransactionListener {
   constructor(
-    private readonly transactionController: TransactionController,
     private readonly accountController: AccountController,
+    private readonly transactionController: TransactionController,
   ) {}
 
   private readonly logger = new Logger(TransactionListener.name);
@@ -19,14 +18,13 @@ export class TransactionListener {
   async OnTransactionCreateOneOfSendPointToRefereeUserEvent(
     referredById: string,
   ) {
-    //get acount id
+    //get account id
     const accountOrigin =
       await this.accountController.getAccountIdOfPlatformPoint();
     const accountDestination =
       await this.accountController.getAccountIdOfUserPointFromUserId(
         referredById,
       );
-
     //create point transaction
     await this.transactionController
       .createOne({

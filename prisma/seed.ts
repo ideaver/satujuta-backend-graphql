@@ -1,12 +1,10 @@
 import {
   Account,
   AccountCategory,
-  PointType,
   Prisma,
   PrismaClient,
   Transaction,
   TransactionStatus,
-  TransactionType,
   User,
   UserRole,
 } from '@prisma/client';
@@ -16,7 +14,6 @@ import {
   fakeFaq,
   fakeTransaction,
   fakeTransactionComplete,
-  fakePointTransaction,
 } from './fake-data';
 import { faker } from '@faker-js/faker';
 import { AccountBalanceByCustomPeriodQuery } from 'src/services/account/dto/get-account-balance-by-custom-period.args';
@@ -448,66 +445,66 @@ async function transactionCreateManySeed({
 //   }
 // }
 
-async function pointTransactionCreateManySeed({
-  numberOfPointTransaction,
-}: {
-  numberOfPointTransaction: number;
-}): Promise<void> {
-  const pointTransactionToCreate: Prisma.PointTransactionCreateManyInput[] = [];
+// async function pointTransactionCreateManySeed({
+//   numberOfPointTransaction,
+// }: {
+//   numberOfPointTransaction: number;
+// }): Promise<void> {
+//   const pointTransactionToCreate: Prisma.PointTransactionCreateManyInput[] = [];
 
-  const users: User[] = await prisma.user.findMany();
+//   const users: User[] = await prisma.user.findMany();
 
-  // for (const user of users) {
-  //   const res = await prisma.pointTransaction.create({
-  //     data: {
-  //       currentBalance: 1,
-  //       amount: 1,
-  //       User: { connect: { id: user.id } },
-  //       pointType: 'REFERRING',
-  //       transactionType: 'CREDIT',
-  //     },
-  //   });
-  // }
+//   // for (const user of users) {
+//   //   const res = await prisma.pointTransaction.create({
+//   //     data: {
+//   //       currentBalance: 1,
+//   //       amount: 1,
+//   //       User: { connect: { id: user.id } },
+//   //       pointType: 'REFERRING',
+//   //       transactionType: 'CREDIT',
+//   //     },
+//   //   });
+//   // }
 
-  for (let i = 0; i < numberOfPointTransaction; i++) {
-    const userIndex = i % users.length;
-    const referOrRedeem = faker.helpers.arrayElement([
-      PointType.REFERRING,
-      PointType.REDEEMING,
-    ] as const);
-    const debitOrCredit =
-      referOrRedeem === PointType.REFERRING
-        ? TransactionType.CREDIT
-        : TransactionType.DEBIT;
-    const amount = faker.datatype.number({ min: 1, max: 500 });
-    const amountDebitCredit =
-      debitOrCredit === TransactionType.CREDIT ? amount : -amount;
+//   for (let i = 0; i < numberOfPointTransaction; i++) {
+//     const userIndex = i % users.length;
+//     const referOrRedeem = faker.helpers.arrayElement([
+//       PointType.REFERRING,
+//       PointType.REDEEMING,
+//     ] as const);
+//     const debitOrCredit =
+//       referOrRedeem === PointType.REFERRING
+//         ? TransactionType.CREDIT
+//         : TransactionType.DEBIT;
+//     const amount = faker.datatype.number({ min: 1, max: 500 });
+//     const amountDebitCredit =
+//       debitOrCredit === TransactionType.CREDIT ? amount : -amount;
 
-    const res = await prisma.pointTransaction
-      .findFirst({
-        where: {
-          User: {
-            id: users[userIndex].id,
-          },
-        },
-        orderBy: [{ id: 'desc' }],
-        take: 1,
-      })
-      .then((res) => (res ? res.currentBalance : 0));
+//     const res = await prisma.pointTransaction
+//       .findFirst({
+//         where: {
+//           User: {
+//             id: users[userIndex].id,
+//           },
+//         },
+//         orderBy: [{ id: 'desc' }],
+//         take: 1,
+//       })
+//       .then((res) => (res ? res.currentBalance : 0));
 
-    await prisma.pointTransaction.create({
-      data: {
-        pointType: referOrRedeem,
-        userId: users[userIndex].id,
-        transactionType: debitOrCredit,
-        amount: amountDebitCredit,
-        currentBalance: res + amountDebitCredit,
-      },
-    });
+//     await prisma.pointTransaction.create({
+//       data: {
+//         pointType: referOrRedeem,
+//         userId: users[userIndex].id,
+//         transactionType: debitOrCredit,
+//         amount: amountDebitCredit,
+//         currentBalance: res + amountDebitCredit,
+//       },
+//     });
 
-    console.log('Iteration: ' + i);
-  }
-}
+//     console.log('Iteration: ' + i);
+//   }
+// }
 
 async function accountCreateOneSeed(
   accountCreateArgs: CreateOneAccountArgs,

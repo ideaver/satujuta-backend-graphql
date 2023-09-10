@@ -46,6 +46,7 @@ enum AccountCategory {
   PLATFORM
   BANK
   DEBT
+  POINT
 }
 
 type AccountMinAggregate {
@@ -386,6 +387,14 @@ type City {
   province: Province!
   districts: [District!]
   _count: CityCount!
+}
+
+type AggregateDistrict {
+  _count: DistrictCountAggregate
+  _avg: DistrictAvgAggregate
+  _sum: DistrictSumAggregate
+  _min: DistrictMinAggregate
+  _max: DistrictMaxAggregate
 }
 
 type DistrictAvgAggregate {
@@ -1016,70 +1025,6 @@ type Order {
   _count: OrderCount!
 }
 
-type PointTransactionAvgAggregate {
-  id: Float
-  amount: Float
-  currentBalance: Float
-}
-
-type PointTransactionCountAggregate {
-  id: Int!
-  amount: Int!
-  pointType: Int!
-  transactionType: Int!
-  currentBalance: Int!
-  userId: Int!
-  createdAt: Int!
-  _all: Int!
-}
-
-type PointTransactionMaxAggregate {
-  id: Int
-  amount: Float
-  pointType: PointType
-  transactionType: TransactionType
-  currentBalance: Float
-  userId: String
-  createdAt: DateTime
-}
-
-enum PointType {
-  REFERRING
-  REDEEMING
-}
-
-enum TransactionType {
-  DEBIT
-  CREDIT
-}
-
-type PointTransactionMinAggregate {
-  id: Int
-  amount: Float
-  pointType: PointType
-  transactionType: TransactionType
-  currentBalance: Float
-  userId: String
-  createdAt: DateTime
-}
-
-type PointTransactionSumAggregate {
-  id: Int
-  amount: Float
-  currentBalance: Float
-}
-
-type PointTransaction {
-  id: Int!
-  amount: Float!
-  pointType: PointType!
-  transactionType: TransactionType!
-  currentBalance: Float!
-  userId: String!
-  createdAt: DateTime!
-  User: User!
-}
-
 type ProgramAvgAggregate {
   id: Float
   categoryId: Float
@@ -1287,6 +1232,14 @@ type Project {
   orderCart: [Cart!]
   account: Account!
   _count: ProjectCount!
+}
+
+type AggregateProvince {
+  _count: ProvinceCountAggregate
+  _avg: ProvinceAvgAggregate
+  _sum: ProvinceSumAggregate
+  _min: ProvinceMinAggregate
+  _max: ProvinceMaxAggregate
 }
 
 type ProvinceAvgAggregate {
@@ -1618,6 +1571,14 @@ type Shipping {
   order: Order!
 }
 
+type AggregateSubdistrict {
+  _count: SubdistrictCountAggregate
+  _avg: SubdistrictAvgAggregate
+  _sum: SubdistrictSumAggregate
+  _min: SubdistrictMinAggregate
+  _max: SubdistrictMaxAggregate
+}
+
 type SubdistrictAvgAggregate {
   id: Float
   districtId: Float
@@ -1720,6 +1681,8 @@ enum TransactionCategory {
   WITHDRAWAL
   MEMBER_REGISTRATION
   STUDENT_REGISTRATION
+  REFERRING
+  REDEEMING
 }
 
 type TransactionMinAggregate {
@@ -1759,7 +1722,7 @@ type Transaction {
   invoiceId: Int
   installmentId: Int
   withdrawalRequestId: Int
-  uniqueCode: Int!
+  uniqueCode: Int
   createdAt: DateTime!
   fromAccount: Account!
   toAccount: Account!
@@ -1807,7 +1770,6 @@ type UserCount {
   referredUsers: Int!
   checkIns: Int!
   accounts: Int!
-  PointTransactions: Int!
   orders: Int!
   sessions: Int!
   hotelsCreated: Int!
@@ -1916,7 +1878,6 @@ type User {
   checkIns: [CheckIn!]
   school: School
   accounts: [Account!]
-  PointTransactions: [PointTransaction!]
   orders: [Order!]
   sessions: [Session!]
   hotelsCreated: [Hotel!]
@@ -2109,12 +2070,6 @@ type BatchPayload {
   count: Float
 }
 
-type PointTransactionGroupPercentage {
-  pointGroup: String!
-  userCount: Float!
-  percentage: Float!
-}
-
 type UserFindManyOrderByAccountBalance {
   user: User!
   totalBalance: Float!
@@ -2196,12 +2151,6 @@ type Query {
   invoiceCount(invoiceFindManyArgs: InvoiceFindManyArgs): Int!
 
   """Deskripsinya ada disini loh"""
-  withdrawalRequestFindMany(withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs): [WithdrawalRequest!]
-
-  """Deskripsinya ada disini loh"""
-  withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
-
-  """Deskripsinya ada disini loh"""
   accountFindOne(where: AccountWhereUniqueInput!): Account
 
   """Deskripsinya ada disini loh"""
@@ -2218,6 +2167,12 @@ type Query {
   userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindMany(withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs): [WithdrawalRequest!]
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
 
   """Deskripsinya ada disini loh"""
   bankFindOne(where: BankWhereUniqueInput!): Bank
@@ -2364,21 +2319,6 @@ type Query {
   sessionFindOne(sessionFindUniqueArgs: SessionFindUniqueArgs!): Session
 
   """Deskripsinya ada disini loh"""
-  pointTransactionFindMany(pointTransactionFindManyArgs: PointTransactionFindManyArgs!): [PointTransaction!]
-
-  """Deskripsinya ada disini loh"""
-  pointTransactionFindOne(pointTransactionFindUniqueArgs: PointTransactionFindUniqueArgs!): PointTransaction
-
-  """Bisa juga untuk ambil balance terakhir dari point milik user"""
-  pointTransactionFindFirst(pointTransactionFindFirstArgs: PointTransactionFindFirstArgs!): PointTransaction
-
-  """Deskripsinya ada disini loh"""
-  getAverageUserPointBalance: Float
-
-  """Deskripsinya ada disini loh"""
-  getPointGroupPercentages: [PointTransactionGroupPercentage!]
-
-  """Deskripsinya ada disini loh"""
   schoolFindMany(schoolFindManyArgs: SchoolFindManyArgs!): [School!]
 
   """Deskripsinya ada disini loh"""
@@ -2415,10 +2355,19 @@ type Query {
   orderAggregate(orderAggregateArgs: OrderAggregateArgs!): AggregateOrder!
 
   """Deskripsinya ada disini loh"""
-  provinceFindMany(provinceFindManyArgs: ProvinceFindManyArgs!): [Province!]
+  provinceFindOne(where: ProvinceWhereUniqueInput!): Province
 
   """Deskripsinya ada disini loh"""
-  provinceFindOne(provinceFindUniqueArgs: ProvinceFindUniqueArgs!): Province
+  provinceFindMany(where: ProvinceWhereInput, orderBy: [ProvinceOrderByWithRelationInput!], cursor: ProvinceWhereUniqueInput, take: Int, skip: Int, distinct: [ProvinceScalarFieldEnum!]): [Province!]
+
+  """Deskripsinya ada disini loh"""
+  provinceFindFirst(where: ProvinceWhereInput, orderBy: [ProvinceOrderByWithRelationInput!], cursor: ProvinceWhereUniqueInput, take: Int, skip: Int, distinct: [ProvinceScalarFieldEnum!]): Province
+
+  """Deskripsinya ada disini loh"""
+  provinceAggregate(where: ProvinceWhereInput, orderBy: [ProvinceOrderByWithRelationInput!], cursor: ProvinceWhereUniqueInput, take: Int, skip: Int, _count: ProvinceCountAggregateInput, _avg: ProvinceAvgAggregateInput, _sum: ProvinceSumAggregateInput, _min: ProvinceMinAggregateInput, _max: ProvinceMaxAggregateInput): AggregateProvince
+
+  """Deskripsinya ada disini loh"""
+  provinceCount(where: ProvinceWhereInput, orderBy: [ProvinceOrderByWithRelationInput!], cursor: ProvinceWhereUniqueInput, take: Int, skip: Int, distinct: [ProvinceScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   cityFindOne(where: CityWhereUniqueInput!): City
@@ -2439,16 +2388,34 @@ type Query {
   getTopCitiesWithMostUsers(cityFindManyUserArgs: CityFindManyUserArgs!): [CityFindManyUser!]
 
   """Deskripsinya ada disini loh"""
-  districtFindMany(districtFindManyArgs: DistrictFindManyArgs!): [District!]
+  districtFindOne(where: DistrictWhereUniqueInput!): District
 
   """Deskripsinya ada disini loh"""
-  districtFindOne(districtFindUniqueArgs: DistrictFindUniqueArgs!): District
+  districtFindMany(where: DistrictWhereInput, orderBy: [DistrictOrderByWithRelationInput!], cursor: DistrictWhereUniqueInput, take: Int, skip: Int, distinct: [DistrictScalarFieldEnum!]): [District!]
 
   """Deskripsinya ada disini loh"""
-  subdistrictFindMany(subdistrictFindManyArgs: SubdistrictFindManyArgs!): [Subdistrict!]
+  districtFindFirst(where: DistrictWhereInput, orderBy: [DistrictOrderByWithRelationInput!], cursor: DistrictWhereUniqueInput, take: Int, skip: Int, distinct: [DistrictScalarFieldEnum!]): District
 
   """Deskripsinya ada disini loh"""
-  subdistrictFindOne(subdistrictFindUniqueArgs: SubdistrictFindUniqueArgs!): Subdistrict
+  districtAggregate(where: DistrictWhereInput, orderBy: [DistrictOrderByWithRelationInput!], cursor: DistrictWhereUniqueInput, take: Int, skip: Int, _count: DistrictCountAggregateInput, _avg: DistrictAvgAggregateInput, _sum: DistrictSumAggregateInput, _min: DistrictMinAggregateInput, _max: DistrictMaxAggregateInput): AggregateDistrict
+
+  """Deskripsinya ada disini loh"""
+  districtCount(where: DistrictWhereInput, orderBy: [DistrictOrderByWithRelationInput!], cursor: DistrictWhereUniqueInput, take: Int, skip: Int, distinct: [DistrictScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
+  subdistrictFindOne(where: SubdistrictWhereUniqueInput!): Subdistrict
+
+  """Deskripsinya ada disini loh"""
+  subdistrictFindMany(where: SubdistrictWhereInput, orderBy: [SubdistrictOrderByWithRelationInput!], cursor: SubdistrictWhereUniqueInput, take: Int, skip: Int, distinct: [SubdistrictScalarFieldEnum!]): [Subdistrict!]
+
+  """Deskripsinya ada disini loh"""
+  subdistrictFindFirst(where: SubdistrictWhereInput, orderBy: [SubdistrictOrderByWithRelationInput!], cursor: SubdistrictWhereUniqueInput, take: Int, skip: Int, distinct: [SubdistrictScalarFieldEnum!]): Subdistrict
+
+  """Deskripsinya ada disini loh"""
+  subdistrictAggregate(where: SubdistrictWhereInput, orderBy: [SubdistrictOrderByWithRelationInput!], cursor: SubdistrictWhereUniqueInput, take: Int, skip: Int, _count: SubdistrictCountAggregateInput, _avg: SubdistrictAvgAggregateInput, _sum: SubdistrictSumAggregateInput, _min: SubdistrictMinAggregateInput, _max: SubdistrictMaxAggregateInput): AggregateSubdistrict
+
+  """Deskripsinya ada disini loh"""
+  subdistrictCount(where: SubdistrictWhereInput, orderBy: [SubdistrictOrderByWithRelationInput!], cursor: SubdistrictWhereUniqueInput, take: Int, skip: Int, distinct: [SubdistrictScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   cartFindOne(where: CartWhereUniqueInput!): Cart
@@ -3218,7 +3185,7 @@ input TransactionWhereInput {
   invoiceId: IntNullableFilter
   installmentId: IntNullableFilter
   withdrawalRequestId: IntNullableFilter
-  uniqueCode: IntFilter
+  uniqueCode: IntNullableFilter
   createdAt: DateTimeFilter
   fromAccount: AccountRelationFilter
   toAccount: AccountRelationFilter
@@ -3875,7 +3842,7 @@ input TransactionWhereUniqueInput {
   fromAccountId: IntFilter
   toAccountId: IntFilter
   invoiceId: IntNullableFilter
-  uniqueCode: IntFilter
+  uniqueCode: IntNullableFilter
   createdAt: DateTimeFilter
   fromAccount: AccountRelationFilter
   toAccount: AccountRelationFilter
@@ -3894,7 +3861,7 @@ input TransactionOrderByWithRelationInput {
   invoiceId: SortOrderInput
   installmentId: SortOrderInput
   withdrawalRequestId: SortOrderInput
-  uniqueCode: SortOrder
+  uniqueCode: SortOrderInput
   createdAt: SortOrder
   fromAccount: AccountOrderByWithRelationInput
   toAccount: AccountOrderByWithRelationInput
@@ -4042,47 +4009,6 @@ input InvoiceWhereUniqueInput {
   Installments: InstallmentListRelationFilter
 }
 
-input WithdrawalRequestFindManyArgs {
-  where: WithdrawalRequestWhereInput
-  orderBy: [WithdrawalRequestOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [WithdrawalRequestScalarFieldEnum!]
-}
-
-enum WithdrawalRequestScalarFieldEnum {
-  id
-  userId
-  amount
-  status
-  proofUrl
-  proofDescription
-  transactionId
-  createdAt
-  updatedAt
-}
-
-input WithdrawalRequestFindUniqueArgs {
-  where: WithdrawalRequestWhereUniqueInput!
-}
-
-input WithdrawalRequestWhereUniqueInput {
-  id: Int
-  AND: [WithdrawalRequestWhereInput!]
-  OR: [WithdrawalRequestWhereInput!]
-  NOT: [WithdrawalRequestWhereInput!]
-  userId: StringFilter
-  amount: FloatFilter
-  status: EnumTransactionStatusFilter
-  proofUrl: StringNullableFilter
-  proofDescription: StringNullableFilter
-  transactionId: IntNullableFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  user: UserRelationFilter
-  transaction: TransactionNullableRelationFilter
-}
-
 input AccountWhereUniqueInput {
   id: Int
   AND: [AccountWhereInput!]
@@ -4157,6 +4083,47 @@ input AccountBalanceOfPlatformByCustomPeriod {
   start: DateTime!
   end: DateTime!
   period: Period!
+}
+
+input WithdrawalRequestFindManyArgs {
+  where: WithdrawalRequestWhereInput
+  orderBy: [WithdrawalRequestOrderByWithRelationInput!]
+  take: Int
+  skip: Int
+  distinct: [WithdrawalRequestScalarFieldEnum!]
+}
+
+enum WithdrawalRequestScalarFieldEnum {
+  id
+  userId
+  amount
+  status
+  proofUrl
+  proofDescription
+  transactionId
+  createdAt
+  updatedAt
+}
+
+input WithdrawalRequestFindUniqueArgs {
+  where: WithdrawalRequestWhereUniqueInput!
+}
+
+input WithdrawalRequestWhereUniqueInput {
+  id: Int
+  AND: [WithdrawalRequestWhereInput!]
+  OR: [WithdrawalRequestWhereInput!]
+  NOT: [WithdrawalRequestWhereInput!]
+  userId: StringFilter
+  amount: FloatFilter
+  status: EnumTransactionStatusFilter
+  proofUrl: StringNullableFilter
+  proofDescription: StringNullableFilter
+  transactionId: IntNullableFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  transaction: TransactionNullableRelationFilter
 }
 
 input BankWhereUniqueInput {
@@ -5134,103 +5101,6 @@ input SessionWhereUniqueInput {
   user: UserRelationFilter
 }
 
-input PointTransactionFindManyArgs {
-  where: PointTransactionWhereInput
-  orderBy: [PointTransactionOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [PointTransactionScalarFieldEnum!]
-}
-
-input PointTransactionWhereInput {
-  AND: [PointTransactionWhereInput!]
-  OR: [PointTransactionWhereInput!]
-  NOT: [PointTransactionWhereInput!]
-  id: IntFilter
-  amount: FloatFilter
-  pointType: EnumPointTypeFilter
-  transactionType: EnumTransactionTypeFilter
-  currentBalance: FloatFilter
-  userId: StringFilter
-  createdAt: DateTimeFilter
-  User: UserRelationFilter
-}
-
-input EnumPointTypeFilter {
-  equals: PointType
-  in: [PointType!]
-  notIn: [PointType!]
-  not: NestedEnumPointTypeFilter
-}
-
-input NestedEnumPointTypeFilter {
-  equals: PointType
-  in: [PointType!]
-  notIn: [PointType!]
-  not: NestedEnumPointTypeFilter
-}
-
-input EnumTransactionTypeFilter {
-  equals: TransactionType
-  in: [TransactionType!]
-  notIn: [TransactionType!]
-  not: NestedEnumTransactionTypeFilter
-}
-
-input NestedEnumTransactionTypeFilter {
-  equals: TransactionType
-  in: [TransactionType!]
-  notIn: [TransactionType!]
-  not: NestedEnumTransactionTypeFilter
-}
-
-input PointTransactionOrderByWithRelationInput {
-  id: SortOrder
-  amount: SortOrder
-  pointType: SortOrder
-  transactionType: SortOrder
-  currentBalance: SortOrder
-  userId: SortOrder
-  createdAt: SortOrder
-  User: UserOrderByWithRelationInput
-}
-
-enum PointTransactionScalarFieldEnum {
-  id
-  amount
-  pointType
-  transactionType
-  currentBalance
-  userId
-  createdAt
-}
-
-input PointTransactionFindUniqueArgs {
-  where: PointTransactionWhereUniqueInput!
-}
-
-input PointTransactionWhereUniqueInput {
-  id: Int
-  AND: [PointTransactionWhereInput!]
-  OR: [PointTransactionWhereInput!]
-  NOT: [PointTransactionWhereInput!]
-  amount: FloatFilter
-  pointType: EnumPointTypeFilter
-  transactionType: EnumTransactionTypeFilter
-  currentBalance: FloatFilter
-  userId: StringFilter
-  createdAt: DateTimeFilter
-  User: UserRelationFilter
-}
-
-input PointTransactionFindFirstArgs {
-  where: PointTransactionWhereInput
-  orderBy: [PointTransactionOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [PointTransactionScalarFieldEnum!]
-}
-
 input SchoolFindManyArgs {
   where: SchoolWhereInput
   orderBy: [SchoolOrderByWithRelationInput!]
@@ -5431,23 +5301,6 @@ input OrderMaxAggregateInput {
   updatedAt: Boolean
 }
 
-input ProvinceFindManyArgs {
-  where: ProvinceWhereInput
-  orderBy: [ProvinceOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [ProvinceScalarFieldEnum!]
-}
-
-enum ProvinceScalarFieldEnum {
-  id
-  name
-}
-
-input ProvinceFindUniqueArgs {
-  where: ProvinceWhereUniqueInput!
-}
-
 input ProvinceWhereUniqueInput {
   id: Int
   name: String
@@ -5455,6 +5308,35 @@ input ProvinceWhereUniqueInput {
   OR: [ProvinceWhereInput!]
   NOT: [ProvinceWhereInput!]
   cities: CityListRelationFilter
+}
+
+enum ProvinceScalarFieldEnum {
+  id
+  name
+}
+
+input ProvinceCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  _all: Boolean
+}
+
+input ProvinceAvgAggregateInput {
+  id: Boolean
+}
+
+input ProvinceSumAggregateInput {
+  id: Boolean
+}
+
+input ProvinceMinAggregateInput {
+  id: Boolean
+  name: Boolean
+}
+
+input ProvinceMaxAggregateInput {
+  id: Boolean
+  name: Boolean
 }
 
 input CityWhereUniqueInput {
@@ -5508,24 +5390,6 @@ input CityFindManyUserArgs {
   status: UserStatus
 }
 
-input DistrictFindManyArgs {
-  where: DistrictWhereInput
-  orderBy: [DistrictOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [DistrictScalarFieldEnum!]
-}
-
-enum DistrictScalarFieldEnum {
-  id
-  name
-  cityId
-}
-
-input DistrictFindUniqueArgs {
-  where: DistrictWhereUniqueInput!
-}
-
 input DistrictWhereUniqueInput {
   id: Int
   AND: [DistrictWhereInput!]
@@ -5537,23 +5401,39 @@ input DistrictWhereUniqueInput {
   subdistricts: SubdistrictListRelationFilter
 }
 
-input SubdistrictFindManyArgs {
-  where: SubdistrictWhereInput
-  orderBy: [SubdistrictOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [SubdistrictScalarFieldEnum!]
-}
-
-enum SubdistrictScalarFieldEnum {
+enum DistrictScalarFieldEnum {
   id
   name
-  districtId
-  postalCode
+  cityId
 }
 
-input SubdistrictFindUniqueArgs {
-  where: SubdistrictWhereUniqueInput!
+input DistrictCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  cityId: Boolean
+  _all: Boolean
+}
+
+input DistrictAvgAggregateInput {
+  id: Boolean
+  cityId: Boolean
+}
+
+input DistrictSumAggregateInput {
+  id: Boolean
+  cityId: Boolean
+}
+
+input DistrictMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  cityId: Boolean
+}
+
+input DistrictMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  cityId: Boolean
 }
 
 input SubdistrictWhereUniqueInput {
@@ -5566,6 +5446,45 @@ input SubdistrictWhereUniqueInput {
   postalCode: StringFilter
   district: DistrictRelationFilter
   address: AddressListRelationFilter
+}
+
+enum SubdistrictScalarFieldEnum {
+  id
+  name
+  districtId
+  postalCode
+}
+
+input SubdistrictCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  districtId: Boolean
+  postalCode: Boolean
+  _all: Boolean
+}
+
+input SubdistrictAvgAggregateInput {
+  id: Boolean
+  districtId: Boolean
+}
+
+input SubdistrictSumAggregateInput {
+  id: Boolean
+  districtId: Boolean
+}
+
+input SubdistrictMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  districtId: Boolean
+  postalCode: Boolean
+}
+
+input SubdistrictMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  districtId: Boolean
+  postalCode: Boolean
 }
 
 input CartWhereUniqueInput {
@@ -5751,10 +5670,10 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   userUpdateMany(data: UserUpdateManyMutationInput!, where: UserWhereInput): User
 
-  """Deskripsinya ada disini loh"""
+  """Berupa softdelete"""
   userDelete(where: UserWhereUniqueInput!): Boolean!
 
-  """Deskripsinya ada disini loh"""
+  """Berupa softdelete"""
   userDeleteMany(where: UserWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
@@ -5798,13 +5717,13 @@ type Mutation {
   transactionUpdateMany(data: TransactionUpdateManyMutationInput!, where: TransactionWhereInput): Transaction
 
   """Deskripsinya ada disini loh"""
-  transactionDelete(where: TransactionWhereUniqueInput!): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  transactionDeleteMany(where: TransactionWhereInput): Boolean!
-
-  """Deskripsinya ada disini loh"""
   invoiceUpdateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs!): Invoice!
+
+  """Deskripsinya ada disini loh"""
+  accountCreateMany(data: [AccountCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  accountUpdateOne(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
 
   """Deskripsinya ada disini loh"""
   withdrawalRequestCreateOne(withdrawalRequestCreateArgs: WithdrawalRequestCreateArgs!): WithdrawalRequest
@@ -5816,12 +5735,6 @@ type Mutation {
 
   """Datanya benar2 terhapus dari db"""
   withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
-
-  """Deskripsinya ada disini loh"""
-  accountCreateMany(data: [AccountCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
-
-  """Deskripsinya ada disini loh"""
-  accountUpdateOne(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
 
   """Deskripsinya ada disini loh"""
   bankCreateOne(data: BankCreateInput!): Bank
@@ -8623,26 +8536,6 @@ input InvoiceUpdateInput {
   amount: FloatFieldUpdateOperationsInput
 }
 
-input WithdrawalRequestCreateArgs {
-  data: WithdrawalRequestCreateInput!
-}
-
-input WithdrawalRequestCreateInput {
-  amount: Float!
-  user: UserCreateNestedOneWithoutWithdrawalRequestInput!
-}
-
-input WithdrawalRequestUpdateOneArgs {
-  data: WithdrawalRequestUpdateInput!
-  where: WithdrawalRequestWhereUniqueInput!
-}
-
-input WithdrawalRequestUpdateInput {
-  status: EnumTransactionStatusFieldUpdateOperationsInput
-  proofUrl: NullableStringFieldUpdateOperationsInput
-  proofDescription: NullableStringFieldUpdateOperationsInput
-}
-
 input AccountCreateManyInput {
   id: Int
   accountNumber: Float
@@ -8806,7 +8699,7 @@ input TransactionScalarWhereInput {
   invoiceId: IntNullableFilter
   installmentId: IntNullableFilter
   withdrawalRequestId: IntNullableFilter
-  uniqueCode: IntFilter
+  uniqueCode: IntNullableFilter
   createdAt: DateTimeFilter
 }
 
@@ -8873,6 +8766,26 @@ input TransactionUpdateWithWhereUniqueWithoutToAccountInput {
 input TransactionUpdateManyWithWhereWithoutToAccountInput {
   where: TransactionScalarWhereInput!
   data: TransactionUpdateManyMutationInput!
+}
+
+input WithdrawalRequestCreateArgs {
+  data: WithdrawalRequestCreateInput!
+}
+
+input WithdrawalRequestCreateInput {
+  amount: Float!
+  user: UserCreateNestedOneWithoutWithdrawalRequestInput!
+}
+
+input WithdrawalRequestUpdateOneArgs {
+  data: WithdrawalRequestUpdateInput!
+  where: WithdrawalRequestWhereUniqueInput!
+}
+
+input WithdrawalRequestUpdateInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  proofDescription: NullableStringFieldUpdateOperationsInput
 }
 
 input BankCreateInput {

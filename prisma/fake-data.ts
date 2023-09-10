@@ -1,7 +1,19 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
+import {
+  UserRole,
+  UserType,
+  Theme,
+  UserStatus,
+  AccountCategory,
+  TransactionCategory,
+  TransactionStatus,
+  UserNotificationCategory,
+  ShippingStatus,
+  InstallmentStatus,
+  FileType,
+  FaqType,
+  ProjectCategory,
+} from '@prisma/client';
 import { faker } from '@faker-js/faker';
-
-
 
 export function fakeProvince() {
   return {
@@ -87,7 +99,16 @@ export function fakeUser() {
     firstName: faker.name.firstName(),
     lastName: undefined,
     email: faker.internet.email(),
-    userType: faker.helpers.arrayElement([UserType.PARENT, UserType.SCHOOL_HEAD, UserType.STUDENT, UserType.TEACHER, UserType.HOUSEWIFE, UserType.ENTREPRENEUR, UserType.WORKER, UserType.OTHER] as const),
+    userType: faker.helpers.arrayElement([
+      UserType.PARENT,
+      UserType.SCHOOL_HEAD,
+      UserType.STUDENT,
+      UserType.TEACHER,
+      UserType.HOUSEWIFE,
+      UserType.ENTREPRENEUR,
+      UserType.WORKER,
+      UserType.OTHER,
+    ] as const),
     avatarUrl: undefined,
     whatsappNumber: faker.lorem.words(5),
     whatsappVerifiedAt: undefined,
@@ -105,7 +126,16 @@ export function fakeUserComplete() {
     email: faker.internet.email(),
     addressId: faker.datatype.number(),
     userRole: UserRole.MEMBER,
-    userType: faker.helpers.arrayElement([UserType.PARENT, UserType.SCHOOL_HEAD, UserType.STUDENT, UserType.TEACHER, UserType.HOUSEWIFE, UserType.ENTREPRENEUR, UserType.WORKER, UserType.OTHER] as const),
+    userType: faker.helpers.arrayElement([
+      UserType.PARENT,
+      UserType.SCHOOL_HEAD,
+      UserType.STUDENT,
+      UserType.TEACHER,
+      UserType.HOUSEWIFE,
+      UserType.ENTREPRENEUR,
+      UserType.WORKER,
+      UserType.OTHER,
+    ] as const),
     avatarUrl: undefined,
     whatsappNumber: faker.lorem.words(5),
     whatsappVerifiedAt: undefined,
@@ -125,7 +155,16 @@ export function fakeAccount() {
     accountNumber: undefined,
     name: faker.name.fullName(),
     updatedAt: faker.datatype.datetime(),
-    accountCategory: faker.helpers.arrayElement([AccountCategory.EQUITY, AccountCategory.PROJECT, AccountCategory.COMISSION, AccountCategory.CASH, AccountCategory.PLATFORM, AccountCategory.BANK, AccountCategory.DEBT, AccountCategory.POINT] as const),
+    accountCategory: faker.helpers.arrayElement([
+      AccountCategory.EQUITY,
+      AccountCategory.PROJECT,
+      AccountCategory.COMISSION,
+      AccountCategory.CASH,
+      AccountCategory.PLATFORM,
+      AccountCategory.BANK,
+      AccountCategory.DEBT,
+      AccountCategory.POINT,
+    ] as const),
   };
 }
 export function fakeAccountComplete() {
@@ -136,15 +175,39 @@ export function fakeAccountComplete() {
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
     userId: faker.datatype.uuid(),
-    accountCategory: faker.helpers.arrayElement([AccountCategory.EQUITY, AccountCategory.PROJECT, AccountCategory.COMISSION, AccountCategory.CASH, AccountCategory.PLATFORM, AccountCategory.BANK, AccountCategory.DEBT, AccountCategory.POINT] as const),
+    accountCategory: faker.helpers.arrayElement([
+      AccountCategory.EQUITY,
+      AccountCategory.PROJECT,
+      AccountCategory.COMISSION,
+      AccountCategory.CASH,
+      AccountCategory.PLATFORM,
+      AccountCategory.BANK,
+      AccountCategory.DEBT,
+      AccountCategory.POINT,
+    ] as const),
   };
 }
 export function fakeTransaction() {
   return {
     amount: faker.datatype.float(),
     proofUrl: undefined,
-    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
-    transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION, TransactionCategory.REFERRING, TransactionCategory.REDEEMING] as const),
+    status: faker.helpers.arrayElement([
+      TransactionStatus.PROCESSING,
+      TransactionStatus.PENDING,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.COMPLETED,
+    ] as const),
+    transactionCategory: faker.helpers.arrayElement([
+      TransactionCategory.INVESTMENT,
+      TransactionCategory.INVESTMENT_RETURN,
+      TransactionCategory.COMISSION_BONUS,
+      TransactionCategory.WITHDRAWAL,
+      TransactionCategory.MEMBER_REGISTRATION,
+      TransactionCategory.STUDENT_REGISTRATION,
+      TransactionCategory.REFERRING,
+      TransactionCategory.REDEEMING,
+    ] as const),
     uniqueCode: undefined,
   };
 }
@@ -153,8 +216,23 @@ export function fakeTransactionComplete() {
     id: faker.datatype.number(),
     amount: faker.datatype.float(),
     proofUrl: undefined,
-    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
-    transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION, TransactionCategory.REFERRING, TransactionCategory.REDEEMING] as const),
+    status: faker.helpers.arrayElement([
+      TransactionStatus.PROCESSING,
+      TransactionStatus.PENDING,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.COMPLETED,
+    ] as const),
+    transactionCategory: faker.helpers.arrayElement([
+      TransactionCategory.INVESTMENT,
+      TransactionCategory.INVESTMENT_RETURN,
+      TransactionCategory.COMISSION_BONUS,
+      TransactionCategory.WITHDRAWAL,
+      TransactionCategory.MEMBER_REGISTRATION,
+      TransactionCategory.STUDENT_REGISTRATION,
+      TransactionCategory.REFERRING,
+      TransactionCategory.REDEEMING,
+    ] as const),
     fromAccountId: faker.datatype.number(),
     toAccountId: faker.datatype.number(),
     invoiceId: undefined,
@@ -167,7 +245,13 @@ export function fakeTransactionComplete() {
 export function fakeWithdrawalRequest() {
   return {
     amount: faker.datatype.float(),
-    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    status: faker.helpers.arrayElement([
+      TransactionStatus.PROCESSING,
+      TransactionStatus.PENDING,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.COMPLETED,
+    ] as const),
     proofUrl: undefined,
     proofDescription: undefined,
     transactionId: undefined,
@@ -179,7 +263,13 @@ export function fakeWithdrawalRequestComplete() {
     id: faker.datatype.number(),
     userId: faker.datatype.uuid(),
     amount: faker.datatype.float(),
-    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    status: faker.helpers.arrayElement([
+      TransactionStatus.PROCESSING,
+      TransactionStatus.PENDING,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.COMPLETED,
+    ] as const),
     proofUrl: undefined,
     proofDescription: undefined,
     transactionId: undefined,
@@ -211,7 +301,27 @@ export function fakeUserNotification() {
     title: faker.lorem.words(5),
     subtitle: faker.lorem.words(5),
     content: faker.lorem.words(5),
-    category: faker.helpers.arrayElement([UserNotificationCategory.ANNOUNCEMENT, UserNotificationCategory.REFERRAL, UserNotificationCategory.REWARD, UserNotificationCategory.WITHDRAWAL, UserNotificationCategory.INVESTMENT, UserNotificationCategory.COMISSION, UserNotificationCategory.PROJECT, UserNotificationCategory.PROGRAM, UserNotificationCategory.CHECK_IN, UserNotificationCategory.INVOICE, UserNotificationCategory.SHIPPING, UserNotificationCategory.ORDER, UserNotificationCategory.ACCOUNT, UserNotificationCategory.TRANSACTION, UserNotificationCategory.POINT_TRANSACTION, UserNotificationCategory.INSTALLMENT, UserNotificationCategory.WITHDRAWAL_REQUEST, UserNotificationCategory.USER, UserNotificationCategory.FILE] as const),
+    category: faker.helpers.arrayElement([
+      UserNotificationCategory.ANNOUNCEMENT,
+      UserNotificationCategory.REFERRAL,
+      UserNotificationCategory.REWARD,
+      UserNotificationCategory.WITHDRAWAL,
+      UserNotificationCategory.INVESTMENT,
+      UserNotificationCategory.COMISSION,
+      UserNotificationCategory.PROJECT,
+      UserNotificationCategory.PROGRAM,
+      UserNotificationCategory.CHECK_IN,
+      UserNotificationCategory.INVOICE,
+      UserNotificationCategory.SHIPPING,
+      UserNotificationCategory.ORDER,
+      UserNotificationCategory.ACCOUNT,
+      UserNotificationCategory.TRANSACTION,
+      UserNotificationCategory.POINT_TRANSACTION,
+      UserNotificationCategory.INSTALLMENT,
+      UserNotificationCategory.WITHDRAWAL_REQUEST,
+      UserNotificationCategory.USER,
+      UserNotificationCategory.FILE,
+    ] as const),
     deepLink: undefined,
     fcmToken: undefined,
   };
@@ -223,7 +333,27 @@ export function fakeUserNotificationComplete() {
     subtitle: faker.lorem.words(5),
     content: faker.lorem.words(5),
     createdAt: new Date(),
-    category: faker.helpers.arrayElement([UserNotificationCategory.ANNOUNCEMENT, UserNotificationCategory.REFERRAL, UserNotificationCategory.REWARD, UserNotificationCategory.WITHDRAWAL, UserNotificationCategory.INVESTMENT, UserNotificationCategory.COMISSION, UserNotificationCategory.PROJECT, UserNotificationCategory.PROGRAM, UserNotificationCategory.CHECK_IN, UserNotificationCategory.INVOICE, UserNotificationCategory.SHIPPING, UserNotificationCategory.ORDER, UserNotificationCategory.ACCOUNT, UserNotificationCategory.TRANSACTION, UserNotificationCategory.POINT_TRANSACTION, UserNotificationCategory.INSTALLMENT, UserNotificationCategory.WITHDRAWAL_REQUEST, UserNotificationCategory.USER, UserNotificationCategory.FILE] as const),
+    category: faker.helpers.arrayElement([
+      UserNotificationCategory.ANNOUNCEMENT,
+      UserNotificationCategory.REFERRAL,
+      UserNotificationCategory.REWARD,
+      UserNotificationCategory.WITHDRAWAL,
+      UserNotificationCategory.INVESTMENT,
+      UserNotificationCategory.COMISSION,
+      UserNotificationCategory.PROJECT,
+      UserNotificationCategory.PROGRAM,
+      UserNotificationCategory.CHECK_IN,
+      UserNotificationCategory.INVOICE,
+      UserNotificationCategory.SHIPPING,
+      UserNotificationCategory.ORDER,
+      UserNotificationCategory.ACCOUNT,
+      UserNotificationCategory.TRANSACTION,
+      UserNotificationCategory.POINT_TRANSACTION,
+      UserNotificationCategory.INSTALLMENT,
+      UserNotificationCategory.WITHDRAWAL_REQUEST,
+      UserNotificationCategory.USER,
+      UserNotificationCategory.FILE,
+    ] as const),
     isRead: false,
     isCleared: false,
     userId: faker.datatype.uuid(),
@@ -290,7 +420,13 @@ export function fakeCheckInComplete() {
 }
 export function fakeOrder() {
   return {
-    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    status: faker.helpers.arrayElement([
+      TransactionStatus.PROCESSING,
+      TransactionStatus.PENDING,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.COMPLETED,
+    ] as const),
     shippingId: undefined,
     platformFee: faker.datatype.float(),
     total: faker.datatype.float(),
@@ -300,7 +436,13 @@ export function fakeOrder() {
 export function fakeOrderComplete() {
   return {
     id: faker.datatype.number(),
-    status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
+    status: faker.helpers.arrayElement([
+      TransactionStatus.PROCESSING,
+      TransactionStatus.PENDING,
+      TransactionStatus.FAILED,
+      TransactionStatus.CANCELLED,
+      TransactionStatus.COMPLETED,
+    ] as const),
     orderById: faker.datatype.uuid(),
     shippingId: undefined,
     invoiceId: faker.datatype.number(),
@@ -337,7 +479,12 @@ export function fakeItem() {
     description: faker.lorem.words(5),
     price: faker.datatype.float(),
     cost: faker.datatype.float(),
-    userRole: faker.helpers.arrayElement([UserRole.MEMBER, UserRole.ADMIN, UserRole.SUPERUSER, UserRole.STUDENT] as const),
+    userRole: faker.helpers.arrayElement([
+      UserRole.MEMBER,
+      UserRole.ADMIN,
+      UserRole.SUPERUSER,
+      UserRole.STUDENT,
+    ] as const),
     updatedAt: faker.datatype.datetime(),
   };
 }
@@ -348,7 +495,12 @@ export function fakeItemComplete() {
     description: faker.lorem.words(5),
     price: faker.datatype.float(),
     cost: faker.datatype.float(),
-    userRole: faker.helpers.arrayElement([UserRole.MEMBER, UserRole.ADMIN, UserRole.SUPERUSER, UserRole.STUDENT] as const),
+    userRole: faker.helpers.arrayElement([
+      UserRole.MEMBER,
+      UserRole.ADMIN,
+      UserRole.SUPERUSER,
+      UserRole.STUDENT,
+    ] as const),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
   };
@@ -357,7 +509,11 @@ export function fakeShipping() {
   return {
     logisticName: faker.lorem.words(5),
     deliveryDate: undefined,
-    shippingStatus: faker.helpers.arrayElement([ShippingStatus.PROCESSING, ShippingStatus.DELIVERING, ShippingStatus.DELIVERED] as const),
+    shippingStatus: faker.helpers.arrayElement([
+      ShippingStatus.PROCESSING,
+      ShippingStatus.DELIVERING,
+      ShippingStatus.DELIVERED,
+    ] as const),
     courier: undefined,
     estimatedTime: undefined,
     trackingNo: undefined,
@@ -369,7 +525,11 @@ export function fakeShippingComplete() {
     id: faker.datatype.number(),
     logisticName: faker.lorem.words(5),
     deliveryDate: undefined,
-    shippingStatus: faker.helpers.arrayElement([ShippingStatus.PROCESSING, ShippingStatus.DELIVERING, ShippingStatus.DELIVERED] as const),
+    shippingStatus: faker.helpers.arrayElement([
+      ShippingStatus.PROCESSING,
+      ShippingStatus.DELIVERING,
+      ShippingStatus.DELIVERED,
+    ] as const),
     addressId: faker.datatype.number(),
     courier: undefined,
     estimatedTime: undefined,
@@ -401,7 +561,10 @@ export function fakeInstallment() {
     lateFee: faker.datatype.float(),
     amount: faker.datatype.float(),
     dueDate: faker.datatype.datetime(),
-    status: faker.helpers.arrayElement([InstallmentStatus.UPCOMING, InstallmentStatus.PAID] as const),
+    status: faker.helpers.arrayElement([
+      InstallmentStatus.UPCOMING,
+      InstallmentStatus.PAID,
+    ] as const),
     transactionId: undefined,
   };
 }
@@ -412,7 +575,10 @@ export function fakeInstallmentComplete() {
     lateFee: faker.datatype.float(),
     amount: faker.datatype.float(),
     dueDate: faker.datatype.datetime(),
-    status: faker.helpers.arrayElement([InstallmentStatus.UPCOMING, InstallmentStatus.PAID] as const),
+    status: faker.helpers.arrayElement([
+      InstallmentStatus.UPCOMING,
+      InstallmentStatus.PAID,
+    ] as const),
     transactionId: undefined,
     invoiceId: faker.datatype.number(),
   };
@@ -487,7 +653,13 @@ export function fakeRewardClaimComplete() {
 }
 export function fakeFile() {
   return {
-    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([
+      FileType.UNKNOWN,
+      FileType.MP4,
+      FileType.JPG,
+      FileType.PNG,
+      FileType.PDF,
+    ] as const),
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     url: faker.lorem.words(5),
@@ -497,7 +669,13 @@ export function fakeFile() {
 export function fakeFileComplete() {
   return {
     id: faker.datatype.number(),
-    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([
+      FileType.UNKNOWN,
+      FileType.MP4,
+      FileType.JPG,
+      FileType.PNG,
+      FileType.PDF,
+    ] as const),
     filesize: 0,
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
@@ -509,7 +687,13 @@ export function fakeFileComplete() {
 }
 export function fakeImages() {
   return {
-    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([
+      FileType.UNKNOWN,
+      FileType.MP4,
+      FileType.JPG,
+      FileType.PNG,
+      FileType.PDF,
+    ] as const),
     fileSize: faker.datatype.float(),
     url: faker.lorem.words(5),
   };
@@ -517,7 +701,13 @@ export function fakeImages() {
 export function fakeImagesComplete() {
   return {
     id: faker.datatype.number(),
-    fileType: faker.helpers.arrayElement([FileType.UNKNOWN, FileType.MP4, FileType.JPG, FileType.PNG, FileType.PDF] as const),
+    fileType: faker.helpers.arrayElement([
+      FileType.UNKNOWN,
+      FileType.MP4,
+      FileType.JPG,
+      FileType.PNG,
+      FileType.PDF,
+    ] as const),
     fileSize: faker.datatype.float(),
     url: faker.lorem.words(5),
     hotelImageId: undefined,
@@ -532,7 +722,12 @@ export function fakeFaq() {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
     updatedAt: faker.datatype.datetime(),
-    type: faker.helpers.arrayElement([FaqType.REFERRAL_PAGE, FaqType.DASHBOARD_PAGE, FaqType.REWARD_PAGE, FaqType.PROJECT_PAGE] as const),
+    type: faker.helpers.arrayElement([
+      FaqType.REFERRAL_PAGE,
+      FaqType.DASHBOARD_PAGE,
+      FaqType.REWARD_PAGE,
+      FaqType.PROJECT_PAGE,
+    ] as const),
   };
 }
 export function fakeFaqComplete() {
@@ -542,14 +737,22 @@ export function fakeFaqComplete() {
     description: faker.lorem.words(5),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
-    type: faker.helpers.arrayElement([FaqType.REFERRAL_PAGE, FaqType.DASHBOARD_PAGE, FaqType.REWARD_PAGE, FaqType.PROJECT_PAGE] as const),
+    type: faker.helpers.arrayElement([
+      FaqType.REFERRAL_PAGE,
+      FaqType.DASHBOARD_PAGE,
+      FaqType.REWARD_PAGE,
+      FaqType.PROJECT_PAGE,
+    ] as const),
   };
 }
 export function fakeProject() {
   return {
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
-    projectCategory: faker.helpers.arrayElement([ProjectCategory.PROPERTY, ProjectCategory.BUSSINESS] as const),
+    projectCategory: faker.helpers.arrayElement([
+      ProjectCategory.PROPERTY,
+      ProjectCategory.BUSSINESS,
+    ] as const),
     startDate: faker.datatype.datetime(),
     endDate: faker.datatype.datetime(),
     returnRate: faker.datatype.float(),
@@ -564,7 +767,10 @@ export function fakeProjectComplete() {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
     description: faker.lorem.words(5),
-    projectCategory: faker.helpers.arrayElement([ProjectCategory.PROPERTY, ProjectCategory.BUSSINESS] as const),
+    projectCategory: faker.helpers.arrayElement([
+      ProjectCategory.PROPERTY,
+      ProjectCategory.BUSSINESS,
+    ] as const),
     startDate: faker.datatype.datetime(),
     endDate: faker.datatype.datetime(),
     returnRate: faker.datatype.float(),
