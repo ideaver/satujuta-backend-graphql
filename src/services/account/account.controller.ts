@@ -4,6 +4,7 @@ import {
   Prisma,
   Transaction,
   TransactionStatus,
+  UserRole,
 } from '@prisma/client';
 import { AccountService } from './account.service';
 import {
@@ -18,6 +19,7 @@ import {
   AccountBalanceByCustomPeriodArgs,
 } from './dto/get-account-balance-by-custom-period.args';
 import { Account } from 'src/@generated';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 
 @Injectable()
 export class AccountController {
@@ -34,7 +36,9 @@ export class AccountController {
     return await this.accountService.createMany(accountCreateManyArgs);
   }
 
-  async findOne(accountFindUniqueArgs: Prisma.AccountFindUniqueArgs) {
+  async findOne(
+    accountFindUniqueArgs: Prisma.AccountFindUniqueArgs,
+  ): Promise<Account> {
     return await this.accountService.findOne(accountFindUniqueArgs);
   }
 
@@ -278,5 +282,32 @@ export class AccountController {
     }
 
     return monthlyBalance;
+  }
+
+  async getAccountIdOfPlatformPoint() {
+    const res = await this.findFirst({
+      take: 1,
+      where: {
+        user: { userRole: { equals: UserRole.SUPERUSER } },
+        accountCategory: { equals: AccountCategory.POINT },
+      },
+    });
+
+    if (!res) {
+      throw new IGraphQLError({ err: 'Account of platform point not found' });
+    }
+    return res;
+  }
+
+  async getAccountIdOfUserPointFromUserId(userId: string) {
+    const res = await this.findFirst({
+      take: 1,
+      where: { user: { id: { equals: userId } } },
+    });
+
+    if (!res) {
+      throw new IGraphQLError({ err: 'Account of user point not found' });
+    }
+    return res;
   }
 }

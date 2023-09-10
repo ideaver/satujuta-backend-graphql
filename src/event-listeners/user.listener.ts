@@ -1,10 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { OnEvent } from '@nestjs/event-emitter';
+import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { User } from 'src/@generated';
+import { UserEvents } from './enum/user-event.enum';
+import { TransactionEvents } from './enum/transaction-event.enum';
 
 @Injectable()
 export class UserListener {
-  @OnEvent('user.created')
+  constructor(private eventEmitter: EventEmitter2) {}
+
+  @OnEvent(UserEvents.Created)
   OnUserCreatedEvent(user: User) {
     //TODO:
     /* 
@@ -14,7 +18,7 @@ export class UserListener {
     */
   }
 
-  @OnEvent('user.updated')
+  @OnEvent(UserEvents.Updated)
   OnUserUpdated(user: User) {
     //TODO:
     /* 
@@ -22,13 +26,29 @@ export class UserListener {
     */
   }
 
-  @OnEvent('user.status.updated.to.active')
-  OnUserStatusUpdatedToActiveEvent(user: User) {
+  @OnEvent(UserEvents.Deleted)
+  OnUserDeleted(user: User | User[]) {
+    //TODO:
+    /* 
+1. release hotel,program quota
+    */
+  }
+
+  @OnEvent(UserEvents.StatusUpdatedToActive)
+  async OnUserStatusUpdatedToActiveEvent(user: User) {
     //TODO:
     /* 
     1. send user notification about order status
     2. send notification to admin
     3. send point to referee user
     */
+
+    //send point to referee user
+    if (user.referredById) {
+      this.eventEmitter.emit(
+        TransactionEvents.TransactionCreateOneOfSendPointToRefereeUserEvent,
+        user.referredById,
+      );
+    }
   }
 }

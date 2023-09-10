@@ -124,30 +124,6 @@ export class TransactionResolver {
     return this.transactionController.updateMany(updateManyTransactionArgs);
   }
 
-  @Mutation(() => Boolean, {
-    nullable: false,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async transactionDelete(
-    @Args() deleteOneTransactionArgs: DeleteOneTransactionArgs,
-    @Relations() relations: TransactionSelect,
-  ) {
-    return this.transactionController.delete({
-      ...deleteOneTransactionArgs,
-      select: relations.select,
-    });
-  }
-
-  @Mutation(() => Boolean, {
-    nullable: false,
-    description: 'Deskripsinya ada disini loh',
-  })
-  async transactionDeleteMany(
-    @Args() deleteManyTransactionArgs: DeleteManyTransactionArgs,
-  ) {
-    return this.transactionController.deleteMany(deleteManyTransactionArgs);
-  }
-
   @Query(() => AggregateTransaction, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',

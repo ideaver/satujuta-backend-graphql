@@ -94,16 +94,6 @@ export class TransactionController {
     return await this.transactionService.updateMany(transactionUpdateManyArgs);
   }
 
-  async delete(transactionDeleteArgs: Prisma.TransactionDeleteArgs) {
-    return await this.transactionService.delete(transactionDeleteArgs);
-  }
-
-  async deleteMany(
-    transactionDeleteManyArgs: Prisma.TransactionDeleteManyArgs,
-  ) {
-    return await this.transactionService.deleteMany(transactionDeleteManyArgs);
-  }
-
   async aggregate(transactionAggregateArgs: Prisma.TransactionAggregateArgs) {
     return await this.transactionService.aggregate(transactionAggregateArgs);
   }

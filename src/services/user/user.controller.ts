@@ -22,6 +22,7 @@ import { Period } from 'src/model/period.enum';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { User } from 'src/@generated';
+import { UserEvents } from 'src/event-listeners/enum/user-event.enum';
 
 @Injectable()
 export class UserController {
@@ -32,8 +33,21 @@ export class UserController {
   ) {}
 
   async createOne(userCreateArgs: Prisma.UserCreateArgs) {
+    const { password, userRole, referralCode } = userCreateArgs.data;
     try {
-      const { password, userRole } = userCreateArgs.data;
+      //check if Referral Code is exist/valid
+      if (referralCode) {
+        const referee = await this.findOne({
+          where: { referralCode: referralCode },
+        });
+
+        if (!referee) {
+          throw new IGraphQLError({
+            code: 110001,
+          });
+        }
+      }
+
       //Generate Random Referral Code
       userCreateArgs.data.referralCode = generateRandomReferralCode();
 
@@ -46,8 +60,10 @@ export class UserController {
         // Auto Create Order
         await orderCreate(userCreateArgs, this.itemController, userRole);
       }
+      //create user
       const res = await this.userService.createOne(userCreateArgs);
-      this.eventEmitter.emit('user.created', res);
+      //OnUserCreatedEvent
+      this.eventEmitter.emit(UserEvents.Created, res);
 
       return res;
     } catch (error) {
@@ -78,12 +94,11 @@ export class UserController {
     try {
       //encrypt user password
       if (password) {
-        const castPassword =
-          password as Prisma.StringFieldUpdateOperationsInput;
-        if (castPassword?.set)
+        if (typeof password === 'object' && password.set) {
           userUpdateOneArgs.data.password = {
-            set: await encryptUserPassword(castPassword.set),
+            set: await encryptUserPassword(password.set),
           };
+        }
       }
 
       //TODO: if whatsapp updated: send whatsapp message
@@ -93,13 +108,13 @@ export class UserController {
       //update user
       const res: User = await this.userService.updateOne(userUpdateOneArgs);
 
-      this.eventEmitter.emit('user.updated', res);
+      this.eventEmitter.emit(UserEvents.Updated, res);
 
       //from transaction
-      //TODO: if user status updated: OnActiveUserStatusEvent
-      if (userUpdateOneArgs?.data?.status) {
+      if (status) {
         if (typeof status === 'object' && status.set === UserStatus.ACTIVE) {
-          this.eventEmitter.emit('user.status.updated.to.active', res);
+          //OnUserStatusUpdatedToActiveEvent
+          this.eventEmitter.emit(UserEvents.StatusUpdatedToActive, res);
         }
       }
 
@@ -114,11 +129,32 @@ export class UserController {
   }
 
   async delete(userDeleteArgs: Prisma.UserDeleteArgs) {
-    return await this.userService.delete(userDeleteArgs);
+    const { id } = userDeleteArgs.where;
+
+    await this.updateOne({
+      where: { id: id },
+      data: { deletedAt: new Date() },
+    });
+
+    this.eventEmitter.emit(UserEvents.Deleted);
+
+    return true;
   }
 
   async deleteMany(userDeleteManyArgs: Prisma.UserDeleteManyArgs) {
-    return await this.userService.deleteMany(userDeleteManyArgs);
+    const { id } = userDeleteManyArgs.where;
+
+    if (id) {
+      if (typeof id === 'object' && id.in) {
+        await this.updateMany({
+          where: { id: { in: id.in } },
+          data: { deletedAt: new Date() },
+        });
+        this.eventEmitter.emit(UserEvents.Deleted);
+      }
+    }
+
+    return true;
   }
 
   async aggregate(userAggregateArgs: Prisma.UserAggregateArgs) {

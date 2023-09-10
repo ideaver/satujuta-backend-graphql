@@ -5,6 +5,8 @@ export const errorCodes: Record<number, string> = {
   10006: 'Gagal melakukan permintaan reset password. Hubungi Administrator',
   10007:
     'Pengguna dengan email tersebut telah dihapus dari sistem. Gunakan email lain untuk mendaftar',
+  //User
+  110001: 'Kode referral tidak ditemukan. Harap periksa kembali',
   //WithdrawalRequest
   140001: 'Saldo belum mencukupi untuk melakukan permintaan withdrawal',
   140002: 'Terdapat permintaan withdrawal terdahulu dengan status pending',

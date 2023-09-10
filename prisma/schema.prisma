@@ -194,8 +194,6 @@ model User {
   schoolId              Int?
   /// @HideField({ match: 'UserUpdate*Input' })
   accounts              Account[]
-  /// @HideField({ output: false, input: true })   
-  PointTransactions     PointTransaction[]
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})
   createdAt             DateTime            @default(now())
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
@@ -264,6 +262,7 @@ enum AccountCategory {
   PLATFORM
   BANK
   DEBT
+  POINT
 }
 
 //Make Read only without update, delete
@@ -295,7 +294,7 @@ model Transaction {
   /// @HideField({ match: 'TransactionUpdate*Input' })
   withdrawalRequestId Int?                @unique
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  uniqueCode          Int
+  uniqueCode          Int?
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   createdAt           DateTime            @default(now())
 
@@ -317,23 +316,6 @@ enum TransactionCategory {
   WITHDRAWAL
   MEMBER_REGISTRATION
   STUDENT_REGISTRATION
-}
-
-//Make Read only without update, delete
-model PointTransaction {
-  id              Int             @id @default(autoincrement())
-  /// @Validator.IsNumber() 
-  /// @Validator.IsNotEmpty()
-  amount          Float
-  pointType       PointType
-  transactionType TransactionType
-  currentBalance  Float           @default(0)
-  User            User            @relation(fields: [userId], references: [id])
-  userId          String
-  createdAt       DateTime        @default(now())
-}
-
-enum PointType {
   REFERRING
   REDEEMING
 }

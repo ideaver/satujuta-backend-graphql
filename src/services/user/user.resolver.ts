@@ -127,7 +127,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'Berupa softdelete',
   })
   async userDelete(
     @Args() deleteOneUserArgs: DeleteOneUserArgs,
@@ -141,7 +141,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'Berupa softdelete',
   })
   async userDeleteMany(@Args() deleteManyUserArgs: DeleteManyUserArgs) {
     return this.userController.deleteMany(deleteManyUserArgs);

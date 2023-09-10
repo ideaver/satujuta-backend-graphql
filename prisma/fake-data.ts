@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, PointType, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -125,7 +125,7 @@ export function fakeAccount() {
     accountNumber: undefined,
     name: faker.name.fullName(),
     updatedAt: faker.datatype.datetime(),
-    accountCategory: faker.helpers.arrayElement([AccountCategory.EQUITY, AccountCategory.PROJECT, AccountCategory.COMISSION, AccountCategory.CASH, AccountCategory.PLATFORM, AccountCategory.BANK, AccountCategory.DEBT] as const),
+    accountCategory: faker.helpers.arrayElement([AccountCategory.EQUITY, AccountCategory.PROJECT, AccountCategory.COMISSION, AccountCategory.CASH, AccountCategory.PLATFORM, AccountCategory.BANK, AccountCategory.DEBT, AccountCategory.POINT] as const),
   };
 }
 export function fakeAccountComplete() {
@@ -136,7 +136,7 @@ export function fakeAccountComplete() {
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
     userId: faker.datatype.uuid(),
-    accountCategory: faker.helpers.arrayElement([AccountCategory.EQUITY, AccountCategory.PROJECT, AccountCategory.COMISSION, AccountCategory.CASH, AccountCategory.PLATFORM, AccountCategory.BANK, AccountCategory.DEBT] as const),
+    accountCategory: faker.helpers.arrayElement([AccountCategory.EQUITY, AccountCategory.PROJECT, AccountCategory.COMISSION, AccountCategory.CASH, AccountCategory.PLATFORM, AccountCategory.BANK, AccountCategory.DEBT, AccountCategory.POINT] as const),
   };
 }
 export function fakeTransaction() {
@@ -144,8 +144,8 @@ export function fakeTransaction() {
     amount: faker.datatype.float(),
     proofUrl: undefined,
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
-    transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION] as const),
-    uniqueCode: faker.datatype.number(),
+    transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION, TransactionCategory.REFERRING, TransactionCategory.REDEEMING] as const),
+    uniqueCode: undefined,
   };
 }
 export function fakeTransactionComplete() {
@@ -154,31 +154,13 @@ export function fakeTransactionComplete() {
     amount: faker.datatype.float(),
     proofUrl: undefined,
     status: faker.helpers.arrayElement([TransactionStatus.PROCESSING, TransactionStatus.PENDING, TransactionStatus.FAILED, TransactionStatus.CANCELLED, TransactionStatus.COMPLETED] as const),
-    transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION] as const),
+    transactionCategory: faker.helpers.arrayElement([TransactionCategory.INVESTMENT, TransactionCategory.INVESTMENT_RETURN, TransactionCategory.COMISSION_BONUS, TransactionCategory.WITHDRAWAL, TransactionCategory.MEMBER_REGISTRATION, TransactionCategory.STUDENT_REGISTRATION, TransactionCategory.REFERRING, TransactionCategory.REDEEMING] as const),
     fromAccountId: faker.datatype.number(),
     toAccountId: faker.datatype.number(),
     invoiceId: undefined,
     installmentId: undefined,
     withdrawalRequestId: undefined,
-    uniqueCode: faker.datatype.number(),
-    createdAt: new Date(),
-  };
-}
-export function fakePointTransaction() {
-  return {
-    amount: faker.datatype.float(),
-    pointType: faker.helpers.arrayElement([PointType.REFERRING, PointType.REDEEMING] as const),
-    transactionType: faker.helpers.arrayElement([TransactionType.DEBIT, TransactionType.CREDIT] as const),
-  };
-}
-export function fakePointTransactionComplete() {
-  return {
-    id: faker.datatype.number(),
-    amount: faker.datatype.float(),
-    pointType: faker.helpers.arrayElement([PointType.REFERRING, PointType.REDEEMING] as const),
-    transactionType: faker.helpers.arrayElement([TransactionType.DEBIT, TransactionType.CREDIT] as const),
-    currentBalance: 0,
-    userId: faker.datatype.uuid(),
+    uniqueCode: undefined,
     createdAt: new Date(),
   };
 }
