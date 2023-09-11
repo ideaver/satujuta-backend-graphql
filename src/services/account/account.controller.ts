@@ -192,7 +192,7 @@ export class AccountController {
     const getPlatformAccount = await this.findFirst({
       select: { id: true },
       take: 1,
-      where: { accountCategory: { equals: 'PLATFORM' } },
+      where: { accountCategory: { equals: AccountCategory.PLATFORM } },
     });
 
     if (getPlatformAccount) {
@@ -311,5 +311,11 @@ export class AccountController {
       throw new IGraphQLError({ err: 'Account of user point not found' });
     }
     return res;
+  }
+
+  //get account balance of user point
+  async getAccountBalanceOfUserPointFromUserId(userId: string) {
+    const res = await this.getAccountIdOfUserPointFromUserId(userId);
+    return this.getAccountTotalBalance({ accountId: res.id });
   }
 }

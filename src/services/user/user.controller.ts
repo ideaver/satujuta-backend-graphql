@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
+  AccountCategory,
   Item,
   Prisma,
   TransactionStatus,
@@ -276,13 +277,14 @@ function accountCreateManyUserInput(
 ) {
   userCreateArgsPrisma.data.accounts.createMany = {
     data: [
-      { name: 'CASH Account', accountCategory: 'CASH' },
+      { name: 'POINT Account', accountCategory: AccountCategory.POINT },
+      { name: 'CASH Account', accountCategory: AccountCategory.CASH },
       {
         name: 'COMISSION Account',
-        accountCategory: 'COMISSION',
+        accountCategory: AccountCategory.COMISSION,
       },
-      { name: 'EQUITY Account', accountCategory: 'EQUITY' },
-      { name: 'DEBT Account', accountCategory: 'DEBT' },
+      { name: 'EQUITY Account', accountCategory: AccountCategory.EQUITY },
+      { name: 'DEBT Account', accountCategory: AccountCategory.DEBT },
     ],
   };
 }

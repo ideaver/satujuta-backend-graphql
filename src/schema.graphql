@@ -2261,6 +2261,7 @@ type Query {
   userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
+  getAccountBalanceOfUserPointFromUserId(userId: String!): Float!
 
   """Deskripsinya ada disini loh"""
   withdrawalRequestFindOne(where: WithdrawalRequestWhereUniqueInput!): WithdrawalRequest

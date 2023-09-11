@@ -207,4 +207,14 @@ export class AccountResolver {
       accountBalanceOfPlatformByCustomPeriod,
     );
   }
+
+  @Query(() => Float)
+  async getAccountBalanceOfUserPointFromUserId(
+    @Args('userId')
+    userId: string,
+  ): Promise<number> {
+    return await this.accountController.getAccountBalanceOfUserPointFromUserId(
+      userId,
+    );
+  }
 }
