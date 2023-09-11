@@ -3,7 +3,7 @@ import { ProjectService } from './project.service';
 import { ProjectResolver } from './project.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProjectController } from './project.controller';
-import { UserController } from '../user/user.controller';
+import { UserModule } from '../user/user.module';
 
 @Module({
   providers: [
@@ -12,7 +12,7 @@ import { UserController } from '../user/user.controller';
     ProjectController,
     ProjectService,
   ],
-  imports: [UserController],
+  imports: [UserModule],
   exports: [ProjectController],
 })
 export class ProjectModule {}

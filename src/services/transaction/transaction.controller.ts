@@ -1,13 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Invoice, Prisma } from '@prisma/client';
 import { TransactionService } from './transaction.service';
-import { InvoiceService } from '../invoice/invoice.service';
+import { InvoiceController } from '../invoice/invoice.controller';
 
 @Injectable()
 export class TransactionController {
   constructor(
     private readonly transactionService: TransactionService,
-    private readonly invoiceService: InvoiceService,
+    private readonly invoiceController: InvoiceController,
   ) {}
   private readonly logger = new Logger(TransactionController.name);
 
@@ -17,7 +17,7 @@ export class TransactionController {
     // check unique code
     // getInvoiceUniqueCode
 
-    const invoice: void | Invoice = await this.invoiceService.findOne({
+    const invoice: void | Invoice = await this.invoiceController.findOne({
       select: { uniqueCode: true },
       where: { id: transactionCreateArgs.data.invoice.connect.id },
     });
