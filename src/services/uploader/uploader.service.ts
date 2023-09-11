@@ -60,7 +60,7 @@ export class UploaderService {
 
   public async getFileMetadataFromS3(
     url: string,
-  ): Promise<{ size: number; mimeType: string }> {
+  ): Promise<{ size: number; mimeType: FileType }> {
     // Split the URL by '.com/' to get the parts
     const urlParts = url.split('.com/');
 
@@ -89,7 +89,7 @@ export class UploaderService {
 
       const metadata = {
         size: response.ContentLength || 0,
-        mimeType: response.ContentType || '',
+        mimeType: mapFileTypeEnumFromMIME(response.ContentType),
       };
 
       return metadata;

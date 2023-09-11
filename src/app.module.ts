@@ -38,9 +38,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UploaderModule } from './services/uploader/uploader.module';
 import { UploaderProcessor } from './queues/uploader.queue';
 import { SchedulerService } from './scheduler/scheduler.service';
-import { ScheduleModule } from '@nestjs/schedule';
 import { CartModule } from './services/cart/cart.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { SchedulerModule } from './scheduler/scheduler.module';
+import { ImagesModule } from './services/images/images.module';
 
 @Module({
   imports: [
@@ -66,7 +67,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
       name: 'uploader',
     }),
     //for shceduler
-    ScheduleModule.forRoot(),
+    SchedulerModule,
     EventEmitterModule.forRoot(),
     ConfigsModule,
     EmailModule,
@@ -99,6 +100,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     CartModule,
     RewardClaimModule,
     WithdrawalRequestModule,
+    ImagesModule,
   ],
   controllers: [],
   providers: [PrismaService, UploaderProcessor, SchedulerService],
