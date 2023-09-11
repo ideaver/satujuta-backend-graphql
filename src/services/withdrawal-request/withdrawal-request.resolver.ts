@@ -1,13 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { WithdrawalRequest } from 'src/@generated';
-import { WithdrawalRequestCreateArgs } from './dto/withdrawal-request-create-one.args';
-import { WithdrawalRequestFindManyArgs } from './dto/withdrawal-request-find-many.args';
-import { WithdrawalRequestFindUniqueArgs } from './dto/withdrawal-request-find-one.args';
-import { WithdrawalRequestUpdateOneArgs } from './dto/withdrawal-request-update-one.args';
+import {
+  AggregateWithdrawalRequest,
+  CreateManyWithdrawalRequestArgs,
+  CreateOneWithdrawalRequestArgs,
+  DeleteManyWithdrawalRequestArgs,
+  DeleteOneWithdrawalRequestArgs,
+  FindFirstWithdrawalRequestArgs,
+  FindManyWithdrawalRequestArgs,
+  FindUniqueWithdrawalRequestArgs,
+  WithdrawalRequest,
+  WithdrawalRequestAggregateArgs,
+  UpdateManyWithdrawalRequestArgs,
+  UpdateOneWithdrawalRequestArgs,
+} from 'src/@generated';
 import { WithdrawalRequestController } from './withdrawal-request.controller';
-import { Logger } from '@nestjs/common';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface WithdrawalRequestSelect {
   select: Prisma.WithdrawalRequestSelect;
@@ -18,38 +29,32 @@ export class WithdrawalRequestResolver {
   constructor(
     private readonly withdrawalRequestController: WithdrawalRequestController,
   ) {}
-  private readonly logger = new Logger(WithdrawalRequestResolver.name);
+
   @Mutation(() => WithdrawalRequest, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async withdrawalRequestCreateOne(
-    @Args('withdrawalRequestCreateArgs')
-    withdrawalRequestCreateArgs: WithdrawalRequestCreateArgs,
+    @Args()
+    withdrawalRequestCreateArgs: CreateOneWithdrawalRequestArgs,
     @Relations() relations: WithdrawalRequestSelect,
   ): Promise<WithdrawalRequest | void> {
-    withdrawalRequestCreateArgs.select = relations.select;
-    return await this.withdrawalRequestController.createOne(
-      withdrawalRequestCreateArgs,
-    );
+    return await this.withdrawalRequestController.createOne({
+      ...withdrawalRequestCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [WithdrawalRequest], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  withdrawalRequestFindMany(
-    @Args('withdrawalRequestFindManyArgs', { nullable: true })
-    withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs,
-    @Relations() relations: WithdrawalRequestSelect,
+  async withdrawalRequestCreateMany(
+    @Args()
+    createManyWithdrawalRequestArgs: CreateManyWithdrawalRequestArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    if (withdrawalRequestFindManyArgs) {
-      withdrawalRequestFindManyArgs.select = relations.select;
-    }
-
-    return this.withdrawalRequestController.findMany(
-      withdrawalRequestFindManyArgs,
+    return await this.withdrawalRequestController.createMany(
+      createManyWithdrawalRequestArgs,
     );
   }
 
@@ -58,41 +63,118 @@ export class WithdrawalRequestResolver {
     description: 'Deskripsinya ada disini loh',
   })
   withdrawalRequestFindOne(
-    @Args('withdrawalRequestFindUniqueArgs')
-    withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs,
+    @Args()
+    withdrawalRequestFindUniqueArgs: FindUniqueWithdrawalRequestArgs,
     @Relations() relations: WithdrawalRequestSelect,
   ): Promise<WithdrawalRequest | void> {
-    //Auto implement prisma select from graphql query info
-    withdrawalRequestFindUniqueArgs.select = relations.select;
-    return this.withdrawalRequestController.findOne(
-      withdrawalRequestFindUniqueArgs,
-    );
+    return this.withdrawalRequestController.findOne({
+      ...withdrawalRequestFindUniqueArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => [WithdrawalRequest], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  withdrawalRequestFindMany(
+    @Args() withdrawalRequestFindManyArgs: FindManyWithdrawalRequestArgs,
+    @Relations() relations: WithdrawalRequestSelect,
+  ) {
+    return this.withdrawalRequestController.findMany({
+      ...withdrawalRequestFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => WithdrawalRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  withdrawalRequestFindFirst(
+    @Args()
+    findFirstWithdrawalRequestArgs: FindFirstWithdrawalRequestArgs,
+    @Relations() relations: WithdrawalRequestSelect,
+  ): Promise<WithdrawalRequest | void> {
+    return this.withdrawalRequestController.findFirst({
+      ...findFirstWithdrawalRequestArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => WithdrawalRequest, {
-    description:
-      'Deskripsinya ada disini loh, Jika tentang mutasi klaim withdrawalRequest, backend akan cek apakah saldo point user cukup untuk claim',
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
   async withdrawalRequestUpdateOne(
-    @Args('withdrawalRequestUpdateOneArgs')
-    withdrawalRequestUpdateOneArgs: WithdrawalRequestUpdateOneArgs,
+    @Args() withdrawalRequestUpdateOneArgs: UpdateOneWithdrawalRequestArgs,
     @Relations() relations: WithdrawalRequestSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    withdrawalRequestUpdateOneArgs.select = relations.select;
+    return this.withdrawalRequestController.updateOne({
+      ...replaceNullWithUndefined(withdrawalRequestUpdateOneArgs),
+      select: relations.select,
+    });
+  }
 
-    return this.withdrawalRequestController.updateOne(
-      withdrawalRequestUpdateOneArgs,
+  @Mutation(() => WithdrawalRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async withdrawalRequestUpdateMany(
+    @Args() updateManyWithdrawalRequestArgs: UpdateManyWithdrawalRequestArgs,
+  ) {
+    return this.withdrawalRequestController.updateMany(
+      updateManyWithdrawalRequestArgs,
     );
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  withdrawalRequestRemove(
-    @Args('withdrawalRequestId') withdrawalRequestId: number,
+  async withdrawalRequestDelete(
+    @Args() deleteOneWithdrawalRequestArgs: DeleteOneWithdrawalRequestArgs,
+    @Relations() relations: WithdrawalRequestSelect,
   ) {
-    return this.withdrawalRequestController.remove(withdrawalRequestId);
+    return this.withdrawalRequestController.delete({
+      ...deleteOneWithdrawalRequestArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async withdrawalRequestDeleteMany(
+    @Args() deleteManyWithdrawalRequestArgs: DeleteManyWithdrawalRequestArgs,
+  ) {
+    return this.withdrawalRequestController.deleteMany(
+      deleteManyWithdrawalRequestArgs,
+    );
+  }
+
+  @Query(() => AggregateWithdrawalRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  withdrawalRequestAggregate(
+    @Args() withdrawalRequestAggregateArgs: WithdrawalRequestAggregateArgs,
+  ) {
+    return this.withdrawalRequestController.aggregate(
+      withdrawalRequestAggregateArgs,
+    );
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  withdrawalRequestCount(
+    @Args() withdrawalRequestCountAggregateInput: FindManyWithdrawalRequestArgs,
+  ) {
+    return this.withdrawalRequestController.count(
+      withdrawalRequestCountAggregateInput,
+    );
   }
 }

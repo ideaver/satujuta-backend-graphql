@@ -1,75 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { CreateOneShippingArgs, Shipping } from 'src/@generated';
-import { ShippingFindManyArgs } from './dto/shipping-find-many.args';
-import { ShippingFindUniqueArgs } from './dto/shipping-find-one.args';
-import { ShippingUpdateOneArgs } from './dto/shipping-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ShippingService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(
-    shippingCreateArgs: CreateOneShippingArgs,
-  ): Promise<Shipping | void> {
-    return await this.prisma.shipping
-      .create(shippingCreateArgs)
-      .then((shipping) => {
-        return shipping;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(shippingCreateArgs: Prisma.ShippingCreateArgs) {
+    try {
+      return await this.prisma.shipping.create(shippingCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findMany(shippingFindManyArgs: ShippingFindManyArgs) {
-    return this.prisma.shipping
-      .findMany(shippingFindManyArgs)
-      .then((shippings) => {
-        return shippings;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(shippingCreateManyArgs: Prisma.ShippingCreateManyArgs) {
+    try {
+      return await this.prisma.shipping.createMany(shippingCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(
-    shippingFindUniqueArgs: ShippingFindUniqueArgs,
-  ): Promise<Shipping | void> {
-    return await this.prisma.shipping
-      .findUnique(shippingFindUniqueArgs)
-      .then((shipping) => {
-        return shipping;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(shippingFindUniqueArgs: Prisma.ShippingFindUniqueArgs) {
+    try {
+      return await this.prisma.shipping.findUnique(shippingFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(
-    shippingUpdateOneArgs: ShippingUpdateOneArgs,
-  ): Promise<Shipping | void> {
-    return this.prisma.shipping
-      .update(shippingUpdateOneArgs)
-      .then((shipping) => {
-        return shipping;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(shippingFindManyArgs: Prisma.ShippingFindManyArgs) {
+    try {
+      return await this.prisma.shipping.findMany(shippingFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(shippingId: number): Promise<boolean | void> {
-    return await this.prisma.shipping
-      .delete({
-        where: { id: shippingId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(shippingFindFirstArgs: Prisma.ShippingFindFirstArgs) {
+    try {
+      return await this.prisma.shipping.findFirst(shippingFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateOne(shippingUpdateOneArgs: Prisma.ShippingUpdateArgs) {
+    try {
+      return await this.prisma.shipping.update(shippingUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(shippingUpdateManyArgs: Prisma.ShippingUpdateManyArgs) {
+    try {
+      return await this.prisma.shipping.updateMany(shippingUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(shippingDeleteArgs: Prisma.ShippingDeleteArgs) {
+    try {
+      await this.prisma.shipping.delete(shippingDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(shippingDeleteManyArgs: Prisma.ShippingDeleteManyArgs) {
+    try {
+      await this.prisma.shipping.deleteMany(shippingDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(shippingAggregateArgs: Prisma.ShippingAggregateArgs) {
+    try {
+      return await this.prisma.shipping.aggregate(shippingAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(shippingCountArgs: Prisma.ShippingCountArgs) {
+    try {
+      return await this.prisma.shipping.count(shippingCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

@@ -1,12 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
-import { SessionService } from './session.service';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Session } from 'src/@generated';
-import { SessionCreateArgs } from './dto/session-create-one.args';
-import { SessionFindManyArgs } from './dto/session-find-many.args';
-import { SessionFindUniqueArgs } from './dto/session-find-one.args';
-import { SessionUpdateOneArgs } from './dto/session-update-one.args';
+import {
+  AggregateSession,
+  CreateManySessionArgs,
+  CreateOneSessionArgs,
+  DeleteManySessionArgs,
+  DeleteOneSessionArgs,
+  FindFirstSessionArgs,
+  FindManySessionArgs,
+  FindUniqueSessionArgs,
+  Session,
+  SessionAggregateArgs,
+  UpdateManySessionArgs,
+  UpdateOneSessionArgs,
+} from 'src/@generated';
+import { SessionController } from './session.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface SessionSelect {
   select: Prisma.SessionSelect;
@@ -14,62 +26,113 @@ interface SessionSelect {
 
 @Resolver(() => Session)
 export class SessionResolver {
-  constructor(private readonly sessionService: SessionService) {}
-
-  // @Mutation(() => Session, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // async sessionCreateOne(
-  //   @Args('sessionCreateArgs') sessionCreateArgs: SessionCreateArgs,
-  //   @Relations() relations: SessionSelect
-  // ): Promise<Session | void> {
-  //   sessionCreateArgs.select = relations.select;
-  //   return await this.sessionService.createOne(sessionCreateArgs);
-  // }
-
-  @Query(() => [Session], {
-    nullable: true,
-    description: 'Deskripsinya ada disini loh',
-  })
-  sessionFindMany(
-    @Args('sessionFindManyArgs') sessionFindManyArgs: SessionFindManyArgs,
-    @Relations() relations: SessionSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    sessionFindManyArgs.select = relations.select;
-    return this.sessionService.findMany(sessionFindManyArgs);
-  }
+  constructor(private readonly sessionController: SessionController) {}
 
   @Query(() => Session, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   sessionFindOne(
-    @Args('sessionFindUniqueArgs')
-    sessionFindUniqueArgs: SessionFindUniqueArgs,
+    @Args()
+    sessionFindUniqueArgs: FindUniqueSessionArgs,
     @Relations() relations: SessionSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    sessionFindUniqueArgs.select = relations.select;
-    return this.sessionService.findOne(sessionFindUniqueArgs);
+  ): Promise<Session | void> {
+    return this.sessionController.findOne({
+      ...sessionFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => Session, { description: 'Deskripsinya ada disini loh' })
-  // sessionUpdateOne(
-  //   @Args('sessionUpdateOneArgs') sessionUpdateOneArgs: SessionUpdateOneArgs,
+  @Query(() => [Session], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  sessionFindMany(
+    @Args() sessionFindManyArgs: FindManySessionArgs,
+    @Relations() relations: SessionSelect,
+  ) {
+    return this.sessionController.findMany({
+      ...sessionFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => Session, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  sessionFindFirst(
+    @Args()
+    findFirstSessionArgs: FindFirstSessionArgs,
+    @Relations() relations: SessionSelect,
+  ): Promise<Session | void> {
+    return this.sessionController.findFirst({
+      ...findFirstSessionArgs,
+      select: relations.select,
+    });
+  }
+
+  // @Mutation(() => Session, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async sessionUpdateOne(
+  //   @Args() sessionUpdateOneArgs: UpdateOneSessionArgs,
   //   @Relations() relations: SessionSelect,
   // ) {
-  //   sessionUpdateOneArgs.select = relations.select;
-  //   return this.sessionService.update(sessionUpdateOneArgs);
+  //   return this.sessionController.updateOne({
+  //     ...replaceNullWithUndefined(sessionUpdateOneArgs),
+  //     select: relations.select,
+  //   });
+  // }
+
+  // @Mutation(() => Session, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async sessionUpdateMany(
+  //   @Args() updateManySessionArgs: UpdateManySessionArgs,
+  // ) {
+  //   return this.sessionController.updateMany(updateManySessionArgs);
   // }
 
   // @Mutation(() => Boolean, {
-  //   nullable: true,
-  //   description:
-  //     'Datanya benar2 terhapus dari db',
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
   // })
-  // sessionRemove(@Args('sessionId') sessionId: number) {
-  //   return this.sessionService.remove(sessionId);
+  // async sessionDelete(
+  //   @Args() deleteOneSessionArgs: DeleteOneSessionArgs,
+  //   @Relations() relations: SessionSelect,
+  // ) {
+  //   return this.sessionController.delete({
+  //     ...deleteOneSessionArgs,
+  //     select: relations.select,
+  //   });
   // }
+
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async sessionDeleteMany(
+  //   @Args() deleteManySessionArgs: DeleteManySessionArgs,
+  // ) {
+  //   return this.sessionController.deleteMany(deleteManySessionArgs);
+  // }
+
+  @Query(() => AggregateSession, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  sessionAggregate(@Args() sessionAggregateArgs: SessionAggregateArgs) {
+    return this.sessionController.aggregate(sessionAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  sessionCount(@Args() sessionCountAggregateInput: FindManySessionArgs) {
+    return this.sessionController.count(sessionCountAggregateInput);
+  }
 }
