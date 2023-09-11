@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionType, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 

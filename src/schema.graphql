@@ -725,8 +725,8 @@ type ImagesSumAggregate {
 
 type Images {
   id: Int!
-  fileType: FileType!
-  fileSize: Float!
+  fileType: FileType
+  fileSize: Float
   url: String!
   hotelImageId: Int
   programImageId: Int
@@ -3040,8 +3040,8 @@ input ImagesWhereInput {
   OR: [ImagesWhereInput!]
   NOT: [ImagesWhereInput!]
   id: IntFilter
-  fileType: EnumFileTypeFilter
-  fileSize: FloatFilter
+  fileType: EnumFileTypeNullableFilter
+  fileSize: FloatNullableFilter
   url: StringFilter
   hotelImageId: IntNullableFilter
   programImageId: IntNullableFilter
@@ -3054,18 +3054,40 @@ input ImagesWhereInput {
   projectImage: ProjectNullableRelationFilter
 }
 
-input EnumFileTypeFilter {
+input EnumFileTypeNullableFilter {
   equals: FileType
   in: [FileType!]
   notIn: [FileType!]
-  not: NestedEnumFileTypeFilter
+  not: NestedEnumFileTypeNullableFilter
 }
 
-input NestedEnumFileTypeFilter {
+input NestedEnumFileTypeNullableFilter {
   equals: FileType
   in: [FileType!]
   notIn: [FileType!]
-  not: NestedEnumFileTypeFilter
+  not: NestedEnumFileTypeNullableFilter
+}
+
+input FloatNullableFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatNullableFilter
+}
+
+input NestedFloatNullableFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatNullableFilter
 }
 
 input ProgramNullableRelationFilter {
@@ -3372,28 +3394,6 @@ input AccountWhereInput {
   user: UserRelationFilter
   transactionOrigins: TransactionListRelationFilter
   transactionDestination: TransactionListRelationFilter
-}
-
-input FloatNullableFilter {
-  equals: Float
-  in: [Float!]
-  notIn: [Float!]
-  lt: Float
-  lte: Float
-  gt: Float
-  gte: Float
-  not: NestedFloatNullableFilter
-}
-
-input NestedFloatNullableFilter {
-  equals: Float
-  in: [Float!]
-  notIn: [Float!]
-  lt: Float
-  lte: Float
-  gt: Float
-  gte: Float
-  not: NestedFloatNullableFilter
 }
 
 input EnumAccountCategoryFilter {
@@ -4430,6 +4430,20 @@ input FileWhereInput {
   createdBy: UserRelationFilter
 }
 
+input EnumFileTypeFilter {
+  equals: FileType
+  in: [FileType!]
+  notIn: [FileType!]
+  not: NestedEnumFileTypeFilter
+}
+
+input NestedEnumFileTypeFilter {
+  equals: FileType
+  in: [FileType!]
+  notIn: [FileType!]
+  not: NestedEnumFileTypeFilter
+}
+
 input FileOrderByWithRelationInput {
   id: SortOrder
   fileType: SortOrder
@@ -4507,8 +4521,8 @@ input ImagesWhereUniqueInput {
   AND: [ImagesWhereInput!]
   OR: [ImagesWhereInput!]
   NOT: [ImagesWhereInput!]
-  fileType: EnumFileTypeFilter
-  fileSize: FloatFilter
+  fileType: EnumFileTypeNullableFilter
+  fileSize: FloatNullableFilter
   url: StringFilter
   hotelImageId: IntNullableFilter
   programImageId: IntNullableFilter
@@ -4523,8 +4537,8 @@ input ImagesWhereUniqueInput {
 
 input ImagesOrderByWithRelationInput {
   id: SortOrder
-  fileType: SortOrder
-  fileSize: SortOrder
+  fileType: SortOrderInput
+  fileSize: SortOrderInput
   url: SortOrder
   hotelImageId: SortOrderInput
   programImageId: SortOrderInput
@@ -8195,8 +8209,8 @@ input ImagesScalarWhereInput {
   OR: [ImagesScalarWhereInput!]
   NOT: [ImagesScalarWhereInput!]
   id: IntFilter
-  fileType: EnumFileTypeFilter
-  fileSize: FloatFilter
+  fileType: EnumFileTypeNullableFilter
+  fileSize: FloatNullableFilter
   url: StringFilter
   hotelImageId: IntNullableFilter
   programImageId: IntNullableFilter
@@ -9316,7 +9330,6 @@ input BankUpdateManyMutationInput {
 }
 
 input FileCreateInput {
-  fileType: FileType!
   filesize: Float
   name: String!
   description: String!
@@ -9355,7 +9368,6 @@ input UserCreateOrConnectWithoutFilesCreatedInput {
 
 input FileCreateManyInput {
   id: Int
-  fileType: FileType!
   filesize: Float
   name: String!
   description: String!
@@ -9366,7 +9378,6 @@ input FileCreateManyInput {
 }
 
 input FileUpdateInput {
-  fileType: EnumFileTypeFieldUpdateOperationsInput
   filesize: FloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
@@ -9374,10 +9385,6 @@ input FileUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   createdBy: UserUpdateOneRequiredWithoutFilesCreatedNestedInput
-}
-
-input EnumFileTypeFieldUpdateOperationsInput {
-  set: FileType
 }
 
 input UserUpdateOneRequiredWithoutFilesCreatedNestedInput {
@@ -9416,7 +9423,6 @@ input UserUpdateToOneWithWhereWithoutFilesCreatedInput {
 }
 
 input FileUpdateManyMutationInput {
-  fileType: EnumFileTypeFieldUpdateOperationsInput
   filesize: FloatFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput

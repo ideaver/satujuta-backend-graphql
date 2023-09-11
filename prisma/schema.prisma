@@ -304,11 +304,6 @@ model Transaction {
   @@index([createdAt], name: "created_at")
 }
 
-enum TransactionType {
-  DEBIT
-  CREDIT
-}
-
 enum TransactionCategory {
   INVESTMENT
   INVESTMENT_RETURN
