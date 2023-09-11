@@ -3,6 +3,7 @@ import { WithdrawalRequestService } from './withdrawal-request.service';
 import { WithdrawalRequestResolver } from './withdrawal-request.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 import { WithdrawalRequestController } from './withdrawal-request.controller';
+import { AccountModule } from '../account/account.module';
 
 @Module({
   providers: [
@@ -11,6 +12,7 @@ import { WithdrawalRequestController } from './withdrawal-request.controller';
     WithdrawalRequestController,
     WithdrawalRequestService,
   ],
+  imports: [AccountModule],
   exports: [WithdrawalRequestController],
 })
 export class WithdrawalRequestModule {}

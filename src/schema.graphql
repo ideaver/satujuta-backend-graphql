@@ -439,6 +439,14 @@ type District {
   _count: DistrictCount!
 }
 
+type AggregateFaq {
+  _count: FaqCountAggregate
+  _avg: FaqAvgAggregate
+  _sum: FaqSumAggregate
+  _min: FaqMinAggregate
+  _max: FaqMaxAggregate
+}
+
 type FaqAvgAggregate {
   id: Float
 }
@@ -801,6 +809,14 @@ type Installment {
   invoice: Invoice!
 }
 
+type AggregateInvoice {
+  _count: InvoiceCountAggregate
+  _avg: InvoiceAvgAggregate
+  _sum: InvoiceSumAggregate
+  _min: InvoiceMinAggregate
+  _max: InvoiceMaxAggregate
+}
+
 type InvoiceAvgAggregate {
   id: Float
   adminFee: Float
@@ -1025,6 +1041,14 @@ type Order {
   _count: OrderCount!
 }
 
+type AggregateProgram {
+  _count: ProgramCountAggregate
+  _avg: ProgramAvgAggregate
+  _sum: ProgramSumAggregate
+  _min: ProgramMinAggregate
+  _max: ProgramMaxAggregate
+}
+
 type ProgramAvgAggregate {
   id: Float
   categoryId: Float
@@ -1094,6 +1118,14 @@ type Program {
   _count: ProgramCount!
 }
 
+type AggregateProgramCategory {
+  _count: ProgramCategoryCountAggregate
+  _avg: ProgramCategoryAvgAggregate
+  _sum: ProgramCategorySumAggregate
+  _min: ProgramCategoryMinAggregate
+  _max: ProgramCategoryMaxAggregate
+}
+
 type ProgramCategoryAvgAggregate {
   id: Float
 }
@@ -1135,6 +1167,14 @@ type ProgramCategory {
   updatedAt: DateTime!
   programs: [Program!]
   _count: ProgramCategoryCount!
+}
+
+type AggregateProject {
+  _count: ProjectCountAggregate
+  _avg: ProjectAvgAggregate
+  _sum: ProjectSumAggregate
+  _min: ProjectMinAggregate
+  _max: ProjectMaxAggregate
 }
 
 type ProjectAvgAggregate {
@@ -1392,6 +1432,14 @@ type RewardClaim {
   reward: Reward!
 }
 
+type AggregateSchool {
+  _count: SchoolCountAggregate
+  _avg: SchoolAvgAggregate
+  _sum: SchoolSumAggregate
+  _min: SchoolMinAggregate
+  _max: SchoolMaxAggregate
+}
+
 type SchoolAvgAggregate {
   id: Float
   addressId: Float
@@ -1440,6 +1488,14 @@ type School {
   address: Address!
   students: [User!]
   _count: SchoolCount!
+}
+
+type AggregateSession {
+  _count: SessionCountAggregate
+  _avg: SessionAvgAggregate
+  _sum: SessionSumAggregate
+  _min: SessionMinAggregate
+  _max: SessionMaxAggregate
 }
 
 type SessionAvgAggregate {
@@ -1492,6 +1548,14 @@ type Session {
   device: String!
   ipAddress: Float!
   user: User!
+}
+
+type AggregateShipping {
+  _count: ShippingCountAggregate
+  _avg: ShippingAvgAggregate
+  _sum: ShippingSumAggregate
+  _min: ShippingMinAggregate
+  _max: ShippingMaxAggregate
 }
 
 type ShippingAvgAggregate {
@@ -1986,6 +2050,14 @@ type UserNotification {
   user: User!
 }
 
+type AggregateWithdrawalRequest {
+  _count: WithdrawalRequestCountAggregate
+  _avg: WithdrawalRequestAvgAggregate
+  _sum: WithdrawalRequestSumAggregate
+  _min: WithdrawalRequestMinAggregate
+  _max: WithdrawalRequestMaxAggregate
+}
+
 type WithdrawalRequestAvgAggregate {
   id: Float
   amount: Float
@@ -2142,13 +2214,19 @@ type Query {
   transactionCount(where: TransactionWhereInput, orderBy: [TransactionOrderByWithRelationInput!], cursor: TransactionWhereUniqueInput, take: Int, skip: Int, distinct: [TransactionScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  invoiceFindMany(invoiceFindManyArgs: InvoiceFindManyArgs!): [Invoice!]
+  invoiceFindOne(where: InvoiceWhereUniqueInput!): Invoice
 
   """Deskripsinya ada disini loh"""
-  invoiceFindOne(invoiceFindUniqueArgs: InvoiceFindUniqueArgs!): Invoice
+  invoiceFindMany(where: InvoiceWhereInput, orderBy: [InvoiceOrderByWithRelationInput!], cursor: InvoiceWhereUniqueInput, take: Int, skip: Int, distinct: [InvoiceScalarFieldEnum!]): [Invoice!]
 
   """Deskripsinya ada disini loh"""
-  invoiceCount(invoiceFindManyArgs: InvoiceFindManyArgs): Int!
+  invoiceFindFirst(where: InvoiceWhereInput, orderBy: [InvoiceOrderByWithRelationInput!], cursor: InvoiceWhereUniqueInput, take: Int, skip: Int, distinct: [InvoiceScalarFieldEnum!]): Invoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceAggregate(where: InvoiceWhereInput, orderBy: [InvoiceOrderByWithRelationInput!], cursor: InvoiceWhereUniqueInput, take: Int, skip: Int, _count: InvoiceCountAggregateInput, _avg: InvoiceAvgAggregateInput, _sum: InvoiceSumAggregateInput, _min: InvoiceMinAggregateInput, _max: InvoiceMaxAggregateInput): AggregateInvoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceCount(where: InvoiceWhereInput, orderBy: [InvoiceOrderByWithRelationInput!], cursor: InvoiceWhereUniqueInput, take: Int, skip: Int, distinct: [InvoiceScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   accountFindOne(where: AccountWhereUniqueInput!): Account
@@ -2164,15 +2242,25 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   accountCount(where: AccountWhereInput, orderBy: [AccountOrderByWithRelationInput!], cursor: AccountWhereUniqueInput, take: Int, skip: Int, distinct: [AccountScalarFieldEnum!]): Float
+  getAccountTotalBalance(accountId: Float!): Float!
   userFindManyOrderByAccountBalance(userFindManyOrderByAccountBalanceArgs: UserFindManyOrderByAccountBalanceArgs!): [UserFindManyOrderByAccountBalance!]!
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
 
   """Deskripsinya ada disini loh"""
-  withdrawalRequestFindMany(withdrawalRequestFindManyArgs: WithdrawalRequestFindManyArgs): [WithdrawalRequest!]
+  withdrawalRequestFindOne(where: WithdrawalRequestWhereUniqueInput!): WithdrawalRequest
 
   """Deskripsinya ada disini loh"""
-  withdrawalRequestFindOne(withdrawalRequestFindUniqueArgs: WithdrawalRequestFindUniqueArgs!): WithdrawalRequest
+  withdrawalRequestFindMany(where: WithdrawalRequestWhereInput, orderBy: [WithdrawalRequestOrderByWithRelationInput!], cursor: WithdrawalRequestWhereUniqueInput, take: Int, skip: Int, distinct: [WithdrawalRequestScalarFieldEnum!]): [WithdrawalRequest!]
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestFindFirst(where: WithdrawalRequestWhereInput, orderBy: [WithdrawalRequestOrderByWithRelationInput!], cursor: WithdrawalRequestWhereUniqueInput, take: Int, skip: Int, distinct: [WithdrawalRequestScalarFieldEnum!]): WithdrawalRequest
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestAggregate(where: WithdrawalRequestWhereInput, orderBy: [WithdrawalRequestOrderByWithRelationInput!], cursor: WithdrawalRequestWhereUniqueInput, take: Int, skip: Int, _count: WithdrawalRequestCountAggregateInput, _avg: WithdrawalRequestAvgAggregateInput, _sum: WithdrawalRequestSumAggregateInput, _min: WithdrawalRequestMinAggregateInput, _max: WithdrawalRequestMaxAggregateInput): AggregateWithdrawalRequest
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestCount(where: WithdrawalRequestWhereInput, orderBy: [WithdrawalRequestOrderByWithRelationInput!], cursor: WithdrawalRequestWhereUniqueInput, take: Int, skip: Int, distinct: [WithdrawalRequestScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   bankFindOne(where: BankWhereUniqueInput!): Bank
@@ -2235,19 +2323,34 @@ type Query {
   hotelCount(where: HotelWhereInput, orderBy: [HotelOrderByWithRelationInput!], cursor: HotelWhereUniqueInput, take: Int, skip: Int, distinct: [HotelScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  programFindMany(programFindManyArgs: ProgramFindManyArgs!): [Program!]
+  programFindOne(where: ProgramWhereUniqueInput!): Program
 
   """Deskripsinya ada disini loh"""
-  programFindOne(programFindUniqueArgs: ProgramFindUniqueArgs!): Program
+  programFindMany(where: ProgramWhereInput, orderBy: [ProgramOrderByWithRelationInput!], cursor: ProgramWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramScalarFieldEnum!]): [Program!]
 
   """Deskripsinya ada disini loh"""
-  programCount(programFindManyArgs: ProgramFindManyArgs): Int!
+  programFindFirst(where: ProgramWhereInput, orderBy: [ProgramOrderByWithRelationInput!], cursor: ProgramWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramScalarFieldEnum!]): Program
 
   """Deskripsinya ada disini loh"""
-  programCategoryFindMany(programCategoryFindManyArgs: ProgramCategoryFindManyArgs!): [ProgramCategory!]
+  programAggregate(where: ProgramWhereInput, orderBy: [ProgramOrderByWithRelationInput!], cursor: ProgramWhereUniqueInput, take: Int, skip: Int, _count: ProgramCountAggregateInput, _avg: ProgramAvgAggregateInput, _sum: ProgramSumAggregateInput, _min: ProgramMinAggregateInput, _max: ProgramMaxAggregateInput): AggregateProgram
 
   """Deskripsinya ada disini loh"""
-  programCategoryFindOne(programCategoryFindUniqueArgs: ProgramCategoryFindUniqueArgs!): ProgramCategory
+  programCount(where: ProgramWhereInput, orderBy: [ProgramOrderByWithRelationInput!], cursor: ProgramWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
+  programCategoryFindOne(where: ProgramCategoryWhereUniqueInput!): ProgramCategory
+
+  """Deskripsinya ada disini loh"""
+  programCategoryFindMany(where: ProgramCategoryWhereInput, orderBy: [ProgramCategoryOrderByWithRelationInput!], cursor: ProgramCategoryWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramCategoryScalarFieldEnum!]): [ProgramCategory!]
+
+  """Deskripsinya ada disini loh"""
+  programCategoryFindFirst(where: ProgramCategoryWhereInput, orderBy: [ProgramCategoryOrderByWithRelationInput!], cursor: ProgramCategoryWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramCategoryScalarFieldEnum!]): ProgramCategory
+
+  """Deskripsinya ada disini loh"""
+  programCategoryAggregate(where: ProgramCategoryWhereInput, orderBy: [ProgramCategoryOrderByWithRelationInput!], cursor: ProgramCategoryWhereUniqueInput, take: Int, skip: Int, _count: ProgramCategoryCountAggregateInput, _avg: ProgramCategoryAvgAggregateInput, _sum: ProgramCategorySumAggregateInput, _min: ProgramCategoryMinAggregateInput, _max: ProgramCategoryMaxAggregateInput): AggregateProgramCategory
+
+  """Deskripsinya ada disini loh"""
+  programCategoryCount(where: ProgramCategoryWhereInput, orderBy: [ProgramCategoryOrderByWithRelationInput!], cursor: ProgramCategoryWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramCategoryScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   rewardFindOne(where: RewardWhereUniqueInput!): Reward
@@ -2265,22 +2368,49 @@ type Query {
   rewardCount(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  faqFindMany(faqFindManyArgs: FaqFindManyArgs!): [Faq!]
+  faqFindOne(where: FaqWhereUniqueInput!): Faq
 
   """Deskripsinya ada disini loh"""
-  faqFindOne(faqFindUniqueArgs: FaqFindUniqueArgs!): Faq
+  faqFindMany(where: FaqWhereInput, orderBy: [FaqOrderByWithRelationInput!], cursor: FaqWhereUniqueInput, take: Int, skip: Int, distinct: [FaqScalarFieldEnum!]): [Faq!]
 
   """Deskripsinya ada disini loh"""
-  projectFindMany(projectFindManyArgs: ProjectFindManyArgs!): [Project!]
+  faqFindFirst(where: FaqWhereInput, orderBy: [FaqOrderByWithRelationInput!], cursor: FaqWhereUniqueInput, take: Int, skip: Int, distinct: [FaqScalarFieldEnum!]): Faq
 
   """Deskripsinya ada disini loh"""
-  projectFindOne(projectFindUniqueArgs: ProjectFindUniqueArgs!): Project
+  faqAggregate(where: FaqWhereInput, orderBy: [FaqOrderByWithRelationInput!], cursor: FaqWhereUniqueInput, take: Int, skip: Int, _count: FaqCountAggregateInput, _avg: FaqAvgAggregateInput, _sum: FaqSumAggregateInput, _min: FaqMinAggregateInput, _max: FaqMaxAggregateInput): AggregateFaq
 
   """Deskripsinya ada disini loh"""
-  shippingFindMany(shippingFindManyArgs: ShippingFindManyArgs!): [Shipping!]
+  faqCount(where: FaqWhereInput, orderBy: [FaqOrderByWithRelationInput!], cursor: FaqWhereUniqueInput, take: Int, skip: Int, distinct: [FaqScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  shippingFindOne(shippingFindUniqueArgs: ShippingFindUniqueArgs!): Shipping
+  projectFindOne(where: ProjectWhereUniqueInput!): Project
+
+  """Deskripsinya ada disini loh"""
+  projectFindMany(where: ProjectWhereInput, orderBy: [ProjectOrderByWithRelationInput!], cursor: ProjectWhereUniqueInput, take: Int, skip: Int, distinct: [ProjectScalarFieldEnum!]): [Project!]
+
+  """Deskripsinya ada disini loh"""
+  projectFindFirst(where: ProjectWhereInput, orderBy: [ProjectOrderByWithRelationInput!], cursor: ProjectWhereUniqueInput, take: Int, skip: Int, distinct: [ProjectScalarFieldEnum!]): Project
+
+  """Deskripsinya ada disini loh"""
+  projectAggregate(where: ProjectWhereInput, orderBy: [ProjectOrderByWithRelationInput!], cursor: ProjectWhereUniqueInput, take: Int, skip: Int, _count: ProjectCountAggregateInput, _avg: ProjectAvgAggregateInput, _sum: ProjectSumAggregateInput, _min: ProjectMinAggregateInput, _max: ProjectMaxAggregateInput): AggregateProject
+
+  """Deskripsinya ada disini loh"""
+  projectCount(where: ProjectWhereInput, orderBy: [ProjectOrderByWithRelationInput!], cursor: ProjectWhereUniqueInput, take: Int, skip: Int, distinct: [ProjectScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
+  shippingFindOne(where: ShippingWhereUniqueInput!): Shipping
+
+  """Deskripsinya ada disini loh"""
+  shippingFindMany(where: ShippingWhereInput, orderBy: [ShippingOrderByWithRelationInput!], cursor: ShippingWhereUniqueInput, take: Int, skip: Int, distinct: [ShippingScalarFieldEnum!]): [Shipping!]
+
+  """Deskripsinya ada disini loh"""
+  shippingFindFirst(where: ShippingWhereInput, orderBy: [ShippingOrderByWithRelationInput!], cursor: ShippingWhereUniqueInput, take: Int, skip: Int, distinct: [ShippingScalarFieldEnum!]): Shipping
+
+  """Deskripsinya ada disini loh"""
+  shippingAggregate(where: ShippingWhereInput, orderBy: [ShippingOrderByWithRelationInput!], cursor: ShippingWhereUniqueInput, take: Int, skip: Int, _count: ShippingCountAggregateInput, _avg: ShippingAvgAggregateInput, _sum: ShippingSumAggregateInput, _min: ShippingMinAggregateInput, _max: ShippingMaxAggregateInput): AggregateShipping
+
+  """Deskripsinya ada disini loh"""
+  shippingCount(where: ShippingWhereInput, orderBy: [ShippingOrderByWithRelationInput!], cursor: ShippingWhereUniqueInput, take: Int, skip: Int, distinct: [ShippingScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   checkInFindOne(where: CheckInWhereUniqueInput!): CheckIn
@@ -2313,19 +2443,34 @@ type Query {
   userNotificationCount(where: UserNotificationWhereInput, orderBy: [UserNotificationOrderByWithRelationInput!], cursor: UserNotificationWhereUniqueInput, take: Int, skip: Int, distinct: [UserNotificationScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  sessionFindMany(sessionFindManyArgs: SessionFindManyArgs!): [Session!]
+  sessionFindOne(where: SessionWhereUniqueInput!): Session
 
   """Deskripsinya ada disini loh"""
-  sessionFindOne(sessionFindUniqueArgs: SessionFindUniqueArgs!): Session
+  sessionFindMany(where: SessionWhereInput, orderBy: [SessionOrderByWithRelationInput!], cursor: SessionWhereUniqueInput, take: Int, skip: Int, distinct: [SessionScalarFieldEnum!]): [Session!]
 
   """Deskripsinya ada disini loh"""
-  schoolFindMany(schoolFindManyArgs: SchoolFindManyArgs!): [School!]
+  sessionFindFirst(where: SessionWhereInput, orderBy: [SessionOrderByWithRelationInput!], cursor: SessionWhereUniqueInput, take: Int, skip: Int, distinct: [SessionScalarFieldEnum!]): Session
 
   """Deskripsinya ada disini loh"""
-  schoolFindOne(schoolFindUniqueArgs: SchoolFindUniqueArgs!): School
+  sessionAggregate(where: SessionWhereInput, orderBy: [SessionOrderByWithRelationInput!], cursor: SessionWhereUniqueInput, take: Int, skip: Int, _count: SessionCountAggregateInput, _avg: SessionAvgAggregateInput, _sum: SessionSumAggregateInput, _min: SessionMinAggregateInput, _max: SessionMaxAggregateInput): AggregateSession
 
   """Deskripsinya ada disini loh"""
-  schoolCount(schoolFindManyArgs: SchoolFindManyArgs): Int!
+  sessionCount(where: SessionWhereInput, orderBy: [SessionOrderByWithRelationInput!], cursor: SessionWhereUniqueInput, take: Int, skip: Int, distinct: [SessionScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
+  schoolFindOne(where: SchoolWhereUniqueInput!): School
+
+  """Deskripsinya ada disini loh"""
+  schoolFindMany(where: SchoolWhereInput, orderBy: [SchoolOrderByWithRelationInput!], cursor: SchoolWhereUniqueInput, take: Int, skip: Int, distinct: [SchoolScalarFieldEnum!]): [School!]
+
+  """Deskripsinya ada disini loh"""
+  schoolFindFirst(where: SchoolWhereInput, orderBy: [SchoolOrderByWithRelationInput!], cursor: SchoolWhereUniqueInput, take: Int, skip: Int, distinct: [SchoolScalarFieldEnum!]): School
+
+  """Deskripsinya ada disini loh"""
+  schoolAggregate(where: SchoolWhereInput, orderBy: [SchoolOrderByWithRelationInput!], cursor: SchoolWhereUniqueInput, take: Int, skip: Int, _count: SchoolCountAggregateInput, _avg: SchoolAvgAggregateInput, _sum: SchoolSumAggregateInput, _min: SchoolMinAggregateInput, _max: SchoolMaxAggregateInput): AggregateSchool
+
+  """Deskripsinya ada disini loh"""
+  schoolCount(where: SchoolWhereInput, orderBy: [SchoolOrderByWithRelationInput!], cursor: SchoolWhereUniqueInput, take: Int, skip: Int, distinct: [SchoolScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   addressFindOne(where: AddressWhereUniqueInput!): Address
@@ -2343,16 +2488,19 @@ type Query {
   addressCount(where: AddressWhereInput, orderBy: [AddressOrderByWithRelationInput!], cursor: AddressWhereUniqueInput, take: Int, skip: Int, distinct: [AddressScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
-  orderFindMany(orderFindManyArgs: OrderFindManyArgs!): [Order!]
+  orderFindOne(where: OrderWhereUniqueInput!): Order
 
   """Deskripsinya ada disini loh"""
-  orderFindOne(orderFindUniqueArgs: OrderFindUniqueArgs!): Order
+  orderFindMany(where: OrderWhereInput, orderBy: [OrderOrderByWithRelationInput!], cursor: OrderWhereUniqueInput, take: Int, skip: Int, distinct: [OrderScalarFieldEnum!]): [Order!]
 
   """Deskripsinya ada disini loh"""
-  orderCount(orderFindManyArgs: OrderFindManyArgs): Int!
+  orderFindFirst(where: OrderWhereInput, orderBy: [OrderOrderByWithRelationInput!], cursor: OrderWhereUniqueInput, take: Int, skip: Int, distinct: [OrderScalarFieldEnum!]): Order
 
   """Deskripsinya ada disini loh"""
-  orderAggregate(orderAggregateArgs: OrderAggregateArgs!): AggregateOrder!
+  orderAggregate(where: OrderWhereInput, orderBy: [OrderOrderByWithRelationInput!], cursor: OrderWhereUniqueInput, take: Int, skip: Int, _count: OrderCountAggregateInput, _avg: OrderAvgAggregateInput, _sum: OrderSumAggregateInput, _min: OrderMinAggregateInput, _max: OrderMaxAggregateInput): AggregateOrder
+
+  """Deskripsinya ada disini loh"""
+  orderCount(where: OrderWhereInput, orderBy: [OrderOrderByWithRelationInput!], cursor: OrderWhereUniqueInput, take: Int, skip: Int, distinct: [OrderScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   provinceFindOne(where: ProvinceWhereUniqueInput!): Province
@@ -3977,26 +4125,6 @@ input TransactionMaxAggregateInput {
   createdAt: Boolean
 }
 
-input InvoiceFindManyArgs {
-  where: InvoiceWhereInput
-  orderBy: [InvoiceOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [InvoiceScalarFieldEnum!]
-}
-
-enum InvoiceScalarFieldEnum {
-  id
-  adminFee
-  amount
-  uniqueCode
-  createdAt
-}
-
-input InvoiceFindUniqueArgs {
-  where: InvoiceWhereUniqueInput!
-}
-
 input InvoiceWhereUniqueInput {
   id: Int
   AND: [InvoiceWhereInput!]
@@ -4007,6 +4135,45 @@ input InvoiceWhereUniqueInput {
   Order: OrderNullableRelationFilter
   transactions: TransactionListRelationFilter
   Installments: InstallmentListRelationFilter
+}
+
+enum InvoiceScalarFieldEnum {
+  id
+  adminFee
+  amount
+  uniqueCode
+  createdAt
+}
+
+input InvoiceCountAggregateInput {
+  id: Boolean
+  adminFee: Boolean
+  amount: Boolean
+  _all: Boolean
+}
+
+input InvoiceAvgAggregateInput {
+  id: Boolean
+  adminFee: Boolean
+  amount: Boolean
+}
+
+input InvoiceSumAggregateInput {
+  id: Boolean
+  adminFee: Boolean
+  amount: Boolean
+}
+
+input InvoiceMinAggregateInput {
+  id: Boolean
+  adminFee: Boolean
+  amount: Boolean
+}
+
+input InvoiceMaxAggregateInput {
+  id: Boolean
+  adminFee: Boolean
+  amount: Boolean
 }
 
 input AccountWhereUniqueInput {
@@ -4085,30 +4252,6 @@ input AccountBalanceOfPlatformByCustomPeriod {
   period: Period!
 }
 
-input WithdrawalRequestFindManyArgs {
-  where: WithdrawalRequestWhereInput
-  orderBy: [WithdrawalRequestOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [WithdrawalRequestScalarFieldEnum!]
-}
-
-enum WithdrawalRequestScalarFieldEnum {
-  id
-  userId
-  amount
-  status
-  proofUrl
-  proofDescription
-  transactionId
-  createdAt
-  updatedAt
-}
-
-input WithdrawalRequestFindUniqueArgs {
-  where: WithdrawalRequestWhereUniqueInput!
-}
-
 input WithdrawalRequestWhereUniqueInput {
   id: Int
   AND: [WithdrawalRequestWhereInput!]
@@ -4124,6 +4267,67 @@ input WithdrawalRequestWhereUniqueInput {
   updatedAt: DateTimeFilter
   user: UserRelationFilter
   transaction: TransactionNullableRelationFilter
+}
+
+enum WithdrawalRequestScalarFieldEnum {
+  id
+  userId
+  amount
+  status
+  proofUrl
+  proofDescription
+  transactionId
+  createdAt
+  updatedAt
+}
+
+input WithdrawalRequestCountAggregateInput {
+  id: Boolean
+  userId: Boolean
+  amount: Boolean
+  status: Boolean
+  proofUrl: Boolean
+  proofDescription: Boolean
+  transactionId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input WithdrawalRequestAvgAggregateInput {
+  id: Boolean
+  amount: Boolean
+  transactionId: Boolean
+}
+
+input WithdrawalRequestSumAggregateInput {
+  id: Boolean
+  amount: Boolean
+  transactionId: Boolean
+}
+
+input WithdrawalRequestMinAggregateInput {
+  id: Boolean
+  userId: Boolean
+  amount: Boolean
+  status: Boolean
+  proofUrl: Boolean
+  proofDescription: Boolean
+  transactionId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input WithdrawalRequestMaxAggregateInput {
+  id: Boolean
+  userId: Boolean
+  amount: Boolean
+  status: Boolean
+  proofUrl: Boolean
+  proofDescription: Boolean
+  transactionId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input BankWhereUniqueInput {
@@ -4548,15 +4752,6 @@ input HotelMaxAggregateInput {
   updatedAt: Boolean
 }
 
-input ProgramFindManyArgs {
-  where: ProgramWhereInput
-  orderBy: [ProgramOrderByWithRelationInput!]
-  cursor: ProgramWhereUniqueInput
-  take: Int
-  skip: Int
-  distinct: [ProgramScalarFieldEnum!]
-}
-
 input ProgramWhereUniqueInput {
   id: Int
   AND: [ProgramWhereInput!]
@@ -4588,27 +4783,51 @@ enum ProgramScalarFieldEnum {
   updatedAt
 }
 
-input ProgramFindUniqueArgs {
-  where: ProgramWhereUniqueInput!
+input ProgramCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  startDate: Boolean
+  dueDate: Boolean
+  description: Boolean
+  createdById: Boolean
+  categoryId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
 }
 
-input ProgramCategoryFindManyArgs {
-  where: ProgramCategoryWhereInput
-  orderBy: [ProgramCategoryOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [ProgramCategoryScalarFieldEnum!]
+input ProgramAvgAggregateInput {
+  id: Boolean
+  categoryId: Boolean
 }
 
-enum ProgramCategoryScalarFieldEnum {
-  id
-  name
-  createdAt
-  updatedAt
+input ProgramSumAggregateInput {
+  id: Boolean
+  categoryId: Boolean
 }
 
-input ProgramCategoryFindUniqueArgs {
-  where: ProgramCategoryWhereUniqueInput!
+input ProgramMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  startDate: Boolean
+  dueDate: Boolean
+  description: Boolean
+  createdById: Boolean
+  categoryId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input ProgramMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  startDate: Boolean
+  dueDate: Boolean
+  description: Boolean
+  createdById: Boolean
+  categoryId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input ProgramCategoryWhereUniqueInput {
@@ -4620,6 +4839,43 @@ input ProgramCategoryWhereUniqueInput {
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   programs: ProgramListRelationFilter
+}
+
+enum ProgramCategoryScalarFieldEnum {
+  id
+  name
+  createdAt
+  updatedAt
+}
+
+input ProgramCategoryCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input ProgramCategoryAvgAggregateInput {
+  id: Boolean
+}
+
+input ProgramCategorySumAggregateInput {
+  id: Boolean
+}
+
+input ProgramCategoryMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input ProgramCategoryMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input RewardWhereUniqueInput {
@@ -4675,12 +4931,16 @@ input RewardMaxAggregateInput {
   description: Boolean
 }
 
-input FaqFindManyArgs {
-  where: FaqWhereInput
-  orderBy: [FaqOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [FaqScalarFieldEnum!]
+input FaqWhereUniqueInput {
+  id: Int
+  AND: [FaqWhereInput!]
+  OR: [FaqWhereInput!]
+  NOT: [FaqWhereInput!]
+  name: StringFilter
+  description: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  type: EnumFaqTypeFilter
 }
 
 input FaqWhereInput {
@@ -4727,50 +4987,40 @@ enum FaqScalarFieldEnum {
   type
 }
 
-input FaqFindUniqueArgs {
-  where: FaqWhereUniqueInput!
+input FaqCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  type: Boolean
+  _all: Boolean
 }
 
-input FaqWhereUniqueInput {
-  id: Int
-  AND: [FaqWhereInput!]
-  OR: [FaqWhereInput!]
-  NOT: [FaqWhereInput!]
-  name: StringFilter
-  description: StringFilter
-  createdAt: DateTimeFilter
-  updatedAt: DateTimeFilter
-  type: EnumFaqTypeFilter
+input FaqAvgAggregateInput {
+  id: Boolean
 }
 
-input ProjectFindManyArgs {
-  where: ProjectWhereInput
-  orderBy: [ProjectOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [ProjectScalarFieldEnum!]
+input FaqSumAggregateInput {
+  id: Boolean
 }
 
-enum ProjectScalarFieldEnum {
-  id
-  name
-  description
-  projectCategory
-  startDate
-  endDate
-  returnRate
-  goalAmount
-  maxGoalAmountVersion
-  minimumInvestment
-  maxInvestor
-  maxInvestorVersion
-  accountId
-  createdAt
-  updatedAt
+input FaqMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  type: Boolean
 }
 
-input ProjectFindUniqueArgs {
-  where: ProjectWhereUniqueInput!
+input FaqMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  type: Boolean
 }
 
 input ProjectWhereUniqueInput {
@@ -4797,12 +5047,114 @@ input ProjectWhereUniqueInput {
   account: AccountRelationFilter
 }
 
-input ShippingFindManyArgs {
-  where: ShippingWhereInput
-  orderBy: [ShippingOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [ShippingScalarFieldEnum!]
+enum ProjectScalarFieldEnum {
+  id
+  name
+  description
+  projectCategory
+  startDate
+  endDate
+  returnRate
+  goalAmount
+  maxGoalAmountVersion
+  minimumInvestment
+  maxInvestor
+  maxInvestorVersion
+  accountId
+  createdAt
+  updatedAt
+}
+
+input ProjectCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  projectCategory: Boolean
+  startDate: Boolean
+  endDate: Boolean
+  returnRate: Boolean
+  goalAmount: Boolean
+  maxGoalAmountVersion: Boolean
+  minimumInvestment: Boolean
+  maxInvestor: Boolean
+  maxInvestorVersion: Boolean
+  accountId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input ProjectAvgAggregateInput {
+  id: Boolean
+  returnRate: Boolean
+  goalAmount: Boolean
+  maxGoalAmountVersion: Boolean
+  minimumInvestment: Boolean
+  maxInvestor: Boolean
+  maxInvestorVersion: Boolean
+  accountId: Boolean
+}
+
+input ProjectSumAggregateInput {
+  id: Boolean
+  returnRate: Boolean
+  goalAmount: Boolean
+  maxGoalAmountVersion: Boolean
+  minimumInvestment: Boolean
+  maxInvestor: Boolean
+  maxInvestorVersion: Boolean
+  accountId: Boolean
+}
+
+input ProjectMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  projectCategory: Boolean
+  startDate: Boolean
+  endDate: Boolean
+  returnRate: Boolean
+  goalAmount: Boolean
+  maxGoalAmountVersion: Boolean
+  minimumInvestment: Boolean
+  maxInvestor: Boolean
+  maxInvestorVersion: Boolean
+  accountId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input ProjectMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  description: Boolean
+  projectCategory: Boolean
+  startDate: Boolean
+  endDate: Boolean
+  returnRate: Boolean
+  goalAmount: Boolean
+  maxGoalAmountVersion: Boolean
+  minimumInvestment: Boolean
+  maxInvestor: Boolean
+  maxInvestorVersion: Boolean
+  accountId: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input ShippingWhereUniqueInput {
+  id: Int
+  orderId: Int
+  AND: [ShippingWhereInput!]
+  OR: [ShippingWhereInput!]
+  NOT: [ShippingWhereInput!]
+  logisticName: StringFilter
+  deliveryDate: DateTimeNullableFilter
+  courier: StringNullableFilter
+  estimatedTime: StringNullableFilter
+  trackingNo: StringNullableFilter
+  address: AddressRelationFilter
+  order: OrderRelationFilter
 }
 
 enum ShippingScalarFieldEnum {
@@ -4819,23 +5171,45 @@ enum ShippingScalarFieldEnum {
   updatedAt
 }
 
-input ShippingFindUniqueArgs {
-  where: ShippingWhereUniqueInput!
+input ShippingCountAggregateInput {
+  id: Boolean
+  logisticName: Boolean
+  deliveryDate: Boolean
+  courier: Boolean
+  estimatedTime: Boolean
+  trackingNo: Boolean
+  orderId: Boolean
+  _all: Boolean
 }
 
-input ShippingWhereUniqueInput {
-  id: Int
-  orderId: Int
-  AND: [ShippingWhereInput!]
-  OR: [ShippingWhereInput!]
-  NOT: [ShippingWhereInput!]
-  logisticName: StringFilter
-  deliveryDate: DateTimeNullableFilter
-  courier: StringNullableFilter
-  estimatedTime: StringNullableFilter
-  trackingNo: StringNullableFilter
-  address: AddressRelationFilter
-  order: OrderRelationFilter
+input ShippingAvgAggregateInput {
+  id: Boolean
+  orderId: Boolean
+}
+
+input ShippingSumAggregateInput {
+  id: Boolean
+  orderId: Boolean
+}
+
+input ShippingMinAggregateInput {
+  id: Boolean
+  logisticName: Boolean
+  deliveryDate: Boolean
+  courier: Boolean
+  estimatedTime: Boolean
+  trackingNo: Boolean
+  orderId: Boolean
+}
+
+input ShippingMaxAggregateInput {
+  id: Boolean
+  logisticName: Boolean
+  deliveryDate: Boolean
+  courier: Boolean
+  estimatedTime: Boolean
+  trackingNo: Boolean
+  orderId: Boolean
 }
 
 input CheckInWhereUniqueInput {
@@ -5040,12 +5414,18 @@ input UserNotificationMaxAggregateInput {
   fcmToken: Boolean
 }
 
-input SessionFindManyArgs {
-  where: SessionWhereInput
-  orderBy: [SessionOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [SessionScalarFieldEnum!]
+input SessionWhereUniqueInput {
+  id: Int
+  token: String
+  AND: [SessionWhereInput!]
+  OR: [SessionWhereInput!]
+  NOT: [SessionWhereInput!]
+  expiresAt: DateTimeFilter
+  createdAt: DateTimeFilter
+  userId: StringFilter
+  device: StringFilter
+  ipAddress: FloatFilter
+  user: UserRelationFilter
 }
 
 input SessionWhereInput {
@@ -5083,42 +5463,45 @@ enum SessionScalarFieldEnum {
   ipAddress
 }
 
-input SessionFindUniqueArgs {
-  where: SessionWhereUniqueInput!
+input SessionCountAggregateInput {
+  id: Boolean
+  token: Boolean
+  expiresAt: Boolean
+  createdAt: Boolean
+  userId: Boolean
+  device: Boolean
+  ipAddress: Boolean
+  _all: Boolean
 }
 
-input SessionWhereUniqueInput {
-  id: Int
-  token: String
-  AND: [SessionWhereInput!]
-  OR: [SessionWhereInput!]
-  NOT: [SessionWhereInput!]
-  expiresAt: DateTimeFilter
-  createdAt: DateTimeFilter
-  userId: StringFilter
-  device: StringFilter
-  ipAddress: FloatFilter
-  user: UserRelationFilter
+input SessionAvgAggregateInput {
+  id: Boolean
+  ipAddress: Boolean
 }
 
-input SchoolFindManyArgs {
-  where: SchoolWhereInput
-  orderBy: [SchoolOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [SchoolScalarFieldEnum!]
+input SessionSumAggregateInput {
+  id: Boolean
+  ipAddress: Boolean
 }
 
-enum SchoolScalarFieldEnum {
-  id
-  name
-  addressId
-  createdAt
-  updatedAt
+input SessionMinAggregateInput {
+  id: Boolean
+  token: Boolean
+  expiresAt: Boolean
+  createdAt: Boolean
+  userId: Boolean
+  device: Boolean
+  ipAddress: Boolean
 }
 
-input SchoolFindUniqueArgs {
-  where: SchoolWhereUniqueInput!
+input SessionMaxAggregateInput {
+  id: Boolean
+  token: Boolean
+  expiresAt: Boolean
+  createdAt: Boolean
+  userId: Boolean
+  device: Boolean
+  ipAddress: Boolean
 }
 
 input SchoolWhereUniqueInput {
@@ -5131,6 +5514,44 @@ input SchoolWhereUniqueInput {
   updatedAt: DateTimeFilter
   address: AddressRelationFilter
   students: UserListRelationFilter
+}
+
+enum SchoolScalarFieldEnum {
+  id
+  name
+  addressId
+  createdAt
+  updatedAt
+}
+
+input SchoolCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+  _all: Boolean
+}
+
+input SchoolAvgAggregateInput {
+  id: Boolean
+}
+
+input SchoolSumAggregateInput {
+  id: Boolean
+}
+
+input SchoolMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
+}
+
+input SchoolMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  createdAt: Boolean
+  updatedAt: Boolean
 }
 
 input AddressWhereUniqueInput {
@@ -5192,30 +5613,6 @@ input AddressMaxAggregateInput {
   updatedAt: Boolean
 }
 
-input OrderFindManyArgs {
-  where: OrderWhereInput
-  orderBy: [OrderOrderByWithRelationInput!]
-  take: Int
-  skip: Int
-  distinct: [OrderScalarFieldEnum!]
-}
-
-enum OrderScalarFieldEnum {
-  id
-  status
-  orderById
-  shippingId
-  invoiceId
-  platformFee
-  total
-  createdAt
-  updatedAt
-}
-
-input OrderFindUniqueArgs {
-  where: OrderWhereUniqueInput!
-}
-
 input OrderWhereUniqueInput {
   id: Int
   orderById: String
@@ -5235,17 +5632,16 @@ input OrderWhereUniqueInput {
   invoice: InvoiceRelationFilter
 }
 
-input OrderAggregateArgs {
-  where: OrderWhereInput
-  orderBy: [OrderOrderByWithRelationInput!]
-  cursor: OrderWhereUniqueInput
-  take: Int
-  skip: Int
-  _count: OrderCountAggregateInput
-  _avg: OrderAvgAggregateInput
-  _sum: OrderSumAggregateInput
-  _min: OrderMinAggregateInput
-  _max: OrderMaxAggregateInput
+enum OrderScalarFieldEnum {
+  id
+  status
+  orderById
+  shippingId
+  invoiceId
+  platformFee
+  total
+  createdAt
+  updatedAt
 }
 
 input OrderCountAggregateInput {
@@ -5717,7 +6113,22 @@ type Mutation {
   transactionUpdateMany(data: TransactionUpdateManyMutationInput!, where: TransactionWhereInput): Transaction
 
   """Deskripsinya ada disini loh"""
-  invoiceUpdateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs!): Invoice!
+  invoiceCreateOne(data: InvoiceCreateInput!): Invoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceCreateMany(data: [InvoiceCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  invoiceUpdateOne(data: InvoiceUpdateInput!, where: InvoiceWhereUniqueInput!): Invoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceUpdateMany(data: InvoiceUpdateManyMutationInput!, where: InvoiceWhereInput): Invoice
+
+  """Deskripsinya ada disini loh"""
+  invoiceDelete(where: InvoiceWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  invoiceDeleteMany(where: InvoiceWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   accountCreateMany(data: [AccountCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
@@ -5726,15 +6137,22 @@ type Mutation {
   accountUpdateOne(data: AccountUpdateInput!, where: AccountWhereUniqueInput!): Account
 
   """Deskripsinya ada disini loh"""
-  withdrawalRequestCreateOne(withdrawalRequestCreateArgs: WithdrawalRequestCreateArgs!): WithdrawalRequest
+  withdrawalRequestCreateOne(data: WithdrawalRequestCreateInput!): WithdrawalRequest
 
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim withdrawalRequest, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  withdrawalRequestUpdateOne(withdrawalRequestUpdateOneArgs: WithdrawalRequestUpdateOneArgs!): WithdrawalRequest!
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestCreateMany(data: [WithdrawalRequestCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  withdrawalRequestRemove(withdrawalRequestId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestUpdateOne(data: WithdrawalRequestUpdateInput!, where: WithdrawalRequestWhereUniqueInput!): WithdrawalRequest
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestUpdateMany(data: WithdrawalRequestUpdateManyMutationInput!, where: WithdrawalRequestWhereInput): WithdrawalRequest
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestDelete(where: WithdrawalRequestWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  withdrawalRequestDeleteMany(where: WithdrawalRequestWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   bankCreateOne(data: BankCreateInput!): Bank
@@ -5792,22 +6210,40 @@ type Mutation {
   authLogin(loginArgs: LoginArgs!): LoginResponse
 
   """Deskripsinya ada disini loh"""
-  programCreateOne(programCreateArgs: ProgramCreateArgs!): Program
+  programCreateOne(data: ProgramCreateInput!): Program
 
   """Deskripsinya ada disini loh"""
-  programUpdateOne(programUpdateOneArgs: ProgramUpdateOneArgs!): Program!
-
-  """Datanya benar2 terhapus dari db"""
-  programRemove(programId: Float!): Boolean
+  programCreateMany(data: [ProgramCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
   """Deskripsinya ada disini loh"""
-  programCategoryCreateOne(programCategoryCreateArgs: ProgramCategoryCreateArgs!): ProgramCategory
+  programUpdateOne(data: ProgramUpdateInput!, where: ProgramWhereUniqueInput!): Program
 
   """Deskripsinya ada disini loh"""
-  programCategoryUpdateOne(programCategoryUpdateOneArgs: ProgramCategoryUpdateOneArgs!): ProgramCategory!
+  programUpdateMany(data: ProgramUpdateManyMutationInput!, where: ProgramWhereInput): Program
 
-  """Datanya benar2 terhapus dari db"""
-  programCategoryRemove(programCategoryId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  programDelete(where: ProgramWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  programDeleteMany(where: ProgramWhereInput): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  programCategoryCreateOne(data: ProgramCategoryCreateInput!): ProgramCategory
+
+  """Deskripsinya ada disini loh"""
+  programCategoryCreateMany(data: [ProgramCategoryCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  programCategoryUpdateOne(data: ProgramCategoryUpdateInput!, where: ProgramCategoryWhereUniqueInput!): ProgramCategory
+
+  """Deskripsinya ada disini loh"""
+  programCategoryUpdateMany(data: ProgramCategoryUpdateManyMutationInput!, where: ProgramCategoryWhereInput): ProgramCategory
+
+  """Deskripsinya ada disini loh"""
+  programCategoryDelete(where: ProgramCategoryWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  programCategoryDeleteMany(where: ProgramCategoryWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   rewardCreateOne(data: RewardCreateInput!): Reward
@@ -5828,24 +6264,49 @@ type Mutation {
   rewardDeleteMany(where: RewardWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
-  faqCreateOne(faqCreateArgs: FaqCreateArgs!): Faq
+  faqCreateOne(data: FaqCreateInput!): Faq
 
   """Deskripsinya ada disini loh"""
-  faqUpdateOne(faqUpdateOneArgs: FaqUpdateOneArgs!): Faq!
-
-  """Datanya benar2 terhapus dari db"""
-  faqRemove(faqId: Float!): Boolean
+  faqCreateMany(data: [FaqCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
   """Deskripsinya ada disini loh"""
-  projectCreateOne(projectCreateArgs: ProjectCreateArgs!): Project
+  faqUpdateOne(data: FaqUpdateInput!, where: FaqWhereUniqueInput!): Faq
 
-  """
-  Deskripsinya ada disini loh, Jika tentang mutasi klaim project, backend akan cek apakah saldo point user cukup untuk claim
-  """
-  projectUpdateOne(projectUpdateOneArgs: ProjectUpdateOneArgs!): Project!
+  """Deskripsinya ada disini loh"""
+  faqUpdateMany(data: FaqUpdateManyMutationInput!, where: FaqWhereInput): Faq
 
-  """Datanya benar2 terhapus dari db"""
-  projectRemove(projectId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  faqDelete(where: FaqWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  faqDeleteMany(where: FaqWhereInput): Boolean!
+
+  """Otomatis dibuatkan account untuk project ini"""
+  projectCreateOne(data: ProjectCreateInput!): Project
+
+  """Deskripsinya ada disini loh"""
+  projectUpdateOne(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project
+
+  """Deskripsinya ada disini loh"""
+  projectUpdateMany(data: ProjectUpdateManyMutationInput!, where: ProjectWhereInput): Project
+
+  """Deskripsinya ada disini loh"""
+  shippingCreateOne(data: ShippingCreateInput!): Shipping
+
+  """Deskripsinya ada disini loh"""
+  shippingCreateMany(data: [ShippingCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  shippingUpdateOne(data: ShippingUpdateInput!, where: ShippingWhereUniqueInput!): Shipping
+
+  """Deskripsinya ada disini loh"""
+  shippingUpdateMany(data: ShippingUpdateManyMutationInput!, where: ShippingWhereInput): Shipping
+
+  """Deskripsinya ada disini loh"""
+  shippingDelete(where: ShippingWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  shippingDeleteMany(where: ShippingWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   checkInCreateOne(data: CheckInCreateInput!): CheckIn
@@ -5872,13 +6333,22 @@ type Mutation {
   userNotificationUpdateMany(data: UserNotificationUpdateManyMutationInput!, where: UserNotificationWhereInput): UserNotification
 
   """Deskripsinya ada disini loh"""
-  schoolCreateOne(schoolCreateArgs: SchoolCreateArgs!): School
+  schoolCreateOne(data: SchoolCreateInput!): School
 
   """Deskripsinya ada disini loh"""
-  schoolUpdateOne(schoolUpdateOneArgs: SchoolUpdateOneArgs!): School!
+  schoolCreateMany(data: [SchoolCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
 
-  """Datanya benar2 terhapus dari db"""
-  schoolRemove(schoolId: Float!): Boolean
+  """Deskripsinya ada disini loh"""
+  schoolUpdateOne(data: SchoolUpdateInput!, where: SchoolWhereUniqueInput!): School
+
+  """Deskripsinya ada disini loh"""
+  schoolUpdateMany(data: SchoolUpdateManyMutationInput!, where: SchoolWhereInput): School
+
+  """Deskripsinya ada disini loh"""
+  schoolDelete(where: SchoolWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  schoolDeleteMany(where: SchoolWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   addressCreateOne(data: AddressCreateInput!): Address
@@ -5899,7 +6369,22 @@ type Mutation {
   addressDeleteMany(where: AddressWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
-  orderUpdateOne(orderUpdateOneArgs: OrderUpdateOneArgs!): Order!
+  orderCreateOne(data: OrderCreateInput!): Order
+
+  """Deskripsinya ada disini loh"""
+  orderCreateMany(data: [OrderCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  orderUpdateOne(data: OrderUpdateInput!, where: OrderWhereUniqueInput!): Order
+
+  """Deskripsinya ada disini loh"""
+  orderUpdateMany(data: OrderUpdateManyMutationInput!, where: OrderWhereInput): Order
+
+  """Deskripsinya ada disini loh"""
+  orderDelete(where: OrderWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  orderDeleteMany(where: OrderWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   cityCreateOne(data: CityCreateInput!): City
@@ -8526,12 +9011,26 @@ input TransactionUpdateManyMutationInput {
   transactionCategory: EnumTransactionCategoryFieldUpdateOperationsInput
 }
 
-input InvoiceUpdateOneArgs {
-  data: InvoiceUpdateInput!
-  where: InvoiceWhereUniqueInput!
+input InvoiceCreateInput {
+  adminFee: Float!
+  amount: Float!
+  Order: OrderCreateNestedOneWithoutInvoiceInput
+  transactions: TransactionCreateNestedManyWithoutInvoiceInput
+  Installments: InstallmentCreateNestedManyWithoutInvoiceInput
+}
+
+input InvoiceCreateManyInput {
+  id: Int
+  adminFee: Float!
+  amount: Float!
 }
 
 input InvoiceUpdateInput {
+  adminFee: FloatFieldUpdateOperationsInput
+  amount: FloatFieldUpdateOperationsInput
+}
+
+input InvoiceUpdateManyMutationInput {
   adminFee: FloatFieldUpdateOperationsInput
   amount: FloatFieldUpdateOperationsInput
 }
@@ -8768,21 +9267,24 @@ input TransactionUpdateManyWithWhereWithoutToAccountInput {
   data: TransactionUpdateManyMutationInput!
 }
 
-input WithdrawalRequestCreateArgs {
-  data: WithdrawalRequestCreateInput!
-}
-
 input WithdrawalRequestCreateInput {
   amount: Float!
   user: UserCreateNestedOneWithoutWithdrawalRequestInput!
 }
 
-input WithdrawalRequestUpdateOneArgs {
-  data: WithdrawalRequestUpdateInput!
-  where: WithdrawalRequestWhereUniqueInput!
+input WithdrawalRequestCreateManyInput {
+  id: Int
+  userId: String!
+  amount: Float!
 }
 
 input WithdrawalRequestUpdateInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  proofUrl: NullableStringFieldUpdateOperationsInput
+  proofDescription: NullableStringFieldUpdateOperationsInput
+}
+
+input WithdrawalRequestUpdateManyMutationInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   proofUrl: NullableStringFieldUpdateOperationsInput
   proofDescription: NullableStringFieldUpdateOperationsInput
@@ -8978,10 +9480,6 @@ input LoginArgs {
   password: String!
 }
 
-input ProgramCreateArgs {
-  data: ProgramCreateInput!
-}
-
 input ProgramCreateInput {
   name: String!
   startDate: DateTime!
@@ -8992,9 +9490,12 @@ input ProgramCreateInput {
   category: ProgramCategoryCreateNestedOneWithoutProgramsInput!
 }
 
-input ProgramUpdateOneArgs {
-  data: ProgramUpdateInput!
-  where: ProgramWhereUniqueInput!
+input ProgramCreateManyInput {
+  name: String!
+  startDate: DateTime!
+  dueDate: DateTime
+  description: String!
+  createdById: String!
 }
 
 input ProgramUpdateInput {
@@ -9008,10 +9509,6 @@ input ProgramUpdateInput {
   createdBy: UserUpdateOneRequiredWithoutProgramsCreatedNestedInput
   participant: UserUpdateManyWithoutProgramsParticipationNestedInput
   category: ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput
-}
-
-input ProgramCategoryCreateArgs {
-  data: ProgramCategoryCreateInput!
 }
 
 input ProgramCategoryCreateInput {
@@ -9053,9 +9550,9 @@ input ProgramCreateManyCategoryInput {
   createdById: String!
 }
 
-input ProgramCategoryUpdateOneArgs {
-  data: ProgramCategoryUpdateInput!
-  where: ProgramCategoryWhereUniqueInput!
+input ProgramCategoryCreateManyInput {
+  id: Int
+  name: String!
 }
 
 input ProgramCategoryUpdateInput {
@@ -9105,6 +9602,12 @@ input ProgramUpdateWithWhereUniqueWithoutCategoryInput {
 input ProgramUpdateManyWithWhereWithoutCategoryInput {
   where: ProgramScalarWhereInput!
   data: ProgramUpdateManyMutationInput!
+}
+
+input ProgramCategoryUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input RewardCreateInput {
@@ -9193,10 +9696,6 @@ input RewardUpdateManyMutationInput {
   description: StringFieldUpdateOperationsInput
 }
 
-input FaqCreateArgs {
-  data: FaqCreateInput!
-}
-
 input FaqCreateInput {
   name: String!
   description: String!
@@ -9205,9 +9704,13 @@ input FaqCreateInput {
   type: FaqType!
 }
 
-input FaqUpdateOneArgs {
-  data: FaqUpdateInput!
-  where: FaqWhereUniqueInput!
+input FaqCreateManyInput {
+  id: Int
+  name: String!
+  description: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  type: FaqType!
 }
 
 input FaqUpdateInput {
@@ -9222,8 +9725,12 @@ input EnumFaqTypeFieldUpdateOperationsInput {
   set: FaqType
 }
 
-input ProjectCreateArgs {
-  data: ProjectCreateInput!
+input FaqUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  type: EnumFaqTypeFieldUpdateOperationsInput
 }
 
 input ProjectCreateInput {
@@ -9241,11 +9748,6 @@ input ProjectCreateInput {
   images: ImagesCreateNestedManyWithoutProjectImageInput
 }
 
-input ProjectUpdateOneArgs {
-  data: ProjectUpdateInput!
-  where: ProjectWhereUniqueInput!
-}
-
 input ProjectUpdateInput {
   name: StringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
@@ -9259,6 +9761,57 @@ input ProjectUpdateInput {
   maxInvestor: IntFieldUpdateOperationsInput
   maxInvestorVersion: NullableIntFieldUpdateOperationsInput
   images: ImagesUpdateManyWithoutProjectImageNestedInput
+}
+
+input ProjectUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  projectCategory: EnumProjectCategoryFieldUpdateOperationsInput
+  startDate: DateTimeFieldUpdateOperationsInput
+  endDate: DateTimeFieldUpdateOperationsInput
+  returnRate: FloatFieldUpdateOperationsInput
+  goalAmount: FloatFieldUpdateOperationsInput
+  maxGoalAmountVersion: NullableIntFieldUpdateOperationsInput
+  minimumInvestment: FloatFieldUpdateOperationsInput
+  maxInvestor: IntFieldUpdateOperationsInput
+  maxInvestorVersion: NullableIntFieldUpdateOperationsInput
+}
+
+input ShippingCreateInput {
+  logisticName: String!
+  deliveryDate: DateTime
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  order: OrderCreateNestedOneWithoutShippingInput!
+}
+
+input ShippingCreateManyInput {
+  id: Int
+  logisticName: String!
+  deliveryDate: DateTime
+  courier: String
+  estimatedTime: String
+  trackingNo: String
+  orderId: Int!
+}
+
+input ShippingUpdateInput {
+  logisticName: StringFieldUpdateOperationsInput
+  deliveryDate: NullableDateTimeFieldUpdateOperationsInput
+  courier: NullableStringFieldUpdateOperationsInput
+  estimatedTime: NullableStringFieldUpdateOperationsInput
+  trackingNo: NullableStringFieldUpdateOperationsInput
+  address: AddressUpdateOneRequiredWithoutShippingNestedInput
+  order: OrderUpdateOneRequiredWithoutShippingNestedInput
+}
+
+input ShippingUpdateManyMutationInput {
+  logisticName: StringFieldUpdateOperationsInput
+  deliveryDate: NullableDateTimeFieldUpdateOperationsInput
+  courier: NullableStringFieldUpdateOperationsInput
+  estimatedTime: NullableStringFieldUpdateOperationsInput
+  trackingNo: NullableStringFieldUpdateOperationsInput
 }
 
 input CheckInCreateInput {
@@ -9369,23 +9922,22 @@ input UserNotificationUpdateManyMutationInput {
   fcmToken: NullableStringFieldUpdateOperationsInput
 }
 
-input SchoolCreateArgs {
-  data: SchoolCreateInput!
-}
-
 input SchoolCreateInput {
   name: String!
   address: AddressCreateNestedOneWithoutSchoolInput!
 }
 
-input SchoolUpdateOneArgs {
-  data: SchoolUpdateInput!
-  where: SchoolWhereUniqueInput!
+input SchoolCreateManyInput {
+  name: String!
 }
 
 input SchoolUpdateInput {
   name: StringFieldUpdateOperationsInput
   address: AddressUpdateOneRequiredWithoutSchoolNestedInput
+}
+
+input SchoolUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
 }
 
 input AddressCreateInput {
@@ -9415,9 +9967,29 @@ input AddressUpdateManyMutationInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input OrderUpdateOneArgs {
-  data: OrderUpdateInput!
-  where: OrderWhereUniqueInput!
+input OrderCreateInput {
+  status: TransactionStatus!
+  shippingId: Int
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+  orderBy: UserCreateNestedOneWithoutOrdersInput!
+  cart: CartCreateNestedManyWithoutOrderInput
+  shipping: ShippingCreateNestedOneWithoutOrderInput
+  invoice: InvoiceCreateNestedOneWithoutOrderInput!
+}
+
+input OrderCreateManyInput {
+  id: Int
+  status: TransactionStatus!
+  orderById: String!
+  shippingId: Int
+  invoiceId: Int!
+  platformFee: Float!
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 input OrderUpdateInput {
@@ -9431,6 +10003,15 @@ input OrderUpdateInput {
   cart: CartUpdateManyWithoutOrderNestedInput
   shipping: ShippingUpdateOneWithoutOrderNestedInput
   invoice: InvoiceUpdateOneRequiredWithoutOrderNestedInput
+}
+
+input OrderUpdateManyMutationInput {
+  status: EnumTransactionStatusFieldUpdateOperationsInput
+  shippingId: NullableIntFieldUpdateOperationsInput
+  platformFee: FloatFieldUpdateOperationsInput
+  total: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input CityCreateInput {
