@@ -1,12 +1,24 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { InvoiceCreateArgs } from './dto/invoice-create-one.args';
-import { InvoiceFindManyArgs } from './dto/invoice-find-many.args';
-import { InvoiceFindUniqueArgs } from './dto/invoice-find-one.args';
-import { InvoiceUpdateOneArgs } from './dto/invoice-update-one.args';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
-import { InvoiceController } from './invoice.controller';
-import { Invoice } from 'src/@generated';
 import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateInvoice,
+  CreateManyInvoiceArgs,
+  CreateOneInvoiceArgs,
+  DeleteManyInvoiceArgs,
+  DeleteOneInvoiceArgs,
+  FindFirstInvoiceArgs,
+  FindManyInvoiceArgs,
+  FindUniqueInvoiceArgs,
+  Invoice,
+  InvoiceAggregateArgs,
+  UpdateManyInvoiceArgs,
+  UpdateOneInvoiceArgs,
+} from 'src/@generated';
+import { InvoiceController } from './invoice.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface InvoiceSelect {
   select: Prisma.InvoiceSelect;
@@ -16,31 +28,30 @@ interface InvoiceSelect {
 export class InvoiceResolver {
   constructor(private readonly invoiceController: InvoiceController) {}
 
-  // @Mutation(() => Invoice, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // async invoiceCreateOne(
-  //   @Args('invoiceCreateArgs') invoiceCreateArgs: InvoiceCreateArgs,
-  //   @Relations() relations: InvoiceSelect,
-  // ): Promise<Invoice | void> {
-  //   //Auto implement prisma select from graphql query info
-  //   invoiceCreateArgs.select = relations.select;
-
-  //   return await this.invoiceController.createOne(invoiceCreateArgs);
-  // }
-
-  @Query(() => [Invoice], {
+  @Mutation(() => Invoice, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  invoiceFindMany(
-    @Args('invoiceFindManyArgs') invoiceFindManyArgs: InvoiceFindManyArgs,
+  async invoiceCreateOne(
+    @Args()
+    invoiceCreateArgs: CreateOneInvoiceArgs,
     @Relations() relations: InvoiceSelect,
+  ): Promise<Invoice | void> {
+    return await this.invoiceController.createOne({
+      ...invoiceCreateArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async invoiceCreateMany(
+    @Args()
+    createManyInvoiceArgs: CreateManyInvoiceArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    invoiceFindManyArgs.select = relations.select;
-    return this.invoiceController.findMany(invoiceFindManyArgs);
+    return await this.invoiceController.createMany(createManyInvoiceArgs);
   }
 
   @Query(() => Invoice, {
@@ -48,41 +59,106 @@ export class InvoiceResolver {
     description: 'Deskripsinya ada disini loh',
   })
   invoiceFindOne(
-    @Args('invoiceFindUniqueArgs')
-    invoiceFindUniqueArgs: InvoiceFindUniqueArgs,
+    @Args()
+    invoiceFindUniqueArgs: FindUniqueInvoiceArgs,
     @Relations() relations: InvoiceSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    invoiceFindUniqueArgs.select = relations.select;
-    return this.invoiceController.findOne(invoiceFindUniqueArgs);
+  ): Promise<Invoice | void> {
+    return this.invoiceController.findOne({
+      ...invoiceFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => Invoice, { description: 'Deskripsinya ada disini loh' })
-  invoiceUpdateOne(
-    @Args('invoiceUpdateOneArgs') invoiceUpdateOneArgs: InvoiceUpdateOneArgs,
+  @Query(() => [Invoice], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  invoiceFindMany(
+    @Args() invoiceFindManyArgs: FindManyInvoiceArgs,
     @Relations() relations: InvoiceSelect,
   ) {
-    invoiceUpdateOneArgs.select = relations.select;
-    return this.invoiceController.updateOne(invoiceUpdateOneArgs);
+    return this.invoiceController.findMany({
+      ...invoiceFindManyArgs,
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => Invoice, {
-  //   nullable: true,
-  //   description:
-  //     'Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas invoice akan terisi. select: { id: true, firstName: true, deletedAt: true }',
-  // })
-  // invoiceRemove(@Args('invoiceId') invoiceId: string) {
-  //   return this.invoiceController.remove(invoiceId);
-  // }
+  @Query(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  invoiceFindFirst(
+    @Args()
+    findFirstInvoiceArgs: FindFirstInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
+  ): Promise<Invoice | void> {
+    return this.invoiceController.findFirst({
+      ...findFirstInvoiceArgs,
+      select: relations.select,
+    });
+  }
 
-  @Query(() => Int, {
+  @Mutation(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async invoiceUpdateOne(
+    @Args() invoiceUpdateOneArgs: UpdateOneInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
+  ) {
+    return this.invoiceController.updateOne({
+      ...replaceNullWithUndefined(invoiceUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async invoiceUpdateMany(
+    @Args() updateManyInvoiceArgs: UpdateManyInvoiceArgs,
+  ) {
+    return this.invoiceController.updateMany(updateManyInvoiceArgs);
+  }
+
+  @Mutation(() => Boolean, {
     nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  invoiceCount(
-    @Args('invoiceFindManyArgs', { nullable: true })
-    invoiceFindManyArgs: InvoiceFindManyArgs,
+  async invoiceDelete(
+    @Args() deleteOneInvoiceArgs: DeleteOneInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
   ) {
-    return this.invoiceController.count(invoiceFindManyArgs);
+    return this.invoiceController.delete({
+      ...deleteOneInvoiceArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async invoiceDeleteMany(
+    @Args() deleteManyInvoiceArgs: DeleteManyInvoiceArgs,
+  ) {
+    return this.invoiceController.deleteMany(deleteManyInvoiceArgs);
+  }
+
+  @Query(() => AggregateInvoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  invoiceAggregate(@Args() invoiceAggregateArgs: InvoiceAggregateArgs) {
+    return this.invoiceController.aggregate(invoiceAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  invoiceCount(@Args() invoiceCountAggregateInput: FindManyInvoiceArgs) {
+    return this.invoiceController.count(invoiceCountAggregateInput);
   }
 }

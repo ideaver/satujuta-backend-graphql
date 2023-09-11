@@ -1,97 +1,99 @@
 import { Injectable } from '@nestjs/common';
-import { OrderCreateArgs } from './dto/order-create-one.args';
 import { PrismaService } from 'prisma/prisma.service';
-import { OrderFindManyArgs as OrderFindManyArgs } from './dto/order-find-many.args';
-import { OrderFindUniqueArgs } from './dto/order-find-one.args';
-import { OrderUpdateOneArgs } from './dto/order-update-one.args';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { FindManyOrderArgs, Order } from 'src/@generated';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class OrderService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(
-    orderCreateArgs: Prisma.OrderCreateArgs,
-  ): Promise<Order | void> {
-    return await this.prisma.order
-      .create(orderCreateArgs)
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(orderCreateArgs: Prisma.OrderCreateArgs) {
+    try {
+      return await this.prisma.order.create(orderCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findMany(orderFindManyArgs: OrderFindManyArgs) {
-    return this.prisma.order
-      .findMany(orderFindManyArgs)
-      .then((orders) => {
-        return orders;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(orderCreateManyArgs: Prisma.OrderCreateManyArgs) {
+    try {
+      return await this.prisma.order.createMany(orderCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(
-    orderFindUniqueArgs: OrderFindUniqueArgs,
-  ): Promise<Order | void> {
-    return await this.prisma.order
-      .findUnique(orderFindUniqueArgs)
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(orderFindUniqueArgs: Prisma.OrderFindUniqueArgs) {
+    try {
+      return await this.prisma.order.findUnique(orderFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(orderUpdateArgs: Prisma.OrderUpdateArgs): Promise<Order | void> {
-    return this.prisma.order
-      .update(orderUpdateArgs)
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(orderFindManyArgs: Prisma.OrderFindManyArgs) {
+    try {
+      return await this.prisma.order.findMany(orderFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(orderId: number) {
-    return await this.prisma.order
-      .delete({
-        where: { id: orderId },
-      })
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(orderFindFirstArgs: Prisma.OrderFindFirstArgs) {
+    try {
+      return await this.prisma.order.findFirst(orderFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async count(findManyOrderArgs: FindManyOrderArgs) {
-    return await this.prisma.order
-      .count(findManyOrderArgs)
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateOne(orderUpdateOneArgs: Prisma.OrderUpdateArgs) {
+    try {
+      return await this.prisma.order.update(orderUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(orderUpdateManyArgs: Prisma.OrderUpdateManyArgs) {
+    try {
+      return await this.prisma.order.updateMany(orderUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(orderDeleteArgs: Prisma.OrderDeleteArgs) {
+    try {
+      await this.prisma.order.delete(orderDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(orderDeleteManyArgs: Prisma.OrderDeleteManyArgs) {
+    try {
+      await this.prisma.order.deleteMany(orderDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
   async aggregate(orderAggregateArgs: Prisma.OrderAggregateArgs) {
-    return await this.prisma.order
-      .aggregate(orderAggregateArgs)
-      .then((order) => {
-        return order;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+    try {
+      return await this.prisma.order.aggregate(orderAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(orderCountArgs: Prisma.OrderCountArgs) {
+    try {
+      return await this.prisma.order.count(orderCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

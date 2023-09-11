@@ -1,12 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
-import { ProgramService } from './program.service';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Program } from 'src/@generated';
-import { ProgramCreateArgs } from './dto/program-create-one.args';
-import { ProgramFindManyArgs } from './dto/program-find-many.args';
-import { ProgramFindUniqueArgs } from './dto/program-find-one.args';
-import { ProgramUpdateOneArgs } from './dto/program-update-one.args';
+import {
+  AggregateProgram,
+  CreateManyProgramArgs,
+  CreateOneProgramArgs,
+  DeleteManyProgramArgs,
+  DeleteOneProgramArgs,
+  FindFirstProgramArgs,
+  FindManyProgramArgs,
+  FindUniqueProgramArgs,
+  Program,
+  ProgramAggregateArgs,
+  UpdateManyProgramArgs,
+  UpdateOneProgramArgs,
+} from 'src/@generated';
+import { ProgramController } from './program.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface ProgramSelect {
   select: Prisma.ProgramSelect;
@@ -14,31 +26,32 @@ interface ProgramSelect {
 
 @Resolver(() => Program)
 export class ProgramResolver {
-  constructor(private readonly programService: ProgramService) {}
+  constructor(private readonly programController: ProgramController) {}
 
   @Mutation(() => Program, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async programCreateOne(
-    @Args('programCreateArgs') programCreateArgs: ProgramCreateArgs,
+    @Args()
+    programCreateArgs: CreateOneProgramArgs,
     @Relations() relations: ProgramSelect,
   ): Promise<Program | void> {
-    programCreateArgs.select = relations.select;
-    return await this.programService.createOne(programCreateArgs);
+    return await this.programController.createOne({
+      ...programCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [Program], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  programFindMany(
-    @Args('programFindManyArgs') programFindManyArgs: ProgramFindManyArgs,
-    @Relations() relations: ProgramSelect,
+  async programCreateMany(
+    @Args()
+    createManyProgramArgs: CreateManyProgramArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    programFindManyArgs.select = relations.select;
-    return this.programService.findMany(programFindManyArgs);
+    return await this.programController.createMany(createManyProgramArgs);
   }
 
   @Query(() => Program, {
@@ -46,40 +59,106 @@ export class ProgramResolver {
     description: 'Deskripsinya ada disini loh',
   })
   programFindOne(
-    @Args('programFindUniqueArgs')
-    programFindUniqueArgs: ProgramFindUniqueArgs,
+    @Args()
+    programFindUniqueArgs: FindUniqueProgramArgs,
     @Relations() relations: ProgramSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    programFindUniqueArgs.select = relations.select;
-    return this.programService.findOne(programFindUniqueArgs);
+  ): Promise<Program | void> {
+    return this.programController.findOne({
+      ...programFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => Program, { description: 'Deskripsinya ada disini loh' })
-  programUpdateOne(
-    @Args('programUpdateOneArgs') programUpdateOneArgs: ProgramUpdateOneArgs,
+  @Query(() => [Program], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programFindMany(
+    @Args() programFindManyArgs: FindManyProgramArgs,
     @Relations() relations: ProgramSelect,
   ) {
-    programUpdateOneArgs.select = relations.select;
-    return this.programService.update(programUpdateOneArgs);
+    return this.programController.findMany({
+      ...programFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => Program, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programFindFirst(
+    @Args()
+    findFirstProgramArgs: FindFirstProgramArgs,
+    @Relations() relations: ProgramSelect,
+  ): Promise<Program | void> {
+    return this.programController.findFirst({
+      ...findFirstProgramArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Program, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async programUpdateOne(
+    @Args() programUpdateOneArgs: UpdateOneProgramArgs,
+    @Relations() relations: ProgramSelect,
+  ) {
+    return this.programController.updateOne({
+      ...replaceNullWithUndefined(programUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Program, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async programUpdateMany(
+    @Args() updateManyProgramArgs: UpdateManyProgramArgs,
+  ) {
+    return this.programController.updateMany(updateManyProgramArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
-  })
-  programRemove(@Args('programId') programId: number) {
-    return this.programService.remove(programId);
-  }
-
-  @Query(() => Int, {
     nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  programCount(
-    @Args('programFindManyArgs', { nullable: true })
-    programFindManyArgs: ProgramFindManyArgs,
+  async programDelete(
+    @Args() deleteOneProgramArgs: DeleteOneProgramArgs,
+    @Relations() relations: ProgramSelect,
   ) {
-    return this.programService.count(programFindManyArgs);
+    return this.programController.delete({
+      ...deleteOneProgramArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async programDeleteMany(
+    @Args() deleteManyProgramArgs: DeleteManyProgramArgs,
+  ) {
+    return this.programController.deleteMany(deleteManyProgramArgs);
+  }
+
+  @Query(() => AggregateProgram, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programAggregate(@Args() programAggregateArgs: ProgramAggregateArgs) {
+    return this.programController.aggregate(programAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  programCount(@Args() programCountAggregateInput: FindManyProgramArgs) {
+    return this.programController.count(programCountAggregateInput);
   }
 }

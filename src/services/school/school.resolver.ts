@@ -1,12 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info, Int } from '@nestjs/graphql';
-import { SchoolService } from './school.service';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { School } from 'src/@generated';
-import { SchoolCreateArgs } from './dto/school-create-one.args';
-import { SchoolFindManyArgs } from './dto/school-find-many.args';
-import { SchoolFindUniqueArgs } from './dto/school-find-one.args';
-import { SchoolUpdateOneArgs } from './dto/school-update-one.args';
+import {
+  AggregateSchool,
+  CreateManySchoolArgs,
+  CreateOneSchoolArgs,
+  DeleteManySchoolArgs,
+  DeleteOneSchoolArgs,
+  FindFirstSchoolArgs,
+  FindManySchoolArgs,
+  FindUniqueSchoolArgs,
+  School,
+  SchoolAggregateArgs,
+  UpdateManySchoolArgs,
+  UpdateOneSchoolArgs,
+} from 'src/@generated';
+import { SchoolController } from './school.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface SchoolSelect {
   select: Prisma.SchoolSelect;
@@ -14,31 +26,32 @@ interface SchoolSelect {
 
 @Resolver(() => School)
 export class SchoolResolver {
-  constructor(private readonly schoolService: SchoolService) {}
+  constructor(private readonly schoolController: SchoolController) {}
 
   @Mutation(() => School, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
   async schoolCreateOne(
-    @Args('schoolCreateArgs') schoolCreateArgs: SchoolCreateArgs,
+    @Args()
+    schoolCreateArgs: CreateOneSchoolArgs,
     @Relations() relations: SchoolSelect,
   ): Promise<School | void> {
-    schoolCreateArgs.select = relations.select;
-    return await this.schoolService.createOne(schoolCreateArgs);
+    return await this.schoolController.createOne({
+      ...schoolCreateArgs,
+      select: relations.select,
+    });
   }
 
-  @Query(() => [School], {
+  @Mutation(() => BatchPayload, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  schoolFindMany(
-    @Args('schoolFindManyArgs') schoolFindManyArgs: SchoolFindManyArgs,
-    @Relations() relations: SchoolSelect,
+  async schoolCreateMany(
+    @Args()
+    createManySchoolArgs: CreateManySchoolArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    schoolFindManyArgs.select = relations.select;
-    return this.schoolService.findMany(schoolFindManyArgs);
+    return await this.schoolController.createMany(createManySchoolArgs);
   }
 
   @Query(() => School, {
@@ -46,40 +59,102 @@ export class SchoolResolver {
     description: 'Deskripsinya ada disini loh',
   })
   schoolFindOne(
-    @Args('schoolFindUniqueArgs')
-    schoolFindUniqueArgs: SchoolFindUniqueArgs,
+    @Args()
+    schoolFindUniqueArgs: FindUniqueSchoolArgs,
     @Relations() relations: SchoolSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    schoolFindUniqueArgs.select = relations.select;
-    return this.schoolService.findOne(schoolFindUniqueArgs);
+  ): Promise<School | void> {
+    return this.schoolController.findOne({
+      ...schoolFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => School, { description: 'Deskripsinya ada disini loh' })
-  schoolUpdateOne(
-    @Args('schoolUpdateOneArgs') schoolUpdateOneArgs: SchoolUpdateOneArgs,
+  @Query(() => [School], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  schoolFindMany(
+    @Args() schoolFindManyArgs: FindManySchoolArgs,
     @Relations() relations: SchoolSelect,
   ) {
-    schoolUpdateOneArgs.select = relations.select;
-    return this.schoolService.update(schoolUpdateOneArgs);
+    return this.schoolController.findMany({
+      ...schoolFindManyArgs,
+      select: relations.select,
+    });
+  }
+
+  @Query(() => School, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  schoolFindFirst(
+    @Args()
+    findFirstSchoolArgs: FindFirstSchoolArgs,
+    @Relations() relations: SchoolSelect,
+  ): Promise<School | void> {
+    return this.schoolController.findFirst({
+      ...findFirstSchoolArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => School, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async schoolUpdateOne(
+    @Args() schoolUpdateOneArgs: UpdateOneSchoolArgs,
+    @Relations() relations: SchoolSelect,
+  ) {
+    return this.schoolController.updateOne({
+      ...replaceNullWithUndefined(schoolUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => School, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async schoolUpdateMany(@Args() updateManySchoolArgs: UpdateManySchoolArgs) {
+    return this.schoolController.updateMany(updateManySchoolArgs);
   }
 
   @Mutation(() => Boolean, {
-    nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
-  })
-  schoolRemove(@Args('schoolId') schoolId: number) {
-    return this.schoolService.remove(schoolId);
-  }
-
-  @Query(() => Int, {
     nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  schoolCount(
-    @Args('schoolFindManyArgs', { nullable: true })
-    schoolFindManyArgs: SchoolFindManyArgs,
+  async schoolDelete(
+    @Args() deleteOneSchoolArgs: DeleteOneSchoolArgs,
+    @Relations() relations: SchoolSelect,
   ) {
-    return this.schoolService.count(schoolFindManyArgs);
+    return this.schoolController.delete({
+      ...deleteOneSchoolArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async schoolDeleteMany(@Args() deleteManySchoolArgs: DeleteManySchoolArgs) {
+    return this.schoolController.deleteMany(deleteManySchoolArgs);
+  }
+
+  @Query(() => AggregateSchool, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  schoolAggregate(@Args() schoolAggregateArgs: SchoolAggregateArgs) {
+    return this.schoolController.aggregate(schoolAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  schoolCount(@Args() schoolCountAggregateInput: FindManySchoolArgs) {
+    return this.schoolController.count(schoolCountAggregateInput);
   }
 }

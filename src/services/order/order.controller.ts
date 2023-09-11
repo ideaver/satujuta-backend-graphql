@@ -1,52 +1,51 @@
+import { Injectable } from '@nestjs/common';
+import { Prisma, ShippingStatus } from '@prisma/client';
 import { OrderService } from './order.service';
-import { OrderCreateArgs } from './dto/order-create-one.args';
-import { OrderFindManyArgs } from './dto/order-find-many.args';
-import { OrderFindUniqueArgs } from './dto/order-find-one.args';
-import { OrderUpdateOneArgs } from './dto/order-update-one.args';
-import { Prisma, ShippingStatus, User } from '@prisma/client';
-import { Injectable, Logger } from '@nestjs/common';
-import { Order, OrderAggregateArgs } from 'src/@generated';
-import { UserService } from '../user/user.service';
+import { Order, User } from 'src/@generated';
+import { UserController } from '../user/user.controller';
 
 @Injectable()
 export class OrderController {
   constructor(
     private readonly orderService: OrderService,
-    private readonly userService: UserService,
+    private readonly userController: UserController,
   ) {}
-  private readonly logger = new Logger(OrderController.name);
 
-  async createOne(orderCreateArgs: OrderCreateArgs): Promise<Order | void> {
+  async createOne(orderCreateArgs: Prisma.OrderCreateArgs) {
     return await this.orderService.createOne(orderCreateArgs);
   }
 
-  findMany(orderFindManyArgs: OrderFindManyArgs) {
-    return this.orderService.findMany(orderFindManyArgs);
+  async createMany(orderCreateManyArgs: Prisma.OrderCreateManyArgs) {
+    return await this.orderService.createMany(orderCreateManyArgs);
   }
 
-  findOne(orderFindUniqueArgs: OrderFindUniqueArgs) {
-    return this.orderService.findOne(orderFindUniqueArgs);
+  async findOne(orderFindUniqueArgs: Prisma.OrderFindUniqueArgs) {
+    return await this.orderService.findOne(orderFindUniqueArgs);
   }
 
-  async updateOne(orderUpdateOneArgs: OrderUpdateOneArgs) {
-    let orderUpdateArgsPrisma: Prisma.OrderUpdateArgs = {
-      ...orderUpdateOneArgs,
-    };
+  async findMany(orderFindManyArgs: Prisma.OrderFindManyArgs) {
+    return await this.orderService.findMany(orderFindManyArgs);
+  }
 
+  async findFirst(orderFindFirstArgs: Prisma.OrderFindFirstArgs) {
+    return await this.orderService.findFirst(orderFindFirstArgs);
+  }
+
+  async updateOne(orderUpdateOneArgs: Prisma.OrderUpdateArgs) {
     //Set Shipping Status to DELIVERING
-    orderUpdateArgsPrisma.data.shipping.create.shippingStatus =
-      ShippingStatus.DELIVERING;
+    orderUpdateOneArgs.data.shipping.create.shippingStatus =
+      ShippingStatus.PROCESSING;
 
     let getUserId: string;
 
     //Set Shipping Address to User's Address
-    if (orderUpdateArgsPrisma.where.orderById) {
-      getUserId = orderUpdateArgsPrisma.where.orderById;
+    if (orderUpdateOneArgs.where.orderById) {
+      getUserId = orderUpdateOneArgs.where.orderById;
     } else {
       //Get User AddressId from orderId
       const getOrderById: void | Order = await this.orderService.findOne({
         where: {
-          id: orderUpdateArgsPrisma.where.id,
+          id: orderUpdateOneArgs.where.id,
         },
         select: { orderById: true },
       });
@@ -58,31 +57,39 @@ export class OrderController {
     }
 
     //Get User AddressId from userId
-    const getUserById: void | User = await this.userService.findOne({
+    const getUserById: User = await this.userController.findOne({
       where: { id: getUserId },
       select: { addressId: true },
     });
 
     //Set Shipping Address to User's Address
-    orderUpdateArgsPrisma.data.shipping.create.address = {
+    orderUpdateOneArgs.data.shipping.create.address = {
       connect: {
         id: getUserById ? getUserById.addressId : undefined,
       },
     };
 
-    // this.logger.log(orderUpdateArgsPrisma);
-    return this.orderService.update(orderUpdateArgsPrisma);
+    //Update Order
+    return await this.orderService.updateOne(orderUpdateOneArgs);
   }
 
-  remove(orderId: number) {
-    return this.orderService.remove(orderId);
+  async updateMany(orderUpdateManyArgs: Prisma.OrderUpdateManyArgs) {
+    return await this.orderService.updateMany(orderUpdateManyArgs);
   }
 
-  count(orderFindManyArgs: OrderFindManyArgs) {
-    return this.orderService.count(orderFindManyArgs);
+  async delete(orderDeleteArgs: Prisma.OrderDeleteArgs) {
+    return await this.orderService.delete(orderDeleteArgs);
   }
 
-  aggregate(orderAggregateArgs: OrderAggregateArgs) {
-    return this.orderService.aggregate(orderAggregateArgs);
+  async deleteMany(orderDeleteManyArgs: Prisma.OrderDeleteManyArgs) {
+    return await this.orderService.deleteMany(orderDeleteManyArgs);
+  }
+
+  async aggregate(orderAggregateArgs: Prisma.OrderAggregateArgs) {
+    return await this.orderService.aggregate(orderAggregateArgs);
+  }
+
+  async count(orderCountArgs: Prisma.OrderCountArgs) {
+    return await this.orderService.count(orderCountArgs);
   }
 }

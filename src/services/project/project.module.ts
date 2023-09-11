@@ -3,15 +3,16 @@ import { ProjectService } from './project.service';
 import { ProjectResolver } from './project.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProjectController } from './project.controller';
-import { UserService } from '../user/user.service';
+import { UserController } from '../user/user.controller';
 
 @Module({
   providers: [
     PrismaService,
-    UserService,
     ProjectResolver,
     ProjectController,
     ProjectService,
   ],
+  imports: [UserController],
+  exports: [ProjectController],
 })
 export class ProjectModule {}

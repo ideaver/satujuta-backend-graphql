@@ -1,13 +1,24 @@
-import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { Project } from 'src/@generated';
-import { ProjectCreateArgs } from './dto/project-create-one.args';
-import { ProjectFindManyArgs } from './dto/project-find-many.args';
-import { ProjectFindUniqueArgs } from './dto/project-find-one.args';
-import { ProjectUpdateOneArgs } from './dto/project-update-one.args';
+import {
+  AggregateProject,
+  CreateManyProjectArgs,
+  CreateOneProjectArgs,
+  DeleteManyProjectArgs,
+  DeleteOneProjectArgs,
+  FindFirstProjectArgs,
+  FindManyProjectArgs,
+  FindUniqueProjectArgs,
+  Project,
+  ProjectAggregateArgs,
+  UpdateManyProjectArgs,
+  UpdateOneProjectArgs,
+} from 'src/@generated';
 import { ProjectController } from './project.controller';
-import { Logger } from '@nestjs/common';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface ProjectSelect {
   select: Prisma.ProjectSelect;
@@ -16,17 +27,46 @@ interface ProjectSelect {
 @Resolver(() => Project)
 export class ProjectResolver {
   constructor(private readonly projectController: ProjectController) {}
-  private readonly logger = new Logger(ProjectResolver.name);
+
   @Mutation(() => Project, {
+    nullable: true,
+    description: 'Otomatis dibuatkan account untuk project ini',
+  })
+  async projectCreateOne(
+    @Args()
+    projectCreateArgs: CreateOneProjectArgs,
+    @Relations() relations: ProjectSelect,
+  ): Promise<Project | void> {
+    return await this.projectController.createOne({
+      ...projectCreateArgs,
+      select: relations.select,
+    });
+  }
+
+  // @Mutation(() => BatchPayload, {
+  //   nullable: true,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async projectCreateMany(
+  //   @Args()
+  //   createManyProjectArgs: CreateManyProjectArgs,
+  // ) {
+  //   return await this.projectController.createMany(createManyProjectArgs);
+  // }
+
+  @Query(() => Project, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  async projectCreateOne(
-    @Args('projectCreateArgs') projectCreateArgs: ProjectCreateArgs,
+  projectFindOne(
+    @Args()
+    projectFindUniqueArgs: FindUniqueProjectArgs,
     @Relations() relations: ProjectSelect,
   ): Promise<Project | void> {
-    projectCreateArgs.select = relations.select;
-    return await this.projectController.createOne(projectCreateArgs);
+    return this.projectController.findOne({
+      ...projectFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
   @Query(() => [Project], {
@@ -34,47 +74,91 @@ export class ProjectResolver {
     description: 'Deskripsinya ada disini loh',
   })
   projectFindMany(
-    @Args('projectFindManyArgs') projectFindManyArgs: ProjectFindManyArgs,
+    @Args() projectFindManyArgs: FindManyProjectArgs,
     @Relations() relations: ProjectSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    projectFindManyArgs.select = relations.select;
-    return this.projectController.findMany(projectFindManyArgs);
+    return this.projectController.findMany({
+      ...projectFindManyArgs,
+      select: relations.select,
+    });
   }
 
   @Query(() => Project, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  projectFindOne(
-    @Args('projectFindUniqueArgs')
-    projectFindUniqueArgs: ProjectFindUniqueArgs,
+  projectFindFirst(
+    @Args()
+    findFirstProjectArgs: FindFirstProjectArgs,
     @Relations() relations: ProjectSelect,
   ): Promise<Project | void> {
-    //Auto implement prisma select from graphql query info
-    projectFindUniqueArgs.select = relations.select;
-    return this.projectController.findOne(projectFindUniqueArgs);
+    return this.projectController.findFirst({
+      ...findFirstProjectArgs,
+      select: relations.select,
+    });
   }
 
   @Mutation(() => Project, {
-    description:
-      'Deskripsinya ada disini loh, Jika tentang mutasi klaim project, backend akan cek apakah saldo point user cukup untuk claim',
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
   async projectUpdateOne(
-    @Args('projectUpdateOneArgs') projectUpdateOneArgs: ProjectUpdateOneArgs,
+    @Args() projectUpdateOneArgs: UpdateOneProjectArgs,
     @Relations() relations: ProjectSelect,
   ) {
-    //Auto implement prisma select from graphql query info
-    projectUpdateOneArgs.select = relations.select;
-
-    return this.projectController.updateOne(projectUpdateOneArgs);
+    return this.projectController.updateOne({
+      ...replaceNullWithUndefined(projectUpdateOneArgs),
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => Boolean, {
+  @Mutation(() => Project, {
     nullable: true,
-    description: 'Datanya benar2 terhapus dari db',
+    description: 'Deskripsinya ada disini loh',
   })
-  projectRemove(@Args('projectId') projectId: number) {
-    return this.projectController.remove(projectId);
+  async projectUpdateMany(
+    @Args() updateManyProjectArgs: UpdateManyProjectArgs,
+  ) {
+    return this.projectController.updateMany(updateManyProjectArgs);
+  }
+
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async projectDelete(
+  //   @Args() deleteOneProjectArgs: DeleteOneProjectArgs,
+  //   @Relations() relations: ProjectSelect,
+  // ) {
+  //   return this.projectController.delete({
+  //     ...deleteOneProjectArgs,
+  //     select: relations.select,
+  //   });
+  // }
+
+  // @Mutation(() => Boolean, {
+  //   nullable: false,
+  //   description: 'Deskripsinya ada disini loh',
+  // })
+  // async projectDeleteMany(
+  //   @Args() deleteManyProjectArgs: DeleteManyProjectArgs,
+  // ) {
+  //   return this.projectController.deleteMany(deleteManyProjectArgs);
+  // }
+
+  @Query(() => AggregateProject, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  projectAggregate(@Args() projectAggregateArgs: ProjectAggregateArgs) {
+    return this.projectController.aggregate(projectAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  projectCount(@Args() projectCountAggregateInput: FindManyProjectArgs) {
+    return this.projectController.count(projectCountAggregateInput);
   }
 }

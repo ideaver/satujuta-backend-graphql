@@ -1,90 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import {
-  CreateOneProgramArgs,
-  FindManyProgramArgs,
-  Program,
-} from 'src/@generated';
-import { ProgramFindManyArgs } from './dto/program-find-many.args';
-import { ProgramFindUniqueArgs } from './dto/program-find-one.args';
-import { ProgramUpdateOneArgs } from './dto/program-update-one.args';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProgramService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(
-    programCreateArgs: CreateOneProgramArgs,
-  ): Promise<Program | void> {
-    return await this.prisma.program
-      .create(programCreateArgs)
-      .then((program) => {
-        return program;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(programCreateArgs: Prisma.ProgramCreateArgs) {
+    try {
+      return await this.prisma.program.create(programCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findMany(programFindManyArgs: ProgramFindManyArgs) {
-    return this.prisma.program
-      .findMany(programFindManyArgs)
-      .then((programs) => {
-        return programs;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(programCreateManyArgs: Prisma.ProgramCreateManyArgs) {
+    try {
+      return await this.prisma.program.createMany(programCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(
-    programFindUniqueArgs: ProgramFindUniqueArgs,
-  ): Promise<Program | void> {
-    return await this.prisma.program
-      .findUnique(programFindUniqueArgs)
-      .then((program) => {
-        return program;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(programFindUniqueArgs: Prisma.ProgramFindUniqueArgs) {
+    try {
+      return await this.prisma.program.findUnique(programFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(
-    programUpdateOneArgs: ProgramUpdateOneArgs,
-  ): Promise<Program | void> {
-    return this.prisma.program
-      .update(programUpdateOneArgs)
-      .then((program) => {
-        return program;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(programFindManyArgs: Prisma.ProgramFindManyArgs) {
+    try {
+      return await this.prisma.program.findMany(programFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(programId: number): Promise<boolean | void> {
-    return await this.prisma.program
-      .delete({
-        where: { id: programId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(programFindFirstArgs: Prisma.ProgramFindFirstArgs) {
+    try {
+      return await this.prisma.program.findFirst(programFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async count(findManyProgramArgs: FindManyProgramArgs) {
-    return await this.prisma.program
-      .count(findManyProgramArgs)
-      .then((program) => {
-        return program;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateOne(programUpdateOneArgs: Prisma.ProgramUpdateArgs) {
+    try {
+      return await this.prisma.program.update(programUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(programUpdateManyArgs: Prisma.ProgramUpdateManyArgs) {
+    try {
+      return await this.prisma.program.updateMany(programUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(programDeleteArgs: Prisma.ProgramDeleteArgs) {
+    try {
+      await this.prisma.program.delete(programDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(programDeleteManyArgs: Prisma.ProgramDeleteManyArgs) {
+    try {
+      await this.prisma.program.deleteMany(programDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(programAggregateArgs: Prisma.ProgramAggregateArgs) {
+    try {
+      return await this.prisma.program.aggregate(programAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(programCountArgs: Prisma.ProgramCountArgs) {
+    try {
+      return await this.prisma.program.count(programCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

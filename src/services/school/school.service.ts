@@ -1,90 +1,99 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import {
-  CreateOneSchoolArgs,
-  FindManySchoolArgs,
-  School,
-} from 'src/@generated';
-import { SchoolFindManyArgs } from './dto/school-find-many.args';
-import { SchoolFindUniqueArgs } from './dto/school-find-one.args';
-import { SchoolUpdateOneArgs } from './dto/school-update-one.args';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class SchoolService {
   constructor(private prisma: PrismaService) {}
 
-  async createOne(
-    schoolCreateArgs: CreateOneSchoolArgs,
-  ): Promise<School | void> {
-    return await this.prisma.school
-      .create(schoolCreateArgs)
-      .then((school) => {
-        return school;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createOne(schoolCreateArgs: Prisma.SchoolCreateArgs) {
+    try {
+      return await this.prisma.school.create(schoolCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findMany(schoolFindManyArgs: SchoolFindManyArgs) {
-    return this.prisma.school
-      .findMany(schoolFindManyArgs)
-      .then((schools) => {
-        return schools;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async createMany(schoolCreateManyArgs: Prisma.SchoolCreateManyArgs) {
+    try {
+      return await this.prisma.school.createMany(schoolCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async findOne(
-    schoolFindUniqueArgs: SchoolFindUniqueArgs,
-  ): Promise<School | void> {
-    return await this.prisma.school
-      .findUnique(schoolFindUniqueArgs)
-      .then((school) => {
-        return school;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findOne(schoolFindUniqueArgs: Prisma.SchoolFindUniqueArgs) {
+    try {
+      return await this.prisma.school.findUnique(schoolFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async update(
-    schoolUpdateOneArgs: SchoolUpdateOneArgs,
-  ): Promise<School | void> {
-    return this.prisma.school
-      .update(schoolUpdateOneArgs)
-      .then((school) => {
-        return school;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findMany(schoolFindManyArgs: Prisma.SchoolFindManyArgs) {
+    try {
+      return await this.prisma.school.findMany(schoolFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async remove(schoolId: number): Promise<boolean | void> {
-    return await this.prisma.school
-      .delete({
-        where: { id: schoolId },
-      })
-      .then(() => {
-        return true;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async findFirst(schoolFindFirstArgs: Prisma.SchoolFindFirstArgs) {
+    try {
+      return await this.prisma.school.findFirst(schoolFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 
-  async count(findManySchoolArgs: FindManySchoolArgs): Promise<number | void> {
-    return await this.prisma.school
-      .count(findManySchoolArgs)
-      .then((count) => {
-        return count;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
-      });
+  async updateOne(schoolUpdateOneArgs: Prisma.SchoolUpdateArgs) {
+    try {
+      return await this.prisma.school.update(schoolUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async updateMany(schoolUpdateManyArgs: Prisma.SchoolUpdateManyArgs) {
+    try {
+      return await this.prisma.school.updateMany(schoolUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async delete(schoolDeleteArgs: Prisma.SchoolDeleteArgs) {
+    try {
+      await this.prisma.school.delete(schoolDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async deleteMany(schoolDeleteManyArgs: Prisma.SchoolDeleteManyArgs) {
+    try {
+      await this.prisma.school.deleteMany(schoolDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async aggregate(schoolAggregateArgs: Prisma.SchoolAggregateArgs) {
+    try {
+      return await this.prisma.school.aggregate(schoolAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
+  }
+
+  async count(schoolCountArgs: Prisma.SchoolCountArgs) {
+    try {
+      return await this.prisma.school.count(schoolCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
+    }
   }
 }

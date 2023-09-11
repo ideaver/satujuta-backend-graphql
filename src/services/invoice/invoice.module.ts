@@ -8,9 +8,9 @@ import { InvoiceController } from './invoice.controller';
   providers: [
     PrismaService,
     InvoiceResolver,
-    InvoiceService,
     InvoiceController,
+    InvoiceService,
   ],
-  exports: [InvoiceService],
+  exports: [InvoiceController],
 })
 export class InvoiceModule {}

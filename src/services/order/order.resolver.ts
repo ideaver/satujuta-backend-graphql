@@ -1,14 +1,24 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { OrderCreateArgs } from './dto/order-create-one.args';
-import { OrderFindManyArgs } from './dto/order-find-many.args';
-import { OrderFindUniqueArgs } from './dto/order-find-one.args';
-import { OrderUpdateOneArgs } from './dto/order-update-one.args';
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
-import { generateRandomReferralCode } from 'src/utils/generate-random.function';
+import {
+  AggregateOrder,
+  CreateManyOrderArgs,
+  CreateOneOrderArgs,
+  DeleteManyOrderArgs,
+  DeleteOneOrderArgs,
+  FindFirstOrderArgs,
+  FindManyOrderArgs,
+  FindUniqueOrderArgs,
+  Order,
+  OrderAggregateArgs,
+  UpdateManyOrderArgs,
+  UpdateOneOrderArgs,
+} from 'src/@generated';
 import { OrderController } from './order.controller';
-import { AggregateOrder, Order } from 'src/@generated';
-import { OrderAggregateArgs } from './dto/order-aggregate.args';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
 interface OrderSelect {
   select: Prisma.OrderSelect;
@@ -18,31 +28,30 @@ interface OrderSelect {
 export class OrderResolver {
   constructor(private readonly orderController: OrderController) {}
 
-  // @Mutation(() => Order, {
-  //   nullable: true,
-  //   description: 'Deskripsinya ada disini loh',
-  // })
-  // async orderCreateOne(
-  //   @Args('orderCreateArgs') orderCreateArgs: OrderCreateArgs,
-  //   @Relations() relations: OrderSelect,
-  // ): Promise<Order | void> {
-  //   //Auto implement prisma select from graphql query info
-  //   orderCreateArgs.select = relations.select;
-
-  //   return await this.orderController.createOne(orderCreateArgs);
-  // }
-
-  @Query(() => [Order], {
+  @Mutation(() => Order, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  orderFindMany(
-    @Args('orderFindManyArgs') orderFindManyArgs: OrderFindManyArgs,
+  async orderCreateOne(
+    @Args()
+    orderCreateArgs: CreateOneOrderArgs,
     @Relations() relations: OrderSelect,
+  ): Promise<Order | void> {
+    return await this.orderController.createOne({
+      ...orderCreateArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async orderCreateMany(
+    @Args()
+    createManyOrderArgs: CreateManyOrderArgs,
   ) {
-    //Auto implement prisma select from graphql query info
-    orderFindManyArgs.select = relations.select;
-    return this.orderController.findMany(orderFindManyArgs);
+    return await this.orderController.createMany(createManyOrderArgs);
   }
 
   @Query(() => Order, {
@@ -50,52 +59,102 @@ export class OrderResolver {
     description: 'Deskripsinya ada disini loh',
   })
   orderFindOne(
-    @Args('orderFindUniqueArgs')
-    orderFindUniqueArgs: OrderFindUniqueArgs,
+    @Args()
+    orderFindUniqueArgs: FindUniqueOrderArgs,
     @Relations() relations: OrderSelect,
-  ) {
-    //Auto implement prisma select from graphql query info
-    orderFindUniqueArgs.select = relations.select;
-    return this.orderController.findOne(orderFindUniqueArgs);
+  ): Promise<Order | void> {
+    return this.orderController.findOne({
+      ...orderFindUniqueArgs,
+      select: relations.select,
+    });
   }
 
-  @Mutation(() => Order, { description: 'Deskripsinya ada disini loh' })
-  orderUpdateOne(
-    @Args('orderUpdateOneArgs') orderUpdateOneArgs: OrderUpdateOneArgs,
+  @Query(() => [Order], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  orderFindMany(
+    @Args() orderFindManyArgs: FindManyOrderArgs,
     @Relations() relations: OrderSelect,
   ) {
-    orderUpdateOneArgs.select = relations.select;
-    return this.orderController.updateOne(orderUpdateOneArgs);
+    return this.orderController.findMany({
+      ...orderFindManyArgs,
+      select: relations.select,
+    });
   }
 
-  // @Mutation(() => Order, {
-  //   nullable: true,
-  //   description:
-  //     'Hanya berupa softdelete, artinya semua data tetap ada di database. field deleteAt pada entitas order akan terisi. select: { id: true, firstName: true, deletedAt: true }',
-  // })
-  // orderRemove(@Args('orderId') orderId: string) {
-  //   return this.orderController.remove(orderId);
-  // }
+  @Query(() => Order, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  orderFindFirst(
+    @Args()
+    findFirstOrderArgs: FindFirstOrderArgs,
+    @Relations() relations: OrderSelect,
+  ): Promise<Order | void> {
+    return this.orderController.findFirst({
+      ...findFirstOrderArgs,
+      select: relations.select,
+    });
+  }
 
-  @Query(() => Int, {
+  @Mutation(() => Order, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async orderUpdateOne(
+    @Args() orderUpdateOneArgs: UpdateOneOrderArgs,
+    @Relations() relations: OrderSelect,
+  ) {
+    return this.orderController.updateOne({
+      ...replaceNullWithUndefined(orderUpdateOneArgs),
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Order, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async orderUpdateMany(@Args() updateManyOrderArgs: UpdateManyOrderArgs) {
+    return this.orderController.updateMany(updateManyOrderArgs);
+  }
+
+  @Mutation(() => Boolean, {
     nullable: false,
     description: 'Deskripsinya ada disini loh',
   })
-  orderCount(
-    @Args('orderFindManyArgs', { nullable: true })
-    orderFindManyArgs: OrderFindManyArgs,
+  async orderDelete(
+    @Args() deleteOneOrderArgs: DeleteOneOrderArgs,
+    @Relations() relations: OrderSelect,
   ) {
-    return this.orderController.count(orderFindManyArgs);
+    return this.orderController.delete({
+      ...deleteOneOrderArgs,
+      select: relations.select,
+    });
+  }
+
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async orderDeleteMany(@Args() deleteManyOrderArgs: DeleteManyOrderArgs) {
+    return this.orderController.deleteMany(deleteManyOrderArgs);
   }
 
   @Query(() => AggregateOrder, {
-    nullable: false,
+    nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  orderAggregate(
-    @Args('orderAggregateArgs', { nullable: false })
-    orderAggregateArgs: OrderAggregateArgs,
-  ) {
+  orderAggregate(@Args() orderAggregateArgs: OrderAggregateArgs) {
     return this.orderController.aggregate(orderAggregateArgs);
+  }
+
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  orderCount(@Args() orderCountAggregateInput: FindManyOrderArgs) {
+    return this.orderController.count(orderCountAggregateInput);
   }
 }

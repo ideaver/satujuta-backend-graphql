@@ -1,44 +1,52 @@
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { InvoiceService } from './invoice.service';
-import { InvoiceCreateArgs } from './dto/invoice-create-one.args';
-import { InvoiceFindManyArgs } from './dto/invoice-find-many.args';
-import { InvoiceFindUniqueArgs } from './dto/invoice-find-one.args';
-import { InvoiceUpdateOneArgs } from './dto/invoice-update-one.args';
-import { Prisma, ShippingStatus, User } from '@prisma/client';
-import { Injectable, Logger } from '@nestjs/common';
-import { Invoice } from 'src/@generated';
 
 @Injectable()
 export class InvoiceController {
   constructor(private readonly invoiceService: InvoiceService) {}
-  private readonly logger = new Logger(InvoiceController.name);
 
-  async createOne(
-    invoiceCreateArgs: InvoiceCreateArgs,
-  ): Promise<Invoice | void> {
+  async createOne(invoiceCreateArgs: Prisma.InvoiceCreateArgs) {
     return await this.invoiceService.createOne(invoiceCreateArgs);
   }
 
-  findMany(invoiceFindManyArgs: InvoiceFindManyArgs) {
-    return this.invoiceService.findMany(invoiceFindManyArgs);
+  async createMany(invoiceCreateManyArgs: Prisma.InvoiceCreateManyArgs) {
+    return await this.invoiceService.createMany(invoiceCreateManyArgs);
   }
 
-  findOne(invoiceFindUniqueArgs: InvoiceFindUniqueArgs) {
-    return this.invoiceService.findOne(invoiceFindUniqueArgs);
+  async findOne(invoiceFindUniqueArgs: Prisma.InvoiceFindUniqueArgs) {
+    return await this.invoiceService.findOne(invoiceFindUniqueArgs);
   }
 
-  async updateOne(invoiceUpdateOneArgs: InvoiceUpdateOneArgs) {
-    let invoiceUpdateArgsPrisma: Prisma.InvoiceUpdateArgs = {
-      ...invoiceUpdateOneArgs,
-    };
-
-    return this.invoiceService.update(invoiceUpdateArgsPrisma);
+  async findMany(invoiceFindManyArgs: Prisma.InvoiceFindManyArgs) {
+    return await this.invoiceService.findMany(invoiceFindManyArgs);
   }
 
-  remove(invoiceId: number) {
-    return this.invoiceService.remove(invoiceId);
+  async findFirst(invoiceFindFirstArgs: Prisma.InvoiceFindFirstArgs) {
+    return await this.invoiceService.findFirst(invoiceFindFirstArgs);
   }
 
-  count(invoiceFindManyArgs: InvoiceFindManyArgs) {
-    return this.invoiceService.count(invoiceFindManyArgs);
+  async updateOne(invoiceUpdateOneArgs: Prisma.InvoiceUpdateArgs) {
+    return await this.invoiceService.updateOne(invoiceUpdateOneArgs);
+  }
+
+  async updateMany(invoiceUpdateManyArgs: Prisma.InvoiceUpdateManyArgs) {
+    return await this.invoiceService.updateMany(invoiceUpdateManyArgs);
+  }
+
+  async delete(invoiceDeleteArgs: Prisma.InvoiceDeleteArgs) {
+    return await this.invoiceService.delete(invoiceDeleteArgs);
+  }
+
+  async deleteMany(invoiceDeleteManyArgs: Prisma.InvoiceDeleteManyArgs) {
+    return await this.invoiceService.deleteMany(invoiceDeleteManyArgs);
+  }
+
+  async aggregate(invoiceAggregateArgs: Prisma.InvoiceAggregateArgs) {
+    return await this.invoiceService.aggregate(invoiceAggregateArgs);
+  }
+
+  async count(invoiceCountArgs: Prisma.InvoiceCountArgs) {
+    return await this.invoiceService.count(invoiceCountArgs);
   }
 }

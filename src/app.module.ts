@@ -37,7 +37,7 @@ import { ConfigsModule } from './config/config.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UploaderModule } from './services/uploader/uploader.module';
 import { UploaderProcessor } from './queues/uploader.queue';
-import { SchedulerService } from './services/scheduler/scheduler.service';
+import { SchedulerService } from './scheduler/scheduler.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { CartModule } from './services/cart/cart.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
