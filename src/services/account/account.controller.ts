@@ -321,9 +321,15 @@ export class AccountController {
   ) {
     const res = await this.getAccountIdOfUserPointFromUserId(userId);
     return await this.transactionController.findMany({
+      skip: skip,
+      take: take,
       where: {
-        fromAccountId: { equals: res.id },
+        OR: [
+          { fromAccountId: { equals: res.id } },
+          { toAccountId: { equals: res.id } },
+        ],
       },
+      orderBy: { createdAt: 'desc' },
     });
   }
 
