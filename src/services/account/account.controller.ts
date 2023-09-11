@@ -313,6 +313,20 @@ export class AccountController {
     return res;
   }
 
+  //get all transaction of user point
+  async transactionFindManyByUserPointFromUserId(
+    userId: string,
+    skip: number,
+    take: number,
+  ) {
+    const res = await this.getAccountIdOfUserPointFromUserId(userId);
+    return await this.transactionController.findMany({
+      where: {
+        fromAccountId: { equals: res.id },
+      },
+    });
+  }
+
   //get account balance of user point
   async getAccountBalanceOfUserPointFromUserId(userId: string) {
     const res = await this.getAccountIdOfUserPointFromUserId(userId);

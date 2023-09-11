@@ -217,4 +217,18 @@ export class AccountResolver {
       userId,
     );
   }
+
+  @Query(() => Float)
+  async transactionFindManyByUserPointFromUserId(
+    @Args('userId')
+    userId: string,
+    @Args('skip') skip: number,
+    @Args('take') take: number,
+  ): Promise<number> {
+    return await this.accountController.transactionFindManyByUserPointFromUserId(
+      userId,
+      skip,
+      take,
+    );
+  }
 }
