@@ -42,6 +42,7 @@ import { CartModule } from './services/cart/cart.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { SchedulerModule } from './scheduler/scheduler.module';
 import { ImagesModule } from './services/images/images.module';
+import { PaymentGatewayModule } from './services/payment-gateway/payment-gateway.module';
 
 @Module({
   imports: [
@@ -101,6 +102,7 @@ import { ImagesModule } from './services/images/images.module';
     RewardClaimModule,
     WithdrawalRequestModule,
     ImagesModule,
+    PaymentGatewayModule,
   ],
   controllers: [],
   providers: [PrismaService, UploaderProcessor, SchedulerService],

@@ -88,4 +88,52 @@ export const errorCodes: Record<number, string> = {
     'Ukuran file tidak boleh lebih dari 10 mb untuk gambar, MP4 100 mb, PDF 30 mb',
   170005: 'File tidak didukung',
   170006: 'Gagal membersihkan file di storage yang tidak terpakai',
+
+  //Payment Gateway
+  7999: 'Undefined error',
+  71001: 'The related attribute should not be empty',
+  71002: `Value for the related attribute is considered not clean. Things that considered as not clean is html tag and ?, #, $, ' (single quote), " (double quote), and ; character`,
+  71020: 'The related attribute can only contain number',
+  71021: 'Transfer amount are less than the minimum amount (Rp10.000)',
+  71022: 'Transfer amount are more than the maximum amount',
+  71024: 'Max char for the related attribute exceeded',
+  71025: 'Invalid bank account number or possibly a virtual account number',
+  71026:
+    'The recipient bank account is suspected with fraud. You can’t send money to this account',
+  71027: 'The account number is closed',
+  71032: 'Pagination should be a number more than 0',
+  71033: 'Invalid bank code',
+  71034: 'Country is invalid. Please see available country code',
+  71035: 'Your balance is insufficient for doing this transaction',
+  71038:
+    'Country/city code is not valid. The difference with 1037 code is: 1037 will occur if the attribute only allows country code while this code will occur if the attribute allows country or city code.',
+  71039: 'Date format is invalid',
+  71040: 'Date is invalid',
+  71041: 'Attribute is invalid',
+  71043: 'Bill title param is required when creating bill',
+  71070: 'Max Beneficiary Email 20',
+  71071: 'Invalid Beneficiary Email value',
+  71072: 'Disbursement ID not found',
+  71073: 'Disbursement Idempotency Key not found',
+  71074: 'Daily limit transaction exceeded',
+  71080:
+    'You have reached the maximum limit of active transactions. Please complete your previous transactions.',
+  71088: 'The beneficiary bank is in severe disturbance',
+  71089: `The account number is Flip’s. You can’t send money to Flip account`,
+  71090: 'Agent KYC status is not approved',
+  71091: 'Agent status is not active',
+  71092: 'Agent is not allowed to update',
+  71093:
+    'Cannot process transaction because bank is in cut off time. Try again later',
+  71094:
+    'The sent request/transaction is marked as stale request (more than 1 minute than the server time)',
+  71095: 'X-TIMESTAMP format is invalid. It should follow the ISO8601 format',
+  72001:
+    'The related attribute should contain [at least or at most] [number] of characters',
+  72002: 'The related attribute is duplicated',
+  72003:
+    'The related attribute is considered not clean. Only letters (a-z), numbers (0-9), spaces ( ), periods (.), commas (,), apostrophes (‘), and dashes (-) are allowed',
+  72004: 'The related attribute contains non-alphanumeric characters',
+  72005:
+    'Transfer amount are less than the minimum amount set by the respective Bank',
 };

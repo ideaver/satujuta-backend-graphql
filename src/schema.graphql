@@ -2158,6 +2158,39 @@ type CityFindManyUser {
   userCount: Int!
 }
 
+type Disbursement {
+  id: Int!
+  user_id: Int!
+  amount: Int!
+  status: String!
+  reason: String!
+  timestamp: String!
+  bank_code: String!
+  account_number: String!
+  recipient_name: String!
+  sender_bank: String
+  remark: String!
+  receipt: String!
+  time_served: String!
+  bundle_id: Int!
+  company_id: Int!
+  recipient_city: Int!
+  created_from: String!
+  direction: String!
+  sender: String
+  fee: Int!
+  beneficiary_email: String!
+  idempotency_key: String!
+}
+
+type GetAllDisbursement {
+  total_data: Int!
+  data_per_page: Int!
+  total_page: Int!
+  page: Int!
+  data: [Disbursement!]!
+}
+
 type Query {
   """Deskripsinya ada disini loh"""
   imagesFindOne(where: ImagesWhereUniqueInput!): Images
@@ -2596,6 +2629,15 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   rewardClaimCount(where: RewardClaimWhereInput, orderBy: [RewardClaimOrderByWithRelationInput!], cursor: RewardClaimWhereUniqueInput, take: Int, skip: Int, distinct: [RewardClaimScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
+  getAllDisbursement(getAllDisbursementArgs: GetAllDisbursementArgs!): GetAllDisbursement
+
+  """Deskripsinya ada disini loh"""
+  getDisbursementById(getDisbursementById: GetDisbursementById!): Disbursement
+
+  """Deskripsinya ada disini loh"""
+  getDisbursementByIdempotencyKey(getDisbursementByIdempotencyKey: GetDisbursementByIdempotencyKey!): Disbursement
 }
 
 input ImagesWhereUniqueInput {
@@ -6067,6 +6109,29 @@ input RewardClaimMaxAggregateInput {
   createdAt: Boolean
 }
 
+input GetAllDisbursementArgs {
+  """The pagination of the result. Default value is 20."""
+  pagination: Int
+
+  """The page number of the result to be viewed."""
+  page: Int
+
+  """
+  Sort the result by the attribute. Use the attribute name (e.g sort=id) to sort in ascending order or dash+attribute name (e.g sort=-id) to sort in descending order.
+  """
+  sort: String
+}
+
+input GetDisbursementById {
+  """The id of the disbursement."""
+  id: Int!
+}
+
+input GetDisbursementByIdempotencyKey {
+  """The idempotency key of the disbursement."""
+  idempotency_key: String!
+}
+
 type Mutation {
   authPasswordReset(email: String!): String!
 
@@ -6455,6 +6520,7 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   rewardClaimDeleteMany(where: RewardClaimWhereInput): Boolean!
+  createDisbursement(createDisbursementArgs: CreateDisbursementArgs!): Disbursement!
 }
 
 input UserCreateInput {
@@ -10371,4 +10437,15 @@ input RewardClaimUpdateInput {
 
 input RewardClaimUpdateManyMutationInput {
   processedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CreateDisbursementArgs {
+  """The account number of the recipient."""
+  account_number: String!
+
+  """Bank code of the recipient bank."""
+  bank_code: String!
+
+  """The amount of money to be disbursed"""
+  amount: Int!
 }
