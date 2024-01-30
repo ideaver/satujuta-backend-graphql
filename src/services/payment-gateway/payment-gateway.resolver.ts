@@ -1,16 +1,16 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { PaymentGatewayService } from './payment-gateway.service';
 import { GetAllDisbursementArgs } from './dto/get-all-disbursement.args';
-import {
-  Disbursement,
-  GetAllDisbursement,
-} from './entities/get-all-disbursement.entity';
+import { GetAllDisbursement } from './entities/get-all-disbursement.entity';
 import { CreateDisbursementArgs } from './dto/create-disbursement.args';
-import { GetDisbursementById } from './dto/get-disbursement-by-id.args';
-import { GetDisbursementByIdempotencyKey } from './dto/get-disbursement-by-idempotency-key.args';
+import { GetDisbursementByIdArgs } from './dto/get-disbursement-by-id.args';
+import { GetDisbursementByIdempotencyKeyArgs } from './dto/get-disbursement-by-idempotency-key.args';
 import { GetBalance } from './entities/get-balance.entity';
 import { GetBankInfo } from './entities/get-bank-info.entity';
 import { IsMaintenance } from './entities/is-maintenance.entity';
+import { BankAccountInquiry } from './entities/bank-account-inquiry.entity';
+import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
+import { Disbursement } from 'src/@generated';
 
 @Resolver(() => Disbursement)
 export class PaymentGatewayResolver {
@@ -44,10 +44,11 @@ export class PaymentGatewayResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async getDisbursementById(
-    @Args('getDisbursementById') getDisbursementById: GetDisbursementById,
+    @Args('getDisbursementByIdArgs')
+    getDisbursementByIdArgs: GetDisbursementByIdArgs,
   ) {
     return await this.paymentGatewayService.getDisbursementById(
-      getDisbursementById,
+      getDisbursementByIdArgs,
     );
   }
 
@@ -56,11 +57,11 @@ export class PaymentGatewayResolver {
     description: 'Deskripsinya ada disini loh',
   })
   async getDisbursementByIdempotencyKey(
-    @Args('getDisbursementByIdempotencyKey')
-    getDisbursementByIdempotencyKey: GetDisbursementByIdempotencyKey,
+    @Args('getDisbursementByIdempotencyKeyArgs')
+    getDisbursementByIdempotencyKeyArgs: GetDisbursementByIdempotencyKeyArgs,
   ) {
     return await this.paymentGatewayService.getDisbursementByIdempotencyKey(
-      getDisbursementByIdempotencyKey,
+      getDisbursementByIdempotencyKeyArgs,
     );
   }
 
@@ -86,5 +87,18 @@ export class PaymentGatewayResolver {
   })
   async isMaintenance() {
     return await this.paymentGatewayService.isMaintenance();
+  }
+
+  @Query(() => BankAccountInquiry, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async bankAccountInquiry(
+    @Args('bankAccountInquiryArgs')
+    bankAccountInquiryArgs: BankAccountInquiryArgs,
+  ) {
+    return await this.paymentGatewayService.bankAccountInquiry(
+      bankAccountInquiryArgs,
+    );
   }
 }

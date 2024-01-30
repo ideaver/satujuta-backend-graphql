@@ -3,8 +3,9 @@ import { GetAllDisbursementArgs } from './dto/get-all-disbursement.args';
 import axios from 'axios';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { CreateDisbursementArgs } from './dto/create-disbursement.args';
-import { GetDisbursementById } from './dto/get-disbursement-by-id.args';
-import { GetDisbursementByIdempotencyKey } from './dto/get-disbursement-by-idempotency-key.args';
+import { GetDisbursementByIdArgs } from './dto/get-disbursement-by-id.args';
+import { GetDisbursementByIdempotencyKeyArgs } from './dto/get-disbursement-by-idempotency-key.args';
+import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
 
 @Injectable()
 export class PaymentGatewayService {
@@ -112,10 +113,10 @@ export class PaymentGatewayService {
     }
   }
 
-  async getDisbursementById(getDisbursementById: GetDisbursementById) {
-    this.logger.log(getDisbursementById);
+  async getDisbursementById(getDisbursementByIdArgs: GetDisbursementByIdArgs) {
+    this.logger.log(getDisbursementByIdArgs);
     try {
-      const { id } = getDisbursementById;
+      const { id } = getDisbursementByIdArgs;
 
       const response = await axios.get(
         `${this.base_url_v3}/get-disbursement?id=${id}`,
@@ -155,11 +156,11 @@ export class PaymentGatewayService {
   }
 
   async getDisbursementByIdempotencyKey(
-    getDisbursementByIdempotencyKey: GetDisbursementByIdempotencyKey,
+    getDisbursementByIdempotencyKeyArgs: GetDisbursementByIdempotencyKeyArgs,
   ) {
-    this.logger.log(getDisbursementByIdempotencyKey);
+    this.logger.log(getDisbursementByIdempotencyKeyArgs);
     try {
-      const { idempotency_key } = getDisbursementByIdempotencyKey;
+      const { idempotency_key } = getDisbursementByIdempotencyKeyArgs;
 
       const response = await axios.get(
         `${this.base_url_v3}/get-disbursement?idempotency-key=${idempotency_key}`,
@@ -274,6 +275,53 @@ export class PaymentGatewayService {
     try {
       const response = await axios.get(
         `${this.base_url_v2}/general/maintenance`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          auth: {
+            username: `${this.apiKey}`,
+            password: `${this.password}`,
+          },
+        },
+      );
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      this.logger.log(error);
+      if (error.response && error.response.data) {
+        const errMessage = error.response.data.errors
+          .map((err) => err.message)
+          .join(', ');
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
+
+        throw new IGraphQLError({
+          code: newCode,
+          err: errMessage,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async bankAccountInquiry(bankAccountInquiryArgs: BankAccountInquiryArgs) {
+    this.logger.log(bankAccountInquiryArgs);
+    try {
+      const { account_number, bank_code, inquiry_key } = bankAccountInquiryArgs;
+
+      const response = await axios.post(
+        `${this.base_url_v2}/disbursement/bank-account-inquiry`,
+        {
+          account_number,
+          bank_code,
+          inquiry_key,
+        },
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
