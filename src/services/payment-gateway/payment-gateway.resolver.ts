@@ -8,6 +8,9 @@ import {
 import { CreateDisbursementArgs } from './dto/create-disbursement.args';
 import { GetDisbursementById } from './dto/get-disbursement-by-id.args';
 import { GetDisbursementByIdempotencyKey } from './dto/get-disbursement-by-idempotency-key.args';
+import { GetBalance } from './entities/get-balance.entity';
+import { GetBankInfo } from './entities/get-bank-info.entity';
+import { IsMaintenance } from './entities/is-maintenance.entity';
 
 @Resolver(() => Disbursement)
 export class PaymentGatewayResolver {
@@ -59,5 +62,29 @@ export class PaymentGatewayResolver {
     return await this.paymentGatewayService.getDisbursementByIdempotencyKey(
       getDisbursementByIdempotencyKey,
     );
+  }
+
+  @Query(() => GetBalance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async getBalance() {
+    return await this.paymentGatewayService.getBalance();
+  }
+
+  @Query(() => [GetBankInfo], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async getBankInfo() {
+    return await this.paymentGatewayService.getBankInfo();
+  }
+
+  @Query(() => IsMaintenance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async isMaintenance() {
+    return await this.paymentGatewayService.isMaintenance();
   }
 }
