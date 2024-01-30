@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { PaymentGatewayService } from './payment-gateway.service';
 import { GetAllDisbursementArgs } from './dto/get-all-disbursement.args';
 import {
@@ -14,11 +14,11 @@ export class PaymentGatewayResolver {
   constructor(private readonly paymentGatewayService: PaymentGatewayService) {}
 
   @Mutation(() => Disbursement)
-  createDisbursement(
+  async createDisbursement(
     @Args('createDisbursementArgs')
     createDisbursementArgs: CreateDisbursementArgs,
   ) {
-    return this.paymentGatewayService.createDisbursement(
+    return await this.paymentGatewayService.createDisbursement(
       createDisbursementArgs,
     );
   }
@@ -27,11 +27,11 @@ export class PaymentGatewayResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  getAllDisbursement(
+  async getAllDisbursement(
     @Args('getAllDisbursementArgs')
     getAllDisbursementArgs: GetAllDisbursementArgs,
   ) {
-    return this.paymentGatewayService.getAllDisbursement(
+    return await this.paymentGatewayService.getAllDisbursement(
       getAllDisbursementArgs,
     );
   }
@@ -40,21 +40,23 @@ export class PaymentGatewayResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  getDisbursementById(
+  async getDisbursementById(
     @Args('getDisbursementById') getDisbursementById: GetDisbursementById,
   ) {
-    return this.paymentGatewayService.getDisbursementById(getDisbursementById);
+    return await this.paymentGatewayService.getDisbursementById(
+      getDisbursementById,
+    );
   }
 
   @Query(() => Disbursement, {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
-  getDisbursementByIdempotencyKey(
+  async getDisbursementByIdempotencyKey(
     @Args('getDisbursementByIdempotencyKey')
     getDisbursementByIdempotencyKey: GetDisbursementByIdempotencyKey,
   ) {
-    return this.paymentGatewayService.getDisbursementByIdempotencyKey(
+    return await this.paymentGatewayService.getDisbursementByIdempotencyKey(
       getDisbursementByIdempotencyKey,
     );
   }
