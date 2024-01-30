@@ -12,6 +12,7 @@ export class OrderController {
   ) {}
 
   async createOne(orderCreateArgs: Prisma.OrderCreateArgs) {
+    //TODO: Autocreate Invoice
     return await this.orderService.createOne(orderCreateArgs);
   }
 
