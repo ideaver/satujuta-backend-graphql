@@ -119,7 +119,7 @@ export const errorCodes: Record<number, string> = {
   71080:
     'You have reached the maximum limit of active transactions. Please complete your previous transactions.',
   71088: 'The beneficiary bank is in severe disturbance',
-  71089: 'The account number is Flip’s. You can’t send money to Flip account',
+  71089: `The account number is Flip’s. You can’t send money to Flip account`,
   71090: 'Agent KYC status is not approved',
   71091: 'Agent status is not active',
   71092: 'Agent is not allowed to update',
