@@ -2191,6 +2191,22 @@ type GetAllDisbursement {
   data: [Disbursement!]!
 }
 
+type GetBalance {
+  balance: String!
+}
+
+type GetBankInfo {
+  bank_code: String!
+  name: String!
+  fee: Int!
+  queue: Int!
+  status: String!
+}
+
+type IsMaintenance {
+  maintenance: Boolean!
+}
+
 type Query {
   """Deskripsinya ada disini loh"""
   imagesFindOne(where: ImagesWhereUniqueInput!): Images
@@ -2638,6 +2654,15 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   getDisbursementByIdempotencyKey(getDisbursementByIdempotencyKey: GetDisbursementByIdempotencyKey!): Disbursement
+
+  """Deskripsinya ada disini loh"""
+  getBalance: GetBalance
+
+  """Deskripsinya ada disini loh"""
+  getBankInfo: [GetBankInfo!]
+
+  """Deskripsinya ada disini loh"""
+  isMaintenance: IsMaintenance
 }
 
 input ImagesWhereUniqueInput {

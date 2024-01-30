@@ -817,3 +817,79 @@ enum ProjectCategory {
   PROPERTY
   BUSSINESS
 }
+
+model Disbursement {
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  id                Int      @id
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  user_id           Int
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  amount            Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  status            String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  reason            String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  timestamp         String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  bankInfo          BankInfo @relation(fields: [bank_code], references: [bank_code])
+  /// @Validator.IsNotEmpty()
+  bank_code         String
+  /// @Validator.IsNotEmpty()
+  account_number    String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  recipient_name    String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  sender_bank       String?
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  remark            String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  receipt           String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  time_served       String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  bundle_id         Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  company_id        Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  recipient_city    Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  created_from      String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  direction         String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  sender            String?
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  fee               Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  beneficiary_email String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  idempotency_key   String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  createdAt         DateTime @default(now())
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  updatedAt         DateTime @updatedAt
+}
+
+model BankInfo {
+  /// @HideField({ match: ['BankInfoCreate*Input','BankInfoUpdate*Input']})
+  id           Int            @id @default(autoincrement())
+  /// @Validator.IsNotEmpty()
+  bank_code    String         @unique
+  /// @Validator.IsNotEmpty()
+  name         String
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  fee          Int
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  queue        Int
+  /// @Validator.IsNotEmpty()
+  status       String
+  /// @HideField({ match: ['BankInfoCreate*Input','BankInfoUpdate*Input']})
+  createdAt    DateTime       @default(now())
+  /// @HideField({ match: ['BankInfoCreate*Input','BankInfoUpdate*Input']})
+  updatedAt    DateTime       @updatedAt
+  Disbursement Disbursement[]
+}

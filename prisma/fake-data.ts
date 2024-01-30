@@ -578,3 +578,78 @@ export function fakeProjectComplete() {
     updatedAt: faker.datatype.datetime(),
   };
 }
+export function fakeDisbursement() {
+  return {
+    user_id: faker.datatype.number(),
+    amount: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    reason: faker.lorem.words(5),
+    timestamp: faker.lorem.words(5),
+    account_number: faker.lorem.words(5),
+    recipient_name: faker.lorem.words(5),
+    sender_bank: undefined,
+    remark: faker.lorem.words(5),
+    receipt: faker.lorem.words(5),
+    time_served: faker.lorem.words(5),
+    bundle_id: faker.datatype.number(),
+    company_id: faker.datatype.number(),
+    recipient_city: faker.datatype.number(),
+    created_from: faker.lorem.words(5),
+    direction: faker.lorem.words(5),
+    sender: undefined,
+    fee: faker.datatype.number(),
+    beneficiary_email: faker.lorem.words(5),
+    idempotency_key: faker.lorem.words(5),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeDisbursementComplete() {
+  return {
+    id: faker.datatype.number(),
+    user_id: faker.datatype.number(),
+    amount: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    reason: faker.lorem.words(5),
+    timestamp: faker.lorem.words(5),
+    bank_code: faker.datatype.uuid(),
+    account_number: faker.lorem.words(5),
+    recipient_name: faker.lorem.words(5),
+    sender_bank: undefined,
+    remark: faker.lorem.words(5),
+    receipt: faker.lorem.words(5),
+    time_served: faker.lorem.words(5),
+    bundle_id: faker.datatype.number(),
+    company_id: faker.datatype.number(),
+    recipient_city: faker.datatype.number(),
+    created_from: faker.lorem.words(5),
+    direction: faker.lorem.words(5),
+    sender: undefined,
+    fee: faker.datatype.number(),
+    beneficiary_email: faker.lorem.words(5),
+    idempotency_key: faker.lorem.words(5),
+    createdAt: new Date(),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeBankInfo() {
+  return {
+    bank_code: faker.lorem.words(5),
+    name: faker.name.fullName(),
+    fee: faker.datatype.number(),
+    queue: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeBankInfoComplete() {
+  return {
+    id: faker.datatype.number(),
+    bank_code: faker.lorem.words(5),
+    name: faker.name.fullName(),
+    fee: faker.datatype.number(),
+    queue: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    createdAt: new Date(),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
