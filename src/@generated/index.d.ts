@@ -249,6 +249,10 @@ export declare enum FaqType {
     REWARD_PAGE = "REWARD_PAGE",
     PROJECT_PAGE = "PROJECT_PAGE"
 }
+export declare enum BillType {
+    SINGLE = "SINGLE",
+    MULTIPLE = "MULTIPLE"
+}
 export declare enum AccountCategory {
     EQUITY = "EQUITY",
     PROJECT = "PROJECT",
@@ -394,6 +398,23 @@ export declare enum CartScalarFieldEnum {
     cost = "cost",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
+}
+export declare enum BillScalarFieldEnum {
+    id = "id",
+    title = "title",
+    type = "type",
+    amount = "amount",
+    expired_date = "expired_date",
+    redirect_url = "redirect_url",
+    is_address_required = "is_address_required",
+    is_phone_number_required = "is_phone_number_required",
+    step = "step",
+    sender_name = "sender_name",
+    sender_email = "sender_email",
+    sender_phone_number = "sender_phone_number",
+    sender_address = "sender_address",
+    sender_bank = "sender_bank",
+    sender_bank_type = "sender_bank_type"
 }
 export declare enum BankInfoScalarFieldEnum {
     id = "id",
@@ -2782,6 +2803,548 @@ export declare class UpsertOneBankInfoArgs {
     where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
     create: InstanceType<typeof BankInfoCreateInput>;
     update: InstanceType<typeof BankInfoUpdateInput>;
+}
+export declare class AggregateBill {
+    _count?: InstanceType<typeof BillCountAggregate>;
+    _avg?: InstanceType<typeof BillAvgAggregate>;
+    _sum?: InstanceType<typeof BillSumAggregate>;
+    _min?: InstanceType<typeof BillMinAggregate>;
+    _max?: InstanceType<typeof BillMaxAggregate>;
+}
+export declare class BillAggregateArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof BillCountAggregateInput>;
+    _avg?: InstanceType<typeof BillAvgAggregateInput>;
+    _sum?: InstanceType<typeof BillSumAggregateInput>;
+    _min?: InstanceType<typeof BillMinAggregateInput>;
+    _max?: InstanceType<typeof BillMaxAggregateInput>;
+}
+export declare class BillAvgAggregateInput {
+    id?: true;
+    amount?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+}
+export declare class BillAvgAggregate {
+    id?: number;
+    amount?: number;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+}
+export declare class BillAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+}
+export declare class BillCountAggregateInput {
+    id?: true;
+    title?: true;
+    type?: true;
+    amount?: true;
+    expired_date?: true;
+    redirect_url?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+    sender_name?: true;
+    sender_email?: true;
+    sender_phone_number?: true;
+    sender_address?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+    _all?: true;
+}
+export declare class BillCountAggregate {
+    id: number;
+    title: number;
+    type: number;
+    amount: number;
+    expired_date: number;
+    redirect_url: number;
+    is_address_required: number;
+    is_phone_number_required: number;
+    step: number;
+    sender_name: number;
+    sender_email: number;
+    sender_phone_number: number;
+    sender_address: number;
+    sender_bank: number;
+    sender_bank_type: number;
+    _all: number;
+}
+export declare class BillCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    expired_date?: keyof typeof SortOrder;
+    redirect_url?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_email?: keyof typeof SortOrder;
+    sender_phone_number?: keyof typeof SortOrder;
+    sender_address?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+}
+export declare class BillCreateManyInput {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: string;
+}
+export declare class BillCreateInput {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: string;
+}
+export declare class BillGroupByArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithAggregationInput>;
+    by: Array<keyof typeof BillScalarFieldEnum>;
+    having?: InstanceType<typeof BillScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof BillCountAggregateInput>;
+    _avg?: InstanceType<typeof BillAvgAggregateInput>;
+    _sum?: InstanceType<typeof BillSumAggregateInput>;
+    _min?: InstanceType<typeof BillMinAggregateInput>;
+    _max?: InstanceType<typeof BillMaxAggregateInput>;
+}
+export declare class BillGroupBy {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: string;
+    _count?: InstanceType<typeof BillCountAggregate>;
+    _avg?: InstanceType<typeof BillAvgAggregate>;
+    _sum?: InstanceType<typeof BillSumAggregate>;
+    _min?: InstanceType<typeof BillMinAggregate>;
+    _max?: InstanceType<typeof BillMaxAggregate>;
+}
+export declare class BillMaxAggregateInput {
+    id?: true;
+    title?: true;
+    type?: true;
+    amount?: true;
+    expired_date?: true;
+    redirect_url?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+    sender_name?: true;
+    sender_email?: true;
+    sender_phone_number?: true;
+    sender_address?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+}
+export declare class BillMaxAggregate {
+    id?: number;
+    title?: string;
+    type?: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: string;
+}
+export declare class BillMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    expired_date?: keyof typeof SortOrder;
+    redirect_url?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_email?: keyof typeof SortOrder;
+    sender_phone_number?: keyof typeof SortOrder;
+    sender_address?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+}
+export declare class BillMinAggregateInput {
+    id?: true;
+    title?: true;
+    type?: true;
+    amount?: true;
+    expired_date?: true;
+    redirect_url?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+    sender_name?: true;
+    sender_email?: true;
+    sender_phone_number?: true;
+    sender_address?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+}
+export declare class BillMinAggregate {
+    id?: number;
+    title?: string;
+    type?: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: string;
+}
+export declare class BillMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    expired_date?: keyof typeof SortOrder;
+    redirect_url?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_email?: keyof typeof SortOrder;
+    sender_phone_number?: keyof typeof SortOrder;
+    sender_address?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+}
+export declare class BillOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: InstanceType<typeof SortOrderInput>;
+    expired_date?: InstanceType<typeof SortOrderInput>;
+    redirect_url?: InstanceType<typeof SortOrderInput>;
+    is_address_required?: InstanceType<typeof SortOrderInput>;
+    is_phone_number_required?: InstanceType<typeof SortOrderInput>;
+    step?: keyof typeof SortOrder;
+    sender_name?: InstanceType<typeof SortOrderInput>;
+    sender_email?: InstanceType<typeof SortOrderInput>;
+    sender_phone_number?: InstanceType<typeof SortOrderInput>;
+    sender_address?: InstanceType<typeof SortOrderInput>;
+    sender_bank?: InstanceType<typeof SortOrderInput>;
+    sender_bank_type?: InstanceType<typeof SortOrderInput>;
+    _count?: InstanceType<typeof BillCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof BillAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof BillMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof BillMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof BillSumOrderByAggregateInput>;
+}
+export declare class BillOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: InstanceType<typeof SortOrderInput>;
+    expired_date?: InstanceType<typeof SortOrderInput>;
+    redirect_url?: InstanceType<typeof SortOrderInput>;
+    is_address_required?: InstanceType<typeof SortOrderInput>;
+    is_phone_number_required?: InstanceType<typeof SortOrderInput>;
+    step?: keyof typeof SortOrder;
+    sender_name?: InstanceType<typeof SortOrderInput>;
+    sender_email?: InstanceType<typeof SortOrderInput>;
+    sender_phone_number?: InstanceType<typeof SortOrderInput>;
+    sender_address?: InstanceType<typeof SortOrderInput>;
+    sender_bank?: InstanceType<typeof SortOrderInput>;
+    sender_bank_type?: InstanceType<typeof SortOrderInput>;
+}
+export declare class BillScalarWhereWithAggregatesInput {
+    AND?: Array<BillScalarWhereWithAggregatesInput>;
+    OR?: Array<BillScalarWhereWithAggregatesInput>;
+    NOT?: Array<BillScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    title?: InstanceType<typeof StringWithAggregatesFilter>;
+    type?: InstanceType<typeof EnumBillTypeWithAggregatesFilter>;
+    amount?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    expired_date?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+    redirect_url?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    is_address_required?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    is_phone_number_required?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    step?: InstanceType<typeof IntWithAggregatesFilter>;
+    sender_name?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_email?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_phone_number?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_address?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_bank?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_bank_type?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+}
+export declare class BillSumAggregateInput {
+    id?: true;
+    amount?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+}
+export declare class BillSumAggregate {
+    id?: number;
+    amount?: number;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+}
+export declare class BillSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+}
+export declare class BillUncheckedCreateInput {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: string;
+}
+export declare class BillUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+}
+export declare class BillUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+}
+export declare class BillUpdateManyMutationInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+}
+export declare class BillUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+}
+export declare class BillWhereUniqueInput {
+    id?: number;
+    AND?: Array<BillWhereInput>;
+    OR?: Array<BillWhereInput>;
+    NOT?: Array<BillWhereInput>;
+    title?: InstanceType<typeof StringFilter>;
+    type?: InstanceType<typeof EnumBillTypeFilter>;
+    amount?: InstanceType<typeof IntNullableFilter>;
+    expired_date?: InstanceType<typeof DateTimeNullableFilter>;
+    redirect_url?: InstanceType<typeof StringNullableFilter>;
+    is_address_required?: InstanceType<typeof IntNullableFilter>;
+    is_phone_number_required?: InstanceType<typeof IntNullableFilter>;
+    step?: InstanceType<typeof IntFilter>;
+    sender_name?: InstanceType<typeof StringNullableFilter>;
+    sender_email?: InstanceType<typeof StringNullableFilter>;
+    sender_phone_number?: InstanceType<typeof StringNullableFilter>;
+    sender_address?: InstanceType<typeof StringNullableFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    sender_bank_type?: InstanceType<typeof StringNullableFilter>;
+}
+export declare class BillWhereInput {
+    AND?: Array<BillWhereInput>;
+    OR?: Array<BillWhereInput>;
+    NOT?: Array<BillWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    title?: InstanceType<typeof StringFilter>;
+    type?: InstanceType<typeof EnumBillTypeFilter>;
+    amount?: InstanceType<typeof IntNullableFilter>;
+    expired_date?: InstanceType<typeof DateTimeNullableFilter>;
+    redirect_url?: InstanceType<typeof StringNullableFilter>;
+    is_address_required?: InstanceType<typeof IntNullableFilter>;
+    is_phone_number_required?: InstanceType<typeof IntNullableFilter>;
+    step?: InstanceType<typeof IntFilter>;
+    sender_name?: InstanceType<typeof StringNullableFilter>;
+    sender_email?: InstanceType<typeof StringNullableFilter>;
+    sender_phone_number?: InstanceType<typeof StringNullableFilter>;
+    sender_address?: InstanceType<typeof StringNullableFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    sender_bank_type?: InstanceType<typeof StringNullableFilter>;
+}
+export declare class Bill {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount: number | null;
+    expired_date: Date | null;
+    redirect_url: string | null;
+    is_address_required: number | null;
+    is_phone_number_required: number | null;
+    step: number;
+    sender_name: string | null;
+    sender_email: string | null;
+    sender_phone_number: string | null;
+    sender_address: string | null;
+    sender_bank: string | null;
+    sender_bank_type: string | null;
+}
+export declare class CreateManyBillArgs {
+    data: Array<BillCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneBillArgs {
+    data: InstanceType<typeof BillCreateInput>;
+}
+export declare class DeleteManyBillArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+}
+export declare class DeleteOneBillArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class FindFirstBillOrThrowArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BillScalarFieldEnum>;
+}
+export declare class FindFirstBillArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BillScalarFieldEnum>;
+}
+export declare class FindManyBillArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BillScalarFieldEnum>;
+}
+export declare class FindUniqueBillOrThrowArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class FindUniqueBillArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class UpdateManyBillArgs {
+    data: InstanceType<typeof BillUpdateManyMutationInput>;
+    where?: InstanceType<typeof BillWhereInput>;
+}
+export declare class UpdateOneBillArgs {
+    data: InstanceType<typeof BillUpdateInput>;
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class UpsertOneBillArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof BillCreateInput>;
+    update: InstanceType<typeof BillUpdateInput>;
 }
 export declare class AggregateCart {
     _count?: InstanceType<typeof CartCountAggregate>;
@@ -11042,6 +11605,24 @@ export declare class EnumAccountCategoryWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
 }
+export declare class EnumBillTypeFieldUpdateOperationsInput {
+    set?: keyof typeof BillType;
+}
+export declare class EnumBillTypeFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
+export declare class EnumBillTypeWithAggregatesFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
 export declare class EnumFaqTypeFieldUpdateOperationsInput {
     set?: keyof typeof FaqType;
 }
@@ -11458,6 +12039,21 @@ export declare class NestedEnumAccountCategoryWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntFilter>;
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
+}
+export declare class NestedEnumBillTypeFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
+export declare class NestedEnumBillTypeWithAggregatesFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumBillTypeFilter>;
 }
 export declare class NestedEnumFaqTypeFilter {
     equals?: keyof typeof FaqType;

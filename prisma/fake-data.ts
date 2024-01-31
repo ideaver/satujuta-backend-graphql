@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory, BillType } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -651,5 +651,42 @@ export function fakeBankInfoComplete() {
     status: faker.lorem.words(5),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeBill() {
+  return {
+    title: faker.lorem.words(5),
+    type: faker.helpers.arrayElement([BillType.SINGLE, BillType.MULTIPLE] as const),
+    amount: undefined,
+    expired_date: undefined,
+    redirect_url: undefined,
+    is_address_required: undefined,
+    is_phone_number_required: undefined,
+    step: faker.datatype.number(),
+    sender_name: undefined,
+    sender_email: undefined,
+    sender_phone_number: undefined,
+    sender_address: undefined,
+    sender_bank: undefined,
+    sender_bank_type: undefined,
+  };
+}
+export function fakeBillComplete() {
+  return {
+    id: faker.datatype.number(),
+    title: faker.lorem.words(5),
+    type: faker.helpers.arrayElement([BillType.SINGLE, BillType.MULTIPLE] as const),
+    amount: undefined,
+    expired_date: undefined,
+    redirect_url: undefined,
+    is_address_required: undefined,
+    is_phone_number_required: undefined,
+    step: faker.datatype.number(),
+    sender_name: undefined,
+    sender_email: undefined,
+    sender_phone_number: undefined,
+    sender_address: undefined,
+    sender_bank: undefined,
+    sender_bank_type: undefined,
   };
 }

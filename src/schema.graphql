@@ -265,6 +265,82 @@ type BankInfo {
   _count: BankInfoCount!
 }
 
+type BillAvgAggregate {
+  id: Float
+  amount: Float
+  is_address_required: Float
+  is_phone_number_required: Float
+  step: Float
+}
+
+type BillCountAggregate {
+  id: Int!
+  title: Int!
+  type: Int!
+  amount: Int!
+  expired_date: Int!
+  redirect_url: Int!
+  is_address_required: Int!
+  is_phone_number_required: Int!
+  step: Int!
+  sender_name: Int!
+  sender_email: Int!
+  sender_phone_number: Int!
+  sender_address: Int!
+  sender_bank: Int!
+  sender_bank_type: Int!
+  _all: Int!
+}
+
+type BillMaxAggregate {
+  id: Int
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: DateTime
+  redirect_url: String
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: String
+}
+
+enum BillType {
+  SINGLE
+  MULTIPLE
+}
+
+type BillMinAggregate {
+  id: Int
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: DateTime
+  redirect_url: String
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: String
+}
+
+type BillSumAggregate {
+  id: Int
+  amount: Int
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int
+}
+
 type AggregateCart {
   _count: CartCountAggregate
   _avg: CartAvgAggregate
@@ -2381,6 +2457,52 @@ type BankAccountInquiry {
   account_holder: String!
   status: String!
   inquiry_key: String!
+}
+
+type Customer {
+  name: String!
+  email: String!
+  address: String
+  phone: String
+}
+
+type ReceiverBankAccount {
+  account_number: String
+  account_type: String
+  bank_code: String
+  account_holder: String
+  qr_code_data: String
+}
+
+type BillPayment {
+  id: Float!
+  amount: Float!
+  unique_code: Float
+  status: String!
+  sender_bank: String
+  sender_bank_type: String
+  receiver_bank_account: ReceiverBankAccount!
+  user_address: String
+  user_phone: String
+  created_at: Float!
+}
+
+type BillEntity {
+  link_id: Float!
+  link_url: String!
+  title: String!
+  type: String!
+  amount: Float
+  redirect_url: String
+  expired_date: DateTime
+  created_from: String!
+  status: String!
+  step: Float!
+  is_address_required: Float
+  is_phone_number_required: Float
+  customer: Customer
+  bill_payment: BillPayment
+  payment_url: String
 }
 
 type Query {
@@ -6736,6 +6858,9 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   rewardClaimDeleteMany(where: RewardClaimWhereInput): Boolean!
   createDisbursement(createDisbursementArgs: CreateDisbursementArgs!): Disbursement!
+
+  """Deskripsinya ada disini loh"""
+  createBill(createBillArgs: CreateBillArgs!): BillEntity
 }
 
 input UserCreateInput {
@@ -10663,4 +10788,21 @@ input CreateDisbursementArgs {
 
   """The amount of money to be disbursed"""
   amount: Int!
+}
+
+input CreateBillArgs {
+  title: String!
+  type: String!
+  amount: Int
+  expired_date: String
+  redirect_url: String
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int!
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: String
 }

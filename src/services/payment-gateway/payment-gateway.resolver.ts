@@ -11,6 +11,8 @@ import { IsMaintenance } from './entities/is-maintenance.entity';
 import { BankAccountInquiry } from './entities/bank-account-inquiry.entity';
 import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
 import { Disbursement } from 'src/@generated';
+import { CreateBillArgs } from './dto/create-bill.args';
+import { BillEntity } from './entities/create-bill.entity';
 
 @Resolver(() => Disbursement)
 export class PaymentGatewayResolver {
@@ -100,5 +102,15 @@ export class PaymentGatewayResolver {
     return await this.paymentGatewayService.bankAccountInquiry(
       bankAccountInquiryArgs,
     );
+  }
+
+  @Mutation(() => BillEntity, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async createBill(
+    @Args('createBillArgs') createBillArgs: CreateBillArgs,
+  ): Promise<CreateBillArgs | void> {
+    return await this.paymentGatewayService.createBill(createBillArgs);
   }
 }

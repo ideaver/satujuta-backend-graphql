@@ -6,6 +6,7 @@ import { CreateDisbursementArgs } from './dto/create-disbursement.args';
 import { GetDisbursementByIdArgs } from './dto/get-disbursement-by-id.args';
 import { GetDisbursementByIdempotencyKeyArgs } from './dto/get-disbursement-by-idempotency-key.args';
 import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
+import { CreateBillArgs } from './dto/create-bill.args';
 
 @Injectable()
 export class PaymentGatewayService {
@@ -348,6 +349,45 @@ export class PaymentGatewayService {
         throw new IGraphQLError({
           code: newCode,
           err: errMessage,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async createBill(createBillArgs: CreateBillArgs) {
+    this.logger.log(createBillArgs);
+    try {
+      const response = await axios.post(
+        `${this.base_url_v2}/pwf/bill`,
+        {
+          ...createBillArgs,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          auth: {
+            username: `${this.apiKey}`,
+            password: `${this.password}`,
+          },
+        },
+      );
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      this.logger.log(error);
+      if (error.response && error.response.data) {
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
+
+        throw new IGraphQLError({
+          code: newCode,
         });
       } else {
         throw new IGraphQLError({
