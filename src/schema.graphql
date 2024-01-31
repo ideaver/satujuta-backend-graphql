@@ -307,12 +307,17 @@ type BillMaxAggregate {
   sender_phone_number: String
   sender_address: String
   sender_bank: String
-  sender_bank_type: String
+  sender_bank_type: BillSenderBankType
 }
 
 enum BillType {
   SINGLE
   MULTIPLE
+}
+
+enum BillSenderBankType {
+  virtual_account
+  wallet_account
 }
 
 type BillMinAggregate {
@@ -330,7 +335,7 @@ type BillMinAggregate {
   sender_phone_number: String
   sender_address: String
   sender_bank: String
-  sender_bank_type: String
+  sender_bank_type: BillSenderBankType
 }
 
 type BillSumAggregate {
@@ -10792,7 +10797,7 @@ input CreateDisbursementArgs {
 
 input CreateBillArgs {
   title: String!
-  type: String!
+  type: BillType!
   amount: Int
   expired_date: String
   redirect_url: String
@@ -10804,5 +10809,5 @@ input CreateBillArgs {
   sender_phone_number: String
   sender_address: String
   sender_bank: String
-  sender_bank_type: String
+  sender_bank_type: BillSenderBankType
 }

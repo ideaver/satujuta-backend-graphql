@@ -895,7 +895,7 @@ model BankInfo {
 }
 
 model Bill {
-  id                       Int       @id
+  id                       Int                 @id
   title                    String
   type                     BillType
   amount                   Int?
@@ -909,10 +909,15 @@ model Bill {
   sender_phone_number      String?
   sender_address           String?
   sender_bank              String?
-  sender_bank_type         String?
+  sender_bank_type         BillSenderBankType?
 }
 
 enum BillType {
   SINGLE
   MULTIPLE
+}
+
+enum BillSenderBankType {
+  virtual_account
+  wallet_account
 }

@@ -253,6 +253,10 @@ export declare enum BillType {
     SINGLE = "SINGLE",
     MULTIPLE = "MULTIPLE"
 }
+export declare enum BillSenderBankType {
+    virtual_account = "virtual_account",
+    wallet_account = "wallet_account"
+}
 export declare enum AccountCategory {
     EQUITY = "EQUITY",
     PROJECT = "PROJECT",
@@ -2912,7 +2916,7 @@ export declare class BillCreateManyInput {
     sender_phone_number?: string;
     sender_address?: string;
     sender_bank?: string;
-    sender_bank_type?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
 }
 export declare class BillCreateInput {
     id: number;
@@ -2929,7 +2933,7 @@ export declare class BillCreateInput {
     sender_phone_number?: string;
     sender_address?: string;
     sender_bank?: string;
-    sender_bank_type?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
 }
 export declare class BillGroupByArgs {
     where?: InstanceType<typeof BillWhereInput>;
@@ -2959,7 +2963,7 @@ export declare class BillGroupBy {
     sender_phone_number?: string;
     sender_address?: string;
     sender_bank?: string;
-    sender_bank_type?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
     _count?: InstanceType<typeof BillCountAggregate>;
     _avg?: InstanceType<typeof BillAvgAggregate>;
     _sum?: InstanceType<typeof BillSumAggregate>;
@@ -2998,7 +3002,7 @@ export declare class BillMaxAggregate {
     sender_phone_number?: string;
     sender_address?: string;
     sender_bank?: string;
-    sender_bank_type?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
 }
 export declare class BillMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -3049,7 +3053,7 @@ export declare class BillMinAggregate {
     sender_phone_number?: string;
     sender_address?: string;
     sender_bank?: string;
-    sender_bank_type?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
 }
 export declare class BillMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -3125,7 +3129,7 @@ export declare class BillScalarWhereWithAggregatesInput {
     sender_phone_number?: InstanceType<typeof StringNullableWithAggregatesFilter>;
     sender_address?: InstanceType<typeof StringNullableWithAggregatesFilter>;
     sender_bank?: InstanceType<typeof StringNullableWithAggregatesFilter>;
-    sender_bank_type?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_bank_type?: InstanceType<typeof EnumBillSenderBankTypeNullableWithAggregatesFilter>;
 }
 export declare class BillSumAggregateInput {
     id?: true;
@@ -3163,7 +3167,7 @@ export declare class BillUncheckedCreateInput {
     sender_phone_number?: string;
     sender_address?: string;
     sender_bank?: string;
-    sender_bank_type?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
 }
 export declare class BillUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3180,7 +3184,7 @@ export declare class BillUncheckedUpdateManyInput {
     sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
 }
 export declare class BillUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3197,7 +3201,7 @@ export declare class BillUncheckedUpdateInput {
     sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
 }
 export declare class BillUpdateManyMutationInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3214,7 +3218,7 @@ export declare class BillUpdateManyMutationInput {
     sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
 }
 export declare class BillUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3231,7 +3235,7 @@ export declare class BillUpdateInput {
     sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
-    sender_bank_type?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
 }
 export declare class BillWhereUniqueInput {
     id?: number;
@@ -3251,7 +3255,7 @@ export declare class BillWhereUniqueInput {
     sender_phone_number?: InstanceType<typeof StringNullableFilter>;
     sender_address?: InstanceType<typeof StringNullableFilter>;
     sender_bank?: InstanceType<typeof StringNullableFilter>;
-    sender_bank_type?: InstanceType<typeof StringNullableFilter>;
+    sender_bank_type?: InstanceType<typeof EnumBillSenderBankTypeNullableFilter>;
 }
 export declare class BillWhereInput {
     AND?: Array<BillWhereInput>;
@@ -3271,7 +3275,7 @@ export declare class BillWhereInput {
     sender_phone_number?: InstanceType<typeof StringNullableFilter>;
     sender_address?: InstanceType<typeof StringNullableFilter>;
     sender_bank?: InstanceType<typeof StringNullableFilter>;
-    sender_bank_type?: InstanceType<typeof StringNullableFilter>;
+    sender_bank_type?: InstanceType<typeof EnumBillSenderBankTypeNullableFilter>;
 }
 export declare class Bill {
     id: number;
@@ -3288,7 +3292,7 @@ export declare class Bill {
     sender_phone_number: string | null;
     sender_address: string | null;
     sender_bank: string | null;
-    sender_bank_type: string | null;
+    sender_bank_type: keyof typeof BillSenderBankType | null;
 }
 export declare class CreateManyBillArgs {
     data: Array<BillCreateManyInput>;
@@ -11605,6 +11609,21 @@ export declare class EnumAccountCategoryWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
 }
+export declare class EnumBillSenderBankTypeNullableFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class EnumBillSenderBankTypeNullableWithAggregatesFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _min?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+    _max?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
 export declare class EnumBillTypeFieldUpdateOperationsInput {
     set?: keyof typeof BillType;
 }
@@ -12040,6 +12059,21 @@ export declare class NestedEnumAccountCategoryWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
 }
+export declare class NestedEnumBillSenderBankTypeNullableFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class NestedEnumBillSenderBankTypeNullableWithAggregatesFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _min?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+    _max?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
 export declare class NestedEnumBillTypeFilter {
     equals?: keyof typeof BillType;
     in?: Array<keyof typeof BillType>;
@@ -12410,6 +12444,9 @@ export declare class NestedStringWithAggregatesFilter {
 }
 export declare class NullableDateTimeFieldUpdateOperationsInput {
     set?: Date | string;
+}
+export declare class NullableEnumBillSenderBankTypeFieldUpdateOperationsInput {
+    set?: keyof typeof BillSenderBankType;
 }
 export declare class NullableEnumFileTypeFieldUpdateOperationsInput {
     set?: keyof typeof FileType;
