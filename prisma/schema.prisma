@@ -820,7 +820,7 @@ enum ProjectCategory {
 
 model Disbursement {
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
-  id                Int      @id
+  id                Int       @id
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
   user_id           Int
   /// @Validator.IsNumber() 
@@ -832,8 +832,6 @@ model Disbursement {
   reason            String
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
   timestamp         String
-  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
-  bankInfo          BankInfo @relation(fields: [bank_code], references: [bank_code])
   /// @Validator.IsNotEmpty()
   bank_code         String
   /// @Validator.IsNotEmpty()
@@ -865,11 +863,13 @@ model Disbursement {
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
   beneficiary_email String
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
-  idempotency_key   String
+  idempotency_key   String?
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
-  createdAt         DateTime @default(now())
+  createdAt         DateTime? @default(now())
   /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
-  updatedAt         DateTime @updatedAt
+  updatedAt         DateTime? @updatedAt
+  BankInfo          BankInfo? @relation(fields: [bankInfoId], references: [id])
+  bankInfoId        Int?
 }
 
 model BankInfo {

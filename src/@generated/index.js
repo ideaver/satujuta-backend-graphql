@@ -36,7 +36,7 @@ exports.FindManyAccountArgs = exports.FindFirstAccountArgs = exports.FindFirstAc
 exports.AddressUncheckedCreateNestedManyWithoutSubdistrictInput = exports.AddressSumOrderByAggregateInput = exports.AddressSumAggregate = exports.AddressSumAggregateInput = exports.AddressScalarWhereInput = exports.AddressScalarWhereWithAggregatesInput = exports.AddressRelationFilter = exports.AddressOrderByWithRelationInput = exports.AddressOrderByWithAggregationInput = exports.AddressOrderByRelationAggregateInput = exports.AddressMinOrderByAggregateInput = exports.AddressMinAggregate = exports.AddressMinAggregateInput = exports.AddressMaxOrderByAggregateInput = exports.AddressMaxAggregate = exports.AddressMaxAggregateInput = exports.AddressListRelationFilter = exports.AddressGroupBy = exports.AddressGroupByArgs = exports.AddressCreateInput = exports.AddressCreateWithoutUserInput = exports.AddressCreateWithoutSubdistrictInput = exports.AddressCreateWithoutShippingInput = exports.AddressCreateWithoutSchoolInput = exports.AddressCreateWithoutHotelInput = exports.AddressCreateOrConnectWithoutUserInput = exports.AddressCreateOrConnectWithoutSubdistrictInput = exports.AddressCreateOrConnectWithoutShippingInput = exports.AddressCreateOrConnectWithoutSchoolInput = exports.AddressCreateOrConnectWithoutHotelInput = exports.AddressCreateNestedOneWithoutUserInput = exports.AddressCreateNestedOneWithoutShippingInput = exports.AddressCreateNestedOneWithoutSchoolInput = exports.AddressCreateNestedOneWithoutHotelInput = exports.AddressCreateNestedManyWithoutSubdistrictInput = exports.AddressCreateManyInput = exports.AddressCreateManySubdistrictInput = exports.AddressCreateManySubdistrictInputEnvelope = exports.AddressCountOrderByAggregateInput = exports.AddressCountAggregate = exports.AddressCountAggregateInput = exports.AddressAvgOrderByAggregateInput = exports.AddressAvgAggregate = exports.AddressAvgAggregateInput = exports.AddressAggregateArgs = exports.UpsertOneAccountArgs = exports.UpdateOneAccountArgs = exports.UpdateManyAccountArgs = exports.FindUniqueAccountArgs = exports.FindUniqueAccountOrThrowArgs = void 0;
 exports.FindUniqueAddressOrThrowArgs = exports.FindManyAddressArgs = exports.FindFirstAddressArgs = exports.FindFirstAddressOrThrowArgs = exports.DeleteOneAddressArgs = exports.DeleteManyAddressArgs = exports.CreateOneAddressArgs = exports.CreateManyAddressArgs = exports.AggregateAddress = exports.Address = exports.AddressWhereInput = exports.AddressWhereUniqueInput = exports.AddressUpsertWithoutUserInput = exports.AddressUpsertWithoutShippingInput = exports.AddressUpsertWithoutSchoolInput = exports.AddressUpsertWithoutHotelInput = exports.AddressUpsertWithWhereUniqueWithoutSubdistrictInput = exports.AddressUpdateInput = exports.AddressUpdateWithoutUserInput = exports.AddressUpdateWithoutSubdistrictInput = exports.AddressUpdateWithoutShippingInput = exports.AddressUpdateWithoutSchoolInput = exports.AddressUpdateWithoutHotelInput = exports.AddressUpdateWithWhereUniqueWithoutSubdistrictInput = exports.AddressUpdateToOneWithWhereWithoutUserInput = exports.AddressUpdateToOneWithWhereWithoutShippingInput = exports.AddressUpdateToOneWithWhereWithoutSchoolInput = exports.AddressUpdateToOneWithWhereWithoutHotelInput = exports.AddressUpdateOneRequiredWithoutUserNestedInput = exports.AddressUpdateOneRequiredWithoutShippingNestedInput = exports.AddressUpdateOneRequiredWithoutSchoolNestedInput = exports.AddressUpdateOneRequiredWithoutHotelNestedInput = exports.AddressUpdateManyWithoutSubdistrictNestedInput = exports.AddressUpdateManyWithWhereWithoutSubdistrictInput = exports.AddressUpdateManyMutationInput = exports.AddressUncheckedUpdateInput = exports.AddressUncheckedUpdateWithoutUserInput = exports.AddressUncheckedUpdateWithoutSubdistrictInput = exports.AddressUncheckedUpdateWithoutShippingInput = exports.AddressUncheckedUpdateWithoutSchoolInput = exports.AddressUncheckedUpdateWithoutHotelInput = exports.AddressUncheckedUpdateManyInput = exports.AddressUncheckedUpdateManyWithoutSubdistrictInput = exports.AddressUncheckedUpdateManyWithoutSubdistrictNestedInput = exports.AddressUncheckedCreateInput = exports.AddressUncheckedCreateWithoutUserInput = exports.AddressUncheckedCreateWithoutSubdistrictInput = exports.AddressUncheckedCreateWithoutShippingInput = exports.AddressUncheckedCreateWithoutSchoolInput = exports.AddressUncheckedCreateWithoutHotelInput = void 0;
 exports.CreateOneBankArgs = exports.CreateManyBankArgs = exports.Bank = exports.BankWhereInput = exports.BankWhereUniqueInput = exports.BankUpsertWithoutAccountInput = exports.BankUpdateInput = exports.BankUpdateWithoutAccountInput = exports.BankUpdateToOneWithWhereWithoutAccountInput = exports.BankUpdateOneWithoutAccountNestedInput = exports.BankUpdateManyMutationInput = exports.BankUncheckedUpdateInput = exports.BankUncheckedUpdateWithoutAccountInput = exports.BankUncheckedUpdateOneWithoutAccountNestedInput = exports.BankUncheckedUpdateManyInput = exports.BankUncheckedCreateInput = exports.BankUncheckedCreateWithoutAccountInput = exports.BankUncheckedCreateNestedOneWithoutAccountInput = exports.BankSumOrderByAggregateInput = exports.BankSumAggregate = exports.BankSumAggregateInput = exports.BankScalarWhereWithAggregatesInput = exports.BankOrderByWithRelationInput = exports.BankOrderByWithAggregationInput = exports.BankNullableRelationFilter = exports.BankMinOrderByAggregateInput = exports.BankMinAggregate = exports.BankMinAggregateInput = exports.BankMaxOrderByAggregateInput = exports.BankMaxAggregate = exports.BankMaxAggregateInput = exports.BankGroupBy = exports.BankGroupByArgs = exports.BankCreateInput = exports.BankCreateWithoutAccountInput = exports.BankCreateOrConnectWithoutAccountInput = exports.BankCreateNestedOneWithoutAccountInput = exports.BankCreateManyInput = exports.BankCountOrderByAggregateInput = exports.BankCountAggregate = exports.BankCountAggregateInput = exports.BankAvgOrderByAggregateInput = exports.BankAvgAggregate = exports.BankAvgAggregateInput = exports.BankAggregateArgs = exports.AggregateBank = exports.UpsertOneAddressArgs = exports.UpdateOneAddressArgs = exports.UpdateManyAddressArgs = exports.FindUniqueAddressArgs = void 0;
-exports.BankInfoUpsertWithoutDisbursementInput = exports.BankInfoUpdateInput = exports.BankInfoUpdateWithoutDisbursementInput = exports.BankInfoUpdateToOneWithWhereWithoutDisbursementInput = exports.BankInfoUpdateOneRequiredWithoutDisbursementNestedInput = exports.BankInfoUpdateManyMutationInput = exports.BankInfoUncheckedUpdateInput = exports.BankInfoUncheckedUpdateWithoutDisbursementInput = exports.BankInfoUncheckedUpdateManyInput = exports.BankInfoUncheckedCreateInput = exports.BankInfoUncheckedCreateWithoutDisbursementInput = exports.BankInfoSumOrderByAggregateInput = exports.BankInfoSumAggregate = exports.BankInfoSumAggregateInput = exports.BankInfoScalarWhereWithAggregatesInput = exports.BankInfoRelationFilter = exports.BankInfoOrderByWithRelationInput = exports.BankInfoOrderByWithAggregationInput = exports.BankInfoMinOrderByAggregateInput = exports.BankInfoMinAggregate = exports.BankInfoMinAggregateInput = exports.BankInfoMaxOrderByAggregateInput = exports.BankInfoMaxAggregate = exports.BankInfoMaxAggregateInput = exports.BankInfoGroupBy = exports.BankInfoGroupByArgs = exports.BankInfoCreateInput = exports.BankInfoCreateWithoutDisbursementInput = exports.BankInfoCreateOrConnectWithoutDisbursementInput = exports.BankInfoCreateNestedOneWithoutDisbursementInput = exports.BankInfoCreateManyInput = exports.BankInfoCount = exports.BankInfoCountOrderByAggregateInput = exports.BankInfoCountAggregate = exports.BankInfoCountAggregateInput = exports.BankInfoAvgOrderByAggregateInput = exports.BankInfoAvgAggregate = exports.BankInfoAvgAggregateInput = exports.BankInfoAggregateArgs = exports.AggregateBankInfo = exports.UpsertOneBankArgs = exports.UpdateOneBankArgs = exports.UpdateManyBankArgs = exports.FindUniqueBankArgs = exports.FindUniqueBankOrThrowArgs = exports.FindManyBankArgs = exports.FindFirstBankArgs = exports.FindFirstBankOrThrowArgs = exports.DeleteOneBankArgs = exports.DeleteManyBankArgs = void 0;
+exports.BankInfoUpsertWithoutDisbursementInput = exports.BankInfoUpdateInput = exports.BankInfoUpdateWithoutDisbursementInput = exports.BankInfoUpdateToOneWithWhereWithoutDisbursementInput = exports.BankInfoUpdateOneWithoutDisbursementNestedInput = exports.BankInfoUpdateManyMutationInput = exports.BankInfoUncheckedUpdateInput = exports.BankInfoUncheckedUpdateWithoutDisbursementInput = exports.BankInfoUncheckedUpdateManyInput = exports.BankInfoUncheckedCreateInput = exports.BankInfoUncheckedCreateWithoutDisbursementInput = exports.BankInfoSumOrderByAggregateInput = exports.BankInfoSumAggregate = exports.BankInfoSumAggregateInput = exports.BankInfoScalarWhereWithAggregatesInput = exports.BankInfoOrderByWithRelationInput = exports.BankInfoOrderByWithAggregationInput = exports.BankInfoNullableRelationFilter = exports.BankInfoMinOrderByAggregateInput = exports.BankInfoMinAggregate = exports.BankInfoMinAggregateInput = exports.BankInfoMaxOrderByAggregateInput = exports.BankInfoMaxAggregate = exports.BankInfoMaxAggregateInput = exports.BankInfoGroupBy = exports.BankInfoGroupByArgs = exports.BankInfoCreateInput = exports.BankInfoCreateWithoutDisbursementInput = exports.BankInfoCreateOrConnectWithoutDisbursementInput = exports.BankInfoCreateNestedOneWithoutDisbursementInput = exports.BankInfoCreateManyInput = exports.BankInfoCount = exports.BankInfoCountOrderByAggregateInput = exports.BankInfoCountAggregate = exports.BankInfoCountAggregateInput = exports.BankInfoAvgOrderByAggregateInput = exports.BankInfoAvgAggregate = exports.BankInfoAvgAggregateInput = exports.BankInfoAggregateArgs = exports.AggregateBankInfo = exports.UpsertOneBankArgs = exports.UpdateOneBankArgs = exports.UpdateManyBankArgs = exports.FindUniqueBankArgs = exports.FindUniqueBankOrThrowArgs = exports.FindManyBankArgs = exports.FindFirstBankArgs = exports.FindFirstBankOrThrowArgs = exports.DeleteOneBankArgs = exports.DeleteManyBankArgs = void 0;
 exports.DeleteManyBillArgs = exports.CreateOneBillArgs = exports.CreateManyBillArgs = exports.Bill = exports.BillWhereInput = exports.BillWhereUniqueInput = exports.BillUpdateInput = exports.BillUpdateManyMutationInput = exports.BillUncheckedUpdateInput = exports.BillUncheckedUpdateManyInput = exports.BillUncheckedCreateInput = exports.BillSumOrderByAggregateInput = exports.BillSumAggregate = exports.BillSumAggregateInput = exports.BillScalarWhereWithAggregatesInput = exports.BillOrderByWithRelationInput = exports.BillOrderByWithAggregationInput = exports.BillMinOrderByAggregateInput = exports.BillMinAggregate = exports.BillMinAggregateInput = exports.BillMaxOrderByAggregateInput = exports.BillMaxAggregate = exports.BillMaxAggregateInput = exports.BillGroupBy = exports.BillGroupByArgs = exports.BillCreateInput = exports.BillCreateManyInput = exports.BillCountOrderByAggregateInput = exports.BillCountAggregate = exports.BillCountAggregateInput = exports.BillAvgOrderByAggregateInput = exports.BillAvgAggregate = exports.BillAvgAggregateInput = exports.BillAggregateArgs = exports.AggregateBill = exports.UpsertOneBankInfoArgs = exports.UpdateOneBankInfoArgs = exports.UpdateManyBankInfoArgs = exports.FindUniqueBankInfoArgs = exports.FindUniqueBankInfoOrThrowArgs = exports.FindManyBankInfoArgs = exports.FindFirstBankInfoArgs = exports.FindFirstBankInfoOrThrowArgs = exports.DeleteOneBankInfoArgs = exports.DeleteManyBankInfoArgs = exports.CreateOneBankInfoArgs = exports.CreateManyBankInfoArgs = exports.BankInfo = exports.BankInfoWhereInput = exports.BankInfoWhereUniqueInput = void 0;
 exports.CartSumAggregate = exports.CartSumAggregateInput = exports.CartScalarWhereInput = exports.CartScalarWhereWithAggregatesInput = exports.CartOrderByWithRelationInput = exports.CartOrderByWithAggregationInput = exports.CartOrderByRelationAggregateInput = exports.CartMinOrderByAggregateInput = exports.CartMinAggregate = exports.CartMinAggregateInput = exports.CartMaxOrderByAggregateInput = exports.CartMaxAggregate = exports.CartMaxAggregateInput = exports.CartListRelationFilter = exports.CartGroupBy = exports.CartGroupByArgs = exports.CartCreateInput = exports.CartCreateWithoutProjectItemInput = exports.CartCreateWithoutOrderInput = exports.CartCreateWithoutMembershipItemInput = exports.CartCreateOrConnectWithoutProjectItemInput = exports.CartCreateOrConnectWithoutOrderInput = exports.CartCreateOrConnectWithoutMembershipItemInput = exports.CartCreateNestedManyWithoutProjectItemInput = exports.CartCreateNestedManyWithoutOrderInput = exports.CartCreateNestedManyWithoutMembershipItemInput = exports.CartCreateManyInput = exports.CartCreateManyProjectItemInput = exports.CartCreateManyProjectItemInputEnvelope = exports.CartCreateManyOrderInput = exports.CartCreateManyOrderInputEnvelope = exports.CartCreateManyMembershipItemInput = exports.CartCreateManyMembershipItemInputEnvelope = exports.CartCountOrderByAggregateInput = exports.CartCountAggregate = exports.CartCountAggregateInput = exports.CartAvgOrderByAggregateInput = exports.CartAvgAggregate = exports.CartAvgAggregateInput = exports.CartAggregateArgs = exports.AggregateCart = exports.UpsertOneBillArgs = exports.UpdateOneBillArgs = exports.UpdateManyBillArgs = exports.FindUniqueBillArgs = exports.FindUniqueBillOrThrowArgs = exports.FindManyBillArgs = exports.FindFirstBillArgs = exports.FindFirstBillOrThrowArgs = exports.DeleteOneBillArgs = void 0;
 exports.UpdateOneCartArgs = exports.UpdateManyCartArgs = exports.FindUniqueCartArgs = exports.FindUniqueCartOrThrowArgs = exports.FindManyCartArgs = exports.FindFirstCartArgs = exports.FindFirstCartOrThrowArgs = exports.DeleteOneCartArgs = exports.DeleteManyCartArgs = exports.CreateOneCartArgs = exports.CreateManyCartArgs = exports.Cart = exports.CartWhereInput = exports.CartWhereUniqueInput = exports.CartUpsertWithWhereUniqueWithoutProjectItemInput = exports.CartUpsertWithWhereUniqueWithoutOrderInput = exports.CartUpsertWithWhereUniqueWithoutMembershipItemInput = exports.CartUpdateInput = exports.CartUpdateWithoutProjectItemInput = exports.CartUpdateWithoutOrderInput = exports.CartUpdateWithoutMembershipItemInput = exports.CartUpdateWithWhereUniqueWithoutProjectItemInput = exports.CartUpdateWithWhereUniqueWithoutOrderInput = exports.CartUpdateWithWhereUniqueWithoutMembershipItemInput = exports.CartUpdateManyWithoutProjectItemNestedInput = exports.CartUpdateManyWithoutOrderNestedInput = exports.CartUpdateManyWithoutMembershipItemNestedInput = exports.CartUpdateManyWithWhereWithoutProjectItemInput = exports.CartUpdateManyWithWhereWithoutOrderInput = exports.CartUpdateManyWithWhereWithoutMembershipItemInput = exports.CartUpdateManyMutationInput = exports.CartUncheckedUpdateInput = exports.CartUncheckedUpdateWithoutProjectItemInput = exports.CartUncheckedUpdateWithoutOrderInput = exports.CartUncheckedUpdateWithoutMembershipItemInput = exports.CartUncheckedUpdateManyInput = exports.CartUncheckedUpdateManyWithoutProjectItemInput = exports.CartUncheckedUpdateManyWithoutProjectItemNestedInput = exports.CartUncheckedUpdateManyWithoutOrderInput = exports.CartUncheckedUpdateManyWithoutOrderNestedInput = exports.CartUncheckedUpdateManyWithoutMembershipItemInput = exports.CartUncheckedUpdateManyWithoutMembershipItemNestedInput = exports.CartUncheckedCreateInput = exports.CartUncheckedCreateWithoutProjectItemInput = exports.CartUncheckedCreateWithoutOrderInput = exports.CartUncheckedCreateWithoutMembershipItemInput = exports.CartUncheckedCreateNestedManyWithoutProjectItemInput = exports.CartUncheckedCreateNestedManyWithoutOrderInput = exports.CartUncheckedCreateNestedManyWithoutMembershipItemInput = exports.CartSumOrderByAggregateInput = void 0;
@@ -557,6 +557,7 @@ var DisbursementScalarFieldEnum;
     DisbursementScalarFieldEnum["idempotency_key"] = "idempotency_key";
     DisbursementScalarFieldEnum["createdAt"] = "createdAt";
     DisbursementScalarFieldEnum["updatedAt"] = "updatedAt";
+    DisbursementScalarFieldEnum["bankInfoId"] = "bankInfoId";
 })(DisbursementScalarFieldEnum = exports.DisbursementScalarFieldEnum || (exports.DisbursementScalarFieldEnum = {}));
 var CityScalarFieldEnum;
 (function (CityScalarFieldEnum) {
@@ -7428,6 +7429,18 @@ BankInfoMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankInfoMinOrderByAggregateInput);
 exports.BankInfoMinOrderByAggregateInput = BankInfoMinOrderByAggregateInput;
+let BankInfoNullableRelationFilter = class BankInfoNullableRelationFilter {
+};
+__decorate([
+    (0, graphql_1.Field)(() => BankInfoWhereInput, { nullable: true })
+], BankInfoNullableRelationFilter.prototype, "is", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => BankInfoWhereInput, { nullable: true })
+], BankInfoNullableRelationFilter.prototype, "isNot", void 0);
+BankInfoNullableRelationFilter = __decorate([
+    (0, graphql_4.InputType)()
+], BankInfoNullableRelationFilter);
+exports.BankInfoNullableRelationFilter = BankInfoNullableRelationFilter;
 let BankInfoOrderByWithAggregationInput = class BankInfoOrderByWithAggregationInput {
 };
 __decorate([
@@ -7506,18 +7519,6 @@ BankInfoOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankInfoOrderByWithRelationInput);
 exports.BankInfoOrderByWithRelationInput = BankInfoOrderByWithRelationInput;
-let BankInfoRelationFilter = class BankInfoRelationFilter {
-};
-__decorate([
-    (0, graphql_1.Field)(() => BankInfoWhereInput, { nullable: true })
-], BankInfoRelationFilter.prototype, "is", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => BankInfoWhereInput, { nullable: true })
-], BankInfoRelationFilter.prototype, "isNot", void 0);
-BankInfoRelationFilter = __decorate([
-    (0, graphql_4.InputType)()
-], BankInfoRelationFilter);
-exports.BankInfoRelationFilter = BankInfoRelationFilter;
 let BankInfoScalarWhereWithAggregatesInput = BankInfoScalarWhereWithAggregatesInput_1 = class BankInfoScalarWhereWithAggregatesInput {
 };
 __decorate([
@@ -7799,32 +7800,40 @@ BankInfoUpdateManyMutationInput = __decorate([
     (0, graphql_4.InputType)()
 ], BankInfoUpdateManyMutationInput);
 exports.BankInfoUpdateManyMutationInput = BankInfoUpdateManyMutationInput;
-let BankInfoUpdateOneRequiredWithoutDisbursementNestedInput = class BankInfoUpdateOneRequiredWithoutDisbursementNestedInput {
+let BankInfoUpdateOneWithoutDisbursementNestedInput = class BankInfoUpdateOneWithoutDisbursementNestedInput {
 };
 __decorate([
     (0, graphql_1.Field)(() => BankInfoCreateWithoutDisbursementInput, { nullable: true }),
     (0, class_transformer_1.Type)(() => BankInfoCreateWithoutDisbursementInput)
-], BankInfoUpdateOneRequiredWithoutDisbursementNestedInput.prototype, "create", void 0);
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "create", void 0);
 __decorate([
     (0, graphql_1.Field)(() => BankInfoCreateOrConnectWithoutDisbursementInput, { nullable: true }),
     (0, class_transformer_1.Type)(() => BankInfoCreateOrConnectWithoutDisbursementInput)
-], BankInfoUpdateOneRequiredWithoutDisbursementNestedInput.prototype, "connectOrCreate", void 0);
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "connectOrCreate", void 0);
 __decorate([
     (0, graphql_1.Field)(() => BankInfoUpsertWithoutDisbursementInput, { nullable: true }),
     (0, class_transformer_1.Type)(() => BankInfoUpsertWithoutDisbursementInput)
-], BankInfoUpdateOneRequiredWithoutDisbursementNestedInput.prototype, "upsert", void 0);
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "upsert", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => BankInfoWhereInput, { nullable: true }),
+    (0, class_transformer_1.Type)(() => BankInfoWhereInput)
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "disconnect", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => BankInfoWhereInput, { nullable: true }),
+    (0, class_transformer_1.Type)(() => BankInfoWhereInput)
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "delete", void 0);
 __decorate([
     (0, graphql_1.Field)(() => BankInfoWhereUniqueInput, { nullable: true }),
     (0, class_transformer_1.Type)(() => BankInfoWhereUniqueInput)
-], BankInfoUpdateOneRequiredWithoutDisbursementNestedInput.prototype, "connect", void 0);
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "connect", void 0);
 __decorate([
     (0, graphql_1.Field)(() => BankInfoUpdateToOneWithWhereWithoutDisbursementInput, { nullable: true }),
     (0, class_transformer_1.Type)(() => BankInfoUpdateToOneWithWhereWithoutDisbursementInput)
-], BankInfoUpdateOneRequiredWithoutDisbursementNestedInput.prototype, "update", void 0);
-BankInfoUpdateOneRequiredWithoutDisbursementNestedInput = __decorate([
+], BankInfoUpdateOneWithoutDisbursementNestedInput.prototype, "update", void 0);
+BankInfoUpdateOneWithoutDisbursementNestedInput = __decorate([
     (0, graphql_4.InputType)()
-], BankInfoUpdateOneRequiredWithoutDisbursementNestedInput);
-exports.BankInfoUpdateOneRequiredWithoutDisbursementNestedInput = BankInfoUpdateOneRequiredWithoutDisbursementNestedInput;
+], BankInfoUpdateOneWithoutDisbursementNestedInput);
+exports.BankInfoUpdateOneWithoutDisbursementNestedInput = BankInfoUpdateOneWithoutDisbursementNestedInput;
 let BankInfoUpdateToOneWithWhereWithoutDisbursementInput = class BankInfoUpdateToOneWithWhereWithoutDisbursementInput {
 };
 __decorate([
@@ -15625,6 +15634,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], DisbursementAvgAggregateInput.prototype, "fee", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], DisbursementAvgAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementAvgAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementAvgAggregateInput);
@@ -15652,6 +15664,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
 ], DisbursementAvgAggregate.prototype, "fee", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_6.Float, { nullable: true })
+], DisbursementAvgAggregate.prototype, "bankInfoId", void 0);
 DisbursementAvgAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], DisbursementAvgAggregate);
@@ -15679,6 +15694,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementAvgOrderByAggregateInput.prototype, "fee", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], DisbursementAvgOrderByAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementAvgOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementAvgOrderByAggregateInput);
@@ -15757,6 +15775,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], DisbursementCountAggregateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], DisbursementCountAggregateInput.prototype, "bankInfoId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], DisbursementCountAggregateInput.prototype, "_all", void 0);
@@ -15840,6 +15861,9 @@ __decorate([
 ], DisbursementCountAggregate.prototype, "updatedAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
+], DisbursementCountAggregate.prototype, "bankInfoId", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: false })
 ], DisbursementCountAggregate.prototype, "_all", void 0);
 DisbursementCountAggregate = __decorate([
     (0, graphql_5.ObjectType)()
@@ -15919,6 +15943,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementCountOrderByAggregateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], DisbursementCountOrderByAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementCountOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementCountOrderByAggregateInput);
@@ -15958,6 +15985,10 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], DisbursementCreateManyBankInfoInput.prototype, "timestamp", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: false }),
+    Validator.IsNotEmpty()
+], DisbursementCreateManyBankInfoInput.prototype, "bank_code", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.IsNotEmpty()
@@ -16092,6 +16123,9 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], DisbursementCreateManyInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], DisbursementCreateManyInput.prototype, "bankInfoId", void 0);
 DisbursementCreateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementCreateManyInput);
@@ -16154,6 +16188,10 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], DisbursementCreateWithoutBankInfoInput.prototype, "timestamp", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: false }),
+    Validator.IsNotEmpty()
+], DisbursementCreateWithoutBankInfoInput.prototype, "bank_code", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.IsNotEmpty()
@@ -16235,6 +16273,10 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.IsNotEmpty()
+], DisbursementCreateInput.prototype, "bank_code", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: false }),
+    Validator.IsNotEmpty()
 ], DisbursementCreateInput.prototype, "account_number", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -16285,8 +16327,8 @@ __decorate([
     (0, graphql_7.HideField)()
 ], DisbursementCreateInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
-], DisbursementCreateInput.prototype, "bankInfo", void 0);
+    (0, graphql_1.Field)(() => BankInfoCreateNestedOneWithoutDisbursementInput, { nullable: true })
+], DisbursementCreateInput.prototype, "BankInfo", void 0);
 DisbursementCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementCreateInput);
@@ -16397,14 +16439,17 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], DisbursementGroupBy.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false })
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], DisbursementGroupBy.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], DisbursementGroupBy.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], DisbursementGroupBy.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], DisbursementGroupBy.prototype, "bankInfoId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DisbursementCountAggregate, { nullable: true })
 ], DisbursementGroupBy.prototype, "_count", void 0);
@@ -16513,6 +16558,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], DisbursementMaxAggregateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], DisbursementMaxAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementMaxAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementMaxAggregateInput);
@@ -16591,6 +16639,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], DisbursementMaxAggregate.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], DisbursementMaxAggregate.prototype, "bankInfoId", void 0);
 DisbursementMaxAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], DisbursementMaxAggregate);
@@ -16669,6 +16720,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementMaxOrderByAggregateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], DisbursementMaxOrderByAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementMaxOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementMaxOrderByAggregateInput);
@@ -16747,6 +16801,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], DisbursementMinAggregateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], DisbursementMinAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementMinAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementMinAggregateInput);
@@ -16825,6 +16882,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], DisbursementMinAggregate.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], DisbursementMinAggregate.prototype, "bankInfoId", void 0);
 DisbursementMinAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], DisbursementMinAggregate);
@@ -16903,6 +16963,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementMinOrderByAggregateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], DisbursementMinOrderByAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementMinOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementMinOrderByAggregateInput);
@@ -16982,14 +17045,17 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementOrderByWithAggregationInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], DisbursementOrderByWithAggregationInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], DisbursementOrderByWithAggregationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], DisbursementOrderByWithAggregationInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], DisbursementOrderByWithAggregationInput.prototype, "bankInfoId", void 0);
 __decorate([
     (0, graphql_1.Field)(() => DisbursementCountOrderByAggregateInput, { nullable: true })
 ], DisbursementOrderByWithAggregationInput.prototype, "_count", void 0);
@@ -17075,17 +17141,20 @@ __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementOrderByWithRelationInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], DisbursementOrderByWithRelationInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], DisbursementOrderByWithRelationInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
 ], DisbursementOrderByWithRelationInput.prototype, "updatedAt", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => SortOrderInput, { nullable: true })
+], DisbursementOrderByWithRelationInput.prototype, "bankInfoId", void 0);
+__decorate([
     (0, graphql_1.Field)(() => BankInfoOrderByWithRelationInput, { nullable: true })
-], DisbursementOrderByWithRelationInput.prototype, "bankInfo", void 0);
+], DisbursementOrderByWithRelationInput.prototype, "BankInfo", void 0);
 DisbursementOrderByWithRelationInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementOrderByWithRelationInput);
@@ -17165,14 +17234,17 @@ __decorate([
     (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
 ], DisbursementScalarWhereWithAggregatesInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringWithAggregatesFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringNullableWithAggregatesFilter, { nullable: true })
 ], DisbursementScalarWhereWithAggregatesInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableWithAggregatesFilter, { nullable: true })
 ], DisbursementScalarWhereWithAggregatesInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeWithAggregatesFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableWithAggregatesFilter, { nullable: true })
 ], DisbursementScalarWhereWithAggregatesInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => IntNullableWithAggregatesFilter, { nullable: true })
+], DisbursementScalarWhereWithAggregatesInput.prototype, "bankInfoId", void 0);
 DisbursementScalarWhereWithAggregatesInput = DisbursementScalarWhereWithAggregatesInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementScalarWhereWithAggregatesInput);
@@ -17252,14 +17324,17 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], DisbursementScalarWhereInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
 ], DisbursementScalarWhereInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableFilter, { nullable: true })
 ], DisbursementScalarWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableFilter, { nullable: true })
 ], DisbursementScalarWhereInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], DisbursementScalarWhereInput.prototype, "bankInfoId", void 0);
 DisbursementScalarWhereInput = DisbursementScalarWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementScalarWhereInput);
@@ -17287,6 +17362,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Boolean, { nullable: true })
 ], DisbursementSumAggregateInput.prototype, "fee", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: true })
+], DisbursementSumAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementSumAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementSumAggregateInput);
@@ -17314,6 +17392,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
 ], DisbursementSumAggregate.prototype, "fee", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], DisbursementSumAggregate.prototype, "bankInfoId", void 0);
 DisbursementSumAggregate = __decorate([
     (0, graphql_5.ObjectType)()
 ], DisbursementSumAggregate);
@@ -17341,6 +17422,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => SortOrder, { nullable: true })
 ], DisbursementSumOrderByAggregateInput.prototype, "fee", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => SortOrder, { nullable: true })
+], DisbursementSumOrderByAggregateInput.prototype, "bankInfoId", void 0);
 DisbursementSumOrderByAggregateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementSumOrderByAggregateInput);
@@ -17392,6 +17476,10 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false }),
     Validator.IsNotEmpty()
+], DisbursementUncheckedCreateWithoutBankInfoInput.prototype, "bank_code", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: false }),
+    Validator.IsNotEmpty()
 ], DisbursementUncheckedCreateWithoutBankInfoInput.prototype, "account_number", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
@@ -17433,7 +17521,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], DisbursementUncheckedCreateWithoutBankInfoInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false })
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], DisbursementUncheckedCreateWithoutBankInfoInput.prototype, "idempotency_key", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -17515,7 +17603,7 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], DisbursementUncheckedCreateInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false })
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], DisbursementUncheckedCreateInput.prototype, "idempotency_key", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
@@ -17523,6 +17611,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => Date, { nullable: true })
 ], DisbursementUncheckedCreateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], DisbursementUncheckedCreateInput.prototype, "bankInfoId", void 0);
 DisbursementUncheckedCreateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementUncheckedCreateInput);
@@ -17599,6 +17690,9 @@ __decorate([
 ], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "timestamp", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "bank_code", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "account_number", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
@@ -17640,13 +17734,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyWithoutBankInfoInput.prototype, "updatedAt", void 0);
 DisbursementUncheckedUpdateManyWithoutBankInfoInput = __decorate([
     (0, graphql_4.InputType)()
@@ -17718,14 +17812,17 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateManyInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUncheckedUpdateManyInput.prototype, "bankInfoId", void 0);
 DisbursementUncheckedUpdateManyInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementUncheckedUpdateManyInput);
@@ -17750,6 +17847,9 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "timestamp", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "bank_code", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "account_number", void 0);
@@ -17793,13 +17893,13 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateWithoutBankInfoInput.prototype, "updatedAt", void 0);
 DisbursementUncheckedUpdateWithoutBankInfoInput = __decorate([
     (0, graphql_4.InputType)()
@@ -17871,14 +17971,17 @@ __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableStringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+    (0, graphql_1.Field)(() => NullableDateTimeFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUncheckedUpdateInput.prototype, "updatedAt", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => NullableIntFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUncheckedUpdateInput.prototype, "bankInfoId", void 0);
 DisbursementUncheckedUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementUncheckedUpdateInput);
@@ -17903,6 +18006,9 @@ __decorate([
 __decorate([
     (0, graphql_7.HideField)()
 ], DisbursementUpdateManyMutationInput.prototype, "timestamp", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUpdateManyMutationInput.prototype, "bank_code", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUpdateManyMutationInput.prototype, "account_number", void 0);
@@ -18058,6 +18164,9 @@ __decorate([
 ], DisbursementUpdateWithoutBankInfoInput.prototype, "timestamp", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUpdateWithoutBankInfoInput.prototype, "bank_code", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUpdateWithoutBankInfoInput.prototype, "account_number", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -18133,6 +18242,9 @@ __decorate([
 ], DisbursementUpdateInput.prototype, "timestamp", void 0);
 __decorate([
     (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
+], DisbursementUpdateInput.prototype, "bank_code", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => StringFieldUpdateOperationsInput, { nullable: true })
 ], DisbursementUpdateInput.prototype, "account_number", void 0);
 __decorate([
     (0, graphql_7.HideField)()
@@ -18183,8 +18295,8 @@ __decorate([
     (0, graphql_7.HideField)()
 ], DisbursementUpdateInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_7.HideField)()
-], DisbursementUpdateInput.prototype, "bankInfo", void 0);
+    (0, graphql_1.Field)(() => BankInfoUpdateOneWithoutDisbursementNestedInput, { nullable: true })
+], DisbursementUpdateInput.prototype, "BankInfo", void 0);
 DisbursementUpdateInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementUpdateInput);
@@ -18282,17 +18394,20 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], DisbursementWhereUniqueInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
 ], DisbursementWhereUniqueInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableFilter, { nullable: true })
 ], DisbursementWhereUniqueInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableFilter, { nullable: true })
 ], DisbursementWhereUniqueInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => BankInfoRelationFilter, { nullable: true })
-], DisbursementWhereUniqueInput.prototype, "bankInfo", void 0);
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], DisbursementWhereUniqueInput.prototype, "bankInfoId", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => BankInfoNullableRelationFilter, { nullable: true })
+], DisbursementWhereUniqueInput.prototype, "BankInfo", void 0);
 DisbursementWhereUniqueInput = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementWhereUniqueInput);
@@ -18372,17 +18487,20 @@ __decorate([
     (0, graphql_1.Field)(() => StringFilter, { nullable: true })
 ], DisbursementWhereInput.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => StringFilter, { nullable: true })
+    (0, graphql_1.Field)(() => StringNullableFilter, { nullable: true })
 ], DisbursementWhereInput.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableFilter, { nullable: true })
 ], DisbursementWhereInput.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => DateTimeFilter, { nullable: true })
+    (0, graphql_1.Field)(() => DateTimeNullableFilter, { nullable: true })
 ], DisbursementWhereInput.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => BankInfoRelationFilter, { nullable: true })
-], DisbursementWhereInput.prototype, "bankInfo", void 0);
+    (0, graphql_1.Field)(() => IntNullableFilter, { nullable: true })
+], DisbursementWhereInput.prototype, "bankInfoId", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => BankInfoNullableRelationFilter, { nullable: true })
+], DisbursementWhereInput.prototype, "BankInfo", void 0);
 DisbursementWhereInput = DisbursementWhereInput_1 = __decorate([
     (0, graphql_4.InputType)()
 ], DisbursementWhereInput);
@@ -18453,17 +18571,20 @@ __decorate([
     (0, graphql_1.Field)(() => String, { nullable: false })
 ], Disbursement.prototype, "beneficiary_email", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => String, { nullable: false })
+    (0, graphql_1.Field)(() => String, { nullable: true })
 ], Disbursement.prototype, "idempotency_key", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], Disbursement.prototype, "createdAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => Date, { nullable: false })
+    (0, graphql_1.Field)(() => Date, { nullable: true })
 ], Disbursement.prototype, "updatedAt", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => BankInfo, { nullable: false })
-], Disbursement.prototype, "bankInfo", void 0);
+    (0, graphql_1.Field)(() => graphql_3.Int, { nullable: true })
+], Disbursement.prototype, "bankInfoId", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => BankInfo, { nullable: true })
+], Disbursement.prototype, "BankInfo", void 0);
 Disbursement = __decorate([
     (0, graphql_5.ObjectType)()
 ], Disbursement);

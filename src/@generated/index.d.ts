@@ -413,7 +413,8 @@ export declare enum DisbursementScalarFieldEnum {
     beneficiary_email = "beneficiary_email",
     idempotency_key = "idempotency_key",
     createdAt = "createdAt",
-    updatedAt = "updatedAt"
+    updatedAt = "updatedAt",
+    bankInfoId = "bankInfoId"
 }
 export declare enum CityScalarFieldEnum {
     id = "id",
@@ -2595,6 +2596,10 @@ export declare class BankInfoMinOrderByAggregateInput {
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
 }
+export declare class BankInfoNullableRelationFilter {
+    is?: InstanceType<typeof BankInfoWhereInput>;
+    isNot?: InstanceType<typeof BankInfoWhereInput>;
+}
 export declare class BankInfoOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     bank_code?: keyof typeof SortOrder;
@@ -2620,10 +2625,6 @@ export declare class BankInfoOrderByWithRelationInput {
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
     Disbursement?: InstanceType<typeof DisbursementOrderByRelationAggregateInput>;
-}
-export declare class BankInfoRelationFilter {
-    is?: InstanceType<typeof BankInfoWhereInput>;
-    isNot?: InstanceType<typeof BankInfoWhereInput>;
 }
 export declare class BankInfoScalarWhereWithAggregatesInput {
     AND?: Array<BankInfoScalarWhereWithAggregatesInput>;
@@ -2714,10 +2715,12 @@ export declare class BankInfoUpdateManyMutationInput {
     createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
     updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
 }
-export declare class BankInfoUpdateOneRequiredWithoutDisbursementNestedInput {
+export declare class BankInfoUpdateOneWithoutDisbursementNestedInput {
     create?: InstanceType<typeof BankInfoCreateWithoutDisbursementInput>;
     connectOrCreate?: InstanceType<typeof BankInfoCreateOrConnectWithoutDisbursementInput>;
     upsert?: InstanceType<typeof BankInfoUpsertWithoutDisbursementInput>;
+    disconnect?: InstanceType<typeof BankInfoWhereInput>;
+    delete?: InstanceType<typeof BankInfoWhereInput>;
     connect?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
     update?: InstanceType<typeof BankInfoUpdateToOneWithWhereWithoutDisbursementInput>;
 }
@@ -5190,6 +5193,7 @@ export declare class DisbursementAvgAggregateInput {
     company_id?: true;
     recipient_city?: true;
     fee?: true;
+    bankInfoId?: true;
 }
 export declare class DisbursementAvgAggregate {
     id?: number;
@@ -5199,6 +5203,7 @@ export declare class DisbursementAvgAggregate {
     company_id?: number;
     recipient_city?: number;
     fee?: number;
+    bankInfoId?: number;
 }
 export declare class DisbursementAvgOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -5208,6 +5213,7 @@ export declare class DisbursementAvgOrderByAggregateInput {
     company_id?: keyof typeof SortOrder;
     recipient_city?: keyof typeof SortOrder;
     fee?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
 }
 export declare class DisbursementCountAggregateInput {
     id?: true;
@@ -5234,6 +5240,7 @@ export declare class DisbursementCountAggregateInput {
     idempotency_key?: true;
     createdAt?: true;
     updatedAt?: true;
+    bankInfoId?: true;
     _all?: true;
 }
 export declare class DisbursementCountAggregate {
@@ -5261,6 +5268,7 @@ export declare class DisbursementCountAggregate {
     idempotency_key: number;
     createdAt: number;
     updatedAt: number;
+    bankInfoId: number;
     _all: number;
 }
 export declare class DisbursementCountOrderByAggregateInput {
@@ -5288,6 +5296,7 @@ export declare class DisbursementCountOrderByAggregateInput {
     idempotency_key?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
 }
 export declare class DisbursementCreateManyBankInfoInputEnvelope {
     data: Array<DisbursementCreateManyBankInfoInput>;
@@ -5300,6 +5309,7 @@ export declare class DisbursementCreateManyBankInfoInput {
     status: string;
     reason: string;
     timestamp: string;
+    bank_code: string;
     account_number: string;
     recipient_name: string;
     sender_bank?: string;
@@ -5314,7 +5324,7 @@ export declare class DisbursementCreateManyBankInfoInput {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
+    idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
@@ -5340,9 +5350,10 @@ export declare class DisbursementCreateManyInput {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
+    idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    bankInfoId?: number;
 }
 export declare class DisbursementCreateNestedManyWithoutBankInfoInput {
     create?: Array<DisbursementCreateWithoutBankInfoInput>;
@@ -5361,6 +5372,7 @@ export declare class DisbursementCreateWithoutBankInfoInput {
     status: string;
     reason: string;
     timestamp: string;
+    bank_code: string;
     account_number: string;
     recipient_name: string;
     sender_bank?: string;
@@ -5375,7 +5387,7 @@ export declare class DisbursementCreateWithoutBankInfoInput {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
+    idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
@@ -5386,6 +5398,7 @@ export declare class DisbursementCreateInput {
     status: string;
     reason: string;
     timestamp: string;
+    bank_code: string;
     account_number: string;
     recipient_name: string;
     sender_bank?: string;
@@ -5400,10 +5413,10 @@ export declare class DisbursementCreateInput {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
+    idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    bankInfo: InstanceType<typeof BankInfoCreateNestedOneWithoutDisbursementInput>;
+    BankInfo?: InstanceType<typeof BankInfoCreateNestedOneWithoutDisbursementInput>;
 }
 export declare class DisbursementGroupByArgs {
     where?: InstanceType<typeof DisbursementWhereInput>;
@@ -5440,9 +5453,10 @@ export declare class DisbursementGroupBy {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
-    createdAt: Date | string;
-    updatedAt: Date | string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    bankInfoId?: number;
     _count?: InstanceType<typeof DisbursementCountAggregate>;
     _avg?: InstanceType<typeof DisbursementAvgAggregate>;
     _sum?: InstanceType<typeof DisbursementSumAggregate>;
@@ -5479,6 +5493,7 @@ export declare class DisbursementMaxAggregateInput {
     idempotency_key?: true;
     createdAt?: true;
     updatedAt?: true;
+    bankInfoId?: true;
 }
 export declare class DisbursementMaxAggregate {
     id?: number;
@@ -5505,6 +5520,7 @@ export declare class DisbursementMaxAggregate {
     idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    bankInfoId?: number;
 }
 export declare class DisbursementMaxOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -5531,6 +5547,7 @@ export declare class DisbursementMaxOrderByAggregateInput {
     idempotency_key?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
 }
 export declare class DisbursementMinAggregateInput {
     id?: true;
@@ -5557,6 +5574,7 @@ export declare class DisbursementMinAggregateInput {
     idempotency_key?: true;
     createdAt?: true;
     updatedAt?: true;
+    bankInfoId?: true;
 }
 export declare class DisbursementMinAggregate {
     id?: number;
@@ -5583,6 +5601,7 @@ export declare class DisbursementMinAggregate {
     idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    bankInfoId?: number;
 }
 export declare class DisbursementMinOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -5609,6 +5628,7 @@ export declare class DisbursementMinOrderByAggregateInput {
     idempotency_key?: keyof typeof SortOrder;
     createdAt?: keyof typeof SortOrder;
     updatedAt?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
 }
 export declare class DisbursementOrderByRelationAggregateInput {
     _count?: keyof typeof SortOrder;
@@ -5635,9 +5655,10 @@ export declare class DisbursementOrderByWithAggregationInput {
     sender?: InstanceType<typeof SortOrderInput>;
     fee?: keyof typeof SortOrder;
     beneficiary_email?: keyof typeof SortOrder;
-    idempotency_key?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
+    idempotency_key?: InstanceType<typeof SortOrderInput>;
+    createdAt?: InstanceType<typeof SortOrderInput>;
+    updatedAt?: InstanceType<typeof SortOrderInput>;
+    bankInfoId?: InstanceType<typeof SortOrderInput>;
     _count?: InstanceType<typeof DisbursementCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof DisbursementAvgOrderByAggregateInput>;
     _max?: InstanceType<typeof DisbursementMaxOrderByAggregateInput>;
@@ -5666,10 +5687,11 @@ export declare class DisbursementOrderByWithRelationInput {
     sender?: InstanceType<typeof SortOrderInput>;
     fee?: keyof typeof SortOrder;
     beneficiary_email?: keyof typeof SortOrder;
-    idempotency_key?: keyof typeof SortOrder;
-    createdAt?: keyof typeof SortOrder;
-    updatedAt?: keyof typeof SortOrder;
-    bankInfo?: InstanceType<typeof BankInfoOrderByWithRelationInput>;
+    idempotency_key?: InstanceType<typeof SortOrderInput>;
+    createdAt?: InstanceType<typeof SortOrderInput>;
+    updatedAt?: InstanceType<typeof SortOrderInput>;
+    bankInfoId?: InstanceType<typeof SortOrderInput>;
+    BankInfo?: InstanceType<typeof BankInfoOrderByWithRelationInput>;
 }
 export declare class DisbursementScalarWhereWithAggregatesInput {
     AND?: Array<DisbursementScalarWhereWithAggregatesInput>;
@@ -5696,9 +5718,10 @@ export declare class DisbursementScalarWhereWithAggregatesInput {
     sender?: InstanceType<typeof StringNullableWithAggregatesFilter>;
     fee?: InstanceType<typeof IntWithAggregatesFilter>;
     beneficiary_email?: InstanceType<typeof StringWithAggregatesFilter>;
-    idempotency_key?: InstanceType<typeof StringWithAggregatesFilter>;
-    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
-    updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
 }
 export declare class DisbursementScalarWhereInput {
     AND?: Array<DisbursementScalarWhereInput>;
@@ -5725,9 +5748,10 @@ export declare class DisbursementScalarWhereInput {
     sender?: InstanceType<typeof StringNullableFilter>;
     fee?: InstanceType<typeof IntFilter>;
     beneficiary_email?: InstanceType<typeof StringFilter>;
-    idempotency_key?: InstanceType<typeof StringFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableFilter>;
 }
 export declare class DisbursementSumAggregateInput {
     id?: true;
@@ -5737,6 +5761,7 @@ export declare class DisbursementSumAggregateInput {
     company_id?: true;
     recipient_city?: true;
     fee?: true;
+    bankInfoId?: true;
 }
 export declare class DisbursementSumAggregate {
     id?: number;
@@ -5746,6 +5771,7 @@ export declare class DisbursementSumAggregate {
     company_id?: number;
     recipient_city?: number;
     fee?: number;
+    bankInfoId?: number;
 }
 export declare class DisbursementSumOrderByAggregateInput {
     id?: keyof typeof SortOrder;
@@ -5755,6 +5781,7 @@ export declare class DisbursementSumOrderByAggregateInput {
     company_id?: keyof typeof SortOrder;
     recipient_city?: keyof typeof SortOrder;
     fee?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
 }
 export declare class DisbursementUncheckedCreateNestedManyWithoutBankInfoInput {
     create?: Array<DisbursementCreateWithoutBankInfoInput>;
@@ -5769,6 +5796,7 @@ export declare class DisbursementUncheckedCreateWithoutBankInfoInput {
     status: string;
     reason: string;
     timestamp: string;
+    bank_code: string;
     account_number: string;
     recipient_name: string;
     sender_bank?: string;
@@ -5783,7 +5811,7 @@ export declare class DisbursementUncheckedCreateWithoutBankInfoInput {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
+    idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
@@ -5809,9 +5837,10 @@ export declare class DisbursementUncheckedCreateInput {
     sender?: string;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
+    idempotency_key?: string;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    bankInfoId?: number;
 }
 export declare class DisbursementUncheckedUpdateManyWithoutBankInfoNestedInput {
     create?: Array<DisbursementCreateWithoutBankInfoInput>;
@@ -5833,6 +5862,7 @@ export declare class DisbursementUncheckedUpdateManyWithoutBankInfoInput {
     status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
@@ -5847,9 +5877,9 @@ export declare class DisbursementUncheckedUpdateManyWithoutBankInfoInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
 }
 export declare class DisbursementUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -5873,9 +5903,10 @@ export declare class DisbursementUncheckedUpdateManyInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    bankInfoId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
 }
 export declare class DisbursementUncheckedUpdateWithoutBankInfoInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -5884,6 +5915,7 @@ export declare class DisbursementUncheckedUpdateWithoutBankInfoInput {
     status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
@@ -5898,9 +5930,9 @@ export declare class DisbursementUncheckedUpdateWithoutBankInfoInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
 }
 export declare class DisbursementUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -5924,9 +5956,10 @@ export declare class DisbursementUncheckedUpdateInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    bankInfoId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
 }
 export declare class DisbursementUpdateManyMutationInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -5935,6 +5968,7 @@ export declare class DisbursementUpdateManyMutationInput {
     status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
@@ -5949,9 +5983,9 @@ export declare class DisbursementUpdateManyMutationInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
 }
 export declare class DisbursementUpdateManyWithWhereWithoutBankInfoInput {
     where: InstanceType<typeof DisbursementScalarWhereInput>;
@@ -5981,6 +6015,7 @@ export declare class DisbursementUpdateWithoutBankInfoInput {
     status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
@@ -5995,9 +6030,9 @@ export declare class DisbursementUpdateWithoutBankInfoInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
 }
 export declare class DisbursementUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -6006,6 +6041,7 @@ export declare class DisbursementUpdateInput {
     status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
     sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
@@ -6020,10 +6056,10 @@ export declare class DisbursementUpdateInput {
     sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
     fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    idempotency_key?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
-    bankInfo?: InstanceType<typeof BankInfoUpdateOneRequiredWithoutDisbursementNestedInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    BankInfo?: InstanceType<typeof BankInfoUpdateOneWithoutDisbursementNestedInput>;
 }
 export declare class DisbursementUpsertWithWhereUniqueWithoutBankInfoInput {
     where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
@@ -6055,10 +6091,11 @@ export declare class DisbursementWhereUniqueInput {
     sender?: InstanceType<typeof StringNullableFilter>;
     fee?: InstanceType<typeof IntFilter>;
     beneficiary_email?: InstanceType<typeof StringFilter>;
-    idempotency_key?: InstanceType<typeof StringFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
-    bankInfo?: InstanceType<typeof BankInfoRelationFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableFilter>;
+    BankInfo?: InstanceType<typeof BankInfoNullableRelationFilter>;
 }
 export declare class DisbursementWhereInput {
     AND?: Array<DisbursementWhereInput>;
@@ -6085,10 +6122,11 @@ export declare class DisbursementWhereInput {
     sender?: InstanceType<typeof StringNullableFilter>;
     fee?: InstanceType<typeof IntFilter>;
     beneficiary_email?: InstanceType<typeof StringFilter>;
-    idempotency_key?: InstanceType<typeof StringFilter>;
-    createdAt?: InstanceType<typeof DateTimeFilter>;
-    updatedAt?: InstanceType<typeof DateTimeFilter>;
-    bankInfo?: InstanceType<typeof BankInfoRelationFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableFilter>;
+    BankInfo?: InstanceType<typeof BankInfoNullableRelationFilter>;
 }
 export declare class Disbursement {
     id: number;
@@ -6112,10 +6150,11 @@ export declare class Disbursement {
     sender: string | null;
     fee: number;
     beneficiary_email: string;
-    idempotency_key: string;
-    createdAt: Date;
-    updatedAt: Date;
-    bankInfo?: InstanceType<typeof BankInfo>;
+    idempotency_key: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    bankInfoId: number | null;
+    BankInfo?: InstanceType<typeof BankInfo> | null;
 }
 export declare class FindFirstDisbursementOrThrowArgs {
     where?: InstanceType<typeof DisbursementWhereInput>;

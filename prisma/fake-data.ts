@@ -585,6 +585,7 @@ export function fakeDisbursement() {
     status: faker.lorem.words(5),
     reason: faker.lorem.words(5),
     timestamp: faker.lorem.words(5),
+    bank_code: faker.lorem.words(5),
     account_number: faker.lorem.words(5),
     recipient_name: faker.lorem.words(5),
     sender_bank: undefined,
@@ -599,8 +600,8 @@ export function fakeDisbursement() {
     sender: undefined,
     fee: faker.datatype.number(),
     beneficiary_email: faker.lorem.words(5),
-    idempotency_key: faker.lorem.words(5),
-    updatedAt: faker.datatype.datetime(),
+    idempotency_key: undefined,
+    updatedAt: undefined,
   };
 }
 export function fakeDisbursementComplete() {
@@ -611,7 +612,7 @@ export function fakeDisbursementComplete() {
     status: faker.lorem.words(5),
     reason: faker.lorem.words(5),
     timestamp: faker.lorem.words(5),
-    bank_code: faker.datatype.uuid(),
+    bank_code: faker.lorem.words(5),
     account_number: faker.lorem.words(5),
     recipient_name: faker.lorem.words(5),
     sender_bank: undefined,
@@ -626,9 +627,10 @@ export function fakeDisbursementComplete() {
     sender: undefined,
     fee: faker.datatype.number(),
     beneficiary_email: faker.lorem.words(5),
-    idempotency_key: faker.lorem.words(5),
+    idempotency_key: undefined,
     createdAt: new Date(),
-    updatedAt: faker.datatype.datetime(),
+    updatedAt: undefined,
+    bankInfoId: undefined,
   };
 }
 export function fakeBankInfo() {

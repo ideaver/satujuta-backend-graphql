@@ -549,6 +549,7 @@ type DisbursementAvgAggregate {
   company_id: Float
   recipient_city: Float
   fee: Float
+  bankInfoId: Float
 }
 
 type DisbursementCountAggregate {
@@ -576,6 +577,7 @@ type DisbursementCountAggregate {
   idempotency_key: Int!
   createdAt: Int!
   updatedAt: Int!
+  bankInfoId: Int!
   _all: Int!
 }
 
@@ -604,6 +606,7 @@ type DisbursementMaxAggregate {
   idempotency_key: String
   createdAt: DateTime
   updatedAt: DateTime
+  bankInfoId: Int
 }
 
 type DisbursementMinAggregate {
@@ -631,6 +634,7 @@ type DisbursementMinAggregate {
   idempotency_key: String
   createdAt: DateTime
   updatedAt: DateTime
+  bankInfoId: Int
 }
 
 type DisbursementSumAggregate {
@@ -641,6 +645,7 @@ type DisbursementSumAggregate {
   company_id: Int
   recipient_city: Int
   fee: Int
+  bankInfoId: Int
 }
 
 type Disbursement {
@@ -665,10 +670,11 @@ type Disbursement {
   sender: String
   fee: Int!
   beneficiary_email: String!
-  idempotency_key: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  bankInfo: BankInfo!
+  idempotency_key: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  bankInfoId: Int
+  BankInfo: BankInfo
 }
 
 type AggregateDistrict {
