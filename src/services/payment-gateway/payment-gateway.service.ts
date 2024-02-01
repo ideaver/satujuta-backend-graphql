@@ -9,6 +9,7 @@ import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
 import { CreateBillArgs } from './dto/create-bill.args';
 import { UpdateBillArgs } from './dto/update-bill.args';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import { GetAllPaymentArgs, GetPaymentArgs } from './dto/payment.args';
 
 @Injectable()
 export class PaymentGatewayService {
@@ -430,6 +431,182 @@ export class PaymentGatewayService {
         const newCode = Number(`7${originalCode}`);
 
         console.log(newCode);
+
+        throw new IGraphQLError({
+          code: newCode,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async getBill(bill_id: string) {
+    try {
+      const response = await axios.get(
+        `${this.base_url_v2}/pwf/${bill_id}/bill`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          auth: {
+            username: `${this.apiKey}`,
+            password: `${this.password}`,
+          },
+        },
+      );
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
+
+        throw new IGraphQLError({
+          code: newCode,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async getAllBill() {
+    try {
+      const response = await axios.get(`${this.base_url_v2}/pwf/bill`, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        auth: {
+          username: `${this.apiKey}`,
+          password: `${this.password}`,
+        },
+      });
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
+
+        throw new IGraphQLError({
+          code: newCode,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async getPayment(getPaymentArgs: GetPaymentArgs) {
+    try {
+      const {
+        bill_id,
+        pagination,
+        page,
+        sort_by,
+        sort_type,
+        start_date,
+        end_date,
+      } = getPaymentArgs;
+
+      let params = '';
+      if (pagination) params += `pagination=${pagination}&`;
+      if (page) params += `page=${page}&`;
+      if (sort_by) params += `sort_by=${sort_by}&`;
+      if (sort_type) params += `sort_type=${sort_type}&`;
+      if (start_date) params += `start_date=${start_date}&`;
+      if (end_date) params += `end_date=${end_date}&`;
+
+      // Remove the last trailing '&'
+      params = params.slice(0, -1);
+
+      const response = await axios.get(
+        `${this.base_url_v2}/pwf/${bill_id}/payment?${params}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          auth: {
+            username: `${this.apiKey}`,
+            password: `${this.password}`,
+          },
+        },
+      );
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
+
+        throw new IGraphQLError({
+          code: newCode,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async getAllPayment(getAllPaymentArgs: GetAllPaymentArgs) {
+    try {
+      const {
+        pagination,
+        page,
+        sort_by,
+        sort_type,
+        start_date,
+        end_date,
+        reference_id,
+      } = getAllPaymentArgs;
+
+      let params = '';
+      if (pagination) params += `pagination=${pagination}&`;
+      if (page) params += `page=${page}&`;
+      if (sort_by) params += `sort_by=${sort_by}&`;
+      if (sort_type) params += `sort_type=${sort_type}&`;
+      if (start_date) params += `start_date=${start_date}&`;
+      if (end_date) params += `end_date=${end_date}&`;
+      if (reference_id) params += `reference_id=${reference_id}&`;
+
+      // Remove the last trailing '&'
+      params = params.slice(0, -1);
+
+      const response = await axios.get(
+        `${this.base_url_v2}/pwf/payment?${params}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          auth: {
+            username: `${this.apiKey}`,
+            password: `${this.password}`,
+          },
+        },
+      );
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
 
         throw new IGraphQLError({
           code: newCode,

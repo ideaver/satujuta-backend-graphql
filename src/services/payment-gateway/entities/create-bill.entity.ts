@@ -16,6 +16,15 @@ export class Customer {
 }
 
 @ObjectType()
+export class PaymentMethod {
+  @Field()
+  sender_bank: string;
+
+  @Field()
+  sender_bank_type: string;
+}
+
+@ObjectType()
 export class ReceiverBankAccount {
   @Field({ nullable: true })
   account_number: string;
@@ -106,6 +115,9 @@ export class BillEntity {
 
   @Field(() => Customer, { nullable: true })
   customer?: Customer;
+
+  @Field(() => PaymentMethod, { nullable: true })
+  payment_method?: PaymentMethod;
 
   @Field(() => BillPayment, { nullable: true })
   bill_payment?: BillPayment;

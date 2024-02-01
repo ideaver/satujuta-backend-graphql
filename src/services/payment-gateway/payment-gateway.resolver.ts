@@ -14,6 +14,8 @@ import { Disbursement } from 'src/@generated';
 import { CreateBillArgs } from './dto/create-bill.args';
 import { BillEntity } from './entities/create-bill.entity';
 import { UpdateBillArgs } from './dto/update-bill.args';
+import { GetAllPayment, GetPayment } from './entities/payment.entity';
+import { GetAllPaymentArgs, GetPaymentArgs } from './dto/payment.args';
 
 @Resolver(() => Disbursement)
 export class PaymentGatewayResolver {
@@ -123,5 +125,41 @@ export class PaymentGatewayResolver {
     @Args('updateBillArgs') updateBillArgs: UpdateBillArgs,
   ): Promise<BillEntity | void> {
     return await this.paymentGatewayService.updateBill(updateBillArgs);
+  }
+
+  @Query(() => BillEntity, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async getBill(@Args('bill_id') bill_id: string): Promise<BillEntity | void> {
+    return await this.paymentGatewayService.getBill(bill_id);
+  }
+
+  @Query(() => [BillEntity], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async getAllBill(): Promise<BillEntity[] | void> {
+    return await this.paymentGatewayService.getAllBill();
+  }
+
+  @Query(() => GetPayment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async getPayment(
+    @Args('getPaymentArgs') getPaymentArgs: GetPaymentArgs,
+  ): Promise<GetPayment | void> {
+    return await this.paymentGatewayService.getPayment(getPaymentArgs);
+  }
+
+  @Query(() => GetAllPayment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async getAllPayment(
+    @Args('getAllPaymentArgs') getAllPaymentArgs: GetAllPaymentArgs,
+  ): Promise<GetAllPayment | void> {
+    return await this.paymentGatewayService.getAllPayment(getAllPaymentArgs);
   }
 }

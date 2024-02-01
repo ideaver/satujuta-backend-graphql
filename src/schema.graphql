@@ -1323,6 +1323,77 @@ type Order {
   _count: OrderCount!
 }
 
+type PaymentCountAggregate {
+  id: Int!
+  bill_link: Int!
+  bill_title: Int!
+  sender_name: Int!
+  sender_bank: Int!
+  sender_bank_type: Int!
+  virtual_account_number: Int!
+  amount: Int!
+  status: Int!
+  settlement_status: Int!
+  reference_id: Int!
+  payment_url: Int!
+  created_at: Int!
+  completed_at: Int!
+  _all: Int!
+}
+
+type PaymentMaxAggregate {
+  id: String
+  bill_link: String
+  bill_title: String
+  sender_name: String
+  sender_bank: String
+  sender_bank_type: SenderBankType
+  virtual_account_number: String
+  amount: String
+  status: PaymentStatus
+  settlement_status: SettlementStatus
+  reference_id: String
+  payment_url: String
+  created_at: DateTime
+  completed_at: DateTime
+}
+
+enum SenderBankType {
+  bank_account
+  virtual_account
+  wallet_account
+  bank_transfer
+}
+
+enum PaymentStatus {
+  FAILED
+  SUCCESSFUL
+  PENDING
+}
+
+enum SettlementStatus {
+  Cancelled
+  Settled
+  Pending
+}
+
+type PaymentMinAggregate {
+  id: String
+  bill_link: String
+  bill_title: String
+  sender_name: String
+  sender_bank: String
+  sender_bank_type: SenderBankType
+  virtual_account_number: String
+  amount: String
+  status: PaymentStatus
+  settlement_status: SettlementStatus
+  reference_id: String
+  payment_url: String
+  created_at: DateTime
+  completed_at: DateTime
+}
+
 type AggregateProgram {
   _count: ProgramCountAggregate
   _avg: ProgramAvgAggregate
@@ -2479,6 +2550,11 @@ type Customer {
   phone: String
 }
 
+type PaymentMethod {
+  sender_bank: String!
+  sender_bank_type: String!
+}
+
 type ReceiverBankAccount {
   account_number: String
   account_type: String
@@ -2514,8 +2590,43 @@ type BillEntity {
   is_address_required: Float
   is_phone_number_required: Float
   customer: Customer
+  payment_method: PaymentMethod
   bill_payment: BillPayment
   payment_url: String
+}
+
+type Payment {
+  id: String!
+  bill_link: String!
+  bill_title: String!
+  sender_name: String!
+  sender_bank: String!
+  sender_bank_type: SenderBankType!
+  virtual_account_number: String
+  amount: String!
+  status: PaymentStatus!
+  settlement_status: String!
+  reference_id: String
+  payment_url: String!
+  created_at: String!
+  completed_at: String
+}
+
+type GetPayment {
+  link_id: Int!
+  total_data: Int!
+  data_per_page: Int!
+  total_page: Int!
+  page: Int!
+  data: [Payment!]!
+}
+
+type GetAllPayment {
+  total_data: Int!
+  data_per_page: Int!
+  total_page: Int!
+  page: Int!
+  data: [Payment!]!
 }
 
 type Query {
@@ -2977,6 +3088,18 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   bankAccountInquiry(bankAccountInquiryArgs: BankAccountInquiryArgs!): BankAccountInquiry
+
+  """Deskripsinya ada disini loh"""
+  getBill(bill_id: String!): BillEntity
+
+  """Deskripsinya ada disini loh"""
+  getAllBill: [BillEntity!]
+
+  """Deskripsinya ada disini loh"""
+  getPayment(getPaymentArgs: GetPaymentArgs!): GetPayment
+
+  """Deskripsinya ada disini loh"""
+  getAllPayment(getAllPaymentArgs: GetAllPaymentArgs!): GetAllPayment
 }
 
 input ImagesWhereUniqueInput {
@@ -6480,6 +6603,26 @@ input BankAccountInquiryArgs {
 
   """The inquiry key."""
   inquiry_key: Int!
+}
+
+input GetPaymentArgs {
+  bill_id: Int!
+  start_date: String
+  end_date: String
+  pagination: Int
+  page: Int
+  sort_by: String
+  sort_type: String
+}
+
+input GetAllPaymentArgs {
+  start_date: String
+  end_date: String
+  pagination: Int
+  page: Int
+  sort_by: String
+  sort_type: String
+  reference_id: String
 }
 
 type Mutation {

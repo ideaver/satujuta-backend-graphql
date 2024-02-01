@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory, BillType, BillSenderBankType, BillStatus } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory, BillType, BillSenderBankType, BillStatus, SenderBankType, PaymentStatus, SettlementStatus } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -690,5 +690,39 @@ export function fakeBillComplete() {
     sender_address: undefined,
     sender_bank: undefined,
     sender_bank_type: undefined,
+  };
+}
+export function fakePayment() {
+  return {
+    bill_link: faker.lorem.words(5),
+    bill_title: faker.lorem.words(5),
+    sender_name: faker.lorem.words(5),
+    sender_bank: faker.lorem.words(5),
+    sender_bank_type: faker.helpers.arrayElement([SenderBankType.bank_account, SenderBankType.virtual_account, SenderBankType.wallet_account, SenderBankType.bank_transfer] as const),
+    virtual_account_number: undefined,
+    amount: faker.lorem.words(5),
+    status: faker.helpers.arrayElement([PaymentStatus.FAILED, PaymentStatus.SUCCESSFUL, PaymentStatus.PENDING] as const),
+    settlement_status: faker.helpers.arrayElement([SettlementStatus.Cancelled, SettlementStatus.Settled, SettlementStatus.Pending] as const),
+    reference_id: undefined,
+    payment_url: faker.lorem.words(5),
+    completed_at: undefined,
+  };
+}
+export function fakePaymentComplete() {
+  return {
+    id: faker.datatype.uuid(),
+    bill_link: faker.lorem.words(5),
+    bill_title: faker.lorem.words(5),
+    sender_name: faker.lorem.words(5),
+    sender_bank: faker.lorem.words(5),
+    sender_bank_type: faker.helpers.arrayElement([SenderBankType.bank_account, SenderBankType.virtual_account, SenderBankType.wallet_account, SenderBankType.bank_transfer] as const),
+    virtual_account_number: undefined,
+    amount: faker.lorem.words(5),
+    status: faker.helpers.arrayElement([PaymentStatus.FAILED, PaymentStatus.SUCCESSFUL, PaymentStatus.PENDING] as const),
+    settlement_status: faker.helpers.arrayElement([SettlementStatus.Cancelled, SettlementStatus.Settled, SettlementStatus.Pending] as const),
+    reference_id: undefined,
+    payment_url: faker.lorem.words(5),
+    created_at: new Date(),
+    completed_at: undefined,
   };
 }

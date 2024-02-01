@@ -913,6 +913,23 @@ model Bill {
   sender_bank_type         BillSenderBankType?
 }
 
+model Payment {
+  id                     String           @id @default(uuid())
+  bill_link              String
+  bill_title             String
+  sender_name            String
+  sender_bank            String
+  sender_bank_type       SenderBankType
+  virtual_account_number String?
+  amount                 String
+  status                 PaymentStatus
+  settlement_status      SettlementStatus
+  reference_id           String?
+  payment_url            String
+  created_at             DateTime         @default(now())
+  completed_at           DateTime?
+}
+
 enum BillType {
   SINGLE
   MULTIPLE
@@ -926,4 +943,23 @@ enum BillSenderBankType {
 enum BillStatus {
   ACTIVE
   INACTIVE
+}
+
+enum SenderBankType {
+  bank_account
+  virtual_account
+  wallet_account
+  bank_transfer
+}
+
+enum PaymentStatus {
+  FAILED
+  SUCCESSFUL
+  PENDING
+}
+
+enum SettlementStatus {
+  Cancelled
+  Settled
+  Pending
 }
