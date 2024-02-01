@@ -13,6 +13,7 @@ import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
 import { Disbursement } from 'src/@generated';
 import { CreateBillArgs } from './dto/create-bill.args';
 import { BillEntity } from './entities/create-bill.entity';
+import { UpdateBillArgs } from './dto/update-bill.args';
 
 @Resolver(() => Disbursement)
 export class PaymentGatewayResolver {
@@ -110,7 +111,17 @@ export class PaymentGatewayResolver {
   })
   async createBill(
     @Args('createBillArgs') createBillArgs: CreateBillArgs,
-  ): Promise<CreateBillArgs | void> {
+  ): Promise<BillEntity | void> {
     return await this.paymentGatewayService.createBill(createBillArgs);
+  }
+
+  @Mutation(() => BillEntity, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
+  async updateBill(
+    @Args('updateBillArgs') updateBillArgs: UpdateBillArgs,
+  ): Promise<BillEntity | void> {
+    return await this.paymentGatewayService.updateBill(updateBillArgs);
   }
 }

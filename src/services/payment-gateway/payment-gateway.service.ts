@@ -7,6 +7,8 @@ import { GetDisbursementByIdArgs } from './dto/get-disbursement-by-id.args';
 import { GetDisbursementByIdempotencyKeyArgs } from './dto/get-disbursement-by-idempotency-key.args';
 import { BankAccountInquiryArgs } from './dto/bank-account-inquiry.args';
 import { CreateBillArgs } from './dto/create-bill.args';
+import { UpdateBillArgs } from './dto/update-bill.args';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 
 @Injectable()
 export class PaymentGatewayService {
@@ -385,6 +387,49 @@ export class PaymentGatewayService {
       if (error.response && error.response.data) {
         const originalCode = error.response.data.errors[0].code;
         const newCode = Number(`7${originalCode}`);
+
+        throw new IGraphQLError({
+          code: newCode,
+        });
+      } else {
+        throw new IGraphQLError({
+          code: 7999,
+        });
+      }
+    }
+  }
+
+  async updateBill(updateBillArgs: UpdateBillArgs) {
+    try {
+      const { bill_id, ...sliceUpdateBillArgs } = updateBillArgs;
+
+      this.logger.log(sliceUpdateBillArgs);
+
+      const response = await axios.put(
+        `${this.base_url_v2}/pwf/${bill_id}/bill`,
+        {
+          ...sliceUpdateBillArgs,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          auth: {
+            username: `${this.apiKey}`,
+            password: `${this.password}`,
+          },
+        },
+      );
+
+      this.logger.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const originalCode = error.response.data.errors[0].code;
+        const newCode = Number(`7${originalCode}`);
+
+        console.log(newCode);
 
         throw new IGraphQLError({
           code: newCode,

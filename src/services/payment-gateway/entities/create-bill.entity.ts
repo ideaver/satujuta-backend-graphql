@@ -87,7 +87,7 @@ export class BillEntity {
   redirect_url: string;
 
   @Field({ nullable: true })
-  expired_date: Date;
+  expired_date: string;
 
   @Field()
   created_from: string;

@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory, BillType, BillSenderBankType } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory, BillType, BillSenderBankType, BillStatus } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -660,6 +660,7 @@ export function fakeBill() {
     amount: undefined,
     expired_date: undefined,
     redirect_url: undefined,
+    status: faker.helpers.arrayElement([BillStatus.ACTIVE, BillStatus.INACTIVE] as const),
     is_address_required: undefined,
     is_phone_number_required: undefined,
     step: faker.datatype.number(),
@@ -679,6 +680,7 @@ export function fakeBillComplete() {
     amount: undefined,
     expired_date: undefined,
     redirect_url: undefined,
+    status: faker.helpers.arrayElement([BillStatus.ACTIVE, BillStatus.INACTIVE] as const),
     is_address_required: undefined,
     is_phone_number_required: undefined,
     step: faker.datatype.number(),

@@ -253,6 +253,10 @@ export declare enum BillType {
     SINGLE = "SINGLE",
     MULTIPLE = "MULTIPLE"
 }
+export declare enum BillStatus {
+    ACTIVE = "ACTIVE",
+    INACTIVE = "INACTIVE"
+}
 export declare enum BillSenderBankType {
     virtual_account = "virtual_account",
     wallet_account = "wallet_account"
@@ -410,6 +414,7 @@ export declare enum BillScalarFieldEnum {
     amount = "amount",
     expired_date = "expired_date",
     redirect_url = "redirect_url",
+    status = "status",
     is_address_required = "is_address_required",
     is_phone_number_required = "is_phone_number_required",
     step = "step",
@@ -2855,6 +2860,7 @@ export declare class BillCountAggregateInput {
     amount?: true;
     expired_date?: true;
     redirect_url?: true;
+    status?: true;
     is_address_required?: true;
     is_phone_number_required?: true;
     step?: true;
@@ -2873,6 +2879,7 @@ export declare class BillCountAggregate {
     amount: number;
     expired_date: number;
     redirect_url: number;
+    status: number;
     is_address_required: number;
     is_phone_number_required: number;
     step: number;
@@ -2891,6 +2898,7 @@ export declare class BillCountOrderByAggregateInput {
     amount?: keyof typeof SortOrder;
     expired_date?: keyof typeof SortOrder;
     redirect_url?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
     is_address_required?: keyof typeof SortOrder;
     is_phone_number_required?: keyof typeof SortOrder;
     step?: keyof typeof SortOrder;
@@ -2908,6 +2916,7 @@ export declare class BillCreateManyInput {
     amount?: number;
     expired_date?: Date | string;
     redirect_url?: string;
+    status: keyof typeof BillStatus;
     is_address_required?: number;
     is_phone_number_required?: number;
     step: number;
@@ -2925,6 +2934,7 @@ export declare class BillCreateInput {
     amount?: number;
     expired_date?: Date | string;
     redirect_url?: string;
+    status: keyof typeof BillStatus;
     is_address_required?: number;
     is_phone_number_required?: number;
     step: number;
@@ -2955,6 +2965,7 @@ export declare class BillGroupBy {
     amount?: number;
     expired_date?: Date | string;
     redirect_url?: string;
+    status: keyof typeof BillStatus;
     is_address_required?: number;
     is_phone_number_required?: number;
     step: number;
@@ -2977,6 +2988,7 @@ export declare class BillMaxAggregateInput {
     amount?: true;
     expired_date?: true;
     redirect_url?: true;
+    status?: true;
     is_address_required?: true;
     is_phone_number_required?: true;
     step?: true;
@@ -2994,6 +3006,7 @@ export declare class BillMaxAggregate {
     amount?: number;
     expired_date?: Date | string;
     redirect_url?: string;
+    status?: keyof typeof BillStatus;
     is_address_required?: number;
     is_phone_number_required?: number;
     step?: number;
@@ -3011,6 +3024,7 @@ export declare class BillMaxOrderByAggregateInput {
     amount?: keyof typeof SortOrder;
     expired_date?: keyof typeof SortOrder;
     redirect_url?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
     is_address_required?: keyof typeof SortOrder;
     is_phone_number_required?: keyof typeof SortOrder;
     step?: keyof typeof SortOrder;
@@ -3028,6 +3042,7 @@ export declare class BillMinAggregateInput {
     amount?: true;
     expired_date?: true;
     redirect_url?: true;
+    status?: true;
     is_address_required?: true;
     is_phone_number_required?: true;
     step?: true;
@@ -3045,6 +3060,7 @@ export declare class BillMinAggregate {
     amount?: number;
     expired_date?: Date | string;
     redirect_url?: string;
+    status?: keyof typeof BillStatus;
     is_address_required?: number;
     is_phone_number_required?: number;
     step?: number;
@@ -3062,6 +3078,7 @@ export declare class BillMinOrderByAggregateInput {
     amount?: keyof typeof SortOrder;
     expired_date?: keyof typeof SortOrder;
     redirect_url?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
     is_address_required?: keyof typeof SortOrder;
     is_phone_number_required?: keyof typeof SortOrder;
     step?: keyof typeof SortOrder;
@@ -3079,6 +3096,7 @@ export declare class BillOrderByWithAggregationInput {
     amount?: InstanceType<typeof SortOrderInput>;
     expired_date?: InstanceType<typeof SortOrderInput>;
     redirect_url?: InstanceType<typeof SortOrderInput>;
+    status?: keyof typeof SortOrder;
     is_address_required?: InstanceType<typeof SortOrderInput>;
     is_phone_number_required?: InstanceType<typeof SortOrderInput>;
     step?: keyof typeof SortOrder;
@@ -3101,6 +3119,7 @@ export declare class BillOrderByWithRelationInput {
     amount?: InstanceType<typeof SortOrderInput>;
     expired_date?: InstanceType<typeof SortOrderInput>;
     redirect_url?: InstanceType<typeof SortOrderInput>;
+    status?: keyof typeof SortOrder;
     is_address_required?: InstanceType<typeof SortOrderInput>;
     is_phone_number_required?: InstanceType<typeof SortOrderInput>;
     step?: keyof typeof SortOrder;
@@ -3121,6 +3140,7 @@ export declare class BillScalarWhereWithAggregatesInput {
     amount?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     expired_date?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
     redirect_url?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    status?: InstanceType<typeof EnumBillStatusWithAggregatesFilter>;
     is_address_required?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     is_phone_number_required?: InstanceType<typeof IntNullableWithAggregatesFilter>;
     step?: InstanceType<typeof IntWithAggregatesFilter>;
@@ -3159,6 +3179,7 @@ export declare class BillUncheckedCreateInput {
     amount?: number;
     expired_date?: Date | string;
     redirect_url?: string;
+    status: keyof typeof BillStatus;
     is_address_required?: number;
     is_phone_number_required?: number;
     step: number;
@@ -3176,6 +3197,7 @@ export declare class BillUncheckedUpdateManyInput {
     amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
     is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3193,6 +3215,7 @@ export declare class BillUncheckedUpdateInput {
     amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
     is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3210,6 +3233,7 @@ export declare class BillUpdateManyMutationInput {
     amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
     is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3227,6 +3251,7 @@ export declare class BillUpdateInput {
     amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
     redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
     is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
     step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
@@ -3247,6 +3272,7 @@ export declare class BillWhereUniqueInput {
     amount?: InstanceType<typeof IntNullableFilter>;
     expired_date?: InstanceType<typeof DateTimeNullableFilter>;
     redirect_url?: InstanceType<typeof StringNullableFilter>;
+    status?: InstanceType<typeof EnumBillStatusFilter>;
     is_address_required?: InstanceType<typeof IntNullableFilter>;
     is_phone_number_required?: InstanceType<typeof IntNullableFilter>;
     step?: InstanceType<typeof IntFilter>;
@@ -3267,6 +3293,7 @@ export declare class BillWhereInput {
     amount?: InstanceType<typeof IntNullableFilter>;
     expired_date?: InstanceType<typeof DateTimeNullableFilter>;
     redirect_url?: InstanceType<typeof StringNullableFilter>;
+    status?: InstanceType<typeof EnumBillStatusFilter>;
     is_address_required?: InstanceType<typeof IntNullableFilter>;
     is_phone_number_required?: InstanceType<typeof IntNullableFilter>;
     step?: InstanceType<typeof IntFilter>;
@@ -3284,6 +3311,7 @@ export declare class Bill {
     amount: number | null;
     expired_date: Date | null;
     redirect_url: string | null;
+    status: keyof typeof BillStatus;
     is_address_required: number | null;
     is_phone_number_required: number | null;
     step: number;
@@ -11624,6 +11652,24 @@ export declare class EnumBillSenderBankTypeNullableWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
     _max?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
 }
+export declare class EnumBillStatusFieldUpdateOperationsInput {
+    set?: keyof typeof BillStatus;
+}
+export declare class EnumBillStatusFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
+export declare class EnumBillStatusWithAggregatesFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
 export declare class EnumBillTypeFieldUpdateOperationsInput {
     set?: keyof typeof BillType;
 }
@@ -12073,6 +12119,21 @@ export declare class NestedEnumBillSenderBankTypeNullableWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntNullableFilter>;
     _min?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
     _max?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class NestedEnumBillStatusFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
+export declare class NestedEnumBillStatusWithAggregatesFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumBillStatusFilter>;
 }
 export declare class NestedEnumBillTypeFilter {
     equals?: keyof typeof BillType;

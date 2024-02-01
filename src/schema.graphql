@@ -280,6 +280,7 @@ type BillCountAggregate {
   amount: Int!
   expired_date: Int!
   redirect_url: Int!
+  status: Int!
   is_address_required: Int!
   is_phone_number_required: Int!
   step: Int!
@@ -299,6 +300,7 @@ type BillMaxAggregate {
   amount: Int
   expired_date: DateTime
   redirect_url: String
+  status: BillStatus
   is_address_required: Int
   is_phone_number_required: Int
   step: Int
@@ -315,6 +317,11 @@ enum BillType {
   MULTIPLE
 }
 
+enum BillStatus {
+  ACTIVE
+  INACTIVE
+}
+
 enum BillSenderBankType {
   virtual_account
   wallet_account
@@ -327,6 +334,7 @@ type BillMinAggregate {
   amount: Int
   expired_date: DateTime
   redirect_url: String
+  status: BillStatus
   is_address_required: Int
   is_phone_number_required: Int
   step: Int
@@ -2499,7 +2507,7 @@ type BillEntity {
   type: String!
   amount: Float
   redirect_url: String
-  expired_date: DateTime
+  expired_date: String
   created_from: String!
   status: String!
   step: Float!
@@ -6866,6 +6874,9 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   createBill(createBillArgs: CreateBillArgs!): BillEntity
+
+  """Deskripsinya ada disini loh"""
+  updateBill(updateBillArgs: UpdateBillArgs!): BillEntity
 }
 
 input UserCreateInput {
@@ -10810,4 +10821,16 @@ input CreateBillArgs {
   sender_address: String
   sender_bank: String
   sender_bank_type: BillSenderBankType
+}
+
+input UpdateBillArgs {
+  bill_id: String!
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: String
+  redirect_url: String
+  status: BillStatus
+  is_address_required: Int
+  is_phone_number_required: Int
 }

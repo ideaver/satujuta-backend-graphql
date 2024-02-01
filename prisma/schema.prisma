@@ -901,6 +901,7 @@ model Bill {
   amount                   Int?
   expired_date             DateTime?
   redirect_url             String?
+  status                   BillStatus
   is_address_required      Int?
   is_phone_number_required Int?
   step                     Int
@@ -920,4 +921,9 @@ enum BillType {
 enum BillSenderBankType {
   virtual_account
   wallet_account
+}
+
+enum BillStatus {
+  ACTIVE
+  INACTIVE
 }
