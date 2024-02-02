@@ -1,25 +1,127 @@
 version: '3.8'
 
 services:
-    dev:
-        container_name: satujuta-backend-graphql
-        image: nestjs-api-dev:1.0.0
-        # command: npm run start:dev
-        build:
-            context: .
-            dockerfile: ./DockerFile
-        ports:
-            - "3000:3000"
-            - "5555:5555"
-            - "9229:9229"
-        networks:
-            - nestjs-network
-        volumes:
-            - data-volume:/usr/src/app
-            # - /usr/src/app/satujuta-backend-graphql:/usr/src/app
-        restart: unless-stopped
+
+  # mysql: 
+  #   image: mysql:latest
+  #   container_name: mysql
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   restart: always
+  #   ports:
+  #     - "3306:3306"
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - nestjs-network
+
+  # minio:
+  #   image: minio/minio
+  #   container_name: minio
+  #   volumes:
+  #     - minio-data:/data
+  #   ports:
+  #     - "9900:9000" # MinIO server 
+  #     - "9901:9001" # MinIO Console WEB GUI
+  #   env_file:
+  #     - .env
+  #   command: server --console-address ":9001" /data
+  #   networks:
+  #     - nestjs-network
+  #   restart: always
+
+  # Dozzle - Real-time Docker Log Viewer
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - "8080:8080"
+    environment:
+      DOZZLE_LEVEL: info
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_FILTER: "status=running"
+      # DOZZLE_FILTER: "label=log_me" # limits logs displayed to containers with this label
+      # DOCKER_HOST: tcp://socket-proxy:2375 # enable when using socket proxy
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock # disable when using socket proxy
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - ./volume/nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./volume/certbot/www:/var/www/certbot/:ro
+      - ./volume/certbot/conf/:/etc/nginx/ssl/:ro
+      - data-volume:/var/www/files:ro
+    networks:
+      - nestjs-network
+
+  # certbot:
+  #   container_name: certbot
+  #   image: certbot/certbot
+  #   volumes:
+  #     - ./volume/certbot/www/:/var/www/certbot/:rw
+  #     - ./volume/certbot/conf/:/etc/letsencrypt/:rw
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    ports:
+      - 9000:9000
+    restart: always
+    volumes:
+      - data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - nestjs-network
+
+  graphql-backend:
+    container_name: graphql-backend
+    image: nestjs-api-dev:1.0.0
+    build:
+      context: .
+      dockerfile: ./DockerFile
+    ports:
+      - "3000:3000" # NestJS API
+      - "5555:5555" # Prisma Studio : npx prisma studio to activate
+      - "9229:9229" 
+    networks:
+      - nestjs-network
+    volumes:
+      - data-volume:/usr/src/app
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - portainer
+      - nginx
+      - dozzle
+      # - minio
+      # - redis
+      # - mysql
+     
+
+  # redis:
+  #   image: redis:latest
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - nestjs-network
+  #   restart: always
 
 networks:
-    nestjs-network:
+  nestjs-network:
+
 volumes:
-    data-volume:
+  data:
+  data-volume:
+  # minio-data:
+  # mysql-data:
