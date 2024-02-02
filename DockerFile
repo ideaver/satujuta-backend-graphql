@@ -1,5 +1,5 @@
 # Use the official Node.js LTS image as the base image
-FROM node:latest AS development
+FROM node:18.16-alpine3.17 AS development
 
 RUN npm install -g @nestjs/cli
 
