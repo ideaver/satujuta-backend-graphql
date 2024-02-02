@@ -16,7 +16,7 @@ export class PaymentGatewayService {
   private base_url_v2 = 'https://bigflip.id/big_sandbox_api/v2';
   private base_url_v3 = 'https://bigflip.id/big_sandbox_api/v3';
   private apiKey =
-    'JDJ5JDEzJDNZVjRSVHE3TkZBUy9INFMyZlVrSGVXVzNyOE5HL0NGVlNudjU2d3VaUVQ3VEtTNVd3aXRP';
+    'JDJ5JDEzJDAuTGtBaEVxckwubWw4S3RzTHBjYU9LdThpTU43L1NQSmJ0eGs0cnhDVktKelBpd3ZxYkVD';
   private password = 'bigflip123';
 
   private readonly logger = new Logger(PaymentGatewayService.name);
