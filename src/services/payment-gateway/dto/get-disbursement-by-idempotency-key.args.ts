@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
-export class GetDisbursementByIdempotencyKey {
+export class GetDisbursementByIdempotencyKeyArgs {
   @Field(() => String, {
     description: 'The idempotency key of the disbursement.',
   })

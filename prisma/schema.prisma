@@ -817,3 +817,149 @@ enum ProjectCategory {
   PROPERTY
   BUSSINESS
 }
+
+model Disbursement {
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  id                Int       @id
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  user_id           Int
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  amount            Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  status            String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  reason            String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  timestamp         String
+  /// @Validator.IsNotEmpty()
+  bank_code         String
+  /// @Validator.IsNotEmpty()
+  account_number    String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  recipient_name    String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  sender_bank       String?
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  remark            String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  receipt           String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  time_served       String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  bundle_id         Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  company_id        Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  recipient_city    Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  created_from      String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  direction         String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  sender            String?
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  fee               Int
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  beneficiary_email String
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  idempotency_key   String?
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  createdAt         DateTime? @default(now())
+  /// @HideField({ match: ['DisbursementCreate*Input','DisbursementUpdate*Input']})
+  updatedAt         DateTime? @updatedAt
+  BankInfo          BankInfo? @relation(fields: [bankInfoId], references: [id])
+  bankInfoId        Int?
+}
+
+model BankInfo {
+  /// @HideField({ match: ['BankInfoCreate*Input','BankInfoUpdate*Input']})
+  id           Int            @id @default(autoincrement())
+  /// @Validator.IsNotEmpty()
+  bank_code    String         @unique
+  /// @Validator.IsNotEmpty()
+  name         String
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  fee          Int
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  queue        Int
+  /// @Validator.IsNotEmpty()
+  status       String
+  /// @HideField({ match: ['BankInfoCreate*Input','BankInfoUpdate*Input']})
+  createdAt    DateTime       @default(now())
+  /// @HideField({ match: ['BankInfoCreate*Input','BankInfoUpdate*Input']})
+  updatedAt    DateTime       @updatedAt
+  Disbursement Disbursement[]
+}
+
+model Bill {
+  id                       Int                 @id
+  title                    String
+  type                     BillType
+  amount                   Int?
+  expired_date             DateTime?
+  redirect_url             String?
+  status                   BillStatus
+  is_address_required      Int?
+  is_phone_number_required Int?
+  step                     Int
+  sender_name              String?
+  sender_email             String?
+  sender_phone_number      String?
+  sender_address           String?
+  sender_bank              String?
+  sender_bank_type         BillSenderBankType?
+}
+
+model Payment {
+  id                     String           @id @default(uuid())
+  bill_link              String
+  bill_title             String
+  sender_name            String
+  sender_bank            String
+  sender_bank_type       SenderBankType
+  virtual_account_number String?
+  amount                 String
+  status                 PaymentStatus
+  settlement_status      SettlementStatus
+  reference_id           String?
+  payment_url            String
+  created_at             DateTime         @default(now())
+  completed_at           DateTime?
+}
+
+enum BillType {
+  SINGLE
+  MULTIPLE
+}
+
+enum BillSenderBankType {
+  virtual_account
+  wallet_account
+}
+
+enum BillStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum SenderBankType {
+  bank_account
+  virtual_account
+  wallet_account
+  bank_transfer
+}
+
+enum PaymentStatus {
+  FAILED
+  SUCCESSFUL
+  PENDING
+}
+
+enum SettlementStatus {
+  Cancelled
+  Settled
+  Pending
+}

@@ -224,9 +224,25 @@ export declare enum ShippingStatus {
     DELIVERING = "DELIVERING",
     DELIVERED = "DELIVERED"
 }
+export declare enum SettlementStatus {
+    Cancelled = "Cancelled",
+    Settled = "Settled",
+    Pending = "Pending"
+}
+export declare enum SenderBankType {
+    bank_account = "bank_account",
+    virtual_account = "virtual_account",
+    wallet_account = "wallet_account",
+    bank_transfer = "bank_transfer"
+}
 export declare enum ProjectCategory {
     PROPERTY = "PROPERTY",
     BUSSINESS = "BUSSINESS"
+}
+export declare enum PaymentStatus {
+    FAILED = "FAILED",
+    SUCCESSFUL = "SUCCESSFUL",
+    PENDING = "PENDING"
 }
 export declare enum NullsOrder {
     first = "first",
@@ -249,6 +265,18 @@ export declare enum FaqType {
     REWARD_PAGE = "REWARD_PAGE",
     PROJECT_PAGE = "PROJECT_PAGE"
 }
+export declare enum BillType {
+    SINGLE = "SINGLE",
+    MULTIPLE = "MULTIPLE"
+}
+export declare enum BillStatus {
+    ACTIVE = "ACTIVE",
+    INACTIVE = "INACTIVE"
+}
+export declare enum BillSenderBankType {
+    virtual_account = "virtual_account",
+    wallet_account = "wallet_account"
+}
 export declare enum AccountCategory {
     EQUITY = "EQUITY",
     PROJECT = "PROJECT",
@@ -258,6 +286,22 @@ export declare enum AccountCategory {
     BANK = "BANK",
     DEBT = "DEBT",
     POINT = "POINT"
+}
+export declare enum PaymentScalarFieldEnum {
+    id = "id",
+    bill_link = "bill_link",
+    bill_title = "bill_title",
+    sender_name = "sender_name",
+    sender_bank = "sender_bank",
+    sender_bank_type = "sender_bank_type",
+    virtual_account_number = "virtual_account_number",
+    amount = "amount",
+    status = "status",
+    settlement_status = "settlement_status",
+    reference_id = "reference_id",
+    payment_url = "payment_url",
+    created_at = "created_at",
+    completed_at = "completed_at"
 }
 export declare enum OrderScalarFieldEnum {
     id = "id",
@@ -345,6 +389,33 @@ export declare enum DistrictScalarFieldEnum {
     name = "name",
     cityId = "cityId"
 }
+export declare enum DisbursementScalarFieldEnum {
+    id = "id",
+    user_id = "user_id",
+    amount = "amount",
+    status = "status",
+    reason = "reason",
+    timestamp = "timestamp",
+    bank_code = "bank_code",
+    account_number = "account_number",
+    recipient_name = "recipient_name",
+    sender_bank = "sender_bank",
+    remark = "remark",
+    receipt = "receipt",
+    time_served = "time_served",
+    bundle_id = "bundle_id",
+    company_id = "company_id",
+    recipient_city = "recipient_city",
+    created_from = "created_from",
+    direction = "direction",
+    sender = "sender",
+    fee = "fee",
+    beneficiary_email = "beneficiary_email",
+    idempotency_key = "idempotency_key",
+    createdAt = "createdAt",
+    updatedAt = "updatedAt",
+    bankInfoId = "bankInfoId"
+}
 export declare enum CityScalarFieldEnum {
     id = "id",
     name = "name",
@@ -366,6 +437,34 @@ export declare enum CartScalarFieldEnum {
     quantity = "quantity",
     price = "price",
     cost = "cost",
+    createdAt = "createdAt",
+    updatedAt = "updatedAt"
+}
+export declare enum BillScalarFieldEnum {
+    id = "id",
+    title = "title",
+    type = "type",
+    amount = "amount",
+    expired_date = "expired_date",
+    redirect_url = "redirect_url",
+    status = "status",
+    is_address_required = "is_address_required",
+    is_phone_number_required = "is_phone_number_required",
+    step = "step",
+    sender_name = "sender_name",
+    sender_email = "sender_email",
+    sender_phone_number = "sender_phone_number",
+    sender_address = "sender_address",
+    sender_bank = "sender_bank",
+    sender_bank_type = "sender_bank_type"
+}
+export declare enum BankInfoScalarFieldEnum {
+    id = "id",
+    bank_code = "bank_code",
+    name = "name",
+    fee = "fee",
+    queue = "queue",
+    status = "status",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
 }
@@ -2302,6 +2401,1018 @@ export declare class UpsertOneBankArgs {
     create: InstanceType<typeof BankCreateInput>;
     update: InstanceType<typeof BankUpdateInput>;
 }
+export declare class AggregateBankInfo {
+    _count?: InstanceType<typeof BankInfoCountAggregate>;
+    _avg?: InstanceType<typeof BankInfoAvgAggregate>;
+    _sum?: InstanceType<typeof BankInfoSumAggregate>;
+    _min?: InstanceType<typeof BankInfoMinAggregate>;
+    _max?: InstanceType<typeof BankInfoMaxAggregate>;
+}
+export declare class BankInfoAggregateArgs {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+    orderBy?: Array<BankInfoOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof BankInfoCountAggregateInput>;
+    _avg?: InstanceType<typeof BankInfoAvgAggregateInput>;
+    _sum?: InstanceType<typeof BankInfoSumAggregateInput>;
+    _min?: InstanceType<typeof BankInfoMinAggregateInput>;
+    _max?: InstanceType<typeof BankInfoMaxAggregateInput>;
+}
+export declare class BankInfoAvgAggregateInput {
+    id?: true;
+    fee?: true;
+    queue?: true;
+}
+export declare class BankInfoAvgAggregate {
+    id?: number;
+    fee?: number;
+    queue?: number;
+}
+export declare class BankInfoAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+}
+export declare class BankInfoCountAggregateInput {
+    id?: true;
+    bank_code?: true;
+    name?: true;
+    fee?: true;
+    queue?: true;
+    status?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+}
+export declare class BankInfoCountAggregate {
+    id: number;
+    bank_code: number;
+    name: number;
+    fee: number;
+    queue: number;
+    status: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+}
+export declare class BankInfoCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    name?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+}
+export declare class BankInfoCount {
+    Disbursement?: number;
+}
+export declare class BankInfoCreateManyInput {
+    id?: number;
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class BankInfoCreateNestedOneWithoutDisbursementInput {
+    create?: InstanceType<typeof BankInfoCreateWithoutDisbursementInput>;
+    connectOrCreate?: InstanceType<typeof BankInfoCreateOrConnectWithoutDisbursementInput>;
+    connect?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+}
+export declare class BankInfoCreateOrConnectWithoutDisbursementInput {
+    where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    create: InstanceType<typeof BankInfoCreateWithoutDisbursementInput>;
+}
+export declare class BankInfoCreateWithoutDisbursementInput {
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class BankInfoCreateInput {
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    Disbursement?: InstanceType<typeof DisbursementCreateNestedManyWithoutBankInfoInput>;
+}
+export declare class BankInfoGroupByArgs {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+    orderBy?: Array<BankInfoOrderByWithAggregationInput>;
+    by: Array<keyof typeof BankInfoScalarFieldEnum>;
+    having?: InstanceType<typeof BankInfoScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof BankInfoCountAggregateInput>;
+    _avg?: InstanceType<typeof BankInfoAvgAggregateInput>;
+    _sum?: InstanceType<typeof BankInfoSumAggregateInput>;
+    _min?: InstanceType<typeof BankInfoMinAggregateInput>;
+    _max?: InstanceType<typeof BankInfoMaxAggregateInput>;
+}
+export declare class BankInfoGroupBy {
+    id: number;
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt: Date | string;
+    updatedAt: Date | string;
+    _count?: InstanceType<typeof BankInfoCountAggregate>;
+    _avg?: InstanceType<typeof BankInfoAvgAggregate>;
+    _sum?: InstanceType<typeof BankInfoSumAggregate>;
+    _min?: InstanceType<typeof BankInfoMinAggregate>;
+    _max?: InstanceType<typeof BankInfoMaxAggregate>;
+}
+export declare class BankInfoMaxAggregateInput {
+    id?: true;
+    bank_code?: true;
+    name?: true;
+    fee?: true;
+    queue?: true;
+    status?: true;
+    createdAt?: true;
+    updatedAt?: true;
+}
+export declare class BankInfoMaxAggregate {
+    id?: number;
+    bank_code?: string;
+    name?: string;
+    fee?: number;
+    queue?: number;
+    status?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class BankInfoMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    name?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+}
+export declare class BankInfoMinAggregateInput {
+    id?: true;
+    bank_code?: true;
+    name?: true;
+    fee?: true;
+    queue?: true;
+    status?: true;
+    createdAt?: true;
+    updatedAt?: true;
+}
+export declare class BankInfoMinAggregate {
+    id?: number;
+    bank_code?: string;
+    name?: string;
+    fee?: number;
+    queue?: number;
+    status?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class BankInfoMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    name?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+}
+export declare class BankInfoNullableRelationFilter {
+    is?: InstanceType<typeof BankInfoWhereInput>;
+    isNot?: InstanceType<typeof BankInfoWhereInput>;
+}
+export declare class BankInfoOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    name?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    _count?: InstanceType<typeof BankInfoCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof BankInfoAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof BankInfoMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof BankInfoMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof BankInfoSumOrderByAggregateInput>;
+}
+export declare class BankInfoOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    name?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    Disbursement?: InstanceType<typeof DisbursementOrderByRelationAggregateInput>;
+}
+export declare class BankInfoScalarWhereWithAggregatesInput {
+    AND?: Array<BankInfoScalarWhereWithAggregatesInput>;
+    OR?: Array<BankInfoScalarWhereWithAggregatesInput>;
+    NOT?: Array<BankInfoScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    bank_code?: InstanceType<typeof StringWithAggregatesFilter>;
+    name?: InstanceType<typeof StringWithAggregatesFilter>;
+    fee?: InstanceType<typeof IntWithAggregatesFilter>;
+    queue?: InstanceType<typeof IntWithAggregatesFilter>;
+    status?: InstanceType<typeof StringWithAggregatesFilter>;
+    createdAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    updatedAt?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+}
+export declare class BankInfoSumAggregateInput {
+    id?: true;
+    fee?: true;
+    queue?: true;
+}
+export declare class BankInfoSumAggregate {
+    id?: number;
+    fee?: number;
+    queue?: number;
+}
+export declare class BankInfoSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    queue?: keyof typeof SortOrder;
+}
+export declare class BankInfoUncheckedCreateWithoutDisbursementInput {
+    id?: number;
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class BankInfoUncheckedCreateInput {
+    id?: number;
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    Disbursement?: InstanceType<typeof DisbursementUncheckedCreateNestedManyWithoutBankInfoInput>;
+}
+export declare class BankInfoUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    queue?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class BankInfoUncheckedUpdateWithoutDisbursementInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    queue?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class BankInfoUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    queue?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Disbursement?: InstanceType<typeof DisbursementUncheckedUpdateManyWithoutBankInfoNestedInput>;
+}
+export declare class BankInfoUpdateManyMutationInput {
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    queue?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class BankInfoUpdateOneWithoutDisbursementNestedInput {
+    create?: InstanceType<typeof BankInfoCreateWithoutDisbursementInput>;
+    connectOrCreate?: InstanceType<typeof BankInfoCreateOrConnectWithoutDisbursementInput>;
+    upsert?: InstanceType<typeof BankInfoUpsertWithoutDisbursementInput>;
+    disconnect?: InstanceType<typeof BankInfoWhereInput>;
+    delete?: InstanceType<typeof BankInfoWhereInput>;
+    connect?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    update?: InstanceType<typeof BankInfoUpdateToOneWithWhereWithoutDisbursementInput>;
+}
+export declare class BankInfoUpdateToOneWithWhereWithoutDisbursementInput {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+    data: InstanceType<typeof BankInfoUpdateWithoutDisbursementInput>;
+}
+export declare class BankInfoUpdateWithoutDisbursementInput {
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    queue?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+}
+export declare class BankInfoUpdateInput {
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    queue?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    Disbursement?: InstanceType<typeof DisbursementUpdateManyWithoutBankInfoNestedInput>;
+}
+export declare class BankInfoUpsertWithoutDisbursementInput {
+    update: InstanceType<typeof BankInfoUpdateWithoutDisbursementInput>;
+    create: InstanceType<typeof BankInfoCreateWithoutDisbursementInput>;
+    where?: InstanceType<typeof BankInfoWhereInput>;
+}
+export declare class BankInfoWhereUniqueInput {
+    id?: number;
+    bank_code?: string;
+    AND?: Array<BankInfoWhereInput>;
+    OR?: Array<BankInfoWhereInput>;
+    NOT?: Array<BankInfoWhereInput>;
+    name?: InstanceType<typeof StringFilter>;
+    fee?: InstanceType<typeof IntFilter>;
+    queue?: InstanceType<typeof IntFilter>;
+    status?: InstanceType<typeof StringFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
+    Disbursement?: InstanceType<typeof DisbursementListRelationFilter>;
+}
+export declare class BankInfoWhereInput {
+    AND?: Array<BankInfoWhereInput>;
+    OR?: Array<BankInfoWhereInput>;
+    NOT?: Array<BankInfoWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    bank_code?: InstanceType<typeof StringFilter>;
+    name?: InstanceType<typeof StringFilter>;
+    fee?: InstanceType<typeof IntFilter>;
+    queue?: InstanceType<typeof IntFilter>;
+    status?: InstanceType<typeof StringFilter>;
+    createdAt?: InstanceType<typeof DateTimeFilter>;
+    updatedAt?: InstanceType<typeof DateTimeFilter>;
+    Disbursement?: InstanceType<typeof DisbursementListRelationFilter>;
+}
+export declare class BankInfo {
+    id: number;
+    bank_code: string;
+    name: string;
+    fee: number;
+    queue: number;
+    status: string;
+    createdAt: Date;
+    updatedAt: Date;
+    Disbursement?: Array<Disbursement>;
+    _count?: InstanceType<typeof BankInfoCount>;
+}
+export declare class CreateManyBankInfoArgs {
+    data: Array<BankInfoCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneBankInfoArgs {
+    data: InstanceType<typeof BankInfoCreateInput>;
+}
+export declare class DeleteManyBankInfoArgs {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+}
+export declare class DeleteOneBankInfoArgs {
+    where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+}
+export declare class FindFirstBankInfoOrThrowArgs {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+    orderBy?: Array<BankInfoOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BankInfoScalarFieldEnum>;
+}
+export declare class FindFirstBankInfoArgs {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+    orderBy?: Array<BankInfoOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BankInfoScalarFieldEnum>;
+}
+export declare class FindManyBankInfoArgs {
+    where?: InstanceType<typeof BankInfoWhereInput>;
+    orderBy?: Array<BankInfoOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BankInfoScalarFieldEnum>;
+}
+export declare class FindUniqueBankInfoOrThrowArgs {
+    where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+}
+export declare class FindUniqueBankInfoArgs {
+    where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+}
+export declare class UpdateManyBankInfoArgs {
+    data: InstanceType<typeof BankInfoUpdateManyMutationInput>;
+    where?: InstanceType<typeof BankInfoWhereInput>;
+}
+export declare class UpdateOneBankInfoArgs {
+    data: InstanceType<typeof BankInfoUpdateInput>;
+    where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+}
+export declare class UpsertOneBankInfoArgs {
+    where: Prisma.AtLeast<BankInfoWhereUniqueInput, 'id' | 'bank_code'>;
+    create: InstanceType<typeof BankInfoCreateInput>;
+    update: InstanceType<typeof BankInfoUpdateInput>;
+}
+export declare class AggregateBill {
+    _count?: InstanceType<typeof BillCountAggregate>;
+    _avg?: InstanceType<typeof BillAvgAggregate>;
+    _sum?: InstanceType<typeof BillSumAggregate>;
+    _min?: InstanceType<typeof BillMinAggregate>;
+    _max?: InstanceType<typeof BillMaxAggregate>;
+}
+export declare class BillAggregateArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof BillCountAggregateInput>;
+    _avg?: InstanceType<typeof BillAvgAggregateInput>;
+    _sum?: InstanceType<typeof BillSumAggregateInput>;
+    _min?: InstanceType<typeof BillMinAggregateInput>;
+    _max?: InstanceType<typeof BillMaxAggregateInput>;
+}
+export declare class BillAvgAggregateInput {
+    id?: true;
+    amount?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+}
+export declare class BillAvgAggregate {
+    id?: number;
+    amount?: number;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+}
+export declare class BillAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+}
+export declare class BillCountAggregateInput {
+    id?: true;
+    title?: true;
+    type?: true;
+    amount?: true;
+    expired_date?: true;
+    redirect_url?: true;
+    status?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+    sender_name?: true;
+    sender_email?: true;
+    sender_phone_number?: true;
+    sender_address?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+    _all?: true;
+}
+export declare class BillCountAggregate {
+    id: number;
+    title: number;
+    type: number;
+    amount: number;
+    expired_date: number;
+    redirect_url: number;
+    status: number;
+    is_address_required: number;
+    is_phone_number_required: number;
+    step: number;
+    sender_name: number;
+    sender_email: number;
+    sender_phone_number: number;
+    sender_address: number;
+    sender_bank: number;
+    sender_bank_type: number;
+    _all: number;
+}
+export declare class BillCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    expired_date?: keyof typeof SortOrder;
+    redirect_url?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_email?: keyof typeof SortOrder;
+    sender_phone_number?: keyof typeof SortOrder;
+    sender_address?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+}
+export declare class BillCreateManyInput {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    status: keyof typeof BillStatus;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
+}
+export declare class BillCreateInput {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    status: keyof typeof BillStatus;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
+}
+export declare class BillGroupByArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithAggregationInput>;
+    by: Array<keyof typeof BillScalarFieldEnum>;
+    having?: InstanceType<typeof BillScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof BillCountAggregateInput>;
+    _avg?: InstanceType<typeof BillAvgAggregateInput>;
+    _sum?: InstanceType<typeof BillSumAggregateInput>;
+    _min?: InstanceType<typeof BillMinAggregateInput>;
+    _max?: InstanceType<typeof BillMaxAggregateInput>;
+}
+export declare class BillGroupBy {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    status: keyof typeof BillStatus;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
+    _count?: InstanceType<typeof BillCountAggregate>;
+    _avg?: InstanceType<typeof BillAvgAggregate>;
+    _sum?: InstanceType<typeof BillSumAggregate>;
+    _min?: InstanceType<typeof BillMinAggregate>;
+    _max?: InstanceType<typeof BillMaxAggregate>;
+}
+export declare class BillMaxAggregateInput {
+    id?: true;
+    title?: true;
+    type?: true;
+    amount?: true;
+    expired_date?: true;
+    redirect_url?: true;
+    status?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+    sender_name?: true;
+    sender_email?: true;
+    sender_phone_number?: true;
+    sender_address?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+}
+export declare class BillMaxAggregate {
+    id?: number;
+    title?: string;
+    type?: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    status?: keyof typeof BillStatus;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
+}
+export declare class BillMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    expired_date?: keyof typeof SortOrder;
+    redirect_url?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_email?: keyof typeof SortOrder;
+    sender_phone_number?: keyof typeof SortOrder;
+    sender_address?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+}
+export declare class BillMinAggregateInput {
+    id?: true;
+    title?: true;
+    type?: true;
+    amount?: true;
+    expired_date?: true;
+    redirect_url?: true;
+    status?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+    sender_name?: true;
+    sender_email?: true;
+    sender_phone_number?: true;
+    sender_address?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+}
+export declare class BillMinAggregate {
+    id?: number;
+    title?: string;
+    type?: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    status?: keyof typeof BillStatus;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
+}
+export declare class BillMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    expired_date?: keyof typeof SortOrder;
+    redirect_url?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_email?: keyof typeof SortOrder;
+    sender_phone_number?: keyof typeof SortOrder;
+    sender_address?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+}
+export declare class BillOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: InstanceType<typeof SortOrderInput>;
+    expired_date?: InstanceType<typeof SortOrderInput>;
+    redirect_url?: InstanceType<typeof SortOrderInput>;
+    status?: keyof typeof SortOrder;
+    is_address_required?: InstanceType<typeof SortOrderInput>;
+    is_phone_number_required?: InstanceType<typeof SortOrderInput>;
+    step?: keyof typeof SortOrder;
+    sender_name?: InstanceType<typeof SortOrderInput>;
+    sender_email?: InstanceType<typeof SortOrderInput>;
+    sender_phone_number?: InstanceType<typeof SortOrderInput>;
+    sender_address?: InstanceType<typeof SortOrderInput>;
+    sender_bank?: InstanceType<typeof SortOrderInput>;
+    sender_bank_type?: InstanceType<typeof SortOrderInput>;
+    _count?: InstanceType<typeof BillCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof BillAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof BillMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof BillMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof BillSumOrderByAggregateInput>;
+}
+export declare class BillOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    title?: keyof typeof SortOrder;
+    type?: keyof typeof SortOrder;
+    amount?: InstanceType<typeof SortOrderInput>;
+    expired_date?: InstanceType<typeof SortOrderInput>;
+    redirect_url?: InstanceType<typeof SortOrderInput>;
+    status?: keyof typeof SortOrder;
+    is_address_required?: InstanceType<typeof SortOrderInput>;
+    is_phone_number_required?: InstanceType<typeof SortOrderInput>;
+    step?: keyof typeof SortOrder;
+    sender_name?: InstanceType<typeof SortOrderInput>;
+    sender_email?: InstanceType<typeof SortOrderInput>;
+    sender_phone_number?: InstanceType<typeof SortOrderInput>;
+    sender_address?: InstanceType<typeof SortOrderInput>;
+    sender_bank?: InstanceType<typeof SortOrderInput>;
+    sender_bank_type?: InstanceType<typeof SortOrderInput>;
+}
+export declare class BillScalarWhereWithAggregatesInput {
+    AND?: Array<BillScalarWhereWithAggregatesInput>;
+    OR?: Array<BillScalarWhereWithAggregatesInput>;
+    NOT?: Array<BillScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    title?: InstanceType<typeof StringWithAggregatesFilter>;
+    type?: InstanceType<typeof EnumBillTypeWithAggregatesFilter>;
+    amount?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    expired_date?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+    redirect_url?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    status?: InstanceType<typeof EnumBillStatusWithAggregatesFilter>;
+    is_address_required?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    is_phone_number_required?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+    step?: InstanceType<typeof IntWithAggregatesFilter>;
+    sender_name?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_email?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_phone_number?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_address?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_bank?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    sender_bank_type?: InstanceType<typeof EnumBillSenderBankTypeNullableWithAggregatesFilter>;
+}
+export declare class BillSumAggregateInput {
+    id?: true;
+    amount?: true;
+    is_address_required?: true;
+    is_phone_number_required?: true;
+    step?: true;
+}
+export declare class BillSumAggregate {
+    id?: number;
+    amount?: number;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step?: number;
+}
+export declare class BillSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    is_address_required?: keyof typeof SortOrder;
+    is_phone_number_required?: keyof typeof SortOrder;
+    step?: keyof typeof SortOrder;
+}
+export declare class BillUncheckedCreateInput {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount?: number;
+    expired_date?: Date | string;
+    redirect_url?: string;
+    status: keyof typeof BillStatus;
+    is_address_required?: number;
+    is_phone_number_required?: number;
+    step: number;
+    sender_name?: string;
+    sender_email?: string;
+    sender_phone_number?: string;
+    sender_address?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof BillSenderBankType;
+}
+export declare class BillUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
+}
+export declare class BillUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
+}
+export declare class BillUpdateManyMutationInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
+}
+export declare class BillUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    type?: InstanceType<typeof EnumBillTypeFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    expired_date?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    redirect_url?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumBillStatusFieldUpdateOperationsInput>;
+    is_address_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    is_phone_number_required?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+    step?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_email?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_phone_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_address?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof NullableEnumBillSenderBankTypeFieldUpdateOperationsInput>;
+}
+export declare class BillWhereUniqueInput {
+    id?: number;
+    AND?: Array<BillWhereInput>;
+    OR?: Array<BillWhereInput>;
+    NOT?: Array<BillWhereInput>;
+    title?: InstanceType<typeof StringFilter>;
+    type?: InstanceType<typeof EnumBillTypeFilter>;
+    amount?: InstanceType<typeof IntNullableFilter>;
+    expired_date?: InstanceType<typeof DateTimeNullableFilter>;
+    redirect_url?: InstanceType<typeof StringNullableFilter>;
+    status?: InstanceType<typeof EnumBillStatusFilter>;
+    is_address_required?: InstanceType<typeof IntNullableFilter>;
+    is_phone_number_required?: InstanceType<typeof IntNullableFilter>;
+    step?: InstanceType<typeof IntFilter>;
+    sender_name?: InstanceType<typeof StringNullableFilter>;
+    sender_email?: InstanceType<typeof StringNullableFilter>;
+    sender_phone_number?: InstanceType<typeof StringNullableFilter>;
+    sender_address?: InstanceType<typeof StringNullableFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    sender_bank_type?: InstanceType<typeof EnumBillSenderBankTypeNullableFilter>;
+}
+export declare class BillWhereInput {
+    AND?: Array<BillWhereInput>;
+    OR?: Array<BillWhereInput>;
+    NOT?: Array<BillWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    title?: InstanceType<typeof StringFilter>;
+    type?: InstanceType<typeof EnumBillTypeFilter>;
+    amount?: InstanceType<typeof IntNullableFilter>;
+    expired_date?: InstanceType<typeof DateTimeNullableFilter>;
+    redirect_url?: InstanceType<typeof StringNullableFilter>;
+    status?: InstanceType<typeof EnumBillStatusFilter>;
+    is_address_required?: InstanceType<typeof IntNullableFilter>;
+    is_phone_number_required?: InstanceType<typeof IntNullableFilter>;
+    step?: InstanceType<typeof IntFilter>;
+    sender_name?: InstanceType<typeof StringNullableFilter>;
+    sender_email?: InstanceType<typeof StringNullableFilter>;
+    sender_phone_number?: InstanceType<typeof StringNullableFilter>;
+    sender_address?: InstanceType<typeof StringNullableFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    sender_bank_type?: InstanceType<typeof EnumBillSenderBankTypeNullableFilter>;
+}
+export declare class Bill {
+    id: number;
+    title: string;
+    type: keyof typeof BillType;
+    amount: number | null;
+    expired_date: Date | null;
+    redirect_url: string | null;
+    status: keyof typeof BillStatus;
+    is_address_required: number | null;
+    is_phone_number_required: number | null;
+    step: number;
+    sender_name: string | null;
+    sender_email: string | null;
+    sender_phone_number: string | null;
+    sender_address: string | null;
+    sender_bank: string | null;
+    sender_bank_type: keyof typeof BillSenderBankType | null;
+}
+export declare class CreateManyBillArgs {
+    data: Array<BillCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneBillArgs {
+    data: InstanceType<typeof BillCreateInput>;
+}
+export declare class DeleteManyBillArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+}
+export declare class DeleteOneBillArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class FindFirstBillOrThrowArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BillScalarFieldEnum>;
+}
+export declare class FindFirstBillArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BillScalarFieldEnum>;
+}
+export declare class FindManyBillArgs {
+    where?: InstanceType<typeof BillWhereInput>;
+    orderBy?: Array<BillOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof BillScalarFieldEnum>;
+}
+export declare class FindUniqueBillOrThrowArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class FindUniqueBillArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class UpdateManyBillArgs {
+    data: InstanceType<typeof BillUpdateManyMutationInput>;
+    where?: InstanceType<typeof BillWhereInput>;
+}
+export declare class UpdateOneBillArgs {
+    data: InstanceType<typeof BillUpdateInput>;
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+}
+export declare class UpsertOneBillArgs {
+    where: Prisma.AtLeast<BillWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof BillCreateInput>;
+    update: InstanceType<typeof BillUpdateInput>;
+}
 export declare class AggregateCart {
     _count?: InstanceType<typeof CartCountAggregate>;
     _avg?: InstanceType<typeof CartAvgAggregate>;
@@ -4041,6 +5152,1052 @@ export declare class UpsertOneCityArgs {
     where: Prisma.AtLeast<CityWhereUniqueInput, 'id'>;
     create: InstanceType<typeof CityCreateInput>;
     update: InstanceType<typeof CityUpdateInput>;
+}
+export declare class AggregateDisbursement {
+    _count?: InstanceType<typeof DisbursementCountAggregate>;
+    _avg?: InstanceType<typeof DisbursementAvgAggregate>;
+    _sum?: InstanceType<typeof DisbursementSumAggregate>;
+    _min?: InstanceType<typeof DisbursementMinAggregate>;
+    _max?: InstanceType<typeof DisbursementMaxAggregate>;
+}
+export declare class CreateManyDisbursementArgs {
+    data: Array<DisbursementCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOneDisbursementArgs {
+    data: InstanceType<typeof DisbursementCreateInput>;
+}
+export declare class DeleteManyDisbursementArgs {
+    where?: InstanceType<typeof DisbursementWhereInput>;
+}
+export declare class DeleteOneDisbursementArgs {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+}
+export declare class DisbursementAggregateArgs {
+    where?: InstanceType<typeof DisbursementWhereInput>;
+    orderBy?: Array<DisbursementOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof DisbursementCountAggregateInput>;
+    _avg?: InstanceType<typeof DisbursementAvgAggregateInput>;
+    _sum?: InstanceType<typeof DisbursementSumAggregateInput>;
+    _min?: InstanceType<typeof DisbursementMinAggregateInput>;
+    _max?: InstanceType<typeof DisbursementMaxAggregateInput>;
+}
+export declare class DisbursementAvgAggregateInput {
+    id?: true;
+    user_id?: true;
+    amount?: true;
+    bundle_id?: true;
+    company_id?: true;
+    recipient_city?: true;
+    fee?: true;
+    bankInfoId?: true;
+}
+export declare class DisbursementAvgAggregate {
+    id?: number;
+    user_id?: number;
+    amount?: number;
+    bundle_id?: number;
+    company_id?: number;
+    recipient_city?: number;
+    fee?: number;
+    bankInfoId?: number;
+}
+export declare class DisbursementAvgOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
+}
+export declare class DisbursementCountAggregateInput {
+    id?: true;
+    user_id?: true;
+    amount?: true;
+    status?: true;
+    reason?: true;
+    timestamp?: true;
+    bank_code?: true;
+    account_number?: true;
+    recipient_name?: true;
+    sender_bank?: true;
+    remark?: true;
+    receipt?: true;
+    time_served?: true;
+    bundle_id?: true;
+    company_id?: true;
+    recipient_city?: true;
+    created_from?: true;
+    direction?: true;
+    sender?: true;
+    fee?: true;
+    beneficiary_email?: true;
+    idempotency_key?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    bankInfoId?: true;
+    _all?: true;
+}
+export declare class DisbursementCountAggregate {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: number;
+    reason: number;
+    timestamp: number;
+    bank_code: number;
+    account_number: number;
+    recipient_name: number;
+    sender_bank: number;
+    remark: number;
+    receipt: number;
+    time_served: number;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: number;
+    direction: number;
+    sender: number;
+    fee: number;
+    beneficiary_email: number;
+    idempotency_key: number;
+    createdAt: number;
+    updatedAt: number;
+    bankInfoId: number;
+    _all: number;
+}
+export declare class DisbursementCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    reason?: keyof typeof SortOrder;
+    timestamp?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    account_number?: keyof typeof SortOrder;
+    recipient_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    remark?: keyof typeof SortOrder;
+    receipt?: keyof typeof SortOrder;
+    time_served?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    created_from?: keyof typeof SortOrder;
+    direction?: keyof typeof SortOrder;
+    sender?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    beneficiary_email?: keyof typeof SortOrder;
+    idempotency_key?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
+}
+export declare class DisbursementCreateManyBankInfoInputEnvelope {
+    data: Array<DisbursementCreateManyBankInfoInput>;
+    skipDuplicates?: boolean;
+}
+export declare class DisbursementCreateManyBankInfoInput {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class DisbursementCreateManyInput {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    bankInfoId?: number;
+}
+export declare class DisbursementCreateNestedManyWithoutBankInfoInput {
+    create?: Array<DisbursementCreateWithoutBankInfoInput>;
+    connectOrCreate?: Array<DisbursementCreateOrConnectWithoutBankInfoInput>;
+    createMany?: InstanceType<typeof DisbursementCreateManyBankInfoInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+}
+export declare class DisbursementCreateOrConnectWithoutBankInfoInput {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof DisbursementCreateWithoutBankInfoInput>;
+}
+export declare class DisbursementCreateWithoutBankInfoInput {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class DisbursementCreateInput {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    BankInfo?: InstanceType<typeof BankInfoCreateNestedOneWithoutDisbursementInput>;
+}
+export declare class DisbursementGroupByArgs {
+    where?: InstanceType<typeof DisbursementWhereInput>;
+    orderBy?: Array<DisbursementOrderByWithAggregationInput>;
+    by: Array<keyof typeof DisbursementScalarFieldEnum>;
+    having?: InstanceType<typeof DisbursementScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof DisbursementCountAggregateInput>;
+    _avg?: InstanceType<typeof DisbursementAvgAggregateInput>;
+    _sum?: InstanceType<typeof DisbursementSumAggregateInput>;
+    _min?: InstanceType<typeof DisbursementMinAggregateInput>;
+    _max?: InstanceType<typeof DisbursementMaxAggregateInput>;
+}
+export declare class DisbursementGroupBy {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    bankInfoId?: number;
+    _count?: InstanceType<typeof DisbursementCountAggregate>;
+    _avg?: InstanceType<typeof DisbursementAvgAggregate>;
+    _sum?: InstanceType<typeof DisbursementSumAggregate>;
+    _min?: InstanceType<typeof DisbursementMinAggregate>;
+    _max?: InstanceType<typeof DisbursementMaxAggregate>;
+}
+export declare class DisbursementListRelationFilter {
+    every?: InstanceType<typeof DisbursementWhereInput>;
+    some?: InstanceType<typeof DisbursementWhereInput>;
+    none?: InstanceType<typeof DisbursementWhereInput>;
+}
+export declare class DisbursementMaxAggregateInput {
+    id?: true;
+    user_id?: true;
+    amount?: true;
+    status?: true;
+    reason?: true;
+    timestamp?: true;
+    bank_code?: true;
+    account_number?: true;
+    recipient_name?: true;
+    sender_bank?: true;
+    remark?: true;
+    receipt?: true;
+    time_served?: true;
+    bundle_id?: true;
+    company_id?: true;
+    recipient_city?: true;
+    created_from?: true;
+    direction?: true;
+    sender?: true;
+    fee?: true;
+    beneficiary_email?: true;
+    idempotency_key?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    bankInfoId?: true;
+}
+export declare class DisbursementMaxAggregate {
+    id?: number;
+    user_id?: number;
+    amount?: number;
+    status?: string;
+    reason?: string;
+    timestamp?: string;
+    bank_code?: string;
+    account_number?: string;
+    recipient_name?: string;
+    sender_bank?: string;
+    remark?: string;
+    receipt?: string;
+    time_served?: string;
+    bundle_id?: number;
+    company_id?: number;
+    recipient_city?: number;
+    created_from?: string;
+    direction?: string;
+    sender?: string;
+    fee?: number;
+    beneficiary_email?: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    bankInfoId?: number;
+}
+export declare class DisbursementMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    reason?: keyof typeof SortOrder;
+    timestamp?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    account_number?: keyof typeof SortOrder;
+    recipient_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    remark?: keyof typeof SortOrder;
+    receipt?: keyof typeof SortOrder;
+    time_served?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    created_from?: keyof typeof SortOrder;
+    direction?: keyof typeof SortOrder;
+    sender?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    beneficiary_email?: keyof typeof SortOrder;
+    idempotency_key?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
+}
+export declare class DisbursementMinAggregateInput {
+    id?: true;
+    user_id?: true;
+    amount?: true;
+    status?: true;
+    reason?: true;
+    timestamp?: true;
+    bank_code?: true;
+    account_number?: true;
+    recipient_name?: true;
+    sender_bank?: true;
+    remark?: true;
+    receipt?: true;
+    time_served?: true;
+    bundle_id?: true;
+    company_id?: true;
+    recipient_city?: true;
+    created_from?: true;
+    direction?: true;
+    sender?: true;
+    fee?: true;
+    beneficiary_email?: true;
+    idempotency_key?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    bankInfoId?: true;
+}
+export declare class DisbursementMinAggregate {
+    id?: number;
+    user_id?: number;
+    amount?: number;
+    status?: string;
+    reason?: string;
+    timestamp?: string;
+    bank_code?: string;
+    account_number?: string;
+    recipient_name?: string;
+    sender_bank?: string;
+    remark?: string;
+    receipt?: string;
+    time_served?: string;
+    bundle_id?: number;
+    company_id?: number;
+    recipient_city?: number;
+    created_from?: string;
+    direction?: string;
+    sender?: string;
+    fee?: number;
+    beneficiary_email?: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    bankInfoId?: number;
+}
+export declare class DisbursementMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    reason?: keyof typeof SortOrder;
+    timestamp?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    account_number?: keyof typeof SortOrder;
+    recipient_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    remark?: keyof typeof SortOrder;
+    receipt?: keyof typeof SortOrder;
+    time_served?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    created_from?: keyof typeof SortOrder;
+    direction?: keyof typeof SortOrder;
+    sender?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    beneficiary_email?: keyof typeof SortOrder;
+    idempotency_key?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
+}
+export declare class DisbursementOrderByRelationAggregateInput {
+    _count?: keyof typeof SortOrder;
+}
+export declare class DisbursementOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    reason?: keyof typeof SortOrder;
+    timestamp?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    account_number?: keyof typeof SortOrder;
+    recipient_name?: keyof typeof SortOrder;
+    sender_bank?: InstanceType<typeof SortOrderInput>;
+    remark?: keyof typeof SortOrder;
+    receipt?: keyof typeof SortOrder;
+    time_served?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    created_from?: keyof typeof SortOrder;
+    direction?: keyof typeof SortOrder;
+    sender?: InstanceType<typeof SortOrderInput>;
+    fee?: keyof typeof SortOrder;
+    beneficiary_email?: keyof typeof SortOrder;
+    idempotency_key?: InstanceType<typeof SortOrderInput>;
+    createdAt?: InstanceType<typeof SortOrderInput>;
+    updatedAt?: InstanceType<typeof SortOrderInput>;
+    bankInfoId?: InstanceType<typeof SortOrderInput>;
+    _count?: InstanceType<typeof DisbursementCountOrderByAggregateInput>;
+    _avg?: InstanceType<typeof DisbursementAvgOrderByAggregateInput>;
+    _max?: InstanceType<typeof DisbursementMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof DisbursementMinOrderByAggregateInput>;
+    _sum?: InstanceType<typeof DisbursementSumOrderByAggregateInput>;
+}
+export declare class DisbursementOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    reason?: keyof typeof SortOrder;
+    timestamp?: keyof typeof SortOrder;
+    bank_code?: keyof typeof SortOrder;
+    account_number?: keyof typeof SortOrder;
+    recipient_name?: keyof typeof SortOrder;
+    sender_bank?: InstanceType<typeof SortOrderInput>;
+    remark?: keyof typeof SortOrder;
+    receipt?: keyof typeof SortOrder;
+    time_served?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    created_from?: keyof typeof SortOrder;
+    direction?: keyof typeof SortOrder;
+    sender?: InstanceType<typeof SortOrderInput>;
+    fee?: keyof typeof SortOrder;
+    beneficiary_email?: keyof typeof SortOrder;
+    idempotency_key?: InstanceType<typeof SortOrderInput>;
+    createdAt?: InstanceType<typeof SortOrderInput>;
+    updatedAt?: InstanceType<typeof SortOrderInput>;
+    bankInfoId?: InstanceType<typeof SortOrderInput>;
+    BankInfo?: InstanceType<typeof BankInfoOrderByWithRelationInput>;
+}
+export declare class DisbursementScalarWhereWithAggregatesInput {
+    AND?: Array<DisbursementScalarWhereWithAggregatesInput>;
+    OR?: Array<DisbursementScalarWhereWithAggregatesInput>;
+    NOT?: Array<DisbursementScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof IntWithAggregatesFilter>;
+    user_id?: InstanceType<typeof IntWithAggregatesFilter>;
+    amount?: InstanceType<typeof IntWithAggregatesFilter>;
+    status?: InstanceType<typeof StringWithAggregatesFilter>;
+    reason?: InstanceType<typeof StringWithAggregatesFilter>;
+    timestamp?: InstanceType<typeof StringWithAggregatesFilter>;
+    bank_code?: InstanceType<typeof StringWithAggregatesFilter>;
+    account_number?: InstanceType<typeof StringWithAggregatesFilter>;
+    recipient_name?: InstanceType<typeof StringWithAggregatesFilter>;
+    sender_bank?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    remark?: InstanceType<typeof StringWithAggregatesFilter>;
+    receipt?: InstanceType<typeof StringWithAggregatesFilter>;
+    time_served?: InstanceType<typeof StringWithAggregatesFilter>;
+    bundle_id?: InstanceType<typeof IntWithAggregatesFilter>;
+    company_id?: InstanceType<typeof IntWithAggregatesFilter>;
+    recipient_city?: InstanceType<typeof IntWithAggregatesFilter>;
+    created_from?: InstanceType<typeof StringWithAggregatesFilter>;
+    direction?: InstanceType<typeof StringWithAggregatesFilter>;
+    sender?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    fee?: InstanceType<typeof IntWithAggregatesFilter>;
+    beneficiary_email?: InstanceType<typeof StringWithAggregatesFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
+}
+export declare class DisbursementScalarWhereInput {
+    AND?: Array<DisbursementScalarWhereInput>;
+    OR?: Array<DisbursementScalarWhereInput>;
+    NOT?: Array<DisbursementScalarWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    user_id?: InstanceType<typeof IntFilter>;
+    amount?: InstanceType<typeof IntFilter>;
+    status?: InstanceType<typeof StringFilter>;
+    reason?: InstanceType<typeof StringFilter>;
+    timestamp?: InstanceType<typeof StringFilter>;
+    bank_code?: InstanceType<typeof StringFilter>;
+    account_number?: InstanceType<typeof StringFilter>;
+    recipient_name?: InstanceType<typeof StringFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    remark?: InstanceType<typeof StringFilter>;
+    receipt?: InstanceType<typeof StringFilter>;
+    time_served?: InstanceType<typeof StringFilter>;
+    bundle_id?: InstanceType<typeof IntFilter>;
+    company_id?: InstanceType<typeof IntFilter>;
+    recipient_city?: InstanceType<typeof IntFilter>;
+    created_from?: InstanceType<typeof StringFilter>;
+    direction?: InstanceType<typeof StringFilter>;
+    sender?: InstanceType<typeof StringNullableFilter>;
+    fee?: InstanceType<typeof IntFilter>;
+    beneficiary_email?: InstanceType<typeof StringFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableFilter>;
+}
+export declare class DisbursementSumAggregateInput {
+    id?: true;
+    user_id?: true;
+    amount?: true;
+    bundle_id?: true;
+    company_id?: true;
+    recipient_city?: true;
+    fee?: true;
+    bankInfoId?: true;
+}
+export declare class DisbursementSumAggregate {
+    id?: number;
+    user_id?: number;
+    amount?: number;
+    bundle_id?: number;
+    company_id?: number;
+    recipient_city?: number;
+    fee?: number;
+    bankInfoId?: number;
+}
+export declare class DisbursementSumOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    user_id?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    bundle_id?: keyof typeof SortOrder;
+    company_id?: keyof typeof SortOrder;
+    recipient_city?: keyof typeof SortOrder;
+    fee?: keyof typeof SortOrder;
+    bankInfoId?: keyof typeof SortOrder;
+}
+export declare class DisbursementUncheckedCreateNestedManyWithoutBankInfoInput {
+    create?: Array<DisbursementCreateWithoutBankInfoInput>;
+    connectOrCreate?: Array<DisbursementCreateOrConnectWithoutBankInfoInput>;
+    createMany?: InstanceType<typeof DisbursementCreateManyBankInfoInputEnvelope>;
+    connect?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+}
+export declare class DisbursementUncheckedCreateWithoutBankInfoInput {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+export declare class DisbursementUncheckedCreateInput {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank?: string;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender?: string;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key?: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    bankInfoId?: number;
+}
+export declare class DisbursementUncheckedUpdateManyWithoutBankInfoNestedInput {
+    create?: Array<DisbursementCreateWithoutBankInfoInput>;
+    connectOrCreate?: Array<DisbursementCreateOrConnectWithoutBankInfoInput>;
+    upsert?: Array<DisbursementUpsertWithWhereUniqueWithoutBankInfoInput>;
+    createMany?: InstanceType<typeof DisbursementCreateManyBankInfoInputEnvelope>;
+    set?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    update?: Array<DisbursementUpdateWithWhereUniqueWithoutBankInfoInput>;
+    updateMany?: Array<DisbursementUpdateManyWithWhereWithoutBankInfoInput>;
+    deleteMany?: Array<DisbursementScalarWhereInput>;
+}
+export declare class DisbursementUncheckedUpdateManyWithoutBankInfoInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class DisbursementUncheckedUpdateManyInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    bankInfoId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+}
+export declare class DisbursementUncheckedUpdateWithoutBankInfoInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class DisbursementUncheckedUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    bankInfoId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
+}
+export declare class DisbursementUpdateManyMutationInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class DisbursementUpdateManyWithWhereWithoutBankInfoInput {
+    where: InstanceType<typeof DisbursementScalarWhereInput>;
+    data: InstanceType<typeof DisbursementUpdateManyMutationInput>;
+}
+export declare class DisbursementUpdateManyWithoutBankInfoNestedInput {
+    create?: Array<DisbursementCreateWithoutBankInfoInput>;
+    connectOrCreate?: Array<DisbursementCreateOrConnectWithoutBankInfoInput>;
+    upsert?: Array<DisbursementUpsertWithWhereUniqueWithoutBankInfoInput>;
+    createMany?: InstanceType<typeof DisbursementCreateManyBankInfoInputEnvelope>;
+    set?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>>;
+    update?: Array<DisbursementUpdateWithWhereUniqueWithoutBankInfoInput>;
+    updateMany?: Array<DisbursementUpdateManyWithWhereWithoutBankInfoInput>;
+    deleteMany?: Array<DisbursementScalarWhereInput>;
+}
+export declare class DisbursementUpdateWithWhereUniqueWithoutBankInfoInput {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    data: InstanceType<typeof DisbursementUpdateWithoutBankInfoInput>;
+}
+export declare class DisbursementUpdateWithoutBankInfoInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class DisbursementUpdateInput {
+    id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    user_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    reason?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    timestamp?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bank_code?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    account_number?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    recipient_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    remark?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    receipt?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    time_served?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bundle_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    company_id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    recipient_city?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    created_from?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    direction?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    fee?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    beneficiary_email?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    idempotency_key?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    createdAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    updatedAt?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+    BankInfo?: InstanceType<typeof BankInfoUpdateOneWithoutDisbursementNestedInput>;
+}
+export declare class DisbursementUpsertWithWhereUniqueWithoutBankInfoInput {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    update: InstanceType<typeof DisbursementUpdateWithoutBankInfoInput>;
+    create: InstanceType<typeof DisbursementCreateWithoutBankInfoInput>;
+}
+export declare class DisbursementWhereUniqueInput {
+    id?: number;
+    AND?: Array<DisbursementWhereInput>;
+    OR?: Array<DisbursementWhereInput>;
+    NOT?: Array<DisbursementWhereInput>;
+    user_id?: InstanceType<typeof IntFilter>;
+    amount?: InstanceType<typeof IntFilter>;
+    status?: InstanceType<typeof StringFilter>;
+    reason?: InstanceType<typeof StringFilter>;
+    timestamp?: InstanceType<typeof StringFilter>;
+    bank_code?: InstanceType<typeof StringFilter>;
+    account_number?: InstanceType<typeof StringFilter>;
+    recipient_name?: InstanceType<typeof StringFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    remark?: InstanceType<typeof StringFilter>;
+    receipt?: InstanceType<typeof StringFilter>;
+    time_served?: InstanceType<typeof StringFilter>;
+    bundle_id?: InstanceType<typeof IntFilter>;
+    company_id?: InstanceType<typeof IntFilter>;
+    recipient_city?: InstanceType<typeof IntFilter>;
+    created_from?: InstanceType<typeof StringFilter>;
+    direction?: InstanceType<typeof StringFilter>;
+    sender?: InstanceType<typeof StringNullableFilter>;
+    fee?: InstanceType<typeof IntFilter>;
+    beneficiary_email?: InstanceType<typeof StringFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableFilter>;
+    BankInfo?: InstanceType<typeof BankInfoNullableRelationFilter>;
+}
+export declare class DisbursementWhereInput {
+    AND?: Array<DisbursementWhereInput>;
+    OR?: Array<DisbursementWhereInput>;
+    NOT?: Array<DisbursementWhereInput>;
+    id?: InstanceType<typeof IntFilter>;
+    user_id?: InstanceType<typeof IntFilter>;
+    amount?: InstanceType<typeof IntFilter>;
+    status?: InstanceType<typeof StringFilter>;
+    reason?: InstanceType<typeof StringFilter>;
+    timestamp?: InstanceType<typeof StringFilter>;
+    bank_code?: InstanceType<typeof StringFilter>;
+    account_number?: InstanceType<typeof StringFilter>;
+    recipient_name?: InstanceType<typeof StringFilter>;
+    sender_bank?: InstanceType<typeof StringNullableFilter>;
+    remark?: InstanceType<typeof StringFilter>;
+    receipt?: InstanceType<typeof StringFilter>;
+    time_served?: InstanceType<typeof StringFilter>;
+    bundle_id?: InstanceType<typeof IntFilter>;
+    company_id?: InstanceType<typeof IntFilter>;
+    recipient_city?: InstanceType<typeof IntFilter>;
+    created_from?: InstanceType<typeof StringFilter>;
+    direction?: InstanceType<typeof StringFilter>;
+    sender?: InstanceType<typeof StringNullableFilter>;
+    fee?: InstanceType<typeof IntFilter>;
+    beneficiary_email?: InstanceType<typeof StringFilter>;
+    idempotency_key?: InstanceType<typeof StringNullableFilter>;
+    createdAt?: InstanceType<typeof DateTimeNullableFilter>;
+    updatedAt?: InstanceType<typeof DateTimeNullableFilter>;
+    bankInfoId?: InstanceType<typeof IntNullableFilter>;
+    BankInfo?: InstanceType<typeof BankInfoNullableRelationFilter>;
+}
+export declare class Disbursement {
+    id: number;
+    user_id: number;
+    amount: number;
+    status: string;
+    reason: string;
+    timestamp: string;
+    bank_code: string;
+    account_number: string;
+    recipient_name: string;
+    sender_bank: string | null;
+    remark: string;
+    receipt: string;
+    time_served: string;
+    bundle_id: number;
+    company_id: number;
+    recipient_city: number;
+    created_from: string;
+    direction: string;
+    sender: string | null;
+    fee: number;
+    beneficiary_email: string;
+    idempotency_key: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    bankInfoId: number | null;
+    BankInfo?: InstanceType<typeof BankInfo> | null;
+}
+export declare class FindFirstDisbursementOrThrowArgs {
+    where?: InstanceType<typeof DisbursementWhereInput>;
+    orderBy?: Array<DisbursementOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof DisbursementScalarFieldEnum>;
+}
+export declare class FindFirstDisbursementArgs {
+    where?: InstanceType<typeof DisbursementWhereInput>;
+    orderBy?: Array<DisbursementOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof DisbursementScalarFieldEnum>;
+}
+export declare class FindManyDisbursementArgs {
+    where?: InstanceType<typeof DisbursementWhereInput>;
+    orderBy?: Array<DisbursementOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof DisbursementScalarFieldEnum>;
+}
+export declare class FindUniqueDisbursementOrThrowArgs {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+}
+export declare class FindUniqueDisbursementArgs {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+}
+export declare class UpdateManyDisbursementArgs {
+    data: InstanceType<typeof DisbursementUpdateManyMutationInput>;
+    where?: InstanceType<typeof DisbursementWhereInput>;
+}
+export declare class UpdateOneDisbursementArgs {
+    data: InstanceType<typeof DisbursementUpdateInput>;
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+}
+export declare class UpsertOneDisbursementArgs {
+    where: Prisma.AtLeast<DisbursementWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof DisbursementCreateInput>;
+    update: InstanceType<typeof DisbursementUpdateInput>;
 }
 export declare class AggregateDistrict {
     _count?: InstanceType<typeof DistrictCountAggregate>;
@@ -9467,6 +11624,473 @@ export declare class UpsertOneOrderArgs {
     create: InstanceType<typeof OrderCreateInput>;
     update: InstanceType<typeof OrderUpdateInput>;
 }
+export declare class AggregatePayment {
+    _count?: InstanceType<typeof PaymentCountAggregate>;
+    _min?: InstanceType<typeof PaymentMinAggregate>;
+    _max?: InstanceType<typeof PaymentMaxAggregate>;
+}
+export declare class CreateManyPaymentArgs {
+    data: Array<PaymentCreateManyInput>;
+    skipDuplicates?: boolean;
+}
+export declare class CreateOnePaymentArgs {
+    data: InstanceType<typeof PaymentCreateInput>;
+}
+export declare class DeleteManyPaymentArgs {
+    where?: InstanceType<typeof PaymentWhereInput>;
+}
+export declare class DeleteOnePaymentArgs {
+    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+}
+export declare class FindFirstPaymentOrThrowArgs {
+    where?: InstanceType<typeof PaymentWhereInput>;
+    orderBy?: Array<PaymentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof PaymentScalarFieldEnum>;
+}
+export declare class FindFirstPaymentArgs {
+    where?: InstanceType<typeof PaymentWhereInput>;
+    orderBy?: Array<PaymentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof PaymentScalarFieldEnum>;
+}
+export declare class FindManyPaymentArgs {
+    where?: InstanceType<typeof PaymentWhereInput>;
+    orderBy?: Array<PaymentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    distinct?: Array<keyof typeof PaymentScalarFieldEnum>;
+}
+export declare class FindUniquePaymentOrThrowArgs {
+    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+}
+export declare class FindUniquePaymentArgs {
+    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+}
+export declare class PaymentAggregateArgs {
+    where?: InstanceType<typeof PaymentWhereInput>;
+    orderBy?: Array<PaymentOrderByWithRelationInput>;
+    cursor?: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof PaymentCountAggregateInput>;
+    _min?: InstanceType<typeof PaymentMinAggregateInput>;
+    _max?: InstanceType<typeof PaymentMaxAggregateInput>;
+}
+export declare class PaymentCountAggregateInput {
+    id?: true;
+    bill_link?: true;
+    bill_title?: true;
+    sender_name?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+    virtual_account_number?: true;
+    amount?: true;
+    status?: true;
+    settlement_status?: true;
+    reference_id?: true;
+    payment_url?: true;
+    created_at?: true;
+    completed_at?: true;
+    _all?: true;
+}
+export declare class PaymentCountAggregate {
+    id: number;
+    bill_link: number;
+    bill_title: number;
+    sender_name: number;
+    sender_bank: number;
+    sender_bank_type: number;
+    virtual_account_number: number;
+    amount: number;
+    status: number;
+    settlement_status: number;
+    reference_id: number;
+    payment_url: number;
+    created_at: number;
+    completed_at: number;
+    _all: number;
+}
+export declare class PaymentCountOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    bill_link?: keyof typeof SortOrder;
+    bill_title?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+    virtual_account_number?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    settlement_status?: keyof typeof SortOrder;
+    reference_id?: keyof typeof SortOrder;
+    payment_url?: keyof typeof SortOrder;
+    created_at?: keyof typeof SortOrder;
+    completed_at?: keyof typeof SortOrder;
+}
+export declare class PaymentCreateManyInput {
+    id?: string;
+    bill_link: string;
+    bill_title: string;
+    sender_name: string;
+    sender_bank: string;
+    sender_bank_type: keyof typeof SenderBankType;
+    virtual_account_number?: string;
+    amount: string;
+    status: keyof typeof PaymentStatus;
+    settlement_status: keyof typeof SettlementStatus;
+    reference_id?: string;
+    payment_url: string;
+    created_at?: Date | string;
+    completed_at?: Date | string;
+}
+export declare class PaymentCreateInput {
+    id?: string;
+    bill_link: string;
+    bill_title: string;
+    sender_name: string;
+    sender_bank: string;
+    sender_bank_type: keyof typeof SenderBankType;
+    virtual_account_number?: string;
+    amount: string;
+    status: keyof typeof PaymentStatus;
+    settlement_status: keyof typeof SettlementStatus;
+    reference_id?: string;
+    payment_url: string;
+    created_at?: Date | string;
+    completed_at?: Date | string;
+}
+export declare class PaymentGroupByArgs {
+    where?: InstanceType<typeof PaymentWhereInput>;
+    orderBy?: Array<PaymentOrderByWithAggregationInput>;
+    by: Array<keyof typeof PaymentScalarFieldEnum>;
+    having?: InstanceType<typeof PaymentScalarWhereWithAggregatesInput>;
+    take?: number;
+    skip?: number;
+    _count?: InstanceType<typeof PaymentCountAggregateInput>;
+    _min?: InstanceType<typeof PaymentMinAggregateInput>;
+    _max?: InstanceType<typeof PaymentMaxAggregateInput>;
+}
+export declare class PaymentGroupBy {
+    id: string;
+    bill_link: string;
+    bill_title: string;
+    sender_name: string;
+    sender_bank: string;
+    sender_bank_type: keyof typeof SenderBankType;
+    virtual_account_number?: string;
+    amount: string;
+    status: keyof typeof PaymentStatus;
+    settlement_status: keyof typeof SettlementStatus;
+    reference_id?: string;
+    payment_url: string;
+    created_at: Date | string;
+    completed_at?: Date | string;
+    _count?: InstanceType<typeof PaymentCountAggregate>;
+    _min?: InstanceType<typeof PaymentMinAggregate>;
+    _max?: InstanceType<typeof PaymentMaxAggregate>;
+}
+export declare class PaymentMaxAggregateInput {
+    id?: true;
+    bill_link?: true;
+    bill_title?: true;
+    sender_name?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+    virtual_account_number?: true;
+    amount?: true;
+    status?: true;
+    settlement_status?: true;
+    reference_id?: true;
+    payment_url?: true;
+    created_at?: true;
+    completed_at?: true;
+}
+export declare class PaymentMaxAggregate {
+    id?: string;
+    bill_link?: string;
+    bill_title?: string;
+    sender_name?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof SenderBankType;
+    virtual_account_number?: string;
+    amount?: string;
+    status?: keyof typeof PaymentStatus;
+    settlement_status?: keyof typeof SettlementStatus;
+    reference_id?: string;
+    payment_url?: string;
+    created_at?: Date | string;
+    completed_at?: Date | string;
+}
+export declare class PaymentMaxOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    bill_link?: keyof typeof SortOrder;
+    bill_title?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+    virtual_account_number?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    settlement_status?: keyof typeof SortOrder;
+    reference_id?: keyof typeof SortOrder;
+    payment_url?: keyof typeof SortOrder;
+    created_at?: keyof typeof SortOrder;
+    completed_at?: keyof typeof SortOrder;
+}
+export declare class PaymentMinAggregateInput {
+    id?: true;
+    bill_link?: true;
+    bill_title?: true;
+    sender_name?: true;
+    sender_bank?: true;
+    sender_bank_type?: true;
+    virtual_account_number?: true;
+    amount?: true;
+    status?: true;
+    settlement_status?: true;
+    reference_id?: true;
+    payment_url?: true;
+    created_at?: true;
+    completed_at?: true;
+}
+export declare class PaymentMinAggregate {
+    id?: string;
+    bill_link?: string;
+    bill_title?: string;
+    sender_name?: string;
+    sender_bank?: string;
+    sender_bank_type?: keyof typeof SenderBankType;
+    virtual_account_number?: string;
+    amount?: string;
+    status?: keyof typeof PaymentStatus;
+    settlement_status?: keyof typeof SettlementStatus;
+    reference_id?: string;
+    payment_url?: string;
+    created_at?: Date | string;
+    completed_at?: Date | string;
+}
+export declare class PaymentMinOrderByAggregateInput {
+    id?: keyof typeof SortOrder;
+    bill_link?: keyof typeof SortOrder;
+    bill_title?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+    virtual_account_number?: keyof typeof SortOrder;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    settlement_status?: keyof typeof SortOrder;
+    reference_id?: keyof typeof SortOrder;
+    payment_url?: keyof typeof SortOrder;
+    created_at?: keyof typeof SortOrder;
+    completed_at?: keyof typeof SortOrder;
+}
+export declare class PaymentOrderByWithAggregationInput {
+    id?: keyof typeof SortOrder;
+    bill_link?: keyof typeof SortOrder;
+    bill_title?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+    virtual_account_number?: InstanceType<typeof SortOrderInput>;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    settlement_status?: keyof typeof SortOrder;
+    reference_id?: InstanceType<typeof SortOrderInput>;
+    payment_url?: keyof typeof SortOrder;
+    created_at?: keyof typeof SortOrder;
+    completed_at?: InstanceType<typeof SortOrderInput>;
+    _count?: InstanceType<typeof PaymentCountOrderByAggregateInput>;
+    _max?: InstanceType<typeof PaymentMaxOrderByAggregateInput>;
+    _min?: InstanceType<typeof PaymentMinOrderByAggregateInput>;
+}
+export declare class PaymentOrderByWithRelationInput {
+    id?: keyof typeof SortOrder;
+    bill_link?: keyof typeof SortOrder;
+    bill_title?: keyof typeof SortOrder;
+    sender_name?: keyof typeof SortOrder;
+    sender_bank?: keyof typeof SortOrder;
+    sender_bank_type?: keyof typeof SortOrder;
+    virtual_account_number?: InstanceType<typeof SortOrderInput>;
+    amount?: keyof typeof SortOrder;
+    status?: keyof typeof SortOrder;
+    settlement_status?: keyof typeof SortOrder;
+    reference_id?: InstanceType<typeof SortOrderInput>;
+    payment_url?: keyof typeof SortOrder;
+    created_at?: keyof typeof SortOrder;
+    completed_at?: InstanceType<typeof SortOrderInput>;
+}
+export declare class PaymentScalarWhereWithAggregatesInput {
+    AND?: Array<PaymentScalarWhereWithAggregatesInput>;
+    OR?: Array<PaymentScalarWhereWithAggregatesInput>;
+    NOT?: Array<PaymentScalarWhereWithAggregatesInput>;
+    id?: InstanceType<typeof StringWithAggregatesFilter>;
+    bill_link?: InstanceType<typeof StringWithAggregatesFilter>;
+    bill_title?: InstanceType<typeof StringWithAggregatesFilter>;
+    sender_name?: InstanceType<typeof StringWithAggregatesFilter>;
+    sender_bank?: InstanceType<typeof StringWithAggregatesFilter>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeWithAggregatesFilter>;
+    virtual_account_number?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    amount?: InstanceType<typeof StringWithAggregatesFilter>;
+    status?: InstanceType<typeof EnumPaymentStatusWithAggregatesFilter>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusWithAggregatesFilter>;
+    reference_id?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    payment_url?: InstanceType<typeof StringWithAggregatesFilter>;
+    created_at?: InstanceType<typeof DateTimeWithAggregatesFilter>;
+    completed_at?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
+}
+export declare class PaymentUncheckedCreateInput {
+    id?: string;
+    bill_link: string;
+    bill_title: string;
+    sender_name: string;
+    sender_bank: string;
+    sender_bank_type: keyof typeof SenderBankType;
+    virtual_account_number?: string;
+    amount: string;
+    status: keyof typeof PaymentStatus;
+    settlement_status: keyof typeof SettlementStatus;
+    reference_id?: string;
+    payment_url: string;
+    created_at?: Date | string;
+    completed_at?: Date | string;
+}
+export declare class PaymentUncheckedUpdateManyInput {
+    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_link?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeFieldUpdateOperationsInput>;
+    virtual_account_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumPaymentStatusFieldUpdateOperationsInput>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusFieldUpdateOperationsInput>;
+    reference_id?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    payment_url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    created_at?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    completed_at?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class PaymentUncheckedUpdateInput {
+    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_link?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeFieldUpdateOperationsInput>;
+    virtual_account_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumPaymentStatusFieldUpdateOperationsInput>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusFieldUpdateOperationsInput>;
+    reference_id?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    payment_url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    created_at?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    completed_at?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class PaymentUpdateManyMutationInput {
+    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_link?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeFieldUpdateOperationsInput>;
+    virtual_account_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumPaymentStatusFieldUpdateOperationsInput>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusFieldUpdateOperationsInput>;
+    reference_id?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    payment_url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    created_at?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    completed_at?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class PaymentUpdateInput {
+    id?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_link?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    bill_title?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeFieldUpdateOperationsInput>;
+    virtual_account_number?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    amount?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    status?: InstanceType<typeof EnumPaymentStatusFieldUpdateOperationsInput>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusFieldUpdateOperationsInput>;
+    reference_id?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    payment_url?: InstanceType<typeof StringFieldUpdateOperationsInput>;
+    created_at?: InstanceType<typeof DateTimeFieldUpdateOperationsInput>;
+    completed_at?: InstanceType<typeof NullableDateTimeFieldUpdateOperationsInput>;
+}
+export declare class PaymentWhereUniqueInput {
+    id?: string;
+    AND?: Array<PaymentWhereInput>;
+    OR?: Array<PaymentWhereInput>;
+    NOT?: Array<PaymentWhereInput>;
+    bill_link?: InstanceType<typeof StringFilter>;
+    bill_title?: InstanceType<typeof StringFilter>;
+    sender_name?: InstanceType<typeof StringFilter>;
+    sender_bank?: InstanceType<typeof StringFilter>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeFilter>;
+    virtual_account_number?: InstanceType<typeof StringNullableFilter>;
+    amount?: InstanceType<typeof StringFilter>;
+    status?: InstanceType<typeof EnumPaymentStatusFilter>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusFilter>;
+    reference_id?: InstanceType<typeof StringNullableFilter>;
+    payment_url?: InstanceType<typeof StringFilter>;
+    created_at?: InstanceType<typeof DateTimeFilter>;
+    completed_at?: InstanceType<typeof DateTimeNullableFilter>;
+}
+export declare class PaymentWhereInput {
+    AND?: Array<PaymentWhereInput>;
+    OR?: Array<PaymentWhereInput>;
+    NOT?: Array<PaymentWhereInput>;
+    id?: InstanceType<typeof StringFilter>;
+    bill_link?: InstanceType<typeof StringFilter>;
+    bill_title?: InstanceType<typeof StringFilter>;
+    sender_name?: InstanceType<typeof StringFilter>;
+    sender_bank?: InstanceType<typeof StringFilter>;
+    sender_bank_type?: InstanceType<typeof EnumSenderBankTypeFilter>;
+    virtual_account_number?: InstanceType<typeof StringNullableFilter>;
+    amount?: InstanceType<typeof StringFilter>;
+    status?: InstanceType<typeof EnumPaymentStatusFilter>;
+    settlement_status?: InstanceType<typeof EnumSettlementStatusFilter>;
+    reference_id?: InstanceType<typeof StringNullableFilter>;
+    payment_url?: InstanceType<typeof StringFilter>;
+    created_at?: InstanceType<typeof DateTimeFilter>;
+    completed_at?: InstanceType<typeof DateTimeNullableFilter>;
+}
+export declare class Payment {
+    id: string;
+    bill_link: string;
+    bill_title: string;
+    sender_name: string;
+    sender_bank: string;
+    sender_bank_type: keyof typeof SenderBankType;
+    virtual_account_number: string | null;
+    amount: string;
+    status: keyof typeof PaymentStatus;
+    settlement_status: keyof typeof SettlementStatus;
+    reference_id: string | null;
+    payment_url: string;
+    created_at: Date;
+    completed_at: Date | null;
+}
+export declare class UpdateManyPaymentArgs {
+    data: InstanceType<typeof PaymentUpdateManyMutationInput>;
+    where?: InstanceType<typeof PaymentWhereInput>;
+}
+export declare class UpdateOnePaymentArgs {
+    data: InstanceType<typeof PaymentUpdateInput>;
+    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+}
+export declare class UpsertOnePaymentArgs {
+    where: Prisma.AtLeast<PaymentWhereUniqueInput, 'id'>;
+    create: InstanceType<typeof PaymentCreateInput>;
+    update: InstanceType<typeof PaymentUpdateInput>;
+}
 export declare class AffectedRows {
     count: number;
 }
@@ -9551,6 +12175,57 @@ export declare class EnumAccountCategoryWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
 }
+export declare class EnumBillSenderBankTypeNullableFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class EnumBillSenderBankTypeNullableWithAggregatesFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _min?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+    _max?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class EnumBillStatusFieldUpdateOperationsInput {
+    set?: keyof typeof BillStatus;
+}
+export declare class EnumBillStatusFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
+export declare class EnumBillStatusWithAggregatesFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
+export declare class EnumBillTypeFieldUpdateOperationsInput {
+    set?: keyof typeof BillType;
+}
+export declare class EnumBillTypeFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
+export declare class EnumBillTypeWithAggregatesFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
 export declare class EnumFaqTypeFieldUpdateOperationsInput {
     set?: keyof typeof FaqType;
 }
@@ -9620,6 +12295,24 @@ export declare class EnumInstallmentStatusWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
     _max?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
 }
+export declare class EnumPaymentStatusFieldUpdateOperationsInput {
+    set?: keyof typeof PaymentStatus;
+}
+export declare class EnumPaymentStatusFilter {
+    equals?: keyof typeof PaymentStatus;
+    in?: Array<keyof typeof PaymentStatus>;
+    notIn?: Array<keyof typeof PaymentStatus>;
+    not?: InstanceType<typeof NestedEnumPaymentStatusFilter>;
+}
+export declare class EnumPaymentStatusWithAggregatesFilter {
+    equals?: keyof typeof PaymentStatus;
+    in?: Array<keyof typeof PaymentStatus>;
+    notIn?: Array<keyof typeof PaymentStatus>;
+    not?: InstanceType<typeof NestedEnumPaymentStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumPaymentStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumPaymentStatusFilter>;
+}
 export declare class EnumProjectCategoryFieldUpdateOperationsInput {
     set?: keyof typeof ProjectCategory;
 }
@@ -9637,6 +12330,42 @@ export declare class EnumProjectCategoryWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntFilter>;
     _min?: InstanceType<typeof NestedEnumProjectCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumProjectCategoryFilter>;
+}
+export declare class EnumSenderBankTypeFieldUpdateOperationsInput {
+    set?: keyof typeof SenderBankType;
+}
+export declare class EnumSenderBankTypeFilter {
+    equals?: keyof typeof SenderBankType;
+    in?: Array<keyof typeof SenderBankType>;
+    notIn?: Array<keyof typeof SenderBankType>;
+    not?: InstanceType<typeof NestedEnumSenderBankTypeFilter>;
+}
+export declare class EnumSenderBankTypeWithAggregatesFilter {
+    equals?: keyof typeof SenderBankType;
+    in?: Array<keyof typeof SenderBankType>;
+    notIn?: Array<keyof typeof SenderBankType>;
+    not?: InstanceType<typeof NestedEnumSenderBankTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumSenderBankTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumSenderBankTypeFilter>;
+}
+export declare class EnumSettlementStatusFieldUpdateOperationsInput {
+    set?: keyof typeof SettlementStatus;
+}
+export declare class EnumSettlementStatusFilter {
+    equals?: keyof typeof SettlementStatus;
+    in?: Array<keyof typeof SettlementStatus>;
+    notIn?: Array<keyof typeof SettlementStatus>;
+    not?: InstanceType<typeof NestedEnumSettlementStatusFilter>;
+}
+export declare class EnumSettlementStatusWithAggregatesFilter {
+    equals?: keyof typeof SettlementStatus;
+    in?: Array<keyof typeof SettlementStatus>;
+    notIn?: Array<keyof typeof SettlementStatus>;
+    not?: InstanceType<typeof NestedEnumSettlementStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumSettlementStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumSettlementStatusFilter>;
 }
 export declare class EnumShippingStatusFieldUpdateOperationsInput {
     set?: keyof typeof ShippingStatus;
@@ -9968,6 +12697,51 @@ export declare class NestedEnumAccountCategoryWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumAccountCategoryFilter>;
 }
+export declare class NestedEnumBillSenderBankTypeNullableFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class NestedEnumBillSenderBankTypeNullableWithAggregatesFilter {
+    equals?: keyof typeof BillSenderBankType;
+    in?: Array<keyof typeof BillSenderBankType>;
+    notIn?: Array<keyof typeof BillSenderBankType>;
+    not?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _min?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+    _max?: InstanceType<typeof NestedEnumBillSenderBankTypeNullableFilter>;
+}
+export declare class NestedEnumBillStatusFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
+export declare class NestedEnumBillStatusWithAggregatesFilter {
+    equals?: keyof typeof BillStatus;
+    in?: Array<keyof typeof BillStatus>;
+    notIn?: Array<keyof typeof BillStatus>;
+    not?: InstanceType<typeof NestedEnumBillStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumBillStatusFilter>;
+}
+export declare class NestedEnumBillTypeFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
+export declare class NestedEnumBillTypeWithAggregatesFilter {
+    equals?: keyof typeof BillType;
+    in?: Array<keyof typeof BillType>;
+    notIn?: Array<keyof typeof BillType>;
+    not?: InstanceType<typeof NestedEnumBillTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumBillTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumBillTypeFilter>;
+}
 export declare class NestedEnumFaqTypeFilter {
     equals?: keyof typeof FaqType;
     in?: Array<keyof typeof FaqType>;
@@ -10028,6 +12802,21 @@ export declare class NestedEnumInstallmentStatusWithAggregatesFilter {
     _min?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
     _max?: InstanceType<typeof NestedEnumInstallmentStatusFilter>;
 }
+export declare class NestedEnumPaymentStatusFilter {
+    equals?: keyof typeof PaymentStatus;
+    in?: Array<keyof typeof PaymentStatus>;
+    notIn?: Array<keyof typeof PaymentStatus>;
+    not?: InstanceType<typeof NestedEnumPaymentStatusFilter>;
+}
+export declare class NestedEnumPaymentStatusWithAggregatesFilter {
+    equals?: keyof typeof PaymentStatus;
+    in?: Array<keyof typeof PaymentStatus>;
+    notIn?: Array<keyof typeof PaymentStatus>;
+    not?: InstanceType<typeof NestedEnumPaymentStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumPaymentStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumPaymentStatusFilter>;
+}
 export declare class NestedEnumProjectCategoryFilter {
     equals?: keyof typeof ProjectCategory;
     in?: Array<keyof typeof ProjectCategory>;
@@ -10042,6 +12831,36 @@ export declare class NestedEnumProjectCategoryWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntFilter>;
     _min?: InstanceType<typeof NestedEnumProjectCategoryFilter>;
     _max?: InstanceType<typeof NestedEnumProjectCategoryFilter>;
+}
+export declare class NestedEnumSenderBankTypeFilter {
+    equals?: keyof typeof SenderBankType;
+    in?: Array<keyof typeof SenderBankType>;
+    notIn?: Array<keyof typeof SenderBankType>;
+    not?: InstanceType<typeof NestedEnumSenderBankTypeFilter>;
+}
+export declare class NestedEnumSenderBankTypeWithAggregatesFilter {
+    equals?: keyof typeof SenderBankType;
+    in?: Array<keyof typeof SenderBankType>;
+    notIn?: Array<keyof typeof SenderBankType>;
+    not?: InstanceType<typeof NestedEnumSenderBankTypeWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumSenderBankTypeFilter>;
+    _max?: InstanceType<typeof NestedEnumSenderBankTypeFilter>;
+}
+export declare class NestedEnumSettlementStatusFilter {
+    equals?: keyof typeof SettlementStatus;
+    in?: Array<keyof typeof SettlementStatus>;
+    notIn?: Array<keyof typeof SettlementStatus>;
+    not?: InstanceType<typeof NestedEnumSettlementStatusFilter>;
+}
+export declare class NestedEnumSettlementStatusWithAggregatesFilter {
+    equals?: keyof typeof SettlementStatus;
+    in?: Array<keyof typeof SettlementStatus>;
+    notIn?: Array<keyof typeof SettlementStatus>;
+    not?: InstanceType<typeof NestedEnumSettlementStatusWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntFilter>;
+    _min?: InstanceType<typeof NestedEnumSettlementStatusFilter>;
+    _max?: InstanceType<typeof NestedEnumSettlementStatusFilter>;
 }
 export declare class NestedEnumShippingStatusFilter {
     equals?: keyof typeof ShippingStatus;
@@ -10323,6 +13142,9 @@ export declare class NestedStringWithAggregatesFilter {
 }
 export declare class NullableDateTimeFieldUpdateOperationsInput {
     set?: Date | string;
+}
+export declare class NullableEnumBillSenderBankTypeFieldUpdateOperationsInput {
+    set?: keyof typeof BillSenderBankType;
 }
 export declare class NullableEnumFileTypeFieldUpdateOperationsInput {
     set?: keyof typeof FileType;

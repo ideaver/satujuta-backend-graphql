@@ -1,4 +1,4 @@
-import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory } from '@prisma/client';
+import { UserRole, UserType, Theme, UserStatus, AccountCategory, TransactionCategory, TransactionStatus, UserNotificationCategory, ShippingStatus, InstallmentStatus, FileType, FaqType, ProjectCategory, BillType, BillSenderBankType, BillStatus, SenderBankType, PaymentStatus, SettlementStatus } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 
@@ -576,5 +576,155 @@ export function fakeProjectComplete() {
     accountId: faker.datatype.number(),
     createdAt: new Date(),
     updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeDisbursement() {
+  return {
+    user_id: faker.datatype.number(),
+    amount: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    reason: faker.lorem.words(5),
+    timestamp: faker.lorem.words(5),
+    bank_code: faker.lorem.words(5),
+    account_number: faker.lorem.words(5),
+    recipient_name: faker.lorem.words(5),
+    sender_bank: undefined,
+    remark: faker.lorem.words(5),
+    receipt: faker.lorem.words(5),
+    time_served: faker.lorem.words(5),
+    bundle_id: faker.datatype.number(),
+    company_id: faker.datatype.number(),
+    recipient_city: faker.datatype.number(),
+    created_from: faker.lorem.words(5),
+    direction: faker.lorem.words(5),
+    sender: undefined,
+    fee: faker.datatype.number(),
+    beneficiary_email: faker.lorem.words(5),
+    idempotency_key: undefined,
+    updatedAt: undefined,
+  };
+}
+export function fakeDisbursementComplete() {
+  return {
+    id: faker.datatype.number(),
+    user_id: faker.datatype.number(),
+    amount: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    reason: faker.lorem.words(5),
+    timestamp: faker.lorem.words(5),
+    bank_code: faker.lorem.words(5),
+    account_number: faker.lorem.words(5),
+    recipient_name: faker.lorem.words(5),
+    sender_bank: undefined,
+    remark: faker.lorem.words(5),
+    receipt: faker.lorem.words(5),
+    time_served: faker.lorem.words(5),
+    bundle_id: faker.datatype.number(),
+    company_id: faker.datatype.number(),
+    recipient_city: faker.datatype.number(),
+    created_from: faker.lorem.words(5),
+    direction: faker.lorem.words(5),
+    sender: undefined,
+    fee: faker.datatype.number(),
+    beneficiary_email: faker.lorem.words(5),
+    idempotency_key: undefined,
+    createdAt: new Date(),
+    updatedAt: undefined,
+    bankInfoId: undefined,
+  };
+}
+export function fakeBankInfo() {
+  return {
+    bank_code: faker.lorem.words(5),
+    name: faker.name.fullName(),
+    fee: faker.datatype.number(),
+    queue: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeBankInfoComplete() {
+  return {
+    id: faker.datatype.number(),
+    bank_code: faker.lorem.words(5),
+    name: faker.name.fullName(),
+    fee: faker.datatype.number(),
+    queue: faker.datatype.number(),
+    status: faker.lorem.words(5),
+    createdAt: new Date(),
+    updatedAt: faker.datatype.datetime(),
+  };
+}
+export function fakeBill() {
+  return {
+    title: faker.lorem.words(5),
+    type: faker.helpers.arrayElement([BillType.SINGLE, BillType.MULTIPLE] as const),
+    amount: undefined,
+    expired_date: undefined,
+    redirect_url: undefined,
+    status: faker.helpers.arrayElement([BillStatus.ACTIVE, BillStatus.INACTIVE] as const),
+    is_address_required: undefined,
+    is_phone_number_required: undefined,
+    step: faker.datatype.number(),
+    sender_name: undefined,
+    sender_email: undefined,
+    sender_phone_number: undefined,
+    sender_address: undefined,
+    sender_bank: undefined,
+    sender_bank_type: undefined,
+  };
+}
+export function fakeBillComplete() {
+  return {
+    id: faker.datatype.number(),
+    title: faker.lorem.words(5),
+    type: faker.helpers.arrayElement([BillType.SINGLE, BillType.MULTIPLE] as const),
+    amount: undefined,
+    expired_date: undefined,
+    redirect_url: undefined,
+    status: faker.helpers.arrayElement([BillStatus.ACTIVE, BillStatus.INACTIVE] as const),
+    is_address_required: undefined,
+    is_phone_number_required: undefined,
+    step: faker.datatype.number(),
+    sender_name: undefined,
+    sender_email: undefined,
+    sender_phone_number: undefined,
+    sender_address: undefined,
+    sender_bank: undefined,
+    sender_bank_type: undefined,
+  };
+}
+export function fakePayment() {
+  return {
+    bill_link: faker.lorem.words(5),
+    bill_title: faker.lorem.words(5),
+    sender_name: faker.lorem.words(5),
+    sender_bank: faker.lorem.words(5),
+    sender_bank_type: faker.helpers.arrayElement([SenderBankType.bank_account, SenderBankType.virtual_account, SenderBankType.wallet_account, SenderBankType.bank_transfer] as const),
+    virtual_account_number: undefined,
+    amount: faker.lorem.words(5),
+    status: faker.helpers.arrayElement([PaymentStatus.FAILED, PaymentStatus.SUCCESSFUL, PaymentStatus.PENDING] as const),
+    settlement_status: faker.helpers.arrayElement([SettlementStatus.Cancelled, SettlementStatus.Settled, SettlementStatus.Pending] as const),
+    reference_id: undefined,
+    payment_url: faker.lorem.words(5),
+    completed_at: undefined,
+  };
+}
+export function fakePaymentComplete() {
+  return {
+    id: faker.datatype.uuid(),
+    bill_link: faker.lorem.words(5),
+    bill_title: faker.lorem.words(5),
+    sender_name: faker.lorem.words(5),
+    sender_bank: faker.lorem.words(5),
+    sender_bank_type: faker.helpers.arrayElement([SenderBankType.bank_account, SenderBankType.virtual_account, SenderBankType.wallet_account, SenderBankType.bank_transfer] as const),
+    virtual_account_number: undefined,
+    amount: faker.lorem.words(5),
+    status: faker.helpers.arrayElement([PaymentStatus.FAILED, PaymentStatus.SUCCESSFUL, PaymentStatus.PENDING] as const),
+    settlement_status: faker.helpers.arrayElement([SettlementStatus.Cancelled, SettlementStatus.Settled, SettlementStatus.Pending] as const),
+    reference_id: undefined,
+    payment_url: faker.lorem.words(5),
+    created_at: new Date(),
+    completed_at: undefined,
   };
 }

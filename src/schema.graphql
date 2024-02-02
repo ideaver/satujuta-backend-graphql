@@ -202,6 +202,158 @@ type Bank {
   account: Account!
 }
 
+type BankInfoAvgAggregate {
+  id: Float
+  fee: Float
+  queue: Float
+}
+
+type BankInfoCountAggregate {
+  id: Int!
+  bank_code: Int!
+  name: Int!
+  fee: Int!
+  queue: Int!
+  status: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  _all: Int!
+}
+
+type BankInfoCount {
+  Disbursement: Int!
+}
+
+type BankInfoMaxAggregate {
+  id: Int
+  bank_code: String
+  name: String
+  fee: Int
+  queue: Int
+  status: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type BankInfoMinAggregate {
+  id: Int
+  bank_code: String
+  name: String
+  fee: Int
+  queue: Int
+  status: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type BankInfoSumAggregate {
+  id: Int
+  fee: Int
+  queue: Int
+}
+
+type BankInfo {
+  id: Int!
+  bank_code: String!
+  name: String!
+  fee: Int!
+  queue: Int!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Disbursement: [Disbursement!]
+  _count: BankInfoCount!
+}
+
+type BillAvgAggregate {
+  id: Float
+  amount: Float
+  is_address_required: Float
+  is_phone_number_required: Float
+  step: Float
+}
+
+type BillCountAggregate {
+  id: Int!
+  title: Int!
+  type: Int!
+  amount: Int!
+  expired_date: Int!
+  redirect_url: Int!
+  status: Int!
+  is_address_required: Int!
+  is_phone_number_required: Int!
+  step: Int!
+  sender_name: Int!
+  sender_email: Int!
+  sender_phone_number: Int!
+  sender_address: Int!
+  sender_bank: Int!
+  sender_bank_type: Int!
+  _all: Int!
+}
+
+type BillMaxAggregate {
+  id: Int
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: DateTime
+  redirect_url: String
+  status: BillStatus
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: BillSenderBankType
+}
+
+enum BillType {
+  SINGLE
+  MULTIPLE
+}
+
+enum BillStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum BillSenderBankType {
+  virtual_account
+  wallet_account
+}
+
+type BillMinAggregate {
+  id: Int
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: DateTime
+  redirect_url: String
+  status: BillStatus
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: BillSenderBankType
+}
+
+type BillSumAggregate {
+  id: Int
+  amount: Int
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int
+}
+
 type AggregateCart {
   _count: CartCountAggregate
   _avg: CartAvgAggregate
@@ -387,6 +539,142 @@ type City {
   province: Province!
   districts: [District!]
   _count: CityCount!
+}
+
+type DisbursementAvgAggregate {
+  id: Float
+  user_id: Float
+  amount: Float
+  bundle_id: Float
+  company_id: Float
+  recipient_city: Float
+  fee: Float
+  bankInfoId: Float
+}
+
+type DisbursementCountAggregate {
+  id: Int!
+  user_id: Int!
+  amount: Int!
+  status: Int!
+  reason: Int!
+  timestamp: Int!
+  bank_code: Int!
+  account_number: Int!
+  recipient_name: Int!
+  sender_bank: Int!
+  remark: Int!
+  receipt: Int!
+  time_served: Int!
+  bundle_id: Int!
+  company_id: Int!
+  recipient_city: Int!
+  created_from: Int!
+  direction: Int!
+  sender: Int!
+  fee: Int!
+  beneficiary_email: Int!
+  idempotency_key: Int!
+  createdAt: Int!
+  updatedAt: Int!
+  bankInfoId: Int!
+  _all: Int!
+}
+
+type DisbursementMaxAggregate {
+  id: Int
+  user_id: Int
+  amount: Int
+  status: String
+  reason: String
+  timestamp: String
+  bank_code: String
+  account_number: String
+  recipient_name: String
+  sender_bank: String
+  remark: String
+  receipt: String
+  time_served: String
+  bundle_id: Int
+  company_id: Int
+  recipient_city: Int
+  created_from: String
+  direction: String
+  sender: String
+  fee: Int
+  beneficiary_email: String
+  idempotency_key: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  bankInfoId: Int
+}
+
+type DisbursementMinAggregate {
+  id: Int
+  user_id: Int
+  amount: Int
+  status: String
+  reason: String
+  timestamp: String
+  bank_code: String
+  account_number: String
+  recipient_name: String
+  sender_bank: String
+  remark: String
+  receipt: String
+  time_served: String
+  bundle_id: Int
+  company_id: Int
+  recipient_city: Int
+  created_from: String
+  direction: String
+  sender: String
+  fee: Int
+  beneficiary_email: String
+  idempotency_key: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  bankInfoId: Int
+}
+
+type DisbursementSumAggregate {
+  id: Int
+  user_id: Int
+  amount: Int
+  bundle_id: Int
+  company_id: Int
+  recipient_city: Int
+  fee: Int
+  bankInfoId: Int
+}
+
+type Disbursement {
+  id: Int!
+  user_id: Int!
+  amount: Int!
+  status: String!
+  reason: String!
+  timestamp: String!
+  bank_code: String!
+  account_number: String!
+  recipient_name: String!
+  sender_bank: String
+  remark: String!
+  receipt: String!
+  time_served: String!
+  bundle_id: Int!
+  company_id: Int!
+  recipient_city: Int!
+  created_from: String!
+  direction: String!
+  sender: String
+  fee: Int!
+  beneficiary_email: String!
+  idempotency_key: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  bankInfoId: Int
+  BankInfo: BankInfo
 }
 
 type AggregateDistrict {
@@ -1039,6 +1327,77 @@ type Order {
   shipping: Shipping
   invoice: Invoice!
   _count: OrderCount!
+}
+
+type PaymentCountAggregate {
+  id: Int!
+  bill_link: Int!
+  bill_title: Int!
+  sender_name: Int!
+  sender_bank: Int!
+  sender_bank_type: Int!
+  virtual_account_number: Int!
+  amount: Int!
+  status: Int!
+  settlement_status: Int!
+  reference_id: Int!
+  payment_url: Int!
+  created_at: Int!
+  completed_at: Int!
+  _all: Int!
+}
+
+type PaymentMaxAggregate {
+  id: String
+  bill_link: String
+  bill_title: String
+  sender_name: String
+  sender_bank: String
+  sender_bank_type: SenderBankType
+  virtual_account_number: String
+  amount: String
+  status: PaymentStatus
+  settlement_status: SettlementStatus
+  reference_id: String
+  payment_url: String
+  created_at: DateTime
+  completed_at: DateTime
+}
+
+enum SenderBankType {
+  bank_account
+  virtual_account
+  wallet_account
+  bank_transfer
+}
+
+enum PaymentStatus {
+  FAILED
+  SUCCESSFUL
+  PENDING
+}
+
+enum SettlementStatus {
+  Cancelled
+  Settled
+  Pending
+}
+
+type PaymentMinAggregate {
+  id: String
+  bill_link: String
+  bill_title: String
+  sender_name: String
+  sender_bank: String
+  sender_bank_type: SenderBankType
+  virtual_account_number: String
+  amount: String
+  status: PaymentStatus
+  settlement_status: SettlementStatus
+  reference_id: String
+  payment_url: String
+  created_at: DateTime
+  completed_at: DateTime
 }
 
 type AggregateProgram {
@@ -2158,37 +2517,122 @@ type CityFindManyUser {
   userCount: Int!
 }
 
-type Disbursement {
-  id: Int!
-  user_id: Int!
-  amount: Int!
-  status: String!
-  reason: String!
-  timestamp: String!
-  bank_code: String!
-  account_number: String!
-  recipient_name: String!
-  sender_bank: String
-  remark: String!
-  receipt: String!
-  time_served: String!
-  bundle_id: Int!
-  company_id: Int!
-  recipient_city: Int!
-  created_from: String!
-  direction: String!
-  sender: String
-  fee: Int!
-  beneficiary_email: String!
-  idempotency_key: String!
-}
-
 type GetAllDisbursement {
   total_data: Int!
   data_per_page: Int!
   total_page: Int!
   page: Int!
   data: [Disbursement!]!
+}
+
+type GetBalance {
+  balance: String!
+}
+
+type GetBankInfo {
+  bank_code: String!
+  name: String!
+  fee: Int!
+  queue: Int!
+  status: String!
+}
+
+type IsMaintenance {
+  maintenance: Boolean!
+}
+
+type BankAccountInquiry {
+  bank_code: String!
+  account_number: String!
+  account_holder: String!
+  status: String!
+  inquiry_key: String!
+}
+
+type Customer {
+  name: String!
+  email: String!
+  address: String
+  phone: String
+}
+
+type PaymentMethod {
+  sender_bank: String!
+  sender_bank_type: String!
+}
+
+type ReceiverBankAccount {
+  account_number: String
+  account_type: String
+  bank_code: String
+  account_holder: String
+  qr_code_data: String
+}
+
+type BillPayment {
+  id: Float!
+  amount: Float!
+  unique_code: Float
+  status: String!
+  sender_bank: String
+  sender_bank_type: String
+  receiver_bank_account: ReceiverBankAccount!
+  user_address: String
+  user_phone: String
+  created_at: Float!
+}
+
+type BillEntity {
+  link_id: Float!
+  link_url: String!
+  title: String!
+  type: String!
+  amount: Float
+  redirect_url: String
+  expired_date: String
+  created_from: String!
+  status: String!
+  step: Float!
+  is_address_required: Float
+  is_phone_number_required: Float
+  customer: Customer
+  payment_method: PaymentMethod
+  bill_payment: BillPayment
+  payment_url: String
+}
+
+type Payment {
+  id: String!
+  bill_link: String!
+  bill_title: String!
+  sender_name: String!
+  sender_bank: String!
+  sender_bank_type: SenderBankType!
+  virtual_account_number: String
+  amount: String!
+  status: PaymentStatus!
+  settlement_status: String!
+  reference_id: String
+  payment_url: String!
+  created_at: String!
+  completed_at: String
+}
+
+type GetPayment {
+  link_id: Int!
+  total_data: Int!
+  data_per_page: Int!
+  total_page: Int!
+  page: Int!
+  data: [Payment!]!
+}
+
+type GetAllPayment {
+  total_data: Int!
+  data_per_page: Int!
+  total_page: Int!
+  page: Int!
+  data: [Payment!]!
 }
 
 type Query {
@@ -2634,10 +3078,34 @@ type Query {
   getAllDisbursement(getAllDisbursementArgs: GetAllDisbursementArgs!): GetAllDisbursement
 
   """Deskripsinya ada disini loh"""
-  getDisbursementById(getDisbursementById: GetDisbursementById!): Disbursement
+  getDisbursementById(getDisbursementByIdArgs: GetDisbursementByIdArgs!): Disbursement
 
   """Deskripsinya ada disini loh"""
-  getDisbursementByIdempotencyKey(getDisbursementByIdempotencyKey: GetDisbursementByIdempotencyKey!): Disbursement
+  getDisbursementByIdempotencyKey(getDisbursementByIdempotencyKeyArgs: GetDisbursementByIdempotencyKeyArgs!): Disbursement
+
+  """Deskripsinya ada disini loh"""
+  getBalance: GetBalance
+
+  """Deskripsinya ada disini loh"""
+  getBankInfo: [GetBankInfo!]
+
+  """Deskripsinya ada disini loh"""
+  isMaintenance: IsMaintenance
+
+  """Deskripsinya ada disini loh"""
+  bankAccountInquiry(bankAccountInquiryArgs: BankAccountInquiryArgs!): BankAccountInquiry
+
+  """Deskripsinya ada disini loh"""
+  getBill(bill_id: String!): BillEntity
+
+  """Deskripsinya ada disini loh"""
+  getAllBill: [BillEntity!]
+
+  """Deskripsinya ada disini loh"""
+  getPayment(getPaymentArgs: GetPaymentArgs!): GetPayment
+
+  """Deskripsinya ada disini loh"""
+  getAllPayment(getAllPaymentArgs: GetAllPaymentArgs!): GetAllPayment
 }
 
 input ImagesWhereUniqueInput {
@@ -6122,14 +6590,45 @@ input GetAllDisbursementArgs {
   sort: String
 }
 
-input GetDisbursementById {
+input GetDisbursementByIdArgs {
   """The id of the disbursement."""
   id: Int!
 }
 
-input GetDisbursementByIdempotencyKey {
+input GetDisbursementByIdempotencyKeyArgs {
   """The idempotency key of the disbursement."""
   idempotency_key: String!
+}
+
+input BankAccountInquiryArgs {
+  """The account number of the inquiry bank"""
+  account_number: String!
+
+  """Bank code of the inquiry bank"""
+  bank_code: String!
+
+  """The inquiry key."""
+  inquiry_key: Int!
+}
+
+input GetPaymentArgs {
+  bill_id: Int!
+  start_date: String
+  end_date: String
+  pagination: Int
+  page: Int
+  sort_by: String
+  sort_type: String
+}
+
+input GetAllPaymentArgs {
+  start_date: String
+  end_date: String
+  pagination: Int
+  page: Int
+  sort_by: String
+  sort_type: String
+  reference_id: String
 }
 
 type Mutation {
@@ -6521,6 +7020,12 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   rewardClaimDeleteMany(where: RewardClaimWhereInput): Boolean!
   createDisbursement(createDisbursementArgs: CreateDisbursementArgs!): Disbursement!
+
+  """Deskripsinya ada disini loh"""
+  createBill(createBillArgs: CreateBillArgs!): BillEntity
+
+  """Deskripsinya ada disini loh"""
+  updateBill(updateBillArgs: UpdateBillArgs!): BillEntity
 }
 
 input UserCreateInput {
@@ -10448,4 +10953,33 @@ input CreateDisbursementArgs {
 
   """The amount of money to be disbursed"""
   amount: Int!
+}
+
+input CreateBillArgs {
+  title: String!
+  type: BillType!
+  amount: Int
+  expired_date: String
+  redirect_url: String
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int!
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: BillSenderBankType
+}
+
+input UpdateBillArgs {
+  bill_id: String!
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: String
+  redirect_url: String
+  status: BillStatus
+  is_address_required: Int
+  is_phone_number_required: Int
 }
