@@ -46,7 +46,7 @@ services:
       # DOZZLE_FILTER: "label=log_me" # limits logs displayed to containers with this label
       # DOCKER_HOST: tcp://socket-proxy:2375 # enable when using socket proxy
     volumes:
-    - /var/run/docker.sock:/var/run/docker.sock # disable when using socket proxy
+      - /var/run/docker.sock:/var/run/docker.sock # disable when using socket proxy
 
   nginx:
     container_name: nginx
@@ -82,8 +82,8 @@ services:
     networks:
       - nestjs-network
 
-  graphql-backend:
-    container_name: graphql-backend
+  satujuta-graphql-backend:
+    container_name: satujuta-graphql-backend
     image: nestjs-api-dev:1.0.0
     build:
       context: .
@@ -91,7 +91,7 @@ services:
     ports:
       - "3000:3000" # NestJS API
       - "5555:5555" # Prisma Studio : npx prisma studio to activate
-      - "9229:9229" 
+      - "9229:9229"
     networks:
       - nestjs-network
     volumes:
@@ -106,22 +106,23 @@ services:
       # - minio
       # - redis
       # - mysql
-     
 
-  # redis:
-  #   image: redis:latest
-  #   container_name: redis
-  #   ports:
-  #     - "6379:6379"
-  #   networks:
-  #     - nestjs-network
-  #   restart: always
+
+      # redis:
+      #   image: redis:latest
+      #   container_name: redis
+      #   ports:
+      #     - "6379:6379"
+      #   networks:
+      #     - nestjs-network
+      #   restart: always
 
 networks:
   nestjs-network:
 
+
 volumes:
   data:
   data-volume:
-  # minio-data:
-  # mysql-data:
+    # minio-data:
+    # mysql-data:
