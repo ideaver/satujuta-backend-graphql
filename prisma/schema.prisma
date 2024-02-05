@@ -915,7 +915,7 @@ model Bill {
 }
 
 model Payment {
-  id                     String           @id @default(uuid())
+  id                     String           @id
   bill_link              String
   bill_title             String
   sender_name            String

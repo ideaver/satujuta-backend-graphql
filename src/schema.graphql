@@ -2570,7 +2570,7 @@ type ReceiverBankAccount {
 }
 
 type BillPayment {
-  id: Float!
+  id: String!
   amount: Float!
   unique_code: Float
   status: String!
@@ -3215,7 +3215,13 @@ input StringFilter {
   contains: String
   startsWith: String
   endsWith: String
+  mode: QueryMode
   not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
 }
 
 input NestedStringFilter {
@@ -3484,6 +3490,7 @@ input StringNullableFilter {
   contains: String
   startsWith: String
   endsWith: String
+  mode: QueryMode
   not: NestedStringNullableFilter
 }
 

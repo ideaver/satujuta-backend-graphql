@@ -45,7 +45,7 @@ export class ReceiverBankAccount {
 @ObjectType()
 export class BillPayment {
   @Field()
-  id: number;
+  id: string;
 
   @Field()
   amount: number;
