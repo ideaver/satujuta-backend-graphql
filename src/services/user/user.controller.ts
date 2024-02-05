@@ -24,6 +24,7 @@ import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { User } from 'src/@generated';
 import { UserEvents } from 'src/event-listeners/enum/user-event.enum';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 
 @Injectable()
 export class UserController {
@@ -62,7 +63,9 @@ export class UserController {
         await orderCreate(userCreateArgs, this.itemController, userRole);
       }
       //create user
-      const res = await this.userService.createOne(userCreateArgs);
+      const res = await this.userService.createOne(
+        replaceNullWithUndefined(userCreateArgs),
+      );
       //OnUserCreatedEvent
       this.eventEmitter.emit(UserEvents.Created, res);
 

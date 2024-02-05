@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 export async function populateProvinceCityDistricSubdistric() {
   try {
     // Define the path to the JSON file within the Prisma folder
-    const jsonFilePath = join(__dirname, 'kodepos.json');
+    const jsonFilePath = join('prisma', 'kodepos.json');
     // Read the JSON file
     const jsonData = await fs.readFile(jsonFilePath, 'utf-8');
     const parsedData = JSON.parse(jsonData);

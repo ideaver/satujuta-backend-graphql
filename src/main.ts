@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config';
 // Ignore the import error
 // @ts-ignore
 import { graphqlUploadExpress } from 'graphql-upload';
+import { InitializationService } from './services/initialization/initialization.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -22,6 +23,13 @@ async function bootstrap() {
       maxFiles: 10,
     }),
   );
+  //custom initialization
+  const initializationService = app.get(InitializationService);
+  try {
+    await initializationService.initialize();
+  } catch (error) {
+    console.error('Initialization failed:', error);
+  }
   await app.listen(port);
   console.log(`Application is running in ${environment} mode on port ${port}`);
 }

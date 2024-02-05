@@ -43,6 +43,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { SchedulerModule } from './scheduler/scheduler.module';
 import { ImagesModule } from './services/images/images.module';
 import { PaymentGatewayModule } from './services/payment-gateway/payment-gateway.module';
+import { InitializationModule } from './services/initialization/initialization.module';
 
 @Module({
   imports: [
@@ -72,6 +73,7 @@ import { PaymentGatewayModule } from './services/payment-gateway/payment-gateway
     EventEmitterModule.forRoot(),
     ConfigsModule,
     EmailModule,
+    InitializationModule,
     UploaderModule,
     UserModule,
     HotelModule,
