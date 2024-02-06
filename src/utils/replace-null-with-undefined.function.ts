@@ -19,9 +19,11 @@ export const replaceNullWithUndefined = <T>(input: T): T | undefined => {
   }
 
   if (Array.isArray(input)) {
-    const processedArray = (input as unknown[]).map(replaceNullWithUndefined);
-    return processedArray.some((item) => item !== undefined)
-      ? (processedArray as T)
+    const processedArray = (input as unknown[])
+      .map(replaceNullWithUndefined)
+      .filter((item) => item !== undefined);
+    return processedArray.length > 0
+      ? (processedArray as unknown as T)
       : undefined;
   }
 
