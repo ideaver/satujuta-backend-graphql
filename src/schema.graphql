@@ -2754,7 +2754,7 @@ type Query {
   getAccountBalanceByCustomPeriod(accountBalanceByCustomPeriodArgs: AccountBalanceByCustomPeriodArgs!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfUserPointFromUserId(userId: String!): Float!
-  transactionFindManyByUserPointFromUserId(userId: String!, skip: Float!, take: Float!): Float!
+  transactionFindManyByUserPointFromUserId(userId: String!, skip: Int!, take: Int!): [Transaction!]!
 
   """Deskripsinya ada disini loh"""
   withdrawalRequestFindOne(where: WithdrawalRequestWhereUniqueInput!): WithdrawalRequest

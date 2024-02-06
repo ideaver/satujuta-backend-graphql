@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Float, Int } from '@nestjs/graphql';
 import { Prisma } from '@prisma/client';
 import { Relations } from 'src/utils/relations.decorator';
 import {
@@ -15,6 +15,7 @@ import {
   AccountAggregateArgs,
   UpdateManyAccountArgs,
   UpdateOneAccountArgs,
+  Transaction,
 } from 'src/@generated';
 import { AccountController } from './account.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
@@ -218,12 +219,12 @@ export class AccountResolver {
     );
   }
 
-  @Query(() => Float)
+  @Query(() => [Transaction])
   async transactionFindManyByUserPointFromUserId(
     @Args('userId')
     userId: string,
-    @Args('skip') skip: number,
-    @Args('take') take: number,
+    @Args({ name: 'skip', type: () => Int }) skip: number,
+    @Args({ name: 'take', type: () => Int }) take: number,
   ): Promise<number> {
     return await this.accountController.transactionFindManyByUserPointFromUserId(
       userId,
