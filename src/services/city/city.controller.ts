@@ -6,6 +6,7 @@ import {
   CityFindManyUserArgs,
 } from './dto/city-find-many-user.args';
 import { City } from 'src/@generated';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 
 @Injectable()
 export class CityController {
@@ -24,7 +25,9 @@ export class CityController {
   }
 
   async findMany(cityFindManyArgs: Prisma.CityFindManyArgs): Promise<City[]> {
-    return await this.cityService.findMany(cityFindManyArgs);
+    return await this.cityService.findMany(
+      replaceNullWithUndefined(cityFindManyArgs),
+    );
   }
 
   async findFirst(cityFindFirstArgs: Prisma.CityFindFirstArgs) {

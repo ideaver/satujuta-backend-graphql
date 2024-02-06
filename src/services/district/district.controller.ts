@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DistrictService } from './district.service';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 
 @Injectable()
 export class DistrictController {
@@ -19,7 +20,9 @@ export class DistrictController {
   }
 
   async findMany(districtFindManyArgs: Prisma.DistrictFindManyArgs) {
-    return await this.districtService.findMany(districtFindManyArgs);
+    return await this.districtService.findMany(
+      replaceNullWithUndefined(districtFindManyArgs),
+    );
   }
 
   async findFirst(districtFindFirstArgs: Prisma.DistrictFindFirstArgs) {
