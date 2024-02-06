@@ -107,7 +107,7 @@ export class HotelResolver {
     @Relations() relations: HotelSelect,
   ) {
     return this.hotelController.updateOne({
-      ...replaceNullWithUndefined(hotelUpdateOneArgs),
+      ...hotelUpdateOneArgs,
       select: relations.select,
     });
   }

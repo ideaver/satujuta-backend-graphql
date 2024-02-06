@@ -1,6 +1,7 @@
 import { HotelService } from '../hotel/hotel.service';
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 
 @Injectable()
 export class HotelController {
@@ -27,7 +28,9 @@ export class HotelController {
   }
 
   async updateOne(hotelUpdateOneArgs: Prisma.HotelUpdateArgs) {
-    return await this.hotelService.updateOne(hotelUpdateOneArgs);
+    return await this.hotelService.updateOne(
+      replaceNullWithUndefined(hotelUpdateOneArgs),
+    );
   }
 
   async updateMany(hotelUpdateManyArgs: Prisma.HotelUpdateManyArgs) {
