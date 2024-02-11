@@ -2570,7 +2570,7 @@ type ReceiverBankAccount {
 }
 
 type BillPayment {
-  id: Float!
+  id: String!
   amount: Float!
   unique_code: Float
   status: String!
