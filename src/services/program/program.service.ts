@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { Prisma } from '@prisma/client';
@@ -6,6 +6,8 @@ import { Prisma } from '@prisma/client';
 @Injectable()
 export class ProgramService {
   constructor(private prisma: PrismaService) {}
+
+  private readonly logger = new Logger(ProgramService.name);
 
   async createOne(programCreateArgs: Prisma.ProgramCreateArgs) {
     try {
