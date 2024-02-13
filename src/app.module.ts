@@ -44,6 +44,8 @@ import { SchedulerModule } from './scheduler/scheduler.module';
 import { ImagesModule } from './services/images/images.module';
 import { PaymentGatewayModule } from './services/payment-gateway/payment-gateway.module';
 import { InitializationModule } from './services/initialization/initialization.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ReplaceNullWithUndefinedInterceptor } from './interceptor/replace-null-with-undefined.interceptor';
 
 @Module({
   imports: [

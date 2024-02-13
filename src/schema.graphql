@@ -5153,7 +5153,6 @@ input BankMaxAggregateInput {
 
 input FileWhereUniqueInput {
   id: Int
-  createdById: String
   AND: [FileWhereInput!]
   OR: [FileWhereInput!]
   NOT: [FileWhereInput!]
@@ -5162,6 +5161,7 @@ input FileWhereUniqueInput {
   name: StringFilter
   description: StringFilter
   url: StringFilter
+  createdById: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   createdBy: UserRelationFilter

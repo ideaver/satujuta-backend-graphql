@@ -19,6 +19,8 @@ import {
 import { ProgramController } from './program.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
+import { ReplaceNullWithUndefinedInterceptor } from 'src/interceptor/replace-null-with-undefined.interceptor';
+import { UseInterceptors } from '@nestjs/common';
 
 interface ProgramSelect {
   select: Prisma.ProgramSelect;
@@ -38,7 +40,7 @@ export class ProgramResolver {
     @Relations() relations: ProgramSelect,
   ): Promise<Program | void> {
     return await this.programController.createOne({
-      ...programCreateArgs,
+      ...replaceNullWithUndefined(programCreateArgs),
       select: relations.select,
     });
   }
@@ -107,7 +109,7 @@ export class ProgramResolver {
     @Relations() relations: ProgramSelect,
   ) {
     return this.programController.updateOne({
-      ...replaceNullWithUndefined(programUpdateOneArgs),
+      programUpdateOneArgs,
       select: relations.select,
     });
   }

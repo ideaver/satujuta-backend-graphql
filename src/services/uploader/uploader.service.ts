@@ -22,7 +22,7 @@ import { RatioEnum } from './enums/ratio.enum';
 import { IBucketData } from './interfaces/bucket-data.interface';
 import { ConfigService } from '@nestjs/config';
 import {
-  detectMimeTypeFromFilename,
+  detectMimeTypeFromFilenameOrUrl,
   mapFileTypeEnumFromMIME,
 } from 'src/utils/mime-types.function';
 import { S3Config } from 'src/config/s3config.model';
@@ -215,7 +215,7 @@ export class UploaderService {
       const { filename, createReadStream } = await file;
 
       // Identify the file type based on the file's extension or MIME type
-      let fileExt = detectMimeTypeFromFilename(filename);
+      let fileExt = detectMimeTypeFromFilenameOrUrl(filename);
       let fileType: FileType;
 
       // If the file has an extension, get the file type from the extension
@@ -258,7 +258,7 @@ export class UploaderService {
           Body: fileBuffer,
           Key: key,
           ACL: 'public-read',
-          ContentType: detectMimeTypeFromFilename(filename),
+          ContentType: detectMimeTypeFromFilenameOrUrl(filename),
         }),
       );
 

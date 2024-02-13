@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { ProgramService } from './program.service';
 
 @Injectable()
 export class ProgramController {
   constructor(private readonly programService: ProgramService) {}
+
+  private readonly logger = new Logger(ProgramController.name);
 
   async createOne(programCreateArgs: Prisma.ProgramCreateArgs) {
     return await this.programService.createOne(programCreateArgs);
@@ -27,6 +29,7 @@ export class ProgramController {
   }
 
   async updateOne(programUpdateOneArgs: Prisma.ProgramUpdateArgs) {
+    this.logger.debug(programUpdateOneArgs);
     return await this.programService.updateOne(programUpdateOneArgs);
   }
 

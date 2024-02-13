@@ -708,7 +708,7 @@ model File {
   /// @Validator.IsUrl({ require_protocol: true })
   url         String
   createdBy   User     @relation(fields: [createdById], references: [id])
-  createdById String   @unique
+  createdById String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

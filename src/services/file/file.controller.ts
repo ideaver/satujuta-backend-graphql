@@ -1,12 +1,33 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { FileType, Prisma } from '@prisma/client';
 import { FileService } from './file.service';
+import {
+  detectMimeTypeFromFilenameOrUrl,
+  mapFileTypeEnumFromMIME,
+} from 'src/utils/mime-types.function';
+import axios from 'axios';
+import mime from 'mime';
 
 @Injectable()
 export class FileController {
   constructor(private readonly fileService: FileService) {}
 
   async createOne(fileCreateArgs: Prisma.FileCreateArgs) {
+    try {
+      const response = await axios.head(fileCreateArgs.data.url, {
+        responseType: 'stream',
+      });
+      const mimeType =
+        response.headers['content-type'] || 'application/octet-stream';
+
+      fileCreateArgs.data.fileType = mapFileTypeEnumFromMIME(mimeType);
+      fileCreateArgs.data.filesize =
+        parseInt(response.headers['content-length'], 10) || 0;
+    } catch (error) {
+      console.error('Error fetching file metadata:', error);
+      throw error;
+    }
+
     return await this.fileService.createOne(fileCreateArgs);
   }
 

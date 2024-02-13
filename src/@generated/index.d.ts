@@ -6937,12 +6937,12 @@ export declare class DeleteManyFileArgs {
     where?: InstanceType<typeof FileWhereInput>;
 }
 export declare class DeleteOneFileArgs {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
 }
 export declare class FileAggregateArgs {
     where?: InstanceType<typeof FileWhereInput>;
     orderBy?: Array<FileOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     _count?: InstanceType<typeof FileCountAggregateInput>;
@@ -7027,10 +7027,10 @@ export declare class FileCreateNestedManyWithoutCreatedByInput {
     create?: Array<FileCreateWithoutCreatedByInput>;
     connectOrCreate?: Array<FileCreateOrConnectWithoutCreatedByInput>;
     createMany?: InstanceType<typeof FileCreateManyCreatedByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
 }
 export declare class FileCreateOrConnectWithoutCreatedByInput {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     create: InstanceType<typeof FileCreateWithoutCreatedByInput>;
 }
 export declare class FileCreateWithoutCreatedByInput {
@@ -7227,7 +7227,7 @@ export declare class FileUncheckedCreateNestedManyWithoutCreatedByInput {
     create?: Array<FileCreateWithoutCreatedByInput>;
     connectOrCreate?: Array<FileCreateOrConnectWithoutCreatedByInput>;
     createMany?: InstanceType<typeof FileCreateManyCreatedByInputEnvelope>;
-    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
+    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
 }
 export declare class FileUncheckedCreateWithoutCreatedByInput {
     id?: number;
@@ -7255,10 +7255,10 @@ export declare class FileUncheckedUpdateManyWithoutCreatedByNestedInput {
     connectOrCreate?: Array<FileCreateOrConnectWithoutCreatedByInput>;
     upsert?: Array<FileUpsertWithWhereUniqueWithoutCreatedByInput>;
     createMany?: InstanceType<typeof FileCreateManyCreatedByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
     update?: Array<FileUpdateWithWhereUniqueWithoutCreatedByInput>;
     updateMany?: Array<FileUpdateManyWithWhereWithoutCreatedByInput>;
     deleteMany?: Array<FileScalarWhereInput>;
@@ -7323,16 +7323,16 @@ export declare class FileUpdateManyWithoutCreatedByNestedInput {
     connectOrCreate?: Array<FileCreateOrConnectWithoutCreatedByInput>;
     upsert?: Array<FileUpsertWithWhereUniqueWithoutCreatedByInput>;
     createMany?: InstanceType<typeof FileCreateManyCreatedByInputEnvelope>;
-    set?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
-    disconnect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
-    delete?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
-    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>>;
+    set?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
+    disconnect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
+    delete?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
+    connect?: Array<Prisma.AtLeast<FileWhereUniqueInput, 'id'>>;
     update?: Array<FileUpdateWithWhereUniqueWithoutCreatedByInput>;
     updateMany?: Array<FileUpdateManyWithWhereWithoutCreatedByInput>;
     deleteMany?: Array<FileScalarWhereInput>;
 }
 export declare class FileUpdateWithWhereUniqueWithoutCreatedByInput {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     data: InstanceType<typeof FileUpdateWithoutCreatedByInput>;
 }
 export declare class FileUpdateWithoutCreatedByInput {
@@ -7355,13 +7355,12 @@ export declare class FileUpdateInput {
     createdBy?: InstanceType<typeof UserUpdateOneRequiredWithoutFilesCreatedNestedInput>;
 }
 export declare class FileUpsertWithWhereUniqueWithoutCreatedByInput {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     update: InstanceType<typeof FileUpdateWithoutCreatedByInput>;
     create: InstanceType<typeof FileCreateWithoutCreatedByInput>;
 }
 export declare class FileWhereUniqueInput {
     id?: number;
-    createdById?: string;
     AND?: Array<FileWhereInput>;
     OR?: Array<FileWhereInput>;
     NOT?: Array<FileWhereInput>;
@@ -7370,6 +7369,7 @@ export declare class FileWhereUniqueInput {
     name?: InstanceType<typeof StringFilter>;
     description?: InstanceType<typeof StringFilter>;
     url?: InstanceType<typeof StringFilter>;
+    createdById?: InstanceType<typeof StringFilter>;
     createdAt?: InstanceType<typeof DateTimeFilter>;
     updatedAt?: InstanceType<typeof DateTimeFilter>;
     createdBy?: InstanceType<typeof UserRelationFilter>;
@@ -7404,7 +7404,7 @@ export declare class File {
 export declare class FindFirstFileOrThrowArgs {
     where?: InstanceType<typeof FileWhereInput>;
     orderBy?: Array<FileOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof FileScalarFieldEnum>;
@@ -7412,7 +7412,7 @@ export declare class FindFirstFileOrThrowArgs {
 export declare class FindFirstFileArgs {
     where?: InstanceType<typeof FileWhereInput>;
     orderBy?: Array<FileOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof FileScalarFieldEnum>;
@@ -7420,16 +7420,16 @@ export declare class FindFirstFileArgs {
 export declare class FindManyFileArgs {
     where?: InstanceType<typeof FileWhereInput>;
     orderBy?: Array<FileOrderByWithRelationInput>;
-    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    cursor?: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     take?: number;
     skip?: number;
     distinct?: Array<keyof typeof FileScalarFieldEnum>;
 }
 export declare class FindUniqueFileOrThrowArgs {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
 }
 export declare class FindUniqueFileArgs {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
 }
 export declare class UpdateManyFileArgs {
     data: InstanceType<typeof FileUpdateManyMutationInput>;
@@ -7437,10 +7437,10 @@ export declare class UpdateManyFileArgs {
 }
 export declare class UpdateOneFileArgs {
     data: InstanceType<typeof FileUpdateInput>;
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
 }
 export declare class UpsertOneFileArgs {
-    where: Prisma.AtLeast<FileWhereUniqueInput, 'id' | 'createdById'>;
+    where: Prisma.AtLeast<FileWhereUniqueInput, 'id'>;
     create: InstanceType<typeof FileCreateInput>;
     update: InstanceType<typeof FileUpdateInput>;
 }
@@ -11737,7 +11737,7 @@ export declare class PaymentCountOrderByAggregateInput {
     completed_at?: keyof typeof SortOrder;
 }
 export declare class PaymentCreateManyInput {
-    id?: string;
+    id: string;
     bill_link: string;
     bill_title: string;
     sender_name: string;
@@ -11753,7 +11753,7 @@ export declare class PaymentCreateManyInput {
     completed_at?: Date | string;
 }
 export declare class PaymentCreateInput {
-    id?: string;
+    id: string;
     bill_link: string;
     bill_title: string;
     sender_name: string;
@@ -11949,7 +11949,7 @@ export declare class PaymentScalarWhereWithAggregatesInput {
     completed_at?: InstanceType<typeof DateTimeNullableWithAggregatesFilter>;
 }
 export declare class PaymentUncheckedCreateInput {
-    id?: string;
+    id: string;
     bill_link: string;
     bill_title: string;
     sender_name: string;

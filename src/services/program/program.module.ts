@@ -3,6 +3,7 @@ import { ProgramService } from './program.service';
 import { ProgramResolver } from './program.resolver';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProgramController } from './program.controller';
+import { ReplaceNullWithUndefinedInterceptor } from 'src/interceptor/replace-null-with-undefined.interceptor';
 
 @Module({
   providers: [

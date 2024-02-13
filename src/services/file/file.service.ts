@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { Prisma } from '@prisma/client';
@@ -6,11 +6,13 @@ import { Prisma } from '@prisma/client';
 @Injectable()
 export class FileService {
   constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(FileService.name);
 
   async createOne(fileCreateArgs: Prisma.FileCreateArgs) {
     try {
       return await this.prisma.file.create(fileCreateArgs);
     } catch (err) {
+      this.logger.error(err);
       throw new IGraphQLError({ code: 123456, err: err });
     }
   }

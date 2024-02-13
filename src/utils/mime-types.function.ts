@@ -1,9 +1,28 @@
 import * as mime from 'mime-types';
+import * as path from 'path';
 import { FileType } from 'src/@generated';
 
-export function detectMimeTypeFromFilename(filename: string): string | null {
-  const mimeType = mime.lookup(filename);
-  return mimeType || null;
+export function detectMimeTypeFromFilenameOrUrl(input: string): string | null {
+  // Check if the input is a valid URL
+  if (isValidUrl(input)) {
+    // Extract filename from URL
+    const filename = path.basename(new URL(input).pathname);
+    const extension = path.extname(filename).slice(1); // Extracts extension without the dot
+    return mime.lookup(extension) || null;
+  } else {
+    // If not a URL, treat input as filename
+    const extension = path.extname(input).slice(1); // Extracts extension without the dot
+    return mime.lookup(extension) || null;
+  }
+}
+
+function isValidUrl(url: string): boolean {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 export function mapFileTypeEnumFromMIME(mimeType: string | null): FileType {
