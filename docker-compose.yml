@@ -99,7 +99,7 @@ services:
     restart: always
     env_file:
       - .env
-    depends_on:
+    # depends_on:
       # - portainer
       # - nginx
       # - dozzle
