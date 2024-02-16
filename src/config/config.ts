@@ -61,10 +61,10 @@ export const S3Config = registerAs(ConfigKey.S3, () => ({
     },
   },
   bucketData: {
-    name: process.env.BUCKET_NAME,
-    folder: process.env.FILE_FOLDER,
-    appUuid: process.env.SERVICE_ID,
-    url: `https://${process.env.BUCKET_NAME}.s3.${process.env.BUCKET_REGION}.${process.env.BUCKET_HOST}/`,
+    name: 'satujuta', //process.env.BUCKET_NAME,
+    folder: 'app', //process.env.FILE_FOLDER,
+    appUuid: 'nouuid', //process.env.SERVICE_ID,
+    url: `https://pub-a4b1cec13e034e06a84420c43bd02118.r2.dev/`,
   },
   middleware: {
     maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10),

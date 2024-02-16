@@ -51,10 +51,27 @@ export class UploaderService {
     private readonly fileController: FileController,
     private readonly imagesController: ImagesController,
   ) {
-    const s3Config = this.configService.get<S3Config>('S3');
+    // const s3Config = this.configService.get<S3Config>('S3');
 
-    this.client = new S3Client(s3Config.clientConfig);
-    this.bucketData = s3Config.bucketData;
+    // this.client = new S3Client(s3Config.clientConfig);
+    // this.bucketData = s3Config.bucketData;
+    // this.loggerService = new Logger(UploaderService.name);
+
+    const r2Config = this.configService.get<S3Config>('S3'); // Get R2 configuration
+
+    this.client = new S3Client({
+      region: 'auto', // Use 'auto' for R2
+      endpoint: `https://801b635905378da3f3b070d1969bbf9e.r2.cloudflarestorage.com`,
+      credentials: {
+        accessKeyId: 'fc3a5a01fe10955d391708e2f44ca0e3', //r2Config.access_key_id,
+        secretAccessKey:
+          '9917d4dfcd8f1c63fc0fe998dd5d4bf8820d3cf702d83a6e4478fc3f9c4405d8', //r2Config.secret_access_key,
+      },
+      forcePathStyle: true, // Required for R2
+      // signatureVersion: 'v4',
+    });
+
+    this.bucketData = r2Config.bucketData;
     this.loggerService = new Logger(UploaderService.name);
   }
 
