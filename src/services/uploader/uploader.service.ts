@@ -281,6 +281,7 @@ export class UploaderService {
 
       return `${this.bucketData.url}${key}`;
     } catch (error) {
+      this.loggerService.debug(error);
       throw new IGraphQLError({ code: 160001, err: error });
     }
   }
