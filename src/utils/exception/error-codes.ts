@@ -89,6 +89,8 @@ export const errorCodes: Record<number, string> = {
   170005: 'File tidak didukung',
   170006: 'Gagal membersihkan file di storage yang tidak terpakai',
 
+  180001: 'item cart tidak ditemukan',
+
   //Payment Gateway
   7999: 'Undefined error',
   71044: 'Bill type param is required when creating bill',
