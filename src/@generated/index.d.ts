@@ -773,6 +773,10 @@ export declare class AccountMinOrderByAggregateInput {
     userId?: keyof typeof SortOrder;
     accountCategory?: keyof typeof SortOrder;
 }
+export declare class AccountNullableRelationFilter {
+    is?: InstanceType<typeof AccountWhereInput>;
+    isNot?: InstanceType<typeof AccountWhereInput>;
+}
 export declare class AccountOrderByRelationAggregateInput {
     _count?: keyof typeof SortOrder;
 }
@@ -1050,13 +1054,6 @@ export declare class AccountUpdateManyWithoutUserNestedInput {
     updateMany?: Array<AccountUpdateManyWithWhereWithoutUserInput>;
     deleteMany?: Array<AccountScalarWhereInput>;
 }
-export declare class AccountUpdateOneRequiredWithoutBankAccountNestedInput {
-    create?: InstanceType<typeof AccountCreateWithoutBankAccountInput>;
-    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutBankAccountInput>;
-    upsert?: InstanceType<typeof AccountUpsertWithoutBankAccountInput>;
-    connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
-    update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutBankAccountInput>;
-}
 export declare class AccountUpdateOneRequiredWithoutProjectNestedInput {
     create?: InstanceType<typeof AccountCreateWithoutProjectInput>;
     connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutProjectInput>;
@@ -1077,6 +1074,15 @@ export declare class AccountUpdateOneRequiredWithoutTransactionOriginsNestedInpu
     upsert?: InstanceType<typeof AccountUpsertWithoutTransactionOriginsInput>;
     connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
     update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutTransactionOriginsInput>;
+}
+export declare class AccountUpdateOneWithoutBankAccountNestedInput {
+    create?: InstanceType<typeof AccountCreateWithoutBankAccountInput>;
+    connectOrCreate?: InstanceType<typeof AccountCreateOrConnectWithoutBankAccountInput>;
+    upsert?: InstanceType<typeof AccountUpsertWithoutBankAccountInput>;
+    disconnect?: InstanceType<typeof AccountWhereInput>;
+    delete?: InstanceType<typeof AccountWhereInput>;
+    connect?: Prisma.AtLeast<AccountWhereUniqueInput, 'id'>;
+    update?: InstanceType<typeof AccountUpdateToOneWithWhereWithoutBankAccountInput>;
 }
 export declare class AccountUpdateToOneWithWhereWithoutBankAccountInput {
     where?: InstanceType<typeof AccountWhereInput>;
@@ -2074,10 +2080,10 @@ export declare class BankCountOrderByAggregateInput {
 export declare class BankCreateManyInput {
     id?: number;
     name: string;
-    logoUrl: string;
-    accountNumber: number;
+    logoUrl?: string;
+    accountNumber?: number;
     isActive?: boolean;
-    accountId: number;
+    accountId?: number;
 }
 export declare class BankCreateNestedOneWithoutAccountInput {
     create?: InstanceType<typeof BankCreateWithoutAccountInput>;
@@ -2090,16 +2096,16 @@ export declare class BankCreateOrConnectWithoutAccountInput {
 }
 export declare class BankCreateWithoutAccountInput {
     name: string;
-    logoUrl: string;
-    accountNumber: number;
+    logoUrl?: string;
+    accountNumber?: number;
     isActive?: boolean;
 }
 export declare class BankCreateInput {
     name: string;
-    logoUrl: string;
-    accountNumber: number;
+    logoUrl?: string;
+    accountNumber?: number;
     isActive?: boolean;
-    account: InstanceType<typeof AccountCreateNestedOneWithoutBankAccountInput>;
+    account?: InstanceType<typeof AccountCreateNestedOneWithoutBankAccountInput>;
 }
 export declare class BankGroupByArgs {
     where?: InstanceType<typeof BankWhereInput>;
@@ -2117,10 +2123,10 @@ export declare class BankGroupByArgs {
 export declare class BankGroupBy {
     id: number;
     name: string;
-    logoUrl: string;
-    accountNumber: number;
-    isActive: boolean;
-    accountId: number;
+    logoUrl?: string;
+    accountNumber?: number;
+    isActive?: boolean;
+    accountId?: number;
     _count?: InstanceType<typeof BankCountAggregate>;
     _avg?: InstanceType<typeof BankAvgAggregate>;
     _sum?: InstanceType<typeof BankSumAggregate>;
@@ -2182,10 +2188,10 @@ export declare class BankNullableRelationFilter {
 export declare class BankOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    logoUrl?: keyof typeof SortOrder;
-    accountNumber?: keyof typeof SortOrder;
-    isActive?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    logoUrl?: InstanceType<typeof SortOrderInput>;
+    accountNumber?: InstanceType<typeof SortOrderInput>;
+    isActive?: InstanceType<typeof SortOrderInput>;
+    accountId?: InstanceType<typeof SortOrderInput>;
     _count?: InstanceType<typeof BankCountOrderByAggregateInput>;
     _avg?: InstanceType<typeof BankAvgOrderByAggregateInput>;
     _max?: InstanceType<typeof BankMaxOrderByAggregateInput>;
@@ -2195,10 +2201,10 @@ export declare class BankOrderByWithAggregationInput {
 export declare class BankOrderByWithRelationInput {
     id?: keyof typeof SortOrder;
     name?: keyof typeof SortOrder;
-    logoUrl?: keyof typeof SortOrder;
-    accountNumber?: keyof typeof SortOrder;
-    isActive?: keyof typeof SortOrder;
-    accountId?: keyof typeof SortOrder;
+    logoUrl?: InstanceType<typeof SortOrderInput>;
+    accountNumber?: InstanceType<typeof SortOrderInput>;
+    isActive?: InstanceType<typeof SortOrderInput>;
+    accountId?: InstanceType<typeof SortOrderInput>;
     account?: InstanceType<typeof AccountOrderByWithRelationInput>;
 }
 export declare class BankScalarWhereWithAggregatesInput {
@@ -2207,10 +2213,10 @@ export declare class BankScalarWhereWithAggregatesInput {
     NOT?: Array<BankScalarWhereWithAggregatesInput>;
     id?: InstanceType<typeof IntWithAggregatesFilter>;
     name?: InstanceType<typeof StringWithAggregatesFilter>;
-    logoUrl?: InstanceType<typeof StringWithAggregatesFilter>;
-    accountNumber?: InstanceType<typeof FloatWithAggregatesFilter>;
-    isActive?: InstanceType<typeof BoolWithAggregatesFilter>;
-    accountId?: InstanceType<typeof IntWithAggregatesFilter>;
+    logoUrl?: InstanceType<typeof StringNullableWithAggregatesFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableWithAggregatesFilter>;
+    isActive?: InstanceType<typeof BoolNullableWithAggregatesFilter>;
+    accountId?: InstanceType<typeof IntNullableWithAggregatesFilter>;
 }
 export declare class BankSumAggregateInput {
     id?: true;
@@ -2235,25 +2241,25 @@ export declare class BankUncheckedCreateNestedOneWithoutAccountInput {
 export declare class BankUncheckedCreateWithoutAccountInput {
     id?: number;
     name: string;
-    logoUrl: string;
-    accountNumber: number;
+    logoUrl?: string;
+    accountNumber?: number;
     isActive?: boolean;
 }
 export declare class BankUncheckedCreateInput {
     id?: number;
     name: string;
-    logoUrl: string;
-    accountNumber: number;
+    logoUrl?: string;
+    accountNumber?: number;
     isActive?: boolean;
-    accountId: number;
+    accountId?: number;
 }
 export declare class BankUncheckedUpdateManyInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    isActive?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    logoUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    isActive?: InstanceType<typeof NullableBoolFieldUpdateOperationsInput>;
+    accountId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
 }
 export declare class BankUncheckedUpdateOneWithoutAccountNestedInput {
     create?: InstanceType<typeof BankCreateWithoutAccountInput>;
@@ -2267,23 +2273,23 @@ export declare class BankUncheckedUpdateOneWithoutAccountNestedInput {
 export declare class BankUncheckedUpdateWithoutAccountInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    isActive?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
+    logoUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    isActive?: InstanceType<typeof NullableBoolFieldUpdateOperationsInput>;
 }
 export declare class BankUncheckedUpdateInput {
     id?: InstanceType<typeof IntFieldUpdateOperationsInput>;
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    isActive?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    accountId?: InstanceType<typeof IntFieldUpdateOperationsInput>;
+    logoUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    isActive?: InstanceType<typeof NullableBoolFieldUpdateOperationsInput>;
+    accountId?: InstanceType<typeof NullableIntFieldUpdateOperationsInput>;
 }
 export declare class BankUpdateManyMutationInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    isActive?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
+    logoUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    isActive?: InstanceType<typeof NullableBoolFieldUpdateOperationsInput>;
 }
 export declare class BankUpdateOneWithoutAccountNestedInput {
     create?: InstanceType<typeof BankCreateWithoutAccountInput>;
@@ -2300,16 +2306,16 @@ export declare class BankUpdateToOneWithWhereWithoutAccountInput {
 }
 export declare class BankUpdateWithoutAccountInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    isActive?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
+    logoUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    isActive?: InstanceType<typeof NullableBoolFieldUpdateOperationsInput>;
 }
 export declare class BankUpdateInput {
     name?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    logoUrl?: InstanceType<typeof StringFieldUpdateOperationsInput>;
-    accountNumber?: InstanceType<typeof FloatFieldUpdateOperationsInput>;
-    isActive?: InstanceType<typeof BoolFieldUpdateOperationsInput>;
-    account?: InstanceType<typeof AccountUpdateOneRequiredWithoutBankAccountNestedInput>;
+    logoUrl?: InstanceType<typeof NullableStringFieldUpdateOperationsInput>;
+    accountNumber?: InstanceType<typeof NullableFloatFieldUpdateOperationsInput>;
+    isActive?: InstanceType<typeof NullableBoolFieldUpdateOperationsInput>;
+    account?: InstanceType<typeof AccountUpdateOneWithoutBankAccountNestedInput>;
 }
 export declare class BankUpsertWithoutAccountInput {
     update: InstanceType<typeof BankUpdateWithoutAccountInput>;
@@ -2323,10 +2329,10 @@ export declare class BankWhereUniqueInput {
     OR?: Array<BankWhereInput>;
     NOT?: Array<BankWhereInput>;
     name?: InstanceType<typeof StringFilter>;
-    logoUrl?: InstanceType<typeof StringFilter>;
-    accountNumber?: InstanceType<typeof FloatFilter>;
-    isActive?: InstanceType<typeof BoolFilter>;
-    account?: InstanceType<typeof AccountRelationFilter>;
+    logoUrl?: InstanceType<typeof StringNullableFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableFilter>;
+    isActive?: InstanceType<typeof BoolNullableFilter>;
+    account?: InstanceType<typeof AccountNullableRelationFilter>;
 }
 export declare class BankWhereInput {
     AND?: Array<BankWhereInput>;
@@ -2334,20 +2340,20 @@ export declare class BankWhereInput {
     NOT?: Array<BankWhereInput>;
     id?: InstanceType<typeof IntFilter>;
     name?: InstanceType<typeof StringFilter>;
-    logoUrl?: InstanceType<typeof StringFilter>;
-    accountNumber?: InstanceType<typeof FloatFilter>;
-    isActive?: InstanceType<typeof BoolFilter>;
-    accountId?: InstanceType<typeof IntFilter>;
-    account?: InstanceType<typeof AccountRelationFilter>;
+    logoUrl?: InstanceType<typeof StringNullableFilter>;
+    accountNumber?: InstanceType<typeof FloatNullableFilter>;
+    isActive?: InstanceType<typeof BoolNullableFilter>;
+    accountId?: InstanceType<typeof IntNullableFilter>;
+    account?: InstanceType<typeof AccountNullableRelationFilter>;
 }
 export declare class Bank {
     id: number;
     name: string;
-    logoUrl: string;
-    accountNumber: number;
-    isActive: boolean;
-    accountId: number;
-    account?: InstanceType<typeof Account>;
+    logoUrl: string | null;
+    accountNumber: number | null;
+    isActive: boolean | null;
+    accountId: number | null;
+    account?: InstanceType<typeof Account> | null;
 }
 export declare class CreateManyBankArgs {
     data: Array<BankCreateManyInput>;
@@ -12105,6 +12111,17 @@ export declare class BoolFilter {
     equals?: boolean;
     not?: InstanceType<typeof NestedBoolFilter>;
 }
+export declare class BoolNullableFilter {
+    equals?: boolean;
+    not?: InstanceType<typeof NestedBoolNullableFilter>;
+}
+export declare class BoolNullableWithAggregatesFilter {
+    equals?: boolean;
+    not?: InstanceType<typeof NestedBoolNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _min?: InstanceType<typeof NestedBoolNullableFilter>;
+    _max?: InstanceType<typeof NestedBoolNullableFilter>;
+}
 export declare class BoolWithAggregatesFilter {
     equals?: boolean;
     not?: InstanceType<typeof NestedBoolWithAggregatesFilter>;
@@ -12633,6 +12650,17 @@ export declare class NestedBoolFilter {
     equals?: boolean;
     not?: InstanceType<typeof NestedBoolFilter>;
 }
+export declare class NestedBoolNullableFilter {
+    equals?: boolean;
+    not?: InstanceType<typeof NestedBoolNullableFilter>;
+}
+export declare class NestedBoolNullableWithAggregatesFilter {
+    equals?: boolean;
+    not?: InstanceType<typeof NestedBoolNullableWithAggregatesFilter>;
+    _count?: InstanceType<typeof NestedIntNullableFilter>;
+    _min?: InstanceType<typeof NestedBoolNullableFilter>;
+    _max?: InstanceType<typeof NestedBoolNullableFilter>;
+}
 export declare class NestedBoolWithAggregatesFilter {
     equals?: boolean;
     not?: InstanceType<typeof NestedBoolWithAggregatesFilter>;
@@ -13143,6 +13171,9 @@ export declare class NestedStringWithAggregatesFilter {
     _count?: InstanceType<typeof NestedIntFilter>;
     _min?: InstanceType<typeof NestedStringFilter>;
     _max?: InstanceType<typeof NestedStringFilter>;
+}
+export declare class NullableBoolFieldUpdateOperationsInput {
+    set?: boolean;
 }
 export declare class NullableDateTimeFieldUpdateOperationsInput {
     set?: Date | string;

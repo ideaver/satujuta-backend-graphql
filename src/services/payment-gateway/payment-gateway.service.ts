@@ -10,6 +10,7 @@ import { CreateBillArgs } from './dto/create-bill.args';
 import { UpdateBillArgs } from './dto/update-bill.args';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import { GetAllPaymentArgs, GetPaymentArgs } from './dto/payment.args';
+import { GetBankInfo } from './entities/get-bank-info.entity';
 
 @Injectable()
 export class PaymentGatewayService {
@@ -239,7 +240,7 @@ export class PaymentGatewayService {
     }
   }
 
-  async getBankInfo() {
+  async getBankInfo(): Promise<GetBankInfo[]> {
     try {
       const response = await axios.get(`${this.base_url_v2}/general/banks`, {
         headers: {
@@ -250,8 +251,6 @@ export class PaymentGatewayService {
           password: `${this.password}`,
         },
       });
-
-      this.logger.log(response.data);
 
       return response.data;
     } catch (error) {

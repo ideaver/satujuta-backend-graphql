@@ -54,6 +54,7 @@ export class UserService {
     try {
       return await this.prisma.user.update(userUpdateOneArgs);
     } catch (err) {
+      this.logger.error(err);
       throw new IGraphQLError({ code: 123456, err: err });
     }
   }

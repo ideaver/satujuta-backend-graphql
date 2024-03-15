@@ -195,11 +195,11 @@ type BankSumAggregate {
 type Bank {
   id: Int!
   name: String!
-  logoUrl: String!
-  accountNumber: Float!
-  isActive: Boolean!
-  accountId: Int!
-  account: Account!
+  logoUrl: String
+  accountNumber: Float
+  isActive: Boolean
+  accountId: Int
+  account: Account
 }
 
 type BankInfoAvgAggregate {
@@ -2702,6 +2702,54 @@ type Query {
   """Deskripsinya ada disini loh"""
   programCount(where: ProgramWhereInput, orderBy: [ProgramOrderByWithRelationInput!], cursor: ProgramWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramScalarFieldEnum!]): Float
 
+  """Deskripsinya ada disini loh"""
+  bankFindOne(where: BankWhereUniqueInput!): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankFindMany(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): [Bank!]
+
+  """Deskripsinya ada disini loh"""
+  bankFindFirst(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankAggregate(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, _count: BankCountAggregateInput, _avg: BankAvgAggregateInput, _sum: BankSumAggregateInput, _min: BankMinAggregateInput, _max: BankMaxAggregateInput): AggregateBank
+
+  """Deskripsinya ada disini loh"""
+  bankCount(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): Float
+
+  """Deskripsinya ada disini loh"""
+  getAllDisbursement(getAllDisbursementArgs: GetAllDisbursementArgs!): GetAllDisbursement
+
+  """Deskripsinya ada disini loh"""
+  getDisbursementById(getDisbursementByIdArgs: GetDisbursementByIdArgs!): Disbursement
+
+  """Deskripsinya ada disini loh"""
+  getDisbursementByIdempotencyKey(getDisbursementByIdempotencyKeyArgs: GetDisbursementByIdempotencyKeyArgs!): Disbursement
+
+  """Deskripsinya ada disini loh"""
+  getBalance: GetBalance
+
+  """Deskripsinya ada disini loh"""
+  getBankInfo: [GetBankInfo!]
+
+  """Deskripsinya ada disini loh"""
+  isMaintenance: IsMaintenance
+
+  """Deskripsinya ada disini loh"""
+  bankAccountInquiry(bankAccountInquiryArgs: BankAccountInquiryArgs!): BankAccountInquiry
+
+  """Deskripsinya ada disini loh"""
+  getBill(bill_id: String!): BillEntity
+
+  """Deskripsinya ada disini loh"""
+  getAllBill: [BillEntity!]
+
+  """Deskripsinya ada disini loh"""
+  getPayment(getPaymentArgs: GetPaymentArgs!): GetPayment
+
+  """Deskripsinya ada disini loh"""
+  getAllPayment(getAllPaymentArgs: GetAllPaymentArgs!): GetAllPayment
+
   """Bersihkan file yang tidak terpakai di S3. Hanya untuk development"""
   deleteOrphanedS3Objects: String
 
@@ -2770,21 +2818,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   withdrawalRequestCount(where: WithdrawalRequestWhereInput, orderBy: [WithdrawalRequestOrderByWithRelationInput!], cursor: WithdrawalRequestWhereUniqueInput, take: Int, skip: Int, distinct: [WithdrawalRequestScalarFieldEnum!]): Float
-
-  """Deskripsinya ada disini loh"""
-  bankFindOne(where: BankWhereUniqueInput!): Bank
-
-  """Deskripsinya ada disini loh"""
-  bankFindMany(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): [Bank!]
-
-  """Deskripsinya ada disini loh"""
-  bankFindFirst(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): Bank
-
-  """Deskripsinya ada disini loh"""
-  bankAggregate(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, _count: BankCountAggregateInput, _avg: BankAvgAggregateInput, _sum: BankSumAggregateInput, _min: BankMinAggregateInput, _max: BankMaxAggregateInput): AggregateBank
-
-  """Deskripsinya ada disini loh"""
-  bankCount(where: BankWhereInput, orderBy: [BankOrderByWithRelationInput!], cursor: BankWhereUniqueInput, take: Int, skip: Int, distinct: [BankScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   fileFindOne(where: FileWhereUniqueInput!): File
@@ -3073,39 +3106,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   rewardClaimCount(where: RewardClaimWhereInput, orderBy: [RewardClaimOrderByWithRelationInput!], cursor: RewardClaimWhereUniqueInput, take: Int, skip: Int, distinct: [RewardClaimScalarFieldEnum!]): Float
-
-  """Deskripsinya ada disini loh"""
-  getAllDisbursement(getAllDisbursementArgs: GetAllDisbursementArgs!): GetAllDisbursement
-
-  """Deskripsinya ada disini loh"""
-  getDisbursementById(getDisbursementByIdArgs: GetDisbursementByIdArgs!): Disbursement
-
-  """Deskripsinya ada disini loh"""
-  getDisbursementByIdempotencyKey(getDisbursementByIdempotencyKeyArgs: GetDisbursementByIdempotencyKeyArgs!): Disbursement
-
-  """Deskripsinya ada disini loh"""
-  getBalance: GetBalance
-
-  """Deskripsinya ada disini loh"""
-  getBankInfo: [GetBankInfo!]
-
-  """Deskripsinya ada disini loh"""
-  isMaintenance: IsMaintenance
-
-  """Deskripsinya ada disini loh"""
-  bankAccountInquiry(bankAccountInquiryArgs: BankAccountInquiryArgs!): BankAccountInquiry
-
-  """Deskripsinya ada disini loh"""
-  getBill(bill_id: String!): BillEntity
-
-  """Deskripsinya ada disini loh"""
-  getAllBill: [BillEntity!]
-
-  """Deskripsinya ada disini loh"""
-  getPayment(getPaymentArgs: GetPaymentArgs!): GetPayment
-
-  """Deskripsinya ada disini loh"""
-  getAllPayment(getAllPaymentArgs: GetAllPaymentArgs!): GetAllPayment
 }
 
 input ImagesWhereUniqueInput {
@@ -4740,6 +4740,128 @@ input ProgramMaxAggregateInput {
   updatedAt: Boolean
 }
 
+input BankWhereUniqueInput {
+  id: Int
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  name: StringFilter
+  logoUrl: StringNullableFilter
+  accountNumber: FloatNullableFilter
+}
+
+input BankWhereInput {
+  AND: [BankWhereInput!]
+  OR: [BankWhereInput!]
+  NOT: [BankWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  logoUrl: StringNullableFilter
+  accountNumber: FloatNullableFilter
+}
+
+input BankOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  logoUrl: SortOrderInput
+  accountNumber: SortOrderInput
+}
+
+enum BankScalarFieldEnum {
+  id
+  name
+  logoUrl
+  accountNumber
+  isActive
+  accountId
+}
+
+input BankCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  logoUrl: Boolean
+  accountNumber: Boolean
+  _all: Boolean
+}
+
+input BankAvgAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+}
+
+input BankSumAggregateInput {
+  id: Boolean
+  accountNumber: Boolean
+}
+
+input BankMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  logoUrl: Boolean
+  accountNumber: Boolean
+}
+
+input BankMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  logoUrl: Boolean
+  accountNumber: Boolean
+}
+
+input GetAllDisbursementArgs {
+  """The pagination of the result. Default value is 20."""
+  pagination: Int
+
+  """The page number of the result to be viewed."""
+  page: Int
+
+  """
+  Sort the result by the attribute. Use the attribute name (e.g sort=id) to sort in ascending order or dash+attribute name (e.g sort=-id) to sort in descending order.
+  """
+  sort: String
+}
+
+input GetDisbursementByIdArgs {
+  """The id of the disbursement."""
+  id: Int!
+}
+
+input GetDisbursementByIdempotencyKeyArgs {
+  """The idempotency key of the disbursement."""
+  idempotency_key: String!
+}
+
+input BankAccountInquiryArgs {
+  """The account number of the inquiry bank"""
+  account_number: String!
+
+  """Bank code of the inquiry bank"""
+  bank_code: String!
+
+  """The inquiry key."""
+  inquiry_key: Int!
+}
+
+input GetPaymentArgs {
+  bill_id: Int!
+  start_date: String
+  end_date: String
+  pagination: Int
+  page: Int
+  sort_by: String
+  sort_type: String
+}
+
+input GetAllPaymentArgs {
+  start_date: String
+  end_date: String
+  pagination: Int
+  page: Int
+  sort_by: String
+  sort_type: String
+  reference_id: String
+}
+
 input TransactionWhereUniqueInput {
   id: Int
   installmentId: Int
@@ -5081,74 +5203,6 @@ input WithdrawalRequestMaxAggregateInput {
   transactionId: Boolean
   createdAt: Boolean
   updatedAt: Boolean
-}
-
-input BankWhereUniqueInput {
-  id: Int
-  AND: [BankWhereInput!]
-  OR: [BankWhereInput!]
-  NOT: [BankWhereInput!]
-  name: StringFilter
-  logoUrl: StringFilter
-  accountNumber: FloatFilter
-}
-
-input BankWhereInput {
-  AND: [BankWhereInput!]
-  OR: [BankWhereInput!]
-  NOT: [BankWhereInput!]
-  id: IntFilter
-  name: StringFilter
-  logoUrl: StringFilter
-  accountNumber: FloatFilter
-}
-
-input BankOrderByWithRelationInput {
-  id: SortOrder
-  name: SortOrder
-  logoUrl: SortOrder
-  accountNumber: SortOrder
-}
-
-enum BankScalarFieldEnum {
-  id
-  name
-  logoUrl
-  accountNumber
-  isActive
-  accountId
-}
-
-input BankCountAggregateInput {
-  id: Boolean
-  name: Boolean
-  logoUrl: Boolean
-  accountNumber: Boolean
-  _all: Boolean
-}
-
-input BankAvgAggregateInput {
-  id: Boolean
-  accountNumber: Boolean
-}
-
-input BankSumAggregateInput {
-  id: Boolean
-  accountNumber: Boolean
-}
-
-input BankMinAggregateInput {
-  id: Boolean
-  name: Boolean
-  logoUrl: Boolean
-  accountNumber: Boolean
-}
-
-input BankMaxAggregateInput {
-  id: Boolean
-  name: Boolean
-  logoUrl: Boolean
-  accountNumber: Boolean
 }
 
 input FileWhereUniqueInput {
@@ -6584,60 +6638,6 @@ input RewardClaimMaxAggregateInput {
   createdAt: Boolean
 }
 
-input GetAllDisbursementArgs {
-  """The pagination of the result. Default value is 20."""
-  pagination: Int
-
-  """The page number of the result to be viewed."""
-  page: Int
-
-  """
-  Sort the result by the attribute. Use the attribute name (e.g sort=id) to sort in ascending order or dash+attribute name (e.g sort=-id) to sort in descending order.
-  """
-  sort: String
-}
-
-input GetDisbursementByIdArgs {
-  """The id of the disbursement."""
-  id: Int!
-}
-
-input GetDisbursementByIdempotencyKeyArgs {
-  """The idempotency key of the disbursement."""
-  idempotency_key: String!
-}
-
-input BankAccountInquiryArgs {
-  """The account number of the inquiry bank"""
-  account_number: String!
-
-  """Bank code of the inquiry bank"""
-  bank_code: String!
-
-  """The inquiry key."""
-  inquiry_key: Int!
-}
-
-input GetPaymentArgs {
-  bill_id: Int!
-  start_date: String
-  end_date: String
-  pagination: Int
-  page: Int
-  sort_by: String
-  sort_type: String
-}
-
-input GetAllPaymentArgs {
-  start_date: String
-  end_date: String
-  pagination: Int
-  page: Int
-  sort_by: String
-  sort_type: String
-  reference_id: String
-}
-
 type Mutation {
   authPasswordReset(email: String!): String!
 
@@ -6694,6 +6694,31 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   programDeleteMany(where: ProgramWhereInput): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  bankCreateOne(data: BankCreateInput!): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankCreateMany(data: [BankCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  bankUpdateOne(data: BankUpdateInput!, where: BankWhereUniqueInput!): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankUpdateMany(data: BankUpdateManyMutationInput!, where: BankWhereInput): Bank
+
+  """Deskripsinya ada disini loh"""
+  bankDelete(where: BankWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  bankDeleteMany(where: BankWhereInput): Boolean!
+  createDisbursement(createDisbursementArgs: CreateDisbursementArgs!): Disbursement!
+
+  """Deskripsinya ada disini loh"""
+  createBill(createBillArgs: CreateBillArgs!): BillEntity
+
+  """Deskripsinya ada disini loh"""
+  updateBill(updateBillArgs: UpdateBillArgs!): BillEntity
 
   """
   Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
@@ -6758,24 +6783,6 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   withdrawalRequestDeleteMany(where: WithdrawalRequestWhereInput): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  bankCreateOne(data: BankCreateInput!): Bank
-
-  """Deskripsinya ada disini loh"""
-  bankCreateMany(data: [BankCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
-
-  """Deskripsinya ada disini loh"""
-  bankUpdateOne(data: BankUpdateInput!, where: BankWhereUniqueInput!): Bank
-
-  """Deskripsinya ada disini loh"""
-  bankUpdateMany(data: BankUpdateManyMutationInput!, where: BankWhereInput): Bank
-
-  """Deskripsinya ada disini loh"""
-  bankDelete(where: BankWhereUniqueInput!): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  bankDeleteMany(where: BankWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   fileCreateOne(data: FileCreateInput!): File
@@ -7026,13 +7033,6 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   rewardClaimDeleteMany(where: RewardClaimWhereInput): Boolean!
-  createDisbursement(createDisbursementArgs: CreateDisbursementArgs!): Disbursement!
-
-  """Deskripsinya ada disini loh"""
-  createBill(createBillArgs: CreateBillArgs!): BillEntity
-
-  """Deskripsinya ada disini loh"""
-  updateBill(updateBillArgs: UpdateBillArgs!): BillEntity
 }
 
 input UserCreateInput {
@@ -9558,6 +9558,79 @@ input ProgramUpdateInput {
   category: ProgramCategoryUpdateOneRequiredWithoutProgramsNestedInput
 }
 
+input BankCreateInput {
+  name: String!
+  logoUrl: String
+  accountNumber: Float
+}
+
+input BankCreateManyInput {
+  id: Int
+  name: String!
+  logoUrl: String
+  accountNumber: Float
+}
+
+input BankUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  logoUrl: NullableStringFieldUpdateOperationsInput
+  accountNumber: NullableFloatFieldUpdateOperationsInput
+}
+
+input NullableFloatFieldUpdateOperationsInput {
+  set: Float
+  increment: Float
+  decrement: Float
+  multiply: Float
+  divide: Float
+}
+
+input BankUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  logoUrl: NullableStringFieldUpdateOperationsInput
+  accountNumber: NullableFloatFieldUpdateOperationsInput
+}
+
+input CreateDisbursementArgs {
+  """The account number of the recipient."""
+  account_number: String!
+
+  """Bank code of the recipient bank."""
+  bank_code: String!
+
+  """The amount of money to be disbursed"""
+  amount: Int!
+}
+
+input CreateBillArgs {
+  title: String!
+  type: BillType!
+  amount: Int
+  expired_date: String
+  redirect_url: String
+  is_address_required: Int
+  is_phone_number_required: Int
+  step: Int!
+  sender_name: String
+  sender_email: String
+  sender_phone_number: String
+  sender_address: String
+  sender_bank: String
+  sender_bank_type: BillSenderBankType
+}
+
+input UpdateBillArgs {
+  bill_id: String!
+  title: String
+  type: BillType
+  amount: Int
+  expired_date: String
+  redirect_url: String
+  status: BillStatus
+  is_address_required: Int
+  is_phone_number_required: Int
+}
+
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
 
@@ -9675,14 +9748,6 @@ input AccountUpdateInput {
   user: UserUpdateOneRequiredWithoutAccountsNestedInput
   transactionOrigins: TransactionUpdateManyWithoutFromAccountNestedInput
   transactionDestination: TransactionUpdateManyWithoutToAccountNestedInput
-}
-
-input NullableFloatFieldUpdateOperationsInput {
-  set: Float
-  increment: Float
-  decrement: Float
-  multiply: Float
-  divide: Float
 }
 
 input EnumAccountCategoryFieldUpdateOperationsInput {
@@ -9913,31 +9978,6 @@ input WithdrawalRequestUpdateManyMutationInput {
   status: EnumTransactionStatusFieldUpdateOperationsInput
   proofUrl: NullableStringFieldUpdateOperationsInput
   proofDescription: NullableStringFieldUpdateOperationsInput
-}
-
-input BankCreateInput {
-  name: String!
-  logoUrl: String!
-  accountNumber: Float!
-}
-
-input BankCreateManyInput {
-  id: Int
-  name: String!
-  logoUrl: String!
-  accountNumber: Float!
-}
-
-input BankUpdateInput {
-  name: StringFieldUpdateOperationsInput
-  logoUrl: StringFieldUpdateOperationsInput
-  accountNumber: FloatFieldUpdateOperationsInput
-}
-
-input BankUpdateManyMutationInput {
-  name: StringFieldUpdateOperationsInput
-  logoUrl: StringFieldUpdateOperationsInput
-  accountNumber: FloatFieldUpdateOperationsInput
 }
 
 input FileCreateInput {
@@ -10949,44 +10989,4 @@ input RewardClaimUpdateInput {
 
 input RewardClaimUpdateManyMutationInput {
   processedAt: DateTimeFieldUpdateOperationsInput
-}
-
-input CreateDisbursementArgs {
-  """The account number of the recipient."""
-  account_number: String!
-
-  """Bank code of the recipient bank."""
-  bank_code: String!
-
-  """The amount of money to be disbursed"""
-  amount: Int!
-}
-
-input CreateBillArgs {
-  title: String!
-  type: BillType!
-  amount: Int
-  expired_date: String
-  redirect_url: String
-  is_address_required: Int
-  is_phone_number_required: Int
-  step: Int!
-  sender_name: String
-  sender_email: String
-  sender_phone_number: String
-  sender_address: String
-  sender_bank: String
-  sender_bank_type: BillSenderBankType
-}
-
-input UpdateBillArgs {
-  bill_id: String!
-  title: String
-  type: BillType
-  amount: Int
-  expired_date: String
-  redirect_url: String
-  status: BillStatus
-  is_address_required: Int
-  is_phone_number_required: Int
 }

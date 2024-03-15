@@ -8,7 +8,7 @@ export const errorCodes: Record<number, string> = {
   //User
   110001: 'Kode referral tidak ditemukan. Harap periksa kembali',
   //Account
-  120001: 'Akun tidak ditemukan',
+  120001: 'Akun Keuangan tidak ditemukan',
   //WithdrawalRequest
   140001: 'Saldo belum mencukupi untuk melakukan permintaan withdrawal',
   140002: 'Terdapat permintaan withdrawal terdahulu dengan status pending',

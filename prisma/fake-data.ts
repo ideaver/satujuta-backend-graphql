@@ -234,18 +234,18 @@ export function fakeUserNotificationComplete() {
 export function fakeBank() {
   return {
     name: faker.name.fullName(),
-    logoUrl: faker.lorem.words(5),
-    accountNumber: faker.datatype.float(),
+    logoUrl: undefined,
+    accountNumber: undefined,
   };
 }
 export function fakeBankComplete() {
   return {
     id: faker.datatype.number(),
     name: faker.name.fullName(),
-    logoUrl: faker.lorem.words(5),
-    accountNumber: faker.datatype.float(),
+    logoUrl: undefined,
+    accountNumber: undefined,
     isActive: true,
-    accountId: faker.datatype.number(),
+    accountId: undefined,
   };
 }
 export function fakeHotel() {

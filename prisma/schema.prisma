@@ -402,7 +402,7 @@ enum UserNotificationCategory {
 
 //Make CRUD Available
 model Bank {
-  id            Int     @id @default(autoincrement())
+  id            Int      @id @default(autoincrement())
   /// @Validator.MinLength(1)
   /// @Validator.MaxLength(10)
   /// @Validator.IsAlphanumeric()
@@ -410,19 +410,19 @@ model Bank {
   name          String
   /// @Validator.IsUrl({ require_protocol: true })
   /// @Validator.IsNotEmpty()
-  logoUrl       String
+  logoUrl       String?
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  accountNumber Float
+  accountNumber Float?
   /// @HideField({ output: false, input: true })
-  isActive      Boolean @default(true)
+  isActive      Boolean? @default(true)
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()
   /// @HideField({ output: false, input: true })
-  account       Account @relation(fields: [accountId], references: [id])
+  account       Account? @relation(fields: [accountId], references: [id])
   /// @HideField({ output: false, input: true })
-  accountId     Int     @unique
+  accountId     Int?     @unique
 }
 
 //Make CRUD Available

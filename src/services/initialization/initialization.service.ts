@@ -5,9 +5,11 @@ import { ProgramController } from '../program/program.controller';
 import { encryptUserPassword } from 'src/utils/bcrypt.function';
 import { Item } from 'src/@generated';
 import { ItemController } from '../item/item.controller';
-import { UserRole } from '@prisma/client';
+import { Prisma, UserRole } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import { generateRandomReferralCode } from 'src/utils/generate-random.function';
+import { BankController } from '../bank/bank.controller';
+import { PaymentGatewayService } from '../payment-gateway/payment-gateway.service';
 
 // initialization.service.ts
 @Injectable()
@@ -16,20 +18,41 @@ export class InitializationService {
     private readonly prisma: PrismaService,
     private readonly programController: ProgramController,
     private readonly itemController: ItemController,
+    private readonly bankController: BankController,
+    private readonly paymentGatewayService: PaymentGatewayService,
   ) {}
 
   private readonly logger = new Logger(InitializationService.name);
 
   async initialize() {
-    const subdistrictsPromise = this.prisma.subdistrict.findMany();
-    const userFindManyPromise = this.prisma.user.findMany();
-    const itemsPromise = this.itemController.findMany({});
+    const subdistrictsPromise = this.prisma.subdistrict.findMany({ take: 1 });
+    const userFindManyPromise = this.prisma.user.findMany({ take: 1 });
+    const itemsPromise = this.itemController.findMany({ take: 1 });
+    const bankPromise = this.bankController.findMany({ take: 1 });
 
-    const [subdistricts, userFindMany, items] = await Promise.all([
+    const [subdistricts, userFindMany, items, banks] = await Promise.all([
       subdistrictsPromise,
       userFindManyPromise,
       itemsPromise,
+      bankPromise,
     ]);
+
+    if (banks.length <= 0) {
+      const flipBanks = await this.paymentGatewayService.getBankInfo();
+      const bankCreateManyInput: Prisma.BankCreateManyInput[] = [];
+
+      for (const bank of flipBanks) {
+        bankCreateManyInput.push({
+          name: bank.name,
+        });
+      }
+
+      await this.bankController
+        .createMany({ skipDuplicates: true, data: bankCreateManyInput })
+        .then((res) => {
+          this.logger.log(res.count, ' Bank info seeded');
+        });
+    }
 
     if (subdistricts.length <= 0) {
       await populateProvinceCityDistricSubdistric();
