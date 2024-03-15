@@ -119,7 +119,7 @@ networks:
   nestjs-network:
 
 
-volumes:
+#volumes:
   # data:
   #data-volume:
     # minio-data:
