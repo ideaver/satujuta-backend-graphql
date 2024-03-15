@@ -94,8 +94,6 @@ services:
       - "9229:9229"
     networks:
       - nestjs-network
-    volumes:
-      - data-volume:/usr/src/app
     restart: always
     env_file:
       - .env
@@ -123,6 +121,6 @@ networks:
 
 volumes:
   # data:
-  data-volume:
+  #data-volume:
     # minio-data:
     # mysql-data:
