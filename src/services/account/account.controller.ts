@@ -346,23 +346,8 @@ export class AccountController {
       { label: '0 points', count: 0 },
     ];
 
-    const users: User[] = await this.userController.findMany({
-      where: { status: { equals: UserStatus.ACTIVE } },
-      include: {
-        accounts: {
-          where: {
-            accountCategory: AccountCategory.POINT,
-          },
-          include: {
-            transactionDestination: {
-              where: {
-                status: TransactionStatus.COMPLETED,
-              },
-            },
-          },
-        },
-      },
-    });
+    const users: User[] =
+      await this.findActiveUsersWithCompletedPointTransactions();
 
     users.forEach((user) => {
       let totalPoints = 0;
@@ -387,6 +372,47 @@ export class AccountController {
     });
 
     return pointDistribution;
+  }
+
+  async findActiveUsersWithCompletedPointTransactions(): Promise<User[]> {
+    return await this.userController.findMany({
+      where: { status: { equals: UserStatus.ACTIVE } },
+      include: {
+        accounts: {
+          where: {
+            accountCategory: AccountCategory.POINT,
+          },
+          include: {
+            transactionDestination: {
+              where: {
+                status: TransactionStatus.COMPLETED,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  async getAllUsersAveragePoint(): Promise<number> {
+    let totalPoints = 0;
+    let totalUsers = 0;
+
+    const users: User[] =
+      await this.findActiveUsersWithCompletedPointTransactions();
+
+    users.forEach((user) => {
+      user.accounts.forEach((account) => {
+        account.transactionDestination.forEach((transaction) => {
+          totalPoints += transaction.amount; // Add points for incoming transactions
+        });
+      });
+      totalUsers++;
+    });
+
+    if (totalUsers === 0) return 0; // To avoid division by zero
+
+    return totalPoints / totalUsers;
   }
 
   //get account balance of user point

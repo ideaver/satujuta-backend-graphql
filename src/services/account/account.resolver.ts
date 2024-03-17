@@ -242,4 +242,13 @@ export class AccountResolver {
   async getUserPointDistribution() {
     return await this.accountController.getUserPointDistribution();
   }
+
+  @Query(() => Float, {
+    nullable: true,
+    description:
+      'Hanya menghitung user yang status active atau yang telah bayar',
+  })
+  async getAllUsersAveragePoint() {
+    return await this.accountController.getAllUsersAveragePoint();
+  }
 }

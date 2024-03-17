@@ -2860,6 +2860,9 @@ type Query {
   """Hanya menghitung user yang status active atau yang telah bayar"""
   getUserPointDistribution: [PointDistribution!]
 
+  """Hanya menghitung user yang status active atau yang telah bayar"""
+  getAllUsersAveragePoint: Float
+
   """Deskripsinya ada disini loh"""
   withdrawalRequestFindOne(where: WithdrawalRequestWhereUniqueInput!): WithdrawalRequest
 
