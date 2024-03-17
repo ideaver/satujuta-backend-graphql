@@ -2524,6 +2524,11 @@ type AccountBalanceByCustomPeriodQuery {
   totalBalance: Float
 }
 
+type PointDistribution {
+  label: String
+  count: Int
+}
+
 type Top10SchoolWithStudents {
   schoolId: Float!
   schoolName: String!
@@ -2851,6 +2856,9 @@ type Query {
   getAccountBalanceOfPlatformByCustomPeriod(accountBalanceOfPlatformByCustomPeriod: AccountBalanceOfPlatformByCustomPeriod!): [AccountBalanceByCustomPeriodQuery!]!
   getAccountBalanceOfUserPointFromUserId(userId: String!): Float!
   transactionFindManyByUserPointFromUserId(userId: String!, skip: Int!, take: Int!): [Transaction!]!
+
+  """Hanya menghitung user yang status active atau yang telah bayar"""
+  getUserPointDistribution: [PointDistribution!]
 
   """Deskripsinya ada disini loh"""
   withdrawalRequestFindOne(where: WithdrawalRequestWhereUniqueInput!): WithdrawalRequest

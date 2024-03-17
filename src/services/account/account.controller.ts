@@ -5,6 +5,7 @@ import {
   Transaction,
   TransactionStatus,
   UserRole,
+  UserStatus,
 } from '@prisma/client';
 import { AccountService } from './account.service';
 import {
@@ -18,14 +19,17 @@ import {
   AccountBalanceByCustomPeriodQuery,
   AccountBalanceByCustomPeriodArgs,
 } from './dto/get-account-balance-by-custom-period.args';
-import { Account } from 'src/@generated';
+import { Account, User } from 'src/@generated';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { PointDistribution } from './dto/point-distribution.output';
+import { UserController } from '../user/user.controller';
 
 @Injectable()
 export class AccountController {
   constructor(
     private readonly accountService: AccountService,
     private readonly transactionController: TransactionController,
+    private readonly userController: UserController,
   ) {}
 
   async createOne(accountCreateArgs: Prisma.AccountCreateArgs) {
@@ -331,6 +335,58 @@ export class AccountController {
       },
       orderBy: { createdAt: 'desc' },
     });
+  }
+
+  async getUserPointDistribution(): Promise<PointDistribution[]> {
+    const pointDistribution = [
+      { label: 'Over 1,000 points', count: 0 },
+      { label: 'Between 100 and 1,000 points', count: 0 },
+      { label: 'Between 50 and 100 points', count: 0 },
+      { label: 'Between 30 and 50 points', count: 0 },
+      { label: '0 points', count: 0 },
+    ];
+
+    const users: User[] = await this.userController.findMany({
+      where: { status: { equals: UserStatus.ACTIVE } },
+      include: {
+        accounts: {
+          where: {
+            accountCategory: AccountCategory.POINT,
+          },
+          include: {
+            transactionDestination: {
+              where: {
+                status: TransactionStatus.COMPLETED,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    users.forEach((user) => {
+      let totalPoints = 0;
+
+      user.accounts.forEach((account) => {
+        account.transactionDestination.forEach((transaction) => {
+          totalPoints += transaction.amount; // Add points for incoming transactions
+        });
+      });
+
+      if (totalPoints > 1000) {
+        pointDistribution[0].count++;
+      } else if (totalPoints >= 100 && totalPoints <= 1000) {
+        pointDistribution[1].count++;
+      } else if (totalPoints >= 50 && totalPoints < 100) {
+        pointDistribution[2].count++;
+      } else if (totalPoints >= 30 && totalPoints < 50) {
+        pointDistribution[3].count++;
+      } else {
+        pointDistribution[4].count++;
+      }
+    });
+
+    return pointDistribution;
   }
 
   //get account balance of user point

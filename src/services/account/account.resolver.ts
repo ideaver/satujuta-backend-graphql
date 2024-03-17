@@ -29,6 +29,7 @@ import {
   AccountBalanceByCustomPeriodQuery,
   AccountBalanceOfPlatformByCustomPeriod,
 } from './dto/get-account-balance-by-custom-period.args';
+import { PointDistribution } from './dto/point-distribution.output';
 
 interface AccountSelect {
   select: Prisma.AccountSelect;
@@ -231,5 +232,14 @@ export class AccountResolver {
       skip,
       take,
     );
+  }
+
+  @Query(() => [PointDistribution], {
+    nullable: true,
+    description:
+      'Hanya menghitung user yang status active atau yang telah bayar',
+  })
+  async getUserPointDistribution() {
+    return await this.accountController.getUserPointDistribution();
   }
 }

@@ -38,19 +38,6 @@ export enum Period {
 async function main() {
   console.log('Start seeding ...');
 
-  await prisma.reward.create({
-    data: {
-      name: 'London',
-      description: 'Berangkat Ke London',
-      pointCost: 500,
-      images: {
-        create: {
-          url: 'https://img.freepik.com/free-photo/big-ben-westminster-bridge-sunset-london-uk_268835-1395.jpg',
-        },
-      },
-    },
-  });
-
   // console.log(
   //   await prisma.bank.create({
   //     data: {
