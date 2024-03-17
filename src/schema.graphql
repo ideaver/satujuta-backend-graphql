@@ -2507,6 +2507,13 @@ type UserReferralPercentage {
   userPercentage: Float!
 }
 
+type Top10UserWithHighestComission {
+  userId: String!
+  userFirstName: String!
+  userLastName: String!
+  amount: Float!
+}
+
 type UserFindManyOrderByAccountBalance {
   user: User!
   totalBalance: Float!
@@ -2683,6 +2690,17 @@ type Query {
 
   """yang member berbayar saja yang dihitung"""
   countUserReferralPercentage: [UserReferralPercentage!]!
+
+  """
+  This query will:
+  
+      1. Query all users with their associated commission accounts and relevant transactions.
+      2. Calculate the sum of commission bonuses from both origin and destination transactions for each user.
+      3. Store user IDs and their total commission bonuses in an array.
+      4. Sort the array to get the top 10 users with the highest total commission bonuses.
+      5. Finally, log the top 10 users with their total commission bonuses.
+  """
+  countTop10UsersWithHighestCommissionBonus: [Top10UserWithHighestComission!]!
 
   """Deskripsinya ada disini loh"""
   getUserGrowthByCustomPeriod(userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs!): [UserCreatedByCustomPeriodQuery!]!

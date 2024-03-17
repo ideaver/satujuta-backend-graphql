@@ -3,6 +3,7 @@ import {
   AccountCategory,
   Item,
   Prisma,
+  TransactionCategory,
   TransactionStatus,
   UserRole,
   UserStatus,
@@ -22,10 +23,11 @@ import { getNextPeriodDate } from 'src/utils/get-next-period.function';
 import { Period } from 'src/model/period.enum';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { User } from 'src/@generated';
+import { Account, User } from 'src/@generated';
 import { UserEvents } from 'src/event-listeners/enum/user-event.enum';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import { UserReferralPercentage } from './dto/user-referral-percentage.output';
+import { Top10UserWithHighestComission } from './dto/top-10-user-with-highest-comission.output';
 
 @Injectable()
 export class UserController {
@@ -317,6 +319,67 @@ export class UserController {
     }
 
     return userCounts;
+  }
+
+  async countTop10UsersWithHighestCommissionBonus(): Promise<
+    Top10UserWithHighestComission[]
+  > {
+    const transactionWhere = {
+      transactionCategory: TransactionCategory.COMISSION_BONUS,
+      status: TransactionStatus.COMPLETED,
+    };
+
+    const accountWhere = {
+      accountCategory: AccountCategory.COMISSION,
+      transactionDestination: { some: transactionWhere },
+    };
+
+    const userSelect = { firstName: true, lastName: true };
+
+    const topUsers: User[] = await this.findMany({
+      where: { accounts: { some: accountWhere } },
+      include: {
+        accounts: {
+          where: accountWhere,
+          include: {
+            transactionDestination: true,
+            user: { select: userSelect },
+          },
+        },
+      },
+    });
+
+    const usersWithSum: Top10UserWithHighestComission[] = [];
+
+    for (const user of topUsers) {
+      let totalCommission = 0;
+
+      for (const account of user.accounts) {
+        for (const transaction of account.transactionDestination) {
+          if (
+            transaction.transactionCategory ===
+              TransactionCategory.COMISSION_BONUS &&
+            transaction.status === TransactionStatus.COMPLETED &&
+            account.accountCategory === AccountCategory.COMISSION
+          ) {
+            totalCommission += transaction.amount;
+          }
+        }
+      }
+
+      usersWithSum.push({
+        userId: user.id,
+        userFirstName: user.firstName,
+        userLastName: user.lastName,
+        amount: totalCommission,
+      });
+    }
+
+    const top10Users = usersWithSum
+      .sort((a, b) => b.amount - a.amount)
+      .slice(0, 10);
+
+    return top10Users;
   }
 
   calculateUserCount(users, currentDate, period) {

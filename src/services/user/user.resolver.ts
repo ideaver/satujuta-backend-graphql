@@ -25,6 +25,7 @@ import { UserController } from './user.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 import { UserReferralPercentage } from './dto/user-referral-percentage.output';
+import { Top10UserWithHighestComission } from './dto/top-10-user-with-highest-comission.output';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -192,6 +193,20 @@ export class UserResolver {
   })
   countUserReferralPercentage() {
     return this.userController.countUserReferralPercentage();
+  }
+
+  @Query(() => [Top10UserWithHighestComission], {
+    nullable: false,
+    description: `This query will:
+
+    1. Query all users with their associated commission accounts and relevant transactions.
+    2. Calculate the sum of commission bonuses from both origin and destination transactions for each user.
+    3. Store user IDs and their total commission bonuses in an array.
+    4. Sort the array to get the top 10 users with the highest total commission bonuses.
+    5. Finally, log the top 10 users with their total commission bonuses.`,
+  })
+  countTop10UsersWithHighestCommissionBonus() {
+    return this.userController.countTop10UsersWithHighestCommissionBonus();
   }
 
   @Query(() => [UserCreatedByCustomPeriodQuery], {
