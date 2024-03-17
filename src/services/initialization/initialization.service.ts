@@ -10,6 +10,7 @@ import { faker } from '@faker-js/faker';
 import { generateRandomReferralCode } from 'src/utils/generate-random.function';
 import { BankController } from '../bank/bank.controller';
 import { PaymentGatewayService } from '../payment-gateway/payment-gateway.service';
+import { RewardController } from '../reward/reward.controller';
 
 // initialization.service.ts
 @Injectable()
@@ -20,6 +21,7 @@ export class InitializationService {
     private readonly itemController: ItemController,
     private readonly bankController: BankController,
     private readonly paymentGatewayService: PaymentGatewayService,
+    private readonly rewardController: RewardController,
   ) {}
 
   private readonly logger = new Logger(InitializationService.name);
@@ -29,13 +31,16 @@ export class InitializationService {
     const userFindManyPromise = this.prisma.user.findMany({ take: 1 });
     const itemsPromise = this.itemController.findMany({ take: 1 });
     const bankPromise = this.bankController.findMany({ take: 1 });
+    const rewardPromise = this.rewardController.findMany({ take: 1 });
 
-    const [subdistricts, userFindMany, items, banks] = await Promise.all([
-      subdistrictsPromise,
-      userFindManyPromise,
-      itemsPromise,
-      bankPromise,
-    ]);
+    const [subdistricts, userFindMany, items, banks, rewards] =
+      await Promise.all([
+        subdistrictsPromise,
+        userFindManyPromise,
+        itemsPromise,
+        bankPromise,
+        rewardPromise,
+      ]);
 
     if (banks.length <= 0) {
       const flipBanks = await this.paymentGatewayService.getBankInfo();
@@ -56,6 +61,34 @@ export class InitializationService {
 
     if (subdistricts.length <= 0) {
       await populateProvinceCityDistricSubdistric();
+    }
+
+    if (rewards.length <= 0) {
+      await this.rewardController.createOne({
+        data: {
+          name: 'Umroh',
+          description: 'Berangkat Ke Tanah Suci',
+          pointCost: 1000,
+          images: {
+            create: {
+              url: 'https://bb71d2eac085c69b0.s3-jak01.storageraya.com/1675476533-195034/16783475083093-E61sfSUyAf6wXXyI8sOWaPfTwMJit19lfCflozed.jpg',
+            },
+          },
+        },
+      });
+
+      await this.rewardController.createOne({
+        data: {
+          name: 'London',
+          description: 'Berangkat Ke London',
+          pointCost: 500,
+          images: {
+            create: {
+              url: 'https://img.freepik.com/free-photo/big-ben-westminster-bridge-sunset-london-uk_268835-1395.jpg',
+            },
+          },
+        },
+      });
     }
 
     const createAdminPromise =

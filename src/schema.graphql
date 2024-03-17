@@ -2783,6 +2783,21 @@ type Query {
   """Deskripsinya ada disini loh"""
   getAllPayment(getAllPaymentArgs: GetAllPaymentArgs!): GetAllPayment
 
+  """Deskripsinya ada disini loh"""
+  rewardFindOne(where: RewardWhereUniqueInput!): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardFindMany(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): [Reward!]
+
+  """Deskripsinya ada disini loh"""
+  rewardFindFirst(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardAggregate(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, _count: RewardCountAggregateInput, _avg: RewardAvgAggregateInput, _sum: RewardSumAggregateInput, _min: RewardMinAggregateInput, _max: RewardMaxAggregateInput): AggregateReward
+
+  """Deskripsinya ada disini loh"""
+  rewardCount(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Float
+
   """Bersihkan file yang tidak terpakai di S3. Hanya untuk development"""
   deleteOrphanedS3Objects: String
 
@@ -2896,21 +2911,6 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   programCategoryCount(where: ProgramCategoryWhereInput, orderBy: [ProgramCategoryOrderByWithRelationInput!], cursor: ProgramCategoryWhereUniqueInput, take: Int, skip: Int, distinct: [ProgramCategoryScalarFieldEnum!]): Float
-
-  """Deskripsinya ada disini loh"""
-  rewardFindOne(where: RewardWhereUniqueInput!): Reward
-
-  """Deskripsinya ada disini loh"""
-  rewardFindMany(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): [Reward!]
-
-  """Deskripsinya ada disini loh"""
-  rewardFindFirst(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Reward
-
-  """Deskripsinya ada disini loh"""
-  rewardAggregate(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, _count: RewardCountAggregateInput, _avg: RewardAvgAggregateInput, _sum: RewardSumAggregateInput, _min: RewardMinAggregateInput, _max: RewardMaxAggregateInput): AggregateReward
-
-  """Deskripsinya ada disini loh"""
-  rewardCount(where: RewardWhereInput, orderBy: [RewardOrderByWithRelationInput!], cursor: RewardWhereUniqueInput, take: Int, skip: Int, distinct: [RewardScalarFieldEnum!]): Float
 
   """Deskripsinya ada disini loh"""
   faqFindOne(where: FaqWhereUniqueInput!): Faq
@@ -4901,6 +4901,59 @@ input GetAllPaymentArgs {
   reference_id: String
 }
 
+input RewardWhereUniqueInput {
+  id: Int
+  AND: [RewardWhereInput!]
+  OR: [RewardWhereInput!]
+  NOT: [RewardWhereInput!]
+  name: StringFilter
+  pointCost: FloatFilter
+  description: StringFilter
+  images: ImagesListRelationFilter
+  RewardClaim: RewardClaimListRelationFilter
+}
+
+enum RewardScalarFieldEnum {
+  id
+  name
+  pointCost
+  description
+  createdAt
+  updatedAt
+}
+
+input RewardCountAggregateInput {
+  id: Boolean
+  name: Boolean
+  pointCost: Boolean
+  description: Boolean
+  _all: Boolean
+}
+
+input RewardAvgAggregateInput {
+  id: Boolean
+  pointCost: Boolean
+}
+
+input RewardSumAggregateInput {
+  id: Boolean
+  pointCost: Boolean
+}
+
+input RewardMinAggregateInput {
+  id: Boolean
+  name: Boolean
+  pointCost: Boolean
+  description: Boolean
+}
+
+input RewardMaxAggregateInput {
+  id: Boolean
+  name: Boolean
+  pointCost: Boolean
+  description: Boolean
+}
+
 input TransactionWhereUniqueInput {
   id: Int
   installmentId: Int
@@ -5502,59 +5555,6 @@ input ProgramCategoryMaxAggregateInput {
   name: Boolean
   createdAt: Boolean
   updatedAt: Boolean
-}
-
-input RewardWhereUniqueInput {
-  id: Int
-  AND: [RewardWhereInput!]
-  OR: [RewardWhereInput!]
-  NOT: [RewardWhereInput!]
-  name: StringFilter
-  pointCost: FloatFilter
-  description: StringFilter
-  images: ImagesListRelationFilter
-  RewardClaim: RewardClaimListRelationFilter
-}
-
-enum RewardScalarFieldEnum {
-  id
-  name
-  pointCost
-  description
-  createdAt
-  updatedAt
-}
-
-input RewardCountAggregateInput {
-  id: Boolean
-  name: Boolean
-  pointCost: Boolean
-  description: Boolean
-  _all: Boolean
-}
-
-input RewardAvgAggregateInput {
-  id: Boolean
-  pointCost: Boolean
-}
-
-input RewardSumAggregateInput {
-  id: Boolean
-  pointCost: Boolean
-}
-
-input RewardMinAggregateInput {
-  id: Boolean
-  name: Boolean
-  pointCost: Boolean
-  description: Boolean
-}
-
-input RewardMaxAggregateInput {
-  id: Boolean
-  name: Boolean
-  pointCost: Boolean
-  description: Boolean
 }
 
 input FaqWhereUniqueInput {
@@ -6762,6 +6762,24 @@ type Mutation {
   """Deskripsinya ada disini loh"""
   updateBill(updateBillArgs: UpdateBillArgs!): BillEntity
 
+  """Deskripsinya ada disini loh"""
+  rewardCreateOne(data: RewardCreateInput!): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardCreateMany(data: [RewardCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
+
+  """Deskripsinya ada disini loh"""
+  rewardUpdateOne(data: RewardUpdateInput!, where: RewardWhereUniqueInput!): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardUpdateMany(data: RewardUpdateManyMutationInput!, where: RewardWhereInput): Reward
+
+  """Deskripsinya ada disini loh"""
+  rewardDelete(where: RewardWhereUniqueInput!): Boolean!
+
+  """Deskripsinya ada disini loh"""
+  rewardDeleteMany(where: RewardWhereInput): Boolean!
+
   """
   Header wajib ada apollo-require-preflight = true agar tidak CSRF error. File JPG akan dicompress
   """
@@ -6880,24 +6898,6 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   programCategoryDeleteMany(where: ProgramCategoryWhereInput): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  rewardCreateOne(data: RewardCreateInput!): Reward
-
-  """Deskripsinya ada disini loh"""
-  rewardCreateMany(data: [RewardCreateManyInput!]!, skipDuplicates: Boolean): BatchPayload
-
-  """Deskripsinya ada disini loh"""
-  rewardUpdateOne(data: RewardUpdateInput!, where: RewardWhereUniqueInput!): Reward
-
-  """Deskripsinya ada disini loh"""
-  rewardUpdateMany(data: RewardUpdateManyMutationInput!, where: RewardWhereInput): Reward
-
-  """Deskripsinya ada disini loh"""
-  rewardDelete(where: RewardWhereUniqueInput!): Boolean!
-
-  """Deskripsinya ada disini loh"""
-  rewardDeleteMany(where: RewardWhereInput): Boolean!
 
   """Deskripsinya ada disini loh"""
   faqCreateOne(data: FaqCreateInput!): Faq
@@ -9673,6 +9673,92 @@ input UpdateBillArgs {
   is_phone_number_required: Int
 }
 
+input RewardCreateInput {
+  name: String!
+  pointCost: Float!
+  description: String!
+  images: ImagesCreateNestedManyWithoutRewardImageInput
+}
+
+input ImagesCreateNestedManyWithoutRewardImageInput {
+  create: [ImagesCreateWithoutRewardImageInput!]
+  connectOrCreate: [ImagesCreateOrConnectWithoutRewardImageInput!]
+  createMany: ImagesCreateManyRewardImageInputEnvelope
+  connect: [ImagesWhereUniqueInput!]
+}
+
+input ImagesCreateWithoutRewardImageInput {
+  url: String!
+}
+
+input ImagesCreateOrConnectWithoutRewardImageInput {
+  where: ImagesWhereUniqueInput!
+  create: ImagesCreateWithoutRewardImageInput!
+}
+
+input ImagesCreateManyRewardImageInputEnvelope {
+  data: [ImagesCreateManyRewardImageInput!]!
+  skipDuplicates: Boolean
+}
+
+input ImagesCreateManyRewardImageInput {
+  url: String!
+}
+
+input RewardCreateManyInput {
+  name: String!
+  pointCost: Float!
+  description: String!
+}
+
+input RewardUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  images: ImagesUpdateManyWithoutRewardImageNestedInput
+}
+
+input ImagesUpdateManyWithoutRewardImageNestedInput {
+  create: [ImagesCreateWithoutRewardImageInput!]
+  connectOrCreate: [ImagesCreateOrConnectWithoutRewardImageInput!]
+  upsert: [ImagesUpsertWithWhereUniqueWithoutRewardImageInput!]
+  createMany: ImagesCreateManyRewardImageInputEnvelope
+  set: [ImagesWhereUniqueInput!]
+  disconnect: [ImagesWhereUniqueInput!]
+  delete: [ImagesWhereUniqueInput!]
+  connect: [ImagesWhereUniqueInput!]
+  update: [ImagesUpdateWithWhereUniqueWithoutRewardImageInput!]
+  updateMany: [ImagesUpdateManyWithWhereWithoutRewardImageInput!]
+  deleteMany: [ImagesScalarWhereInput!]
+}
+
+input ImagesUpsertWithWhereUniqueWithoutRewardImageInput {
+  where: ImagesWhereUniqueInput!
+  update: ImagesUpdateWithoutRewardImageInput!
+  create: ImagesCreateWithoutRewardImageInput!
+}
+
+input ImagesUpdateWithoutRewardImageInput {
+  url: StringFieldUpdateOperationsInput
+  hotelImage: HotelUpdateOneWithoutImagesNestedInput
+  programImage: ProgramUpdateOneWithoutImagesNestedInput
+  projectImage: ProjectUpdateOneWithoutImagesNestedInput
+}
+
+input ImagesUpdateWithWhereUniqueWithoutRewardImageInput {
+  where: ImagesWhereUniqueInput!
+  data: ImagesUpdateWithoutRewardImageInput!
+}
+
+input ImagesUpdateManyWithWhereWithoutRewardImageInput {
+  where: ImagesScalarWhereInput!
+  data: ImagesUpdateManyMutationInput!
+}
+
+input RewardUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+}
+
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
 
@@ -10276,92 +10362,6 @@ input ProgramCategoryUpdateManyMutationInput {
   name: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
-input RewardCreateInput {
-  name: String!
-  pointCost: Float!
-  description: String!
-  images: ImagesCreateNestedManyWithoutRewardImageInput
-}
-
-input ImagesCreateNestedManyWithoutRewardImageInput {
-  create: [ImagesCreateWithoutRewardImageInput!]
-  connectOrCreate: [ImagesCreateOrConnectWithoutRewardImageInput!]
-  createMany: ImagesCreateManyRewardImageInputEnvelope
-  connect: [ImagesWhereUniqueInput!]
-}
-
-input ImagesCreateWithoutRewardImageInput {
-  url: String!
-}
-
-input ImagesCreateOrConnectWithoutRewardImageInput {
-  where: ImagesWhereUniqueInput!
-  create: ImagesCreateWithoutRewardImageInput!
-}
-
-input ImagesCreateManyRewardImageInputEnvelope {
-  data: [ImagesCreateManyRewardImageInput!]!
-  skipDuplicates: Boolean
-}
-
-input ImagesCreateManyRewardImageInput {
-  url: String!
-}
-
-input RewardCreateManyInput {
-  name: String!
-  pointCost: Float!
-  description: String!
-}
-
-input RewardUpdateInput {
-  name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  images: ImagesUpdateManyWithoutRewardImageNestedInput
-}
-
-input ImagesUpdateManyWithoutRewardImageNestedInput {
-  create: [ImagesCreateWithoutRewardImageInput!]
-  connectOrCreate: [ImagesCreateOrConnectWithoutRewardImageInput!]
-  upsert: [ImagesUpsertWithWhereUniqueWithoutRewardImageInput!]
-  createMany: ImagesCreateManyRewardImageInputEnvelope
-  set: [ImagesWhereUniqueInput!]
-  disconnect: [ImagesWhereUniqueInput!]
-  delete: [ImagesWhereUniqueInput!]
-  connect: [ImagesWhereUniqueInput!]
-  update: [ImagesUpdateWithWhereUniqueWithoutRewardImageInput!]
-  updateMany: [ImagesUpdateManyWithWhereWithoutRewardImageInput!]
-  deleteMany: [ImagesScalarWhereInput!]
-}
-
-input ImagesUpsertWithWhereUniqueWithoutRewardImageInput {
-  where: ImagesWhereUniqueInput!
-  update: ImagesUpdateWithoutRewardImageInput!
-  create: ImagesCreateWithoutRewardImageInput!
-}
-
-input ImagesUpdateWithoutRewardImageInput {
-  url: StringFieldUpdateOperationsInput
-  hotelImage: HotelUpdateOneWithoutImagesNestedInput
-  programImage: ProgramUpdateOneWithoutImagesNestedInput
-  projectImage: ProjectUpdateOneWithoutImagesNestedInput
-}
-
-input ImagesUpdateWithWhereUniqueWithoutRewardImageInput {
-  where: ImagesWhereUniqueInput!
-  data: ImagesUpdateWithoutRewardImageInput!
-}
-
-input ImagesUpdateManyWithWhereWithoutRewardImageInput {
-  where: ImagesScalarWhereInput!
-  data: ImagesUpdateManyMutationInput!
-}
-
-input RewardUpdateManyMutationInput {
-  name: StringFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
 }
 
 input FaqCreateInput {
