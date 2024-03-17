@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
 import { Prisma } from '@prisma/client';
@@ -6,6 +6,7 @@ import { Prisma } from '@prisma/client';
 @Injectable()
 export class WithdrawalRequestService {
   constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(WithdrawalRequestService.name);
 
   async createOne(
     withdrawalRequestCreateArgs: Prisma.WithdrawalRequestCreateArgs,
@@ -51,6 +52,7 @@ export class WithdrawalRequestService {
         withdrawalRequestFindManyArgs,
       );
     } catch (err) {
+      this.logger.log(err);
       throw new IGraphQLError({ code: 123456, err: err });
     }
   }

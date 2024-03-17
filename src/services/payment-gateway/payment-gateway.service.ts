@@ -314,7 +314,6 @@ export class PaymentGatewayService {
   }
 
   async bankAccountInquiry(bankAccountInquiryArgs: BankAccountInquiryArgs) {
-    this.logger.log(bankAccountInquiryArgs);
     try {
       const { account_number, bank_code, inquiry_key } = bankAccountInquiryArgs;
 

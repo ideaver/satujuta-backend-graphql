@@ -25,6 +25,7 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
 import { User } from 'src/@generated';
 import { UserEvents } from 'src/event-listeners/enum/user-event.enum';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import { UserReferralPercentage } from './dto/user-referral-percentage.output';
 
 @Injectable()
 export class UserController {
@@ -169,6 +170,14 @@ export class UserController {
     }
   }
 
+  async updateOneOfStatusToInactive(userId: string, select: Prisma.UserSelect) {
+    return await this.userService.updateOne({
+      data: { status: { set: UserStatus.INACTIVE } },
+      where: { id: userId },
+      select: select,
+    });
+  }
+
   async updateMany(userUpdateManyArgs: Prisma.UserUpdateManyArgs) {
     return await this.userService.updateMany(userUpdateManyArgs);
   }
@@ -210,8 +219,70 @@ export class UserController {
     return await this.userService.count(userCountArgs);
   }
 
-  countUserTypePercentage() {
+  async countUserTypePercentage() {
     return this.userService.countUserTypePercentage();
+  }
+
+  async countUserReferralPercentage(): Promise<UserReferralPercentage[]> {
+    const referredUsersPromise = this.count({
+      where: {
+        referredBy: {
+          NOT: {},
+        },
+        //paid member only
+        orders: {
+          some: {
+            invoice: {
+              transactions: { some: { status: TransactionStatus.COMPLETED } },
+            },
+          },
+        },
+      },
+    });
+
+    const nonReferredUsersPromise = this.count({
+      where: {
+        referredBy: {},
+        //paid member only
+        orders: {
+          some: {
+            invoice: {
+              transactions: { some: { status: TransactionStatus.COMPLETED } },
+            },
+          },
+        },
+      },
+    });
+
+    const totalUsersPromise = this.count({});
+
+    const [referredUsersCount, nonReferredUsersCount, totalUsersCount] =
+      await Promise.all([
+        referredUsersPromise,
+        nonReferredUsersPromise,
+        totalUsersPromise,
+      ]);
+
+    // Calculate the percentage of users with referrals
+    const percentageWithReferrals =
+      (referredUsersCount / totalUsersCount) * 100;
+
+    // Calculate the percentage of users without referrals
+    const percentageWithoutReferrals =
+      (nonReferredUsersCount / totalUsersCount) * 100;
+
+    return [
+      {
+        userReferralType: 'percentageWithReferrals',
+        userCount: referredUsersCount,
+        userPercentage: percentageWithReferrals,
+      },
+      {
+        userReferralType: 'percentageWithoutReferrals',
+        userCount: nonReferredUsersCount,
+        userPercentage: percentageWithoutReferrals,
+      },
+    ];
   }
 
   async getUserGrowthByCustomPeriod(

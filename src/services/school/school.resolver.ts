@@ -19,6 +19,7 @@ import {
 import { SchoolController } from './school.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
+import { Top10SchoolWithStudents } from './dtos/top-10-school-with-students.output';
 
 interface SchoolSelect {
   select: Prisma.SchoolSelect;
@@ -156,5 +157,21 @@ export class SchoolResolver {
   })
   schoolCount(@Args() schoolCountAggregateInput: FindManySchoolArgs) {
     return this.schoolController.count(schoolCountAggregateInput);
+  }
+
+  @Query(() => [Top10SchoolWithStudents], {
+    nullable: false,
+    description: 'yang student berbayar saja yang dihitung',
+  })
+  countTop10SchoolsWithMostStudents() {
+    return this.schoolController.countTop10SchoolsWithMostStudents();
+  }
+
+  @Query(() => [Top10SchoolWithStudents], {
+    nullable: false,
+    description: 'yang student berbayar saja yang dihitung',
+  })
+  countTop10SchoolsWithLeastStudents() {
+    return this.schoolController.countTop10SchoolsWithLeastStudents();
   }
 }

@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type UserTypePercentage {
+  userCountType: String!
+  userCount: Float!
+  userPercentage: Float!
+}
+
 type AccountAvgAggregate {
   id: Float
   accountNumber: Float
@@ -2491,14 +2497,14 @@ type UserCreatedByCustomPeriodQuery {
   totalUser: Float
 }
 
-type UserTypePercentage {
-  userCountType: String!
-  userCount: Float!
-  userPercentage: Float!
-}
-
 type BatchPayload {
   count: Float
+}
+
+type UserReferralPercentage {
+  userReferralType: String!
+  userCount: Float!
+  userPercentage: Float!
 }
 
 type UserFindManyOrderByAccountBalance {
@@ -2509,6 +2515,12 @@ type UserFindManyOrderByAccountBalance {
 type AccountBalanceByCustomPeriodQuery {
   period: String
   totalBalance: Float
+}
+
+type Top10SchoolWithStudents {
+  schoolId: Float!
+  schoolName: String!
+  userCount: Float!
 }
 
 type CityFindManyUser {
@@ -2666,8 +2678,11 @@ type Query {
   """Deskripsinya ada disini loh"""
   userCount(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): Float
 
-  """Deskripsinya ada disini loh"""
+  """yang member berbayar saja yang dihitung"""
   countUserTypePercentage: [UserTypePercentage!]!
+
+  """yang member berbayar saja yang dihitung"""
+  countUserReferralPercentage: [UserReferralPercentage!]!
 
   """Deskripsinya ada disini loh"""
   getUserGrowthByCustomPeriod(userCreatedByCustomPeriodArgs: UserCreatedByCustomPeriodArgs!): [UserCreatedByCustomPeriodQuery!]!
@@ -2983,6 +2998,12 @@ type Query {
 
   """Deskripsinya ada disini loh"""
   schoolCount(where: SchoolWhereInput, orderBy: [SchoolOrderByWithRelationInput!], cursor: SchoolWhereUniqueInput, take: Int, skip: Int, distinct: [SchoolScalarFieldEnum!]): Float
+
+  """yang student berbayar saja yang dihitung"""
+  countTop10SchoolsWithMostStudents: [Top10SchoolWithStudents!]!
+
+  """yang student berbayar saja yang dihitung"""
+  countTop10SchoolsWithLeastStudents: [Top10SchoolWithStudents!]!
 
   """Deskripsinya ada disini loh"""
   addressFindOne(where: AddressWhereUniqueInput!): Address
@@ -6649,6 +6670,9 @@ type Mutation {
 
   """Deskripsinya ada disini loh"""
   userUpdateOne(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+
+  """Deskripsinya ada disini loh"""
+  userUpdateOneOfStatusToInactive(userId: String!): User
 
   """Deskripsinya ada disini loh"""
   userUpdateMany(data: UserUpdateManyMutationInput!, where: UserWhereInput): User

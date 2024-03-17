@@ -24,6 +24,7 @@ import { UserTypePercentage } from './dto/user-type-percentage.output';
 import { UserController } from './user.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
+import { UserReferralPercentage } from './dto/user-referral-percentage.output';
 
 interface UserSelect {
   select: Prisma.UserSelect;
@@ -121,6 +122,20 @@ export class UserResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
+  async userUpdateOneOfStatusToInactive(
+    @Args('userId', { type: () => String }) userId: string,
+    @Relations() relations: UserSelect,
+  ) {
+    return this.userController.updateOneOfStatusToInactive(
+      userId,
+      relations.select,
+    );
+  }
+
+  @Mutation(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
   async userUpdateMany(@Args() updateManyUserArgs: UpdateManyUserArgs) {
     return this.userController.updateMany(updateManyUserArgs);
   }
@@ -165,10 +180,18 @@ export class UserResolver {
 
   @Query(() => [UserTypePercentage], {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'yang member berbayar saja yang dihitung',
   })
   countUserTypePercentage() {
     return this.userController.countUserTypePercentage();
+  }
+
+  @Query(() => [UserReferralPercentage], {
+    nullable: false,
+    description: 'yang member berbayar saja yang dihitung',
+  })
+  countUserReferralPercentage() {
+    return this.userController.countUserReferralPercentage();
   }
 
   @Query(() => [UserCreatedByCustomPeriodQuery], {

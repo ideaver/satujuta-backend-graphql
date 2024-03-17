@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
-import { Prisma } from '@prisma/client';
+import { Prisma, TransactionStatus, UserType } from '@prisma/client';
 import { UserTypePercentage } from './dto/user-type-percentage.output';
 
 @Injectable()
@@ -102,23 +102,41 @@ export class UserService {
   }
 
   async countUserTypePercentage(): Promise<UserTypePercentage[] | void> {
-    const query = Prisma.sql`
-    SELECT
-      userType AS userCountType,
-      COUNT(*) AS userCount,
-      ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS userPercentage
-    FROM
-      User
-    GROUP BY
-      userType;
-  `;
-    return await this.prisma
-      .$queryRaw(query)
-      .then((res: UserTypePercentage[]) => {
-        return res;
-      })
-      .catch((err) => {
-        throw new IGraphQLError({ code: 123456, err: err });
+    // Get all enum values of UserType
+    const userTypes = Object.values(UserType);
+
+    // Initialize an array to store UserTypePercentage objects
+    const userTypePercentages: UserTypePercentage[] = [];
+
+    // Query to count total users
+    const totalUsersCount = await this.count({});
+
+    // Query to count users for each userType and populate userTypePercentages array
+    for (const userType of userTypes) {
+      const count = await this.count({
+        where: {
+          userType: userType,
+          //paid member only
+          orders: {
+            some: {
+              invoice: {
+                transactions: { some: { status: TransactionStatus.COMPLETED } },
+              },
+            },
+          },
+        },
       });
+
+      const percentage = (count / totalUsersCount) * 100;
+
+      const userTypePercentage = new UserTypePercentage();
+      userTypePercentage.userCountType = userType;
+      userTypePercentage.userCount = count;
+      userTypePercentage.userPercentage = percentage;
+
+      userTypePercentages.push(userTypePercentage);
+    }
+
+    return userTypePercentages;
   }
 }

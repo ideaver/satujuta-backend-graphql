@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Prisma, UserRole, UserStatus } from '@prisma/client';
 import { SchoolService } from './school.service';
+import { Top10SchoolWithStudents } from './dtos/top-10-school-with-students.output';
+import { School } from 'src/@generated';
 
 @Injectable()
 export class SchoolController {
@@ -48,5 +50,77 @@ export class SchoolController {
 
   async count(schoolCountArgs: Prisma.SchoolCountArgs) {
     return await this.schoolService.count(schoolCountArgs);
+  }
+
+  async countTop10SchoolsWithMostStudents(): Promise<
+    Top10SchoolWithStudents[]
+  > {
+    const schoolsWithStudentCount = await this.findMany({
+      select: {
+        id: true,
+        name: true,
+        students: {
+          where: {
+            userRole: { equals: UserRole.STUDENT },
+            status: { equals: UserStatus.ACTIVE },
+          },
+          select: {
+            _count: true,
+          },
+        },
+      },
+      orderBy: {
+        students: {
+          _count: 'desc',
+        },
+      },
+      take: 10,
+    });
+
+    const formattedSchoolsWithStudents = schoolsWithStudentCount
+      .map((school: School) => ({
+        schoolId: school.id,
+        schoolName: school.name,
+        userCount: school.students.length,
+      }))
+      .filter((school) => school.userCount > 0);
+
+    return formattedSchoolsWithStudents;
+  }
+
+  async countTop10SchoolsWithLeastStudents(): Promise<
+    Top10SchoolWithStudents[]
+  > {
+    const schoolsWithStudentCount = await this.findMany({
+      select: {
+        id: true,
+        name: true,
+        students: {
+          where: {
+            userRole: { equals: UserRole.STUDENT },
+            status: { equals: UserStatus.ACTIVE },
+          },
+          select: {
+            _count: true,
+          },
+        },
+      },
+      orderBy: {
+        students: {
+          _count: 'asc',
+        },
+      },
+      take: 10,
+    });
+
+    const formattedSchoolsWithStudents = schoolsWithStudentCount
+      .map((school: School) => ({
+        schoolId: school.id,
+        schoolName: school.name,
+        userCount: school.students.length,
+      }))
+      .filter((school) => school.userCount > 0);
+
+    return formattedSchoolsWithStudents;
   }
 }
