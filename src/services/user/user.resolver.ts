@@ -137,6 +137,20 @@ export class UserResolver {
     nullable: true,
     description: 'Deskripsinya ada disini loh',
   })
+  async userUpdateOneOfStatusToActive(
+    @Args('userId', { type: () => String }) userId: string,
+    @Relations() relations: UserSelect,
+  ) {
+    return this.userController.updateOneOfStatusToActive(
+      userId,
+      relations.select,
+    );
+  }
+
+  @Mutation(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
+  })
   async userUpdateMany(@Args() updateManyUserArgs: UpdateManyUserArgs) {
     return this.userController.updateMany(updateManyUserArgs);
   }

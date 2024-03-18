@@ -187,7 +187,7 @@ model User {
   referredById          String?
   /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']})  
   referredUsers         User[]              @relation("UserReferral")
-  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) 
+  /// @HideField({ match: ['UserCreate*Input','UserUpdate*Input']}) `
   status                UserStatus          @default(PENDING)
   /// @HideField({ match: 'UserCreate*Input' })
   checkIns              CheckIn[]

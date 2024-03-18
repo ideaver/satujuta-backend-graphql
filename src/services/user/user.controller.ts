@@ -173,11 +173,11 @@ export class UserController {
   }
 
   async updateOneOfStatusToInactive(userId: string, select: Prisma.UserSelect) {
-    return await this.userService.updateOne({
-      data: { status: { set: UserStatus.INACTIVE } },
-      where: { id: userId },
-      select: select,
-    });
+    return this.updateUserStatus(userId, UserStatus.INACTIVE, select);
+  }
+
+  async updateOneOfStatusToActive(userId: string, select: Prisma.UserSelect) {
+    return this.updateUserStatus(userId, UserStatus.ACTIVE, select);
   }
 
   async updateMany(userUpdateManyArgs: Prisma.UserUpdateManyArgs) {
@@ -319,6 +319,18 @@ export class UserController {
     }
 
     return userCounts;
+  }
+
+  async updateUserStatus(
+    userId: string,
+    status: UserStatus,
+    select: Prisma.UserSelect,
+  ) {
+    return await this.userService.updateOne({
+      data: { status: { set: status } },
+      where: { id: userId },
+      select: select,
+    });
   }
 
   async countTop10UsersWithHighestCommissionBonus(): Promise<
